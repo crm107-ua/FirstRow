@@ -1,0 +1,12 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="FirstRow.Default" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>FirstRow - Making Dreams</title>
+</head>
+<body>
+    <asp:ContentPlaceHolder ID="Main" runat="server"></asp:ContentPlaceHolder>
+</body>
+</html>
