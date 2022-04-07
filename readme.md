@@ -18,7 +18,7 @@
     - Cualquier usuario
 - Constará de las siguientes funcionalidades:
     - Observar y consumir contenido con opciones de filtro en:
-        -  Viajes: tours disponibles ordenados por países.
+        -  Viajes: tours disponibles ordenados por países. 
         -  Galerías de imágenes: imágenes de tours, blogs y experiencias de usuarios
         -  Stories: imágenes con duración limitada de momentos de los usuarios
         -  Comentarios: de viajes y blogs
@@ -48,7 +48,7 @@
 - Sorteos
 - Wearing
 
-## Parte pública
+## Parte privada
 
 ###### Esta sección de la plataforma será privada. Será necesario estar registrado para observar el contenido.
 
@@ -127,12 +127,12 @@
     ###
  - Mejoras de funcionalidad en usuario
     - Implementación de un sistema de recomendaciones que aprenda sobre el comportamiento de los usuarios en la plataforma, para que posteriormente les proporcione viajes más acordes a sus gustos y presupuesto.
-    - Implementación de hilos para que la plataforma conozca todos los recorridos que realizan los usuarios en la misma, junto con el orden en el que se van visitando cada uno de sus apartados. El objetivo debe ser proporcionar a la empresa la mayor cantidad de datos en lo que más visita un usuario sobre sus viajes y experiencias.
+    - Implementación de hilos para que la plataforma conozca todos los recorridos que realizan los usuarios en la misma, junto con el orden en el que se van visitando cada uno de sus apartados. El objetivo debe ser proporcionar a la empresa la mayor cantidad de datos sobre lo que más visita un usuario a partir de sus viajes y experiencias.
     ###
  - Mejoras de funcionalidad en administrador
     -  Automatización de cambio de imágenes e información en los apartados genéricos cada cierto tiempo.
-    -  Mostrar en la página principal las imágenes y los comentarios mejor valorados
-    -  Optimizador de búsqueda de contenido en función de las cookies del usuario
+    -  Mostrar en la página principal las imágenes y los comentarios mejor valorados.
+    -  Optimizador de búsqueda de contenido en función de cookies del usuario.
     -  Servicio de chat y asistencia entre empresas y clientes 24 horas.
 
 
