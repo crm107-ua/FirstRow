@@ -84,6 +84,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\jquery-ui.min.css" />
+    <Content Include="assets\css\less\404.less" />
+    <Content Include="assets\css\less\about-us.less" />
+    <Content Include="assets\css\less\blog-single.less" />
+    <Content Include="assets\css\less\blog.less" />
+    <Content Include="assets\css\less\contacts.less" />
+    <Content Include="assets\css\less\gallery.less" />
+    <Content Include="assets\css\less\general.less" />
+    <Content Include="assets\css\less\main.less" />
+    <Content Include="assets\css\less\media.less" />
+    <Content Include="assets\css\less\stories.less" />
+    <Content Include="assets\css\less\story.less" />
+    <Content Include="assets\css\less\style.less" />
+    <Content Include="assets\css\less\tour-page.less" />
+    <Content Include="assets\css\less\travel-list.less" />
     <Content Include="assets\css\lg-transitions.min.css" />
     <Content Include="assets\css\lightgallery.min.css" />
     <Content Include="assets\css\slick-theme.css" />
@@ -150,6 +164,7 @@
     <Content Include="assets\js\lightgallery.js" />
     <Content Include="assets\js\scripts.js" />
     <Content Include="assets\js\scripts.min.js" />
+    <Content Include="assets\js\scripts.min.js.map" />
     <Content Include="assets\js\slick.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Pages\Inicio.aspx" />
@@ -186,21 +201,6 @@
   <ItemGroup>
     <Content Include="Home.Master" />
     <Content Include="Default.Master" />
-    <Content Include="assets\css\less\404.less" />
-    <Content Include="assets\css\less\about-us.less" />
-    <Content Include="assets\css\less\blog-single.less" />
-    <Content Include="assets\css\less\blog.less" />
-    <Content Include="assets\css\less\contacts.less" />
-    <Content Include="assets\css\less\gallery.less" />
-    <Content Include="assets\css\less\general.less" />
-    <Content Include="assets\css\less\main.less" />
-    <Content Include="assets\css\less\media.less" />
-    <Content Include="assets\css\less\stories.less" />
-    <Content Include="assets\css\less\story.less" />
-    <Content Include="assets\css\less\style.less" />
-    <Content Include="assets\css\less\tour-page.less" />
-    <Content Include="assets\css\less\travel-list.less" />
-    <Content Include="assets\js\scripts.min.js.map" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
