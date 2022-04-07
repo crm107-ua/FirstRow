@@ -3,10 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>FirstRow - Making Dreams</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>FirstRow - Making Dreams</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
+
+
 <body>
     <asp:ContentPlaceHolder ID="Main" runat="server"></asp:ContentPlaceHolder>
 </body>
+
+
 </html>

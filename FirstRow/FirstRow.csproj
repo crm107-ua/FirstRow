@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,7 +44,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -53,6 +63,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -60,6 +73,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -67,6 +83,74 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\jquery-ui.min.css" />
+    <Content Include="assets\css\lg-transitions.min.css" />
+    <Content Include="assets\css\lightgallery.min.css" />
+    <Content Include="assets\css\slick-theme.css" />
+    <Content Include="assets\css\slick.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\img\bookmark-active.svg" />
+    <Content Include="assets\img\bookmark.svg" />
+    <Content Include="assets\img\check-mark.svg" />
+    <Content Include="assets\img\close-red.svg" />
+    <Content Include="assets\img\close.svg" />
+    <Content Include="assets\img\demo-bg-2.jpg" />
+    <Content Include="assets\img\demo-bg-3.jpg" />
+    <Content Include="assets\img\demo-bg.jpg" />
+    <Content Include="assets\img\facebook-logo-black.svg" />
+    <Content Include="assets\img\facebook-logo.svg" />
+    <Content Include="assets\img\favicons\android-chrome-192x192.png" />
+    <Content Include="assets\img\favicons\android-chrome-512x512.png" />
+    <Content Include="assets\img\favicons\apple-touch-icon.png" />
+    <Content Include="assets\img\favicons\favicon-16x16.png" />
+    <Content Include="assets\img\favicons\favicon-32x32.png" />
+    <Content Include="assets\img\favicons\favicon.ico" />
+    <Content Include="assets\img\favicons\favicon.png" />
+    <Content Include="assets\img\First_Row.png" />
+    <Content Include="assets\img\full-link.svg" />
+    <Content Include="assets\img\geo-red.svg" />
+    <Content Include="assets\img\geo.svg" />
+    <Content Include="assets\img\instagram-icon.svg" />
+    <Content Include="assets\img\instagram-logo-black.svg" />
+    <Content Include="assets\img\instagram-logo.svg" />
+    <Content Include="assets\img\left-arrow.svg" />
+    <Content Include="assets\img\logo-black.svg" />
+    <Content Include="assets\img\logo.svg" />
+    <Content Include="assets\img\Logo_Principal.png" />
+    <Content Include="assets\img\mail.svg" />
+    <Content Include="assets\img\minus-2.svg" />
+    <Content Include="assets\img\minus.svg" />
+    <Content Include="assets\img\pag-arrow-hover-blue.svg" />
+    <Content Include="assets\img\pag-arrow-hover.svg" />
+    <Content Include="assets\img\pag-arrow.svg" />
+    <Content Include="assets\img\pinterest-black.svg" />
+    <Content Include="assets\img\pinterest.svg" />
+    <Content Include="assets\img\plus-2.svg" />
+    <Content Include="assets\img\plus.svg" />
+    <Content Include="assets\img\quote.svg" />
+    <Content Include="assets\img\right-arrow.svg" />
+    <Content Include="assets\img\search-black.svg" />
+    <Content Include="assets\img\search-hover.svg" />
+    <Content Include="assets\img\search-icon.svg" />
+    <Content Include="assets\img\soc-close.svg" />
+    <Content Include="assets\img\star-active.svg" />
+    <Content Include="assets\img\star-dark.svg" />
+    <Content Include="assets\img\star.svg" />
+    <Content Include="assets\img\twitter-logo-black.svg" />
+    <Content Include="assets\img\twitter-logo.svg" />
+    <Content Include="assets\img\user-hover.svg" />
+    <Content Include="assets\img\user.svg" />
+    <Content Include="assets\img\youtube-logo.svg" />
+    <Content Include="assets\js\hammer.js" />
+    <Content Include="assets\js\jquery-ui.min.js" />
+    <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\jquery.mousewheel.min.js" />
+    <Content Include="assets\js\lightgallery-all.min.js" />
+    <Content Include="assets\js\lightgallery-all.min.min.js" />
+    <Content Include="assets\js\lightgallery.js" />
+    <Content Include="assets\js\scripts.js" />
+    <Content Include="assets\js\scripts.min.js" />
+    <Content Include="assets\js\slick.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Pages\Inicio.aspx" />
     <Content Include="Web.config" />
@@ -102,6 +186,21 @@
   <ItemGroup>
     <Content Include="Home.Master" />
     <Content Include="Default.Master" />
+    <Content Include="assets\css\less\404.less" />
+    <Content Include="assets\css\less\about-us.less" />
+    <Content Include="assets\css\less\blog-single.less" />
+    <Content Include="assets\css\less\blog.less" />
+    <Content Include="assets\css\less\contacts.less" />
+    <Content Include="assets\css\less\gallery.less" />
+    <Content Include="assets\css\less\general.less" />
+    <Content Include="assets\css\less\main.less" />
+    <Content Include="assets\css\less\media.less" />
+    <Content Include="assets\css\less\stories.less" />
+    <Content Include="assets\css\less\story.less" />
+    <Content Include="assets\css\less\style.less" />
+    <Content Include="assets\css\less\tour-page.less" />
+    <Content Include="assets\css\less\travel-list.less" />
+    <Content Include="assets\js\scripts.min.js.map" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -110,6 +209,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
