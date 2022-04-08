@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="FirstRow.Pages.Inicio" %>
-
+<asp:Content ID="Content2" ContentPlaceHolderID="Head" runat="server"></asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
-  <body>
     <div class="container">
         <div class="top_panel">
             <div class="wrap">
@@ -1362,6 +1361,5 @@
         </div>
         <div class="close"></div>
     </div>
-</body>
 
 </asp:Content>
