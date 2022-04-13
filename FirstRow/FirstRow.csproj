@@ -83,6 +83,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database.mdf" />
+    <Content Include="App_Data\Database_log.ldf">
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
     <Content Include="assets\css\jquery-ui.min.css" />
     <Content Include="assets\css\less\404.less" />
     <Content Include="assets\css\less\about-us.less" />
@@ -113,12 +117,6 @@
     <Content Include="assets\img\demo-bg.jpg" />
     <Content Include="assets\img\facebook-logo-black.svg" />
     <Content Include="assets\img\facebook-logo.svg" />
-    <Content Include="assets\img\favicons\android-chrome-192x192.png" />
-    <Content Include="assets\img\favicons\android-chrome-512x512.png" />
-    <Content Include="assets\img\favicons\apple-touch-icon.png" />
-    <Content Include="assets\img\favicons\favicon-16x16.png" />
-    <Content Include="assets\img\favicons\favicon-32x32.png" />
-    <Content Include="assets\img\favicons\favicon.ico" />
     <Content Include="assets\img\favicons\favicon.png" />
     <Content Include="assets\img\First_Row.png" />
     <Content Include="assets\img\full-link.svg" />
@@ -131,6 +129,7 @@
     <Content Include="assets\img\logo-black.svg" />
     <Content Include="assets\img\logo.svg" />
     <Content Include="assets\img\Logo_Principal.png" />
+    <Content Include="assets\img\Logo_Principal_Invertido.png" />
     <Content Include="assets\img\mail.svg" />
     <Content Include="assets\img\minus-2.svg" />
     <Content Include="assets\img\minus.svg" />
@@ -168,26 +167,27 @@
     <Content Include="assets\js\slick.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Pages\Inicio.aspx" />
+    <Content Include="Pages\Viajes.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Default.Master.cs">
-      <DependentUpon>Default.Master</DependentUpon>
+    <Compile Include="Dark.Master.cs">
+      <DependentUpon>Dark.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.Master.designer.cs">
-      <DependentUpon>Default.Master</DependentUpon>
+    <Compile Include="Dark.Master.designer.cs">
+      <DependentUpon>Dark.Master</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Home.Master.cs">
-      <DependentUpon>Home.Master</DependentUpon>
+    <Compile Include="White.Master.cs">
+      <DependentUpon>White.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Home.Master.designer.cs">
-      <DependentUpon>Home.Master</DependentUpon>
+    <Compile Include="White.Master.designer.cs">
+      <DependentUpon>White.Master</DependentUpon>
     </Compile>
     <Compile Include="Pages\Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
@@ -196,11 +196,18 @@
     <Compile Include="Pages\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Viajes.aspx.cs">
+      <DependentUpon>Viajes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Viajes.aspx.designer.cs">
+      <DependentUpon>Viajes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Home.Master" />
-    <Content Include="Default.Master" />
+    <Content Include="White.Master" />
+    <Content Include="Dark.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -209,7 +216,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\library\library.csproj">
+      <Project>{d831ea68-ca9c-4f45-9ff7-7183062210ae}</Project>
+      <Name>library</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

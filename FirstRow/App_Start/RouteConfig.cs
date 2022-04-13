@@ -7,6 +7,7 @@ namespace FirstRow.App_Start
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.MapPageRoute("default", "", "~/Pages/Inicio.aspx");
+            routes.MapPageRoute("viajes", "viajes", "~/Pages/Viajes.aspx");
         }
     }
 }

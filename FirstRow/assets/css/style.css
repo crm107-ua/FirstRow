@@ -491,22 +491,20 @@ body.pop-up-open {
   left: 0;
   right: 0;
 }
+
 body.os-windows::-webkit-scrollbar {
-  width: 8px;
-  background-color: #F7F7F7;
+    display: none;
 }
 body.os-windows::-webkit-scrollbar-thumb {
-  background-color: #FF3B00;
-  border-radius: 4px;
+    display: none;
 }
 body.os-windows .popup::-webkit-scrollbar {
-  width: 8px;
-  background-color: #F7F7F7;
+    display: none;
 }
 body.os-windows .popup::-webkit-scrollbar-thumb {
-  background-color: #FF3B00;
-  border-radius: 4px;
+    display: none;
 }
+
 .body-margin.os-windows .top_panel {
   width: auto;
   left: 0;
