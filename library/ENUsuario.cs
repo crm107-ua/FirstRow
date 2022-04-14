@@ -8,8 +8,6 @@ namespace library
 {
     public class ENUsuario
     {
-       
-
-
+        
     }
 }
