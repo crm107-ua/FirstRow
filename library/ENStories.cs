@@ -14,31 +14,11 @@ namespace library
         private int _Pais;
         private ENUsuario _Usuario;
 
-        public uint Id
-        {
-            get { return _Id; }
-            set { _Id = value; }
-        }
-        public string Nombre
-        {
-            get { return _Nombre; }
-            set { _Nombre = value; }
-        }
-        public DateTime Fecha
-        {
-            get { return _Fecha; }
-            set { _Fecha = value; }
-        }
-        public int Pais
-        {
-            get { return _Pais; }
-            set { _Pais = value; }
-        }
-        public ENUsuario Usuario
-        {
-            get { return _Usuario; }
-            set { _Usuario = value; }
-        }
+        public uint Id { get => _Id; set => _Id = value; }
+        public string Nombre { get => _Nombre; set => _Nombre = value; }
+        public DateTime Fecha { get => _Fecha; set => _Fecha = value; }
+        public int Pais { get => _Pais; set => _Pais = value; }
+        public ENUsuario Usuario { get => _Usuario; set => _Usuario = value; }
 
         public ENStories()
         {
@@ -49,15 +29,40 @@ namespace library
             Usuario = new ENUsuario();
         }
 
-        public ENStories(int id, ENUsuario usuario, string nombre, int pais)
+        public ENStories(uint id, ENUsuario usuario, DateTime fecha, string nombre, int pais)
         {
-            //this.Id = id;//Tiene que ser un id unico, idealmente generado en base a la fecha y el usuario
+            this.Id = id;//Tiene que ser un id unico
             this.Nombre = nombre;
-            this.Fecha = new DateTime();
-            this.Fecha = DateTime.Now; 
+            this.Fecha = fecha;
             this.Pais = pais;
             this.Usuario = usuario;
-            this.Id = uint.Parse(/*usuario.Id.ToString() + */(this.Fecha.Ticks).ToString()); //utilizar también el usuario
+        }
+
+        public ENStories(ENUsuario usuario, DateTime fecha, string nombre, int pais)
+        {
+            this.Id = ENStories.GenerateId(fecha, usuario);
+            this.Nombre = nombre;
+            this.Fecha = fecha;
+            this.Pais = pais;
+            this.Usuario = usuario;
+        }
+
+        public ENStories(ENStories story)
+        {
+            this.Id = story.Id;
+            this.Nombre = story.Nombre;
+            this.Fecha = story.Fecha;
+            this.Pais = story.Pais;
+            this.Usuario = story.Usuario;
+        }
+
+        /**
+         * genera la Id correspondiente en base a la fecha de publicación
+         * y al usuario que publicó la story
+         */
+        static uint GenerateId(DateTime fecha, ENUsuario usuario)
+        {
+            return uint.Parse(/*usuario.Id.ToString() + */(fecha.Ticks).ToString());
         }
 
         /**
@@ -65,15 +70,55 @@ namespace library
          * devuelve: true, si se ha creado con exito
          *           false, si no se ha creado
          */
-        public bool createStory()
+        public bool CreateStory()
         {
             CADStories story = new CADStories();
             bool created = false;
 
-            if (!story.readStory(this))
-                created = story.createStory(this);
+            if (!story.ReadStory(this))
+                created = story.CreateStory(this);
 
             return created;
+        }
+
+        /**
+         * Obtiene los datos de la story que lo llame
+         */
+        public bool ReadStory()
+        {
+            CADStories story = new CADStories();
+            bool correctRead = story.ReadStory(this);
+
+            return correctRead;
+        }
+
+        /**
+         * actualiza una story
+         */
+        public bool UpdateStory()
+        {
+            CADStories story = new CADStories();
+            bool updated = false;
+            ENStories aux = new ENStories(this);
+
+            if (story.ReadStory(aux))
+                updated = story.UpdateStory(this);
+
+            return updated;
+        }
+
+        /**
+         * elimina una story
+         */
+        public bool DeleteStory()
+        {
+            CADStories story = new CADStories();
+            bool deleted = false;
+
+            if (story.ReadStory(this))
+                deleted = story.DeleteStory(this);
+
+            return deleted;
         }
 
     }

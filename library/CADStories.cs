@@ -13,25 +13,25 @@ namespace library
             constring = ConfigurationManager.ConnectionStrings["DataBase"].ToString();
         }
 
-        public bool createStory(ENStories story)
+        public bool CreateStory(ENStories story)
         {
             bool created = false;
             return created;
         }
 
-        public bool readStory(ENStories story)
+        public bool ReadStory(ENStories story)
         {
             bool correctRead = false;
             return correctRead;
         }
 
-        public bool updateStory(ENStories story)
+        public bool UpdateStory(ENStories story)
         {
             bool updated = false;
             return updated;
         }
 
-        public bool deleteStory(ENStories story)
+        public bool DeleteStory(ENStories story)
         {
             bool deleted = false;
             return deleted;
