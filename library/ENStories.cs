@@ -8,13 +8,13 @@ namespace library
 {
     public class ENStories
     {
-        private uint _Id;
+        private int _Id;
         private string _Nombre;
         private DateTime _Fecha;
         private int _Pais;
         private ENUsuario _Usuario;
 
-        public uint Id { get => _Id; set => _Id = value; }
+        public int Id { get => _Id; set => _Id = value; }
         public string Nombre { get => _Nombre; set => _Nombre = value; }
         public DateTime Fecha { get => _Fecha; set => _Fecha = value; }
         public int Pais { get => _Pais; set => _Pais = value; }
@@ -29,7 +29,7 @@ namespace library
             Usuario = new ENUsuario();
         }
 
-        public ENStories(uint id, ENUsuario usuario, DateTime fecha, string nombre, int pais)
+        public ENStories(int id, ENUsuario usuario, DateTime fecha, string nombre, int pais)
         {
             this.Id = id;//Tiene que ser un id unico
             this.Nombre = nombre;
@@ -60,9 +60,9 @@ namespace library
          * genera la Id correspondiente en base a la fecha de publicación
          * y al usuario que publicó la story
          */
-        static uint GenerateId(DateTime fecha, ENUsuario usuario)
+        static int GenerateId(DateTime fecha, ENUsuario usuario)
         {
-            return uint.Parse(/*usuario.Id.ToString() + */(fecha.Ticks).ToString());
+            return int.Parse(/*usuario.Id.ToString() + */(fecha.Ticks).ToString());
         }
 
         /**
