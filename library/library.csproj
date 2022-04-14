@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CADAdmin.cs" />
     <Compile Include="CADBlog.cs" />
     <Compile Include="CADCategorias.cs" />
     <Compile Include="CADComentarios.cs" />
@@ -52,10 +53,13 @@
     <Compile Include="CADUsuario.cs" />
     <Compile Include="CADViajes.cs" />
     <Compile Include="CADWearing.cs" />
+    <Compile Include="ENAdmin.cs" />
     <Compile Include="ENBlog.cs" />
     <Compile Include="ENCategorias.cs" />
     <Compile Include="ENComentarios.cs" />
+    <Compile Include="ENEmpresa.cs" />
     <Compile Include="ENGaleria.cs" />
+    <Compile Include="ENPais.cs" />
     <Compile Include="ENPropuestas.cs" />
     <Compile Include="ENSorteos.cs" />
     <Compile Include="ENStories.cs" />
