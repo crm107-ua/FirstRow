@@ -12,6 +12,20 @@ namespace library
         {
             constring = ConfigurationManager.ConnectionStrings["DataBase"].ToString();
         }
-   
+
+        internal bool addParticipante(ENSorteos eNSorteos)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal bool deleteParticipante(ENSorteos eNSorteos)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal bool raffle(ENSorteos eNSorteos)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
