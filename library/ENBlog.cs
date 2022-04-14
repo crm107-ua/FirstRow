@@ -17,8 +17,9 @@ namespace library
         private string _texto_2;
         private string _texto_3;
         private string _citacion;
+        private string _slug;
         private string[] _imagenes;
-        private ENUsuario _usurio;
+        private ENUsuario _usuario;
         private ENCategorias _categoria;
         private List<ENStories> _stories;
         private List<ENComentarios> _comentarios;
@@ -31,8 +32,9 @@ namespace library
         public string texto_2 { get => _texto_2; set => _texto_2 = value; }
         public string texto_3 { get => _texto_3; set => _texto_3 = value; }
         public string citacion { get => _citacion; set => _citacion = value; }
+        public string slug { get => _slug; set => _slug = value; }
         public string[] imagenes { get => _imagenes; set => _imagenes = value; }
-        public ENUsuario usurio { get => _usurio; set => _usurio = value; }
+        public ENUsuario usuario { get => _usuario; set => _usuario = value; }
         public ENCategorias categoria { get => _categoria; set => _categoria = value; }
         public List<ENStories> stories { get => _stories; set => _stories = value; }
         public List<ENComentarios> comentarios { get => _comentarios; set => _comentarios = value; }
@@ -47,15 +49,16 @@ namespace library
             this.texto_2 = "";
             this.texto_3 = "";
             this.citacion = "";
+            this.slug = "";
             this.imagenes = new string[maxImages];
-            this.usurio = new ENUsuario();
+            this.usuario = new ENUsuario();
             this.categoria = new ENCategorias();
             this.stories = new List<ENStories>();
             this.comentarios = new List<ENComentarios>();
             this.pais = new ENPais();
         }
 
-        public ENBlog(string imagen_principal, string titulo, string descripcion, string texto_1, string texto_2, string texto_3, string citacion, string[] imagenes, ENUsuario usurio, ENCategorias categoria, List<ENStories> stories, List<ENComentarios> comentarios, ENPais pais)
+        public ENBlog(string imagen_principal, string titulo, string descripcion, string texto_1, string texto_2, string texto_3, string citacion, string slug, string[] imagenes, ENUsuario usurio, ENCategorias categoria, List<ENStories> stories, List<ENComentarios> comentarios, ENPais pais)
         {
             this.imagen_principal = imagen_principal;
             this.titulo = titulo;
@@ -65,11 +68,12 @@ namespace library
             this.texto_3 = texto_3;
             this.citacion = citacion;
             this.imagenes = imagenes;
-            this.usurio = usurio;
+            this.usuario = usurio;
             this.categoria = categoria;
             this.stories = stories;
             this.comentarios = comentarios;
             this.pais = pais;
+            this.slug = generateSlug(this.usuario, titulo);
         }
 
         public bool crearBlog()
@@ -92,11 +96,12 @@ namespace library
             aux.texto_3 = this.texto_3;
             aux.citacion = this.citacion;
             aux.imagenes = this.imagenes;
-            aux.usurio = this.usurio;
+            aux.usuario = this.usuario;
             aux.categoria = this.categoria;
             aux.stories = this.stories;
             aux.comentarios = this.comentarios;
             aux.pais = this.pais;
+            aux.slug = generateSlug(this.usuario, this.titulo);
 
             if (blog.readBlog(this))
             {
@@ -108,14 +113,20 @@ namespace library
                 this.texto_3 = aux.texto_3;
                 this.citacion = aux.citacion;
                 this.imagenes = aux.imagenes;
-                this.usurio = aux.usurio;
+                this.usuario = aux.usuario;
                 this.categoria = aux.categoria;
                 this.stories = aux.stories;
                 this.comentarios = aux.comentarios;
                 this.pais = aux.pais;
+                this.slug = generateSlug(aux.usuario, aux.titulo);
             }
 
             return actualizado;
+        }
+
+        public String generateSlug(ENUsuario usuario, String titulo)
+        {
+            return titulo.Replace(" ", "_") +"_" + usuario.nickname;
         }
 
         public bool deleteBlog()
