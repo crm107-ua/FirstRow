@@ -12,6 +12,54 @@ namespace library
         {
             constring = ConfigurationManager.ConnectionStrings["DataBase"].ToString();
         }
+
+        public bool createGaleria(ENGaleria galeria) 
+        {
+            bool consegido=false;
+            CADGaleria aux = new CADGaleria();
+
+            if (!aux.readGaleria(galeria)) 
+            {
+                //Se inserta en la base de datos
+                consegido= true;
+            }
+
+            return consegido;
+        }
+
+        public bool readGaleria(ENGaleria galeria) 
+        {
+            //Buscar en la BDD
+            return false;
+        }
+
+        public bool deleteGaleria(ENGaleria galeria) 
+        {
+            bool consegido = false;
+            CADGaleria aux = new CADGaleria();
+
+            if (!aux.readGaleria(galeria))
+            {
+                //Se Borra en la base de datos
+                consegido = true;
+            }
+
+            return consegido;
+        }
+
+        public bool updateGaleria(ENGaleria galeria) 
+        {
+            bool consegido = false;
+            CADGaleria aux = new CADGaleria();
+
+            if (!aux.readGaleria(galeria))
+            {
+                //Se modifica solo el titulo ciudad y descripcion en la base de datos
+                consegido = true;
+            }
+
+            return consegido;
+        }
    
     }
 }
