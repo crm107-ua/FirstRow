@@ -10,7 +10,7 @@
 ###
 ###
 
-###### El esquema relacional de la base de datos junto con el de clases y el boceto inicial estan situados en la raíz del repositorio, en un pdf llamado "Esquema_BBDD.pdf". 
+###### El esquema relacional de la base de datos junto con el de sql server y el boceto inicial estan situados en la raíz del repositorio, en un pdf llamado "Esquema_BBDD.pdf". 
 
 ###
 ###
