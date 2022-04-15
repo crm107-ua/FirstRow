@@ -10,6 +10,11 @@
 ###
 ###
 
+###### El esquema relacional de la base de datos junto con el de clases y el boceto inicial estan situados en la raíz del repositorio, en un pdf llamado "Esquema_BBDD.pdf". 
+
+###
+###
+
 ## Parte pública
 
 ###### Esta sección de la plataforma será pública. No será necesario estar registrado para observar el contenido.
