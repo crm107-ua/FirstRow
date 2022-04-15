@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace library
 {
-    class ENEmpresa : ENUsuario
+    public class ENEmpresa : ENUsuario
     {
         private int _cif;
         private string _direccion;

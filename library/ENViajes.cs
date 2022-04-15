@@ -19,6 +19,7 @@ namespace library
         private string[] _Incluido;
         private ENStories _Stories;
         private ENComentarios _Comentarios;
+        private ENEmpresa _Empresa;
         /// <summary>
         /// Identificador de los viajes
         /// </summary>
@@ -58,6 +59,10 @@ namespace library
         /// <summary>
         /// Constructor por defecto
         /// </summary>
+        public ENEmpresa Empresa { get => _Empresa; set => _Empresa = value; }
+        /// <summary>
+        /// Constructor por defecto
+        /// </summary>
         public ENViajes()
         {
             Id = 0;
@@ -69,6 +74,7 @@ namespace library
             Incluido = null;
             Stories = new ENStories();
             Comentarios = new ENComentarios();
+            Empresa = new ENEmpresa();
         }
         /// <summary>
         /// Constructor por parametros
@@ -82,7 +88,7 @@ namespace library
         /// <param name="incluido">Array de detalles incluidos</param>
         /// <param name="stories">Stories</param>
         /// <param name="comentarios">Comentarios</param>
-        public ENViajes(int id, int pais, string nombre, int slug, string descripcion, string[] imagenes, string[] incluido, ENStories stories, ENComentarios comentarios)
+        public ENViajes(int id, int pais, string nombre, int slug, string descripcion, string[] imagenes, string[] incluido, ENStories stories, ENComentarios comentarios, ENEmpresa empresa)
         {
             Id = id;
             Pais = pais;
@@ -93,6 +99,7 @@ namespace library
             Incluido = incluido;
             Stories = stories;
             Comentarios = comentarios;
+            Empresa = empresa;
         }
       /// <summary>
       /// añade una imagen
