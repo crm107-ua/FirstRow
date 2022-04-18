@@ -164,8 +164,8 @@
     <Content Include="assets\js\scripts.min.js.map" />
     <Content Include="assets\js\slick.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\Experiencias.aspx" />
     <Content Include="Pages\Inicio.aspx" />
-    <Content Include="Pages\Viajes.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +180,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Experiencias.aspx.cs">
+      <DependentUpon>Experiencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Experiencias.aspx.designer.cs">
+      <DependentUpon>Experiencias.aspx</DependentUpon>
+    </Compile>
     <Compile Include="White.Master.cs">
       <DependentUpon>White.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -193,13 +200,6 @@
     </Compile>
     <Compile Include="Pages\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Viajes.aspx.cs">
-      <DependentUpon>Viajes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Viajes.aspx.designer.cs">
-      <DependentUpon>Viajes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
