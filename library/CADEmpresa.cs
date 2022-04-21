@@ -4,16 +4,16 @@ using System.Data.SqlClient;
 
 namespace library
 {
-    public class CADUsuario
+    public class CADEmpresa
     {
         private String constring;
 
-        public CADUsuario()
+        public CADEmpresa()
         {
             constring = ConfigurationManager.ConnectionStrings["DataBase"].ToString();
         }
 
-        public bool registerUsuario(ENUsuario en)
+        public bool registerEmpresa(ENEmpresa en)
         {
             bool creado = false;
             SqlConnection conection = null;
@@ -41,8 +41,19 @@ namespace library
                 consulta.Parameters.AddWithValue("@facebook", en.facebook);
                 consulta.Parameters.AddWithValue("@twitter", en.twitter);
                 consulta.ExecuteNonQuery();
-                creado = true;
+                query = "Insert INTO [FirstRow].[Empresas] " +
+                    "(nickname,cif,fechaCreacion,direccion,pais) " +
+                    "VALUES " +
+                    "(@nickname,@cif,@fechaCreacion,@direccion,@pais)";
+                consulta = new SqlCommand(query, conection);
+                consulta.Parameters.AddWithValue("@nickname", en.nickname);
+                consulta.Parameters.AddWithValue("@cif", en.cif);
+                consulta.Parameters.AddWithValue("@fechaCreacion", en.fechaCreacion);
+                consulta.Parameters.AddWithValue("@direccion", en.direccion);
+                consulta.Parameters.AddWithValue("@pais", en.pais.id);
+                consulta.ExecuteNonQuery();
 
+                creado = true;
             }
             catch (SqlException e)
             {
@@ -64,54 +75,59 @@ namespace library
             return creado;
         }
 
-        public bool loginUsuario(ENUsuario en)
+        public bool loginEmpresa(ENEmpresa en)
         {
-            bool login = false;
+            bool encontrado = false;
+            ENPais pais;
             SqlConnection conection = null;
             SqlDataReader busqueda = null;
 
             try
             {
+                pais = new ENPais();
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "Select count(*) From [FirstRow].[Empresas] where nickname = @nickname ";
+                string query = "SELECT * FROM FirstRow.Usuarios u INNER JOIN FirstRow.Empresas e on u.nickname = e.nickname where u.email = @email";
                 SqlCommand consulta = new SqlCommand(query, conection);
-                consulta.Parameters.AddWithValue("@nickname", en.nickname);
+                consulta.Parameters.AddWithValue("@email", en.email);
+                busqueda = consulta.ExecuteReader();
+                busqueda.Read();
 
-                if ((int)consulta.ExecuteScalar() == 0)
-                {
+                en.nickname = busqueda["nickname"].ToString();
+                en.password = busqueda["password"].ToString();
+                en.email = busqueda["email"].ToString();
+                en.image = busqueda["image"].ToString();
+                en.background_image = busqueda["background_image"].ToString();
+                en.name = busqueda["name"].ToString();
+                en.firstname = busqueda["firstname"].ToString();
+                en.secondname = busqueda["secondname"].ToString();
+                en.twitter = busqueda["twitter"].ToString();
+                en.facebook = busqueda["facebook"].ToString();
+                en.cif = busqueda["cif"].ToString();
+                en.direccion = busqueda["direccion"].ToString();
+                en.fechaCreacion = DateTime.Parse(busqueda["fechaCreacion"].ToString());
+                pais.id = int.Parse(busqueda["pais"].ToString());
 
-                    query = "Select * From [FirstRow].[Usuarios] Where nickname = @nickname and password = @password";
-                    consulta = new SqlCommand(query, conection);
-                    consulta.Parameters.AddWithValue("@nickname", en.nickname);
-                    consulta.Parameters.AddWithValue("@password", en.password);
-                    busqueda = consulta.ExecuteReader();
-                    busqueda.Read();
+                busqueda.Close();
+                query = "SELECT * FROM FirstRow.Paises where id = @id";
+                consulta = new SqlCommand(query, conection);
+                consulta.Parameters.AddWithValue("@id", pais.id);
+                busqueda = consulta.ExecuteReader();
+                busqueda.Read();
+                pais.name = busqueda["name"].ToString();
+                en.pais = pais;
 
-                    en.nickname = busqueda["nickname"].ToString();
-                    en.password = busqueda["password"].ToString();
-                    en.email = busqueda["email"].ToString();
-                    en.image = busqueda["image"].ToString();
-                    en.background_image = busqueda["background_image"].ToString();
-                    en.name = busqueda["name"].ToString();
-                    en.firstname = busqueda["firstname"].ToString();
-                    en.secondname = busqueda["secondname"].ToString();
-                    en.twitter = busqueda["twitter"].ToString();
-                    en.facebook = busqueda["facebook"].ToString();
-
-                    login = true;
-                }
-
+                encontrado = true;
             }
             catch (SqlException e)
             {
-                login = false;
+                encontrado = false;
                 Console.WriteLine("User operation has failed.Error: {0}", e.Message);
             }
             catch (Exception e)
             {
-                login = false;
+                encontrado = false;
                 Console.WriteLine("User operation has failed.Error: {0}", e.Message);
             }
             finally
@@ -125,21 +141,23 @@ namespace library
                     conection.Close();
                 }
             }
-            return login;
+            return encontrado;
         }
 
-        public bool readUsuario(ENUsuario en)
+        public bool readEmpresa(ENEmpresa en)
         {
             bool encontrado = false;
+            ENPais pais;
             SqlConnection conection = null;
             SqlDataReader busqueda = null;
 
             try
             {
+                pais = new ENPais();
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "Select * From [FirstRow].[Usuarios] Where nickname = @nickname";
+                string query = "SELECT * FROM FirstRow.Usuarios u INNER JOIN FirstRow.Empresas e on u.nickname = e.nickname where u.nickname = @nickname";
                 SqlCommand consulta = new SqlCommand(query, conection);
                 consulta.Parameters.AddWithValue("@nickname", en.nickname);
                 busqueda = consulta.ExecuteReader();
@@ -155,6 +173,19 @@ namespace library
                 en.secondname = busqueda["secondname"].ToString();
                 en.twitter = busqueda["twitter"].ToString();
                 en.facebook = busqueda["facebook"].ToString();
+                en.cif = busqueda["cif"].ToString();
+                en.direccion = busqueda["cif"].ToString();
+                en.fechaCreacion = DateTime.Parse(busqueda["fechaCreacion"].ToString());
+                pais.id = int.Parse(busqueda["pais"].ToString());
+
+                busqueda.Close();
+                query = "SELECT * FROM FirstRow.Paises where id = @id";
+                consulta = new SqlCommand(query, conection);
+                consulta.Parameters.AddWithValue("@id", pais.id);
+                busqueda = consulta.ExecuteReader();
+                busqueda.Read();
+                pais.name = busqueda["name"].ToString();
+                en.pais = pais;
 
                 encontrado = true;
             }
@@ -183,21 +214,7 @@ namespace library
 
         }
 
-        public bool readUsuarios(ENUsuario en)
-        {
-            bool read = false;
-            if (en is ENUsuario)
-            {
-                // Lectura de clientes
-            }
-            else
-            {
-                // Lectura de empresas
-            }
-            return read;
-        }
-
-        public bool updateUsuario(ENUsuario en)
+        public bool updateEmpresa(ENUsuario en)
         {
             bool update = false;
             if (en is ENUsuario)
@@ -211,7 +228,7 @@ namespace library
             return update;
         }
 
-        public bool deleteUsuario(ENUsuario en)
+        public bool deleteEmpresa(ENUsuario en)
         {
             bool delete = false;
             return delete;

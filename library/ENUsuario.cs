@@ -10,8 +10,8 @@ namespace library
     {
 
         private string _nickname;
-        private string _email;
         private string _password;
+        private string _email;
         private string _image;
         private string _background_image;
         private string _name;
@@ -23,8 +23,8 @@ namespace library
         public ENUsuario()
         {
             nickname = "";
-            email = "";
             password = "";
+            email = "";
             image = "";
             background_image = "";
             name = "";
@@ -34,11 +34,11 @@ namespace library
             twitter = "";
         }
 
-        public ENUsuario(string nickname, string email, string password, string image, string background_image, string name, string firstname, string secondname, string facebook, string twitter)
+        public ENUsuario(string nickname, string password, string email, string image, string background_image, string name, string firstname, string secondname, string facebook, string twitter)
         {
             this.nickname = nickname;
-            this.email = email;
             this.password = password;
+            this.email = email;
             this.image = image;
             this.background_image = background_image;
             this.name = name;
@@ -54,16 +54,16 @@ namespace library
             set { _nickname = value; }
         }
 
-        public string email
-        {
-            get { return _email; }
-            set { _email = value; }
-        }
-
         public string password
         {
             get { return _password; }
             set { _password = value; }
+        }
+
+        public string email
+        {
+            get { return _email; }
+            set { _email = value; }
         }
 
         public string image
@@ -122,12 +122,7 @@ namespace library
         public bool loginUsuario()
         {
             CADUsuario usuario = new CADUsuario();
-            bool creado = false;
-            if (!usuario.readUsuario(this))
-            {
-                creado = usuario.loginUsuario(this);
-            }
-            return creado;
+            return usuario.loginUsuario(this);
         }
 
         public bool updateUsuario()
@@ -137,8 +132,8 @@ namespace library
             ENUsuario aux = new ENUsuario();
 
             aux.nickname = this.nickname;
-            aux.email = this.email;
             aux.password = this.password;
+            aux.email = this.email;
             aux.image = this.image;
             aux.background_image = this.background_image;
             aux.name = this.name;

@@ -34,5 +34,11 @@ namespace library
             this.name = name;
         }
 
+        public List<ENPais> readPaises(List<ENPais> listaPaises)
+        {
+            CADPaises paises = new CADPaises();
+            return paises.readPaises(listaPaises);
+        }
+
     }
 }

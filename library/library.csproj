@@ -46,7 +46,9 @@
     <Compile Include="CADBlog.cs" />
     <Compile Include="CADCategorias.cs" />
     <Compile Include="CADComentarios.cs" />
+    <Compile Include="CADEmpresa.cs" />
     <Compile Include="CADGaleria.cs" />
+    <Compile Include="CADPaises.cs" />
     <Compile Include="CADPropuestas.cs" />
     <Compile Include="CADSorteos.cs" />
     <Compile Include="CADStories.cs" />

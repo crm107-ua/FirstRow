@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="FirstRow.Pages.Inicio" %>
+﻿<%@ Page Title="Inicio" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="FirstRow.Pages.Inicio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
     <div class="main_slider js_height">
             <div class="slider_wrap" id="main_slider_wrap">
@@ -762,3 +762,6 @@
             </div>
         </div>
 </asp:Content>
+
+
+
