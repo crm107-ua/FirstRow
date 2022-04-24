@@ -17,7 +17,6 @@
                 <div class="wrap">
                     <div class="wrap_float">
                         <div class="left">
-                            <div class="search_btn"></div>
                             <a href="/" class="logo">
                                 <img src="Assets/img/Logo_Principal.png" alt="">
                             </a>
@@ -28,83 +27,21 @@
                                     <div class="menu">
                                         <ul>
                                             <li><a href="/"><span>Home</span></a></li>
-                                            <li><a href="/viajes"><span>Viajes</span></a></li>
+                                            <li><a href="/experiencias"><span>Experiencias</span></a></li>
+                                            <li><a href="/galeria"><span>Galería</span></a></li>
+                                            <li><a href="/stories"><span>Stories</span></a></li>
+                                            <li><a href="/blogs"><span>Blogs</span></a></li>
+                                            <li><a href="/sorteos"><span>Sorteos</span></a></li>
+                                            <li><a href="/propuestas"><span>Propuestas</span></a></li>
                                             <li class="dropdown_li">
-                                                <a href="#" ><asp:Label id="mode" runat="server"></asp:Label></a>
+                                                <a><span>Sobre FirstRow</span></a>
                                                 <ul class="dropdown_ul">
-                                                    <li><a href="stories-full-width.html">Stories Full With</a></li>
-                                                    <li><a href="story.html">Stories Single</a></li>
-                                                    <li><a href="stories-right-sidebar.html">Stories Right Sidebar</a></li>
-                                                    <li><a href="stories-left-sidebar.html">Stories Left Sidebar</a></li>
-                                                    <li><a href="gallery.html">Gallery</a></li>
-                                                    <li><a href="gallery-single.html">Gallery Single</a></li>
-                                                    <li><a href="404.html">404 page</a></li>
-                                                    <li><a href="static-page-right-sidebar.html">Static Page Right Sidebar</a></li>
-                                                    <li><a href="static-page-left-sidebar.html">Static Page Left Sidebar</a></li>
-                                                    <li><a href="about-us.html">About Us</a></li>
+                                                    <li><a href="/equipo"><span>Nuestro equipo</span></a></li>
+                                                    <li><a href="/contacto"><span>Contacto</span></a></li>
                                                 </ul>
                                             </li>
-                                            <li class="dropdown_li">
-                                                <a href="#"><span>Blog</span></a>
-                                                <ul class="dropdown_ul">
-                                                    <li><a href="blog-full-width.html">Blog Full With</a></li>
-                                                    <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                                    <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                                    <li><a href="blog-search-results.html">Search Result</a></li>
-                                                    <li><a href="blog-search-results-not-found.html">Search Nothing Found</a></li>
-                                                    <li><a href="blog-single-right-sidebar.html">Blog Single Right Sidebar</a></li>
-                                                    <li><a href="blog-single-left-sidebar.html">Blog Single Left Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown_li">
-                                                <a href="#"><span>Galería</span></a>
-                                                <ul class="dropdown_ul">
-                                                    <li><a href="blog-full-width.html">Blog Full With</a></li>
-                                                    <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                                    <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                                    <li><a href="blog-search-results.html">Search Result</a></li>
-                                                    <li><a href="blog-search-results-not-found.html">Search Nothing Found</a></li>
-                                                    <li><a href="blog-single-right-sidebar.html">Blog Single Right Sidebar</a></li>
-                                                    <li><a href="blog-single-left-sidebar.html">Blog Single Left Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown_li">
-                                                <a href="#"><span>Tours</span></a>
-                                                <ul class="dropdown_ul">
-                                                    <li><a href="blog-full-width.html">Blog Full With</a></li>
-                                                    <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                                    <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                                    <li><a href="blog-search-results.html">Search Result</a></li>
-                                                    <li><a href="blog-search-results-not-found.html">Search Nothing Found</a></li>
-                                                    <li><a href="blog-single-right-sidebar.html">Blog Single Right Sidebar</a></li>
-                                                    <li><a href="blog-single-left-sidebar.html">Blog Single Left Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown_li">
-                                                <a href="#"><span>Stories</span></a>
-                                                <ul class="dropdown_ul">
-                                                    <li><a href="blog-full-width.html">Blog Full With</a></li>
-                                                    <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                                    <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                                    <li><a href="blog-search-results.html">Search Result</a></li>
-                                                    <li><a href="blog-search-results-not-found.html">Search Nothing Found</a></li>
-                                                    <li><a href="blog-single-right-sidebar.html">Blog Single Right Sidebar</a></li>
-                                                    <li><a href="blog-single-left-sidebar.html">Blog Single Left Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contacts.html"><span>Contacts</span></a></li>
                                         </ul>
                                         <div class="mobile_content">
-                                            <div class="currency_mob">
-                                                <select>
-                                                    <option value="usd">usd</option>
-                                                    <option value="rub">rub</option>
-                                                    <option value="eur">eur</option>
-                                                </select>
-                                                <p>
-                                                    Chosen currency
-                                                </p>
-                                            </div>
                                             <div class="tel">
                                                 <a href="tel:+0034411345777">+ 00 344 113 457 77</a>
                                                 <p>Round the clock support</p>
