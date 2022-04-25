@@ -11,6 +11,9 @@ namespace library
         internal int idViaje;
         internal int nombreUsuario;
         internal int TourViaje;
+        internal string _Categorianame;
+        internal string _desempeño;
+        internal string imagenes;
 
         // ----- Funciones Set-Get ----
         public int id
@@ -62,7 +65,7 @@ namespace library
         // CREAR CATEGORIA
          public bool registerCategoria()
         {
-            CADCategoria categoria = new CADCategoria();
+            CADCategorias categoria = new CADCategorias();
             bool creado = false;
             if (!categoria.readCategoria(this))
             {
@@ -74,7 +77,7 @@ namespace library
         // LEER CATEGORIA
          public bool readCategoria()
         {
-            CADcategoria categoria = new CADcategoria();
+            CADCategorias categoria = new CADCategorias();
             bool creado = false;
             if (!categoria.readCategoria(this))
             {
@@ -87,8 +90,8 @@ namespace library
         public bool updateCategoria()
         {
             bool actualizado = false;
-            CADcategoria categoria = new CADcategoria();
-            ENcategoria aux = new ENcategoria();
+            CADCategorias categoria = new CADCategorias();
+            ENCategorias aux = new ENCategorias();
 
             aux.Categorianame= this.Categorianame;
         
@@ -107,7 +110,7 @@ namespace library
        public bool deleteCategoria()
         {
             bool eliminado = false;
-            CADcategoria categoria = new CADcategoria();
+            CADCategorias categoria = new CADCategorias();
 
             if (categoria.readCategoria(this))
             {
@@ -119,5 +122,4 @@ namespace library
 
     }
 
-     public static string imagenes; //Add-Delete
 }
