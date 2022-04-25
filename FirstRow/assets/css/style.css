@@ -11622,17 +11622,17 @@ body.os-windows .popup::-webkit-scrollbar-thumb {
   padding: 100px 0;
 }
 .page_404 .logo {
-  width: 138px;
-  height: 48px;
-  background: url(../img/logo.svg) center center no-repeat;
-  background-size: contain;
-  display: block;
-  position: absolute;
-  left: 50%;
-  top: 30px;
-  margin-left: -69px;
-  opacity: .6;
-  z-index: 4;
+    width: 138px;
+    height: 48px;
+    background: url(../img/Logo_Principal.png) center center no-repeat;
+    background-size: contain;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    margin-left: -69px;
+    opacity: .6;
+    z-index: 4;
 }
 .page_404 .logo:hover {
   opacity: 1;

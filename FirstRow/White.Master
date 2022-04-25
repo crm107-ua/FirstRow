@@ -32,10 +32,10 @@
                                             <li><a href="/stories"><span>Stories</span></a></li>
                                             <li><a href="/blogs"><span>Blogs</span></a></li>
                                             <li><a href="/sorteos"><span>Sorteos</span></a></li>
-                                            <li><a href="/propuestas"><span>Propuestas</span></a></li>
                                             <li class="dropdown_li">
-                                                <a><span>Sobre FirstRow</span></a>
+                                                <a><span>FirstRow</span></a>
                                                 <ul class="dropdown_ul">
+                                                    <li><a href="/propuestas"><span>Propuestas</span></a></li>
                                                     <li><a href="/equipo"><span>Nuestro equipo</span></a></li>
                                                     <li><a href="/contacto"><span>Contacto</span></a></li>
                                                 </ul>
@@ -395,60 +395,43 @@
                         <div class="footer_top">
                             <div class="left">
                                 <div class="col">
-                                    <div class="_title m_title">Travel list</div>
+                                    <div class="_title m_title">Páginas</div>
                                     <ul>
-                                        <li><a href="travel-list-full-width.html">Travel list Full With</a></li>
-                                        <li><a href="travel-list-right-sidebar.html">Travel list Right Sidebar</a></li>
-                                        <li><a href="travel-list-left-sidebar.html">Travel list Left Sidebar</a></li>
-                                        <li><a href="travel-list-image-header.html">Travel list Full With Image Header</a></li>
-                                        <li><a href="search-results.html">Search Result</a></li>
-                                        <li><a href="search-results-not-found.html">Search Nothing Found</a></li>
-                                        <li><a href="tour-page-right-sidebar.html">Tour page Right Sidebar</a></li>
-                                        <li><a href="tour-page-left-sidebar.html">Tour page Left Sidebar</a></li>
-                                        <li><a href="tour-page-right-sidebar-width-reply.html">Tour page with reply form</a></li>
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="/experiencias">Experiencias</a></li>
+                                        <li><a href="/galeria">Galería</a></li>
                                     </ul>
                                 </div>
                                 <div class="col">
-                                    <div class="_title m_title">Page</div>
+                                    <div class="_title m_title">Más</div>
                                     <ul>
-                                        <li><a href="stories-full-width.html">Stories Full With</a></li>
-                                        <li><a href="story.html">Stories Single</a></li>
-                                        <li><a href="stories-right-sidebar.html">Stories Right Sidebar</a></li>
-                                        <li><a href="stories-left-sidebar.html">Stories Left Sidebar</a></li>
-                                        <li><a href="gallery.html">Gallery</a></li>
-                                        <li><a href="gallery-single.html">Gallery Single</a></li>
-                                        <li><a href="404.html">404 page</a></li>
-                                        <li><a href="static-page-right-sidebar.html">Static Page Right Sidebar</a></li>
-                                        <li><a href="static-page-left-sidebar.html">Static Page Left Sidebar</a></li>
-                                        <li><a href="about-us.html">About Us</a></li>
+                                        <li><a href="/stories">Stories</a></li>
+                                        <li><a href="/blogs">Blogs</a></li>
+                                        <li><a href="/sorteos">Sorteos</a></li>
                                     </ul>
                                 </div>
                                 <div class="col">
-                                    <div class="_title m_title">Blog</div>
+                                    <div class="_title m_title">Y más...</div>
                                     <ul>
-                                        <li><a href="blog-full-width.html">Blog Full With</a></li>
-                                        <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                        <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                        <li><a href="blog-search-results.html">Search Result</a></li>
-                                        <li><a href="blog-search-results-not-found.html">Search Nothing Found</a></li>
-                                        <li><a href="blog-single-right-sidebar.html">Blog Single Right Sidebar</a></li>
-                                        <li><a href="blog-single-left-sidebar.html">Blog Single Left Sidebar</a></li>
+                                        <li><a href="/propuestas">Propuestas</a></li>
+                                        <li><a href="/equipo">Nuestro equipo</a></li>
+                                        <li><a href="/contacto">Contacto</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="right">
-                                <div class="_title">Contacts</div>
+                                <div class="_title">Datos de contacto</div>
                                 <div class="contacts_info">
                                     <div class="tel">
-                                        <a href="tel:+19092020119">+ 1909 202 0119</a>
-                                        <p>Round the clock support</p>
+                                        <a>+ 34 627329456</a>
+                                        <p>Soporte 24 horas</p>
                                     </div>
                                     <div class="email">
-                                        <a href="mailto:info@hellodigi.ru">info@hellodigi.ru</a>
-                                        <p>For any questions</p>
+                                        <a href="mailto:team@firstrow.es">team@firstrow.es</a>
+                                        <p>Para lo que necesites</p>
                                     </div>
                                     <div class="address">
-                                        1355 Digistrict St, Suite 909 San, Francisco, CA 10001 <br> United States
+                                        San Vicente del Raspeig, 03690 <br> Alicante, España
                                     </div>
                                 </div>
                                 <div class="socials social-links">
@@ -462,10 +445,10 @@
                         </div>
                         <div class="footer_bottom">
                             <div class="left">
-                                <a href="#">Privacy Policy</a>
+                                <a href="#">Política de privacidad</a>
                             </div>
                             <div class="right">
-                                Copyright © 2019 by Digistrict
+                                Copyright © 2022 por FirstRow
                             </div>
                         </div>
                     </div>

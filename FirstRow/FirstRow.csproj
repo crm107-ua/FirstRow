@@ -164,6 +164,7 @@
     <Content Include="assets\js\scripts.min.js.map" />
     <Content Include="assets\js\slick.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\404.aspx" />
     <Content Include="Pages\Blog.aspx" />
     <Content Include="Pages\Blogs.aspx" />
     <Content Include="Pages\Contacto.aspx" />
@@ -193,6 +194,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Blog.aspx.cs">
       <DependentUpon>Blog.aspx</DependentUpon>
