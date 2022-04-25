@@ -39,10 +39,10 @@ namespace library
         }
 
         // Crear Categoria
-        public bool registerCategoria(ENCategoria en)
+        public bool registerCategoria(ENCategorias en)
         {
             bool creado = false;
-            if(en is ENCategoria)
+            if(en is ENCategorias)
             {
               
             }
@@ -51,10 +51,10 @@ namespace library
         }
 
         // Leer Categoria
-        public bool readCategoria(ENCategoria en)
+        public bool readCategoria(ENCategorias en)
         {
             bool read = false;
-            if (en is ENCategoria)
+            if (en is ENCategorias)
             {
                 
             }
@@ -63,10 +63,10 @@ namespace library
         }
 
         // Actualizar Categoria
-        public bool updateCategoria(ENCategoria en)
+        public bool updateCategoria(ENCategorias en)
         {
             bool update = false;
-            if (en is ENCategoria)
+            if (en is ENCategorias)
             {
                
             }
@@ -75,7 +75,7 @@ namespace library
         }
 
         // Eliminar Categoria
-        public bool deleteCategoria(ENCategoria en)
+        public bool deleteCategoria(ENCategorias en)
         {
             bool delete = false;
             return delete;
