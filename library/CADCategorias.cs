@@ -14,30 +14,72 @@ namespace library
 
         public CADCategorias()
         {
-            constring = ConfigurationManager.ConnectionStrings["DataBase"].ToString();
+                constring = ConfigurationManager.ConnectionStrings["DataBase"].ToString();
         }
 
+        // Set/get - Identificativo con un entero
         public int id
         {
             get { return idViaje; }
             private set { idViaje = value; }
         }
 
+        // Set/get - Identificativo con un entero
         public int Ciudad_pais
         {
             get { return Ciudad_pais; }
             private set { idViaje = value; }
         }
 
+        // Set/get - Identificativo con un entero
         public int Tour_Viaje
         {
             get { return Tour_Viaje; }
             private set { idViaje = value; }
         }
 
-        public static string Titulo; //CRUD
+        // Crear Categoria
+        public bool registerCategoria(ENCategoria en)
+        {
+            bool creado = false;
+            if(en is ENCategoria)
+            {
+              
+            }
+            
+            return creado;
+        }
 
-        public static string desempeño; //CRUD
+        // Leer Categoria
+        public bool readCategoria(ENCategoria en)
+        {
+            bool read = false;
+            if (en is ENCategoria)
+            {
+                
+            }
+            
+            return read;
+        }
+
+        // Actualizar Categoria
+        public bool updateCategoria(ENCategoria en)
+        {
+            bool update = false;
+            if (en is ENCategoria)
+            {
+               
+            }
+           
+            return update;
+        }
+
+        // Eliminar Categoria
+        public bool deleteCategoria(ENCategoria en)
+        {
+            bool delete = false;
+            return delete;
+        }
 
         public static string imagenes; //Add-Delete
 
