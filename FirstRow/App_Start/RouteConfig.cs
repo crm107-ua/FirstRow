@@ -20,7 +20,7 @@ namespace FirstRow.App_Start
             routes.MapPageRoute("waring", "waring/{slug}", "~/Pages/Waring.aspx");
 
             routes.MapPageRoute("galeria", "galeria", "~/Pages/Galeria.aspx");
-            routes.MapPageRoute("seccion_galeria", "galeri/{slug}", "~/Pages/Seccion_Galeria.aspx");
+            routes.MapPageRoute("seccion_galeria", "galeria/{slug}", "~/Pages/Seccion_Galeria.aspx");
 
             routes.MapPageRoute("blogs", "blogs", "~/Pages/Blogs.aspx");
             routes.MapPageRoute("blog", "blog/{slug}", "~/Pages/Blog.aspx");
@@ -34,3 +34,9 @@ namespace FirstRow.App_Start
         }
     }
 }
+
+
+
+
+
+
