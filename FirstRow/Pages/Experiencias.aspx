@@ -1,12 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Viajes.aspx.cs" Inherits="FirstRow.Pages.Viajes" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Experiencias.aspx.cs" Inherits="FirstRow.Pages.Experiencias" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
-        <div class="image_header" style="background-image: url(https://i.pinimg.com/originals/f5/aa/b3/f5aab36b0c21abf9aa581ccf58fe1a24.jpg)"></div>
+        <div class="image_header" style="background-image: url(https://img4.goodfon.com/wallpaper/nbig/9/4c/gorod-irlandiia-starinnaia-ulochka-kafe-magazinchiki-suvenir.jpg)"></div>
         <div class="breadcrumbs white-color">
             <div class="wrap">
                 <div class="wrap_float">
-                    <a href="#">Home</a>
+                    <a href="/">FirstRow</a>
                     <span class="separator">/</span>
-                    <a href="#">Travel List Image Header</a>
+                    <a href="/experiencias">Experiencias</a>
                 </div>
             </div>
         </div>
@@ -16,10 +16,10 @@
                     <div class="wrap">
                         <div class="wrap_float">
                             <h1 class="title">
-                                Travel list Image Header
+                                Nuestras experiencias
                             </h1>
-                            <p class="subtitle">
-                                Latin literature from 45 BC, making it over 2000 years old
+                            <p class="subtitle" style="color:white;">
+                                Cumpliendo sueños alrededor de todo el mundo
                             </p>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                 <div class="wrap">
                     <div class="wrap_float">
                         <div class="posts">
-                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://c4.wallpaperflare.com/wallpaper/867/531/601/grand-canal-venice-italy-4k-boat-water-city-sky-travel-wallpaper-preview.jpg)">
+                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-1.jpg)">
                                 <div class="tour_item_top">
                                     <p class="country">
                                         <span>North Africa</span>
@@ -62,7 +62,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://i.pinimg.com/originals/40/54/cd/4054cd89ccc0bc49fb2bff7d91b491be.jpg)">
+                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-2.jpg)">
                                 <div class="tour_item_top">
                                     <p class="country">
                                         <span>United States of America</span>
@@ -95,7 +95,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://cdn.wallpapersafari.com/82/20/M3ViKx.jpg)">
+                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-4.jpg)">
                                 <div class="tour_item_top">
                                     <p class="country">
                                         <span>The biggest part of the world</span>
@@ -128,7 +128,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://wallpaperaccess.com/full/715818.jpg)">
+                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-3.jpg)">
                                 <div class="tour_item_top">
                                     <p class="country">
                                         <span>Iceland</span>
@@ -161,7 +161,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://i.pinimg.com/originals/bf/1a/22/bf1a2212daae6cc7a6e9d7c16bf03add.jpg)">
+                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-5.jpg)">
                                 <div class="tour_item_top">
                                     <p class="country">
                                         <span>Japan</span>
@@ -194,7 +194,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://img3.goodfon.com/wallpaper/nbig/a/c4/sneg-poselok-buhta-norvegiya.jpg)">
+                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-6.jpg)">
                                 <div class="tour_item_top">
                                     <p class="country">
                                         <span>Australia</span>
@@ -211,72 +211,6 @@
                                         <div class="_info_left">
                                             <div class="days">5 days |</div>
                                             <div class="cost">from $400</div>
-                                        </div>
-                                        <div class="_info_right">
-                                            <div class="rating-stars">
-                                                <div class="star filled"></div>
-                                                <div class="star filled"></div>
-                                                <div class="star filled"></div>
-                                                <div class="star"></div>
-                                                <div class="star"></div>
-                                            </div>
-                                            <p class="rating-text">5 reviews</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="shadow js-shadow"></div>
-                            </a>
-
-                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://www.itl.cat/pngfile/big/46-466773_hd-travel-wallpaper-bora-bora-4k.jpg)">
-                                <div class="tour_item_top">
-                                    <p class="country">
-                                        <span>United States of America</span>
-                                    </p>
-                                    <div class="add_bookmark fav-button">
-                                        <i class="is-added bouncy"></i>
-                                        <i class="not-added bouncy"></i>
-                                        <span class="fav-overlay"></span>
-                                    </div>
-                                </div>
-                                <div class="tour_item_bottom">
-                                    <h3 class="_title">Epcot Center Drive, Orlando</h3>
-                                    <div class="_info">
-                                        <div class="_info_left">
-                                            <div class="days">5 days |</div>
-                                            <div class="cost">from $400</div>
-                                        </div>
-                                        <div class="_info_right">
-                                            <div class="rating-stars">
-                                                <div class="star filled"></div>
-                                                <div class="star filled"></div>
-                                                <div class="star filled"></div>
-                                                <div class="star"></div>
-                                                <div class="star"></div>
-                                            </div>
-                                            <p class="rating-text">5 reviews</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="shadow js-shadow"></div>
-                            </a>
-
-                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://fashionsista.co/wallpaper/wallpaper/20210403/legends-of-cappadocia-8-days-promo-travel-preview.jpg)">
-                                <div class="tour_item_top">
-                                    <p class="country">
-                                        <span>United States of America</span>
-                                    </p>
-                                    <div class="add_bookmark fav-button">
-                                        <i class="is-added bouncy"></i>
-                                        <i class="not-added bouncy"></i>
-                                        <span class="fav-overlay"></span>
-                                    </div>
-                                </div>
-                                <div class="tour_item_bottom">
-                                    <h3 class="_title">Cloud gate, Chicago, Illinois</h3>
-                                    <div class="_info">
-                                        <div class="_info_left">
-                                            <div class="days">5 days |</div>
-                                            <div class="cost">from $240</div>
                                         </div>
                                         <div class="_info_right">
                                             <div class="rating-stars">

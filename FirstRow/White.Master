@@ -8,227 +8,454 @@
     <title>FirstRow - Making Dreams</title>
     <link rel="stylesheet" type="text/css" href="~/assets/css/style.css" >
     <link rel="icon" type="image/x-icon" href="~/assets/img/favicons/favicon.png">
-</head>
+</head>  
 
 <body>
-    <div class="container">
-        <div class="top_panel">
-            <div class="wrap">
-                <div class="wrap_float">
-                    <div class="left">
-                        <div class="search_btn"></div>
-                        <a href="/" class="logo">
-                            <img src="Assets/img/Logo_Principal.png" alt="">
-                        </a>
-                    </div>
-                    <div class="menu_wrap" id="menu_wrap">
-                        <div class="scroll">
-                            <div class="center">
-                                <div class="menu">
-                                    <ul>
-                                        <li><a href="/"><span>Home</span></a></li>
-                                        <li><a href="/viajes"><span>Viajes</span></a></li>
-                                        <li class="dropdown_li">
-                                            <a href="#" ><span>Hoteles</span></a>
-                                            <ul class="dropdown_ul">
-                                                <li><a href="stories-full-width.html">Stories Full With</a></li>
-                                                <li><a href="story.html">Stories Single</a></li>
-                                                <li><a href="stories-right-sidebar.html">Stories Right Sidebar</a></li>
-                                                <li><a href="stories-left-sidebar.html">Stories Left Sidebar</a></li>
-                                                <li><a href="gallery.html">Gallery</a></li>
-                                                <li><a href="gallery-single.html">Gallery Single</a></li>
-                                                <li><a href="404.html">404 page</a></li>
-                                                <li><a href="static-page-right-sidebar.html">Static Page Right Sidebar</a></li>
-                                                <li><a href="static-page-left-sidebar.html">Static Page Left Sidebar</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown_li">
-                                            <a href="#"><span>Blog</span></a>
-                                            <ul class="dropdown_ul">
-                                                <li><a href="blog-full-width.html">Blog Full With</a></li>
-                                                <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                                <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                                <li><a href="blog-search-results.html">Search Result</a></li>
-                                                <li><a href="blog-search-results-not-found.html">Search Nothing Found</a></li>
-                                                <li><a href="blog-single-right-sidebar.html">Blog Single Right Sidebar</a></li>
-                                                <li><a href="blog-single-left-sidebar.html">Blog Single Left Sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown_li">
-                                            <a href="#"><span>Galería</span></a>
-                                            <ul class="dropdown_ul">
-                                                <li><a href="blog-full-width.html">Blog Full With</a></li>
-                                                <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                                <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                                <li><a href="blog-search-results.html">Search Result</a></li>
-                                                <li><a href="blog-search-results-not-found.html">Search Nothing Found</a></li>
-                                                <li><a href="blog-single-right-sidebar.html">Blog Single Right Sidebar</a></li>
-                                                <li><a href="blog-single-left-sidebar.html">Blog Single Left Sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown_li">
-                                            <a href="#"><span>Tours</span></a>
-                                            <ul class="dropdown_ul">
-                                                <li><a href="blog-full-width.html">Blog Full With</a></li>
-                                                <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                                <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                                <li><a href="blog-search-results.html">Search Result</a></li>
-                                                <li><a href="blog-search-results-not-found.html">Search Nothing Found</a></li>
-                                                <li><a href="blog-single-right-sidebar.html">Blog Single Right Sidebar</a></li>
-                                                <li><a href="blog-single-left-sidebar.html">Blog Single Left Sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown_li">
-                                            <a href="#"><span>Stories</span></a>
-                                            <ul class="dropdown_ul">
-                                                <li><a href="blog-full-width.html">Blog Full With</a></li>
-                                                <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                                <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                                <li><a href="blog-search-results.html">Search Result</a></li>
-                                                <li><a href="blog-search-results-not-found.html">Search Nothing Found</a></li>
-                                                <li><a href="blog-single-right-sidebar.html">Blog Single Right Sidebar</a></li>
-                                                <li><a href="blog-single-left-sidebar.html">Blog Single Left Sidebar</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contacts.html"><span>Contacts</span></a></li>
-                                    </ul>
-                                    <div class="mobile_content">
-                                        <div class="currency_mob">
-                                            <select>
-                                                <option value="usd">usd</option>
-                                                <option value="rub">rub</option>
-                                                <option value="eur">eur</option>
-                                            </select>
-                                            <p>
-                                                Chosen currency
-                                            </p>
-                                        </div>
-                                        <div class="tel">
-                                            <a href="tel:+0034411345777">+ 00 344 113 457 77</a>
-                                            <p>Round the clock support</p>
-                                        </div>
-                                        <div class="social">
-                                            <a href="#" class="link facebook"><span></span></a>
-                                            <a href="#" class="link instagram"><span></span></a>
-                                            <a href="#" class="link pinterest"><span></span></a>
-                                            <a href="#" class="link twitter"><span></span></a>
-                                            <a href="#" class="link youtube"><span></span></a>
+    <form id="WhiteMaster" runat="server">
+        <div class="container">
+            <div class="top_panel">
+                <div class="wrap">
+                    <div class="wrap_float">
+                        <div class="left">
+                            <a href="/" class="logo">
+                                <img src="Assets/img/Logo_Principal.png" alt="">
+                            </a>
+                        </div>
+                        <div class="menu_wrap" id="menu_wrap">
+                            <div class="scroll">
+                                <div class="center">
+                                    <div class="menu">
+                                        <ul>
+                                            <li><a href="/"><span>Home</span></a></li>
+                                            <li><a href="/experiencias"><span>Experiencias</span></a></li>
+                                            <li><a href="/galeria"><span>Galería</span></a></li>
+                                            <li><a href="/stories"><span>Stories</span></a></li>
+                                            <li><a href="/blogs"><span>Blogs</span></a></li>
+                                            <li><a href="/sorteos"><span>Sorteos</span></a></li>
+                                            <li class="dropdown_li">
+                                                <a><span>FirstRow</span></a>
+                                                <ul class="dropdown_ul">
+                                                    <li><a href="/propuestas"><span>Propuestas</span></a></li>
+                                                    <li><a href="/equipo"><span>Nuestro equipo</span></a></li>
+                                                    <li><a href="/contacto"><span>Contacto</span></a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <div class="mobile_content">
+                                            <div class="tel">
+                                                <a href="tel:+0034411345777">+ 00 344 113 457 77</a>
+                                                <p>Round the clock support</p>
+                                            </div>
+                                            <div class="social">
+                                                <a href="#" class="link facebook"><span></span></a>
+                                                <a href="#" class="link instagram"><span></span></a>
+                                                <a href="#" class="link pinterest"><span></span></a>
+                                                <a href="#" class="link twitter"><span></span></a>
+                                                <a href="#" class="link youtube"><span></span></a>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="close" id="menu-close">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
                                 </div>
-                                <div class="close" id="menu-close">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
+                                <div class="user" id="userblock">
+                                    <div class="userlink" id="userlink"></div>
+                                    <div class="usermenu" id="usermenu">
+                                        <ul>
+                                            <li id="login_sect" runat="server"><a class="js-popup-open" data-href="#login">Iniciar sesion</a></li>
+                                            <li id="register_sect" runat="server"><a class="js-popup-open" data-href="#registration">Registrarse</a></li>
+                                            <li id="settings_sect" runat="server"><a class="js-popup-open" data-href="#profile-setting">Ajustes</a></li>
+                                            <li id="settings_emp_sect" runat="server"><a class="js-popup-open" data-href="#empresa-setting">Ajustes de empresa</a></li> 
+                                            <li id="logout_sect" runat="server"><a class="js-popup-open" data-href="#logout">Cerrar sesion</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="user" id="userblock">
-                                <div class="userlink" id="userlink"></div>
-                                <div class="usermenu" id="usermenu">
+                        </div>
+                        <div class="mobile_btn" id="mobile_btn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="Main" runat="server"></asp:ContentPlaceHolder>
+            <div runat="server" class="popup login" id="login">
+                <div class="scroll">
+                    <div class="scroll_wrap">
+                        <div class="popup-head">
+                            <div class="title">Iniciar Sesión</div>
+                            <a class="link js-popup-open" data-href="#registration">Registrarse</a>
+                        </div>
+                        <div class="popup-body">
+                            <div class="subtitle">
+                                Introduce tu nickname y contraseña para acceder a miles de experiencias.<br /><br />
+                                <a class="link js-popup-open" data-href="#login_empresa">Iniciar sesión como empresa</a>
+                            </div>
+                            <div class="form">
+                                <asp:TextBox id="nickname" type="text" runat="server" class="input" placeholder="Usuario o Email"></asp:TextBox>
+                                <asp:TextBox id="password" type="password" runat="server" class="input" placeholder="Password"></asp:TextBox>
+                                <asp:Label id="salida" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server"></asp:Label>
+                                <asp:Button id="inicio" validationgroup="GrupoDeInicioSesion" class="submit button" onClick="iniciarSesion" runat="server" Text="Iniciar Sesión" />
+                                <asp:RequiredFieldValidator ID="NicknameReq" validationgroup="GrupoDeInicioSesion" ForeColor="Red" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server" ControlToValidate="nickname" ErrorMessage="Nickname requerido"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="PasswordReq" validationgroup="GrupoDeInicioSesion" ForeColor="Red" style="float: left; margin-bottom: 30px; margin-right: 50px; margin-top: 5px;" runat="server" ControlToValidate="password" ErrorMessage="Contraseña requerida"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="NicknameReg" validationgroup="GrupoDeInicioSesion" ForeColor="Red" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server" Display="Dynamic" ValidationExpression="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"  ControlToValidate="nickname" 
+                                    ErrorMessage="El nombre de usuario debe tener entre 4 y 20 caracteres entre letras y numeros."> </asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" validationgroup="GrupoDeInicioSesion" ForeColor="Red" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server" Display="Dynamic" ValidationExpression="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"  ControlToValidate="password" 
+                                    ErrorMessage="La contraseña debe tener entre 4 y 100 caracteres entre letras y numeros."> </asp:RegularExpressionValidator>
+                            </div>                           
+                        </div>
+                        <div class="popup-foot">
+                            <p>Login via social networks</p>
+                            <div class="social-links">
+                                <a href="#" class="link facebook"><span></span></a>
+                                <a href="#" class="link twitter"><span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="close"></div>
+            </div>
+            <div runat="server" class="popup login" id="login_empresa">
+                <div class="scroll">
+                    <div class="scroll_wrap">
+                        <div class="popup-head">
+                            <div class="title">Inicio de sesión para empresas</div>
+                        </div>
+                        <div class="popup-body">
+                            <div class="subtitle">
+                                Introduzca el email y contraseña para empezar a administrar sus establecimientos.<br /><br />
+                                <a class="link js-popup-open" data-href="#registro-empresa">Registrarse como empresa</a>
+                            </div>
+                            <div class="form">
+                                <asp:TextBox id="login_email_empresa" validationgroup="GrupoDeInicioSesionEmpresa" type="text" runat="server" class="input" placeholder="Email"></asp:TextBox>
+                                <asp:TextBox id="login_password_empresa" validationgroup="GrupoDeInicioSesionEmpresa" type="password" runat="server" class="input" placeholder="Password"></asp:TextBox>
+                                <asp:Label id="salida_login_empresa" validationgroup="GrupoDeInicioSesionEmpresa" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server"></asp:Label>
+                                <asp:Button id="boton_login_empresa" validationgroup="GrupoDeInicioSesionEmpresa" class="submit button" onClick="iniciarSesionEmpresa" runat="server" Text="Iniciar Sesión" />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorLogEmp1" validationgroup="GrupoDeInicioSesionEmpresa" ForeColor="Red" style="float:left; margin-bottom: 30px; margin-top: 30px;" runat="server" ControlToValidate="login_email_empresa" ErrorMessage="Email requerido"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorLogEmp2" validationgroup="GrupoDeInicioSesionEmpresa" ForeColor="Red" style="float: left; margin-bottom: 30px; margin-right: 50px; margin-top: 5px;" runat="server" ControlToValidate="login_password_empresa" ErrorMessage="Contraseña requerida"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidatorLogEmp3" validationgroup="GrupoDeInicioSesionEmpresa" runat="server"  ControlToValidate="login_email_empresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" Display = "Dynamic" ErrorMessage = "Direccion de email incorrecta"/>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidatorLogEmp4" validationgroup="GrupoDeInicioSesionEmpresa" ForeColor="Red" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server" Display="Dynamic" ValidationExpression="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"  ControlToValidate="login_password_empresa" ErrorMessage="La contraseña debe tener entre 4 y 100 caracteres entre letras y numeros."> </asp:RegularExpressionValidator>
+                            </div>                           
+                        </div>
+                        <div class="popup-foot">
+                            <p>Login via social networks</p>
+                            <div class="social-links">
+                                <a href="#" class="link facebook"><span></span></a>
+                                <a href="#" class="link twitter"><span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="close"></div>
+            </div>
+            <div class="popup registration" id="registration">
+                <div class="scroll">
+                    <div class="scroll_wrap">
+                        <div class="popup-head">
+                            <div class="title">Registro</div>
+                            <a class="link js-popup-open" data-href="#registro-empresa">Registro de Empresa</a>
+                        </div>
+                        <div class="popup-body">
+                            <div class="subtitle">
+                                Completa los siguientes campos para registrarte en FirstRow<br /><br />
+                                <a class="link js-popup-open" data-href="#login">¿Ya eres usuario? Inicia de sesión</a>
+                            </div>
+                            <div class="form">
+                                <asp:TextBox id="registro_nickname" type="text" runat="server" class="input" placeholder="Nickname"></asp:TextBox>
+                                <asp:TextBox id="registro_email" type="text" runat="server" class="input" placeholder="Email"></asp:TextBox>
+                                <asp:TextBox id="registro_nombre" MaxLength="100" type="text" runat="server" class="input" placeholder="Nombre"></asp:TextBox>
+                                <asp:TextBox id="registro_apellido_1" MaxLength="100" type="text" runat="server" class="input" placeholder="Primer apellido"></asp:TextBox>
+                                <asp:TextBox id="registro_apellido_2" MaxLength="100" type="text" runat="server" class="input" placeholder="Segundo apellido"></asp:TextBox>
+                                <asp:TextBox id="password_r_1" type="password" runat="server" class="input" placeholder="Introduzca contraseña"></asp:TextBox>
+                                <asp:TextBox id="password_r_2" type="password" runat="server" class="input" placeholder="Introduzca de nuevo la contraseña"></asp:TextBox>
+                                <asp:TextBox id="registro_facebook" type="text" runat="server" class="input" MaxLength="100" placeholder="Facebook"></asp:TextBox>
+                                <asp:TextBox id="registro_twitter" type="text" runat="server" class="input" MaxLength="100" placeholder="Twitter"></asp:TextBox>
+                                <asp:Label id="registro_salida" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server"></asp:Label>
+                                <asp:Button id="registro_button" class="submit button" onClick="registrarse" runat="server" Text="Registrarse" validationgroup="GrupoDeRegirstro"/>
+
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator5" validationgroup="GrupoDeRegirstro" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"  ControlToValidate="password_r_1" ErrorMessage="La contraseña debe tener entre 4 y 100 caracteres entre letras y numeros."> </asp:RegularExpressionValidator>
+                                <asp:CompareValidator ID="CompareValidator1" runat="server" validationgroup="GrupoDeRegirstro" ControlToCompare="password_r_1" ControlToValidate="password_r_2" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" ErrorMessage="Las contraseñas no coinciden" Display="Dynamic" ForeColor="red" />
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator6" validationgroup="GrupoDeRegirstro" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"  ControlToValidate="registro_nickname" ErrorMessage="El nombre de usuario debe tener entre 4 y 20 caracteres entre letras y numeros."> </asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator7" validationgroup="GrupoDeRegirstro" runat="server"  ControlToValidate="registro_email" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" Display = "Dynamic" ErrorMessage = "Direccion de email incorrecta"/>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" validationgroup="GrupoDeRegirstro" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" runat="server" ControlToValidate="registro_nickname" ErrorMessage="Nickname requerido"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" validationgroup="GrupoDeRegirstro" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" runat="server" ControlToValidate="registro_email" ErrorMessage="Email requerido"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" validationgroup="GrupoDeRegirstro" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="registro_nombre" ErrorMessage="Nombre requerido"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator8" validationgroup="GrupoDeRegirstro" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$"  ControlToValidate="registro_nombre" ErrorMessage="Formato de nombre incorrecto."> </asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" validationgroup="GrupoDeRegirstro" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="registro_apellido_1" ErrorMessage="Primer apellido requerido"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator9" validationgroup="GrupoDeRegirstro" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$"  ControlToValidate="registro_apellido_1" ErrorMessage="Formato de primer apellido incorrecto."> </asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" validationgroup="GrupoDeRegirstro" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="registro_apellido_2" ErrorMessage="Segundo apellido requerido"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator10" validationgroup="GrupoDeRegirstro" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$"  ControlToValidate="registro_apellido_2" ErrorMessage="Formato de segundo apellido incorrecto."> </asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" validationgroup="GrupoDeRegirstro" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="password_r_1" ErrorMessage="Contraseña requerida"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" validationgroup="GrupoDeRegirstro" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="password_r_2" ErrorMessage="Repetición de contraseña requerida"></asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+                        <div class="popup-foot">
+                            <p>Sign Up via social networks</p>
+                            <div class="social-links">
+                                <a href="#" class="link facebook"><span></span></a>
+                                <a href="#" class="link twitter"><span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="close"></div>
+            </div>
+            <div class="popup registration" id="registro-empresa">
+                <div class="scroll">
+                    <div class="scroll_wrap">
+                        <div class="popup-head">
+                            <div class="title">Registro de Empresa</div>
+                        </div>
+                        <div class="popup-body">
+                            <a class="link js-popup-open" data-href="#registration">Registro de usuario</a><br /><br />
+                            <div class="subtitle">
+                                Completa los siguientes campos para registrarte en FirstRow como empresa asociada
+                            </div>
+                            <div class="form">
+                                <asp:TextBox id="registro_emp_nickname" type="text" runat="server" class="input" placeholder="Nickname"></asp:TextBox>
+                                <asp:TextBox id="registro_emp_email" type="text" runat="server" class="input" placeholder="Email"></asp:TextBox>
+                                <asp:TextBox id="registro_emp_nombre" MaxLength="100" type="text" runat="server" class="input" placeholder="Nombre"></asp:TextBox>
+                                <asp:TextBox id="registro_emp_apellido_1" MaxLength="100" type="text" runat="server" class="input" placeholder="Primer apellido"></asp:TextBox>
+                                <asp:TextBox id="registro_emp_apellido_2" MaxLength="100" type="text" runat="server" class="input" placeholder="Segundo apellido"></asp:TextBox>
+                                <asp:TextBox id="password_emp_r_1" type="password" runat="server" class="input" placeholder="Introduzca contraseña"></asp:TextBox>
+                                <asp:TextBox id="password_emp_r_2" type="password" runat="server" class="input" placeholder="Introduzca de nuevo la contraseña"></asp:TextBox>
+                                <asp:TextBox id="registro_emp_cif" type="text" runat="server" class="input" placeholder="CIF"></asp:TextBox>
+                                <asp:TextBox id="registro_emp_direccion" type="text" runat="server" class="input" MaxLength="45" placeholder="Direccion"></asp:TextBox>
+                                <asp:TextBox id="registro_emp_facebook" type="text" runat="server" class="input" MaxLength="100" placeholder="Facebook"></asp:TextBox>
+                                <asp:TextBox id="registro_emp_twitter" type="text" runat="server" class="input" MaxLength="100" placeholder="Twitter"></asp:TextBox>
+
+                                <div class="destination-col">
+                                    <div class="label">Pais</div>
+                                    <div class="select_wrap">
+                                        <asp:DropDownList ID="listaPaisesRegEmpresa" class="input" style="width:100%; height:50px; margin-bottom: 20px;" runat="server">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+
+                                <asp:Label id="registro_emp_salida" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server"></asp:Label>
+                                <asp:Button id="registro_emp_boton" class="submit button" onClick="registrarEmpresa" runat="server" Text="Registrar Empresa" validationgroup="GrupoDeRegistroEmpresa"/>
+
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorCIF" validationgroup="GrupoDeRegistroEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" runat="server" ControlToValidate="registro_emp_cif" ErrorMessage="CIF requerido"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidatorCIF" validationgroup="GrupoDeRegistroEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="([a-z]|[A-Z]|[0-9])[0-9]{7}([a-z]|[A-Z]|[0-9])"  ControlToValidate="registro_emp_cif" ErrorMessage="Formato de CIF incorrecto."> </asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorDireccion" validationgroup="GrupoDeRegistroEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" runat="server" ControlToValidate="registro_emp_direccion" ErrorMessage="Direccion de sede requerida."></asp:RequiredFieldValidator>
+
+
+                                <asp:RegularExpressionValidator ID="EmpRegularExpressionValidatorPass1" validationgroup="GrupoDeRegistroEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"  ControlToValidate="password_emp_r_1" ErrorMessage="La contraseña debe tener entre 4 y 100 caracteres entre letras y numeros."> </asp:RegularExpressionValidator>
+                                <asp:CompareValidator ID="empComparePasswords" runat="server" validationgroup="GrupoDeRegistroEmpresa" ControlToCompare="password_emp_r_1" ControlToValidate="password_emp_r_2" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" ErrorMessage="Las contraseñas no coinciden" Display="Dynamic" ForeColor="red" />
+                                <asp:RegularExpressionValidator ID="EmpRegularExpressionValidator1" validationgroup="GrupoDeRegistroEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"  ControlToValidate="registro_emp_nickname" ErrorMessage="El nombre de usuario debe tener entre 4 y 20 caracteres entre letras y numeros."> </asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator ID="EmpRegularExpressionValidatorEmail" validationgroup="GrupoDeRegistroEmpresa" runat="server"  ControlToValidate="registro_emp_email" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" Display = "Dynamic" ErrorMessage = "Direccion de email incorrecta"/>
+                                <asp:RequiredFieldValidator ID="EmpRequiredFieldValidatorNickname" validationgroup="GrupoDeRegistroEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" runat="server" ControlToValidate="registro_emp_nickname" ErrorMessage="Nickname requerido"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="EmpRequiredFieldValidatorEmail" validationgroup="GrupoDeRegistroEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" runat="server" ControlToValidate="registro_emp_email" ErrorMessage="Email requerido"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="EmpRequiredFieldValidatorName" validationgroup="GrupoDeRegistroEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="registro_emp_nombre" ErrorMessage="Nombre requerido"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="EmpRegularExpressionValidatorName" validationgroup="GrupoDeRegistroEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$"  ControlToValidate="registro_emp_nombre" ErrorMessage="Formato de nombre incorrecto."> </asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="EmpRequiredFieldValidatorName1" validationgroup="GrupoDeRegistroEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="registro_emp_apellido_1" ErrorMessage="Primer apellido requerido"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="EmpRegularExpressionValidator3" validationgroup="GrupoDeRegistroEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$"  ControlToValidate="registro_emp_apellido_1" ErrorMessage="Formato de primer apellido incorrecto."> </asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="EmpRequiredFieldValidatorName2" validationgroup="GrupoDeRegistroEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="registro_emp_apellido_2" ErrorMessage="Segundo apellido requerido"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="EmpRegularExpressionValidator4" validationgroup="GrupoDeRegistroEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$"  ControlToValidate="registro_emp_apellido_2" ErrorMessage="Formato de segundo apellido incorrecto."> </asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="EmpRequiredFieldValidatorPass1" validationgroup="GrupoDeRegistroEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="password_emp_r_1" ErrorMessage="Contraseña requerida"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="EmpRequiredFieldValidatorPass2" validationgroup="GrupoDeRegistroEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="password_emp_r_2" ErrorMessage="Repetición de contraseña requerida"></asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+                        <div class="popup-foot">
+                            <p>Sign Up via social networks</p>
+                            <div class="social-links">
+                                <a href="#" class="link facebook"><span></span></a>
+                                <a href="#" class="link twitter"><span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="close"></div>
+            </div>
+            <div runat="server" class="popup login" id="logout">
+                <div class="scroll">
+                    <div class="scroll_wrap">
+                        <div class="popup-head">
+                            <div class="title">Cerrar Sesion</div>
+                        </div>
+                        <div class="popup-body">
+                            <div class="subtitle">
+                                Nos volveremos a ver pronto!
+                            </div>
+                            <div class="form">
+                                  <asp:Button ID="cierre" class="submit button" runat="server" OnClick="cerrarSesion" Text="Cerrar Sesión" CausesValidation="False"/>
+                            </div>                           
+                        </div>
+                    </div>
+                </div>
+                <div class="close"></div>
+            </div>
+            <div class="popup profile-setting" id="profile-setting">
+                    <div class="scroll">
+                        <div class="scroll_wrap">
+                            <div class="select-userpic">
+                                <div class="userpic">V</div>
+                                <div class="select">
+                                    <input type="file" id="profile-pic">
+                                    <label for="profile-pic">Select photo</label>
+                                </div>
+                            </div>
+                            <div class="popup-head">
+                                <div class="title">Setting</div>
+                            </div>
+                            <div class="popup-body">
+                                <div class="form">
+                                    <asp:TextBox id="nickname_settings" type="text" runat="server" class="input" placeholder="Nickname"></asp:TextBox>
+                                    <asp:TextBox id="email_setting" type="text" runat="server" class="input" placeholder="Email"></asp:TextBox>
+                                    <asp:TextBox id="name_setting" type="text" runat="server" class="input" placeholder="Name"></asp:TextBox>
+                                    <asp:TextBox id="firstname_setting" type="text" runat="server" class="input" placeholder="First Name"></asp:TextBox>
+                                    <asp:TextBox id="secondname_setting" type="text" runat="server" class="input" placeholder="Second Name"></asp:TextBox>
+                                    <div class="label">Change password</div>
+                                    <input type="password" class="input" placeholder="Current password">
+                                    <input type="password" class="input" placeholder="Enter new password">
+                                    <input type="password" class="input" placeholder="New password repeat">
+                                    <div class="label">Authorization through social networks</div>
+                                    <div class="social-links">
+                                        <a href="#" class="link facebook active"><span></span></a>
+                                        <a href="#" class="link twitter"><span></span></a>
+                                    </div>
+                                    <button class="submit button js-submit">Save Setting</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="close"></div>
+                </div>
+            <div class="popup profile-setting" id="empresa-setting">
+                    <div class="scroll">
+                        <div class="scroll_wrap">
+                            <div class="select-userpic">
+                                <div class="userpic">V</div>
+                                <div class="select">
+                                    <input type="file" id="empresa-pic">
+                                    <label for="profile-pic">Select photo</label>
+                                </div>
+                            </div>
+                            <div class="popup-head">
+                                <div class="title">Ajustes de empresa</div>
+                            </div>
+                            <div class="popup-body">
+                                <div class="form">
+                                    <asp:TextBox id="ajustes_nickname_empresa" type="text" runat="server" class="input" placeholder="Nickname"></asp:TextBox>
+                                    <asp:TextBox id="ajustes_email_empresa" type="text" runat="server" class="input" placeholder="Email"></asp:TextBox>
+                                    <asp:TextBox id="ajustes_nombre_empresa" MaxLength="100" type="text" runat="server" class="input" placeholder="Nombre"></asp:TextBox>
+                                    <asp:TextBox id="ajustes_apellido_1_empresa" MaxLength="100" type="text" runat="server" class="input" placeholder="Primer apellido"></asp:TextBox>
+                                    <asp:TextBox id="ajustes_apellido_2_empresa" MaxLength="100" type="text" runat="server" class="input" placeholder="Segundo apellido"></asp:TextBox>
+                                    <asp:TextBox id="ajustes_password_1_empresa" type="password" runat="server" class="input" placeholder="Introduzca contraseña"></asp:TextBox>
+                                    <asp:TextBox id="ajustes_password_2_empresa" type="password" runat="server" class="input" placeholder="Introduzca de nuevo la contraseña"></asp:TextBox>
+                                    <asp:TextBox id="ajustes_cif_empresa" type="text" runat="server" class="input" placeholder="CIF"></asp:TextBox>
+                                    <asp:TextBox id="ajustes_direccion_empresa" type="text" runat="server" class="input" MaxLength="45" placeholder="Direccion"></asp:TextBox>
+                                    <asp:TextBox id="ajustes_facebook_empresa" type="text" runat="server" class="input" MaxLength="100" placeholder="Facebook"></asp:TextBox>
+                                    <asp:TextBox id="ajustes_twitter_empresa" type="text" runat="server" class="input" MaxLength="100" placeholder="Twitter"></asp:TextBox>
+
+                                    <div class="destination-col">
+                                        <div class="label">Pais</div>
+                                        <div class="select_wrap">
+                                            <asp:DropDownList ID="listaPaises_ajustes_empresa" class="input" style="width:100%; height:50px; margin-bottom: 20px;" runat="server">
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+
+                                    <asp:Label id="salida_ajustes_empresa" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server"></asp:Label>
+                                    <asp:Button id="modificacion_ajustes_empresa" class="submit button" onClick="registrarse" runat="server" Text="Registrar Empresa" validationgroup="GrupoDeAjustesEmpresa"/>
+
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" validationgroup="GrupoDeAjustesEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" runat="server" ControlToValidate="ajustes_cif_empresa" ErrorMessage="CIF requerido"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" validationgroup="GrupoDeAjustesEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="([a-z]|[A-Z]|[0-9])[0-9]{7}([a-z]|[A-Z]|[0-9])"  ControlToValidate="ajustes_cif_empresa" ErrorMessage="Formato de CIF incorrecto."> </asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" validationgroup="GrupoDeAjustesEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" runat="server" ControlToValidate="ajustes_direccion_empresa" ErrorMessage="Direccion de sede requerida."></asp:RequiredFieldValidator>
+
+
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" validationgroup="GrupoDeAjustesEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"  ControlToValidate="ajustes_password_1_empresa" ErrorMessage="La contraseña debe tener entre 4 y 100 caracteres entre letras y numeros."> </asp:RegularExpressionValidator>
+                                    <asp:CompareValidator ID="CompareValidator2" runat="server" validationgroup="GrupoDeAjustesEmpresa" ControlToCompare="ajustes_password_1_empresa" ControlToValidate="ajustes_password_2_empresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" ErrorMessage="Las contraseñas no coinciden" Display="Dynamic" ForeColor="red" />
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" validationgroup="GrupoDeAjustesEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"  ControlToValidate="ajustes_nickname_empresa" ErrorMessage="El nombre de usuario debe tener entre 4 y 20 caracteres entre letras y numeros."> </asp:RegularExpressionValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator11" validationgroup="GrupoDeAjustesEmpresa" runat="server"  ControlToValidate="ajustes_email_empresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" Display = "Dynamic" ErrorMessage = "Direccion de email incorrecta"/>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" validationgroup="GrupoDeAjustesEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" runat="server" ControlToValidate="ajustes_nickname_empresa" ErrorMessage="Nickname requerido"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" validationgroup="GrupoDeAjustesEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" runat="server" ControlToValidate="ajustes_email_empresa" ErrorMessage="Email requerido"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" validationgroup="GrupoDeAjustesEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="ajustes_nombre_empresa" ErrorMessage="Nombre requerido"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator12" validationgroup="GrupoDeAjustesEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$"  ControlToValidate="ajustes_nombre_empresa" ErrorMessage="Formato de nombre incorrecto."> </asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" validationgroup="GrupoDeAjustesEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="ajustes_apellido_1_empresa" ErrorMessage="Primer apellido requerido"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator13" validationgroup="GrupoDeAjustesEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$"  ControlToValidate="ajustes_apellido_1_empresa" ErrorMessage="Formato de primer apellido incorrecto."> </asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator14" validationgroup="GrupoDeAjustesEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="ajustes_apellido_2_empresa" ErrorMessage="Segundo apellido requerido"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator14" validationgroup="GrupoDeAjustesEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$"  ControlToValidate="ajustes_apellido_2_empresa" ErrorMessage="Formato de segundo apellido incorrecto."> </asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator15" validationgroup="GrupoDeAjustesEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="ajustes_password_1_empresa" ErrorMessage="Contraseña requerida"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator16" validationgroup="GrupoDeAjustesEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="ajustes_password_2_empresa" ErrorMessage="Repetición de contraseña requerida"></asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="close"></div>
+                </div>
+            <div class="footer">
+                <div class="wrap">
+                    <div class="wrap_float">
+                        <div class="footer_top">
+                            <div class="left">
+                                <div class="col">
+                                    <div class="_title m_title">Páginas</div>
                                     <ul>
-                                        <li><a href="#" class="js-popup-open" data-href="#login">Login</a></li>
-                                        <li><a href="#" class="js-popup-open" data-href="#registration">Registration</a></li>
-                                        <li><a href="#" class="js-popup-open" data-href="#recovery-pass">Forgot password?</a></li>
-                                        <li><a href="#" class="js-popup-open" data-href="#profile-setting">Setting</a></li>
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="/experiencias">Experiencias</a></li>
+                                        <li><a href="/galeria">Galería</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col">
+                                    <div class="_title m_title">Más</div>
+                                    <ul>
+                                        <li><a href="/stories">Stories</a></li>
+                                        <li><a href="/blogs">Blogs</a></li>
+                                        <li><a href="/sorteos">Sorteos</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col">
+                                    <div class="_title m_title">Y más...</div>
+                                    <ul>
+                                        <li><a href="/propuestas">Propuestas</a></li>
+                                        <li><a href="/equipo">Nuestro equipo</a></li>
+                                        <li><a href="/contacto">Contacto</a></li>
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="mobile_btn" id="mobile_btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <asp:ContentPlaceHolder ID="Main" runat="server"></asp:ContentPlaceHolder>
-        <div class="footer">
-            <div class="wrap">
-                <div class="wrap_float">
-                    <div class="footer_top">
-                        <div class="left">
-                            <div class="col">
-                                <div class="_title m_title">Travel list</div>
-                                <ul>
-                                    <li><a href="travel-list-full-width.html">Travel list Full With</a></li>
-                                    <li><a href="travel-list-right-sidebar.html">Travel list Right Sidebar</a></li>
-                                    <li><a href="travel-list-left-sidebar.html">Travel list Left Sidebar</a></li>
-                                    <li><a href="travel-list-image-header.html">Travel list Full With Image Header</a></li>
-                                    <li><a href="search-results.html">Search Result</a></li>
-                                    <li><a href="search-results-not-found.html">Search Nothing Found</a></li>
-                                    <li><a href="tour-page-right-sidebar.html">Tour page Right Sidebar</a></li>
-                                    <li><a href="tour-page-left-sidebar.html">Tour page Left Sidebar</a></li>
-                                    <li><a href="tour-page-right-sidebar-width-reply.html">Tour page with reply form</a></li>
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <div class="_title m_title">Page</div>
-                                <ul>
-                                    <li><a href="stories-full-width.html">Stories Full With</a></li>
-                                    <li><a href="story.html">Stories Single</a></li>
-                                    <li><a href="stories-right-sidebar.html">Stories Right Sidebar</a></li>
-                                    <li><a href="stories-left-sidebar.html">Stories Left Sidebar</a></li>
-                                    <li><a href="gallery.html">Gallery</a></li>
-                                    <li><a href="gallery-single.html">Gallery Single</a></li>
-                                    <li><a href="404.html">404 page</a></li>
-                                    <li><a href="static-page-right-sidebar.html">Static Page Right Sidebar</a></li>
-                                    <li><a href="static-page-left-sidebar.html">Static Page Left Sidebar</a></li>
-                                    <li><a href="about-us.html">About Us</a></li>
-                                </ul>
-                            </div>
-                            <div class="col">
-                                <div class="_title m_title">Blog</div>
-                                <ul>
-                                    <li><a href="blog-full-width.html">Blog Full With</a></li>
-                                    <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                    <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                    <li><a href="blog-search-results.html">Search Result</a></li>
-                                    <li><a href="blog-search-results-not-found.html">Search Nothing Found</a></li>
-                                    <li><a href="blog-single-right-sidebar.html">Blog Single Right Sidebar</a></li>
-                                    <li><a href="blog-single-left-sidebar.html">Blog Single Left Sidebar</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="right">
-                            <div class="_title">Contacts</div>
-                            <div class="contacts_info">
-                                <div class="tel">
-                                    <a href="tel:+19092020119">+ 1909 202 0119</a>
-                                    <p>Round the clock support</p>
+                            <div class="right">
+                                <div class="_title">Datos de contacto</div>
+                                <div class="contacts_info">
+                                    <div class="tel">
+                                        <a>+ 34 627329456</a>
+                                        <p>Soporte 24 horas</p>
+                                    </div>
+                                    <div class="email">
+                                        <a href="mailto:team@firstrow.es">team@firstrow.es</a>
+                                        <p>Para lo que necesites</p>
+                                    </div>
+                                    <div class="address">
+                                        San Vicente del Raspeig, 03690 <br> Alicante, España
+                                    </div>
                                 </div>
-                                <div class="email">
-                                    <a href="mailto:info@hellodigi.ru">info@hellodigi.ru</a>
-                                    <p>For any questions</p>
-                                </div>
-                                <div class="address">
-                                    1355 Digistrict St, Suite 909 San, Francisco, CA 10001 <br> United States
+                                <div class="socials social-links">
+                                    <a href="#" class="link facebook"><span></span></a>
+                                    <a href="#" class="link instagram"><span></span></a>
+                                    <a href="#" class="link pinterest"><span></span></a>
+                                    <a href="#" class="link twitter"><span></span></a>
+                                    <a href="#" class="link youtube"><span></span></a>
                                 </div>
                             </div>
-                            <div class="socials social-links">
-                                <a href="#" class="link facebook"><span></span></a>
-                                <a href="#" class="link instagram"><span></span></a>
-                                <a href="#" class="link pinterest"><span></span></a>
-                                <a href="#" class="link twitter"><span></span></a>
-                                <a href="#" class="link youtube"><span></span></a>
+                        </div>
+                        <div class="footer_bottom">
+                            <div class="left">
+                                <a href="#">Política de privacidad</a>
                             </div>
-                        </div>
-                    </div>
-                    <div class="footer_bottom">
-                        <div class="left">
-                            <a href="#">Privacy Policy</a>
-                        </div>
-                        <div class="right">
-                            Copyright © 2019 by Digistrict
+                            <div class="right">
+                                Copyright © 2022 por FirstRow
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </form>
     <div class="modal_search" id="reserva">
         <div class="close"></div>
         <div class="search-tour">
@@ -330,69 +557,6 @@
             </div>
         </div>
     </div>
-    <div class="popup login" id="login">
-        <div class="scroll">
-            <div class="scroll_wrap">
-                <div class="popup-head">
-                    <div class="title">Sign In</div>
-                    <a class="link js-popup-open" data-href="#registration">Sign Up</a>
-
-                </div>
-                <div class="popup-body">
-                    <div class="subtitle">
-                        Use the e-mail and password that you specified when registering on the site
-                    </div>
-                    <div class="form">
-                        <input type="text" class="input" placeholder="Login">
-                        <input type="text" class="input" placeholder="Password">
-                        <button class="submit button">Sign In</button>
-                        <a href="#" class="link">Forgot password?</a>
-                    </div>
-                </div>
-                <div class="popup-foot">
-                    <p>Login via social networks</p>
-                    <div class="social-links">
-                        <a href="#" class="link facebook"><span></span></a>
-                        <a href="#" class="link twitter"><span></span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="close"></div>
-    </div>
-    <div class="popup registration" id="registration">
-        <div class="scroll">
-            <div class="scroll_wrap">
-                <div class="popup-head">
-                    <div class="title">Sign Up</div>
-                    <a class="link js-popup-open" data-href="#login">Sign In</a>
-
-                </div>
-                <div class="popup-body">
-                    <div class="subtitle">
-                        Fill in the registration form and save your favorite tours, synchronize them on all devices
-                    </div>
-                    <div class="form">
-                        <input type="text" class="input" placeholder="Username">
-                        <input type="text" class="input" placeholder="Name">
-                        <input type="text" class="input" placeholder="Surename">
-                        <input type="email" class="input" placeholder="Email">
-                        <input type="password" class="input" placeholder="Password">
-                        <input type="password" class="input" placeholder="Password Repeat">
-                        <button class="submit button js-submit">Registration</button>
-                    </div>
-                </div>
-                <div class="popup-foot">
-                    <p>Sign Up via social networks</p>
-                    <div class="social-links">
-                        <a href="#" class="link facebook"><span></span></a>
-                        <a href="#" class="link twitter"><span></span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="close"></div>
-    </div>
     <div class="popup forgot-pass" id="recovery-pass">
         <div class="scroll">
             <div class="scroll_wrap">
@@ -406,41 +570,6 @@
                     <div class="form">
                         <input type="email" class="input" placeholder="Email">
                         <button class="submit button js-submit">Reset password</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="close"></div>
-    </div>
-    <div class="popup profile-setting" id="profile-setting">
-        <div class="scroll">
-            <div class="scroll_wrap">
-                <div class="select-userpic">
-                    <div class="userpic">V</div>
-                    <div class="select">
-                        <input type="file" id="profile-pic">
-                        <label for="profile-pic">Select photo</label>
-                    </div>
-                </div>
-                <div class="popup-head">
-                    <div class="title">Setting</div>
-                </div>
-                <div class="popup-body">
-                    <div class="form">
-                        <input type="text" class="input" placeholder="Username" value="Victor777">
-                        <input type="text" class="input" placeholder="Name" value="Victor">
-                        <input type="text" class="input" placeholder="Surename" value="Shibut">
-                        <input type="email" class="input" placeholder="Email" value="test@test.com">
-                        <div class="label">Change password</div>
-                        <input type="password" class="input" placeholder="Current password">
-                        <input type="password" class="input" placeholder="Enter new password">
-                        <input type="password" class="input" placeholder="New password repeat">
-                        <div class="label">Authorization through social networks</div>
-                        <div class="social-links">
-                            <a href="#" class="link facebook active"><span></span></a>
-                            <a href="#" class="link twitter"><span></span></a>
-                        </div>
-                        <button class="submit button js-submit">Save Setting</button>
                     </div>
                 </div>
             </div>
@@ -533,7 +662,6 @@
         </div>
         <div class="close"></div>
     </div>
-
 </body>
 
     <script src="/assets/js/jquery.min.js"></script>

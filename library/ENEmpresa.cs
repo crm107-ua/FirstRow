@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace library
 {
-    class ENEmpresa : ENUsuario
+    public class ENEmpresa : ENUsuario
     {
-        private int _cif;
-        private string _direccion;
-        private ENPais _pais;
-        private DateTime _fechaCreacion;
+        protected string _cif;
+        protected string _direccion;
+        protected ENPais _pais;
+        protected DateTime _fechaCreacion;
 
-        public int cif
+        public string cif
         {
             get { return _cif; }
             set { _cif = value; }
@@ -39,13 +39,13 @@ namespace library
 
         public ENEmpresa()
         {
-            cif = 0;
+            cif = "";
             direccion = "";
             pais = new ENPais();
             fechaCreacion = new DateTime();
         }
 
-        public ENEmpresa(int cif, String direccion, ENPais pais, DateTime fechaCreacion)
+        public ENEmpresa(string cif, String direccion, ENPais pais, DateTime fechaCreacion)
         {
             this.cif = cif;
             this.direccion = direccion;
@@ -55,24 +55,19 @@ namespace library
 
         public bool registerEmpresa()
         {
-            CADUsuario usuario = new CADUsuario();
+            CADEmpresa empresa = new CADEmpresa();
             bool creado = false;
-            if (!usuario.readUsuario(this))
+            if (!empresa.readEmpresa(this))
             {
-                creado = usuario.registerUsuario(this);
+                creado = empresa.registerEmpresa(this);
             }
             return creado;
         }
 
         public bool loginEmpresa()
         {
-            CADUsuario usuario = new CADUsuario();
-            bool creado = false;
-            if (!usuario.readUsuario(this))
-            {
-                creado = usuario.loginUsuario(this);
-            }
-            return creado;
+            CADEmpresa empresa = new CADEmpresa();
+            return empresa.loginEmpresa(this);
         }
 
         public bool updateEmpresa()
@@ -82,8 +77,8 @@ namespace library
             ENEmpresa aux = new ENEmpresa();
 
             aux.nickname = this.nickname;
-            aux.email = this.email;
             aux.password = this.password;
+            aux.email = this.email;
             aux.image = this.image;
             aux.background_image = this.background_image;
             aux.name = this.name;

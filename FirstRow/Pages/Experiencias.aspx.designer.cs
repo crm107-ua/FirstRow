@@ -11,7 +11,7 @@ namespace FirstRow.Pages
 {
 
 
-    public partial class Viajes
+    public partial class Experiencias
     {
     }
 }

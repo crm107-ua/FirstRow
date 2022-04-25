@@ -8,6 +8,11 @@
 ###### FirstRow es una agencia de viajes online. Esta plataforma  proporciona y organiza viajes alrededor de todo el mundo, a la vez que da la oportunidad de compartir las experiencias de sus usuarios mediante galerías de imágenes, blogs, stories y muchas otras más funciones
 
 ###
+### 
+ 
+###### El esquema relacional de la base de datos junto con el de sql server y el boceto inicial estan situados en la raíz del repositorio, en un pdf llamado "Esquema_BBDD.pdf". 
+
+###
 ###
 
 ## Parte pública
