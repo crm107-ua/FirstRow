@@ -15,7 +15,7 @@ namespace FirstRow.App_Start
             routes.MapPageRoute("sorteo", "sorteo/{slug}", "~/Pages/Sorteo.aspx");
              
             routes.MapPageRoute("stories", "stories", "~/Pages/Stories.aspx");
-            routes.MapPageRoute("storie", "storie/{slug}", "~/Pages/Storie.aspx");
+            routes.MapPageRoute("story", "story/{slug}", "~/Pages/Story.aspx");
 
             routes.MapPageRoute("wearing", "wearing/{slug}", "~/Pages/Wearing.aspx");
 
