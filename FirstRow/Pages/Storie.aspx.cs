@@ -1,4 +1,5 @@
 ﻿using System;
+using library;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,22 +17,23 @@ namespace FirstRow.Pages
 
         protected void crearStorie(object sender, EventArgs e)
         {
-
+            ENStories story = new ENStories();
+            //COMPLETAR
         }
 
         protected void modificarStorie(object sender, EventArgs e)
         {
-
+            //COMPLETAR
         }
 
         protected void verUsuario(object sender, EventArgs e)
         {
-
+            //COMPLETAR
         }
 
         protected void eliminarStorie(object sender, EventArgs e)
         {
-
+            //COMPLETAR
         }
     }
 }

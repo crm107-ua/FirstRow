@@ -8,18 +8,18 @@ namespace library
 {
     public class ENStories
     {
-        private int _Id;
-        private string _Nombre;
+        private int _id;
+        private string _nombre;
         private DateTime _Fecha;
         private string _slug;
-        private int _Pais;
-        private ENUsuario _Usuario;
+        private int _pais;
+        private ENUsuario _usuario;
 
-        public int Id { get => _Id; set => _Id = value; }
-        public string Nombre { get => _Nombre; set => _Nombre = value; }
+        public int Id { get => _id; set => _id = value; }
+        public string Nombre { get => _nombre; set => _nombre = value; }
         public DateTime Fecha { get => _Fecha; set => _Fecha = value; }
-        public int Pais { get => _Pais; set => _Pais = value; }
-        public ENUsuario Usuario { get => _Usuario; set => _Usuario = value; }
+        public int Pais { get => _pais; set => _pais = value; }
+        public ENUsuario Usuario { get => _usuario; set => _usuario = value; }
         public string Slug { get => _slug; set => _slug = value; }
 
         public ENStories()
@@ -68,7 +68,7 @@ namespace library
          */
         static int GenerateId(DateTime fecha, ENUsuario usuario)
         {
-            return int.Parse(/*usuario.Id.ToString() + */(fecha.Ticks).ToString());
+            return usuario.nickname.GetHashCode() + (int) fecha.Ticks;
         }
 
         /**
