@@ -15,8 +15,8 @@ namespace FirstRow.Pages
             Route myRoute = RouteData.Route as Route;
             if (myRoute != null && myRoute.Url == "blog/{slug}")
             {
-                string slug = RouteData.Values["slug"].ToString();
-                Response.Write("Blog con slug: " + slug);
+                string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
+                titulo.Text = slug.Text = cadena.Replace("-", " ");
             }
 
         }

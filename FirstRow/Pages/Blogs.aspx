@@ -24,13 +24,13 @@
                             <div class="select_wrap">
                                 <select>
                                     <option disabled selected value="Destination">
-                                        Category
+                                        Categoria 1
                                     </option>
                                     <option value="Category 1">
-                                        Category 1
+                                        Categoria 2
                                     </option>
                                     <option value="Category 2">
-                                        Category 2
+                                        Categoria 3
                                     </option>
                                 </select>
                             </div>
@@ -42,7 +42,7 @@
                     </div>
                     <div class="page_body">
                         <div class="blog-list">
-                            <a class="blog_item" href="blog-single-right-sidebar.html">
+                            <a class="blog_item" href="/blog/experiencia-en-italia">
                                 <div class="blog_item_top" style="background-image: url(https://www.teahub.io/photos/full/200-2000529_italy-venice.jpg);">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">
@@ -74,7 +74,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a class="blog_item" href="blog-single-right-sidebar.html">
+                            <a class="blog_item" href="/blog/experiencia-en-la-cordillera-de-los-alpes">
                                 <div class="blog_item_top" style="background-image: url(https://eskipaper.com/images/amazing-mountain-road-wallpaper-1.jpg);">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">
@@ -103,7 +103,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a class="blog_item" href="blog-single-right-sidebar.html">
+                            <a class="blog_item" href="/blog/experiencia-en-avion">
                                 <div class="blog_item_top" style="background-image: url(http://viau.mx/wp-content/uploads/2020/04/white-airliner-wing-on-top-of-sea-clouds-2007401-scaled.jpg);">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">
