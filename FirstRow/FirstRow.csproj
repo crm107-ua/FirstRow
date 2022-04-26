@@ -163,7 +163,6 @@
     <Content Include="assets\js\scripts.min.js" />
     <Content Include="assets\js\scripts.min.js.map" />
     <Content Include="assets\js\slick.min.js" />
-    <Content Include="Database1.mdf" />
     <Content Include="Global.asax" />
     <Content Include="Pages\404.aspx" />
     <Content Include="Pages\Blog.aspx" />
