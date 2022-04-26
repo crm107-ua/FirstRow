@@ -7,7 +7,7 @@
                     <span class="separator">/</span>
                     <a href="/galeria">Galería</a>
                     <span class="separator">/</span>
-                    <a href="/galeria">Seccion Galería</a>
+                    <a href="/"><asp:Label ID="slug" runat="server"></asp:Label></a>
                 </div>
             </div>
         </div>
@@ -15,11 +15,11 @@
             <div class="wrap">
                 <div class="wrap_float">
                     <div class="gallery-page-head">
-                        <p class="country">Australia</p>
-                        <h1 class="title">Hermosas aves de Australia</h1>
+                        <p class="country"><asp:Label ID="titulo" runat="server"></asp:Label></p>
+                        <h1 class="title" style="margin-top:20px; width:100%;">Hermosas aves por el mundo</h1>
                         <div class="subtitle">
                             <p>
-                                Podemos ver a las preciosas aves de Australia en pleno explendor, la naturaleza es admirable y siempre te sorprende
+                                Podemos ver a las preciosas aves en pleno explendor, la naturaleza es admirable y siempre te sorprende
                             </p>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                             </a>
 
                         </div>
-                        <a href="Experiencias.aspx" class="tour">
+                        <a href="/experiencias" class="tour">
                             <div class="item">
                                 <div class="item_left">
                                     <div class="image" style="background-image: url(https://media.istockphoto.com/photos/ait-benhaddou-ancient-city-in-morocco-north-africa-picture-id982105760?k=20&m=982105760&s=612x612&w=0&h=gheGJi_2vF29VX1VZ6lTf8IIPrPk8Nc2FkAl6AE94Hc=)">
@@ -91,7 +91,7 @@
                         <div class="other_gallery">
                             <h2 class="title">También te puede interesar</h2>
                             <div class="gallery-list">
-                                <a href="Seccion_Galeria.aspx" class="gallery-item">
+                                <a href="galeria/madagascar" class="gallery-item">
                                     <div class="top">
                                         <p class="country">Madagascar</p>
                                     <p class="title">El mundo bajo la superficie</p>
@@ -117,7 +117,7 @@
                                     </div>
                                 </a>
 
-                                <a href="Seccion_Galeria.aspx" class="gallery-item">
+                                <a href="/galeria/roma" class="gallery-item">
                                     <div class="top">
                                         <p class="country">Roma</p>
                                     <p class="title">La impresionante arquitectura de Roma</p>
