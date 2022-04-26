@@ -57,7 +57,7 @@
                     </div>
                     <div class="gallery-page-body">
                         <div class="gallery-list">
-                            <a href="Pages/Seccion_Galeria.aspx" class="gallery-item">
+                            <a href="/galeria/australia" class="gallery-item">
                                 <div class="top">
                                     <p class="country">Australia</p>
                                     <p class="title">Las preciosas aves de Australia</p>
@@ -83,7 +83,7 @@
                                 </div>
                             </a>
 
-                            <a href="Pages/Seccion_Galeria.aspx" class="gallery-item">
+                            <a href="/galeria/roma" class="gallery-item">
                                 <div class="top">
                                     <p class="country">Roma</p>
                                     <p class="title">La impresionante arquitectura de Roma</p>
@@ -109,7 +109,7 @@
                                 </div>
                             </a>
 
-                            <a href="Pages/Seccion_Galeria.aspx" class="gallery-item">
+                            <a href="/galeria/madagascar" class="gallery-item">
                                 <div class="top">
                                     <p class="country">Madagascar</p>
                                     <p class="title">El mundo bajo la superficie</p>
@@ -135,7 +135,7 @@
                                 </div>
                             </a>
 
-                            <a href="Pages/Seccion_Galeria.aspx" class="gallery-item">
+                            <a href="/galeria/tailandia" class="gallery-item">
                                 <div class="top">
                                     <p class="country">Tailandia</p>
                                     <p class="title">Hermosas playas</p>

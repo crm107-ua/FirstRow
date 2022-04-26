@@ -106,7 +106,7 @@
                                 <div class="bottom-info-right">
                                     <div class="info">
                                         <div class="days">5 dias |</div>
-                                        <div class="cost">desde $356</div>
+                                        <div class="cost">desde 356€</div>
                                     </div>
                                     <button type="button" class="btn button">Reserva ahora</button>
                                     <div class="rating">
@@ -130,7 +130,7 @@
                     <div class="wrap_float">
                         <div class="left_content">
                             <div class="overview js-section content-block" id="overview">
-                                <h2 class="title">Descripción de la experiencias</h2>
+                                <h2 class="title">Descripción de la experiencia</h2>
                                 <p class="description">
                                     But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
                                 </p>
@@ -139,11 +139,11 @@
                                         <div class="day_item-head active">
                                             <div class="preview">
                                                 <div class="image">
-                                                    <img src="img/demo-bg.jpg" alt="">
+                                                    <img src="https://www.planetware.com/wpimages/2019/03/croatia-best-beaches-punta-rata-brela.jpg" alt="">
                                                 </div>
                                                 <div class="p">Day 1</div>
                                             </div>
-                                            <div class="_title">Transfer to hotel</div>
+                                            <div class="_title">Bienvenida a Croacia</div>
                                             <div class="element"></div>
                                         </div>
                                         <div class="day_item-body" style="display: block;">
@@ -152,21 +152,21 @@
                                             </div>
                                             <div class="images">
                                                 <div class="scroll lightgallery">
-                                                    <a href="img/demo-bg.jpg" class="item">
+                                                    <a href="https://www.croatiaweek.com/wp-content/uploads/2020/05/croatia-beach-summer-covid-recommendations.jpg" class="item">
                                                         <div class="img">
-                                                            <img src="img/demo-bg.jpg" alt="">
+                                                            <img src="https://www.croatiaweek.com/wp-content/uploads/2020/05/croatia-beach-summer-covid-recommendations.jpg" alt="">
                                                         </div>
                                                         <span>Signature under photo</span>
                                                     </a>
-                                                    <a href="img/demo-bg.jpg" class="item">
+                                                    <a href="https://www.theunionjournal.com/wp-content/uploads/2020/03/Croatia.jpg" class="item">
                                                         <div class="img">
-                                                            <img src="img/demo-bg.jpg" alt="">
+                                                            <img src="https://www.theunionjournal.com/wp-content/uploads/2020/03/Croatia.jpg" alt="">
                                                         </div>
                                                         <span>Signature under photo</span>
                                                     </a>
-                                                    <a href="img/demo-bg.jpg" class="item">
+                                                    <a href="https://ecty2018.org/wp-content/uploads/2018/11/Awarded-programs2.jpg" class="item">
                                                         <div class="img">
-                                                            <img src="img/demo-bg.jpg" alt="">
+                                                            <img src="https://ecty2018.org/wp-content/uploads/2018/11/Awarded-programs2.jpg" alt="">
                                                         </div>
                                                         <span>Signature under photo</span>
                                                     </a>
@@ -179,11 +179,11 @@
                                         <div class="day_item-head">
                                             <div class="preview">
                                                 <div class="image">
-                                                    <img src="img/demo-bg.jpg" alt="">
+                                                    <img src="https://a.cdn-hotels.com/gdcs/production74/d1449/5695b321-d12f-425d-86db-fd6cc68eff36.jpg" alt="">
                                                 </div>
                                                 <div class="p">Day 2-4</div>
                                             </div>
-                                            <div class="_title">Sightseeing tour</div>
+                                            <div class="_title">Vistas por la ciudad</div>
                                             <div class="element"></div>
                                         </div>
                                         <div class="day_item-body">
@@ -197,11 +197,11 @@
                                         <div class="day_item-head">
                                             <div class="preview">
                                                 <div class="image">
-                                                    <img src="img/demo-bg.jpg" alt="">
+                                                    <img src="https://media.gadventures.com/media-server/dynamic/admin/content_pages/croatia-destination-social.jpg" alt="">
                                                 </div>
                                                 <div class="p">Day 5</div>
                                             </div>
-                                            <div class="_title">Free time</div>
+                                            <div class="_title">Tour nocturno</div>
                                             <div class="element"></div>
                                         </div>
                                         <div class="day_item-body">
@@ -214,103 +214,73 @@
                                 </div>
                             </div>
                             <div class="included js-section content-block" id="included">
-                                <h2 class="title">Included</h2>
+                                <h2 class="title">Incluido</h2>
                                 <ul>
                                     <li>
-                                        <span class="li_title">Flight by plane</span>
-                                        <span class="li_subtitle">Flight and transfer to the hotel</span>
+                                        <span class="li_title">Bebida</span>
+                                        <span class="li_subtitle">Gratis en todo el recorrido</span>
                                     </li>
                                     <li>
                                         <span class="li_title">Wi-fi</span>
-                                        <span class="li_subtitle">Free wi-fi in the reception, wi-fi in public areas</span>
+                                        <span class="li_subtitle">Conexión a internet gratuita</span>
                                     </li>
                                     <li>
-                                        <span class="li_title">Smorgasbord</span>
-                                        <span class="li_subtitle">But I must explain to you how all</span>
+                                        <span class="li_title">Comida</span>
+                                        <span class="li_subtitle">Gratis en todo el recorrido</span>
                                     </li>
                                     <li>
-                                        <span class="li_title">Pool</span>
-                                        <span class="li_subtitle">Beautiful and large swimming pool at your service</span>
+                                        <span class="li_title">Piscina</span>
+                                        <span class="li_subtitle">Acceso premium a piscinas y gimnasios</span>
                                     </li>
                                 </ul>
-                            </div>
-                            <div class="location js-section content-block" id="location">
-                                <h3 class="title">Location</h3>
-                                <div class="map">
-                                    <!--                            <iframe src=""></iframe>-->
-                                </div>
                             </div>
                             <div class="stories js-section content-block" id="stories">
                                 <div class="title_wrap">
                                     <h2 class="title">Stories</h2>
                                     <div class="link">
-                                        <a href="#">All Stories</a>
+                                        <a>Todas las stories</a>
                                     </div>
                                 </div>
                                 <div class="stries_slider">
                                     <div class="scroll">
-                                        <a href="story.html" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                                        <a href="/stories" class="story_item" style="background-image: url(https://www.themayor.eu/web/files/articles/8689/main_image/thumb_1024x663_zagreb-croatia-2.jpg)">
                                             <div class="item_wrap">
                                                 <div class="_content">
-                                                    <div class="flag_wrap">
-                                                        <div class="flag">
-                                                            <img src="img/demo-bg.jpg" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <h3 class="country">Russia</h3>
                                                     <p class="text">
-                                                        Amazing underwater world
+                                                        Puerto en Croacia
                                                     </p>
                                                 </div>
                                             </div>
                                             <div class="shadow js-shadow"></div>
                                         </a>
 
-                                        <a href="story.html" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                                        <a href="/stories" class="story_item" style="background-image: url(https://media.cntraveler.com/photos/59809ccef7c3f505c149b858/5:4/w_1920,h_1536,c_limit/Rovinj-Croatia-GettyImages-184911149.jpg)">
                                             <div class="item_wrap">
                                                 <div class="_content">
-                                                    <div class="flag_wrap">
-                                                        <div class="flag">
-                                                            <img src="img/demo-bg.jpg" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <h3 class="country">Maldives</h3>
                                                     <p class="text">
-                                                        Amazing underwater world
+                                                        Arquitectura mediterranea
                                                     </p>
                                                 </div>
                                             </div>
                                             <div class="shadow js-shadow"></div>
                                         </a>
 
-                                        <a href="story.html" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                                        <a href="/stories" class="story_item" style="background-image: url(https://media.worldnomads.com/Explore/europe/croatia-local-streets-istock.jpg)">
                                             <div class="item_wrap">
                                                 <div class="_content">
-                                                    <div class="flag_wrap">
-                                                        <div class="flag">
-                                                            <img src="img/demo-bg.jpg" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <h3 class="country">Australia</h3>
                                                     <p class="text">
-                                                        Amazing underwater world
+                                                        Pequeños rincones
                                                     </p>
                                                 </div>
                                             </div>
                                             <div class="shadow js-shadow"></div>
                                         </a>
 
-                                        <a href="story.html" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                                        <a href="story.html" class="story_item" style="background-image: url(https://www.intrepidtravel.com/adventures/wp-content/uploads/2017/01/Croatia-island-sailing.jpg)">
                                             <div class="item_wrap">
                                                 <div class="_content">
-                                                    <div class="flag_wrap">
-                                                        <div class="flag">
-                                                            <img src="img/demo-bg.jpg" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <h3 class="country">Madagascar</h3>
                                                     <p class="text">
-                                                        Amazing underwater world
+                                                        Recorrido en barca
                                                     </p>
                                                 </div>
                                             </div>
@@ -323,8 +293,8 @@
                             <div class="comments-block js-section" id="reviews">
                                 <div class="title_wrap">
                                     <div class="val">5.0</div>
-                                    <h2 class="title">Reviews</h2>
-                                    <div class="counter">12</div>
+                                    <h2 class="title">Comentarios</h2>
+                                    <div class="counter">3</div>
                                 </div>
                                 <div class="comments">
                                     <div class="comment_item">
@@ -346,7 +316,7 @@
                                             </div>
                                             <div class="author">
                                                 <div class="userpic">
-                                                    <img src="img/demo-bg.jpg" alt="">
+                                                    <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="Usuario">
                                                 </div>
                                                 <div class="name">21.09.2019 by Maya Delia</div>
                                             </div>
@@ -363,7 +333,7 @@
                                             <div class="author">
                                                 <div class="name">21.09.2019 by Maya Delia</div>
                                                 <div class="userpic">
-                                                    <img src="img/demo-bg.jpg" alt="">
+                                                    <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="Usuario">
                                                 </div>
                                             </div>
                                         </div>
@@ -374,17 +344,6 @@
                                             <p>
                                                 But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
                                             </p>
-                                            <div class="images lightgallery">
-                                                <a href="img/demo-bg.jpg" class="img">
-                                                    <img src="img/demo-bg.jpg" alt="">
-                                                </a>
-                                                <a href="img/demo-bg.jpg" class="img">
-                                                    <img src="img/demo-bg.jpg" alt="">
-                                                </a>
-                                                <a href="img/demo-bg.jpg" class="img">
-                                                    <img src="img/demo-bg.jpg" alt="">
-                                                </a>
-                                            </div>
                                         </div>
                                         <div class="comment_item_bottom">
                                             <div class="rating">
@@ -399,7 +358,7 @@
                                             </div>
                                             <div class="author">
                                                 <div class="userpic">
-                                                    <img src="img/demo-bg.jpg" alt="">
+                                                    <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="Usuario">
                                                 </div>
                                                 <div class="name">21.09.2019 by Maya Delia</div>
                                             </div>
@@ -420,9 +379,9 @@
                             </div>
                             <div class="write_comment">
                                 <div class="top">
-                                    <h3 class="title">Write A Review</h3>
+                                    <h3 class="title">Escribe un comentario</h3>
                                     <div class="rating">
-                                        <div class="rating-text">Assigned Rating</div>
+                                        <div class="rating-text">Estrellas</div>
                                         <div class="rating-stars stars user-rating">
                                             <div class="star"></div>
                                             <div class="star"></div>
@@ -433,17 +392,12 @@
                                     </div>
                                 </div>
                                 <div class="center">
-                                    <input type="text" class="input" placeholder="Name">
+                                    <input type="text" class="input" placeholder="Nombre">
                                     <input type="text" class="input" placeholder="Email">
-                                    <textarea class="textarea" placeholder="Reviews"></textarea>
+                                    <textarea class="textarea" placeholder="Comentario"></textarea>
                                 </div>
                                 <div class="bottom">
-                                    <div class="files">
-                                        <label for="file-1" class="label"><span>Add a photo</span></label>
-                                        <input type="file" id="file-1">
-                                        <div class="file-name"><span>IMG_5050.JPG,</span> <span>IMG_5051.JPG</span></div>
-                                    </div>
-                                    <button class="submit button">Send</button>
+                                    <button class="submit button">Comentar</button>
                                 </div>
                             </div>
                         </div>
@@ -453,15 +407,10 @@
                                     <li><a class="active" href="#head">Imágenes</a></li>
                                     <li><a href="#overview">Descripción</a></li>
                                     <li><a href="#included">Incluido</a></li>
-                                    <li><a href="#location">Localización</a></li>
                                     <li><a href="#stories">Stories</a></li>
                                     <li><a href="#reviews">Comentarios</a></li>
                                 </ul>
                             </div>
-                            <a class="book-now button js-popup-open" data-href="#book-now">
-                                <span>Book now</span>
-                                <span class="cost">from $356</span>
-                            </a>
                             <div class="add-to-favorites">
                                 <div class="add_bookmark fav-button">
                                     <i class="is-added bouncy"></i>
@@ -469,7 +418,7 @@
                                     <span class="fav-overlay"></span>
                                 </div>
                                 <div class="fav-text">
-                                    Add to favourites
+                                    Favoritos
                                 </div>
                             </div>
 
