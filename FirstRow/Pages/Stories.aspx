@@ -63,7 +63,7 @@
                     </div>
                     <div class="page_body">
                         <div class="stories_list">
-                            <a href="story.html" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story.aspx" class="story_item" style="background-image: url(img/demo-bg.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
                                         <div class="flag_wrap">
@@ -80,7 +80,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story.html" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story.aspx" class="story_item" style="background-image: url(img/demo-bg.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
                                         <div class="flag_wrap">
@@ -97,7 +97,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story.html" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story.aspx" class="story_item" style="background-image: url(img/demo-bg.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
                                         <div class="flag_wrap">
@@ -114,7 +114,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story.html" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story.aspx" class="story_item" style="background-image: url(img/demo-bg.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
                                         <div class="flag_wrap">
@@ -131,7 +131,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story.html" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story.aspx" class="story_item" style="background-image: url(img/demo-bg.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
                                         <div class="flag_wrap">
@@ -148,7 +148,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story.html" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story.aspx" class="story_item" style="background-image: url(img/demo-bg.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
                                         <div class="flag_wrap">
@@ -165,7 +165,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story.html" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story.aspx" class="story_item" style="background-image: url(img/demo-bg.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
                                         <div class="flag_wrap">
@@ -182,7 +182,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story.html" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story.aspx" class="story_item" style="background-image: url(img/demo-bg.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
                                         <div class="flag_wrap">
@@ -199,7 +199,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story.html" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story.aspx" class="story_item" style="background-image: url(img/demo-bg.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
                                         <div class="flag_wrap">
@@ -216,7 +216,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story.html" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story.aspx" class="story_item" style="background-image: url(img/demo-bg.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
                                         <div class="flag_wrap">
