@@ -8,6 +8,8 @@
     <title>FirstRow - Making Dreams</title>
     <link rel="stylesheet" type="text/css" href="~/assets/css/style.css" >
     <link rel="icon" type="image/x-icon" href="~/assets/img/favicons/favicon.png">
+    <meta name="msapplication-TileColor" content="#151515">
+    <meta name="theme-color" content="#151515">
 </head>  
 
 <body>
@@ -18,7 +20,7 @@
                     <div class="wrap_float">
                         <div class="left">
                             <a href="/" class="logo">
-                                <img src="Assets/img/Logo_Principal.png" alt="">
+                                <img src="../../assets/img/Logo_Principal.png" alt="">
                             </a>
                         </div>
                         <div class="menu_wrap" id="menu_wrap">

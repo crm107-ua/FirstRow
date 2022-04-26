@@ -1,14 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Galeria.aspx.cs" Inherits="FirstRow.Pages.Galeria" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
     <div class="breadcrumbs white-color">
-            <div class="wrap">
-                <div class="wrap_float">
-                    <a href="/">FirstRow</a>
-                    <span class="separator">/</span>
-                    <a href="/galeria">Galeria</a>
-                </div>
+        <div class="wrap">
+            <div class="wrap_float">
+                <a href="/">FirstRow</a>
+                <span class="separator">/</span>
+                <a href="/galeria">Galeria</a>
             </div>
         </div>
+    </div>
     <div class="gallery-page">
             <div class="wrap">
                 <div class="wrap_float">
@@ -53,9 +53,6 @@
                                     <option value="Brunei Darussalam">Brunei Darussalam</option>
                                     <option value="Bulgaria">Bulgaria</option>
                                 </select>
-                            <!--> <asp:DropDownList ID="Destino" runat="server" OnSelectedIndexChanged="Destino_SelectedIndexChanged">
-                            </asp:DropDownList>
-                            </!-->
                         </div>
                     </div>
                     <div class="gallery-page-body">

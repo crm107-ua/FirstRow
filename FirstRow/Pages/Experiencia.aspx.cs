@@ -15,9 +15,39 @@ namespace FirstRow.Pages
             Route myRoute = RouteData.Route as Route;
             if (myRoute != null && myRoute.Url == "experiencia/{slug}")
             {
-                string slug = RouteData.Values["slug"].ToString();
-                Response.Write("Exeperiencia con slug: " + slug);
+                slug.Text = RouteData.Values["slug"].ToString();
             }
+
+        }
+
+        protected void comentar(object sender, EventArgs e)
+        {
+
+
+        }
+
+
+        protected void reserva(object sender, EventArgs e)
+        {
+
+
+        }
+
+        protected void modificarExperiencia(object sender, EventArgs e)
+        {
+
+
+        }
+
+        protected void eliminarComentario(object sender, EventArgs e)
+        {
+
+
+        }
+
+        protected void eliminarExperiencia(object sender, EventArgs e)
+        {
+
 
         }
     }
