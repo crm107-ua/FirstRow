@@ -15,13 +15,52 @@
                     <div class="gallery-page-head">
                         <h1 class="title">Galería</h1>
                         <div class="select_wrap">
-                            <asp:DropDownList ID="Destino" runat="server" OnSelectedIndexChanged="Destino_SelectedIndexChanged">
+                            <select>
+                                    <option value="Destination" disabled="" selected="">Destination</option>
+                                    <option value="United States">United States</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="Afghanistan">Afghanistan</option>
+                                    <option value="Albania">Albania</option>
+                                    <option value="Algeria">Algeria</option>
+                                    <option value="American Samoa">American Samoa</option>
+                                    <option value="Andorra">Andorra</option>
+                                    <option value="Angola">Angola</option>
+                                    <option value="Anguilla">Anguilla</option>
+                                    <option value="Antarctica">Antarctica</option>
+                                    <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                    <option value="Argentina">Argentina</option>
+                                    <option value="Armenia">Armenia</option>
+                                    <option value="Aruba">Aruba</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Austria">Austria</option>
+                                    <option value="Azerbaijan">Azerbaijan</option>
+                                    <option value="Bahamas">Bahamas</option>
+                                    <option value="Bahrain">Bahrain</option>
+                                    <option value="Bangladesh">Bangladesh</option>
+                                    <option value="Barbados">Barbados</option>
+                                    <option value="Belarus">Belarus</option>
+                                    <option value="Belgium">Belgium</option>
+                                    <option value="Belize">Belize</option>
+                                    <option value="Benin">Benin</option>
+                                    <option value="Bermuda">Bermuda</option>
+                                    <option value="Bhutan">Bhutan</option>
+                                    <option value="Bolivia">Bolivia</option>
+                                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                                    <option value="Botswana">Botswana</option>
+                                    <option value="Bouvet Island">Bouvet Island</option>
+                                    <option value="Brazil">Brazil</option>
+                                    <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+                                    <option value="Brunei Darussalam">Brunei Darussalam</option>
+                                    <option value="Bulgaria">Bulgaria</option>
+                                </select>
+                            <!--> <asp:DropDownList ID="Destino" runat="server" OnSelectedIndexChanged="Destino_SelectedIndexChanged">
                             </asp:DropDownList>
+                            </!-->
                         </div>
                     </div>
                     <div class="gallery-page-body">
                         <div class="gallery-list">
-                            <a href="gallery-single.html" class="gallery-item">
+                            <a href="Pages/Seccion_Galeria.aspx" class="gallery-item">
                                 <div class="top">
                                     <p class="country">Australia</p>
                                     <p class="title">Las preciosas aves de Australia</p>
@@ -47,7 +86,7 @@
                                 </div>
                             </a>
 
-                            <a href="gallery-single.html" class="gallery-item">
+                            <a href="Pages/Seccion_Galeria.aspx" class="gallery-item">
                                 <div class="top">
                                     <p class="country">Roma</p>
                                     <p class="title">La impresionante arquitectura de Roma</p>
@@ -73,7 +112,7 @@
                                 </div>
                             </a>
 
-                            <a href="gallery-single.html" class="gallery-item">
+                            <a href="Pages/Seccion_Galeria.aspx" class="gallery-item">
                                 <div class="top">
                                     <p class="country">Madagascar</p>
                                     <p class="title">El mundo bajo la superficie</p>
@@ -99,7 +138,7 @@
                                 </div>
                             </a>
 
-                            <a href="gallery-single.html" class="gallery-item">
+                            <a href="Pages/Seccion_Galeria.aspx" class="gallery-item">
                                 <div class="top">
                                     <p class="country">Tailandia</p>
                                     <p class="title">Hermosas playas</p>
