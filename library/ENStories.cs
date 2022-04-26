@@ -10,17 +10,17 @@ namespace library
     {
         private int _id;
         private string _nombre;
-        private DateTime _Fecha;
-        private string _slug;
+        private DateTime _fecha;
         private int _pais;
         private ENUsuario _usuario;
+        private string _slug;
 
         public int Id { get => _id; set => _id = value; }
         public string Nombre { get => _nombre; set => _nombre = value; }
-        public DateTime Fecha { get => _Fecha; set => _Fecha = value; }
+        public DateTime Fecha { get => _fecha; set => _fecha = value; }
         public int Pais { get => _pais; set => _pais = value; }
         public ENUsuario Usuario { get => _usuario; set => _usuario = value; }
-        public string Slug { get => _slug; set => _slug = value; }
+        public string slug { get => _slug; set => _slug = value; }
 
         public ENStories()
         {
@@ -29,7 +29,7 @@ namespace library
             Fecha = new DateTime(); //fecha: 01-01-0001 00:00:00
             Pais = 0; //supongo que el país por defecto es 0, posibles cambios
             Usuario = new ENUsuario();
-            Slug = "";
+            slug = "";
         }
 
         public ENStories(int id, ENUsuario usuario, DateTime fecha, string nombre, int pais)
@@ -39,7 +39,7 @@ namespace library
             this.Fecha = fecha;
             this.Pais = pais;
             this.Usuario = usuario;
-            this.Slug = "";//TODO
+            this.slug = usuario.nickname + fecha.ToString();//TODO ¿?
         }
 
         public ENStories(ENUsuario usuario, DateTime fecha, string nombre, int pais)
@@ -49,7 +49,7 @@ namespace library
             this.Fecha = fecha;
             this.Pais = pais;
             this.Usuario = usuario;
-            this.Slug = "";//TODO
+            this.slug = usuario.nickname + fecha.ToString();//TODO ¿?
         }
 
         public ENStories(ENStories story)
@@ -59,7 +59,7 @@ namespace library
             this.Fecha = story.Fecha;
             this.Pais = story.Pais;
             this.Usuario = story.Usuario;
-            this.Slug = story.Slug;
+            this.slug = story.slug;
         }
 
         /**
