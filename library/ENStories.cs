@@ -11,6 +11,7 @@ namespace library
         private int _Id;
         private string _Nombre;
         private DateTime _Fecha;
+        private string _slug;
         private int _Pais;
         private ENUsuario _Usuario;
 
@@ -19,6 +20,7 @@ namespace library
         public DateTime Fecha { get => _Fecha; set => _Fecha = value; }
         public int Pais { get => _Pais; set => _Pais = value; }
         public ENUsuario Usuario { get => _Usuario; set => _Usuario = value; }
+        public string Slug { get => _slug; set => _slug = value; }
 
         public ENStories()
         {
@@ -27,6 +29,7 @@ namespace library
             Fecha = new DateTime(); //fecha: 01-01-0001 00:00:00
             Pais = 0; //supongo que el país por defecto es 0, posibles cambios
             Usuario = new ENUsuario();
+            Slug = "";
         }
 
         public ENStories(int id, ENUsuario usuario, DateTime fecha, string nombre, int pais)
@@ -36,6 +39,7 @@ namespace library
             this.Fecha = fecha;
             this.Pais = pais;
             this.Usuario = usuario;
+            this.Slug = "";//TODO
         }
 
         public ENStories(ENUsuario usuario, DateTime fecha, string nombre, int pais)
@@ -45,6 +49,7 @@ namespace library
             this.Fecha = fecha;
             this.Pais = pais;
             this.Usuario = usuario;
+            this.Slug = "";//TODO
         }
 
         public ENStories(ENStories story)
@@ -54,6 +59,7 @@ namespace library
             this.Fecha = story.Fecha;
             this.Pais = story.Pais;
             this.Usuario = story.Usuario;
+            this.Slug = story.Slug;
         }
 
         /**

@@ -13,5 +13,25 @@ namespace FirstRow.Pages
         {
 
         }
+
+        protected void crearStorie(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void modificarStorie(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void verUsuario(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void eliminarStorie(object sender, EventArgs e)
+        {
+
+        }
     }
 }
