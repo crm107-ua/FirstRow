@@ -42,11 +42,12 @@ namespace FirstRow.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<string> paises=GetCountry();
+            /*List<string> paises=GetCountry();
             paises.Sort();
             Destino.DataSource = paises;
             Destino.DataBind();
             Destino.Items.Insert(0, "Destino");
+            */
             //Hacer un bucle para cargar todas las galerias.
         }
 
@@ -55,9 +56,11 @@ namespace FirstRow.Pages
             //Cargar mas elementos de la galeria
         }
 
+        /*
         protected void Destino_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Cambiado de filtrado
         }
+        */
     }
 }

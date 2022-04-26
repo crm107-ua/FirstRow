@@ -14,5 +14,11 @@ namespace FirstRow.Pages
         {
 
         }
+
+        protected void modificarExperiencias(object sender, EventArgs e)
+        {
+
+
+        }
     }
 }

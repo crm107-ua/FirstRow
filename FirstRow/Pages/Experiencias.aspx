@@ -29,7 +29,7 @@
                 <div class="wrap">
                     <div class="wrap_float">
                         <div class="posts">
-                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-1.jpg)">
+                            <a href="/experiencia/viaje-a-croacia" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-1.jpg)">
                                 <div class="tour_item_top">
                                     <p class="country">
                                         <span>North Africa</span>
@@ -62,7 +62,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-2.jpg)">
+                            <a href="/experiencia/viaje-a-croacia" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-2.jpg)">
                                 <div class="tour_item_top">
                                     <p class="country">
                                         <span>United States of America</span>
@@ -95,7 +95,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-4.jpg)">
+                            <a href="/experiencia/viaje-a-croacia" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-4.jpg)">
                                 <div class="tour_item_top">
                                     <p class="country">
                                         <span>The biggest part of the world</span>
@@ -128,7 +128,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-3.jpg)">
+                            <a href="/experiencia/viaje-a-croacia" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-3.jpg)">
                                 <div class="tour_item_top">
                                     <p class="country">
                                         <span>Iceland</span>
@@ -161,7 +161,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-5.jpg)">
+                            <a href="/experiencia/viaje-a-croacia" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-5.jpg)">
                                 <div class="tour_item_top">
                                     <p class="country">
                                         <span>Japan</span>
@@ -194,7 +194,7 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="tour-page-right-sidebar.html" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-6.jpg)">
+                            <a href="/experiencia/viaje-a-croacia" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-6.jpg)">
                                 <div class="tour_item_top">
                                     <p class="country">
                                         <span>Australia</span>
