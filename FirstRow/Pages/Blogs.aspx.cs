@@ -13,5 +13,17 @@ namespace FirstRow.Pages
         {
 
         }
+
+        protected void modificarBlog(object sender, EventArgs e) { }
+        protected void addStorieBlog(object sender, EventArgs e) { }
+        protected void delStorieBlog(object sender, EventArgs e) { }
+        protected void addExperienciaRecomendadaBlog(object sender, EventArgs e) { }
+        protected void delExperienciaRecomendadaBlog(object sender, EventArgs e) { }
+        protected void addCarruselImageBlog(object sender, EventArgs e) { }
+        protected void delCarruselImageBlog(object sender, EventArgs e) { }
+        protected void addComentarioBlog(object sender, EventArgs e) { }
+        protected void delComentarioBlog(object sender, EventArgs e) { }
+        protected void eliminarBlog(object sender, EventArgs e) { }
+
     }
 }

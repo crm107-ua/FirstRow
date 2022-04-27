@@ -13,5 +13,14 @@ namespace FirstRow.Pages
 
     public partial class Galeria
     {
+
+        /// <summary>
+        /// Control VerMas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button VerMas;
     }
 }

@@ -13,5 +13,10 @@ namespace FirstRow.Pages
         {
 
         }
+
+        protected void modificarPaginaStories(object sender, EventArgs e)
+        {
+
+        }
     }
 }

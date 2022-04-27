@@ -8,7 +8,6 @@ namespace library
 {
     public class ENWearing
     {
-        //private const string defaultSlug = "FirstRow/Wearing/"; //no se como va esto :(
         private int _Id;
         private string _Descripcion;
         private string _Slug;
@@ -18,7 +17,7 @@ namespace library
 
         public int Id { get => _Id; set => _Id = value; }
         public string Descripcion { get => _Descripcion; set => _Descripcion = value; }
-        public string Slug { get => _Slug; set => _Slug = value; }
+        public string slug { get => _Slug; set => _Slug = value; }
         public List<string> Imagenes { get => _Imagenes; set => _Imagenes = value; }
         public ENViajes Viaje { get => _Viaje; set => _Viaje = value; }
         public string Texto { get => _Texto; set => _Texto = value; }
@@ -28,7 +27,7 @@ namespace library
         {
             Id = 0;
             Descripcion = "";
-            Slug = "";
+            slug = "";
             Imagenes = new List<string>();
             Viaje = new ENViajes();
             Texto = "";
@@ -36,9 +35,9 @@ namespace library
 
         public ENWearing(string desc, List<string> imgs, ENViajes viaje, string texto)
         {
-            this.Id = viaje.GetHashCode(); //posible forma de generarlo
+            this.Id = viaje.GetHashCode(); //posible forma de generarlo, hay que sobrescribirlo
             this.Descripcion = desc;
-            this.Slug = /*deafultSlug + */"";
+            this.slug = "";//TODO
             this.Imagenes = imgs;
             this.Viaje = viaje;
             this.Texto = texto;
@@ -48,7 +47,7 @@ namespace library
         {
             this.Id = wearing.Id;
             this.Descripcion = wearing.Descripcion;
-            this.Slug = wearing.Slug;
+            this.slug = wearing.slug;
             this.Imagenes = wearing.Imagenes;
             this.Viaje = wearing.Viaje;
             this.Texto = wearing.Texto;

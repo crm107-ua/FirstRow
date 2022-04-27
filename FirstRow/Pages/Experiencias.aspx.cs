@@ -12,12 +12,13 @@ namespace FirstRow.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Route myRoute = RouteData.Route as Route;
-            if (myRoute != null && myRoute.Url == "experiencias/{slug}")
-            {
-                string slug = RouteData.Values["slug"].ToString();
-                Response.Write("Exeperiencia con slug: " + slug);
-            }
+
+        }
+
+        protected void modificarExperiencias(object sender, EventArgs e)
+        {
+
+
         }
     }
 }
