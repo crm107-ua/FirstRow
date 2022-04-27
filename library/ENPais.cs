@@ -40,5 +40,11 @@ namespace library
             return paises.readPaises(listaPaises);
         }
 
+        public bool ReadPais(ENPais pais)
+        {
+            CADPaises paises = new CADPaises();
+            return paises.ReadPais(pais);
+        }
+
     }
 }
