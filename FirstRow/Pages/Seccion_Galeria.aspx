@@ -25,26 +25,21 @@
                     </div>
                     <div class="gallery-page-body">
                         <div class="image-list lightgallery">
-                            <a href="img/demo-bg.jpg" class="image-item">
+                            <a href="https://www.junglepark.es/wp-content/uploads/2017/05/casuarioblog2-1024x978.jpg" class="image-item">
                                 <img src="https://www.junglepark.es/wp-content/uploads/2017/05/casuarioblog2-1024x978.jpg" alt="">
                             </a>
-
-                            <a href="img/demo-bg.jpg" class="image-item">
+                            <a href="https://p0.pikist.com/photos/377/731/pelican-bird-sea-birds-water-nature-australia-pelecanus-conspicillatus-australian-pelican-4k-wallpaper.jpg" class="image-item">
                                 <img src="https://p0.pikist.com/photos/377/731/pelican-bird-sea-birds-water-nature-australia-pelecanus-conspicillatus-australian-pelican-4k-wallpaper.jpg" alt="">
                             </a>
-
-                            <a href="img/demo-bg.jpg" class="image-item">
+                            <a href="https://dam.ngenespanol.com/wp-content/uploads/2021/03/GettyImages-976978800.jpg" class="image-item">
                                 <img src="https://dam.ngenespanol.com/wp-content/uploads/2021/03/GettyImages-976978800.jpg" alt="">
                             </a>
-
-                            <a href="img/demo-bg.jpg" class="image-item">
+                            <a href="https://dam.ngenespanol.com/wp-content/uploads/2021/03/aves.jpg" class="image-item">
                                 <img src="https://dam.ngenespanol.com/wp-content/uploads/2021/03/aves.jpg" alt="">
                             </a>
-
-                            <a href="img/demo-bg.jpg" class="image-item">
+                            <a href="https://www.el-carabobeno.com/wp-content/uploads/2017/09/maxresdefault-7.jpg" class="image-item">
                                 <img src="https://www.el-carabobeno.com/wp-content/uploads/2017/09/maxresdefault-7.jpg" alt="">
                             </a>
-
                         </div>
                         <a href="/experiencias" class="tour">
                             <div class="item">

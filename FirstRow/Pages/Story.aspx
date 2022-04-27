@@ -52,7 +52,7 @@
                                             <a href="#"><span>Page</span></a>
                                             <ul class="dropdown_ul">
                                                 <li><a href="stories-full-width.html">Stories Full With</a></li>
-                                                <li><a href="story.aspx">Stories Single</a></li>
+                                                <li><a href="story/ejemplo">Stories Single</a></li>
                                                 <li><a href="stories-right-sidebar.html">Stories Right Sidebar</a></li>
                                                 <li><a href="stories-left-sidebar.html">Stories Left Sidebar</a></li>
                                                 <li><a href="gallery.html">Gallery</a></li>
@@ -146,7 +146,7 @@
                         <div class="arrow next"></div>
                     </div>
                     <div class="items stories_items" id="stories_items">
-                        <a href="story.aspx" class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
+                        <a href="story/ejemplo" class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
                             <div class="_info">
                                 <div class="country"><span>Madagascar</span></div>
                                 <div class="flag">
