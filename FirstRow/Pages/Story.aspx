@@ -25,7 +25,7 @@
                     <div class="left">
                         <div class="search_btn"></div>
                         <a href="/" class="logo">
-                            <img src="img/logo.svg" alt="">
+                            <img src="../../assets/img/Logo_Principal.png" alt="">
                         </a>
                     </div>
                     <div class="menu_wrap" id="menu_wrap">
@@ -137,7 +137,7 @@
         </div>
         <div class="stories_page" id="stories_page">
             <a href="travel-list-full-width.html" class="left_btn">Choose tour</a>
-            <a href="stories-right-sidebar.html" class="right_btn">More stories</a>
+            <!--<a href="stories-right-sidebar.html" class="right_btn">More stories</a>-->
             <div class="stories_bg" id="stories_bg"></div>
             <div class="stories_page_wrap">
                 <div class="stories_box" id="stories_box">
@@ -149,9 +149,6 @@
                         <a href="story/ejemplo" class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
                             <div class="_info">
                                 <div class="country"><span>Madagascar</span></div>
-                                <div class="flag">
-                                    <img src="img/demo-bg.jpg" alt="">
-                                </div>
                             </div>
                             <div>
                                 <div class="tag">Next Stories</div>
@@ -166,9 +163,6 @@
                         <div class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
                             <div class="_info">
                                 <div class="country"><span>Madagascar</span></div>
-                                <div class="flag">
-                                    <img src="img/demo-bg.jpg" alt="">
-                                </div>
                             </div>
                             <h3 class="_title">
                                 The amazing world of the animals of Madagascar
@@ -180,9 +174,6 @@
                         <div class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
                             <div class="_info">
                                 <div class="country"><span>Madagascar</span></div>
-                                <div class="flag">
-                                    <img src="img/demo-bg.jpg" alt="">
-                                </div>
                             </div>
                             <h3 class="_title">
                                 Chameleon
@@ -194,9 +185,6 @@
                         <div class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
                             <div class="_info">
                                 <div class="country"><span>Madagascar</span></div>
-                                <div class="flag">
-                                    <img src="img/demo-bg.jpg" alt="">
-                                </div>
                             </div>
                             <h3 class="_title">
                                 Flamingo
@@ -208,9 +196,6 @@
                         <div class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
                             <div class="_info">
                                 <div class="country"><span>Madagascar</span></div>
-                                <div class="flag">
-                                    <img src="img/demo-bg.jpg" alt="">
-                                </div>
                             </div>
                             <h3 class="_title">
                                 Frog
@@ -222,9 +207,6 @@
                         <div class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
                             <div class="_info">
                                 <div class="country"><span>Madagascar</span></div>
-                                <div class="flag">
-                                    <img src="img/demo-bg.jpg" alt="">
-                                </div>
                             </div>
                             <h3 class="_title">
                                 Snake
@@ -236,9 +218,6 @@
                         <div class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
                             <div class="_info">
                                 <div class="country"><span>Madagascar</span></div>
-                                <div class="flag">
-                                    <img src="img/demo-bg.jpg" alt="">
-                                </div>
                             </div>
                             <h3 class="_title">
                                 Mandarinfish
@@ -254,9 +233,10 @@
                     <div class="story_info">
                         <div class="author">
                             <div class="userpic">
-                                <img src="img/demo-bg.jpg" alt="">
+                                <img src="../../assets/img/demo-bg.jpg" alt="">
                             </div>
                             <p class="name">21.09.2019 by Maya Delia</p>
+                            <!-- <asp:Label class="name" runat="server" ID="authorLabel" Text="21.09.2019-Maya Delia" /> -->
                         </div>
                         <div class="counter" id="stories-counter">
                             <span class="this">1</span> / <span class="all"></span>
