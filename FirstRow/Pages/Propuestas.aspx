@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Propuestas.aspx.cs" Inherits="FirstRow.Pages.Propuestas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
-        <div class="image_header" style="background-image: url(http://wallup.net/wp-content/uploads/2017/11/17/242954-triangle-minimalism-solarized_colorscheme.jpg)"></div>
+        <div class="image_header" style="background-image: url(https://fondosmil.com/fondo/49857.jpg)"></div>
         <div class="breadcrumbs">
             <div class="wrap">
                 <div class="wrap_float">
@@ -14,27 +14,24 @@
             <div class="wrap">
                 <div class="wrap_float">
                     <div class="page_head">
-                        <h1 class="title" style="color:white;">
-                            Propuestas
-                        </h1>
-                        <p class="subtitle" style="color:white;">
-                            Las mejores ideas de nuestros clientes
+                        <p class="title" style="color:white;">
+                            En este apartado vereis las diferentes propuestas de viajes ofrecidas por nuestros clientes.
                         </p>
                     </div>
                     <div class="page_body">
                         <div class="blog-list">
                             <a class="blog_item" href="blog-single-right-sidebar.html">
-                                <div class="blog_item_top" style="background-image: url();">
+                                <div class="blog_item_top" style="background-image: url(https://wallpaperaccess.com/full/4229144.jpg);">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">
                                             <div class="sq_content">
                                                 <div class="tags">
-                                                    <div class="tag blue">
-                                                        Empresa
+                                                    <div class="tag black ">
+                                                        Isla
                                                     </div>
                                                 </div>
                                                 <h3 class="_title">
-                                                    Titulo propuesta
+                                                    Descubriendo Los Cabos
                                                 </h3>
                                             </div>
                                         </div>
@@ -53,17 +50,17 @@
                                 </div>
                             </a>
                             <a class="blog_item" href="blog-single-right-sidebar.html">
-                                <div class="blog_item_top" style="background-image: url();">
+                                <div class="blog_item_top" style="background-image: url(https://w0.peakpx.com/wallpaper/800/81/HD-wallpaper-greek-island-thira-summer-santorini-greece-romantic-places-aegean-sea.jpg);">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">
                                             <div class="sq_content">
                                                 <div class="tags">
-                                                    <div class="tag blue">
-                                                        Empresa
+                                                    <div class="tag black">
+                                                        Isla
                                                     </div>
                                                 </div>
                                                 <h3 class="_title">
-                                                    Titulo propuesta
+                                                    Las Islas Griegas, un paraiso por visitar
                                                 </h3>
                                             </div>
                                         </div>
@@ -82,17 +79,17 @@
                                 </div>
                             </a>
                             <a class="blog_item" href="blog-single-right-sidebar.html">
-                                <div class="blog_item_top" style="background-image: url();">
+                                <div class="blog_item_top" style="background-image: url(https://fondosmil.com/fondo/29558.jpg);">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">
                                             <div class="sq_content">
                                                 <div class="tags">
-                                                    <div class="tag blue">
-                                                        Empresa
+                                                    <div class="tag red">
+                                                        Ciudad
                                                     </div>
                                                 </div>
                                                 <h3 class="_title">
-                                                    Titulo propuesta
+                                                    Japón con los tuyos
                                                 </h3>
                                             </div>
                                         </div>
