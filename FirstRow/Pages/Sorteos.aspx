@@ -23,18 +23,18 @@
                     </div>
                     <div class="page_body">
                         <div class="blog-list">
-                            <a class="blog_item" href="blog-single-right-sidebar.html">
+                            <a class="blog_item" href="sorteo/sorteo-de-experiencia-por-el-atlantico">
                                 <div class="blog_item_top" style="background-image: url();">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">
                                             <div class="sq_content">
                                                 <div class="tags">
                                                     <div class="tag red">
-                                                        Empresa
+                                                        Travel S.A
                                                     </div>
                                                 </div>
                                                 <h3 class="_title">
-                                                    Titulo Sorteo
+                                                    Sorteo de experiencia por el Atlántico
                                                 </h3>
                                             </div>
                                         </div>
@@ -52,18 +52,18 @@
                                     </div>
                                 </div>
                             </a>
-                            <a class="blog_item" href="blog-single-right-sidebar.html">
+                            <a class="blog_item" href="sorteo/sorteo-de-experiencia-por-el-mediterraneo">
                                 <div class="blog_item_top" style="background-image: url();">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">
                                             <div class="sq_content">
                                                 <div class="tags">
                                                     <div class="tag black">
-                                                        Empresa
+                                                        Jet Dreams
                                                     </div>
                                                 </div>
                                                 <h3 class="_title">
-                                                    Titulo Sorteo
+                                                    Sorteo de experiencia por el Mediterráneo
                                                 </h3>
                                             </div>
                                         </div>
@@ -81,18 +81,18 @@
                                     </div>
                                 </div>
                             </a>
-                            <a class="blog_item" href="blog-single-right-sidebar.html">
+                            <a class="blog_item" href="sorteo/sorteo-de-experiencia-por-italia">
                                 <div class="blog_item_top" style="background-image: url();">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">
                                             <div class="sq_content">
                                                 <div class="tags">
                                                     <div class="tag blue">
-                                                        Empresa
+                                                        LeFrance
                                                     </div>
                                                 </div>
                                                 <h3 class="_title">
-                                                    Titulo Sorteo
+                                                    Sorteo de experiencia por Italia
                                                 </h3>
                                             </div>
                                         </div>
