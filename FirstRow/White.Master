@@ -102,7 +102,7 @@
                                 <asp:TextBox id="nickname" type="text" runat="server" class="input" placeholder="Usuario o Email"></asp:TextBox>
                                 <asp:TextBox id="password" type="password" runat="server" class="input" placeholder="Password"></asp:TextBox>
                                 <asp:Label id="salida" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server"></asp:Label>
-                                <asp:Button id="inicio" validationgroup="GrupoDeInicioSesion" class="submit button" onClick="iniciarSesion" runat="server" Text="Iniciar Sesión" />
+                                <asp:Button id="inicio" type="button" validationgroup="GrupoDeInicioSesion" class="submit button" onClick="iniciarSesion" runat="server" Text="Iniciar Sesión" />
                                 <asp:RequiredFieldValidator ID="NicknameReq" validationgroup="GrupoDeInicioSesion" ForeColor="Red" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server" ControlToValidate="nickname" ErrorMessage="Nickname requerido"></asp:RequiredFieldValidator>
                                 <asp:RequiredFieldValidator ID="PasswordReq" validationgroup="GrupoDeInicioSesion" ForeColor="Red" style="float: left; margin-bottom: 30px; margin-right: 50px; margin-top: 5px;" runat="server" ControlToValidate="password" ErrorMessage="Contraseña requerida"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="NicknameReg" validationgroup="GrupoDeInicioSesion" ForeColor="Red" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server" Display="Dynamic" ValidationExpression="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"  ControlToValidate="nickname" 
@@ -391,6 +391,55 @@
                     </div>
                     <div class="close"></div>
                 </div>
+            <div class="popup book-now-popup" id="book-now">
+        <div class="scroll">
+            <div class="scroll_wrap">
+                <div class="popup-head">
+                    <div class="title">Book Now</div>
+                </div>
+                <div class="popup-body">
+                    <div class="tour-title">
+                        <div class="img">
+                            <img src="Assets/img/demo-bg.jpg" alt="">
+                        </div>
+                        <div class="tour-name">
+                            Tour to the Arctic is an exotic journey on the verge of extreme
+                        </div>
+                    </div>
+                    <div class="tour-info">
+                        <div class="col">
+                            <div class="label">Check In</div>
+                            <div class="date">
+                                <div class="day">09</div>
+                                <div class="month">May</div>
+                                <div class="year">2019</div>
+                            </div>
+                            <div class="label">Aduld: <span>3</span></div>
+                        </div>
+                        <div class="col">
+                            <div class="label">Check Out</div>
+                            <div class="date">
+                                <div class="day">09</div>
+                                <div class="month">May</div>
+                                <div class="year">2019</div>
+                            </div>
+                            <div class="label">Children: <span>0</span></div>
+                        </div>
+                    </div>
+                    <div class="form">
+                        <input type="text" class="input" placeholder="Your First Name">
+                        <input type="text" class="input" placeholder="Your Last Name">
+                        <input type="email" class="input" placeholder="Your Email">
+                        <input type="tel" class="input" placeholder="Your Number Phone">
+                        <textarea class="textarea" placeholder="Where are your address?"></textarea>
+                        <textarea class="textarea" placeholder="Note:"></textarea>
+                        <button class="submit button js-submit">Book Now | <b>$356</b></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="close"></div>
+    </div>
             <div class="footer">
                 <div class="wrap">
                     <div class="wrap_float">
@@ -594,55 +643,6 @@
                         <input type="text" class="input" placeholder="Phone">
                         <textarea class="textarea" placeholder="Your Massage"></textarea>
                         <button class="submit button js-submit">Send Massage</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="close"></div>
-    </div>
-    <div class="popup book-now-popup" id="book-now">
-        <div class="scroll">
-            <div class="scroll_wrap">
-                <div class="popup-head">
-                    <div class="title">Book Now</div>
-                </div>
-                <div class="popup-body">
-                    <div class="tour-title">
-                        <div class="img">
-                            <img src="Assets/img/demo-bg.jpg" alt="">
-                        </div>
-                        <div class="tour-name">
-                            Tour to the Arctic is an exotic journey on the verge of extreme
-                        </div>
-                    </div>
-                    <div class="tour-info">
-                        <div class="col">
-                            <div class="label">Check In</div>
-                            <div class="date">
-                                <div class="day">09</div>
-                                <div class="month">May</div>
-                                <div class="year">2019</div>
-                            </div>
-                            <div class="label">Aduld: <span>3</span></div>
-                        </div>
-                        <div class="col">
-                            <div class="label">Check Out</div>
-                            <div class="date">
-                                <div class="day">09</div>
-                                <div class="month">May</div>
-                                <div class="year">2019</div>
-                            </div>
-                            <div class="label">Children: <span>0</span></div>
-                        </div>
-                    </div>
-                    <div class="form">
-                        <input type="text" class="input" placeholder="Your First Name">
-                        <input type="text" class="input" placeholder="Your Last Name">
-                        <input type="email" class="input" placeholder="Your Email">
-                        <input type="tel" class="input" placeholder="Your Number Phone">
-                        <textarea class="textarea" placeholder="Where are your address?"></textarea>
-                        <textarea class="textarea" placeholder="Note:"></textarea>
-                        <button class="submit button js-submit">Book Now | <b>$356</b></button>
                     </div>
                 </div>
             </div>

@@ -437,8 +437,8 @@
                             <div class="label">Aduld</div>
                             <div class="num_wrap">
                                 <div class="buttons">
-                                    <button class="plus"></button>
-                                    <button class="minus"></button>
+                                    <button type="button" class="plus"></button>
+                                    <button type="button" class="minus"></button>
                                 </div>
                                 <input type="number" class="val js_num" value="3" min="0" max="99">
                             </div>
@@ -447,8 +447,8 @@
                             <div class="label">Children</div>
                             <div class="num_wrap">
                                 <div class="buttons">
-                                    <button class="plus"></button>
-                                    <button class="minus"></button>
+                                    <button type="button" class="plus"></button>
+                                    <button type="button" class="minus"></button>
                                 </div>
                                 <input type="number" class="val js_num" value="3" min="0" max="99">
                             </div>
