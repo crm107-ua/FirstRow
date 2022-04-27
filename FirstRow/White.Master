@@ -67,12 +67,15 @@
                                     <div class="userlink" id="userlink"></div>
                                     <div class="usermenu" id="usermenu">
                                         <ul>
-                                            <li id="login_sect" runat="server"><a class="js-popup-open" data-href="#login">Iniciar sesion</a></li>
-                                            <li id="register_sect" runat="server"><a class="js-popup-open" data-href="#registration">Registrarse</a></li>
+                                            <li id="login_sect" runat="server"><a id="login_user_pop_up" class="js-popup-open" data-href="#login">Iniciar sesion</a></li>
+                                            <li id="register_sect" runat="server"><a id="register_user_pop_up" class="js-popup-open" data-href="#registration">Registrarse</a></li>
                                             <li id="settings_sect" runat="server"><a class="js-popup-open" data-href="#profile-setting">Ajustes</a></li>
                                             <li id="settings_emp_sect" runat="server"><a class="js-popup-open" data-href="#empresa-setting">Ajustes de empresa</a></li> 
                                             <li id="logout_sect" runat="server"><a class="js-popup-open" data-href="#logout">Cerrar sesion</a></li>
                                         </ul>
+                                            <%-- Elementos ocultos --%>
+                                            <a hidden id="login_emp_pop_up" class="js-popup-open" data-href="#login_empresa">Iniciar sesion</a>
+                                            <a hidden id="register_emp_pop_up" class="js-popup-open" data-href="#registro_empresa">Iniciar sesion</a>
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            <asp:ContentPlaceHolder ID="Main" runat="server"></asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="Main" runat="server">/script></asp:ContentPlaceHolder>
             <div runat="server" class="popup login" id="login">
                 <div class="scroll">
                     <div class="scroll_wrap">
@@ -285,7 +288,7 @@
                                 Nos volveremos a ver pronto!
                             </div>
                             <div class="form">
-                                  <asp:Button ID="cierre" class="submit button" runat="server" OnClick="cerrarSesion" Text="Cerrar Sesión" CausesValidation="False"/>
+                                    <asp:Button ID="cierre" class="submit button" runat="server" OnClick="cerrarSesion" Text="Cerrar Sesión" CausesValidation="False"/>
                             </div>                           
                         </div>
                     </div>
@@ -392,7 +395,7 @@
                     <div class="close"></div>
                 </div>
             <div class="popup book-now-popup" id="book-now">
-        <div class="scroll">
+            <div class="scroll">
             <div class="scroll_wrap">
                 <div class="popup-head">
                     <div class="title">Book Now</div>
@@ -438,7 +441,7 @@
                 </div>
             </div>
         </div>
-        <div class="close"></div>
+            <div class="close"></div>
     </div>
             <div class="footer">
                 <div class="wrap">
@@ -673,5 +676,4 @@
     <script src="/assets/js/slick.min.js"></script>
     <script src="/assets/js/hammer.js"></script>
     <script src="/assets/js/scripts.js"></script>
-
 </html>

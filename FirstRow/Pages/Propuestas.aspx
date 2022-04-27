@@ -20,7 +20,7 @@
                     </div>
                     <div class="page_body">
                         <div class="blog-list">
-                            <a class="blog_item" href="blog-single-right-sidebar.html">
+                            <a class="blog_item" href="/propuestas">
                                 <div class="blog_item_top" style="background-image: url(https://wallpaperaccess.com/full/4229144.jpg);">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">
@@ -49,7 +49,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a class="blog_item" href="blog-single-right-sidebar.html">
+                            <a class="blog_item" href="/propuestas">
                                 <div class="blog_item_top" style="background-image: url(https://w0.peakpx.com/wallpaper/800/81/HD-wallpaper-greek-island-thira-summer-santorini-greece-romantic-places-aegean-sea.jpg);">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">
@@ -78,7 +78,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a class="blog_item" href="blog-single-right-sidebar.html">
+                            <a class="blog_item" href="/propuestas">
                                 <div class="blog_item_top" style="background-image: url(https://fondosmil.com/fondo/29558.jpg);">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">

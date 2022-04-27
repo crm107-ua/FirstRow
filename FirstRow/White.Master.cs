@@ -1,6 +1,7 @@
 ﻿using library;
 using System;
 using System.Collections.Generic;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace FirstRow
@@ -11,6 +12,7 @@ namespace FirstRow
         {
             cargarElementosSesion();
         }
+
         protected void registrarse(object sender, EventArgs e)
         {
             ENUsuario usuario = new ENUsuario();
@@ -32,6 +34,7 @@ namespace FirstRow
             else
             {
                 registro_salida.Text = "El nickname o el email ya existen.";
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_rollback", "document.addEventListener('load', function () {document.getElementById('register_user_pop_up').click();}, true);", true);
             }
         }
 
@@ -65,6 +68,7 @@ namespace FirstRow
             else
             {
                 registro_emp_salida.Text = "El nickname o el email ya existen.";
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_rollback", "document.addEventListener('load', function () {document.getElementById('register_emp_pop_up').click();}, true);", true);
             }
         }
 
@@ -81,9 +85,9 @@ namespace FirstRow
                 Session["usuario"] = usuario;
                 Response.Redirect("/");
             }
-            else
             {
                 salida.Text = "Usuario o contraseña incorrectos";
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_rollback", "document.addEventListener('load', function () {document.getElementById('login_user_pop_up').click();}, true);", true);
             }
         }
 
@@ -103,6 +107,8 @@ namespace FirstRow
             else
             {
                 salida_login_empresa.Text = "Email o contraseña incorrectos";
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_rollback", "document.addEventListener('load', function () {document.getElementById('login_emp_pop_up').click();}, true);", true);
+
             }
         }
 
