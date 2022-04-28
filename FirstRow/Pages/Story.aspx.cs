@@ -1,5 +1,6 @@
 ﻿using System;
 using library;
+using System.Web.Routing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,11 +11,20 @@ namespace FirstRow.Pages
 {
     public partial class Storie : System.Web.UI.Page
     {
+        const string example_img = "https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg";
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            string imagen = "https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg";
-            story_panel.BackImageUrl = imagen;
-            story_panel.Attributes["data-blur-bg"] = imagen;
+            Route myRoute = RouteData.Route as Route;
+            if (myRoute != null && myRoute.Url == "story/{slug}")
+            {
+                string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
+                Session["story_pais"] = cadena.Replace("-", " ");
+                country_span.InnerText = (string) Session["story_pais"];
+            }
+
+            story_panel.BackImageUrl = example_img;
+            story_panel.Attributes["data-blur-bg"] = example_img;
             firstStory(sender, e); //¿?
         }
 
@@ -50,13 +60,55 @@ namespace FirstRow.Pages
             //COMPLETAR
         }
 
-        protected void firstStory(object sender, EventArgs e)
+        private Panel createStoryPanel(string title, string text)
+        {
+            Panel p = new Panel();
+            p.CssClass = "item";
+
+            
+            Panel info = new Panel();
+            info.CssClass = "_info";
+            Panel country = new Panel();
+            country.CssClass = "country";
+            Label country_span = new Label();
+            country_span.Text = (string)Session["story_pais"];
+            country.Controls.Add(country_span);
+            info.Controls.Add(country);            
+            p.Controls.Add(info);
+
+            Label titulo = new Label();
+            titulo.CssClass = "_title";
+            titulo.Text = title;
+            p.Controls.Add(titulo);
+
+            Label texto = new Label();
+            texto.CssClass = "_text";
+            texto.Text = text;
+            p.Controls.Add(texto);
+
+            return p;
+        }
+
+        /**
+         * probablemente no lo use
+         * se me ocurre otra forma mejor de hacerlo
+         * :)
+         */
+        protected void firstStory(object sender, EventArgs e) 
         {
             ENStories story = new ENStories();
-            //story.Pais = (int) Session["story_pais"]; //¿?
+            ENPais pais = new ENPais();
+            pais.name = (string) Session["story_pais"];
+            if (pais.ReadPais(pais))
+            {
+                story.Pais = pais.id; //¿?
+            }
+
             if (story.ReadFirstStory())
             {
                 //mostrar la story en la página
+                Panel p = createStoryPanel(story.Titulo, story.Descripcion);
+                stories_items.Controls.Add(p);
                 showStory(story);
 
             }
@@ -73,6 +125,10 @@ namespace FirstRow.Pages
 
         private void showDefaultStory()
         {
+            Panel p = createStoryPanel("titulo de story", "descripcion de story");
+            p.BackImageUrl = example_img;
+            p.Attributes["data-blur-bg"] = example_img;
+            stories_items.Controls.Add(p);
             //COMPLETAR
         }
     }
