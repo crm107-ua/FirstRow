@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Story.aspx.cs" Inherits="FirstRow.Pages.Storie" %>
+
+<!DOCTYPE html>
 <html>
 <head runat="server">
     <meta charset="UTF-8">
@@ -52,7 +54,7 @@
                                             <a href="#"><span>Page</span></a>
                                             <ul class="dropdown_ul">
                                                 <li><a href="stories-full-width.html">Stories Full With</a></li>
-                                                <li><a href="story/ejemplo">Stories Single</a></li>
+                                                <li><a href="/story/ejemplo">Stories Single</a></li>
                                                 <li><a href="stories-right-sidebar.html">Stories Right Sidebar</a></li>
                                                 <li><a href="stories-left-sidebar.html">Stories Left Sidebar</a></li>
                                                 <li><a href="gallery.html">Gallery</a></li>
@@ -136,7 +138,7 @@
             </div>
         </div>
         <div class="stories_page" id="stories_page">
-            <a href="travel-list-full-width.html" class="left_btn">Choose tour</a>
+            <a href="/experiencias" class="left_btn">Choose tour</a>
             <!--<a href="stories-right-sidebar.html" class="right_btn">More stories</a>-->
             <div class="stories_bg" id="stories_bg"></div>
             <div class="stories_page_wrap">
@@ -146,7 +148,7 @@
                         <div class="arrow next"></div>
                     </div>
                     <div class="items stories_items" id="stories_items">
-                        <a href="story/ejemplo" class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
+                        <a href="/story/ejemplo" class="item" style="background-image: url(../../assets/img/demo-bg.jpg)" data-blur-bg="../../assets/img/demo-bg.jpg">
                             <div class="_info">
                                 <div class="country"><span>Madagascar</span></div>
                             </div>
@@ -160,7 +162,7 @@
                                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
                             </p>
                         </a>
-                        <div class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
+                        <asp:Panel runat="server" class="item" id="story_panel" data-blur-bg="https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg">
                             <div class="_info">
                                 <div class="country"><span>Madagascar</span></div>
                             </div>
@@ -170,62 +172,7 @@
                             <p class="_text">
                                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
                             </p>
-                        </div>
-                        <div class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
-                            <div class="_info">
-                                <div class="country"><span>Madagascar</span></div>
-                            </div>
-                            <h3 class="_title">
-                                Chameleon
-                            </h3>
-                            <p class="_text">
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-                            </p>
-                        </div>
-                        <div class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
-                            <div class="_info">
-                                <div class="country"><span>Madagascar</span></div>
-                            </div>
-                            <h3 class="_title">
-                                Flamingo
-                            </h3>
-                            <p class="_text">
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                            </p>
-                        </div>
-                        <div class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
-                            <div class="_info">
-                                <div class="country"><span>Madagascar</span></div>
-                            </div>
-                            <h3 class="_title">
-                                Frog
-                            </h3>
-                            <p class="_text">
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-                            </p>
-                        </div>
-                        <div class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
-                            <div class="_info">
-                                <div class="country"><span>Madagascar</span></div>
-                            </div>
-                            <h3 class="_title">
-                                Snake
-                            </h3>
-                            <p class="_text">
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                            </p>
-                        </div>
-                        <div class="item" style="background-image: url(img/demo-bg.jpg)" data-blur-bg="img/demo-bg.jpg">
-                            <div class="_info">
-                                <div class="country"><span>Madagascar</span></div>
-                            </div>
-                            <h3 class="_title">
-                                Mandarinfish
-                            </h3>
-                            <p class="_text">
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-                            </p>
-                        </div>
+                        </asp:Panel>
                     </div>
                     <div class="dots">
                         <ul></ul>
