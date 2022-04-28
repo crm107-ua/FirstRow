@@ -29,7 +29,6 @@ namespace FirstRow.Pages
         protected void VerMas_Click(object sender, EventArgs e)
         {
             //Cargar mas elementos de la galeria
-            Page.Response.Redirect(Page.Request.Url.ToString(), false);
         }
 
         protected void Direccion_SelectedIndexChanged(object sender, EventArgs e)
