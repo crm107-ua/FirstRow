@@ -48,11 +48,24 @@ namespace FirstRow.Pages
 
         private void mostrarPaises()
         {
+            ENPais pais = new ENPais();
+            List<ENPais> paises = new List<ENPais>();
+            if (pais.readPaises(paises))
+            {
+                foreach(ENPais p in paises)
+                {
+                    HyperLink h = createCountryLink(p.id); //codigo 3 corresponde a Italia
+                    stories_list.Controls.Add(h);
+                }
+            }
+
+            /*
             HyperLink h = createCountryLink(3); //codigo 3 corresponde a Italia
             stories_list.Controls.Add(h);
 
             HyperLink h2 = createCountryLink("España");
             stories_list.Controls.Add(h2);
+            */
             //russia_btn.HRef = "/story/ejemplo";
         }
 
@@ -69,7 +82,8 @@ namespace FirstRow.Pages
                 HyperLink h = new HyperLink();
                 h.NavigateUrl = $"/story/{slug}";
                 h.CssClass = "story_item";
-                h.Style.Add("background-image", "url(../../assets/img/demo-bg.jpg)");
+                //imagen por defecto, cambiar a imagen del país
+                h.Style.Add("background-image", "url(https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg)");
 
                 Panel wrap = new Panel();
                 wrap.CssClass = "item_wrap";

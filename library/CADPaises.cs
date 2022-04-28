@@ -15,7 +15,7 @@ namespace library
         }
 
 
-        public List<ENPais> readPaises(List<ENPais> paises)
+        public bool readPaises(List<ENPais> paises)
         {
 
             SqlConnection conection = null;
@@ -39,10 +39,12 @@ namespace library
             catch (SqlException e)
             {
                 Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                return false;
             }
             catch (Exception e)
             {
                 Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                return false;
             }
             finally
             {
@@ -56,7 +58,7 @@ namespace library
                 }
             }
 
-            return paises;
+            return true;
         }
 
         /**

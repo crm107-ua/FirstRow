@@ -27,6 +27,7 @@
                     </div>
                     <div class="page_body">
                         <div class="stories_list" runat="server" id="stories_list">
+                            <!--
                             <a runat="server" id="russia_btn" href="story/russia" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
@@ -146,6 +147,7 @@
                                 </div>
                                 <div class="shadow js-shadow"></div>
                             </a>
+                            -->
                         </div>
                         <!--
                         <div class="btn_wrap load_btn_wrap">
