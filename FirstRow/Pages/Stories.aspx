@@ -64,14 +64,9 @@
                     </div>
                     <div class="page_body">
                         <div class="stories_list">
-                            <a href="story/ejemplo" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/ejemplo" class="story_item" style="background-image: url(https://wallpaper.dog/large/5498384.png)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Russia</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -81,14 +76,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/ejemplo" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/ejemplo" class="story_item" style="background-image: url(https://wallpaper.dog/large/5498384.png)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Maldives</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -98,14 +88,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/ejemplo" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/ejemplo" class="story_item" style="background-image: url(https://wallpaper.dog/large/5498384.png)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Australia</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -115,14 +100,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/ejemplo" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/ejemplo" class="story_item" style="background-image: url(https://wallpaper.dog/large/5498384.png)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Madagascar</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -132,14 +112,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/ejemplo" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/ejemplo" class="story_item" style="background-image: url(https://wallpaper.dog/large/5498384.png)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Switzerland</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -149,14 +124,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/ejemplo" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/ejemplo" class="story_item" style="background-image: url(https://wallpaper.dog/large/5498384.png)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Grece</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -166,14 +136,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/ejemplo" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/ejemplo" class="story_item" style="background-image: url(https://wallpaper.dog/large/5498384.png)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Africa</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -183,14 +148,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/ejemplo" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/ejemplo" class="story_item" style="background-image: url(https://wallpaper.dog/large/5498384.png)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Arctic</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -200,14 +160,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/ejemplo" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/ejemplo" class="story_item" style="background-image: url(https://wallpaper.dog/large/5498384.png)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Arctic</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -217,14 +172,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/ejemplo" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/ejemplo" class="story_item" style="background-image: url(https://wallpaper.dog/large/5498384.png)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Arctic</h3>
                                         <p class="text">
                                             Amazing underwater world
