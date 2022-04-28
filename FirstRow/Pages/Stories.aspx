@@ -27,14 +27,9 @@
                     </div>
                     <div class="page_body">
                         <div class="stories_list" runat="server" id="stories_list">
-                            <a runat="server" id="russia_btn" href="story/russia" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a runat="server" id="russia_btn" href="story/russia" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Russia</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -44,14 +39,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/maldives" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/maldives" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Maldives</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -61,14 +51,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/australia" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/australia" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Australia</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -78,14 +63,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/madagascar" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/madagascar" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Madagascar</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -95,14 +75,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/switzerland" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/switzerland" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Switzerland</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -112,14 +87,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/grece" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/grece" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Grece</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -129,14 +99,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/africa" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/africa" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Africa</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -146,14 +111,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/arctic" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/arctic" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Arctic</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -163,14 +123,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/arctic" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/arctic" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Arctic</h3>
                                         <p class="text">
                                             Amazing underwater world
@@ -180,14 +135,9 @@
                                 <div class="shadow js-shadow"></div>
                             </a>
 
-                            <a href="story/arctic" class="story_item" style="background-image: url(img/demo-bg.jpg)">
+                            <a href="story/arctic" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg)">
                                 <div class="item_wrap">
                                     <div class="_content">
-                                        <div class="flag_wrap">
-                                            <div class="flag">
-                                                <img src="img/demo-bg.jpg" alt="">
-                                            </div>
-                                        </div>
                                         <h3 class="country">Arctic</h3>
                                         <p class="text">
                                             Amazing underwater world
