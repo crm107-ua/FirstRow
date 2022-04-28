@@ -52,6 +52,7 @@ namespace FirstRow.Pages
             List<ENPais> paises = new List<ENPais>();
             if (pais.readPaises(paises))
             {
+                paises.Sort(ENPais.CompareCountriesByName);
                 foreach(ENPais p in paises)
                 {
                     HyperLink h = createCountryLink(p.id); //codigo 3 corresponde a Italia

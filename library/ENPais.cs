@@ -46,5 +46,11 @@ namespace library
             return paises.ReadPais(pais);
         }
 
+        public static int CompareCountriesByName(ENPais x, ENPais y)
+        {
+            return String.Compare(x.name, y.name);
+        }
+
+
     }
 }
