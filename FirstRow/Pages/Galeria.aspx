@@ -20,7 +20,7 @@
                     </div>
                     <asp:ScriptManager ID="Scrip1" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="ActualizacionBoton" runat="server" ><ContentTemplate>
-                        <!--> Para la animacion una vez se le da a ver más averiguar si pasa igual en dinamico</!-->
+                        <!-- Para la animacion una vez se le da a ver más averiguar si pasa igual en dinamico !-->
                         <div class="gallery-page-body">
                             <div class="gallery-list">
                                 <a href="/galeria/australia" class="gallery-item">
