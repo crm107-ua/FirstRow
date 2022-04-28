@@ -12,9 +12,9 @@ namespace FirstRow.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            story_panel.BackImageUrl = "https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg";
-            
-            //data-blur-bg = "../../assets/img/demo-bg.jpg"
+            string imagen = "https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg";
+            story_panel.BackImageUrl = imagen;
+            story_panel.Attributes["data-blur-bg"] = imagen;
             firstStory(sender, e); //¿?
         }
 
@@ -58,8 +58,9 @@ namespace FirstRow.Pages
             {
                 //mostrar la story en la página
                 showStory(story);
-                
+
             }
+            else { showDefaultStory(); }
             
             //COMPLETAR
         }
@@ -67,6 +68,11 @@ namespace FirstRow.Pages
         private void showStory(ENStories story)
         {
             
+            //COMPLETAR
+        }
+
+        private void showDefaultStory()
+        {
             //COMPLETAR
         }
     }

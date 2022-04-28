@@ -162,7 +162,7 @@
                                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
                             </p>
                         </a>
-                        <asp:Panel runat="server" class="item" id="story_panel" data-blur-bg="https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg">
+                        <asp:Panel runat="server" class="item" id="story_panel" >
                             <div class="_info">
                                 <div class="country"><span>Madagascar</span></div>
                             </div>
