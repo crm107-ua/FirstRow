@@ -8,7 +8,7 @@
                     <span class="separator" style="color:white;">/</span>
                     <a href="/stories" style="color:white;">Stories</a>
                 </div>
-            </div>
+            </div> 
         </div>
         <div class="page stories-list-page full-width">
             <div class="wrap">
