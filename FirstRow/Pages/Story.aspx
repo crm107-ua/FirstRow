@@ -36,6 +36,7 @@
                                 <div class="menu">
                                     <ul>
                                         <li><a href="/"><span>Home</span></a></li>
+                                        <!--
                                         <li class="dropdown_li">
                                             <a href="#" class="active"><span>Travel list</span></a>
                                             <ul class="dropdown_ul">
@@ -49,25 +50,27 @@
                                                 <li><a href="tour-page-left-sidebar.html">Tour page Left Sidebar</a></li>
                                                 <li><a href="tour-page-right-sidebar-width-reply.html">Tour page with reply form</a></li>
                                             </ul>
-                                        </li>
+                                        </li> -->
                                         <li class="dropdown_li">
                                             <a href="#"><span>Page</span></a>
                                             <ul class="dropdown_ul">
-                                                <li><a href="stories-full-width.html">Stories Full With</a></li>
-                                                <li><a href="/story/ejemplo">Stories Single</a></li>
+                                                <li><a href="/stories">Full Stories</a></li>
+                                                <li><a href="/story/ejemplo">Example story</a></li>
+                                                <li><a href="/galeria">Gallery</a></li>
+                                                <li><a href="404.html">404 page</a></li>
+                                                <li><a href="/equipo">About Us</a></li>
+                                                <!--<li><a href="stories-full-width.html">Stories Full With</a></li>
                                                 <li><a href="stories-right-sidebar.html">Stories Right Sidebar</a></li>
                                                 <li><a href="stories-left-sidebar.html">Stories Left Sidebar</a></li>
-                                                <li><a href="gallery.html">Gallery</a></li>
                                                 <li><a href="gallery-single.html">Gallery Single</a></li>
-                                                <li><a href="404.html">404 page</a></li>
                                                 <li><a href="static-page-right-sidebar.html">Static Page Right Sidebar</a></li>
                                                 <li><a href="static-page-left-sidebar.html">Static Page Left Sidebar</a></li>
-                                                <li><a href="about-us.html">About Us</a></li>
+                                                    -->
                                             </ul>
                                         </li>
                                         <li class="dropdown_li">
-                                            <a href="#"><span>Blog</span></a>
-                                            <ul class="dropdown_ul">
+                                            <a href="/blogs"><span>Blog</span></a>
+                                            <!-- <ul class="dropdown_ul">
                                                 <li><a href="blog-full-width.html">Blog Full With</a></li>
                                                 <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
                                                 <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
@@ -75,9 +78,9 @@
                                                 <li><a href="blog-search-results-not-found.html">Search Nothing Found</a></li>
                                                 <li><a href="blog-single-right-sidebar.html">Blog Single Right Sidebar</a></li>
                                                 <li><a href="blog-single-left-sidebar.html">Blog Single Left Sidebar</a></li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
-                                        <li><a href="contacts.html"><span>Contacts</span></a></li>
+                                        <li><a href="/contacto"><span>Contacts</span></a></li>
                                     </ul>
                                     <div class="mobile_content">
                                         <div class="currency_mob">
@@ -91,7 +94,7 @@
                                             </p>
                                         </div>
                                         <div class="tel">
-                                            <a href="tel:+0034411345777">+ 00 344 113 457 77</a>
+                                            <a href="tel:+34627329456">+ 34 627 32 94 56</a>
                                             <p>Round the clock support</p>
                                         </div>
                                         <div class="social">
@@ -110,7 +113,7 @@
                                 </div>
                             </div>
                             <div class="right">
-                                <div class="tel"><a href="tel:+19092020119"><span>+ 1909 202 0119</span></a></div>
+                                <div class="tel"><a href="tel:+34627329456"><span>+ 34 627 32 94 56</span></a></div>
                                 <a class="favorites-count" title="Favourites" href="favourites.html">
                                     <div class="_counter">14</div>
                                     <div class="_text">Favourites</div>
@@ -147,7 +150,7 @@
                         <div class="arrow prev disabled"></div>
                         <div class="arrow next"></div>
                     </div>
-                    <div class="items stories_items" id="stories_items">
+                    <div class="items stories_items" id="stories_items" runat="server">
                         <a href="/story/ejemplo" class="item" style="background-image: url(../../assets/img/demo-bg.jpg)" data-blur-bg="../../assets/img/demo-bg.jpg">
                             <div class="_info">
                                 <div class="country"><span>Madagascar</span></div>
@@ -164,7 +167,7 @@
                         </a>
                         <asp:Panel runat="server" class="item" id="story_panel" >
                             <div class="_info">
-                                <div class="country"><span>Madagascar</span></div>
+                                <div class="country"><span runat="server" id="country_span">Pais de ejemplo</span></div>
                             </div>
                             <h3 class="_title">
                                 The amazing world of the animals of Madagascar
