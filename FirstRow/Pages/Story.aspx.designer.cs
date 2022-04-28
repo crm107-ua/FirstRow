@@ -15,6 +15,15 @@ namespace FirstRow.Pages
     {
 
         /// <summary>
+        /// Control stories_items.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl stories_items;
+
+        /// <summary>
         /// Control story_panel.
         /// </summary>
         /// <remarks>
