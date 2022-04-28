@@ -18,7 +18,10 @@
                             <asp:DropDownList ID="Direccion" runat="server" OnSelectedIndexChanged="Direccion_SelectedIndexChanged"></asp:DropDownList>
                         </div>
                     </div>
-                    <div class="gallery-page-body">
+                    <asp:ScriptManager ID="Scrip1" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="ActualizacionBoton" runat="server" ><ContentTemplate>
+                        <!--> Para la animacion una vez se le da a ver más averiguar si pasa igual en dinamico</!-->
+                        <div class="gallery-page-body">
                             <div class="gallery-list">
                                 <a href="/galeria/australia" class="gallery-item">
                                     <div class="top">
@@ -125,9 +128,10 @@
                                 </a>
                             </div>
                             <center>
-                                <asp:Button ID="VerMas" runat="server" Text="Ver más" class="load_more button" OnClick="VerMas_Click"/>
+                              <asp:Button ID="VerMas" runat="server" Text="Ver más" class="load_more button" OnClick="VerMas_Click"/>
                             </center>
                         </div>
+                    </ContentTemplate></asp:UpdatePanel>
                 </div>
             </div>
         </div>
