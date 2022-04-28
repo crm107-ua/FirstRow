@@ -199,16 +199,58 @@ namespace library
 
         public bool updateUsuario(ENUsuario en)
         {
-            bool update = false;
-            if (en is ENUsuario)
+            bool modficiado = false;
+            SqlConnection conection = null;
+
+            try
             {
-                // Actualizacion de clientes
+                conection = new SqlConnection(constring);
+                conection.Open();
+
+                string query = "UPDATE [FirstRow].[Usuarios] set " +
+                    "email = @email," +
+                    "password = @password," +
+                    "image = @image," +
+                    "background_image = @background_image," +
+                    "name = @name," +
+                    "firstname = @firstname," +
+                    "secondname = @secondname," +
+                    "facebook = @facebook," +
+                    "twitter = @twitter " +
+                    "WHERE nickname = @nickname";
+                SqlCommand consulta = new SqlCommand(query, conection);
+                consulta.Parameters.AddWithValue("@nickname", en.nickname);
+                consulta.Parameters.AddWithValue("@email", en.email);
+                consulta.Parameters.AddWithValue("@password", en.password);
+                consulta.Parameters.AddWithValue("@image", en.image);
+                consulta.Parameters.AddWithValue("@background_image", en.background_image);
+                consulta.Parameters.AddWithValue("@name", en.name);
+                consulta.Parameters.AddWithValue("@firstname", en.firstname);
+                consulta.Parameters.AddWithValue("@secondname", en.secondname);
+                consulta.Parameters.AddWithValue("@facebook", en.facebook);
+                consulta.Parameters.AddWithValue("@twitter", en.twitter);
+                consulta.ExecuteNonQuery();
+                modficiado = true;
+
             }
-            else
+            catch (SqlException e)
             {
-                // Actualizacion de empresas
+                modficiado = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
             }
-            return update;
+            catch (Exception e)
+            {
+                modficiado = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return modficiado;
         }
 
         public bool deleteUsuario(ENUsuario en)

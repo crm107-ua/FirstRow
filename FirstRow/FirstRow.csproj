@@ -164,6 +164,7 @@
     <Content Include="assets\js\scripts.min.js.map" />
     <Content Include="assets\js\slick.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\403.aspx" />
     <Content Include="Pages\404.aspx" />
     <Content Include="Pages\Blog.aspx" />
     <Content Include="Pages\Blogs.aspx" />
@@ -185,15 +186,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Dark.Master.cs">
-      <DependentUpon>Dark.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Dark.Master.designer.cs">
-      <DependentUpon>Dark.Master</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\403.aspx.cs">
+      <DependentUpon>403.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\403.aspx.designer.cs">
+      <DependentUpon>403.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\404.aspx.cs">
       <DependentUpon>404.aspx</DependentUpon>
@@ -325,7 +326,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="White.Master" />
-    <Content Include="Dark.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -339,6 +339,10 @@
       <Project>{d831ea68-ca9c-4f45-9ff7-7183062210ae}</Project>
       <Name>library</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Media\Users\" />
+    <Folder Include="Pages\Forms\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

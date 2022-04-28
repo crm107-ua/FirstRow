@@ -73,7 +73,7 @@ namespace library
         public bool updateEmpresa()
         {
             bool actualizado = false;
-            CADUsuario usuario = new CADUsuario();
+            CADEmpresa usuario = new CADEmpresa();
             ENEmpresa aux = new ENEmpresa();
 
             aux.nickname = this.nickname;
@@ -91,9 +91,9 @@ namespace library
             aux.pais = this.pais;
             aux.fechaCreacion = this.fechaCreacion;
 
-            if (usuario.readUsuario(this))
+            if (usuario.readEmpresa(this))
             {
-                actualizado = usuario.updateUsuario(aux);
+                actualizado = usuario.updateEmpresa(aux);
                 this.nickname = aux.nickname;
                 this.password = aux.password;
                 this.image = aux.image;
