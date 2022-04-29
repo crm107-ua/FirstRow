@@ -15,14 +15,12 @@ namespace library
         private int _pais;
         private ENUsuario _usuario;
         private string _imagen;
-        private string _slug;
 
         public int Id { get => _id; set => _id = value; }
         public string Titulo { get => _titulo; set => _titulo = value; }
         public DateTime Fecha { get => _fecha; set => _fecha = value; }
         public int Pais { get => _pais; set => _pais = value; }
         public ENUsuario Usuario { get => _usuario; set => _usuario = value; }
-        public string slug { get => _slug; set => _slug = value; }
         public string Descripcion { get => _descripcion; set => _descripcion = value; }
         public string Imagen { get => _imagen; set => _imagen = value; }
 
@@ -35,7 +33,6 @@ namespace library
             Usuario = new ENUsuario();
             Descripcion = "";
             Imagen = "";
-            slug = "";
         }
 
         public ENStories(int id, ENUsuario usuario, DateTime fecha, string nombre, int pais, string desc, string img)
@@ -45,7 +42,6 @@ namespace library
             this.Fecha = fecha;
             this.Pais = pais;
             this.Usuario = usuario;
-            this.slug = usuario.nickname + "-" + fecha.ToString();//TODO ¿?
             this.Imagen = img;
             this.Descripcion = desc;
         }
@@ -57,7 +53,6 @@ namespace library
             this.Fecha = fecha;
             this.Pais = pais;
             this.Usuario = usuario;
-            this.slug = usuario.nickname + "-" + fecha.ToString();//TODO ¿?
             this.Imagen = img;
             this.Descripcion = desc;
         }
@@ -69,7 +64,6 @@ namespace library
             this.Fecha = story.Fecha;
             this.Pais = story.Pais;
             this.Usuario = story.Usuario;
-            this.slug = story.slug;
             this.Imagen = story.Imagen;
             this.Descripcion = story.Descripcion;
         }
@@ -151,13 +145,24 @@ namespace library
         public static bool ReadAllStories(List<ENStories> listStories)
         {
             CADStories story = new CADStories();
-            bool correctRead = false;
+
             if (story.ReadAllStories(listStories))
             {
-                correctRead = true;
+                return true;
             }
 
-            return correctRead;
+            return false;
+        }
+
+        public static bool ReadAllStories(List<ENStories> listStories, int pais)
+        {
+            CADStories story = new CADStories();
+            if (story.ReadAllStories(listStories, pais))
+            {
+                return true;
+            }
+
+            return false;
         }
 
     }

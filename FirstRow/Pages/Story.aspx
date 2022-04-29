@@ -61,7 +61,7 @@
                                         <span></span>
                                         <span></span>
                                     </div>
-                                </div>
+                                </div><!--
                                 <div class="user" id="userblock">
                                     <div class="userlink" id="userlink"></div>
                                     <div class="usermenu" id="usermenu">
@@ -76,7 +76,7 @@
                                             <a hidden id="login_emp_pop_up" class="js-popup-open" data-href="#login_empresa">Iniciar sesion</a>
                                             <a hidden id="register_emp_pop_up" class="js-popup-open" data-href="#registro_empresa">Iniciar sesion</a>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     <div class="mobile_btn" id="mobile_btn">
@@ -103,7 +103,7 @@
                                 <div class="country"><span>Madagascar</span></div>
                             </div>
                             <div>
-                                <div class="tag">Next Stories</div>
+                                <div class="tag">Página de ejemplo</div>
                             </div>
                             <h3 class="_title">
                                 The amazing world of the animals of Madagascar

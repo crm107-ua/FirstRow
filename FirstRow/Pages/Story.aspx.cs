@@ -11,7 +11,7 @@ namespace FirstRow.Pages
 {
     public partial class Storie : System.Web.UI.Page
     {
-        const string example_img = "https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg";
+        const string default_img = "https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg";
 
         string pais_name = "";
         int pais_id = 0;
@@ -27,6 +27,7 @@ namespace FirstRow.Pages
                     Session["story_pais"] = cadena.Replace("-", " ");
                     pais_name = (string)Session["story_pais"];
                     ENPais pais = new ENPais();
+                    pais.name = pais_name;
                     if (pais.ReadPais())
                     {
                         pais_id = pais.id; //¿?
@@ -34,27 +35,15 @@ namespace FirstRow.Pages
                     country_span.InnerText = pais_name;
                 }
 
-                default_story_panel.BackImageUrl = example_img;
-                default_story_panel.Attributes["data-blur-bg"] = example_img;
-                addDefaultStory();
                 loadStories();
+
+                //default_story_panel.BackImageUrl = example_img;
+                //default_story_panel.Attributes["data-blur-bg"] = example_img;
+
+                //addDefaultStory();
                 //firstStory(sender, e); //¿?
 
-                //CREATE STORIES
-                /*
-                for(int i=1; i<=10; i++)
-                {
-                    ENStories s1 = new ENStories();
-                    s1.Id = i;
-                    s1.Pais = pais_id;
-                    s1.slug = "";
-                    s1.Titulo = $"viaje{s1.Id} en {s1.Pais}";
-                    s1.Descripcion = "a";
-                    s1.Fecha = new DateTime(2020, 5, 15);
-                    s1.Imagen = "https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg";
-                    _ = s1.CreateStory();
-                }
-                */
+                //imagen por defecto (fondo plateado): https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg
 
             }
         }
@@ -75,18 +64,6 @@ namespace FirstRow.Pages
         }
 
         protected void verUsuario(object sender, EventArgs e)
-        {
-            //COMPLETAR
-        }
-
-        protected void nextStory(object sender, EventArgs e)
-        {
-            //ENStories story = new ENStories();
-            //authorLabel.Text = "";
-            //COMPLETAR
-        }
-
-        protected void prevStory(object sender, EventArgs e)
         {
             //COMPLETAR
         }
@@ -150,19 +127,30 @@ namespace FirstRow.Pages
         {
 
             List<ENStories> listStories = new List<ENStories>();
-            if (ENStories.ReadAllStories(listStories))
+            if (ENStories.ReadAllStories(listStories, pais_id)) //, pais_id
             {
-                foreach (ENStories story in listStories)
+                if (listStories.Count == 0)
                 {
-                    addStory(story.Titulo, story.Descripcion, story.Imagen);
+                    addDefaultStory();
                 }
+                else
+                {
+                    foreach (ENStories story in listStories)
+                    {
+                        addStory(story.Titulo, story.Descripcion, story.Imagen);
+                    }
+
+                }
+
             }
+            else { addDefaultStory(); }
+            
 
         }
 
         private void addDefaultStory()
         {
-            addStory("titulo de story", "descripcion de story", example_img);
+            addStory("titulo default", "descripcion default", default_img);
         }
 
         private void addStory(string title, string desc, string img)
@@ -170,8 +158,8 @@ namespace FirstRow.Pages
             Panel p = createStoryPanel(title, desc);
             if (img == "")
             {
-                p.BackImageUrl = example_img;
-                p.Attributes["data-blur-bg"] = example_img;
+                p.BackImageUrl = default_img;
+                p.Attributes["data-blur-bg"] = default_img;
             }
             else
             {
