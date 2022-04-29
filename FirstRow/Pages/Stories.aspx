@@ -20,9 +20,10 @@
                             <asp:Button runat="server" id="btn_modificar_pagina" class="btn button" Text="Modificar página" OnClick="modificarPaginaStories" />
                         </div>
 
-                        <asp:DropDownList CssClass="select_wrap" runat="server" ID="country_list" AppendDataBoundItems="true" OnSelectedIndexChanged="filtrarPais">
-                            <asp:ListItem style="font-size: 18px" Text="-- Destination --" Value="-1" />
-                        </asp:DropDownList>
+                        <div class="select_wrap">
+                            <asp:DropDownList runat="server" ID="country_list" AutoPostBack="true" OnSelectedIndexChanged="seleccionarPais" style="font-size: 18px" />
+
+                        </div>
                         
                     </div>
                     <div class="page_body">

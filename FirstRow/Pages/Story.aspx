@@ -98,20 +98,24 @@
                         <div class="arrow next"></div>
                     </div>
                     <div class="items stories_items" id="stories_items" runat="server">
-                        <a href="/story/ejemplo" class="item" style="background-image: url(../../assets/img/demo-bg.jpg)" data-blur-bg="../../assets/img/demo-bg.jpg">
+                        
+                        <a href="/story/ejemplo" class="item" style="background-image: url(https://media-exp1.licdn.com/dms/image/C4D12AQHhj7R2c7hdrQ/article-cover_image-shrink_600_2000/0/1520167342937?e=1654128000&v=beta&t=cTkGEwA7jCsqkWK4C4TcSY5S4RNYGaZn1tru_nrckHE)" data-blur-bg="../../assets/img/demo-bg-2.jpg">
+                            <!--
                             <div class="_info">
-                                <div class="country"><span>Madagascar</span></div>
+                                <div class="country"><span></span></div>
                             </div>
+                            -->
                             <div>
-                                <div class="tag">Página de ejemplo</div>
+                                <div class="tag">Última Story</div>
                             </div>
                             <h3 class="_title">
-                                The amazing world of the animals of Madagascar
+                                No hay más Stories
                             </h3>
                             <p class="_text">
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+                                Has llegado a la última Story, pulsa arriba en "Stories" para ver más
                             </p>
                         </a>
+                        
                         <!--
                         <asp:Panel runat="server" class="item" id="default_story_panel" >
                             <div class="_info">

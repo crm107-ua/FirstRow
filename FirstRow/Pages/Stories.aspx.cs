@@ -13,6 +13,7 @@ namespace FirstRow.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!Page.IsPostBack)
             {
                 mostrarTarjetasPaises();
@@ -39,6 +40,7 @@ namespace FirstRow.Pages
                 stories_description.Text = "Pero debo explicarles cómo nació toda esta idea equivocada de denunciar el placer y ensalzar el dolor y les daré cuenta completa del sistema y expondré las enseñanzas reales del gran explorador de la verdad, el maestro constructor de la felicidad del ser humano. Nadie rechaza, disgusta o evita el placer mismo, porque es placer, sino porque quien no sabe perseguir racionalmente el placer encuentra consecuencias sumamente dolorosas.";
 
             }
+
         }
 
         protected void modificarPaginaStories(object sender, EventArgs e)
@@ -47,9 +49,17 @@ namespace FirstRow.Pages
             //COMPLETAR -- redirigir a formulario ¿?
         }
 
-        protected void filtrarPais(object sender, EventArgs e)
+        protected void seleccionarPais(object sender, EventArgs e)
         {
-            //COMPLETAR
+            if (country_list.SelectedValue != "-1")
+            {
+                Response.Redirect("/story/" + country_list.SelectedItem.Text);
+
+            }
+            else
+            {
+                mostrarTarjetasPaises();
+            }
         }
 
         private void mostrarTarjetasPaises()
@@ -81,13 +91,14 @@ namespace FirstRow.Pages
             DataSet ds = new DataSet();
             if (ENPais.ReadPaisesDataSet(ds))
             {
-                country_list.Attributes.Add("style", "font-size: 18px");
+                //country_list.Attributes.Add("style", "font-size: 18px");
                 country_list.DataSource = ds;
                 country_list.DataTextField = "name";
                 country_list.DataValueField = "id";
                 country_list.DataBind();
 
             }
+            country_list.Items.Insert(0, new ListItem("-- Destination --", "-1"));
             
         }
 
