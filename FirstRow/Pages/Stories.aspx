@@ -21,7 +21,7 @@
                         </div>
 
                         <asp:DropDownList CssClass="select_wrap" runat="server" ID="country_list" AppendDataBoundItems="true" OnSelectedIndexChanged="filtrarPais">
-                            <asp:ListItem class="subtitle" Text="-- Destination --" Value="-1" />
+                            <asp:ListItem style="font-size: 18px" Text="-- Destination --" Value="-1" />
                         </asp:DropDownList>
                         
                     </div>
