@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace library
@@ -8,37 +10,37 @@ namespace library
     {
         private String constring;
 
-        internal int idViaje;
-        internal int nombreUsuario;
-        internal int TourViaje;
-
         public CADCategorias()
         {
-                constring = ConfigurationManager.ConnectionStrings["DataBase"].ToString();
+            constring = ConfigurationManager.ConnectionStrings["DataBase"].ToString();
         }
 
-        // Set/get - Identificativo con un entero
-        public int id
+        public DataSet readCategorias()
         {
-            get { return idViaje; }
-            private set { idViaje = value; }
+            SqlConnection c = null;
+
+            try
+            {
+                c = new SqlConnection(constring);
+                DataSet bd = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter("select * from [FirstRow].[Categorias]", c);
+                da.Fill(bd, "Categorias");
+                return bd;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                if (c != null)
+                {
+                    c.Close();
+                }
+            }
         }
 
-        // Set/get - Identificativo con un entero
-        public int Ciudad_pais
-        {
-            get { return Ciudad_pais; }
-            private set { idViaje = value; }
-        }
-
-        // Set/get - Identificativo con un entero
-        public int Tour_Viaje
-        {
-            get { return Tour_Viaje; }
-            private set { idViaje = value; }
-        }
-
-        // Crear Categoria
+            // Crear Categoria
         public bool registerCategoria(ENCategorias en)
         {
             bool creado = false;
@@ -80,8 +82,6 @@ namespace library
             bool delete = false;
             return delete;
         }
-
-        public static string imagenes; //Add-Delete
 
     }
 

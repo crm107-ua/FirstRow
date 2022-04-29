@@ -22,19 +22,14 @@
                         </p>
                         <div class="filters">
                             <div class="select_wrap">
-                                <select>
-                                    <option disabled selected value="Destination">
-                                        Categoria 1
-                                    </option>
-                                    <option value="Category 1">
-                                        Categoria 2
-                                    </option>
-                                    <option value="Category 2">
-                                        Categoria 3
-                                    </option>
-                                </select>
+                                <asp:DropDownList 
+                                       ID="lista_categorias_blogs" 
+                                       class="input" 
+                                       style="width:100%; height:57px; margin-bottom: 20px;" 
+                                        runat="server">
+                                </asp:DropDownList>
                             </div>
-                            <div class="search_wrap">
+                            <div style="margin-right:30px;" class="search_wrap">
                                 <input class="input" placeholder="Search" type="text">
                                 <button class="submit"></button>
                             </div>

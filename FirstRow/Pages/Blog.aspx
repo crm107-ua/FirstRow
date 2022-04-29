@@ -408,42 +408,10 @@
                         <div class="right_content sidebar">
                             <div  class="_block category_block">
                                 <h4 class="block_title">
-                                    Category
+                                    Categorias
                                 </h4>
-                                <ul>
-                                    <li>
-                                        <a href="#" class="active">
-                                            <span>Show All</span>
-                                            <span class="count">56</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span>Countries</span>
-                                            <span class="count">56</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span>Stream</span>
-                                            <span class="count">56</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span>Video</span>
-                                            <span class="count">56</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span>Travel</span>
-                                            <span class="count">56</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
+                                <ul runat="server" id="listaCategorias"></ul>
+                            </div>                        
                             <div class="_block gallery_block">
                                 <h4 class="block_title">
                                     Beautiful birds of Australia

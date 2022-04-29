@@ -1,5 +1,7 @@
-﻿using System;
+﻿using library;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,6 +13,13 @@ namespace FirstRow.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ENCategorias categoria = new ENCategorias();
+            DataSet categorias = categoria.readCategorias();
+            foreach (DataRow row in categorias.Tables["Categorias"].Rows)
+            {
+                ListItem item = new ListItem(row["nombre"].ToString(), row["id"].ToString());
+                lista_categorias_blogs.Items.Insert(0, item);
+            }
 
         }
 
