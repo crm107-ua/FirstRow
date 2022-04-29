@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Routing;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using library;
 
 namespace FirstRow.Pages
 {
@@ -19,6 +20,47 @@ namespace FirstRow.Pages
                 titulo.Text = slug.Text = cadena.Replace("-", " ");
             }
 
+        }       
+
+        public event EventHandler<modificarSorteoArgs> modificarSorteo;
+        public event EventHandler<participarSorteoArgs> participarSorteo;
+        public event EventHandler<salirSorteoArgs> salirSorteo;
+        public event EventHandler<eliminarSorteoArgs> eliminarSorteo;
+    }
+
+    public class modificarSorteoArgs : EventArgs
+    {
+        public ENSorteos modificarsorteo { get; set; }
+        public modificarSorteoArgs()
+        {
+
+        }
+
+    }
+    public class participarSorteoArgs : EventArgs
+    {
+        public ENSorteos participarsorteo { get; set; }
+        public participarSorteoArgs()
+        {
+
         }
     }
+    public class salirSorteoArgs : EventArgs
+    {
+        public ENSorteos salirsorteo { get; set; }
+        public salirSorteoArgs()
+        {
+
+        }
+    }
+    public class eliminarSorteoArgs : EventArgs
+    {
+        public ENSorteos eliminarsorteo { get; set; }
+        public eliminarSorteoArgs()
+        {
+
+        }
+
+    }
+    
 }

@@ -27,7 +27,6 @@ namespace FirstRow.Pages
            ///
         }
     }
-
      public class CrearSorteoArgs : EventArgs
     {
         public ENSorteos sorteo { get; set; }
