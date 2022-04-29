@@ -15,9 +15,20 @@ namespace FirstRow.Pages
         {
 
         }
-        public event EventHandler<CrearSorteoArgs> crearsorteo;
+        public event EventHandler<CrearSorteoArgs> crearSorteos;
+        public event EventHandler<modificarPaginaSorteos> modificarSorteos;
     }
-    public class CrearSorteoArgs : EventArgs
+
+    public class modificarPaginaSorteos
+    {
+        public ENSorteos paginasorteo { get; set; }
+        public modificarPaginaSorteos(ENSorteos sorteo)
+        {
+           ///
+        }
+    }
+
+     public class CrearSorteoArgs : EventArgs
     {
         public ENSorteos sorteo { get; set; }
         public CrearSorteoArgs (ENSorteos sorteo)
