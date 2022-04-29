@@ -45,7 +45,7 @@
                                         <div class="mobile_content">
                                             <div class="tel">
                                                 <a href="tel:+0034411345777">+ 00 344 113 457 77</a>
-                                                <p>Round the clock support</p>
+                                                <p>Soporte 24h</p>
                                             </div>
                                             <div class="social">
                                                 <a href="#" class="link facebook"><span></span></a>
