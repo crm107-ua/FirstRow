@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Web.Routing;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -13,14 +14,23 @@ namespace FirstRow.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Route myRoute = RouteData.Route as Route;
             ENCategorias categoria = new ENCategorias();
             DataSet categorias = categoria.readCategorias();
+            int deff = categorias.Tables["Categorias"].Rows.Count;
+
             foreach (DataRow row in categorias.Tables["Categorias"].Rows)
             {
-                ListItem item = new ListItem(row["nombre"].ToString(), row["id"].ToString());
+                ListItem item = new ListItem(row["nombre"].ToString(), row["slug"].ToString());
                 lista_categorias_blogs.Items.Insert(0, item);
             }
+            ListItem itemGeneral = new ListItem("General", "");
+            lista_categorias_blogs.Items.Insert(0, itemGeneral);
+        }
 
+        protected void seleccionDeCategoria(object sender, EventArgs e)
+        {
+            Response.Redirect("/blogs/"+ lista_categorias_blogs.SelectedValue);
         }
 
         protected void modificarBlog(object sender, EventArgs e) { }

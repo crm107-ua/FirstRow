@@ -23,6 +23,7 @@ namespace FirstRow.App_Start
             routes.MapPageRoute("seccion_galeria", "galeria/{slug}", "~/Pages/Seccion_Galeria.aspx");
 
             routes.MapPageRoute("blogs", "blogs", "~/Pages/Blogs.aspx");
+            routes.MapPageRoute("blogs_categoria", "blogs/{categoria}", "~/Pages/Blogs.aspx");
             routes.MapPageRoute("blog", "blog/{slug}", "~/Pages/Blog.aspx");
 
             routes.MapPageRoute("propuestas", "propuestas", "~/Pages/Propuestas.aspx");

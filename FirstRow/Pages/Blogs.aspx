@@ -25,8 +25,10 @@
                                 <asp:DropDownList 
                                        ID="lista_categorias_blogs" 
                                        class="input" 
+                                       AutoPostBack="True"
+                                       OnSelectedIndexChanged="seleccionDeCategoria"
                                        style="width:100%; height:57px; margin-bottom: 20px;" 
-                                        runat="server">
+                                       runat="server">
                                 </asp:DropDownList>
                             </div>
                             <div style="margin-right:30px;" class="search_wrap">
