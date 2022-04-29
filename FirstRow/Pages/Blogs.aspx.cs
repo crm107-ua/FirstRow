@@ -17,15 +17,32 @@ namespace FirstRow.Pages
             Route myRoute = RouteData.Route as Route;
             ENCategorias categoria = new ENCategorias();
             DataSet categorias = categoria.readCategorias();
-            int deff = categorias.Tables["Categorias"].Rows.Count;
 
-            foreach (DataRow row in categorias.Tables["Categorias"].Rows)
+            if (!IsPostBack)
             {
-                ListItem item = new ListItem(row["nombre"].ToString(), row["slug"].ToString());
-                lista_categorias_blogs.Items.Insert(0, item);
+
+                foreach (DataRow row in categorias.Tables["Categorias"].Rows)
+                {
+                    ListItem item = new ListItem(row["nombre"].ToString(), row["slug"].ToString());
+                    lista_categorias_blogs.Items.Insert(0, item);
+                }
+
+                if (myRoute != null && myRoute.Url == "blogs/{categoria}")
+                {
+                    string slug = RouteData.Values["categoria"].ToString();
+                    ListItem itemGeneral = new ListItem("Blogs de " +
+                                                        char.ToUpper(slug[0]) +
+                                                        slug.Substring(1),
+                                                        slug);
+                    lista_categorias_blogs.Items.Insert(0, itemGeneral);
+                    pais_blog.Text = " de " + slug;
+                }
+                else
+                {
+                    ListItem itemGeneral = new ListItem("Selector", "");
+                    lista_categorias_blogs.Items.Insert(0, itemGeneral);
+                }
             }
-            ListItem itemGeneral = new ListItem("General", "");
-            lista_categorias_blogs.Items.Insert(0, itemGeneral);
         }
 
         protected void seleccionDeCategoria(object sender, EventArgs e)

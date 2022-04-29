@@ -15,7 +15,7 @@
                 <div class="wrap_float">
                     <div class="page_head">
                         <h1 class="title" style="color:white;">
-                            Blogs
+                            Blogs <asp:Label ID="pais_blog" runat="server"></asp:Label>
                         </h1>
                         <p class="subtitle" style="color:white;">
                             Lo que escriben nuestros soñadores
