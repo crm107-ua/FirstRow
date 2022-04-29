@@ -18,13 +18,17 @@
                             Sorteos
                         </h1>
                         <p class="subtitle" style="color:white;">
+                            Para nuestros clientes, la posibilidad de ganar ese viaje que tanto deseas.
+                                               </p>
+                      <p class="subtitle" style="color:white;">
                             Que la suerte te acompañe
-                        </p>
+   
+                      </p>
                     </div>
                     <div class="page_body">
                         <div class="blog-list">
                             <a class="blog_item" href="sorteo/sorteo-de-experiencia-por-el-atlantico">
-                                <div class="blog_item_top" style="background-image: url();">
+                                <div class="blog_item_top" style="background-image: url(https://p4.wallpaperbetter.com/wallpaper/34/750/436/sunset-brittany-le-conquet-finistere-wallpaper-preview.jpg);">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">
                                             <div class="sq_content">
@@ -34,7 +38,7 @@
                                                     </div>
                                                 </div>
                                                 <h3 class="_title">
-                                                    Sorteo de experiencia por el Atlántico
+                                                    El Atlántico, un oceano inolvidable
                                                 </h3>
                                             </div>
                                         </div>
@@ -53,7 +57,7 @@
                                 </div>
                             </a>
                             <a class="blog_item" href="sorteo/sorteo-de-experiencia-por-el-mediterraneo">
-                                <div class="blog_item_top" style="background-image: url();">
+                                <div class="blog_item_top" style="background-image: url(https://www.10wallpaper.com/wallpaper/1920x1080/1401/alicante_night-HD_photography_wallpaper_1920x1080.jpg);">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">
                                             <div class="sq_content">
@@ -63,7 +67,7 @@
                                                     </div>
                                                 </div>
                                                 <h3 class="_title">
-                                                    Sorteo de experiencia por el Mediterráneo
+                                                    Lo mejor del Mediterráneo
                                                 </h3>
                                             </div>
                                         </div>
@@ -82,7 +86,7 @@
                                 </div>
                             </a>
                             <a class="blog_item" href="sorteo/sorteo-de-experiencia-por-italia">
-                                <div class="blog_item_top" style="background-image: url();">
+                                <div class="blog_item_top" style="background-image: url(https://www.expreso.info/files/2021-06/Italia_Roma.jpg);">
                                     <div class="sq_parent">
                                         <div class="sq_wrap">
                                             <div class="sq_content">
@@ -92,12 +96,12 @@
                                                     </div>
                                                 </div>
                                                 <h3 class="_title">
-                                                    Sorteo de experiencia por Italia
+                                                    Italia, vestigios de una gran civilizacion
                                                 </h3>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="shadow js-shadow"></div>
+                                    <div class="shadow js-shadow" style="background-image: url(https://www.expreso.info/files/2021-06/Italia_Roma.jpg);"></div>
                                 </div>
                                 <div class="blog_item_bottom">
                                     <div class="author">

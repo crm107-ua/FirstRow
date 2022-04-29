@@ -88,7 +88,7 @@
             </div>
         </div>
         <div class="stories_page" id="stories_page">
-            <a href="/experiencias" class="left_btn">Choose tour</a>
+            <a href="/experiencias" class="right_btn">Añadir story</a>
             <!--<a href="stories-right-sidebar.html" class="right_btn">More stories</a>-->
             <div class="stories_bg" id="stories_bg"></div>
             <div class="stories_page_wrap">

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Routing;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using library;
 
 namespace FirstRow.Pages
 {
@@ -20,5 +21,25 @@ namespace FirstRow.Pages
             }
 
         }
+        protected void modificarSorteo(object sender, EventArgs e)
+        {
+
+        }
+        protected void participarSorteo(object sender, EventArgs e)
+        {
+
+        }
+        protected void salirSorteo(object sender, EventArgs e)
+        {
+
+        }
+        protected void eliminarSorteo(object sender, EventArgs e)
+        {
+
+        }
+
     }
+
+   
+
 }
