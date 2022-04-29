@@ -18,8 +18,12 @@
                             Sorteos
                         </h1>
                         <p class="subtitle" style="color:white;">
+                            Para nuestros clientes, la posibilidad de ganar ese viaje que tanto deseas.
+                                               </p>
+                      <p class="subtitle" style="color:white;">
                             Que la suerte te acompañe
-                        </p>
+   
+                      </p>
                     </div>
                     <div class="page_body">
                         <div class="blog-list">
@@ -34,7 +38,7 @@
                                                     </div>
                                                 </div>
                                                 <h3 class="_title">
-                                                    Sorteo de experiencia por el Atlántico
+                                                    El Atlántico, un oceano inolvidable
                                                 </h3>
                                             </div>
                                         </div>
@@ -63,7 +67,7 @@
                                                     </div>
                                                 </div>
                                                 <h3 class="_title">
-                                                    Sorteo de experiencia por el Mediterráneo
+                                                    Lo mejor del Mediterráneo
                                                 </h3>
                                             </div>
                                         </div>
@@ -92,7 +96,7 @@
                                                     </div>
                                                 </div>
                                                 <h3 class="_title">
-                                                    Sorteo de experiencia por Italia
+                                                    Italia, vestigios de una gran civilizacion
                                                 </h3>
                                             </div>
                                         </div>
