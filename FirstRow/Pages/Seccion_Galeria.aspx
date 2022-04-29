@@ -65,7 +65,7 @@
                                         </h3>
                                         <div class="item_text">
                                             <p>
-                                                En nuestro recorido pasaremos por ciudades emblematicas cruzando por el caluroso desierto, !TE ATREVES, ANIMATE!
+                                                En nuestro recorido pasaremos por ciudades emblematicas cruzando por el caluroso desierto
                                             </p>
                                         </div>
                                     </div>

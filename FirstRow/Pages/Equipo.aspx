@@ -74,7 +74,7 @@
                                             </div>
                                         </div>
                                         <p class="name">Carlos Robles</p>
-                                        <p class="position">Director</p>
+                                        <p class="position">Jefe de proyecto</p>
                                     </div>
                                     <div class="team_item">
                                         <div class="image">
@@ -83,7 +83,7 @@
                                             </div>
                                         </div>
                                         <p class="name">Julio Bastidas</p>
-                                        <p class="position">Miembro</p>
+                                        <p class="position">Programador de interfaces</p>
                                     </div>
                                     <div class="team_item">
                                         <div class="image">
@@ -92,7 +92,7 @@
                                             </div>
                                         </div>
                                         <p class="name">Jose Cortona</p>
-                                        <p class="position">Miembro</p>
+                                        <p class="position">Diseñador gráfico y programador</p>
                                     </div>
                                     <div class="team_item">
                                         <div class="image">
@@ -101,7 +101,7 @@
                                             </div>
                                         </div>
                                         <p class="name">Demian Calvo</p>
-                                        <p class="position">Miembro</p>
+                                        <p class="position">Programador frontend</p>
                                     </div>
                                     <div class="team_item">
                                         <div class="image">
@@ -110,16 +110,16 @@
                                             </div>
                                         </div>
                                         <p class="name">Akira Llorens</p>
-                                        <p class="position">Miembro</p>
+                                        <p class="position">Desarrollador de software en jefe</p>
                                     </div>
                                     <div class="team_item">
                                         <div class="image">
                                             <div class="img_wrap">
-                                                <img alt="" src="https://avatars.githubusercontent.com/u/78800397?v=4">
+                                                <img alt="" src="https://i.ibb.co/8BH0Qc7/jordi.jpg">
                                             </div>
                                         </div>
                                         <p class="name">Jordi Cardona</p>
-                                        <p class="position">Miembro</p>
+                                        <p class="position">Analista de software</p>
                                     </div>
                                     <div class="team_item">
                                         <div class="image">
@@ -128,7 +128,7 @@
                                             </div>
                                         </div>
                                         <p class="name">Franco Ezequiel</p>
-                                        <p class="position">Miembro</p>
+                                        <p class="position">Programador en servidor</p>
                                     </div>
                                 </div>
                             </div>

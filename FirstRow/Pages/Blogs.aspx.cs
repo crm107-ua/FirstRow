@@ -20,6 +20,9 @@ namespace FirstRow.Pages
 
             if (!IsPostBack)
             {
+                ListItem itemBlogs = new ListItem("Todas las categorías", "/");
+                lista_categorias_blogs.Items.Insert(0, itemBlogs);
+
 
                 foreach (DataRow row in categorias.Tables["Categorias"].Rows)
                 {
@@ -35,13 +38,14 @@ namespace FirstRow.Pages
                                                         slug.Substring(1),
                                                         slug);
                     lista_categorias_blogs.Items.Insert(0, itemGeneral);
-                    pais_blog.Text = " de " + slug;
+                    pais_blog.Text = pais_blog_titulo.Text = " de " + slug;
                 }
                 else
                 {
-                    ListItem itemGeneral = new ListItem("Selector", "");
+                    ListItem itemGeneral = new ListItem(" - Selección de categoría");
                     lista_categorias_blogs.Items.Insert(0, itemGeneral);
                 }
+
             }
         }
 

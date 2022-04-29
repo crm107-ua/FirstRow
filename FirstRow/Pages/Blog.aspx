@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Blog.aspx.cs" Inherits="FirstRow.Pages.Blog" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
-        <div class="image_header" style="z-index:-3;background-image: url(https://www.uncommoncaribbean.com/wp-content/uploads/2011/11/Caribbean-Sea-Sunset-Bequia1.jpg)"></div>
+        <div class="image_header" style="z-index:-3;background-image: url(https://www.pixelstalk.net/wp-content/uploads/images6/Beautiful-4K-Travel-Wallpaper-HD.jpg)"></div>
         <div class="breadcrumbs">
             <div class="wrap">
                 <div class="wrap_float">
@@ -18,17 +18,17 @@
                     <div class="page_body">
                         <div class="left_content">
                             <div class="blog_single-head">
-                                <div class="blog_single-head_top" style="background-image: url(https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg)">
+                                <div class="blog_single-head_top" style="background-image: url(https://wallpapershome.com/images/wallpapers/mountains-5120x2880-macos-4k-5k-sierra-sky-android-wallpaper-11473.jpg)">
                                     <div class="tags">
-                                        <div class="tag red">Stream</div>
-                                        <div class="tag green">Countries</div>
+                                        <div class="tag red">Sierra</div>
+                                        <div class="tag green">Italia</div>
                                     </div>
                                     <h1 class="title"><a style="color:white" href="/"><asp:Label ID="titulo" runat="server"></asp:Label></a></h1>
                                 </div>
                                 <div class="blog_single-head_bottom">
                                     <div class="author">
                                         <div class="userpic">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
+                                            <img src="https://wallpaperaccess.com/full/1431610.jpg" alt="">
                                         </div>
                                         <p class="name">20.09.2019 by Victor Shibut</p>
                                     </div>
@@ -45,69 +45,41 @@
                                     <h2>Stories</h2>
                                     <div class="scroll">
                                         <div class="scroll_wrap">
-                                            <a href="story.html" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg)">
+                                            <a href="/story/Italia" class="story_item" style="background-image: url(https://i.pinimg.com/originals/cf/fb/0e/cffb0e9cae7dea51b4e8a0effbeed5e1.jpg)">
                                                 <div class="item_wrap">
                                                     <div class="_content">
                                                         <div class="flag_wrap">
-                                                            <div class="flag">
-                                                                <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                                            </div>
                                                         </div>
-                                                        <h3 class="country">Russia</h3>
-                                                        <p class="text">
-                                                            Amazing underwater world
-                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div class="shadow js-shadow"></div>
                                             </a>
 
-                                            <a href="story.html" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg)">
+                                            <a href="/story/Italia" class="story_item" style="background-image: url(https://r1.ilikewallpaper.net/iphone-12-pro-max-wallpapers/download-113692/Troll-Wall-Romsdal-Norway-mountains-4K-Travel.jpg)">
                                                 <div class="item_wrap">
                                                     <div class="_content">
                                                         <div class="flag_wrap">
-                                                            <div class="flag">
-                                                                <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                                            </div>
                                                         </div>
-                                                        <h3 class="country">Maldives</h3>
-                                                        <p class="text">
-                                                            Amazing underwater world
-                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div class="shadow js-shadow"></div>
                                             </a>
 
-                                            <a href="story.html" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg)">
+                                            <a href="/story/Italia" class="story_item" style="background-image: url(https://i.pinimg.com/736x/c6/7a/d9/c67ad952889e87af1f14999144c3dcbc.jpg)">
                                                 <div class="item_wrap">
                                                     <div class="_content">
                                                         <div class="flag_wrap">
-                                                            <div class="flag">
-                                                                <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                                            </div>
                                                         </div>
-                                                        <h3 class="country">Australia</h3>
-                                                        <p class="text">
-                                                            Amazing underwater world
-                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div class="shadow js-shadow"></div>
                                             </a>
 
-                                            <a href="story.html" class="story_item" style="background-image: url(https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg)">
+                                            <a href="/story/Italia" class="story_item" style="background-image: url(https://www.ixpap.com/images/2021/02/travel-wallpaper-ixpap-2.jpg)">
                                                 <div class="item_wrap">
                                                     <div class="_content">
                                                         <div class="flag_wrap">
-                                                            <div class="flag">
-                                                                <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                                            </div>
                                                         </div>
-                                                        <h3 class="country">Madagascar</h3>
-                                                        <p class="text">
-                                                            Amazing underwater world
-                                                        </p>
                                                     </div>
                                                 </div>
                                                 <div class="shadow js-shadow"></div>
@@ -116,7 +88,7 @@
                                     </div>
                                 </div>
                                 <div class="two-colums">
-                                    <h2>Sed ut perspiciatis unde</h2>
+                                    <h2>Texto Titulo 1</h2>
                                     <div>
                                         <div class="col">
                                             <p>
@@ -132,72 +104,50 @@
                                 </div>
                                 <div class="quote">
                                     <p>
-                                        But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and
+                                        Texto de cita
                                     </p>
                                 </div>
                                 <p>
                                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
                                 </p>
                                 <h2>
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+                                    Seccion imágenes de blog
                                 </h2>
                                 <div class="gallery-block">
                                     <div class="scroll lightgallery">
-                                        <a href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" class="img">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
+                                        <a href="https://sworld.co.uk/img/img/167/photoAlbum/324787/originals/0.jpeg" class="img">
+                                            <img src="https://sworld.co.uk/img/img/167/photoAlbum/324787/originals/0.jpeg" alt="">
                                         </a>
-                                        <a href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" class="img">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
+                                        <a href="https://wallpaperaccess.com/full/134107.jpg" class="img">
+                                            <img src="https://wallpaperaccess.com/full/134107.jpg" alt="">
                                         </a>
-                                        <a href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" class="img">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </a>
-                                        <a href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" class="img">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </a>
-                                        <a href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" class="img">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </a>
-                                        <a href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" class="img">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
+                                        <a href="https://c4.wallpaperflare.com/wallpaper/550/704/2/brown-bird-with-worm-in-its-beak-focus-lens-photography-wren-wren-wallpaper-preview.jpg" class="img">
+                                            <img src="https://c4.wallpaperflare.com/wallpaper/550/704/2/brown-bird-with-worm-in-its-beak-focus-lens-photography-wren-wren-wallpaper-preview.jpg" alt="">
                                         </a>
                                     </div>
                                 </div>
+                                <h2>
+                                    Texto Titulo 2
+                                </h2>
                                 <p>
                                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
                                 </p>
-                                <h2>
-                                    Laudantium, totam rem aperiam
-                                </h2>
-                                <div class="video_block">
-                                    <div class="video">
-                                        <!--<iframe src="https://www.youtube.com/embed/XXXXXXXXXXX?rel=0" allowfullscreen></iframe>-->
-                                    </div>
-                                    <span>Signature under video</span>
-                                </div>
                                 <p>
                                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Sed ut perspiciatis unde omnis iste natus error sit
                                 </p>
-                                <div class="img-block">
-                                    <img src="img/demo-bg-2.jpg" alt="">
-                                    <span>Signature under photo</span>
-                                </div>
-                                <p>
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
-                                </p>
                                 <h2>
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque
+                                    Experiencia recomendada
                                 </h2>
                                 <div class="tour-block">
                                     <a href="tour-page-right-sidebar.html" class="item">
                                         <div class="item_left">
-                                            <div class="image" style="background-image: url(https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg)">
+                                            <div class="image" style="background-image: url(https://wallpapermemory.com/uploads/546/venice-wallpaper-4k-492886.jpg)">
                                                 <div class="shadow js-shadow"></div>
                                             </div>
 
                                         </div>
                                         <div class="item_right">
-                                            <p class="country">North Africa</p>
+                                            <p class="country">Venecia</p>
                                             <div class="rating-stars">
                                                 <div class="star filled"></div>
                                                 <div class="star filled"></div>
@@ -206,14 +156,14 @@
                                                 <div class="star"></div>
                                             </div>
                                             <h3 class="item_title">
-                                                A trip to the mighty desert
+                                                Una experiencia inolvidable en Italia
                                             </h3>
                                             <p class="item_text">
                                                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
                                             </p>
                                             <div class="info">
-                                                <div class="days">5 days |</div>
-                                                <div class="cost">from $356</div>
+                                                <div class="days">5 dias |</div>
+                                                <div class="cost">desde 358€</div>
                                             </div>
                                             <div class="add_bookmark fav-button">
                                                 <i class="is-added bouncy"></i>
@@ -223,61 +173,11 @@
                                         </div>
                                     </a>
                                 </div>
-                                <p>
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-                                </p>
-                                <div class="slider-block" id="blog-slider">
-                                    <div class="arrows">
-                                        <div class="arrow prev"></div>
-                                        <div class="arrow next"></div>
-                                    </div>
-                                    <div class="full-width-link"></div>
-                                    <div class="slider_top lightgallery">
-                                        <a class="slide" href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </a>
-                                        <a class="slide" href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </a>
-                                        <a class="slide" href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </a>
-                                        <a class="slide" href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </a>
-                                        <a class="slide" href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </a>
-                                        <a class="slide" href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="slider_bottom">
-                                        <div class="slide">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </div>
-                                        <div class="slide">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </div>
-                                        <div class="slide">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </div>
-                                        <div class="slide">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </div>
-                                        <div class="slide">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </div>
-                                        <div class="slide">
-                                            <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="comments-block js-section" id="reviews">
                                 <div class="title_wrap">
-                                    <h2 class="title">Comments</h2>
-                                    <div class="counter">12</div>
+                                    <h2 class="title">Comentarios</h2>
+                                    <div class="counter">2</div>
                                 </div>
                                 <div class="comments">
                                     <div class="comment_item">
@@ -287,46 +187,11 @@
                                             </p>
                                         </div>
                                         <div class="comment_item_bottom">
-                                            <div class="rating">
-                                                <div class="rating-stars">
-                                                    <div class="star filled"></div>
-                                                    <div class="star filled"></div>
-                                                    <div class="star filled"></div>
-                                                    <div class="star"></div>
-                                                    <div class="star"></div>
-                                                </div>
-                                                <button class="reply">Reply</button>
-                                            </div>
                                             <div class="author">
                                                 <div class="userpic">
-                                                    <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
+                                                    <img src="https://w0.peakpx.com/wallpaper/276/541/HD-wallpaper-alone-attitude-boy-single-thumbnail.jpg" alt="">
                                                 </div>
-                                                <p class="name">21.09.2019 by Maya Delia</p>
-                                            </div>
-                                        </div>
-                                        <div class="write_comment reply_form">
-                                            <div class="top">
-                                                <div class="title">Write A Reply</div>
-                                                <div class="username">
-                                                    <div class="userpic"></div>
-                                                    <div class="login">Reply <span>Admin</span></div>
-                                                </div>
-                                                <div class="cancel">
-                                                    <a href="#"><span>Click here to cancel reply</span></a>
-                                                </div>
-                                            </div>
-                                            <div class="center">
-                                                <input type="text" class="input" placeholder="Name">
-                                                <input type="text" class="input" placeholder="Email">
-                                                <textarea class="textarea" placeholder="Reviews"></textarea>
-                                            </div>
-                                            <div class="bottom">
-                                                <div class="files">
-                                                    <label for="file-1" class="label"><span>Add a photo</span></label>
-                                                    <input type="file" id="file-1">
-                                                    <div class="file-name">IMG_5050.JPG, IMG_5051.JPG</div>
-                                                </div>
-                                                <button class="submit button">Send</button>
+                                                <p class="name">21.09.2019 por Jordi Cardona</p>
                                             </div>
                                         </div>
                                     </div>
@@ -337,70 +202,24 @@
                                             </p>
                                         </div>
                                         <div class="comment_item_bottom">
-                                            <button class="reply">Reply</button>
                                             <div class="author">
                                                 <div class="name">21.09.2019 by Maya Delia</div>
                                                 <div class="userpic">
-                                                    <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
+                                                    <img src="https://i.pinimg.com/originals/4b/87/be/4b87be4b61783df07b80f9f3190e926c.jpg" alt="">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="comment_item">
-                                        <div class="comment_item_top">
-                                            <p>
-                                                But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
-                                            </p>
-                                            <div class="images lightgallery">
-                                                <a href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" class="img">
-                                                    <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                                </a>
-                                                <a href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" class="img">
-                                                    <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                                </a>
-                                                <a href="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" class="img">
-                                                    <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="comment_item_bottom">
-                                            <div class="author">
-                                                <div class="userpic">
-                                                    <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                                </div>
-                                                <p class="name">21.09.2019 by Maya Delia</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="pagination">
-                                    <a class="arrow prev"></a>
-                                    <ul>
-                                        <li><a href="#" class="active">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                    </ul>
-                                    <a class="arrow next"></a>
                                 </div>
                             </div>
                             <div class="write_comment">
                                 <div class="top">
-                                    <h3 class="title">Write A Review</h3>
+                                    <h3 class="title">Escribe un comentario</h3>
                                 </div>
                                 <div class="center">
-                                    <input type="text" class="input" placeholder="Name">
-                                    <input type="text" class="input" placeholder="Email">
-                                    <textarea class="textarea" placeholder="Reviews"></textarea>
+                                    <textarea class="textarea" placeholder="Escribe lo que más te guste!"></textarea>
                                 </div>
                                 <div class="bottom">
-                                    <div class="files">
-                                        <label for="file-2" class="label"><span>Add a photo</span></label>
-                                        <input type="file" id="file-2">
-                                        <div class="file-name"><span>IMG_5050.JPG,</span> <span>IMG_5051.JPG</span></div>
-                                    </div>
                                     <button class="submit">Send</button>
                                 </div>
                             </div>
@@ -412,178 +231,7 @@
                                 </h4>
                                 <ul runat="server" id="listaCategorias"></ul>
                             </div>                        
-                            <div class="_block gallery_block">
-                                <h4 class="block_title">
-                                    Beautiful birds of Australia
-                                </h4>
-                                <div class="images">
-                                    <a href="gallery-single.html" class="img">
-                                        <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                    </a>
-                                    <a href="gallery-single.html" class="img">
-                                        <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                    </a>
-                                    <a href="gallery-single.html" class="img">
-                                        <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                    </a>
-                                    <a href="gallery-single.html" class="img">
-                                        <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                    </a>
-                                </div>
-                                <a class="link" href="gallery.html">View All Photo</a>
-                            </div>
-
-                            <div class="_block">
-                                <h4 class="block_title">
-                                    Popular travel
-                                </h4>
-                                <div class="popular">
-                                    <a href="tour-page-right-sidebar.html" class="item">
-                                        <div class="item_top">
-                                            <div class="img" style="background-image: url(https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg)"></div>
-                                            <h5 class="_title">
-                                                A trip to the mighty desert
-                                            </h5>
-                                        </div>
-                                        <div class="item_bottom">
-                                            <div class="days">5 days |</div>
-                                            <div class="cost">from $356</div>
-                                        </div>
-                                    </a>
-
-                                    <a href="tour-page-right-sidebar.html" class="item">
-                                        <div class="item_top">
-                                            <div class="img" style="background-image: url(https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg)"></div>
-                                            <h5 class="_title">
-                                                Antelope canyon in Arizona USA exclusive tour
-                                            </h5>
-                                        </div>
-                                        <div class="item_bottom">
-                                            <div class="days">5 days |</div>
-                                            <div class="cost">from $356</div>
-                                        </div>
-                                    </a>
-
-                                    <a href="tour-page-right-sidebar.html" class="item">
-                                        <div class="item_top">
-                                            <div class="img" style="background-image: url(https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg)"></div>
-                                            <h5 class="_title">
-                                                Asia
-                                            </h5>
-                                        </div>
-                                        <div class="item_bottom">
-                                            <div class="days">5 days |</div>
-                                            <span class="sale">-23%</span>
-                                            <div class="cost">from $356</div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="blog">
-            <div class="wrap">
-                <div class="wrap_float">
-                    <div class="title_wrap">
-                        <h2 class="title">Recent Blog Posts</h2>
-                        <p class="subtitle">
-                            Watch and be inspired
-                        </p>
-                        <div class="controls">
-                            <a href="blog-left-sidebar.html" class="link">All Blog Posts</a>
-                        </div>
-                    </div>
-                    <div class="section_content">
-                        <a href="blog-single-right-sidebar.html" class="blog_item">
-                            <div class="blog_item_top" style="background-image: url(https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg);">
-                                <div class="sq_parent">
-                                    <div class="sq_wrap">
-                                        <div class="sq_content">
-                                            <div class="tags">
-                                                <div class="tag red">Stream</div>
-                                                <div class="tag green">Countries</div>
-                                            </div>
-                                            <h3 class="_title">
-                                                Most popular destinations destinations
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="shadow js-shadow"></div>
-                            </div>
-                            <div class="blog_item_bottom">
-                                <div class="author">
-                                    <div class="userpic">
-                                        <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                    </div>
-                                    <p class="date">21.09.2019 by Maya Delia</p>
-                                </div>
-                                <p class="text">
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                </p>
-                            </div>
-                        </a>
-
-                        <a href="blog-single-right-sidebar.html" class="blog_item">
-                            <div class="blog_item_top" style="background-image: url(https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg);">
-                                <div class="sq_parent">
-                                    <div class="sq_wrap">
-                                        <div class="sq_content">
-                                            <div class="tags">
-                                                <div class="tag blue">Video</div>
-                                            </div>
-                                            <h3 class="_title">
-                                                Most popular destinations destinations
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="shadow js-shadow"></div>
-                            </div>
-                            <div class="blog_item_bottom">
-                                <div class="author">
-                                    <div class="userpic">
-                                        <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                    </div>
-                                    <p class="date">21.09.2019 by Maya Delia</p>
-                                </div>
-                                <p class="text">
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                </p>
-                            </div>
-                        </a>
-
-                        <a href="blog-single-right-sidebar.html" class="blog_item">
-                            <div class="blog_item_top" style="background-image: url(https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg);">
-                                <div class="sq_parent">
-                                    <div class="sq_wrap">
-                                        <div class="sq_content">
-                                            <div class="tags">
-                                                <div class="tag black">Trips</div>
-                                            </div>
-                                            <h3 class="_title">
-                                                Most popular destinations destinations
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="shadow js-shadow"></div>
-                            </div>
-                            <div class="blog_item_bottom">
-                                <div class="author">
-                                    <div class="userpic">
-                                        <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-blanco-estilo-papel-3d_23-2148403778.jpg" alt="">
-                                    </div>
-                                    <p class="date">21.09.2019 by Maya Delia</p>
-                                </div>
-                                <p class="text">
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                </p>
-                            </div>
-                        </a>
                     </div>
                 </div>
             </div>
