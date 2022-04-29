@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace library
@@ -8,38 +10,78 @@ namespace library
     {
         private String constring;
 
-        internal int idViaje;
-        internal int nombreUsuario;
-        internal int TourViaje;
-
         public CADCategorias()
         {
             constring = ConfigurationManager.ConnectionStrings["DataBase"].ToString();
         }
 
-        public int id
+        public DataSet readCategorias()
         {
-            get { return idViaje; }
-            private set { idViaje = value; }
+            SqlConnection c = null;
+
+            try
+            {
+                c = new SqlConnection(constring);
+                DataSet bd = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter("select * from [FirstRow].[Categorias]", c);
+                da.Fill(bd, "Categorias");
+                return bd;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                if (c != null)
+                {
+                    c.Close();
+                }
+            }
         }
 
-        public int Ciudad_pais
+            // Crear Categoria
+        public bool registerCategoria(ENCategorias en)
         {
-            get { return Ciudad_pais; }
-            private set { idViaje = value; }
+            bool creado = false;
+            if(en is ENCategorias)
+            {
+              
+            }
+            
+            return creado;
         }
 
-        public int Tour_Viaje
+        // Leer Categoria
+        public bool readCategoria(ENCategorias en)
         {
-            get { return Tour_Viaje; }
-            private set { idViaje = value; }
+            bool read = false;
+            if (en is ENCategorias)
+            {
+                
+            }
+            
+            return read;
         }
 
-        public static string Titulo; //CRUD
+        // Actualizar Categoria
+        public bool updateCategoria(ENCategorias en)
+        {
+            bool update = false;
+            if (en is ENCategorias)
+            {
+               
+            }
+           
+            return update;
+        }
 
-        public static string desempeño; //CRUD
-
-        public static string imagenes; //Add-Delete
+        // Eliminar Categoria
+        public bool deleteCategoria(ENCategorias en)
+        {
+            bool delete = false;
+            return delete;
+        }
 
     }
 

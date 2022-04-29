@@ -164,21 +164,149 @@
     <Content Include="assets\js\scripts.min.js.map" />
     <Content Include="assets\js\slick.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\403.aspx" />
+    <Content Include="Pages\404.aspx" />
+    <Content Include="Pages\Blog.aspx" />
+    <Content Include="Pages\Blogs.aspx" />
+    <Content Include="Pages\Contacto.aspx" />
+    <Content Include="Pages\Equipo.aspx" />
+    <Content Include="Pages\Experiencia.aspx" />
+    <Content Include="Pages\Experiencias.aspx" />
+    <Content Include="Pages\Galeria.aspx" />
     <Content Include="Pages\Inicio.aspx" />
-    <Content Include="Pages\Viajes.aspx" />
+    <Content Include="Pages\Propuesta.aspx" />
+    <Content Include="Pages\Propuestas.aspx" />
+    <Content Include="Pages\Seccion_Galeria.aspx" />
+    <Content Include="Pages\Sorteo.aspx" />
+    <Content Include="Pages\Sorteos.aspx" />
+    <Content Include="Pages\Story.aspx" />
+    <Content Include="Pages\Stories.aspx" />
+    <Content Include="Pages\Wearing.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Dark.Master.cs">
-      <DependentUpon>Dark.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Dark.Master.designer.cs">
-      <DependentUpon>Dark.Master</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\403.aspx.cs">
+      <DependentUpon>403.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\403.aspx.designer.cs">
+      <DependentUpon>403.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Blog.aspx.cs">
+      <DependentUpon>Blog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Blog.aspx.designer.cs">
+      <DependentUpon>Blog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Blogs.aspx.cs">
+      <DependentUpon>Blogs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Blogs.aspx.designer.cs">
+      <DependentUpon>Blogs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Contacto.aspx.cs">
+      <DependentUpon>Contacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Contacto.aspx.designer.cs">
+      <DependentUpon>Contacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Equipo.aspx.cs">
+      <DependentUpon>Equipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Equipo.aspx.designer.cs">
+      <DependentUpon>Equipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Experiencia.aspx.cs">
+      <DependentUpon>Experiencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Experiencia.aspx.designer.cs">
+      <DependentUpon>Experiencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Experiencias.aspx.cs">
+      <DependentUpon>Experiencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Experiencias.aspx.designer.cs">
+      <DependentUpon>Experiencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Galeria.aspx.cs">
+      <DependentUpon>Galeria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Galeria.aspx.designer.cs">
+      <DependentUpon>Galeria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Propuesta.aspx.cs">
+      <DependentUpon>Propuesta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Propuesta.aspx.designer.cs">
+      <DependentUpon>Propuesta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Propuestas.aspx.cs">
+      <DependentUpon>Propuestas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Propuestas.aspx.designer.cs">
+      <DependentUpon>Propuestas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Seccion_Galeria.aspx.cs">
+      <DependentUpon>Seccion_Galeria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Seccion_Galeria.aspx.designer.cs">
+      <DependentUpon>Seccion_Galeria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Sorteo.aspx.cs">
+      <DependentUpon>Sorteo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Sorteo.aspx.designer.cs">
+      <DependentUpon>Sorteo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Sorteos.aspx.cs">
+      <DependentUpon>Sorteos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Sorteos.aspx.designer.cs">
+      <DependentUpon>Sorteos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Story.aspx.cs">
+      <DependentUpon>Story.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Story.aspx.designer.cs">
+      <DependentUpon>Story.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Stories.aspx.cs">
+      <DependentUpon>Stories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Stories.aspx.designer.cs">
+      <DependentUpon>Stories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Wearing.aspx.cs">
+      <DependentUpon>Wearing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Wearing.aspx.designer.cs">
+      <DependentUpon>Wearing.aspx</DependentUpon>
     </Compile>
     <Compile Include="White.Master.cs">
       <DependentUpon>White.Master</DependentUpon>
@@ -194,18 +322,10 @@
     <Compile Include="Pages\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Viajes.aspx.cs">
-      <DependentUpon>Viajes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Viajes.aspx.designer.cs">
-      <DependentUpon>Viajes.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="White.Master" />
-    <Content Include="Dark.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -219,6 +339,10 @@
       <Project>{d831ea68-ca9c-4f45-9ff7-7183062210ae}</Project>
       <Name>library</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Media\Users\" />
+    <Folder Include="Pages\Forms\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

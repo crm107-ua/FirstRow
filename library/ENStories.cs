@@ -8,52 +8,64 @@ namespace library
 {
     public class ENStories
     {
-        private int _Id;
-        private string _Nombre;
-        private DateTime _Fecha;
-        private int _Pais;
-        private ENUsuario _Usuario;
+        private int _id;
+        private string _titulo;
+        private string _descripcion;
+        private DateTime _fecha;
+        private int _pais;
+        private ENUsuario _usuario;
+        private string _imagen;
 
-        public int Id { get => _Id; set => _Id = value; }
-        public string Nombre { get => _Nombre; set => _Nombre = value; }
-        public DateTime Fecha { get => _Fecha; set => _Fecha = value; }
-        public int Pais { get => _Pais; set => _Pais = value; }
-        public ENUsuario Usuario { get => _Usuario; set => _Usuario = value; }
+        public int Id { get => _id; set => _id = value; }
+        public string Titulo { get => _titulo; set => _titulo = value; }
+        public DateTime Fecha { get => _fecha; set => _fecha = value; }
+        public int Pais { get => _pais; set => _pais = value; }
+        public ENUsuario Usuario { get => _usuario; set => _usuario = value; }
+        public string Descripcion { get => _descripcion; set => _descripcion = value; }
+        public string Imagen { get => _imagen; set => _imagen = value; }
 
         public ENStories()
         {
             Id = 0;
-            Nombre = "";
+            Titulo = "";
             Fecha = new DateTime(); //fecha: 01-01-0001 00:00:00
             Pais = 0; //supongo que el país por defecto es 0, posibles cambios
             Usuario = new ENUsuario();
+            Descripcion = "";
+            Imagen = "";
         }
 
-        public ENStories(int id, ENUsuario usuario, DateTime fecha, string nombre, int pais)
+        public ENStories(int id, ENUsuario usuario, DateTime fecha, string nombre, int pais, string desc, string img)
         {
             this.Id = id;//Tiene que ser un id unico
-            this.Nombre = nombre;
+            this.Titulo = nombre;
             this.Fecha = fecha;
             this.Pais = pais;
             this.Usuario = usuario;
+            this.Imagen = img;
+            this.Descripcion = desc;
         }
 
-        public ENStories(ENUsuario usuario, DateTime fecha, string nombre, int pais)
+        public ENStories(ENUsuario usuario, DateTime fecha, string nombre, int pais, string desc, string img)
         {
             this.Id = ENStories.GenerateId(fecha, usuario);
-            this.Nombre = nombre;
+            this.Titulo = nombre;
             this.Fecha = fecha;
             this.Pais = pais;
             this.Usuario = usuario;
+            this.Imagen = img;
+            this.Descripcion = desc;
         }
 
         public ENStories(ENStories story)
         {
             this.Id = story.Id;
-            this.Nombre = story.Nombre;
+            this.Titulo = story.Titulo;
             this.Fecha = story.Fecha;
             this.Pais = story.Pais;
             this.Usuario = story.Usuario;
+            this.Imagen = story.Imagen;
+            this.Descripcion = story.Descripcion;
         }
 
         /**
@@ -62,7 +74,7 @@ namespace library
          */
         static int GenerateId(DateTime fecha, ENUsuario usuario)
         {
-            return int.Parse(/*usuario.Id.ToString() + */(fecha.Ticks).ToString());
+            return usuario.nickname.GetHashCode() + (int) fecha.Ticks;
         }
 
         /**
@@ -87,9 +99,18 @@ namespace library
         public bool ReadStory()
         {
             CADStories story = new CADStories();
-            bool correctRead = story.ReadStory(this);
 
-            return correctRead;
+            return story.ReadStory(this);
+        }
+
+        /**
+         * Obtiene la primera story del país, o de todos si no se especifica
+         */
+        public bool ReadFirstStory()
+        {
+            CADStories story = new CADStories();
+
+            return story.ReadFirstStory(this);
         }
 
         /**
@@ -119,6 +140,29 @@ namespace library
                 deleted = story.DeleteStory(this);
 
             return deleted;
+        }
+
+        public static bool ReadAllStories(List<ENStories> listStories)
+        {
+            CADStories story = new CADStories();
+
+            if (story.ReadAllStories(listStories))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool ReadAllStories(List<ENStories> listStories, int pais)
+        {
+            CADStories story = new CADStories();
+            if (story.ReadAllStories(listStories, pais))
+            {
+                return true;
+            }
+
+            return false;
         }
 
     }

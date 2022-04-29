@@ -16,35 +16,171 @@ namespace library
         public bool registerUsuario(ENUsuario en)
         {
             bool creado = false;
-            if(en is ENUsuario)
+            SqlConnection conection = null;
+
+            try
             {
-                // Registro de clientes
+                conection = new SqlConnection(constring);
+                conection.Open();
+
+                string query = "Insert INTO [FirstRow].[Usuarios] " +
+                    "(nickname,email, password, image, background_image," +
+                    "name, firstname, secondname, facebook, twitter) " +
+                    "VALUES " +
+                    "(@nickname,@email,@password,@image,@background_image," +
+                    "@name,@firstname,@secondname,@facebook,@twitter)";
+                SqlCommand consulta = new SqlCommand(query, conection);
+                consulta.Parameters.AddWithValue("@nickname", en.nickname);
+                consulta.Parameters.AddWithValue("@email", en.email);
+                consulta.Parameters.AddWithValue("@password", en.password);
+                consulta.Parameters.AddWithValue("@image", en.image);
+                consulta.Parameters.AddWithValue("@background_image", en.background_image);
+                consulta.Parameters.AddWithValue("@name", en.name);
+                consulta.Parameters.AddWithValue("@firstname", en.firstname);
+                consulta.Parameters.AddWithValue("@secondname", en.secondname);
+                consulta.Parameters.AddWithValue("@facebook", en.facebook);
+                consulta.Parameters.AddWithValue("@twitter", en.twitter);
+                consulta.ExecuteNonQuery();
+                creado = true;
+
             }
-            else
+            catch (SqlException e)
             {
-                // Registro de empresas
+                creado = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            catch (Exception e)
+            {
+                creado = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
             }
             return creado;
         }
 
         public bool loginUsuario(ENUsuario en)
         {
-            bool creado = false;
-            return creado;
+            bool login = false;
+            SqlConnection conection = null;
+            SqlDataReader busqueda = null;
+
+            try
+            {
+                conection = new SqlConnection(constring);
+                conection.Open();
+
+                string query = "Select count(*) From [FirstRow].[Empresas] where nickname = @nickname ";
+                SqlCommand consulta = new SqlCommand(query, conection);
+                consulta.Parameters.AddWithValue("@nickname", en.nickname);
+
+                if ((int)consulta.ExecuteScalar() == 0)
+                {
+
+                    query = "Select * From [FirstRow].[Usuarios] Where nickname = @nickname and password = @password";
+                    consulta = new SqlCommand(query, conection);
+                    consulta.Parameters.AddWithValue("@nickname", en.nickname);
+                    consulta.Parameters.AddWithValue("@password", en.password);
+                    busqueda = consulta.ExecuteReader();
+                    busqueda.Read();
+
+                    en.nickname = busqueda["nickname"].ToString();
+                    en.password = busqueda["password"].ToString();
+                    en.email = busqueda["email"].ToString();
+                    en.image = busqueda["image"].ToString();
+                    en.background_image = busqueda["background_image"].ToString();
+                    en.name = busqueda["name"].ToString();
+                    en.firstname = busqueda["firstname"].ToString();
+                    en.secondname = busqueda["secondname"].ToString();
+                    en.twitter = busqueda["twitter"].ToString();
+                    en.facebook = busqueda["facebook"].ToString();
+
+                    login = true;
+                }
+
+            }
+            catch (SqlException e)
+            {
+                login = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            catch (Exception e)
+            {
+                login = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            finally
+            {
+                if (busqueda != null)
+                {
+                    busqueda.Close();
+                }
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return login;
         }
 
         public bool readUsuario(ENUsuario en)
         {
-            bool read = false;
-            if (en is ENUsuario)
+            bool encontrado = false;
+            SqlConnection conection = null;
+            SqlDataReader busqueda = null;
+
+            try
             {
-                // Lectura de clientes
+                conection = new SqlConnection(constring);
+                conection.Open();
+
+                string query = "Select * From [FirstRow].[Usuarios] Where nickname = @nickname";
+                SqlCommand consulta = new SqlCommand(query, conection);
+                consulta.Parameters.AddWithValue("@nickname", en.nickname);
+                busqueda = consulta.ExecuteReader();
+                busqueda.Read();
+
+                en.nickname = busqueda["nickname"].ToString();
+                en.password = busqueda["password"].ToString();
+                en.email = busqueda["email"].ToString();
+                en.image = busqueda["image"].ToString();
+                en.background_image = busqueda["background_image"].ToString();
+                en.name = busqueda["name"].ToString();
+                en.firstname = busqueda["firstname"].ToString();
+                en.secondname = busqueda["secondname"].ToString();
+                en.twitter = busqueda["twitter"].ToString();
+                en.facebook = busqueda["facebook"].ToString();
+
+                encontrado = true;
             }
-            else
+            catch (SqlException e)
             {
-                // Lectura de empresas
+                encontrado = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
             }
-            return read;
+            catch (Exception e)
+            {
+                encontrado = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            finally
+            {
+                if (busqueda != null)
+                {
+                    busqueda.Close();
+                }
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return encontrado;
+
         }
 
         public bool readUsuarios(ENUsuario en)
@@ -63,16 +199,58 @@ namespace library
 
         public bool updateUsuario(ENUsuario en)
         {
-            bool update = false;
-            if (en is ENUsuario)
+            bool modficiado = false;
+            SqlConnection conection = null;
+
+            try
             {
-                // Actualizacion de clientes
+                conection = new SqlConnection(constring);
+                conection.Open();
+
+                string query = "UPDATE [FirstRow].[Usuarios] set " +
+                    "email = @email," +
+                    "password = @password," +
+                    "image = @image," +
+                    "background_image = @background_image," +
+                    "name = @name," +
+                    "firstname = @firstname," +
+                    "secondname = @secondname," +
+                    "facebook = @facebook," +
+                    "twitter = @twitter " +
+                    "WHERE nickname = @nickname";
+                SqlCommand consulta = new SqlCommand(query, conection);
+                consulta.Parameters.AddWithValue("@nickname", en.nickname);
+                consulta.Parameters.AddWithValue("@email", en.email);
+                consulta.Parameters.AddWithValue("@password", en.password);
+                consulta.Parameters.AddWithValue("@image", en.image);
+                consulta.Parameters.AddWithValue("@background_image", en.background_image);
+                consulta.Parameters.AddWithValue("@name", en.name);
+                consulta.Parameters.AddWithValue("@firstname", en.firstname);
+                consulta.Parameters.AddWithValue("@secondname", en.secondname);
+                consulta.Parameters.AddWithValue("@facebook", en.facebook);
+                consulta.Parameters.AddWithValue("@twitter", en.twitter);
+                consulta.ExecuteNonQuery();
+                modficiado = true;
+
             }
-            else
+            catch (SqlException e)
             {
-                // Actualizacion de empresas
+                modficiado = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
             }
-            return update;
+            catch (Exception e)
+            {
+                modficiado = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return modficiado;
         }
 
         public bool deleteUsuario(ENUsuario en)
