@@ -20,47 +20,26 @@ namespace FirstRow.Pages
                 titulo.Text = slug.Text = cadena.Replace("-", " ");
             }
 
-        }       
+        }
+        protected void modificarSorteo(object sender, EventArgs e)
+        {
 
-        public event EventHandler<modificarSorteoArgs> modificarSorteo;
-        public event EventHandler<participarSorteoArgs> participarSorteo;
-        public event EventHandler<salirSorteoArgs> salirSorteo;
-        public event EventHandler<eliminarSorteoArgs> eliminarSorteo;
-    }
+        }
+        protected void participarSorteo(object sender, EventArgs e)
+        {
 
-    public class modificarSorteoArgs : EventArgs
-    {
-        public ENSorteos modificarsorteo { get; set; }
-        public modificarSorteoArgs()
+        }
+        protected void salirSorteo(object sender, EventArgs e)
+        {
+
+        }
+        protected void eliminarSorteo(object sender, EventArgs e)
         {
 
         }
 
     }
-    public class participarSorteoArgs : EventArgs
-    {
-        public ENSorteos participarsorteo { get; set; }
-        public participarSorteoArgs()
-        {
 
-        }
-    }
-    public class salirSorteoArgs : EventArgs
-    {
-        public ENSorteos salirsorteo { get; set; }
-        public salirSorteoArgs()
-        {
+   
 
-        }
-    }
-    public class eliminarSorteoArgs : EventArgs
-    {
-        public ENSorteos eliminarsorteo { get; set; }
-        public eliminarSorteoArgs()
-        {
-
-        }
-
-    }
-    
 }
