@@ -13,6 +13,9 @@ namespace FirstRow.Pages
     {
         const string example_img = "https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg";
 
+        string pais_name = "";
+        int pais_id = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Route myRoute = RouteData.Route as Route;
@@ -20,7 +23,13 @@ namespace FirstRow.Pages
             {
                 string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
                 Session["story_pais"] = cadena.Replace("-", " ");
-                country_span.InnerText = (string) Session["story_pais"];
+                pais_name = (string)Session["story_pais"];
+                ENPais pais = new ENPais();
+                if (pais.ReadPais(pais))
+                {
+                    pais_id = pais.id; //¿?
+                }
+                country_span.InnerText = pais_name;
             }
 
             story_panel.BackImageUrl = example_img;
@@ -71,7 +80,7 @@ namespace FirstRow.Pages
             Panel country = new Panel();
             country.CssClass = "country";
             Label country_span = new Label();
-            country_span.Text = (string)Session["story_pais"];
+            country_span.Text = pais_name;
             country.Controls.Add(country_span);
             info.Controls.Add(country);            
             p.Controls.Add(info);
@@ -98,11 +107,8 @@ namespace FirstRow.Pages
         {
             ENStories story = new ENStories();
             ENPais pais = new ENPais();
-            pais.name = (string) Session["story_pais"];
-            if (pais.ReadPais(pais))
-            {
-                story.Pais = pais.id; //¿?
-            }
+            pais.name = pais_name;
+            story.Pais = pais_id;
 
             if (story.ReadFirstStory())
             {

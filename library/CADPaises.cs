@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace library
@@ -59,6 +60,29 @@ namespace library
             }
 
             return true;
+        }
+
+        public bool ReadPaisesDataSet(DataSet ds)
+        {
+            bool correctRead;
+            SqlConnection connection = new SqlConnection(constring);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [FirstRow].[Paises]", connection);
+
+            try
+            {
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                sda.Fill(ds);
+                correctRead = true;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                correctRead = false;
+            }
+
+            return correctRead;
+
         }
 
         /**
