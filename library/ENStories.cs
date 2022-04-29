@@ -14,6 +14,7 @@ namespace library
         private DateTime _fecha;
         private int _pais;
         private ENUsuario _usuario;
+        private string _imagen;
         private string _slug;
 
         public int Id { get => _id; set => _id = value; }
@@ -23,6 +24,7 @@ namespace library
         public ENUsuario Usuario { get => _usuario; set => _usuario = value; }
         public string slug { get => _slug; set => _slug = value; }
         public string Descripcion { get => _descripcion; set => _descripcion = value; }
+        public string Imagen { get => _imagen; set => _imagen = value; }
 
         public ENStories()
         {
@@ -32,28 +34,31 @@ namespace library
             Pais = 0; //supongo que el país por defecto es 0, posibles cambios
             Usuario = new ENUsuario();
             Descripcion = "";
+            Imagen = "";
             slug = "";
         }
 
-        public ENStories(int id, ENUsuario usuario, DateTime fecha, string nombre, int pais, string desc)
+        public ENStories(int id, ENUsuario usuario, DateTime fecha, string nombre, int pais, string desc, string img)
         {
             this.Id = id;//Tiene que ser un id unico
             this.Titulo = nombre;
             this.Fecha = fecha;
             this.Pais = pais;
             this.Usuario = usuario;
-            this.slug = usuario.nickname + fecha.ToString();//TODO ¿?
+            this.slug = usuario.nickname + "-" + fecha.ToString();//TODO ¿?
+            this.Imagen = img;
             this.Descripcion = desc;
         }
 
-        public ENStories(ENUsuario usuario, DateTime fecha, string nombre, int pais, string desc)
+        public ENStories(ENUsuario usuario, DateTime fecha, string nombre, int pais, string desc, string img)
         {
             this.Id = ENStories.GenerateId(fecha, usuario);
             this.Titulo = nombre;
             this.Fecha = fecha;
             this.Pais = pais;
             this.Usuario = usuario;
-            this.slug = usuario.nickname + fecha.ToString();//TODO ¿?
+            this.slug = usuario.nickname + "-" + fecha.ToString();//TODO ¿?
+            this.Imagen = img;
             this.Descripcion = desc;
         }
 
@@ -65,6 +70,7 @@ namespace library
             this.Pais = story.Pais;
             this.Usuario = story.Usuario;
             this.slug = story.slug;
+            this.Imagen = story.Imagen;
             this.Descripcion = story.Descripcion;
         }
 
@@ -99,9 +105,8 @@ namespace library
         public bool ReadStory()
         {
             CADStories story = new CADStories();
-            bool correctRead = story.ReadStory(this);
 
-            return correctRead;
+            return story.ReadStory(this);
         }
 
         /**
@@ -110,9 +115,8 @@ namespace library
         public bool ReadFirstStory()
         {
             CADStories story = new CADStories();
-            bool correctRead = story.ReadFirstStory(this);
 
-            return correctRead;
+            return story.ReadFirstStory(this);
         }
 
         /**
@@ -142,6 +146,18 @@ namespace library
                 deleted = story.DeleteStory(this);
 
             return deleted;
+        }
+
+        public static bool ReadAllStories(List<ENStories> listStories)
+        {
+            CADStories story = new CADStories();
+            bool correctRead = false;
+            if (story.ReadAllStories(listStories))
+            {
+                correctRead = true;
+            }
+
+            return correctRead;
         }
 
     }

@@ -97,7 +97,7 @@ namespace FirstRow.Pages
             ENPais pais = new ENPais();
             pais.id = countryId;
             string slug = "";
-            if (pais.ReadPais(pais))
+            if (pais.ReadPais())
             {
                 slug = pais.name;
 
@@ -147,7 +147,7 @@ namespace FirstRow.Pages
         {
             ENPais pais = new ENPais();
             pais.name = countryName;
-            if (pais.ReadPais(pais))
+            if (pais.ReadPais())
             {
                 HyperLink h = createCountryLink(pais.id);
                 return h;

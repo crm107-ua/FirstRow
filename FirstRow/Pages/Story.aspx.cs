@@ -18,41 +18,63 @@ namespace FirstRow.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Route myRoute = RouteData.Route as Route;
-            if (myRoute != null && myRoute.Url == "story/{slug}")
+            if (!Page.IsPostBack)
             {
-                string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
-                Session["story_pais"] = cadena.Replace("-", " ");
-                pais_name = (string)Session["story_pais"];
-                ENPais pais = new ENPais();
-                if (pais.ReadPais(pais))
+                Route myRoute = RouteData.Route as Route;
+                if (myRoute != null && myRoute.Url == "story/{slug}")
                 {
-                    pais_id = pais.id; //¿?
+                    string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
+                    Session["story_pais"] = cadena.Replace("-", " ");
+                    pais_name = (string)Session["story_pais"];
+                    ENPais pais = new ENPais();
+                    if (pais.ReadPais())
+                    {
+                        pais_id = pais.id; //¿?
+                    }
+                    country_span.InnerText = pais_name;
                 }
-                country_span.InnerText = pais_name;
+
+                default_story_panel.BackImageUrl = example_img;
+                default_story_panel.Attributes["data-blur-bg"] = example_img;
+                addDefaultStory();
+                loadStories();
+                //firstStory(sender, e); //¿?
+
+                //CREATE STORIES
+                /*
+                for(int i=1; i<=10; i++)
+                {
+                    ENStories s1 = new ENStories();
+                    s1.Id = i;
+                    s1.Pais = pais_id;
+                    s1.slug = "";
+                    s1.Titulo = $"viaje{s1.Id} en {s1.Pais}";
+                    s1.Descripcion = "a";
+                    s1.Fecha = new DateTime(2020, 5, 15);
+                    s1.Imagen = "https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg";
+                    _ = s1.CreateStory();
+                }
+                */
+
             }
-
-            story_panel.BackImageUrl = example_img;
-            story_panel.Attributes["data-blur-bg"] = example_img;
-            firstStory(sender, e); //¿?
         }
 
-        protected void crearStorie(object sender, EventArgs e)
+        protected void crearStory(object sender, EventArgs e)
         {
             //COMPLETAR -- redirigir a formulario??
         }
 
-        protected void modificarStorie(object sender, EventArgs e)
+        protected void modificarStory(object sender, EventArgs e)
         {
             //COMPLETAR -- redirigir a formulario??
         }
 
-        protected void verUsuario(object sender, EventArgs e)
+        protected void eliminarStory(object sender, EventArgs e)
         {
             //COMPLETAR
         }
 
-        protected void eliminarStorie(object sender, EventArgs e)
+        protected void verUsuario(object sender, EventArgs e)
         {
             //COMPLETAR
         }
@@ -103,11 +125,12 @@ namespace FirstRow.Pages
          * se me ocurre otra forma mejor de hacerlo
          * :)
          */
+        /*
         protected void firstStory(object sender, EventArgs e) 
         {
             ENStories story = new ENStories();
-            ENPais pais = new ENPais();
-            pais.name = pais_name;
+            //ENPais pais = new ENPais();
+            //pais.name = pais_name;
             story.Pais = pais_id;
 
             if (story.ReadFirstStory())
@@ -115,27 +138,47 @@ namespace FirstRow.Pages
                 //mostrar la story en la página
                 Panel p = createStoryPanel(story.Titulo, story.Descripcion);
                 stories_items.Controls.Add(p);
-                showStory(story);
+                //showStory(story);
 
             }
-            else { showDefaultStory(); }
+            else { addDefaultStory(); }
             
             //COMPLETAR
+        }*/
+
+        private void loadStories()
+        {
+
+            List<ENStories> listStories = new List<ENStories>();
+            if (ENStories.ReadAllStories(listStories))
+            {
+                foreach (ENStories story in listStories)
+                {
+                    addStory(story.Titulo, story.Descripcion, story.Imagen);
+                }
+            }
+
         }
 
-        private void showStory(ENStories story)
+        private void addDefaultStory()
         {
-            
-            //COMPLETAR
+            addStory("titulo de story", "descripcion de story", example_img);
         }
 
-        private void showDefaultStory()
+        private void addStory(string title, string desc, string img)
         {
-            Panel p = createStoryPanel("titulo de story", "descripcion de story");
-            p.BackImageUrl = example_img;
-            p.Attributes["data-blur-bg"] = example_img;
+            Panel p = createStoryPanel(title, desc);
+            if (img == "")
+            {
+                p.BackImageUrl = example_img;
+                p.Attributes["data-blur-bg"] = example_img;
+            }
+            else
+            {
+                p.BackImageUrl = img;
+                p.Attributes["data-blur-bg"] = img;
+            }
             stories_items.Controls.Add(p);
-            //COMPLETAR
         }
     }
 }

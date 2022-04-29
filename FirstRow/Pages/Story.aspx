@@ -112,7 +112,8 @@
                                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
                             </p>
                         </a>
-                        <asp:Panel runat="server" class="item" id="story_panel" >
+                        <!--
+                        <asp:Panel runat="server" class="item" id="default_story_panel" >
                             <div class="_info">
                                 <div class="country"><span runat="server" id="country_span">Pais de ejemplo</span></div>
                             </div>
@@ -122,7 +123,7 @@
                             <p class="_text">
                                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
                             </p>
-                        </asp:Panel>
+                        </asp:Panel> -->
                     </div>
                     <div class="dots">
                         <ul></ul>
