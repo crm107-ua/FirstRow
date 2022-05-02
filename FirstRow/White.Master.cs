@@ -12,6 +12,8 @@ namespace FirstRow
         protected void Page_Load(object sender, EventArgs e)
         {
             cargarElementosSesion();
+
+
         }
 
         protected void registrarse(object sender, EventArgs e)
@@ -36,8 +38,9 @@ namespace FirstRow
             else
             {
                 registro_salida.Text = "El nickname o el email ya existen.";
-                Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_rollback", "document.addEventListener('load', function () {document.getElementById('register_user_pop_up').click();}, true);", true);
             }
+            Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('register_user_pop_up').click(); }", true);
+
         }
 
         protected void registrarEmpresa(object sender, EventArgs e)
@@ -70,8 +73,10 @@ namespace FirstRow
             else
             {
                 registro_emp_salida.Text = "El nickname o el email ya existen.";
-                Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_emp_rollback", "document.addEventListener('load', function () {document.getElementById('register_emp_pop_up').click();}, true);", true);
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_emp_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('register_emp_pop_up').click(); }", true);
             }
+            Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_emp_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('register_emp_pop_up').click(); }", true);
+
         }
 
         protected void iniciarSesion(object sender, EventArgs e)
@@ -89,8 +94,9 @@ namespace FirstRow
             }
             {
                 salida.Text = "Usuario o contraseña incorrectos";
-                Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_rollback", "document.addEventListener('load', function () {document.getElementById('login_user_pop_up').click();}, true);", true);
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_user", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('login_user_pop_up').click(); }", true);
             }
+
         }
 
         protected void iniciarSesionEmpresa(object sender, EventArgs e)
@@ -109,7 +115,7 @@ namespace FirstRow
             else
             {
                 salida_login_empresa.Text = "Email o contraseña incorrectos";
-                Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_emp_rollback", "document.addEventListener('load', function () {document.getElementById('login_emp_pop_up').click();}, true);", true);
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_emp", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('login_emp_pop_up').click(); }", true);
 
             }
         }
@@ -141,7 +147,7 @@ namespace FirstRow
                 salida_ajustes_usuario.Text = "El email ya existe.";
             }
 
-            Page.ClientScript.RegisterClientScriptBlock(GetType(), "user_settings_rollback", "document.addEventListener('load', function () {document.getElementById('settings_user_pop_up').click();}, true);", true);
+            Page.ClientScript.RegisterClientScriptBlock(GetType(), "mod_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('settings_user_pop_up').click(); }", true);
         }
 
 
@@ -165,21 +171,19 @@ namespace FirstRow
             empresa.twitter = ajustes_twitter_empresa.Text;
             empresa.cif = ajustes_cif_empresa.Text;
             empresa.direccion = ajustes_direccion_empresa.Text;
-            empresa.pais.id = listaPaises_ajustes_empresa.SelectedIndex + 1;
+            empresa.pais.id = Int32.Parse(listaPaises_ajustes_empresa.SelectedItem.Value);
 
             if (empresa.updateEmpresa())
             {
                 Session["empresa"] = empresa;
                 ajustes_imagen_empresa.ImageUrl = empresa.image;
-                listaPaises_ajustes_empresa.SelectedIndex = empresa.pais.id - 1;
-                salida_ajustes_empresa.Text = "Empresa modificada correctamente.";
+                listaPaises_ajustes_empresa.Items.FindByText(empresa.pais.name).Selected = true;
             }
             else
             {
                 salida_ajustes_empresa.Text = "El email ya existe.";
             }
-
-            Page.ClientScript.RegisterClientScriptBlock(GetType(), "user_settings_rollback", "document.addEventListener('load', function () {document.getElementById('settings_emp_pop_up').click();}, true);", true);
+            Page.ClientScript.RegisterClientScriptBlock(GetType(), "mod_emp_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('settings_emp_pop_up').click(); }", true);
         }
 
         protected void cerrarSesion(object sender, EventArgs e)
@@ -266,6 +270,8 @@ namespace FirstRow
 
                     email_setting.Text = usuario.email;
                     name_setting.Text = usuario.name;
+                    password_1_setting.Text = usuario.password;
+                    password_2_setting.Text = usuario.password;
                     firstname_setting.Text = usuario.firstname;
                     secondname_setting.Text = usuario.secondname;
                     facebook_setting.Text = usuario.facebook;

@@ -613,7 +613,7 @@
                             </div>
                         </div>
                         <button class="btn button">
-                            <span>Search</span>
+                            <span>Search</span><a href="White.Master.cs">White.Master.cs</a>
                         </button>
                     </div>
                 </div>
@@ -621,7 +621,7 @@
         </div>
     </div>
 </body>
-
+    
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/jquery-ui.min.js"></script>
     <script src="/assets/js/lightgallery.js"></script>

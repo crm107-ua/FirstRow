@@ -23,7 +23,7 @@ namespace library
             {
                 c = new SqlConnection(constring);
                 DataSet bd = new DataSet();
-                SqlDataAdapter da = new SqlDataAdapter("select * from [FirstRow].[Categorias]", c);
+                SqlDataAdapter da = new SqlDataAdapter("select * from [firstrow_].[dbo].[Categorias]", c);
                 da.Fill(bd, "Categorias");
                 return bd;
             }

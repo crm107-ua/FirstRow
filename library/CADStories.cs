@@ -21,7 +21,7 @@ namespace library
             try
             {
                 connection.Open();
-                string query = "INSERT INTO [FirstRow].[Stories] " +
+                string query = "INSERT INTO [firstrow_].[dbo].[Stories] " +
                     "(id, titulo, descripcion, fecha, pais, usuario, imagen) VALUES " +
                     $"({story.Id}, {story.Titulo}, {story.Descripcion}, {story.Fecha}, {story.Pais}, {story.Usuario}, {story.Imagen})";
                 
@@ -85,7 +85,7 @@ namespace library
                 connection = new SqlConnection(constring);
                 connection.Open();
 
-                string query = "SELECT * FROM [FirstRow].[Stories]";
+                string query = "SELECT * FROM [firstrow_].[dbo].[Stories]";
                 SqlCommand consulta = new SqlCommand(query, connection);
                 busqueda = consulta.ExecuteReader();
 
@@ -151,7 +151,7 @@ namespace library
                 connection = new SqlConnection(constring);
                 connection.Open();
 
-                string query = "SELECT * FROM [FirstRow].[Stories] WHERE pais = '" + pais + "' ";
+                string query = "SELECT * FROM [firstrow_].[dbo].[Stories] WHERE pais = '" + pais + "' ";
                 SqlCommand consulta = new SqlCommand(query, connection);
                 busqueda = consulta.ExecuteReader();
 

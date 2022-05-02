@@ -27,7 +27,7 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "Select * From [FirstRow].[Paises]";
+                string query = "Select * From [firstrow_].[dbo].[Paises]";
                 SqlCommand consulta = new SqlCommand(query, conection);
                 busqueda = consulta.ExecuteReader();
 
@@ -66,7 +66,7 @@ namespace library
         {
             bool correctRead;
             SqlConnection connection = new SqlConnection(constring);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM [FirstRow].[Paises]", connection);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [firstrow_].[dbo].[Paises]", connection);
 
             try
             {
@@ -105,11 +105,11 @@ namespace library
                 string query = "";
                 if (pais.id > 0)
                 {
-                    query = $"SELECT * FROM [FirstRow].[Paises] WHERE id = '{pais.id}'";
+                    query = $"SELECT * FROM [firstrow_].[dbo].[Paises] WHERE id = '{pais.id}'";
                 }
                 else
                 {
-                    query = $"SELECT * FROM [FirstRow].[Paises] WHERE name = '{pais.name}'";
+                    query = $"SELECT * FROM [firstrow_].[dbo].[Paises] WHERE name = '{pais.name}'";
                 }
                 SqlCommand com = new SqlCommand(query, connection);
                 SqlDataReader dr = com.ExecuteReader();
