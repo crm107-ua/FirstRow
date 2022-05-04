@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>FirstRow - Making Dreams</title>
     <!--<link rel="stylesheet" type="text/css" href="~/assets/css/style.css" > -->
-    <link rel="stylesheet" type="text/css" href="~/assets/css/style.css?v=<%=DateTime.Now%>" >
+    <link rel="stylesheet" type="text/css" href="~/assets/css/style.css?v=<%DateTime.Now%>" >
     <link rel="icon" type="image/x-icon" href="~/assets/img/favicons/favicon.png">
     <meta name="msapplication-TileColor" content="#151515">
     <meta name="theme-color" content="#151515">
@@ -134,13 +134,13 @@
                         <ul></ul>
                     </div>
                     <div class="story_info">
+                        <!--
                         <div class="author">
                             <div class="userpic">
                                 <img src="../../assets/img/demo-bg.jpg" alt="">
                             </div>
                             <p class="name">21.09.2019 by Maya Delia</p>
-                            <!-- <asp:Label class="name" runat="server" ID="authorLabel" Text="21.09.2019-Maya Delia" /> -->
-                        </div>
+                        </div> -->
                         <div class="counter" id="stories-counter">
                             <span class="this">1</span> / <span class="all"></span>
                         </div>
