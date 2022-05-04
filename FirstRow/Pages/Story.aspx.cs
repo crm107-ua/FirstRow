@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace FirstRow.Pages
 {
-    public partial class Storie : System.Web.UI.Page
+    public partial class Story : System.Web.UI.Page
     {
         const string default_img = "https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg";
 
