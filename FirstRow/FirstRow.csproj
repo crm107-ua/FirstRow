@@ -174,8 +174,10 @@
     <Content Include="Pages\Experiencias.aspx" />
     <Content Include="Pages\Galeria.aspx" />
     <Content Include="Pages\Inicio.aspx" />
+    <Content Include="Pages\Perfil.aspx" />
     <Content Include="Pages\Propuesta.aspx" />
     <Content Include="Pages\Propuestas.aspx" />
+    <Content Include="Pages\Reservas.aspx" />
     <Content Include="Pages\Seccion_Galeria.aspx" />
     <Content Include="Pages\Sorteo.aspx" />
     <Content Include="Pages\Sorteos.aspx" />
@@ -252,6 +254,13 @@
     <Compile Include="Pages\Galeria.aspx.designer.cs">
       <DependentUpon>Galeria.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Perfil.aspx.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Perfil.aspx.designer.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Propuesta.aspx.cs">
       <DependentUpon>Propuesta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -265,6 +274,13 @@
     </Compile>
     <Compile Include="Pages\Propuestas.aspx.designer.cs">
       <DependentUpon>Propuestas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Reservas.aspx.cs">
+      <DependentUpon>Reservas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Reservas.aspx.designer.cs">
+      <DependentUpon>Reservas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Seccion_Galeria.aspx.cs">
       <DependentUpon>Seccion_Galeria.aspx</DependentUpon>

@@ -63,7 +63,7 @@ namespace FirstRow
             ENPais pais = new ENPais();
             List<ENPais> listaPaises = new List<ENPais>();
             pais.readPaises(listaPaises);
-            empresa.pais = (ENPais)listaPaises[Int32.Parse(listaPaisesRegEmpresa.SelectedValue)-1];
+            empresa.pais.id = Int32.Parse(listaPaisesRegEmpresa.SelectedItem.Value);
 
 
             if (empresa.registerEmpresa())
@@ -73,10 +73,8 @@ namespace FirstRow
             else
             {
                 registro_emp_salida.Text = "El nickname o el email ya existen.";
-                Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_emp_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('register_emp_pop_up').click(); }", true);
             }
             Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_emp_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('register_emp_pop_up').click(); }", true);
-
         }
 
         protected void iniciarSesion(object sender, EventArgs e)
