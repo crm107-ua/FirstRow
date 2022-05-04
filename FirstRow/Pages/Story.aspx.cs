@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace FirstRow.Pages
 {
-    public partial class Storie : System.Web.UI.Page
+    public partial class Story : System.Web.UI.Page
     {
         const string default_img = "https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg";
 
@@ -24,8 +24,7 @@ namespace FirstRow.Pages
                 if (myRoute != null && myRoute.Url == "story/{slug}")
                 {
                     string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
-                    Session["story_pais"] = cadena.Replace("-", " ");
-                    pais_name = (string)Session["story_pais"];
+                    pais_name = cadena.Replace("-", " ");
                     ENPais pais = new ENPais();
                     pais.name = pais_name;
                     if (pais.ReadPais())
@@ -68,7 +67,7 @@ namespace FirstRow.Pages
             //COMPLETAR
         }
 
-        private Panel createStoryPanel(string title, string text)
+        private Panel createStoryPanel(string title, string text, string user, string date)
         {
             Panel p = new Panel();
             p.CssClass = "item";
@@ -93,6 +92,14 @@ namespace FirstRow.Pages
             texto.CssClass = "_text";
             texto.Text = text;
             p.Controls.Add(texto);
+
+            HyperLink autor = new HyperLink();
+            autor.NavigateUrl = $"/user/{user}";
+            autor.CssClass = "_text";
+            autor.Style.Add("font-size", "15px");
+            autor.Style.Add("color", "rgba(255, 255, 255, 0.61)");
+            autor.Text = date + " by " + user;
+            p.Controls.Add(autor);
 
             return p;
         }
@@ -137,7 +144,7 @@ namespace FirstRow.Pages
                 {
                     foreach (ENStories story in listStories)
                     {
-                        addStory(story.Titulo, story.Descripcion, story.Imagen);
+                        addStory(story);
                     }
 
                 }
@@ -150,21 +157,28 @@ namespace FirstRow.Pages
 
         private void addDefaultStory()
         {
-            addStory("titulo default", "descripcion default", default_img);
+            ENStories story = new ENStories();
+            story.Titulo = "titulo default";
+            story.Descripcion = "descripcion default";
+            ENUsuario user = new ENUsuario();
+            user.nickname = "usuario default";
+            story.Usuario = user;
+            story.Imagen = default_img;
+            addStory(story);
         }
 
-        private void addStory(string title, string desc, string img)
+        private void addStory(ENStories story)
         {
-            Panel p = createStoryPanel(title, desc);
-            if (img == "")
+            Panel p = createStoryPanel(story.Titulo, story.Descripcion, story.Usuario.nickname, story.Fecha.ToString("dd.MM.yyyy"));
+            if (story.Imagen == "")
             {
                 p.BackImageUrl = default_img;
                 p.Attributes["data-blur-bg"] = default_img;
             }
             else
             {
-                p.BackImageUrl = img;
-                p.Attributes["data-blur-bg"] = img;
+                p.BackImageUrl = story.Imagen;
+                p.Attributes["data-blur-bg"] = story.Imagen;
             }
             stories_items.Controls.Add(p);
         }

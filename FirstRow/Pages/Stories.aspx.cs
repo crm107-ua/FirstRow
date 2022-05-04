@@ -107,7 +107,7 @@ namespace FirstRow.Pages
 
             ENPais pais = new ENPais();
             pais.id = countryId;
-            string slug = "";
+            string slug;
             if (pais.ReadPais())
             {
                 slug = pais.name;
