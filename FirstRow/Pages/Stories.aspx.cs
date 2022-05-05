@@ -56,10 +56,6 @@ namespace FirstRow.Pages
                 Response.Redirect("/story/" + country_list.SelectedItem.Text);
 
             }
-            else
-            {
-                mostrarTarjetasPaises();
-            }
         }
 
         private void mostrarTarjetasPaises()

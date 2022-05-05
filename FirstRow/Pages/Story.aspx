@@ -90,6 +90,21 @@
         </div>
         <div class="stories_page" id="stories_page">
             <a href="/experiencias" class="right_btn">Añadir story</a>
+            <div class="left_bottom_title" id="left_bottom_title" runat="server"
+                 style="position: absolute;
+                        z-index: 2;
+                        font-family: 'Prata', serif;
+                        font-size: 55px;
+                        text-align: center;
+                        color: #fff;
+                        width: auto;
+                        height: 50px;
+                        padding: 0 14px;
+                        margin-bottom: 12px;
+                        bottom: 25px;
+                        left: 60px;"
+                ></div>
+            
             <!--<a href="stories-right-sidebar.html" class="right_btn">More stories</a>-->
             <div class="stories_bg" id="stories_bg"></div>
             <div class="stories_page_wrap">

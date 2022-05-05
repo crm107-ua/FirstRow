@@ -32,6 +32,7 @@ namespace FirstRow.Pages
                         pais_id = pais.id; //¿?
                     }
                     country_span.InnerText = pais_name;
+                    left_bottom_title.InnerText = pais_name;
                 }
 
                 loadStories();
