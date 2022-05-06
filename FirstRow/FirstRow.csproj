@@ -183,6 +183,7 @@
     <Content Include="Pages\Equipo.aspx" />
     <Content Include="Pages\Experiencia.aspx" />
     <Content Include="Pages\Experiencias.aspx" />
+    <Content Include="Pages\Forms\FormExperiencia.aspx" />
     <Content Include="Pages\Galeria.aspx" />
     <Content Include="Pages\Inicio.aspx" />
     <Content Include="Pages\Perfil.aspx" />
@@ -257,6 +258,13 @@
     </Compile>
     <Compile Include="Pages\Experiencias.aspx.designer.cs">
       <DependentUpon>Experiencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Forms\FormExperiencia.aspx.cs">
+      <DependentUpon>FormExperiencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Forms\FormExperiencia.aspx.designer.cs">
+      <DependentUpon>FormExperiencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Galeria.aspx.cs">
       <DependentUpon>Galeria.aspx</DependentUpon>
@@ -369,7 +377,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Media\Users\" />
-    <Folder Include="Pages\Forms\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
