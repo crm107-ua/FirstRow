@@ -110,6 +110,7 @@
     <Content Include="assets\img\check-mark.svg" />
     <Content Include="assets\img\close-red.svg" />
     <Content Include="assets\img\close.svg" />
+    <Content Include="assets\img\default.jpg" />
     <Content Include="assets\img\demo-bg-2.jpg" />
     <Content Include="assets\img\demo-bg-3.jpg" />
     <Content Include="assets\img\demo-bg.jpg" />
@@ -164,6 +165,16 @@
     <Content Include="assets\js\scripts.min.js.map" />
     <Content Include="assets\js\slick.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="Media\Paises\Andorra.jpg" />
+    <Content Include="Media\Paises\EEUU.jpg" />
+    <Content Include="Media\Paises\Espana.jpg" />
+    <Content Include="Media\Paises\Francia.jpg" />
+    <Content Include="Media\Paises\Indonesia.jpg" />
+    <Content Include="Media\Paises\Islandia.jpg" />
+    <Content Include="Media\Paises\Italia.jpg" />
+    <Content Include="Media\Paises\Japon.jpg" />
+    <Content Include="Media\Paises\Noruega.jpg" />
+    <Content Include="Media\Paises\Suecia.jpg" />
     <Content Include="Pages\403.aspx" />
     <Content Include="Pages\404.aspx" />
     <Content Include="Pages\Blog.aspx" />
