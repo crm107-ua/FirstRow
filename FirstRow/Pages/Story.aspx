@@ -115,7 +115,7 @@
                     </div>
                     <div class="items stories_items" id="stories_items" runat="server">
                         
-                        <a href="/story/ejemplo" class="item" style="background-image: url(https://media-exp1.licdn.com/dms/image/C4D12AQHhj7R2c7hdrQ/article-cover_image-shrink_600_2000/0/1520167342937?e=1654128000&v=beta&t=cTkGEwA7jCsqkWK4C4TcSY5S4RNYGaZn1tru_nrckHE)" data-blur-bg="../../assets/img/demo-bg-2.jpg">
+                        <a href="/stories" class="item" style="background-image: url(https://media-exp1.licdn.com/dms/image/C4D12AQHhj7R2c7hdrQ/article-cover_image-shrink_600_2000/0/1520167342937?e=1654128000&v=beta&t=cTkGEwA7jCsqkWK4C4TcSY5S4RNYGaZn1tru_nrckHE)" data-blur-bg="../../assets/img/demo-bg-2.jpg">
                             <!--
                             <div class="_info">
                                 <div class="country"><span></span></div>
