@@ -1,6 +1,7 @@
 ﻿using library;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Routing;
@@ -14,16 +15,24 @@ namespace FirstRow.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Direccion.Items.Clear();
-            ENPais pais = new ENPais();
-            List<ENPais> paises = new List<ENPais>();
-            pais.readPaises(paises);
+            if(!Page.IsPostBack)
+                llenarDropDownList();
+        }
 
-            foreach (ENPais p in paises)
+        private void llenarDropDownList()
+        {
+            DataSet ds = new DataSet();
+            if (ENPais.ReadPaisesDataSet(ds))
             {
-                Direccion.Items.Insert(0, new ListItem(p.name, p.id.ToString()));
+                //country_list.Attributes.Add("style", "font-size: 18px");
+                Direccion.DataSource = ds;
+                Direccion.DataTextField = "name";
+                Direccion.DataValueField = "id";
+                Direccion.DataBind();
+
             }
-            //Hacer un bucle para cargar todas las galerias.
+
+            Direccion.Items.Insert(0, new ListItem("-- Destination --", "-1"));
         }
 
         protected void VerMas_Click(object sender, EventArgs e)

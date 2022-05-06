@@ -127,9 +127,6 @@
                                     </div>
                                 </a>
                             </div>
-                            <center>
-                              <asp:Button ID="VerMas" runat="server" Text="Ver más" class="load_more button" OnClick="VerMas_Click"/>
-                            </center>
                         </div>
                     </ContentTemplate></asp:UpdatePanel>
                 </div>
