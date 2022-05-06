@@ -112,8 +112,8 @@ namespace FirstRow.Pages
                 HyperLink h = new HyperLink();
                 h.NavigateUrl = $"/story/{slug}";
                 h.CssClass = "story_item";
-                h.Style.Add("background-image", $"url(../Media/Paises/{slug}.jpg)");
-                /*if (File.Exists($"../Media/Paises/{slug}.jpg"))
+                //h.Style.Add("background-image", $"url(../Media/Paises/{slug}.jpg)");
+                if (File.Exists(Server.MapPath($"~/Media/Paises/{slug}.jpg")))
                 {
                     h.Style.Add("background-image", $"url(../Media/Paises/{slug}.jpg)");
                     
@@ -121,7 +121,7 @@ namespace FirstRow.Pages
                 else
                 {
                     h.Style.Add("background-image", $"url(../assets/img/default.jpg)");
-                }*/
+                }
 
                 Panel wrap = new Panel();
                 wrap.CssClass = "item_wrap";
