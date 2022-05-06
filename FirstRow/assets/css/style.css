@@ -7924,7 +7924,6 @@ body.os-windows .popup::-webkit-scrollbar-thumb {
   float: left;
   border: 1px solid #fff;
   width: 49%;
-  margin-left: 2%;
   font-size: 21px;
   font-family: 'Nunito', sans-serif;
   padding: 0 20px;

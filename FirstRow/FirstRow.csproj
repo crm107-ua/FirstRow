@@ -110,8 +110,10 @@
     <Content Include="assets\img\check-mark.svg" />
     <Content Include="assets\img\close-red.svg" />
     <Content Include="assets\img\close.svg" />
+    <Content Include="assets\img\default.jpg" />
     <Content Include="assets\img\demo-bg-2.jpg" />
     <Content Include="assets\img\demo-bg-3.jpg" />
+    <Content Include="assets\img\demo-bg-4.jpg" />
     <Content Include="assets\img\demo-bg.jpg" />
     <Content Include="assets\img\facebook-logo-black.svg" />
     <Content Include="assets\img\facebook-logo.svg" />
@@ -164,6 +166,15 @@
     <Content Include="assets\js\scripts.min.js.map" />
     <Content Include="assets\js\slick.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="Media\Paises\Andorra.jpg" />
+    <Content Include="Media\Paises\EEUU.jpg" />
+    <Content Include="Media\Paises\Spain.jpg" />
+    <Content Include="Media\Paises\Francia.jpg" />
+    <Content Include="Media\Paises\Indonesia.jpg" />
+    <Content Include="Media\Paises\Islandia.jpg" />
+    <Content Include="Media\Paises\Italia.jpg" />
+    <Content Include="Media\Paises\Japon.jpg" />
+    <Content Include="Media\Paises\Noruega.jpg" />
     <Content Include="Pages\403.aspx" />
     <Content Include="Pages\404.aspx" />
     <Content Include="Pages\Blog.aspx" />
@@ -172,6 +183,7 @@
     <Content Include="Pages\Equipo.aspx" />
     <Content Include="Pages\Experiencia.aspx" />
     <Content Include="Pages\Experiencias.aspx" />
+    <Content Include="Pages\Forms\FormExperiencia.aspx" />
     <Content Include="Pages\Galeria.aspx" />
     <Content Include="Pages\Inicio.aspx" />
     <Content Include="Pages\Perfil.aspx" />
@@ -246,6 +258,13 @@
     </Compile>
     <Compile Include="Pages\Experiencias.aspx.designer.cs">
       <DependentUpon>Experiencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Forms\FormExperiencia.aspx.cs">
+      <DependentUpon>FormExperiencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Forms\FormExperiencia.aspx.designer.cs">
+      <DependentUpon>FormExperiencia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Galeria.aspx.cs">
       <DependentUpon>Galeria.aspx</DependentUpon>
@@ -358,7 +377,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Media\Users\" />
-    <Folder Include="Pages\Forms\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

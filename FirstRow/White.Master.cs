@@ -90,6 +90,7 @@ namespace FirstRow
                 Session["usuario"] = usuario;
                 Response.Redirect("/");
             }
+            else
             {
                 salida.Text = "Usuario o contraseña incorrectos";
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_user", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('login_user_pop_up').click(); }", true);
