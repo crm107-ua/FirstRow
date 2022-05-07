@@ -10,7 +10,7 @@ namespace library
     {
         private int _id;
         private string _ciudad;
-        private int _pais;
+        private ENPais _pais;
         private string _slug;
         private string _titulo;
         private string _descripcion;
@@ -28,7 +28,7 @@ namespace library
             get => _ciudad;
         }
 
-        public int pais 
+        public ENPais pais 
         {
             set => _pais = value;
             get => _pais;
@@ -69,7 +69,7 @@ namespace library
         {
             id=0;
             ciudad="";
-            pais = 0; ;
+            pais = new ENPais();
             slug="";
             titulo= "";
             descripcion="";
@@ -77,7 +77,7 @@ namespace library
             viaje= new ENViajes();
         }
 
-        public ENGaleria(int id, string ciudad, int pais, string slug, string titulo, string descripcion, List<string> imagenes, ENViajes vaije) 
+        public ENGaleria(int id, string ciudad, ENPais pais, string slug, string titulo, string descripcion, List<string> imagenes, ENViajes vaije) 
         {
             this.id = id;
             this.ciudad = ciudad;
@@ -113,6 +113,11 @@ namespace library
             return galeria.updateGaleria(this);
         }
 
+        public bool readAllGaleri(List<ENGaleria> lista) {
+            CADGaleria galeria = new CADGaleria();
+            return galeria.readAllGaleri(lista);
+        }
+
         public bool addImage(string img) 
         {
             imagenes.Add(img);
@@ -123,6 +128,14 @@ namespace library
         {
             imagenes.Remove(img);
             return true;
+        }
+        public int GenerateId() 
+        {
+            return 1;
+        }
+        public String GenerateSlug() 
+        {
+            return pais.name.Trim() + "/" + titulo;
         }
     }
 }

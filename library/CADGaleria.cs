@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -50,9 +51,8 @@ namespace library
         public bool updateGaleria(ENGaleria galeria) 
         {
             bool consegido = false;
-            CADGaleria aux = new CADGaleria();
 
-            if (!aux.readGaleria(galeria))
+            if (!this.readGaleria(galeria))
             {
                 //Se modifica solo el titulo ciudad y descripcion en la base de datos
                 consegido = true;
@@ -60,6 +60,17 @@ namespace library
 
             return consegido;
         }
-   
+
+        public bool readAllGaleri(List <ENGaleria> lista) 
+        {
+            bool conseguido = false;
+
+            //Si hay alguna galeria
+            if (true) { }
+
+            return conseguido;
+        }
+
+
     }
 }
