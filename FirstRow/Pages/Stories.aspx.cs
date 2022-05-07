@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.IO;
 
 namespace FirstRow.Pages
 {
@@ -111,8 +112,16 @@ namespace FirstRow.Pages
                 HyperLink h = new HyperLink();
                 h.NavigateUrl = $"/story/{slug}";
                 h.CssClass = "story_item";
-                //imagen por defecto, cambiar a imagen del país
-                h.Style.Add("background-image", "url(https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg)");
+                //h.Style.Add("background-image", $"url(../Media/Paises/{slug}.jpg)");
+                if (File.Exists(Server.MapPath($"~/Media/Paises/{slug}.jpg")))
+                {
+                    h.Style.Add("background-image", $"url(../Media/Paises/{slug}.jpg)");
+                    
+                }
+                else
+                {
+                    h.Style.Add("background-image", $"url(../assets/img/default.jpg)");
+                }
 
                 Panel wrap = new Panel();
                 wrap.CssClass = "item_wrap";
