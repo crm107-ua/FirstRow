@@ -9,7 +9,6 @@ namespace library
     public class ENGaleria
     {
         private int _id;
-        private string _ciudad;
         private ENPais _pais;
         private string _slug;
         private string _titulo;
@@ -21,11 +20,6 @@ namespace library
         {
             set => _id = value;
             get => _id;
-        }
-        public string ciudad 
-        { 
-            set => _ciudad = value;
-            get => _ciudad;
         }
 
         public ENPais pais 
@@ -68,7 +62,6 @@ namespace library
         public ENGaleria() 
         {
             id=0;
-            ciudad="";
             pais = new ENPais();
             slug="";
             titulo= "";
@@ -77,12 +70,11 @@ namespace library
             viaje= new ENViajes();
         }
 
-        public ENGaleria(int id, string ciudad, ENPais pais, string slug, string titulo, string descripcion, List<string> imagenes, ENViajes vaije) 
+        public ENGaleria(int id, ENPais pais, string titulo, string descripcion, List<string> imagenes, ENViajes vaije) 
         {
             this.id = id;
-            this.ciudad = ciudad;
             this.pais = pais; ;
-            this.slug = slug;
+            this.slug = GenerateSlug();
             this.titulo = titulo;
             this.descripcion = descripcion;
             this.imagenes = imagenes;
