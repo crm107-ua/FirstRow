@@ -73,7 +73,7 @@ namespace library
         }
 
         // LEER CATEGORIA
-         public bool readCategoria()
+        public bool readCategoria()
         {
             CADCategorias categoria = new CADCategorias();
             bool creado = false;
@@ -84,14 +84,14 @@ namespace library
             return creado;
         }
 
-       // ACTUALIZAR CATEGORIA
+        // ACTUALIZAR CATEGORIA
         public bool updateCategoria()
         {
             bool actualizado = false;
             CADCategorias categoria = new CADCategorias();
             ENCategorias aux = new ENCategorias();
 
-            aux.id= this.id;
+            aux.id = this.id;
             aux.nombre = this.nombre;
             aux.descripcion = this.descripcion;
 
@@ -107,8 +107,8 @@ namespace library
             return actualizado;
         }
 
-       // ELIMIAR CATEGORIA
-       public bool deleteCategoria()
+        // ELIMIAR CATEGORIA
+        public bool deleteCategoria()
         {
             bool eliminado = false;
             CADCategorias categoria = new CADCategorias();

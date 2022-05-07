@@ -40,50 +40,88 @@ namespace library
             }
         }
 
-            // Crear Categoria
-        public bool registerCategoria(ENCategorias en)
+        // Crear Categoria
+        public bool registerCategoria(ENCategorias categoria)
         {
             bool creado = false;
-            if(en is ENCategorias)
+            if (categoria is ENCategorias)
             {
-              
+
+                bool created = false;
+                SqlConnection connection = new SqlConnection(constring);
+                try
+                {
+                    connection.Open();
+                    string query = "INSERT INTO [firstrow_].[dbo].[Categorias] " +
+                        "(id, titulo, descripcion, fecha, pais, usuario, imagen) VALUES " +
+                        $"({categoria.id}, {categoria.nombre}, {categoria.descripcion}, {categoria.slug})";
+
+                    SqlCommand com = new SqlCommand(query, connection);
+                    com.ExecuteNonQuery();
+                    created = true;
+                }
+                catch (SqlException e)
+                {
+                    created = false;
+                    Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                }
+                catch (Exception e)
+                {
+                    created = false;
+                    Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                }
+                finally
+                {
+                    if (connection != null)
+                    {
+                        connection.Close();
+                    }
+                }
+
+                return created;
+
             }
-            
+
             return creado;
         }
 
         // Leer Categoria
-        public bool readCategoria(ENCategorias en)
+        public bool readCategoria(ENCategorias categoria)
         {
             bool read = false;
-            if (en is ENCategorias)
+            if (categoria is ENCategorias)
             {
-                
+
+                bool correctRead = false;
+                return correctRead;
+
             }
-            
+
             return read;
         }
 
         // Actualizar Categoria
-        public bool updateCategoria(ENCategorias en)
+        public bool updateCategoria(ENCategorias categoria)
         {
             bool update = false;
-            if (en is ENCategorias)
+            if (categoria is ENCategorias)
             {
-               
+
+                bool updated = false;
+                return updated;
+
             }
-           
+
             return update;
         }
 
         // Eliminar Categoria
-        public bool deleteCategoria(ENCategorias en)
+        public bool deleteCategoria(ENCategorias categoria)
         {
-            bool delete = false;
-            return delete;
+            bool deleted = false;
+            return deleted;
         }
 
     }
 
 }
-
