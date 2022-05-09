@@ -13,6 +13,22 @@ namespace library
         private int _Estrellas;
         private string _Nickname;
 
+        public ENComentarios()
+        {
+            _Id = 0;
+            _Texto = "";
+            _Estrellas = 0;
+            _Nickname = "";
+        }
+
+        public ENComentarios(int id, string texto, int estrellas, string nickname)
+        {
+            _Id = id;
+            _Texto = texto;
+            _Estrellas = estrellas;
+            _Nickname = nickname;
+        }
+
         public int Id //GET-SET
         {
             get { return _Id; }

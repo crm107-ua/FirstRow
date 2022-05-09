@@ -7,6 +7,7 @@ namespace FirstRow.App_Start
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.MapPageRoute("default", "", "~/Pages/Inicio.aspx");
+            routes.MapPageRoute("403", "403", "~/Pages/403.aspx");
 
             routes.MapPageRoute("perfil", "user/{nickname}", "~/Pages/Perfil.aspx");
 

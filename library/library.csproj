@@ -46,6 +46,7 @@
     <Compile Include="CADBlog.cs" />
     <Compile Include="CADCategorias.cs" />
     <Compile Include="CADComentarios.cs" />
+    <Compile Include="CADDia.cs" />
     <Compile Include="CADEmpresa.cs" />
     <Compile Include="CADGaleria.cs" />
     <Compile Include="CADPaises.cs" />
@@ -59,8 +60,10 @@
     <Compile Include="ENBlog.cs" />
     <Compile Include="ENCategorias.cs" />
     <Compile Include="ENComentarios.cs" />
+    <Compile Include="ENDia.cs" />
     <Compile Include="ENEmpresa.cs" />
     <Compile Include="ENGaleria.cs" />
+    <Compile Include="ENImagenes.cs" />
     <Compile Include="ENPais.cs" />
     <Compile Include="ENPropuestas.cs" />
     <Compile Include="ENSorteos.cs" />

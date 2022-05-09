@@ -6,18 +6,32 @@
                 <h3 class="title">Agrega una experiencia</h3>
             </div>
             <div class="center">
-                <input type="text" style="margin-top: 3%; width:100%" class="input" placeholder="Nombre">
-                <input type="text" style="margin-top: 3%; width:100%" class="input" placeholder="Titulo">
-                <textarea style="margin-top: 3%; width:100%" class="textarea" placeholder="Descripcion"></textarea>
+                <asp:TextBox id="create_titulo_experiencia" runat="server" type="text" style="margin-top: 3%; width:100%" class="input" placeholder="Titulo"></asp:TextBox>
+                <asp:TextBox id="create_nombre_experiencia" runat="server" type="text" style="margin-top: 3%; width:100%" class="input" placeholder="Nombre"></asp:TextBox>
+                <asp:TextBox id="create_precio_experiencia" runat="server" type="number" style="margin-top: 3%; width:100%" class="input" placeholder="Precio"></asp:TextBox>
+                <asp:TextBox id="create_descripcion_experiencia" runat="server" type="text" mode="multiline" style="margin-top: 3%; width:100%" class="input" placeholder="Descripcion"></asp:TextBox>
                 <div class="destination-col" style="margin-top: 3%; width:100%">
                     <div class="select_wrap">
                         <asp:DropDownList ID="listaPaises_form_experiencia" class="input" style="width:100%; height:50px; margin-bottom: 20px;" runat="server">
                         </asp:DropDownList>
                     </div>
                 </div>
+
+                <h3 style="margin-top: 5%;">Agrega etapas a tu experiencia</h3>
+                <asp:Panel runat="server" ID="incluidos">
+                </asp:Panel>
+                <asp:Button id="s" runat="server" class="submit button" onClick="agregarEtapa" Text="Agregar etapa"/>
+
+
             </div>
             <div class="bottom">
-                <button class="submit button">Crear</button>
+                <asp:Button id="botonCrearExperiencia" class="submit button" onClick="crearExperiencia" runat="server" Text="Crear Experiencia" validationgroup="GrupoCrearExperiencia"/>
+                <asp:RequiredFieldValidator ID="titulo_experiencia_requerido" ControlToValidate="create_titulo_experiencia" validationgroup="GrupoCrearExperiencia" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ErrorMessage="Titulo requerido"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="precio_experiencia_requerido" ControlToValidate="create_precio_experiencia" validationgroup="GrupoCrearExperiencia" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ErrorMessage="Precio requerido"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="titulo_experiencia_formato" ControlToValidate="create_titulo_experiencia" validationgroup="GrupoCrearExperiencia" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$" ErrorMessage="Formato de titulo incorrecto."> </asp:RegularExpressionValidator>
+                <asp:RequiredFieldValidator ID="nombre_experiencia_requerido" ControlToValidate="create_nombre_experiencia" validationgroup="GrupoCrearExperiencia" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ErrorMessage="Nombre requerido"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="nombre_experiencia_formato" ControlToValidate="create_nombre_experiencia" validationgroup="GrupoCrearExperiencia" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$" ErrorMessage="Formato de nombre incorrecto."> </asp:RegularExpressionValidator>
+                <asp:RequiredFieldValidator ID="descripcion_experiencia_requerido" ControlToValidate="create_descripcion_experiencia" validationgroup="GrupoCrearExperiencia" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ErrorMessage="Descripción requerida"></asp:RequiredFieldValidator>
             </div>
         </div>
     </div>
