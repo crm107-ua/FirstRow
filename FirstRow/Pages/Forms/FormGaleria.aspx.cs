@@ -13,7 +13,7 @@ namespace FirstRow.Pages.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] != null)
+            if (Session["usuario"] != null)
             {
                 ENPais pais = new ENPais();
                 List<ENPais> paises = new List<ENPais>();
@@ -34,16 +34,22 @@ namespace FirstRow.Pages.Forms
         protected void btnCrea_Click(object sender, EventArgs e)
         {
             HttpFileCollection _HttpFileCollection = Request.Files;
-            
-            if (_HttpFileCollection.Count > 6) 
-            {
-            }
+
             //Primero validar los datos
-            
-            for (int i = 0; i < _HttpFileCollection.Count; i++)
+
+            string titulo=Tiulo.Text.Trim();
+
+            if (_HttpFileCollection.Count > 6)
             {
-                HttpPostedFile _HttpPostedFile = _HttpFileCollection[i];
-                if (_HttpPostedFile.ContentLength > 0) _HttpPostedFile.SaveAs(Server.MapPath("~/Media/Galery" + Path.GetFileName(_HttpPostedFile.FileName)));
+                Mensaje.Text = "El numero de imagenes debe estar entre 1/6";
+            }
+            else
+            {
+                for (int i = 0; i < _HttpFileCollection.Count; i++)
+                {
+                    HttpPostedFile _HttpPostedFile = _HttpFileCollection[i];
+                    if (_HttpPostedFile.ContentLength > 0) _HttpPostedFile.SaveAs(Server.MapPath("~/Media/Galery" + Path.GetFileName(_HttpPostedFile.FileName)));
+                }
             }
         }
     }

@@ -13,7 +13,7 @@
                     <asp:ScriptManager ID="SCPTMGR" runat="server"></asp:ScriptManager>  
                     <asp:UpdatePanel ID="UpdimageUpload" runat="server">  
                         <ContentTemplate>  
-                            <asp:FileUpload ID="FileuploadImage" class="submit button" multiple="multiple" runat="server"/>  
+                            <asp:FileUpload ID="FileuploadImage" accept="image/*" class="submit button" multiple="multiple" runat="server"/>  
                         </ContentTemplate> 
                     </asp:UpdatePanel>  
                 </div> 
@@ -26,6 +26,7 @@
             </div>
             <div class="bottom">
                 <asp:Button ID="btnCrea" class="submit button" runat="server" Text="Crear" OnClick="btnCrea_Click" />
+                <asp:Label ID="Mensaje" style="color: red; margin-left: 3%; margin-top: 15px; visibility: visible;" runat="server" Text=""></asp:Label>
             </div>
         </div>
     </div>
