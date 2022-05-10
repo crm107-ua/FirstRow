@@ -13,22 +13,32 @@ namespace FirstRow.Pages.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] != null)
+            if (!IsPostBack)
             {
-                ENPais pais = new ENPais();
-                List<ENPais> paises = new List<ENPais>();
-                pais.readPaises(paises);
+                fillDestinos();
 
-                foreach (ENPais p in paises)
+                if (Session["usuario"] != null)
                 {
-                    listaPaises_form_experiencia.Items.Insert(0, new ListItem(p.name, p.id.ToString()));
+                }
+                else
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('register_user_pop_up').click(); }", true);
                 }
             }
-            else
-            {
-                Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('register_user_pop_up').click(); }", true);
-            }
 
+        }
+
+        private void fillDestinos() 
+        {
+            ENPais pais = new ENPais();
+            List<ENPais> paises = new List<ENPais>();
+            pais.readPaises(paises);
+
+            foreach (ENPais p in paises)
+            {
+                listaPaises_form_galeria.Items.Insert(0, new ListItem(p.name, p.id.ToString()));
+            }
+            listaPaises_form_galeria.Items.Insert(0, new ListItem("-- Destination --", "-1"));
         }
 
         protected void btnCrea_Click(object sender, EventArgs e)
@@ -37,11 +47,11 @@ namespace FirstRow.Pages.Forms
 
             //Primero validar los datos
 
-            string titulo=Tiulo.Text.Trim();
+            string titulo=create_galeria_title.Text.Trim();
 
             if (_HttpFileCollection.Count > 6)
             {
-                Mensaje.Text = "El numero de imagenes debe estar entre 1/6";
+                
             }
             else
             {

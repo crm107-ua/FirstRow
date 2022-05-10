@@ -15,13 +15,58 @@ namespace FirstRow.Pages.Forms
     {
 
         /// <summary>
-        /// Control Tiulo.
+        /// Control create_galeria_title.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Tiulo;
+        protected global::System.Web.UI.WebControls.TextBox create_galeria_title;
+
+        /// <summary>
+        /// Control titulo_galeria_requerido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator titulo_galeria_requerido;
+
+        /// <summary>
+        /// Control titulo_galeria_formato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator titulo_galeria_formato;
+
+        /// <summary>
+        /// Control create_galeria_descripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox create_galeria_descripcion;
+
+        /// <summary>
+        /// Control descripcion_galeria_requerido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator descripcion_galeria_requerido;
+
+        /// <summary>
+        /// Control descripcion_galeria_formato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator descripcion_galeria_formato;
 
         /// <summary>
         /// Control SCPTMGR.
@@ -51,13 +96,13 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.FileUpload FileuploadImage;
 
         /// <summary>
-        /// Control listaPaises_form_experiencia.
+        /// Control listaPaises_form_galeria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList listaPaises_form_experiencia;
+        protected global::System.Web.UI.WebControls.DropDownList listaPaises_form_galeria;
 
         /// <summary>
         /// Control btnCrea.
@@ -67,14 +112,5 @@ namespace FirstRow.Pages.Forms
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCrea;
-
-        /// <summary>
-        /// Control Mensaje.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Mensaje;
     }
 }
