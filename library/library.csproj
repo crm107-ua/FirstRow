@@ -49,6 +49,7 @@
     <Compile Include="CADDia.cs" />
     <Compile Include="CADEmpresa.cs" />
     <Compile Include="CADGaleria.cs" />
+    <Compile Include="CADIncluido.cs" />
     <Compile Include="CADPaises.cs" />
     <Compile Include="CADPropuestas.cs" />
     <Compile Include="CADSorteos.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="ENEmpresa.cs" />
     <Compile Include="ENGaleria.cs" />
     <Compile Include="ENImagenes.cs" />
+    <Compile Include="ENIncluido.cs" />
     <Compile Include="ENPais.cs" />
     <Compile Include="ENPropuestas.cs" />
     <Compile Include="ENSorteos.cs" />

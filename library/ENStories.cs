@@ -35,6 +35,17 @@ namespace library
             Imagen = "";
         }
 
+        public ENStories(int id)
+        {
+            this.Id = id; // Carga de storie en experiencias
+            Titulo = "";
+            Fecha = new DateTime(); //fecha: 01-01-0001 00:00:00
+            Pais = 0; //supongo que el país por defecto es 0, posibles cambios
+            Usuario = new ENUsuario();
+            Descripcion = "";
+            Imagen = "";
+        }
+
         public ENStories(int id, ENUsuario usuario, DateTime fecha, string nombre, int pais, string desc, string img)
         {
             this.Id = id;//Tiene que ser un id unico

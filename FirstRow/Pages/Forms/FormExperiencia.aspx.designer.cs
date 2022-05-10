@@ -114,6 +114,33 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.DropDownList listaPaises_form_experiencia;
 
         /// <summary>
+        /// Control panelIncluidos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelIncluidos;
+
+        /// <summary>
+        /// Control background_experiencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload background_experiencia;
+
+        /// <summary>
+        /// Control imagenes_experiencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload imagenes_experiencia;
+
+        /// <summary>
         /// Control add_etapa_button.
         /// </summary>
         /// <remarks>
@@ -123,13 +150,13 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.Button add_etapa_button;
 
         /// <summary>
-        /// Control incluidos.
+        /// Control panelEtapas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel incluidos;
+        protected global::System.Web.UI.WebControls.Panel panelEtapas;
 
         /// <summary>
         /// Control botonCrearExperiencia.

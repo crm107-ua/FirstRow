@@ -1,6 +1,7 @@
 ﻿using library;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -14,6 +15,7 @@ namespace FirstRow.Pages.Forms
         private TextBox tb;
         private TextBox tb2;
         private FileUpload fu;
+        private CheckBox checkbox;
         private static int i = 0;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -44,6 +46,7 @@ namespace FirstRow.Pages.Forms
                     //Response.Redirect("/403");
                 }
             }
+            cargaDeEtapas();
             cargaDeIncluidos();
         }
         protected void crearExperiencia(object sender, EventArgs e)
@@ -51,6 +54,8 @@ namespace FirstRow.Pages.Forms
 
             ENPais pais = new ENPais();
             ENViajes experiencia = new ENViajes();
+            List<ENIncluido> listaIncluidos = new List<ENIncluido>();
+
             //ENEmpresa empresa = (ENEmpresa)Session["empresa"];
 
             experiencia.Titulo = create_titulo_experiencia.Text.Trim();
@@ -61,11 +66,11 @@ namespace FirstRow.Pages.Forms
             experiencia.Empresa.nickname = "empresa"; // = (ENEmpresa)Session["empresa"];
 
 
-            List<ENDia> incluido = new List<ENDia>();
+            List<ENDia> etapas = new List<ENDia>();
             ENDia dia = new ENDia();
 
             int i = 0;
-            foreach (TextBox dias in incluidos.Controls.OfType<TextBox>())
+            foreach (TextBox dias in panelEtapas.Controls.OfType<TextBox>())
             {
                 if (!string.IsNullOrEmpty(dias.Text))
                 {
@@ -82,7 +87,7 @@ namespace FirstRow.Pages.Forms
                             break;
                         case 2:
                             dia.Descripcion = dias.Text.Trim();
-                            incluido.Add(dia);
+                            etapas.Add(dia);
                             i = 0;
                             break;
                     }
@@ -90,29 +95,75 @@ namespace FirstRow.Pages.Forms
             }
 
             i = 0;
-            foreach (FileUpload iamgenes_dias in incluidos.Controls.OfType<FileUpload>())
+            foreach (FileUpload imagenes_etapas in panelEtapas.Controls.OfType<FileUpload>())
             {
-                if (iamgenes_dias.HasFile)
+                if (imagenes_etapas.HasFile)
                 {
-                    incluido[i].Imagen = Path.GetFileName(iamgenes_dias.PostedFile.FileName);
+                    string imagen = experiencia.Empresa.nickname + "_" + Path.GetFileName(imagenes_etapas.PostedFile.FileName);
+                    etapas[i].Imagen = imagen;
+                    imagenes_etapas.SaveAs(Server.MapPath("~/Media/Etapas/") + imagen);
                 }
                 i++;
             }
 
+            foreach (HttpPostedFile imagenes in imagenes_experiencia.PostedFiles)
+            {
+                if (imagenes_experiencia.HasFiles)
+                {
+                    string imagen = experiencia.Empresa.nickname + "_" + Path.GetFileName(imagenes.FileName);
+                    experiencia.Imagenes.Add(new ENImagenes(imagen));
+                    imagenes.SaveAs(Server.MapPath("~/Media/Experiencias/") + imagen);
+                }
+            }
+
+            if (background_experiencia.HasFile)
+            {
+                string imagen = experiencia.Empresa.nickname + "_bg_" + Path.GetFileName(background_experiencia.PostedFile.FileName);
+                experiencia.Background = imagen;
+                background_experiencia.SaveAs(Server.MapPath("~/Media/Experiencias/") + imagen);
+            }
+
+            foreach (CheckBox checkbox in panelIncluidos.Controls.OfType<CheckBox>())
+            {
+                if (checkbox.Checked)
+                {
+                    listaIncluidos.Add(new ENIncluido(Int32.Parse(checkbox.ID), checkbox.Text));
+                }
+            }
 
         }
 
-        protected void agregarEtapa(object sender, EventArgs e)
-        {
-            cargaDeIncluidos();
-            i++;
-        }
 
         private void cargaDeIncluidos()
         {
+            ENIncluido incluido = new ENIncluido();
+            DataSet dataSetListaIncluidos = incluido.readIncluidos();
+
+            foreach (DataRow row in dataSetListaIncluidos.Tables["Incluidos"].Rows)
+            {
+                checkbox = new CheckBox();
+                checkbox.ID = row["id"].ToString();
+                checkbox.Text = row["titulo"].ToString();
+                checkbox.Attributes.Add("style", "margin-left:5%");
+                panelIncluidos.Controls.Add(checkbox);
+            }
+
+        }
+
+
+
+        protected void agregarEtapa(object sender, EventArgs e)
+        {
+            cargaDeEtapas();
+            i++;
+        }
+
+
+        private void cargaDeEtapas()
+        {
             int contador = 0;
 
-            foreach (TextBox dias in incluidos.Controls.OfType<TextBox>())
+            foreach (TextBox dias in panelEtapas.Controls.OfType<TextBox>())
             {
                 contador++;
             }
@@ -126,8 +177,9 @@ namespace FirstRow.Pages.Forms
                 tb.Attributes.Add("class", "input");
                 tb.Attributes.Add("placeholder", "Titulo");
                 tb.Attributes.Add("required", "true");
+                tb.Attributes.Add("value", "Ejemplo texto");
 
-                incluidos.Controls.Add(tb);
+                panelEtapas.Controls.Add(tb);
 
                 tb2 = new TextBox();
                 tb2.Attributes.Add("runat", "server");
@@ -136,8 +188,9 @@ namespace FirstRow.Pages.Forms
                 tb2.Attributes.Add("class", "input");
                 tb2.Attributes.Add("placeholder", "Nombre del dia");
                 tb2.Attributes.Add("required", "true");
+                tb2.Attributes.Add("value", "Ejemplo texto");
 
-                incluidos.Controls.Add(tb2);
+                panelEtapas.Controls.Add(tb2);
 
                 tb2 = new TextBox();
                 tb2.Attributes.Add("runat", "server");
@@ -146,8 +199,9 @@ namespace FirstRow.Pages.Forms
                 tb2.Attributes.Add("class", "input");
                 tb2.Attributes.Add("placeholder", "Descripcion");
                 tb2.Attributes.Add("required", "true");
+                tb2.Attributes.Add("value", "Ejemplo texto");
 
-                incluidos.Controls.Add(tb2);
+                panelEtapas.Controls.Add(tb2);
 
                 fu = new FileUpload();
                 fu.Attributes.Add("runat", "server");
@@ -156,15 +210,15 @@ namespace FirstRow.Pages.Forms
                 fu.Attributes.Add("class", "input");
                 fu.Attributes.Add("placeholder", "Foto de etapa");
 
-                incluidos.Controls.Add(fu);
+                panelEtapas.Controls.Add(fu);
 
-                incluidos.Controls.Add(new LiteralControl("<br><hr><br>"));
+                panelEtapas.Controls.Add(new LiteralControl("<br><hr><br>"));
             }
 
             if (i == 0)
             {
                 i++;
-                cargaDeIncluidos();
+                cargaDeEtapas();
             }
         }
     }

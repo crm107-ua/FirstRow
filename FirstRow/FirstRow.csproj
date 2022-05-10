@@ -384,6 +384,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Media\Etapas\" />
+    <Folder Include="Media\Experiencias\" />
     <Folder Include="Media\Galery\" />
     <Folder Include="Media\Users\" />
   </ItemGroup>

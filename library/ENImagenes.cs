@@ -22,6 +22,12 @@ namespace library
             Name = "";
             Mode = 0;
         }
+        public ENImagenes(string name)
+        {
+            Id = 0;
+            Name = name;
+            Mode = 0;
+        }
         public ENImagenes(int id, string name, int mode)
         {
             Id = id;

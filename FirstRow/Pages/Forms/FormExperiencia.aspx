@@ -6,21 +6,21 @@
                 <h3 class="title">Agrega una experiencia</h3>
             </div>
             <div class="center">
-                <asp:TextBox id="create_titulo_experiencia" runat="server" type="text" style="margin-top: 3%; width:100%" class="input" placeholder="Titulo"></asp:TextBox>
+                <asp:TextBox id="create_titulo_experiencia" runat="server" type="text" style="margin-top: 3%; width:100%" class="input" placeholder="Titulo" value="Ejemplo Titulo experiencia"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="titulo_experiencia_requerido" ControlToValidate="create_titulo_experiencia" validationgroup="GrupoCrearExperiencia" ForeColor="Red" style="float:left; margin-bottom: 10px; margin-top: 10px" runat="server" ErrorMessage="Titulo requerido"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="titulo_experiencia_formato" ControlToValidate="create_titulo_experiencia" validationgroup="GrupoCrearExperiencia" style="float:left;  margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9 ]+$" ErrorMessage="Formato de titulo incorrecto."> </asp:RegularExpressionValidator>
 
 
-                <asp:TextBox id="create_nombre_experiencia" runat="server" type="text" style="margin-top: 3%; width:100%" class="input" placeholder="Nombre"></asp:TextBox>
+                <asp:TextBox id="create_nombre_experiencia" runat="server" type="text" style="margin-top: 3%; width:100%" class="input" placeholder="Nombre" value="Ejemplo Nombre experiencia"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="nombre_experiencia_requerido" ControlToValidate="create_nombre_experiencia" validationgroup="GrupoCrearExperiencia" ForeColor="Red" style="float:left;  margin-bottom: 10px; margin-top: 10px" runat="server" ErrorMessage="Nombre requerido"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="nombre_experiencia_formato" ControlToValidate="create_nombre_experiencia" validationgroup="GrupoCrearExperiencia" style="float:left; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[a-zA-Z0-9 ]+$" ErrorMessage="Formato de nombre incorrecto."> </asp:RegularExpressionValidator>
 
 
-                <asp:TextBox id="create_precio_experiencia" runat="server" type="number" style="margin-top: 3%; width:100%" class="input" placeholder="Precio"></asp:TextBox>
+                <asp:TextBox id="create_precio_experiencia" runat="server" type="number" style="margin-top: 3%; width:100%" class="input" placeholder="Precio" value="243"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="precio_experiencia_requerido" ControlToValidate="create_precio_experiencia" validationgroup="GrupoCrearExperiencia" ForeColor="Red" style="float:left; margin-bottom: 10px; margin-top: 10px" runat="server" ErrorMessage="Precio requerido"></asp:RequiredFieldValidator>
 
                
-                <asp:TextBox id="create_descripcion_experiencia" runat="server" type="text" mode="multiline" style="margin-top: 3%; width:100%" class="input" placeholder="Descripcion"></asp:TextBox>
+                <asp:TextBox id="create_descripcion_experiencia" runat="server" type="text" mode="multiline" style="margin-top: 3%; width:100%" class="input" placeholder="Descripcion" value="Ejemplo Descripcion experiencia"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="descripcion_experiencia_requerido" ControlToValidate="create_descripcion_experiencia" validationgroup="GrupoCrearExperiencia" ForeColor="Red" style="float:left; margin-bottom: 10px; margin-top: 10px" runat="server" ErrorMessage="Descripción requerida"></asp:RequiredFieldValidator>
 
 
@@ -31,17 +31,21 @@
                     </div>
                 </div>
 
-                <h3 style="margin-top: 5%;">Agrega etapas a tu experiencia</h3>
-                <asp:Button id="add_etapa_button" runat="server" style="float:left; margin-left: 30%;" class="submit button" onClick="agregarEtapa" Text="Agregar etapa"/>
-
-                <asp:Panel runat="server" ID="incluidos">
+                <h2 style="margin-top: 5%;">Lo que incluye la experiencia</h2>  
+                <asp:Panel runat="server" ID="panelIncluidos" style="margin-top: 3%; width:100%; margin-bottom: 20px;">
                 </asp:Panel>
 
+                <h2 style="margin-top: 5%;">Fondo de la experiencia</h2>  
+                <asp:FileUpload id="background_experiencia" style="margin-top: 3%; width:100%; margin-bottom: 20px;" runat="server"/>
 
+                <h2 style="margin-top: 5%;">Imágenes de la experiencia</h2>  
+                <asp:FileUpload id="imagenes_experiencia" style="margin-top: 3%; width:100%; margin-bottom: 20px;" runat="server" AllowMultiple="true"/>
 
+                <h2 style="margin-top: 5%;">Agrega etapas a tu experiencia</h2>
+                <asp:Button id="add_etapa_button" runat="server" style="float:left; margin-left: 30%;" class="submit button" onClick="agregarEtapa" Text="Agregar etapa"/>
 
-
-
+                <asp:Panel runat="server" ID="panelEtapas">
+                </asp:Panel>
 
             </div>
             <div class="bottom">
@@ -50,3 +54,6 @@
         </div>
     </div>
 </asp:Content>
+
+
+ 

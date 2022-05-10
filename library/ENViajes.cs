@@ -16,6 +16,7 @@ namespace library
         private string _Slug;
         private string _Descripcion;
         private double _Precio;
+        private string _Background;
         private ENPais _Pais;
         private List<ENDia> _Incluido;
         private List<ENImagenes> _Imagenes;
@@ -29,6 +30,7 @@ namespace library
         public string Slug { get => _Slug; set => _Slug = value; }
         public string Descripcion { get => _Descripcion; set => _Descripcion = value; }
         public double Precio { get => _Precio; set => _Precio = value; }
+        public string Background { get => _Background; set => _Background = value; }
         public ENPais Pais { get => _Pais; set => _Pais = value; }
         public List<ENDia> Incluido { get => _Incluido; set => _Incluido = value; }
         public List<ENImagenes> Imagenes { get => _Imagenes; set => _Imagenes = value; }
@@ -43,6 +45,7 @@ namespace library
             Nombre = "";
             Slug = "";
             Descripcion = "";
+            Background = "";
             Precio = 0;
             Pais = new ENPais();
             Imagenes = new List<ENImagenes>();
@@ -52,20 +55,21 @@ namespace library
             Incluido = new List<ENDia>();
         }
 
-        public ENViajes(int id, string titulo, string nombre, string slug, string descripcion, double precio, ENPais pais, List<ENDia> incluido, List<ENImagenes> imagenes, List<ENStories> stories, List<ENComentarios> comentarios, ENEmpresa empresa)
+        public ENViajes(int id, string titulo, string nombre, string slug, string descripcion, string background, double precio, ENPais pais, List<ENDia> incluido, List<ENImagenes> imagenes, List<ENStories> stories, List<ENComentarios> comentarios, ENEmpresa empresa)
         {
-            _Id = id;
-            _Titulo = titulo;
-            _Nombre = nombre;
-            _Slug = slug;
-            _Descripcion = descripcion;
-            _Precio = precio;
-            _Pais = pais;
-            _Incluido = incluido;
-            _Imagenes = imagenes;
-            _Stories = stories;
-            _Comentarios = comentarios;
-            _Empresa = empresa;
+            Id = id;
+            Titulo = titulo;
+            Nombre = nombre;
+            Slug = slug;
+            Descripcion = descripcion;
+            Background = background;
+            Precio = precio;
+            Pais = pais;
+            Incluido = incluido;
+            Imagenes = imagenes;
+            Stories = stories;
+            Comentarios = comentarios;
+            Empresa = empresa;
         }
 
         public bool addImagen(){
