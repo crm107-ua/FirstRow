@@ -51,12 +51,14 @@ namespace FirstRow.Pages.Forms
 
             ENPais pais = new ENPais();
             ENViajes experiencia = new ENViajes();
+            //ENEmpresa empresa = (ENEmpresa)Session["empresa"];
 
-            experiencia.Titulo = create_titulo_experiencia.Text;
-            experiencia.Nombre = create_nombre_experiencia.Text;
-            experiencia.Descripcion = create_descripcion_experiencia.Text;
-            experiencia.Precio = Double.Parse(create_descripcion_experiencia.Text);
+            experiencia.Titulo = create_titulo_experiencia.Text.Trim();
+            experiencia.Nombre = create_nombre_experiencia.Text.Trim();
+            experiencia.Descripcion = create_descripcion_experiencia.Text.Trim();
+            experiencia.Precio = Convert.ToDouble(create_precio_experiencia.Text.ToString());
             experiencia.Pais.id = Int32.Parse(listaPaises_form_experiencia.SelectedItem.Value);
+            experiencia.Empresa.nickname = "empresa"; // = (ENEmpresa)Session["empresa"];
 
 
             List<ENDia> incluido = new List<ENDia>();
@@ -71,15 +73,15 @@ namespace FirstRow.Pages.Forms
                     {
                         case 0:
                             dia = new ENDia();
-                            dia.Titulo = dias.Text;
+                            dia.Titulo = dias.Text.Trim();
                             i++;
                             break;
                         case 1:
-                            dia.Nombre = dias.Text;
+                            dia.Nombre = dias.Text.Trim();
                             i++;
                             break;
                         case 2:
-                            dia.Descripcion = dias.Text;
+                            dia.Descripcion = dias.Text.Trim();
                             incluido.Add(dia);
                             i = 0;
                             break;
@@ -90,12 +92,14 @@ namespace FirstRow.Pages.Forms
             i = 0;
             foreach (FileUpload iamgenes_dias in incluidos.Controls.OfType<FileUpload>())
             {
-                if (!string.IsNullOrEmpty(Path.GetFileName(iamgenes_dias.PostedFile.FileName)))
+                if (iamgenes_dias.HasFile)
                 {
                     incluido[i].Imagen = Path.GetFileName(iamgenes_dias.PostedFile.FileName);
                 }
                 i++;
             }
+
+
         }
 
         protected void agregarEtapa(object sender, EventArgs e)
@@ -121,6 +125,7 @@ namespace FirstRow.Pages.Forms
                 tb.Attributes.Add("style", "margin-top: 3%; width:100%;");
                 tb.Attributes.Add("class", "input");
                 tb.Attributes.Add("placeholder", "Titulo");
+                tb.Attributes.Add("required", "true");
 
                 incluidos.Controls.Add(tb);
 
@@ -130,6 +135,7 @@ namespace FirstRow.Pages.Forms
                 tb2.Attributes.Add("style", "margin-top: 3%; width:100%;");
                 tb2.Attributes.Add("class", "input");
                 tb2.Attributes.Add("placeholder", "Nombre del dia");
+                tb2.Attributes.Add("required", "true");
 
                 incluidos.Controls.Add(tb2);
 
@@ -139,6 +145,7 @@ namespace FirstRow.Pages.Forms
                 tb2.Attributes.Add("style", "margin-top: 3%; width:100%;");
                 tb2.Attributes.Add("class", "input");
                 tb2.Attributes.Add("placeholder", "Descripcion");
+                tb2.Attributes.Add("required", "true");
 
                 incluidos.Controls.Add(tb2);
 
