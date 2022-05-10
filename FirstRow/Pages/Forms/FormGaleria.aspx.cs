@@ -21,12 +21,24 @@ namespace FirstRow.Pages.Forms
 
                 foreach (ENPais p in paises)
                 {
-                    listaPaises_form_experiencia.Items.Insert(0, new ListItem(p.name, p.id.ToString()));
+                    listaPaises_form_galeria.Items.Insert(0, new ListItem(p.name, p.id.ToString()));
                 }
             }
             else
             {
-                Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('register_user_pop_up').click(); }", true);
+                ENPais pais = new ENPais();
+                List<ENPais> paises = new List<ENPais>();
+                pais.readPaises(paises);
+
+                foreach (ENPais p in paises)
+                {
+                    listaPaises_form_galeria.Items.Insert(0, new ListItem(p.name, p.id.ToString()));
+                }
+                // Cuando termines:
+                // El no inicio de sesion debe de devolver a la pagina principal
+                // Un usuario no loggeado no puede estar aqui
+                // Response.Redirect("/");
+                // Campo descripcion: ASP:TEXTBOX con la etiqueta TextMode="MultiLine"
             }
 
         }

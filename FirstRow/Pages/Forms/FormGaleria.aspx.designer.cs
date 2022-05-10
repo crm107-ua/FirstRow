@@ -24,6 +24,15 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.TextBox Tiulo;
 
         /// <summary>
+        /// Control Descripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Descripcion;
+
+        /// <summary>
         /// Control SCPTMGR.
         /// </summary>
         /// <remarks>
@@ -51,13 +60,13 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.FileUpload FileuploadImage;
 
         /// <summary>
-        /// Control listaPaises_form_experiencia.
+        /// Control listaPaises_form_galeria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList listaPaises_form_experiencia;
+        protected global::System.Web.UI.WebControls.DropDownList listaPaises_form_galeria;
 
         /// <summary>
         /// Control btnCrea.

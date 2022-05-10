@@ -7,7 +7,7 @@
             </div>
             <div class="center">
                 <asp:TextBox ID="Tiulo" runat="server" type="text" style="margin-top: 3%; width:100%" class="input" placeholder="Titulo"></asp:TextBox>
-                <textarea style="margin-top: 3%; width:100%; margin-bottom: 3%;" class="textarea" placeholder="Descripcion" ></textarea>
+                <asp:TextBox ID="Descripcion" TextMode="MultiLine" runat="server" type="text" style="margin-top: 3%; margin-bottom: 3%; width:100%" class="input" placeholder="Descripcion"></asp:TextBox>
                 <div>  
                     <h5 class="title">Imagenes</h5>    
                     <asp:ScriptManager ID="SCPTMGR" runat="server"></asp:ScriptManager>  
@@ -19,7 +19,7 @@
                 </div> 
                 <div class="destination-col" style="margin-top: 3%; width:100%">
                     <div class="select_wrap">
-                        <asp:DropDownList ID="listaPaises_form_experiencia" class="input" style="width:100%; height:50px; margin-bottom: 20px;" runat="server">
+                        <asp:DropDownList ID="listaPaises_form_galeria" class="input" style="width:100%; height:50px; margin-bottom: 20px;" runat="server">
                         </asp:DropDownList>
                     </div>
                 </div>
