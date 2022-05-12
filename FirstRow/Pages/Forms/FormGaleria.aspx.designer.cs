@@ -69,15 +69,6 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.RegularExpressionValidator descripcion_galeria_formato;
 
         /// <summary>
-        /// Control Descripcion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Descripcion;
-
-        /// <summary>
         /// Control SCPTMGR.
         /// </summary>
         /// <remarks>
@@ -96,13 +87,31 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.UpdatePanel UpdimageUpload;
 
         /// <summary>
-        /// Control FileuploadImage.
+        /// Control crear_galeria_imagenes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileuploadImage;
+        protected global::System.Web.UI.WebControls.FileUpload crear_galeria_imagenes;
+
+        /// <summary>
+        /// Control imagenes_galeria_requerido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator imagenes_galeria_requerido;
+
+        /// <summary>
+        /// Control imagenes_galeria_formato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator imagenes_galeria_formato;
 
         /// <summary>
         /// Control listaPaises_form_galeria.
@@ -121,5 +130,14 @@ namespace FirstRow.Pages.Forms
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCrea;
+
+        /// <summary>
+        /// Control Error.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Error;
     }
 }

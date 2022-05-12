@@ -13,6 +13,8 @@ namespace FirstRow.Pages.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Error.Text = "";
+            Error.Visible = false;
             if (!IsPostBack)
             {
                 fillDestinos();
@@ -22,7 +24,13 @@ namespace FirstRow.Pages.Forms
                 }
                 else
                 {
-                    Response.Redirect("/");
+                    if (Session["empresa"] != null)
+                    {
+                    }
+                    else
+                    {
+                        //Response.Redirect("/");
+                    }
                 }
             }
 
@@ -47,18 +55,21 @@ namespace FirstRow.Pages.Forms
 
             //Primero validar los datos
 
-            string titulo=create_galeria_title.Text.Trim();
-
-            if (_HttpFileCollection.Count > 6)
+            //string titulo=create_galeria_title.Text.Trim();
+            
+            if (_HttpFileCollection.Count > 10)
             {
-                
+                Error.Text = "*Maximo 6 imagenes";
+                Error.Visible = true;
             }
+            
             else
             {
+                Error.Visible = false;
                 for (int i = 0; i < _HttpFileCollection.Count; i++)
                 {
                     HttpPostedFile _HttpPostedFile = _HttpFileCollection[i];
-                    if (_HttpPostedFile.ContentLength > 0) _HttpPostedFile.SaveAs(Server.MapPath("~/Media/Galery" + Path.GetFileName(_HttpPostedFile.FileName)));
+                    if (_HttpPostedFile.ContentLength > 0) _HttpPostedFile.SaveAs(Server.MapPath("~/Media/Galery/" + Path.GetFileName(_HttpPostedFile.FileName)));
                 }
             }
         }
