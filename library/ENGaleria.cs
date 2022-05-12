@@ -89,9 +89,5 @@ namespace library
         {
             return 1;
         }
-        public String GenerateSlug() 
-        {
-            return Pais.name.Trim() + "/" + Titulo;
-        }
     }
 }

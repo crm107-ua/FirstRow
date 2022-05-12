@@ -64,7 +64,7 @@ namespace FirstRow.Pages.Forms
             experiencia.Nombre = create_nombre_experiencia.Text.Trim();
             experiencia.Descripcion = create_descripcion_experiencia.Text.Trim();
             experiencia.Dias = Int32.Parse(total_dias.Value);
-            experiencia.Slug = slug(experiencia.Titulo)+"-"+rand.Next(1,999999).ToString();
+            experiencia.Slug =Home.slug(experiencia.Titulo)+"-"+rand.Next(1,999999).ToString();
             experiencia.Precio = Convert.ToDouble(create_precio_experiencia.Text.ToString());
             experiencia.Pais.id = Int32.Parse(listaPaises_form_experiencia.SelectedItem.Value);
             experiencia.Empresa.nickname = empresa.nickname;
@@ -180,7 +180,7 @@ namespace FirstRow.Pages.Forms
                 contador++;
             }
 
-            for (int j = 0; j <= i-contador; j++)
+            for (int j = 0; j <= i - contador; j++)
             {
                 tb = new TextBox();
                 tb.Attributes.Add("runat", "server");
@@ -235,32 +235,5 @@ namespace FirstRow.Pages.Forms
             }
 
         }
-
-
-        public string slug(string value)
-        {
-            //First to lower case 
-            value = value.ToLowerInvariant();
-
-            //Remove all accents
-            var bytes = Encoding.GetEncoding("Cyrillic").GetBytes(value);
-
-            value = Encoding.ASCII.GetString(bytes);
-
-            //Replace spaces 
-            value = Regex.Replace(value, @"\s", "-", RegexOptions.Compiled);
-
-            //Remove invalid chars 
-            value = Regex.Replace(value, @"[^\w\s\p{Pd}]", "", RegexOptions.Compiled);
-
-            //Trim dashes from end 
-            value = value.Trim('-', '_');
-
-            //Replace double occurences of - or \_ 
-            value = Regex.Replace(value, @"([-_]){2,}", "$1", RegexOptions.Compiled);
-
-            return value;
-        }
-
     }
 }

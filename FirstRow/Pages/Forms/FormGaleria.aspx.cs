@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
+using System.Text.RegularExpressions;
+using System.Text;
 
 namespace FirstRow.Pages.Forms
 {
@@ -56,15 +58,16 @@ namespace FirstRow.Pages.Forms
             HttpFileCollection _HttpFileCollection = Request.Files;
 
             //Primero validar los datos
-
-            //string titulo=create_galeria_title.Text.Trim();
-            
             if (_HttpFileCollection.Count > 10)
             {
                 Error.Text = "*Maximo 6 imagenes";
                 Error.Visible = true;
             }
-            
+            else if (listaPaises_form_galeria.SelectedValue == "-1")
+            {
+                Error.Text = "*Seleccione un pais valido";
+                Error.Visible = true;
+            }
             else
             {
                 Error.Visible = false;
@@ -74,11 +77,27 @@ namespace FirstRow.Pages.Forms
                     if (_HttpPostedFile.ContentLength > 0)
                     {
                         string imagen = rand.Next(1,999999).ToString() + "-galery-" + Path.GetFileName(_HttpPostedFile.FileName);
-                        //seccion_galeria.Imagenes.Add(new ENImagenes(imagen));
+                        seccion_galeria.Imagenes.Add(new ENImagenes(imagen));
                         _HttpPostedFile.SaveAs(Server.MapPath("~/Media/Galery/" + imagen));
                     }
+
+                    string titulo = create_galeria_title.Text.Trim();
+                    string descripcion = create_galeria_descripcion.Text.Trim();
+                    string slug ="";
+
+
                 }
             }
         }
+
+        protected void listaPaises_form_galeria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listaPaises_form_galeria.SelectedValue == "-1")
+            {
+                Error.Text = "*Seleccione un pais valido";
+                Error.Visible = true;
+            }
+        }
+
     }
 }

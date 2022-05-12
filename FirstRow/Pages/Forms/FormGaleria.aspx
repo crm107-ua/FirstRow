@@ -30,7 +30,7 @@
                 </div> 
                 <div class="destination-col" style="margin-top: 5px; width:100%">
                     <div class="select_wrap">
-                        <asp:DropDownList ID="listaPaises_form_galeria" class="input" style="width:100%; height:50px; margin-bottom: 20px;" runat="server">
+                        <asp:DropDownList ID="listaPaises_form_galeria" class="input" style="width:100%; height:50px; margin-bottom: 20px;" runat="server" OnSelectedIndexChanged="listaPaises_form_galeria_SelectedIndexChanged">
                         </asp:DropDownList>
                     </div>
                 </div>
