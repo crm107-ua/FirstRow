@@ -57,9 +57,8 @@ namespace FirstRow.Pages.Forms
             Random rand = new Random();
             ENPais pais = new ENPais();
             ENViajes experiencia = new ENViajes();
+            ENEmpresa empresa = (ENEmpresa)Session["empresa"];
             List<ENIncluido> listaIncluidos = new List<ENIncluido>();
-
-            //ENEmpresa empresa = (ENEmpresa)Session["empresa"];
 
             experiencia.Titulo = create_titulo_experiencia.Text.Trim();
             experiencia.Nombre = create_nombre_experiencia.Text.Trim();
@@ -68,7 +67,7 @@ namespace FirstRow.Pages.Forms
             experiencia.Slug = slug(experiencia.Titulo)+"-"+rand.Next(1,999999).ToString();
             experiencia.Precio = Convert.ToDouble(create_precio_experiencia.Text.ToString());
             experiencia.Pais.id = Int32.Parse(listaPaises_form_experiencia.SelectedItem.Value);
-            experiencia.Empresa.nickname = "nick-empresa-ejemplo"; // = (ENEmpresa)Session["empresa"];
+            experiencia.Empresa.nickname = empresa.nickname;
 
             List<ENDia> etapas = new List<ENDia>();
             ENDia dia = new ENDia();

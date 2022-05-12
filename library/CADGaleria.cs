@@ -83,7 +83,11 @@ namespace library
                 DataRow[] rowsGaleria = tableGaleria.Select();
 
                 lista.Clear();
-                List<String> imagenes = new List<string>();
+
+
+                // Las imagenes se tienen que tratar con listas de objectos ENImagenes
+                // ENGaleria modificado
+                List<ENImagenes> imagenes = new List<ENImagenes>();
 
                 for (int i = 0; i < rowsGaleria.Length; i++)
                 {
@@ -100,12 +104,13 @@ namespace library
                     imagenes.Clear();
                     for (int j = 0; j < rowsGaleria.Length; j++)
                     {
-                        imagenes.Add(rowsImg[j]["name"].ToString());
+                        imagenes.Add(new ENImagenes(rowsImg[j]["name"].ToString()));
                     }
 
+                    // Modificado por Carlos, pendiente de revision
                     ENPais pais = new ENPais(int.Parse(rowsGaleria[i]["PaisId"].ToString()), rowsGaleria[i]["NamePais"].ToString());
                     ENViajes viaje= new ENViajes();
-                    ENGaleria galeria = new ENGaleria(int.Parse(rowsGaleria[i]["id"].ToString()) ,pais, rowsGaleria[i]["titulo"].ToString(), rowsGaleria[i]["descripcion"].ToString(), imagenes, viaje);
+                    ENGaleria galeria = new ENGaleria(int.Parse(rowsGaleria[i]["id"].ToString()) ,pais, rowsGaleria[i]["slug"].ToString(), rowsGaleria[i]["titulo"].ToString(), rowsGaleria[i]["descripcion"].ToString(), imagenes, viaje);
                     lista.Add(galeria);
                 }
 

@@ -15,6 +15,13 @@ namespace library
         private string _descripcion;
         private List<ENImagenes> _imagenes;
         private ENViajes _viaje;
+        public int Id { get => _id; set => _id = value; }
+        public ENPais Pais { get => _pais; set => _pais = value; }
+        public string Slug { get => _slug; set => _slug = value; }
+        public string Titulo { get => _titulo; set => _titulo = value; }
+        public string Descripcion { get => _descripcion; set => _descripcion = value; }
+        public List<ENImagenes> Imagenes { get => _imagenes; set => _imagenes = value; }
+        public ENViajes Viaje { get => _viaje; set => _viaje = value; }
 
         public ENGaleria()
         {
@@ -37,14 +44,6 @@ namespace library
             _imagenes = imagenes;
             _viaje = viaje;
         }
-
-        public int Id { get => _id; set => _id = value; }
-        public ENPais Pais { get => _pais; set => _pais = value; }
-        public string Slug { get => _slug; set => _slug = value; }
-        public string Titulo { get => _titulo; set => _titulo = value; }
-        public string Descripcion { get => _descripcion; set => _descripcion = value; }
-        public List<ENImagenes> Imagenes { get => _imagenes; set => _imagenes = value; }
-        public ENViajes Viaje { get => _viaje; set => _viaje = value; }
 
         public bool createGaleria() 
         {
