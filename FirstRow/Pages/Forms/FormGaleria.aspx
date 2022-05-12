@@ -10,7 +10,7 @@
                 <asp:RequiredFieldValidator ID="titulo_galeria_requerido" ControlToValidate="create_galeria_title" validationgroup="GrupoCrearGaleria" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 5px; margin-bottom: 10px;" runat="server" ErrorMessage="*Titulo requerido"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="titulo_galeria_formato" ControlToValidate="create_galeria_title" validationgroup="GrupoCrearGaleria" style="float:left; margin-left: 10px; margin-top: 5px; margin-bottom: 10px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[-.:,0-9A-Za-zÀ-ÿ ]+$" ErrorMessage="*Formato de titulo incorrecto"> </asp:RegularExpressionValidator>
 
-                <asp:TextBox ID="create_galeria_descripcion" runat="server" type="text" textMode="MultiLine" style=" width:100%;" Height="180px" class="input" placeholder="Descripcion"></asp:TextBox>
+                <asp:TextBox ID="create_galeria_descripcion" runat="server" type="text" textMode="MultiLine" style=" width:100%;" Height="180px" Wrap="false" class="input" placeholder="Descripcion"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="descripcion_galeria_requerido" ControlToValidate="create_galeria_descripcion" validationgroup="GrupoCrearGaleria" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 5px;" runat="server" ErrorMessage="*Descripcion requerida"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="descripcion_galeria_formato" ControlToValidate="create_galeria_descripcion" validationgroup="GrupoCrearGaleria" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 5px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[-.:,0-9A-Za-zÀ-ÿ\s]+$" ErrorMessage="*Formato de descripcion incorrecto"> </asp:RegularExpressionValidator>
 
@@ -30,7 +30,7 @@
                 </div> 
                 <div class="destination-col" style="margin-top: 5px; width:100%">
                     <div class="select_wrap">
-                        <asp:DropDownList ID="listaPaises_form_galeria" class="input" style="width:100%; height:50px; margin-bottom: 20px;" runat="server" OnSelectedIndexChanged="listaPaises_form_galeria_SelectedIndexChanged">
+                        <asp:DropDownList ID="listaPaises_form_galeria" class="input" style="width:100%; height:50px; margin-bottom: 20px;" runat="server">
                         </asp:DropDownList>
                     </div>
                 </div>

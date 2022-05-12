@@ -31,8 +31,47 @@ namespace library
 
         public bool readGaleria(ENGaleria galeria) 
         {
-            //Buscar en la BDD
-            return false;
+            SqlConnection connection = new SqlConnection(constring);
+            SqlDataReader reader = null;
+            SqlDataReader readerimagenes = null;
+            bool conseguido = false;
+            string comand = "select Seccion_Galeria.id, titulo, descripcion, slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
+                    "from [dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais) where slug='" +galeria.Slug+"';";
+
+
+
+            try
+            {
+                connection.Open();
+                SqlCommand com = new SqlCommand(comand, connection);
+                reader = com.ExecuteReader();
+                galeria.Titulo = reader["titulo"].ToString();
+                galeria.Descripcion = reader["descripcion"].ToString();
+                galeria.Pais = new ENPais(int.Parse(reader["PaisId"].ToString()), reader["NamePais"].ToString());
+
+                string comandImg = "select name from Seccion_Galeria_Imagenes join Imagenes on(Imagenes.id = Seccion_Galeria_Imagenes.id_imagen)" +
+                        " where Seccion_Galeria_Imagenes.id_seccion_galeria ='" + reader["id"].ToString() + "'";
+
+                SqlCommand comandoImagenes = new SqlCommand(comandImg, connection);
+                List<ENImagenes> imagenes = new List<ENImagenes>();
+                readerimagenes = comandoImagenes.ExecuteReader();
+
+                while (readerimagenes.Read()) {
+                    imagenes.Add(new ENImagenes(readerimagenes["name"].ToString()));
+                }
+
+                galeria.Imagenes = imagenes;
+
+            }
+            catch (Exception exception)
+            { 
+            }
+            finally 
+            {
+                connection.Close();
+            }
+
+            return conseguido;
         }
 
         public bool deleteGaleria(ENGaleria galeria) 
@@ -93,7 +132,7 @@ namespace library
                 {
                     //Rellenado de imagenes
                     string slectImagenes = "select name from Seccion_Galeria_Imagenes join Imagenes on(Imagenes.id = Seccion_Galeria_Imagenes.id_imagen)" +
-                        " where Seccion_Galeria_Imagenes.id_seccion_galeria ="+ rowsGaleria[i]["id"];
+                        " where Seccion_Galeria_Imagenes.id_seccion_galeria ='"+ rowsGaleria[i]["id"]+"'";
 
                     SqlDataAdapter adapterImagenes = new SqlDataAdapter(slectImagenes, connection);
                     adapter.Fill(dbdImagenes, "Imagenes");
@@ -109,8 +148,7 @@ namespace library
 
                     // Modificado por Carlos, pendiente de revision
                     ENPais pais = new ENPais(int.Parse(rowsGaleria[i]["PaisId"].ToString()), rowsGaleria[i]["NamePais"].ToString());
-                    ENViajes viaje= new ENViajes();
-                    ENGaleria galeria = new ENGaleria(int.Parse(rowsGaleria[i]["id"].ToString()) ,pais, rowsGaleria[i]["slug"].ToString(), rowsGaleria[i]["titulo"].ToString(), rowsGaleria[i]["descripcion"].ToString(), imagenes, viaje);
+                    ENGaleria galeria = new ENGaleria(int.Parse(rowsGaleria[i]["id"].ToString()) ,pais, rowsGaleria[i]["slug"].ToString(), rowsGaleria[i]["titulo"].ToString(), rowsGaleria[i]["descripcion"].ToString(), imagenes);
                     lista.Add(galeria);
                 }
 
