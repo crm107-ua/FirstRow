@@ -21,19 +21,17 @@ namespace FirstRow.Pages.Forms
 
                 if (Session["usuario"] != null)
                 {
+
+                }
+                else if (Session["empresa"] != null)
+                {
+
                 }
                 else
                 {
-                    if (Session["empresa"] != null)
-                    {
-                    }
-                    else
-                    {
-                        //Response.Redirect("/");
-                    }
+                    //Response.Redirect("/");
                 }
             }
-
         }
 
         private void fillDestinos() 
@@ -51,6 +49,10 @@ namespace FirstRow.Pages.Forms
 
         protected void btnCrea_Click(object sender, EventArgs e)
         {
+            Random rand = new Random();
+            // Objeto seccion_galeria de creacion
+            ENGaleria seccion_galeria = new ENGaleria();
+
             HttpFileCollection _HttpFileCollection = Request.Files;
 
             //Primero validar los datos
@@ -69,7 +71,12 @@ namespace FirstRow.Pages.Forms
                 for (int i = 0; i < _HttpFileCollection.Count; i++)
                 {
                     HttpPostedFile _HttpPostedFile = _HttpFileCollection[i];
-                    if (_HttpPostedFile.ContentLength > 0) _HttpPostedFile.SaveAs(Server.MapPath("~/Media/Galery/" + Path.GetFileName(_HttpPostedFile.FileName)));
+                    if (_HttpPostedFile.ContentLength > 0)
+                    {
+                        string imagen = rand.Next(1,999999).ToString() + "-galery-" + Path.GetFileName(_HttpPostedFile.FileName);
+                        //seccion_galeria.Imagenes.Add(new ENImagenes(imagen));
+                        _HttpPostedFile.SaveAs(Server.MapPath("~/Media/Galery/" + imagen));
+                    }
                 }
             }
         }

@@ -13,73 +13,38 @@ namespace library
         private string _slug;
         private string _titulo;
         private string _descripcion;
-        private List<string> _imagenes;
+        private List<ENImagenes> _imagenes;
         private ENViajes _viaje;
 
-        public int id 
+        public ENGaleria()
         {
-            set => _id = value;
-            get => _id;
+            _id = 0;
+            _pais = new ENPais();
+            _slug = "";
+            _titulo = "";
+            _descripcion = "";
+            _imagenes = new List<ENImagenes>();
+            _viaje = new ENViajes();
         }
 
-        public ENPais pais 
+        public ENGaleria(int id, ENPais pais, string slug, string titulo, string descripcion, List<ENImagenes> imagenes, ENViajes viaje)
         {
-            set => _pais = value;
-            get => _pais;
+            _id = id;
+            _pais = pais;
+            _slug = slug;
+            _titulo = titulo;
+            _descripcion = descripcion;
+            _imagenes = imagenes;
+            _viaje = viaje;
         }
 
-        public string slug
-        {
-            set => _slug = value;
-            get => _slug;
-        }
-
-        public string titulo
-        {
-            set => titulo = value;
-            get => _titulo;
-        }
-
-        public string descripcion
-        {
-            set => _descripcion = value;
-            get => _descripcion;
-        }
-
-        public List<string> imagenes
-        {
-            set => _imagenes = value;
-            get => _imagenes;
-        }
-
-        public ENViajes viaje
-        {
-            set => _viaje = value;
-            get => _viaje;
-        }
-
-        //Consrtuctor por defecto
-        public ENGaleria() 
-        {
-            id=0;
-            pais = new ENPais();
-            slug="";
-            titulo= "";
-            descripcion="";
-            List<string> imagenes= new List<string>();
-            viaje= new ENViajes();
-        }
-
-        public ENGaleria(int id, ENPais pais, string titulo, string descripcion, List<string> imagenes, ENViajes vaije) 
-        {
-            this.id = id;
-            this.pais = pais; ;
-            this.slug = GenerateSlug();
-            this.titulo = titulo;
-            this.descripcion = descripcion;
-            this.imagenes = imagenes;
-            this.viaje = viaje;
-        }
+        public int Id { get => _id; set => _id = value; }
+        public ENPais Pais { get => _pais; set => _pais = value; }
+        public string Slug { get => _slug; set => _slug = value; }
+        public string Titulo { get => _titulo; set => _titulo = value; }
+        public string Descripcion { get => _descripcion; set => _descripcion = value; }
+        public List<ENImagenes> Imagenes { get => _imagenes; set => _imagenes = value; }
+        public ENViajes Viaje { get => _viaje; set => _viaje = value; }
 
         public bool createGaleria() 
         {
@@ -110,15 +75,15 @@ namespace library
             return galeria.readAllGaleri(lista);
         }
 
-        public bool addImage(string img) 
+        public bool addImage(ENImagenes img) 
         {
-            imagenes.Add(img);
+            Imagenes.Add(img);
             return true;
         }
 
-        public bool deleteImage(string img) 
+        public bool deleteImage(ENImagenes img) 
         {
-            imagenes.Remove(img);
+            Imagenes.Remove(img);
             return true;
         }
         public int GenerateId() 
@@ -127,7 +92,7 @@ namespace library
         }
         public String GenerateSlug() 
         {
-            return pais.name.Trim() + "/" + titulo;
+            return Pais.name.Trim() + "/" + Titulo;
         }
     }
 }
