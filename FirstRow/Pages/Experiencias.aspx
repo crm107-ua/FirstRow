@@ -29,38 +29,8 @@
                 <div class="wrap">
                     <div class="wrap_float">
                         <div class="posts">
-                            <a href="/experiencia/viaje-a-croacia" class="tour_item" style="background-image: url(https://tripin.hellodigi.ru/img/tour-item-1.jpg)">
-                                <div class="tour_item_top">
-                                    <p class="country">
-                                        <span>North Africa</span>
-                                    </p>
-                                    <div class="add_bookmark fav-button">
-                                        <i class="is-added bouncy"></i>
-                                        <i class="not-added bouncy"></i>
-                                        <span class="fav-overlay"></span>
-                                    </div>
-                                </div>
-                                <div class="tour_item_bottom">
-                                    <h3 class="_title">A trip to the mighty desert</h3>
-                                    <div class="_info">
-                                        <div class="_info_left">
-                                            <div class="days">5 days |</div>
-                                            <div class="cost">from $356</div>
-                                        </div>
-                                        <div class="_info_right">
-                                            <div class="rating-stars">
-                                                <div class="star filled"></div>
-                                                <div class="star filled"></div>
-                                                <div class="star filled"></div>
-                                                <div class="star"></div>
-                                                <div class="star"></div>
-                                            </div>
-                                            <p class="rating-text">10 reviews</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="shadow js-shadow"></div>
-                            </a>
+                            <asp:Panel ID="mostrar_experiencias" runat="server" class="posts">
+                            </asp:Panel>
                         </div>
                     </div>
                 </div>

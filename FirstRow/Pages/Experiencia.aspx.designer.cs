@@ -15,6 +15,15 @@ namespace FirstRow.Pages
     {
 
         /// <summary>
+        /// Control bg_experiencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bg_experiencia;
+
+        /// <summary>
         /// Control slug.
         /// </summary>
         /// <remarks>
@@ -24,12 +33,30 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.WebControls.Label slug;
 
         /// <summary>
-        /// Control titulo.
+        /// Control texto_pais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label titulo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl texto_pais;
+
+        /// <summary>
+        /// Control texto_titulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl texto_titulo;
+
+        /// <summary>
+        /// Control carga.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl carga;
     }
 }

@@ -1,15 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Experiencia.aspx.cs" Inherits="FirstRow.Pages.Experiencia" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
       <div class="tour_page right-sidebar">
-            <div class="tour_page_head" style="background-image: url(https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg)">
+            <div id="bg_experiencia" runat="server" class="tour_page_head">
                 <div class="breadcrumbs">
                     <div class="wrap">
                         <div class="wrap_float">
-                            <a href="/">FirstRow</a>
-                            <span class="separator">/</span>
-                            <a href="/experiencias">Experiencias</a>
-                            <span class="separator">/</span>
-                            <a href="/"><asp:Label ID="slug" runat="server"></asp:Label></a>
+                            <a href="/" style="color:white;">FirstRow</a>
+                            <span style="color:white;" class="separator">/</span>
+                            <a href="/experiencias" style="color:white;">Experiencias</a>
+                            <span class="separator" style="color:white;">/</span>
+                            <a href="/" style="color:white;"><asp:Label ID="slug" runat="server" style="color:white;"></asp:Label></a>
                         </div>
                     </div>
                 </div>
@@ -17,8 +17,8 @@
                     <div class="wrap">
                         <div class="wrap_float">
                             <div class="top-info">
-                                <p class="country">Croacia</p>
-                                <h1 class="tour_title">
+                                <p id="texto_pais" runat="server" class="country"></p>
+                                <h1 id="texto_titulo" runat="server" class="tour_title">
                                     Una experiencia inolvidable por las playas más atractivas del mediterráneo
                                 </h1>
                                 <div class="controls">
@@ -34,23 +34,21 @@
                                 </div>
                             </div>
                             <div class="slider_wrap">
-                                <div class="slider lightgallery" id="tour-head-slider">
-                                    <a href="https://wallpapercave.com/wp/wp1823653.jpg" class="slide">
-                                        <img src="https://wallpapercave.com/wp/wp1823653.jpg" alt="">
-                                    </a>
-                                    <a href="https://cdn.wallpapersafari.com/35/35/EfVhaN.jpg" class="slide">
-                                        <img src="https://cdn.wallpapersafari.com/35/35/EfVhaN.jpg" alt="">
-                                    </a>
-                                    <a href="https://c4.wallpaperflare.com/wallpaper/695/887/692/omis-dalmacija-croatia-wallpaper-hd-wallpaper-preview.jpg" class="slide">
-                                        <img src="https://c4.wallpaperflare.com/wallpaper/695/887/692/omis-dalmacija-croatia-wallpaper-hd-wallpaper-preview.jpg" alt="">
-                                    </a>
-                                    <a href="https://i0.wp.com/www.rulandomundo.com/wp-content/uploads/split.jpg?fit=1024%2C678&ssl=1" class="slide">
-                                        <img src="https://i0.wp.com/www.rulandomundo.com/wp-content/uploads/split.jpg?fit=1024%2C678&ssl=1" alt="">
-                                    </a>
-                                    <a href="https://www.lacroacia.es/wp-content/uploads/2014/04/anfiteatro_pula_croacia.jpg" class="slide">
-                                        <img src="https://www.lacroacia.es/wp-content/uploads/2014/04/anfiteatro_pula_croacia.jpg" alt="">
-                                    </a>
-                                </div>
+                            <div class="slider lightgallery" id="tour-head-slider">
+                                <div id="carga" class="slider lightgallery" runat="server"></div>
+                                <a class="slide" style="pointer-events: none; z-index:-1;" > </a>   
+                                <a class="slide" style="pointer-events: none; z-index:-1;"> </a>  
+                                <a class="slide" style="pointer-events: none; z-index:-1;"> </a>
+                                <a class="slide" style="pointer-events: none; z-index:-1;"> </a>   
+                                <a class="slide" style="pointer-events: none; z-index:-1;"> </a>   
+                                <a class="slide" style="pointer-events: none; z-index:-1;"> </a>  
+                                <a class="slide" style="pointer-events: none; z-index:-1;"> </a>
+                                <a class="slide" style="pointer-events: none; z-index:-1;"> </a>
+                                <a class="slide" style="pointer-events: none; z-index:-1;"> </a>   
+                                <a class="slide" style="pointer-events: none; z-index:-1;"> </a>  
+                                <a class="slide" style="pointer-events: none; z-index:-1;"> </a>
+                                <a class="slide" style="pointer-events: none; z-index:-1;"> </a> 
+                             </div>
                             </div>
                             <div class="bottom-info">
                                 <div class="bottom-info-left">
@@ -411,21 +409,12 @@
                                     <li><a href="#reviews">Comentarios</a></li>
                                 </ul>
                             </div>
-                            <div class="add-to-favorites">
-                                <div class="add_bookmark fav-button">
-                                    <i class="is-added bouncy"></i>
-                                    <i class="not-added bouncy"></i>
-                                    <span class="fav-overlay"></span>
-                                </div>
-                                <div class="fav-text">
-                                    Favoritos
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>
             </div>
       </div>
 </asp:Content>
+
+
 

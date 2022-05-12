@@ -83,6 +83,12 @@ namespace library
             return experiencia.addExperiencia(this);
         }
 
+        public bool mostrarExperiencia()
+        {
+            CADViajes experiencias = new CADViajes();
+            return experiencias.readExperiencia(this);
+        }
+
         public bool mostrarExperiencias(List<ENViajes> listaExperiencias)
         {
             CADViajes experiencias = new CADViajes();
