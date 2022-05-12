@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -43,15 +45,16 @@ namespace FirstRow.Pages.Forms
                     {
                         listaPaises_form_experiencia.Items.Insert(0, new ListItem(p.name, p.id.ToString()));
                     }
-                    //Response.Redirect("/403");
+                    //Response.Redirect("/");
                 }
             }
+
             cargaDeEtapas();
             cargaDeIncluidos();
         }
         protected void crearExperiencia(object sender, EventArgs e)
         {
-
+            Random rand = new Random();
             ENPais pais = new ENPais();
             ENViajes experiencia = new ENViajes();
             List<ENIncluido> listaIncluidos = new List<ENIncluido>();
@@ -61,10 +64,11 @@ namespace FirstRow.Pages.Forms
             experiencia.Titulo = create_titulo_experiencia.Text.Trim();
             experiencia.Nombre = create_nombre_experiencia.Text.Trim();
             experiencia.Descripcion = create_descripcion_experiencia.Text.Trim();
+            experiencia.Dias = Int32.Parse(total_dias.Value);
+            experiencia.Slug = slug(experiencia.Titulo)+"-"+rand.Next(1,999999).ToString();
             experiencia.Precio = Convert.ToDouble(create_precio_experiencia.Text.ToString());
             experiencia.Pais.id = Int32.Parse(listaPaises_form_experiencia.SelectedItem.Value);
-            experiencia.Empresa.nickname = "empresa"; // = (ENEmpresa)Session["empresa"];
-
+            experiencia.Empresa.nickname = "nick-empresa-ejemplo"; // = (ENEmpresa)Session["empresa"];
 
             List<ENDia> etapas = new List<ENDia>();
             ENDia dia = new ENDia();
@@ -99,7 +103,7 @@ namespace FirstRow.Pages.Forms
             {
                 if (imagenes_etapas.HasFile)
                 {
-                    string imagen = experiencia.Empresa.nickname + "_" + Path.GetFileName(imagenes_etapas.PostedFile.FileName);
+                    string imagen = experiencia.Slug + "-etapa-" + Path.GetFileName(imagenes_etapas.PostedFile.FileName); 
                     etapas[i].Imagen = imagen;
                     imagenes_etapas.SaveAs(Server.MapPath("~/Media/Etapas/") + imagen);
                 }
@@ -110,7 +114,7 @@ namespace FirstRow.Pages.Forms
             {
                 if (imagenes_experiencia.HasFiles)
                 {
-                    string imagen = experiencia.Empresa.nickname + "_" + Path.GetFileName(imagenes.FileName);
+                    string imagen = experiencia.Slug + "-img-" + Path.GetFileName(imagenes.FileName);
                     experiencia.Imagenes.Add(new ENImagenes(imagen));
                     imagenes.SaveAs(Server.MapPath("~/Media/Experiencias/") + imagen);
                 }
@@ -118,7 +122,7 @@ namespace FirstRow.Pages.Forms
 
             if (background_experiencia.HasFile)
             {
-                string imagen = experiencia.Empresa.nickname + "_bg_" + Path.GetFileName(background_experiencia.PostedFile.FileName);
+                string imagen = experiencia.Slug + "-bg-" + Path.GetFileName(background_experiencia.PostedFile.FileName);
                 experiencia.Background = imagen;
                 background_experiencia.SaveAs(Server.MapPath("~/Media/Experiencias/") + imagen);
             }
@@ -131,6 +135,17 @@ namespace FirstRow.Pages.Forms
                 }
             }
 
+            experiencia.Incluidos = listaIncluidos;
+            experiencia.Etapas = etapas;
+
+            if (experiencia.agregarExperiencia())
+            {
+                Response.Redirect("/experiencia/" + experiencia.Slug);
+            }
+            else
+            {
+                resultado.Text = "Ha ocurrido un error";
+            }
         }
 
 
@@ -149,8 +164,6 @@ namespace FirstRow.Pages.Forms
             }
 
         }
-
-
 
         protected void agregarEtapa(object sender, EventArgs e)
         {
@@ -209,6 +222,7 @@ namespace FirstRow.Pages.Forms
                 fu.Attributes.Add("style", "margin-top: 3%; width:100%; margin-bottom: 20px;");
                 fu.Attributes.Add("class", "input");
                 fu.Attributes.Add("placeholder", "Foto de etapa");
+                fu.Attributes.Add("accept", ".jpg , .png");
 
                 panelEtapas.Controls.Add(fu);
 
@@ -220,6 +234,34 @@ namespace FirstRow.Pages.Forms
                 i++;
                 cargaDeEtapas();
             }
+
         }
+
+
+        public string slug(string value)
+        {
+            //First to lower case 
+            value = value.ToLowerInvariant();
+
+            //Remove all accents
+            var bytes = Encoding.GetEncoding("Cyrillic").GetBytes(value);
+
+            value = Encoding.ASCII.GetString(bytes);
+
+            //Replace spaces 
+            value = Regex.Replace(value, @"\s", "-", RegexOptions.Compiled);
+
+            //Remove invalid chars 
+            value = Regex.Replace(value, @"[^\w\s\p{Pd}]", "", RegexOptions.Compiled);
+
+            //Trim dashes from end 
+            value = value.Trim('-', '_');
+
+            //Replace double occurences of - or \_ 
+            value = Regex.Replace(value, @"([-_]){2,}", "$1", RegexOptions.Compiled);
+
+            return value;
+        }
+
     }
 }

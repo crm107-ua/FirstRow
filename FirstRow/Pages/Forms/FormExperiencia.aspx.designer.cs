@@ -15,6 +15,15 @@ namespace FirstRow.Pages.Forms
     {
 
         /// <summary>
+        /// Control resultado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label resultado;
+
+        /// <summary>
         /// Control create_titulo_experiencia.
         /// </summary>
         /// <remarks>
@@ -105,6 +114,15 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.RequiredFieldValidator descripcion_experiencia_requerido;
 
         /// <summary>
+        /// Control descripcion_experiencia_formato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator descripcion_experiencia_formato;
+
+        /// <summary>
         /// Control listaPaises_form_experiencia.
         /// </summary>
         /// <remarks>
@@ -112,6 +130,15 @@ namespace FirstRow.Pages.Forms
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList listaPaises_form_experiencia;
+
+        /// <summary>
+        /// Control total_dias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect total_dias;
 
         /// <summary>
         /// Control panelIncluidos.

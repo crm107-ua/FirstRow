@@ -1,5 +1,7 @@
-﻿using System;
+﻿using library;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Routing;
@@ -12,13 +14,11 @@ namespace FirstRow.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ENViajes experiencia = new ENViajes();
+            List<ENViajes> experiencias = new List<ENViajes>();
+            experiencia.mostrarExperiencias(experiencias);
+            Console.WriteLine(experiencias);
         }
 
-        protected void modificarExperiencias(object sender, EventArgs e)
-        {
-
-
-        }
     }
 }

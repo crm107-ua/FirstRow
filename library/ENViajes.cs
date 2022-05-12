@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace library
     {
         
         private int _Id;
+        private int _Dias;
         private string _Titulo;
         private string _Nombre;
         private string _Slug;
@@ -18,13 +20,14 @@ namespace library
         private double _Precio;
         private string _Background;
         private ENPais _Pais;
-        private List<ENDia> _Incluido;
+        private List<ENIncluido> _Incluidos;
+        private List<ENDia> _Etapas;
         private List<ENImagenes> _Imagenes;
-        private List<ENStories> _Stories;
         private List<ENComentarios> _Comentarios;
         private ENEmpresa _Empresa;
 
         public int Id { get => _Id; set => _Id = value; }
+        public int Dias { get => _Dias; set => _Dias = value; }
         public string Titulo { get => _Titulo; set => _Titulo = value; }
         public string Nombre { get => _Nombre; set => _Nombre = value; }
         public string Slug { get => _Slug; set => _Slug = value; }
@@ -32,56 +35,60 @@ namespace library
         public double Precio { get => _Precio; set => _Precio = value; }
         public string Background { get => _Background; set => _Background = value; }
         public ENPais Pais { get => _Pais; set => _Pais = value; }
-        public List<ENDia> Incluido { get => _Incluido; set => _Incluido = value; }
+        public List<ENIncluido> Incluidos { get => _Incluidos; set => _Incluidos = value; }
+        public List<ENDia> Etapas { get => _Etapas; set => _Etapas = value; }
         public List<ENImagenes> Imagenes { get => _Imagenes; set => _Imagenes = value; }
-        public List<ENStories> Stories { get => _Stories; set => _Stories = value; }
         public List<ENComentarios> Comentarios { get => _Comentarios; set => _Comentarios = value; }
         public ENEmpresa Empresa { get => _Empresa; set => _Empresa = value; }
 
         public ENViajes()
         {
             Id = 0;
+            Dias = 0;
             Titulo = "";
             Nombre = "";
             Slug = "";
             Descripcion = "";
-            Background = "";
             Precio = 0;
+            Background = "default_bg.png";
             Pais = new ENPais();
+            Incluidos = new List<ENIncluido>();
+            Etapas = new List<ENDia>();
             Imagenes = new List<ENImagenes>();
-            Stories = new List<ENStories>();
             Comentarios = new List<ENComentarios>();
             Empresa = new ENEmpresa();
-            Incluido = new List<ENDia>();
         }
 
-        public ENViajes(int id, string titulo, string nombre, string slug, string descripcion, string background, double precio, ENPais pais, List<ENDia> incluido, List<ENImagenes> imagenes, List<ENStories> stories, List<ENComentarios> comentarios, ENEmpresa empresa)
+        public ENViajes(int id, int dias, string titulo, string nombre, string slug, string descripcion, double precio, string background, ENPais pais, List<ENIncluido> incluidos, List<ENDia> etapas, List<ENImagenes> imagenes, List<ENComentarios> comentarios, ENEmpresa empresa)
         {
             Id = id;
+            Dias = dias;
             Titulo = titulo;
             Nombre = nombre;
             Slug = slug;
             Descripcion = descripcion;
-            Background = background;
             Precio = precio;
+            Background = background;
             Pais = pais;
-            Incluido = incluido;
+            Incluidos = incluidos;
+            Etapas = etapas;
             Imagenes = imagenes;
-            Stories = stories;
             Comentarios = comentarios;
             Empresa = empresa;
         }
 
-        public bool addImagen(){
-            CADViajes img = new CADViajes();
-            bool ok = img.addImagen(this);
-            return ok;
+        public bool agregarExperiencia()
+        {
+            CADViajes experiencia = new CADViajes();
+            return experiencia.addExperiencia(this);
         }
-        public bool readImagen() {
-            CADViajes img = new CADViajes();
-            bool ok = img.readImagen(this);
-            return ok;
+
+        public bool mostrarExperiencias(List<ENViajes> listaExperiencias)
+        {
+            CADViajes experiencias = new CADViajes();
+            return experiencias.readExperiencias(listaExperiencias);
         }
+
         public bool updateImagen() {
             CADViajes img = new CADViajes();
             bool ok = img.updateImagen(this);

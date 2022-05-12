@@ -11,44 +11,27 @@ namespace library
         private int _Id;
         private string _Texto;
         private int _Estrellas;
-        private string _Nickname;
+        private ENUsuario _Usuario;
+
+        public int Id { get => _Id; set => _Id = value; }
+        public string Texto { get => _Texto; set => _Texto = value; }
+        public int Estrellas { get => _Estrellas; set => _Estrellas = value; }
+        public ENUsuario Usuario { get => _Usuario; set => _Usuario = value; }
 
         public ENComentarios()
         {
             _Id = 0;
             _Texto = "";
             _Estrellas = 0;
-            _Nickname = "";
+            _Usuario = new ENUsuario();
         }
 
-        public ENComentarios(int id, string texto, int estrellas, string nickname)
+        public ENComentarios(int id, string texto, int estrellas, ENUsuario usuario)
         {
             _Id = id;
             _Texto = texto;
             _Estrellas = estrellas;
-            _Nickname = nickname;
+            _Usuario = usuario;
         }
-
-        public int Id //GET-SET
-        {
-            get { return _Id; }
-            set { _Id = value; }
-        }
-        public string Texto //GET-SET
-        {
-            get { return _Texto; }
-            set { _Texto = value; }
-        }
-        public int Estrellas //GET-SET
-        {
-            get { return _Estrellas; }
-            set { _Estrellas = value; } 
-        }
-        public string Nickname //GET-SET
-        {
-            get { return _Nickname; }
-            set { _Nickname = value; }
-        }
-        
     }
 }

@@ -22,7 +22,7 @@ namespace FirstRow.Pages.Forms
                 }
                 else
                 {
-                    Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('register_user_pop_up').click(); }", true);
+                    Response.Redirect("/");
                 }
             }
 
