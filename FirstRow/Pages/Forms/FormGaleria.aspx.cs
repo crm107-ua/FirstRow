@@ -68,6 +68,7 @@ namespace FirstRow.Pages.Forms
                 Error.Text = "*Seleccione un pais valido";
                 Error.Visible = true;
             }
+            
             else
             {
                 Error.Visible = false;
@@ -83,21 +84,19 @@ namespace FirstRow.Pages.Forms
 
                     string titulo = create_galeria_title.Text.Trim();
                     string descripcion = create_galeria_descripcion.Text.Trim();
-                    string slug ="";
+                    string slug =Home.slug( listaPaises_form_galeria.SelectedItem.Text+"/"+titulo);
+
+                    try
+                    {
+                        seccion_galeria.Pais = new ENPais(int.Parse(listaPaises_form_galeria.SelectedValue), listaPaises_form_galeria.SelectedItem.Text);
+                    }
+                    catch (Exception excepcion)
+                    { }
+
 
 
                 }
             }
         }
-
-        protected void listaPaises_form_galeria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listaPaises_form_galeria.SelectedValue == "-1")
-            {
-                Error.Text = "*Seleccione un pais valido";
-                Error.Visible = true;
-            }
-        }
-
     }
 }
