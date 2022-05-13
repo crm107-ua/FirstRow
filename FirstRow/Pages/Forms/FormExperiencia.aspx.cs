@@ -106,6 +106,10 @@ namespace FirstRow.Pages.Forms
                     etapas[i].Imagen = imagen;
                     imagenes_etapas.SaveAs(Server.MapPath("~/Media/Etapas/") + imagen);
                 }
+                else
+                {
+                    etapas[i].Imagen = "default_etapa_img.jpg";
+                }
                 i++;
             }
 
@@ -124,6 +128,10 @@ namespace FirstRow.Pages.Forms
                 string imagen = experiencia.Slug + "-bg-" + Path.GetFileName(background_experiencia.PostedFile.FileName);
                 experiencia.Background = imagen;
                 background_experiencia.SaveAs(Server.MapPath("~/Media/Experiencias/") + imagen);
+            }
+            else
+            {
+                experiencia.Background = "experiencia_bg_img.jpg"; ;
             }
 
             foreach (CheckBox checkbox in panelIncluidos.Controls.OfType<CheckBox>())
