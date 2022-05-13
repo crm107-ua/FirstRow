@@ -10,7 +10,7 @@ namespace FirstRow.Pages
 {
     public partial class Sorteos : System.Web.UI.Page
     {
-        ENSorteos sorteo;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -26,7 +26,29 @@ namespace FirstRow.Pages
 
         }
 
+        private void mostrarTarjetasPaises()
+        {
+            ENPais pais = new ENPais();
+            List<ENPais> paises = new List<ENPais>();
+            if (pais.readPaises(paises))
+            {
+                paises.Sort(ENPais.CompareCountriesByName);
+                foreach (ENPais p in paises)
+                {
+                    HyperLink h = createCountryLink(p.id);
+                    if (h != null) { stories_list.Controls.Add(h); }
+                }
+            }
 
+            /*
+            HyperLink h = createCountryLink(3); //codigo 3 corresponde a Italia
+            stories_list.Controls.Add(h);
+
+            HyperLink h2 = createCountryLink("España");
+            stories_list.Controls.Add(h2);
+            */
+            //russia_btn.HRef = "/story/ejemplo";
+        }
 
     }
 
