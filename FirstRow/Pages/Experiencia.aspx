@@ -66,18 +66,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="date-col">
-                                                <div style="color:white" class="label">Salida</div>
-                                                <div class="date_div">
-                                                    <input type="text" class="js_calendar desctop-input">
-                                                    <input type="date" class="mobile-input">
-                                                    <div class="day">21</div>
-                                                    <div class="date_div_right">
-                                                        <div class="month">December</div>
-                                                        <div class="year">2019</div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="num-col">
                                                 <div style="color:white" class="label">Adultos</div>
                                                 <div class="num_wrap">
@@ -103,19 +91,12 @@
                                 </div>
                                 <div class="bottom-info-right">
                                     <div class="info">
-                                        <div class="days">5 dias |</div>
-                                        <div class="cost">desde 356€</div>
+                                        <div id="display_dias" runat="server" style="color:white;" class="days">5 dias |</div>
+                                        <div id="display_precio" runat="server" style="color:white;" class="cost">desde 356€</div>
                                     </div>
                                     <button type="button" class="btn button">Reserva ahora</button>
                                     <div class="rating">
-                                        <div class="rating-stars">
-                                            <div class="star filled"></div>
-                                            <div class="star filled"></div>
-                                            <div class="star filled"></div>
-                                            <div class="star filled"></div>
-                                            <div class="star"></div>
-                                        </div>
-                                        <div class="rating-text">3 comentarios</div>
+                                        <div id="display_comentarios" runat="server" style="color:white;" class="rating-text"></div>
                                     </div>
                                 </div>
                             </div>
@@ -129,10 +110,12 @@
                         <div class="left_content">
                             <div class="overview js-section content-block" id="overview">
                                 <h2 class="title">Descripción de la experiencia</h2>
-                                <p class="description">
-                                    But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+                                <p id="display_description" runat="server" class="description">
                                 </p>
                                 <div class="programm" id="programm-days">
+
+
+
                                     <div class="day_item">
                                         <div class="day_item-head active">
                                             <div class="preview">
@@ -148,66 +131,11 @@
                                             <div class="text">
                                                 But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
                                             </div>
-                                            <div class="images">
-                                                <div class="scroll lightgallery">
-                                                    <a href="https://www.croatiaweek.com/wp-content/uploads/2020/05/croatia-beach-summer-covid-recommendations.jpg" class="item">
-                                                        <div class="img">
-                                                            <img src="https://www.croatiaweek.com/wp-content/uploads/2020/05/croatia-beach-summer-covid-recommendations.jpg" alt="">
-                                                        </div>
-                                                        <span>Signature under photo</span>
-                                                    </a>
-                                                    <a href="https://www.theunionjournal.com/wp-content/uploads/2020/03/Croatia.jpg" class="item">
-                                                        <div class="img">
-                                                            <img src="https://www.theunionjournal.com/wp-content/uploads/2020/03/Croatia.jpg" alt="">
-                                                        </div>
-                                                        <span>Signature under photo</span>
-                                                    </a>
-                                                    <a href="https://ecty2018.org/wp-content/uploads/2018/11/Awarded-programs2.jpg" class="item">
-                                                        <div class="img">
-                                                            <img src="https://ecty2018.org/wp-content/uploads/2018/11/Awarded-programs2.jpg" alt="">
-                                                        </div>
-                                                        <span>Signature under photo</span>
-                                                    </a>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="day_item">
-                                        <div class="day_item-head">
-                                            <div class="preview">
-                                                <div class="image">
-                                                    <img src="https://a.cdn-hotels.com/gdcs/production74/d1449/5695b321-d12f-425d-86db-fd6cc68eff36.jpg" alt="">
-                                                </div>
-                                                <div class="p">Day 2-4</div>
-                                            </div>
-                                            <div class="_title">Vistas por la ciudad</div>
-                                            <div class="element"></div>
-                                        </div>
-                                        <div class="day_item-body">
-                                            <div class="text">
-                                                But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <div class="day_item">
-                                        <div class="day_item-head">
-                                            <div class="preview">
-                                                <div class="image">
-                                                    <img src="https://media.gadventures.com/media-server/dynamic/admin/content_pages/croatia-destination-social.jpg" alt="">
-                                                </div>
-                                                <div class="p">Day 5</div>
-                                            </div>
-                                            <div class="_title">Tour nocturno</div>
-                                            <div class="element"></div>
-                                        </div>
-                                        <div class="day_item-body">
-                                            <div class="text">
-                                                But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
-                                            </div>
-                                        </div>
-                                    </div>
+
 
                                 </div>
                             </div>
