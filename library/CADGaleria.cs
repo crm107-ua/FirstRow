@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Transactions;
 
 namespace library
 {
@@ -19,44 +20,65 @@ namespace library
         {
             bool consegido=false;
             CADGaleria aux = new CADGaleria();
-            SqlConnection connection = new SqlConnection(constring);
 
             try
             {
-                List<int> idImagnes = new List<int>();
-                if (!aux.readGaleria(galeria))
+
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    foreach (ENImagenes imagen in galeria.Imagenes)
+                    //Primera transacion
+                    using (SqlConnection connection= new SqlConnection(constring))
                     {
-                        if (imagen.addImg()) 
+                        connection.Open();
+
+                        List<int> idImagnes = new List<int>();
+                        if (!aux.readGaleria(galeria))
                         {
-                            idImagnes.Add(int.Parse(imagen.Id.ToString()));
-                        }   
+                            foreach (ENImagenes imagen in galeria.Imagenes)
+                            {
+                                if (imagen.addImg())
+                                {
+                                    idImagnes.Add(int.Parse(imagen.Id.ToString()));
+                                }
+                            }
+
+                            if (idImagnes.Count != galeria.Imagenes.Count)
+                            {
+                                throw new Exception();
+                            }
+
+                            String sentencia = "insert into [dbo].[Seccion_Galeria] (titulo,descripcion,pais,slug,usuario) " +
+                                "values (@titulo, @descripcion, @pais, @slug, @usuario)";
+                            SqlCommand comando = new SqlCommand(sentencia, connection);
+                            comando.Parameters.AddWithValue("@titulo",galeria.Titulo);
+                            comando.Parameters.AddWithValue("@descripcion", galeria.Descripcion);
+                            comando.Parameters.AddWithValue("@pais", galeria.Pais.id);
+                            comando.Parameters.AddWithValue("@slug", galeria.Slug);
+                            comando.Parameters.AddWithValue("@usuario", galeria.Usuario.nickname);
+                            galeria.Id = Convert.ToInt32(comando.ExecuteScalar());
+                            comando.ExecuteNonQuery();
+
+                            foreach (int idImagen in idImagnes) 
+                            {
+                                String sentenciaRelacion = "insert into[dbo].[Seccion_Galeria_Imagenes] (id_seccion_galeria, id_imagen) values(@idGaleria, @idImagen)";
+                                SqlCommand comandoRelacio = new SqlCommand(sentencia, connection);
+                                comando.Parameters.AddWithValue("@idGaleria", galeria.Id);
+                                comando.Parameters.AddWithValue("@idImagen", idImagen);
+                                comando.ExecuteNonQuery();
+                            }
+
+                            consegido = true;
+                        }
+
+                        connection.Close();
                     }
 
-                    if (idImagnes.Count == galeria.Imagenes.Count)
-                    {
-                        
-                        
-                        consegido = true;
-                    }
-                    else
-                    {
-                        //No deberia pasar
-                        foreach (int i in idImagnes) 
-                        {
-                           ENImagenes imagen= new ENImagenes(i,"",0);
-                            imagen.deleteImg();
-                        }
-                    }   
+                    //Si no se lanzan excepciones y llega no hace rolback
+                    scope.Complete();
                 }
             }
             catch (Exception excepcion)
             { 
-            }
-            finally 
-            {
-                connection.Close();
             }
 
             return consegido;
