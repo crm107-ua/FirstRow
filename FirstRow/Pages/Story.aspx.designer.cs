@@ -60,6 +60,15 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl logout_sect;
 
         /// <summary>
+        /// Control crear_story.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor crear_story;
+
+        /// <summary>
         /// Control left_bottom_title.
         /// </summary>
         /// <remarks>

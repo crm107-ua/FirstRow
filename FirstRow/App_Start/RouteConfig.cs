@@ -22,6 +22,7 @@ namespace FirstRow.App_Start
              
             routes.MapPageRoute("stories", "stories", "~/Pages/Stories.aspx");
             routes.MapPageRoute("story", "story/{slug}", "~/Pages/Story.aspx");
+            routes.MapPageRoute("agregar_story", "agregar-story", "~/Pages/Forms/FormStory.aspx");
 
             routes.MapPageRoute("wearing", "wearing/{slug}", "~/Pages/Wearing.aspx");
 

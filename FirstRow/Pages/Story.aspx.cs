@@ -29,10 +29,20 @@ namespace FirstRow.Pages
                     pais.name = pais_name;
                     if (pais.ReadPais())
                     {
-                        pais_id = pais.id; //¿?
+                        pais_id = pais.id;
+                        if (Session["usuario"] != null)
+                        {
+                            crear_story.Visible = true;
+                        }
+                        else
+                        {
+                            crear_story.Visible = false;
+
+                        }
                     }
                     country_span.InnerText = pais_name;
                     left_bottom_title.InnerText = pais_name;
+
                 }
 
                 loadStories();
@@ -48,10 +58,12 @@ namespace FirstRow.Pages
             }
         }
 
+        /*
         protected void crearStory(object sender, EventArgs e)
         {
-            //COMPLETAR -- redirigir a formulario??
+            //Response.Redirect("/agregar-story");
         }
+        */
 
         protected void modificarStory(object sender, EventArgs e)
         {
@@ -178,5 +190,6 @@ namespace FirstRow.Pages
             }
             stories_items.Controls.Add(p);
         }
+
     }
 }

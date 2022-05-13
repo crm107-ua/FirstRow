@@ -61,6 +61,29 @@ namespace FirstRow.Pages
 
         private void mostrarTarjetasPaises()
         {
+            /*
+            List<ENPais> paises = new List<ENPais>();
+            DataSet ds = new DataSet();
+            if (ENPais.ReadPaisesDataSet(ds))
+            {
+                DataRowCollection rows = ds.Tables["Paises"].Rows;
+                for (int row = 0; row < rows.Count; row++)
+                {
+                    ENPais p = new ENPais(rows[row].Field<int>("id"), rows[row].Field<string>("name"));
+                    paises.Add(p);
+                }
+
+                paises.Sort(ENPais.CompareCountriesByName);
+
+                foreach (ENPais p in paises)
+                {
+                    HyperLink h = createCountryLink(p.id);
+                    if (h != null) { stories_list.Controls.Add(h); }
+                }
+            }
+            */
+
+            
             ENPais pais = new ENPais();
             List<ENPais> paises = new List<ENPais>();
             if (pais.readPaises(paises))
@@ -72,6 +95,7 @@ namespace FirstRow.Pages
                     if (h != null) { stories_list.Controls.Add(h); }
                 }
             }
+            
 
             /*
             HyperLink h = createCountryLink(3); //codigo 3 corresponde a Italia

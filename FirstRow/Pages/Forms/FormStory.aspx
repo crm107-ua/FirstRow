@@ -15,7 +15,7 @@
                 <asp:RegularExpressionValidator ID="descripcion_story_formato" ControlToValidate="create_story_descripcion" validationgroup="GrupoCrearStory" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 5px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[-.:,0-9A-Za-zÀ-ÿ\s]+$" ErrorMessage="*Formato de descripcion incorrecto"> </asp:RegularExpressionValidator>
 
                 <div>  
-                    <h5 class="title" style="margin-left: 10px;" >Imagenes</h5>
+                    <h5 class="title" style="margin-left: 10px;" >Imagen</h5>
                     <div>
                         <asp:ScriptManager ID="SCPTMGR" runat="server"></asp:ScriptManager>  
                         <asp:UpdatePanel ID="UpdimageUpload" runat="server">  

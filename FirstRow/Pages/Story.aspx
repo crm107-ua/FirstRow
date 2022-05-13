@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="stories_page" id="stories_page">
-            <a href="/experiencias" class="right_btn">Añadir story</a>
+            <a href="/agregar-story" class="right_btn" runat="server" id="crear_story">Crear Story</a>
             <div class="left_bottom_title" id="left_bottom_title" runat="server"
                  style="position: absolute;
                         z-index: 2;
