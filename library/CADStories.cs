@@ -23,9 +23,16 @@ namespace library
                 connection.Open();
                 string query = "INSERT INTO [firstrow_].[dbo].[Stories] " +
                     "(id, titulo, descripcion, fecha, pais, usuario, imagen) VALUES " +
-                    $"({story.Id}, {story.Titulo}, {story.Descripcion}, {story.Fecha}, {story.Pais}, {story.Usuario}, {story.Imagen})";
+                    "(@Id, @Titulo, @Descripcion, @Fecha, @Pais, @Usuario, @Imagen)";
                 
                 SqlCommand com = new SqlCommand(query, connection);
+                com.Parameters.AddWithValue("@Id", story.Id);
+                com.Parameters.AddWithValue("@Titulo", story.Titulo);
+                com.Parameters.AddWithValue("@Descripcion", story.Descripcion);
+                com.Parameters.AddWithValue("@Fecha", story.Fecha);
+                com.Parameters.AddWithValue("@Pais", story.Pais);
+                com.Parameters.AddWithValue("@Usuario", story.Usuario);
+                com.Parameters.AddWithValue("@Imagen", story.Imagen);
                 com.ExecuteNonQuery();
                 created = true;
             }
@@ -151,8 +158,9 @@ namespace library
                 connection = new SqlConnection(constring);
                 connection.Open();
 
-                string query = "SELECT * FROM [firstrow_].[dbo].[Stories] WHERE pais = '" + pais + "' ";
+                string query = "SELECT * FROM [firstrow_].[dbo].[Stories] WHERE pais = @pais ";
                 SqlCommand consulta = new SqlCommand(query, connection);
+                consulta.Parameters.AddWithValue("@pais", pais);
                 busqueda = consulta.ExecuteReader();
 
                 //listStories.Add(new ENStories(1, new ENUsuario(), new DateTime(), "titulo", 2, "desc", "https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg"));

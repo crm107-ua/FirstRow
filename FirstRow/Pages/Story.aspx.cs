@@ -63,11 +63,6 @@ namespace FirstRow.Pages
             //COMPLETAR
         }
 
-        protected void verUsuario(object sender, EventArgs e)
-        {
-            //COMPLETAR
-        }
-
         private Panel createStoryPanel(string title, string text, string user, string date)
         {
             Panel p = new Panel();

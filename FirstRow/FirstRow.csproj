@@ -186,6 +186,7 @@
     <Content Include="Pages\Equipo.aspx" />
     <Content Include="Pages\Experiencia.aspx" />
     <Content Include="Pages\Experiencias.aspx" />
+    <Content Include="Pages\Forms\FormStory.aspx" />
     <Content Include="Pages\Forms\FormGaleria.aspx" />
     <Content Include="Pages\Forms\FormExperiencia.aspx" />
     <Content Include="Pages\Galeria.aspx" />
@@ -262,6 +263,13 @@
     </Compile>
     <Compile Include="Pages\Experiencias.aspx.designer.cs">
       <DependentUpon>Experiencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Forms\FormStory.aspx.cs">
+      <DependentUpon>FormStory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Forms\FormStory.aspx.designer.cs">
+      <DependentUpon>FormStory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Forms\FormGaleria.aspx.cs">
       <DependentUpon>FormGaleria.aspx</DependentUpon>

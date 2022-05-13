@@ -103,15 +103,19 @@ namespace library
             {
                 connection.Open();
                 string query = "";
+                SqlCommand com;
                 if (pais.id > 0)
                 {
-                    query = $"SELECT * FROM [firstrow_].[dbo].[Paises] WHERE id = '{pais.id}'";
+                    query = "SELECT * FROM [firstrow_].[dbo].[Paises] WHERE id = @id";
+                    com = new SqlCommand(query, connection);
+                    com.Parameters.AddWithValue("@id", pais.id);
                 }
                 else
                 {
-                    query = $"SELECT * FROM [firstrow_].[dbo].[Paises] WHERE name = '{pais.name}'";
+                    query = "SELECT * FROM [firstrow_].[dbo].[Paises] WHERE name = @name";
+                    com = new SqlCommand(query, connection);
+                    com.Parameters.AddWithValue("@name", pais.name);
                 }
-                SqlCommand com = new SqlCommand(query, connection);
                 SqlDataReader dr = com.ExecuteReader();
                 try
                 {
