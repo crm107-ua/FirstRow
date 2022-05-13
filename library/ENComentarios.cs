@@ -48,7 +48,7 @@ namespace library
 
         public void MostrarComentarios()
         {
-            ArrayList a = new ArrayList();
+            List <ENComentarios> a =  new List<ENComentarios>();
 
             CADComentarios showComennt = new CADComentarios();
             showComennt.ShowComennts(this);
