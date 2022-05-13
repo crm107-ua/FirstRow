@@ -47,7 +47,7 @@ namespace library
             {
                 nueva_conexion.Open();
                 string insert = "";
-                insert = "Insert Into CommentsContent(Id,Texto,Nickname,Estrellas) VALUES (" + c.Id + "," + c.Texto + ",'" + c.Nickname + "," + c.Estrellas + "')";
+                insert = "Insert Into CommentsContent(Id,Texto,Nickname,Estrellas) VALUES (" + c.Id + "," + c.Texto + ",'" + c.Usuario.nickname + "," + c.Estrellas + "')";
                 SqlCommand com = new SqlCommand(insert, nueva_conexion);
 
                 com.ExecuteNonQuery();
@@ -63,7 +63,7 @@ namespace library
             {
                 nueva_conexion.Open();
                 string delete = "";
-                delete = "Delete from Files where CommentsContent.Id = " + c.Id + "AND CommentsContent.Texto" + c.Texto + "AND CommentsContent.Nickname" + c.Nickname + "AND CommentsContent.Estrellas" + c.Estrellas;
+                delete = "Delete from Files where CommentsContent.Id = " + c.Id + "AND CommentsContent.Texto" + c.Texto + "AND CommentsContent.Nickname" + c.Usuario.nickname + "AND CommentsContent.Estrellas" + c.Estrellas;
                 SqlCommand com = new SqlCommand(delete, nueva_conexion);
 
 
@@ -76,7 +76,7 @@ namespace library
         {
             SqlConnection c = new SqlConnection(constring);
             c.Open();
-            SqlCommand com = new SqlCommand("Select Content from CommentsContent WHERE Id=" + comentario.Id + " AND Texto=" + comentario.Texto + " AND Nickname=" + comentario.Nickname + " AND Estrellas=" + comentario.Estrellas, c);
+            SqlCommand com = new SqlCommand("Select Content from CommentsContent WHERE Id=" + comentario.Id + " AND Texto=" + comentario.Texto + " AND Nickname=" + comentario.Usuario.nickname + " AND Estrellas=" + comentario.Estrellas, c);
             SqlDataReader dr = com.ExecuteReader();
 
             while (dr.Read())
