@@ -25,13 +25,15 @@ namespace library
             try
             {
                 connection.Open();
-                string comando = "insert into [dbo].[Imagenes] (name, mode) values (@name, @mode);";
-
+                string comando = "insert into [firstrow_].[dbo].[Imagenes]" +
+                    " (name, mode) values (@name,@mode); " +
+                    "select SCOPE_IDENTITY();";
+                
                 SqlCommand sqlCommand = new SqlCommand(comando,connection);
-                sqlCommand.Parameters.AddWithValue("@nombre", img.Name);
-                sqlCommand.Parameters.AddWithValue("@mode", img.Name);
+                sqlCommand.Parameters.AddWithValue("@name", img.Name);
+                sqlCommand.Parameters.AddWithValue("@mode", img.Mode);
                 img.Id= Convert.ToInt32(sqlCommand.ExecuteScalar());
-                sqlCommand.ExecuteNonQuery();
+                
                 created = true;
             }
             catch (Exception excepcion)
