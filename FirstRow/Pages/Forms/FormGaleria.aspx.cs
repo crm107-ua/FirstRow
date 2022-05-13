@@ -16,20 +16,16 @@ namespace FirstRow.Pages.Forms
         private ENGaleria seccion_galeria;
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             Error.Text = "";
             Error.Visible = false;
             if (!IsPostBack)
             {
-                seccion_galeria =new ENGaleria();
                 fillDestinos();
 
-                if (Session["usuario"] != null)
+                if (Session["usuario"] == null)
                 {
-                    seccion_galeria.Usuario = (ENUsuario)Session["usuario"];
-                }
-                else
-                {
-                    //Response.Redirect("/");
+                    Response.Redirect("/");
                 }
             }
         }
@@ -49,6 +45,8 @@ namespace FirstRow.Pages.Forms
 
         protected void btnCrea_Click(object sender, EventArgs e)
         {
+            seccion_galeria = new ENGaleria();
+
             Random rand = new Random();
            
             HttpFileCollection _HttpFileCollection = Request.Files;
@@ -64,7 +62,7 @@ namespace FirstRow.Pages.Forms
                 Error.Text = "*Seleccione un pais valido";
                 Error.Visible = true;
             }
-            
+
             else
             {
                 Error.Visible = false;
@@ -73,45 +71,53 @@ namespace FirstRow.Pages.Forms
                     HttpPostedFile _HttpPostedFile = _HttpFileCollection[i];
                     if (_HttpPostedFile.ContentLength > 0)
                     {
-                        string imagen = rand.Next(1,999999).ToString() + "-galery-" + Path.GetFileName(_HttpPostedFile.FileName);
+                        string imagen = rand.Next(1, 999999).ToString() + "-galery-" + Path.GetFileName(_HttpPostedFile.FileName);
                         seccion_galeria.Imagenes.Add(new ENImagenes(imagen));
                         _HttpPostedFile.SaveAs(Server.MapPath("~/Media/Galery/" + imagen));
                     }
+                }
 
-                    string titulo = create_galeria_title.Text.Trim();
-                    string descripcion = create_galeria_descripcion.Text.Trim();
-                    string slug =Home.slug( listaPaises_form_galeria.SelectedItem.Text+"/"+titulo);
+                seccion_galeria.Titulo = create_galeria_title.Text.Trim();
+                seccion_galeria.Descripcion = create_galeria_descripcion.Text.Trim();
+                seccion_galeria.Slug = Home.slug(listaPaises_form_galeria.SelectedItem.Text + "/" + seccion_galeria.Titulo);
+                seccion_galeria.Usuario = (ENUsuario)Session["usuario"];
 
-                    try
+                try
+                {
+                    seccion_galeria.Pais = new ENPais(int.Parse(listaPaises_form_galeria.SelectedValue), listaPaises_form_galeria.SelectedItem.Text);
+
+                    if (!seccion_galeria.readGaleria())
                     {
-                        seccion_galeria.Pais = new ENPais(int.Parse(listaPaises_form_galeria.SelectedValue), listaPaises_form_galeria.SelectedItem.Text);
-
-                        if (!seccion_galeria.readGaleria())
+                        if (seccion_galeria.createGaleria())
                         {
-                            if (seccion_galeria.createGaleria())
-                            {
-                                Error.Text = "Creacion Exitosa";
-                                Error.Visible = true;
-                                //Response.Redirect("galeia/"+seccion_galeria.Slug);
-                            }
-                            else 
-                            {
-                                Error.Text = "*Algo salio mal";
-                                Error.Visible = true;
-                            }
-                        }
-                        else 
-                        {
-                            Error.Text = "*Algo salio mal: Parece que ya existe revisa el titulo";
+                            Error.Text = "Creacion Exitosa";
                             Error.Visible = true;
+                            //Response.Redirect("galeia/"+seccion_galeria.Slug);
+                        }
+                        else
+                        {
+                            Error.Text = "*Algo salio mal";
+                            Error.Visible = true;
+
+                            foreach (ENImagenes galeira in seccion_galeria.Imagenes) 
+                            {
+                                var filePath = Server.MapPath("~/Media/Galery/" + galeira.Name);
+                                File.Delete(filePath);
+                                
+                            }
                         }
                     }
-                    catch (Exception excepcion)
-                    { }
-
-
-
+                    else
+                    {
+                        Error.Text = "*Algo salio mal: Parece que ya existe revisa el titulo";
+                        Error.Visible = true;
+                    }
                 }
+                catch (Exception excepcion)
+                { }
+
+
+
             }
         }
     }
