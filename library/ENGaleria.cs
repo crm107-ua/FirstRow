@@ -14,31 +14,34 @@ namespace library
         private string _titulo;
         private string _descripcion;
         private List<ENImagenes> _imagenes;
+        private ENUsuario _usuario;
         public int Id { get => _id; set => _id = value; }
         public ENPais Pais { get => _pais; set => _pais = value; }
         public string Slug { get => _slug; set => _slug = value; }
         public string Titulo { get => _titulo; set => _titulo = value; }
         public string Descripcion { get => _descripcion; set => _descripcion = value; }
         public List<ENImagenes> Imagenes { get => _imagenes; set => _imagenes = value; }
+        public ENUsuario Usuario { get => _usuario; set => _usuario = value; }
 
         public ENGaleria()
         {
-            _id = 0;
-            _pais = new ENPais();
-            _slug = "";
-            _titulo = "";
-            _descripcion = "";
-            _imagenes = new List<ENImagenes>();
+            Id = 0;
+            Pais = new ENPais();
+            Slug = "";
+            Titulo = "";
+            Descripcion = "";
+            Imagenes = new List<ENImagenes>();
+            Usuario = new ENUsuario();
         }
 
         public ENGaleria(int id, ENPais pais, string slug, string titulo, string descripcion, List<ENImagenes> imagenes)
         {
-            _id = id;
-            _pais = pais;
-            _slug = slug;
-            _titulo = titulo;
-            _descripcion = descripcion;
-            _imagenes = imagenes;
+            Id = id;
+            Pais = pais;
+            Slug = slug;
+            Titulo = titulo;
+            Descripcion = descripcion;
+            Imagenes = imagenes;
         }
 
         public bool createGaleria() 

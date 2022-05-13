@@ -13,21 +13,19 @@ namespace FirstRow.Pages.Forms
 {
     public partial class FormGaleria : System.Web.UI.Page
     {
+        private ENGaleria seccion_galeria;
         protected void Page_Load(object sender, EventArgs e)
         {
             Error.Text = "";
             Error.Visible = false;
             if (!IsPostBack)
             {
+                seccion_galeria =new ENGaleria();
                 fillDestinos();
 
                 if (Session["usuario"] != null)
                 {
-
-                }
-                else if (Session["empresa"] != null)
-                {
-
+                    seccion_galeria.Usuario = (ENUsuario)Session["usuario"];
                 }
                 else
                 {
@@ -52,9 +50,7 @@ namespace FirstRow.Pages.Forms
         protected void btnCrea_Click(object sender, EventArgs e)
         {
             Random rand = new Random();
-            // Objeto seccion_galeria de creacion
-            ENGaleria seccion_galeria = new ENGaleria();
-
+           
             HttpFileCollection _HttpFileCollection = Request.Files;
 
             //Primero validar los datos
@@ -89,6 +85,24 @@ namespace FirstRow.Pages.Forms
                     try
                     {
                         seccion_galeria.Pais = new ENPais(int.Parse(listaPaises_form_galeria.SelectedValue), listaPaises_form_galeria.SelectedItem.Text);
+
+                        if (!seccion_galeria.readGaleria())
+                        {
+                            if (seccion_galeria.createGaleria())
+                            {
+                                //Response.Redirect("galeia/"+seccion_galeria.Slug);
+                            }
+                            else 
+                            {
+                                Error.Text = "*Algo salio mal";
+                                Error.Visible = true;
+                            }
+                        }
+                        else 
+                        {
+                            Error.Text = "*Algo salio mal: Parece que ya existe revisa el titulo";
+                            Error.Visible = true;
+                        }
                     }
                     catch (Exception excepcion)
                     { }
