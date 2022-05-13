@@ -57,6 +57,7 @@
     <Compile Include="CADUsuario.cs" />
     <Compile Include="CADViajes.cs" />
     <Compile Include="CADWearing.cs" />
+    <Compile Include="CADImagenes.cs" />
     <Compile Include="ENAdmin.cs" />
     <Compile Include="ENBlog.cs" />
     <Compile Include="ENCategorias.cs" />

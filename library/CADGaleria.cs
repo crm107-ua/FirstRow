@@ -101,8 +101,6 @@ namespace library
             string comand = "select Seccion_Galeria.id, titulo, descripcion, slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
                     "from [dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais) where slug='" +galeria.Slug+"';";
 
-
-
             try
             {
                 connection.Open();
