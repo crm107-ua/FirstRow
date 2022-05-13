@@ -20,65 +20,35 @@ namespace library
             bool consegido=false;
             CADGaleria aux = new CADGaleria();
             SqlConnection connection = new SqlConnection(constring);
-            DataSet dbd = new DataSet();
-            string slectGaleria = "select * from [dbo].[Seccion_Galeria];";
-            string selectImagenes = "select * from [dbo].[Imagenes];";
-            string selectRealcion = "select * from [dbo].[Seccion_Galeria_Imagenes];";
 
             try
             {
+                List<int> idImagnes = new List<int>();
                 if (!aux.readGaleria(galeria))
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter(slectGaleria, connection);
-                    adapter.Fill(dbd, "Galerias");
-                    SqlDataAdapter adapterImagenes = new SqlDataAdapter(selectImagenes, connection);
-                    adapterImagenes.Fill(dbd, "Imagenes");
-                    SqlDataAdapter adapterRelacion = new SqlDataAdapter(selectRealcion, connection);
-                    adapterRelacion.Fill(dbd, "Relacion");
-
-                    //Añadimos la tabla galeria
-                    DataTable galeriaTabla = new DataTable();
-                    galeriaTabla = dbd.Tables["Galeria"];
-                    DataRow nuevaGaleria = galeriaTabla.NewRow();
-
-                    nuevaGaleria["titulo"] = galeria.Titulo;
-                    nuevaGaleria["descripcion"] = galeria.Descripcion;
-                    nuevaGaleria["pais"] = galeria.Pais.id;
-                    nuevaGaleria["slug"] = galeria.Slug;
-                    nuevaGaleria["usuario"] = galeria.Usuario.nickname;
-                    galeriaTabla.Rows.Add(nuevaGaleria);
-
-                    //Añadimos tablas galerias
-                    DataTable ImagenesTabla = new DataTable();
-                    galeriaTabla = dbd.Tables["Galeria"]; 
-                    
                     foreach (ENImagenes imagen in galeria.Imagenes)
-                    { 
-                        DataRow nuevaImagen = ImagenesTabla.NewRow();
-
-                        nuevaGaleria["name"] = imagen.Name;
-                        ImagenesTabla.Rows.Add(nuevaGaleria);
-                    }
-
-                    if (aux.readGaleria(galeria)) 
                     {
-                        foreach (ENImagenes imagen in galeria.Imagenes)
+                        if (imagen.addImg()) 
                         {
-                            /*
-                             * Falta lectura de imagenes y juntar ids
-                            if()
-                            */
-                        }
+                            idImagnes.Add(int.Parse(imagen.Id.ToString()));
+                        }   
                     }
 
-                    SqlCommandBuilder commandBuilder = new SqlCommandBuilder(adapter); 
-                    SqlCommandBuilder commandBuilderImg = new SqlCommandBuilder(adapterImagenes);
-                    SqlCommandBuilder commandBuilderRelacion = new SqlCommandBuilder(adapterRelacion);
-                    adapter.Update(dbd, "[dbo].[Seccion_Galeria]");
-                    adapterImagenes.Update(dbd, "[dbo].[Imagenes]");
-                    adapterRelacion.Update(dbd, "[dbo].[Seccion_Galeria_Imagenes]");
-
-                    consegido = true;
+                    if (idImagnes.Count == galeria.Imagenes.Count)
+                    {
+                        
+                        
+                        consegido = true;
+                    }
+                    else
+                    {
+                        //No deberia pasar
+                        foreach (int i in idImagnes) 
+                        {
+                           ENImagenes imagen= new ENImagenes(i,"",0);
+                            imagen.deleteImg();
+                        }
+                    }   
                 }
             }
             catch (Exception excepcion)
