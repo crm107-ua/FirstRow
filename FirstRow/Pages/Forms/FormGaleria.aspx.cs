@@ -90,6 +90,8 @@ namespace FirstRow.Pages.Forms
                         {
                             if (seccion_galeria.createGaleria())
                             {
+                                Error.Text = "Creacion Exitosa";
+                                Error.Visible = true;
                                 //Response.Redirect("galeia/"+seccion_galeria.Slug);
                             }
                             else 

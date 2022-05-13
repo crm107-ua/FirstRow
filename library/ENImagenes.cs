@@ -34,5 +34,22 @@ namespace library
             Name = name;
             Mode = mode;
         }
+
+        public bool addImg() 
+        {
+            CADImagenes imagen = new CADImagenes();
+            return imagen.addImg(this);
+        }
+        public bool deleteImg() 
+        {
+            CADImagenes imagen = new CADImagenes();
+            return imagen.deleteImg(this);
+        }
+
+        public bool readImg() 
+        {
+            CADImagenes imagen = new CADImagenes();
+            return imagen.deleteImg(this);
+        }
     }
 }

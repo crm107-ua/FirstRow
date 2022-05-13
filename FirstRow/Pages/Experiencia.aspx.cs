@@ -39,6 +39,20 @@ namespace FirstRow.Pages
                         a_tag_general.Controls.Add(foto);
                         carga.Controls.Add(a_tag_general);
                     }
+
+                    display_dias.InnerHtml = experiencia.Dias.ToString() + " dias |";
+                    display_precio.InnerHtml = experiencia.Precio.ToString() + "€";
+                    display_comentarios.InnerHtml = experiencia.Comentarios.Count().ToString() + " Comentarios";
+                    display_description.InnerHtml = experiencia.Descripcion;
+
+
+
+
+
+
+
+
+
                 }
                 else
                 {
