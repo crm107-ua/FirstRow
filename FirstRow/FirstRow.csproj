@@ -178,6 +178,8 @@
     <Content Include="Media\Paises\Italia.jpg" />
     <Content Include="Media\Paises\Japon.jpg" />
     <Content Include="Media\Paises\Noruega.jpg" />
+    <Content Include="Media\Stories\coliseo.jpg" />
+    <Content Include="Media\Stories\fuente.jpg" />
     <Content Include="Pages\403.aspx" />
     <Content Include="Pages\404.aspx" />
     <Content Include="Pages\Blog.aspx" />

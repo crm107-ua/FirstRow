@@ -85,6 +85,18 @@ namespace FirstRow.Pages
 
                 mostrar_experiencias.Controls.Add(a_tag_general);
 
+
+
+                if (Session["empresa"] != null)
+                {
+                    crear_experiencia.Visible = true;
+                    crear_experiencia.InnerHtml = "Agrega una experiencia";
+                }
+                else
+                {
+                    crear_experiencia.Visible = false;
+                }
+
             }
         }
     }
