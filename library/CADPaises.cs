@@ -127,7 +127,7 @@ namespace library
                         correctRead = true;
 
                     }
-                    else if (pais.id >= 0 && pais.name == dr["name"].ToString())
+                    else if (pais.id <= 0 && pais.name == dr["name"].ToString())
                     {
                         pais.id = int.Parse(dr["id"].ToString());
                         correctRead = true;

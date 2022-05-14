@@ -13,7 +13,7 @@ namespace library
         /// <summary>
         /// Cadena de conexión
         /// </summary>
-        private String constring;
+        private readonly string constring;
 
         /// <summary>
         /// Constructor por defecto
@@ -92,9 +92,72 @@ namespace library
         public bool ReadStory(ENStories story)
         {
             bool correctRead = false;
+            SqlConnection connection = new SqlConnection(constring);
+
+            try
+            {
+                connection.Open();
+                string query = "SELECT * FROM [firstrow_].[dbo].[Stories] WHERE " +
+                    "fecha = @fecha AND " +
+                    "usuario = @usuario;";
+                SqlCommand com = new SqlCommand(query, connection);
+                com.Parameters.AddWithValue("@usuario", story.Usuario.nickname);
+                com.Parameters.AddWithValue("@fecha", story.Fecha);
+
+                SqlDataReader dr = com.ExecuteReader();
+                try
+                {
+                    dr.Read();
+
+                    story.Descripcion = dr["descripcion"].ToString();
+                    story.Fecha = (DateTime) dr["fecha"];
+                    story.Imagen = dr["imagen"].ToString();
+                    story.Pais = int.Parse(dr["pais"].ToString());
+                    story.Titulo = dr["titulo"].ToString();
+                    ENUsuario user = new ENUsuario
+                    {
+                        nickname = dr["usuario"].ToString()
+                    };
+                    if (user.readUsuario())
+                    {
+                        story.Usuario = user;
+                        correctRead = true;
+
+                    }
+                    else
+                    {
+                        correctRead = false;
+                    }
+
+                }
+                catch (SqlException ex)
+                {
+                    Console.WriteLine("Story operation has failed.Error: {0}", ex.Message);
+                    return false;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Story operation has failed.Error: {0}", ex.Message);
+                    return false;
+                }
+                finally { dr.Close(); }
+            }
+            catch (SqlException ex)
+            {
+                correctRead = false;
+                Console.WriteLine("Story operation has failed.Error: {0}", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                correctRead = false;
+                Console.WriteLine("Story operation has failed.Error: {0}", ex.Message);
+            }
+            finally { connection.Close(); }
+
             return correctRead;
         }
 
+        /*
         /// <summary>
         /// Actualiza una story
         /// </summary>
@@ -106,6 +169,7 @@ namespace library
             bool updated = false;
             return updated;
         }
+        */
 
         /// <summary>
         /// Elimina una story
@@ -115,7 +179,32 @@ namespace library
         /// false: si no se ha completado</returns>
         public bool DeleteStory(ENStories story)
         {
-            bool deleted = false;
+            bool deleted;
+            SqlConnection connection = new SqlConnection(constring);
+            try
+            {
+                connection.Open();
+
+                string query = "DELETE FROM [firstrow_].[dbo].[Stories] WHERE " +
+                    "fecha = @fecha AND " +
+                    "usuario = @usuario;";
+                SqlCommand consulta = new SqlCommand(query, connection);
+                consulta.Parameters.AddWithValue("@fecha", story.Fecha);
+                consulta.Parameters.AddWithValue("@usuario", story.Usuario.nickname);
+                consulta.ExecuteNonQuery();
+                deleted = true;
+            }
+            catch (SqlException e)
+            {
+                deleted = false;
+                Console.WriteLine("Story operation has failed.Error: {0}", e.Message);
+            }
+            catch (Exception e)
+            {
+                deleted = false;
+                Console.WriteLine("Story operation has failed.Error: {0}", e.Message);
+            }
+            finally { connection.Close(); }
             return deleted;
         }
 

@@ -154,6 +154,7 @@ namespace library
             return story.ReadStory(this);
         }
 
+        /*
         /// <summary>
         /// actualiza una story
         /// </summary>
@@ -170,6 +171,7 @@ namespace library
 
             return updated;
         }
+        */
 
         /// <summary>
         /// elimina una story

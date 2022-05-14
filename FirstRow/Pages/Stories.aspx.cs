@@ -19,10 +19,20 @@ namespace FirstRow.Pages
             {
                 mostrarTarjetasPaises();
                 llenarDropDownList();
-                btn_modificar_pagina.Visible = false;
+                if ((string)Session["usuario"] == "admin")
+                {
+                    btn_modificar_pagina.Visible = true;
+                }
+                else { btn_modificar_pagina.Visible = false; }
+
+                
                 stories_title.InnerText = "Stories interesantes";
                 stories_subtitle.InnerText = "Muestra tus experiencias al mundo " +
                     "y explora las de otras personas.";
+                
+                
+                stories_title.InnerText = (string)Application["stories_title"];
+                stories_subtitle.InnerText = (string)Application["stories_subtitle"];
                 background_image_header.Style.Add("background-image", "url(https://media.cntraveler.com/photos/5cc32b6031a2ae65b96fb4ff/16:9/w_2560%2Cc_limit/MAG19_May_TR050419_Zihuatanejo02.jpg)");
 
                 /* lista de paises
@@ -47,8 +57,16 @@ namespace FirstRow.Pages
 
         protected void modificarPaginaStories(object sender, EventArgs e)
         {
-            
-            //COMPLETAR -- redirigir a formulario ¿?
+            stories_title_edit.Visible = true;
+            stories_subtitle_edit.Visible = true;
+            stories_description_title_edit.Visible = true;
+            stories_description_edit.Visible = true;
+            background_image_header.Style.Add("background-image", "url(../../assets/img/demo-bg-5.jpg)");
+            //Response.Redirect("/stories");
+
+            btn_aceptar_cambios.Visible = true;
+            btn_cancelar_cambios.Visible = true;
+            btn_modificar_pagina.Visible = false;
         }
 
         protected void seleccionarPais(object sender, EventArgs e)
@@ -185,6 +203,34 @@ namespace FirstRow.Pages
                 return h;
             }
             else { return null; }
+        }
+
+        protected void btn_aceptar_cambios_Click(object sender, EventArgs e)
+        {
+            if (stories_title_edit.Text != "")
+            {
+                Application["stories_title"] = stories_title_edit.Text;
+            }
+            if (stories_subtitle_edit.Text != "")
+            {
+                Application["stories_subtitle"] = stories_subtitle_edit.Text;
+            }
+            if (stories_description_title_edit.Text != "")
+            {
+                stories_description_title.Text = stories_description_title_edit.Text;
+            }
+            if (stories_description_edit.Text != "")
+            {
+                stories_description.Text = stories_description_edit.Text;
+            }
+
+            Response.Redirect("/stories");
+
+        }
+
+        protected void btn_cancelar_cambios_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/stories");
         }
     }
 }
