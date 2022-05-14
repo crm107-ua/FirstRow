@@ -187,15 +187,23 @@ namespace FirstRow.Pages
             }
             else
             {
-                if (File.Exists(Server.MapPath($"~/Media/Stories/{story.Imagen}")))
+                try
                 {
-                    //string img = Server.MapPath($"~/Media/Stories/{story.Imagen}");
-                    string img2 = $"../Media/Stories/{story.Imagen}";
-                    p.BackImageUrl = img2;
-                    p.Attributes["data-blur-bg"] = img2;
+                    if (File.Exists(Server.MapPath($"~/Media/Stories/{story.Imagen}")))
+                    {
+                        //string img = Server.MapPath($"~/Media/Stories/{story.Imagen}");
+                        string img2 = $"../Media/Stories/{story.Imagen}";
+                        p.BackImageUrl = img2;
+                        p.Attributes["data-blur-bg"] = img2;
                     
-                }
-                else
+                    }
+                    else
+                    {
+                        p.BackImageUrl = default_img;
+                        p.Attributes["data-blur-bg"] = default_img;
+                    }
+
+                }catch(Exception _)
                 {
                     p.BackImageUrl = default_img;
                     p.Attributes["data-blur-bg"] = default_img;
