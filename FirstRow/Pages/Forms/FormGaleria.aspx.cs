@@ -79,7 +79,7 @@ namespace FirstRow.Pages.Forms
 
                 seccion_galeria.Titulo = create_galeria_title.Text.Trim();
                 seccion_galeria.Descripcion = create_galeria_descripcion.Text.Trim();
-                seccion_galeria.Slug = Home.slug(listaPaises_form_galeria.SelectedItem.Text + "/" + seccion_galeria.Titulo);
+                seccion_galeria.Slug = listaPaises_form_galeria.SelectedItem.Text + "/" + Home.slug(seccion_galeria.Titulo);
                 seccion_galeria.Usuario = (ENUsuario)Session["usuario"];
 
                 try

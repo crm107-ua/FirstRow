@@ -15,31 +15,16 @@
             <div class="wrap">
                 <div class="wrap_float">
                     <div class="gallery-page-head">
-                        <p class="country"><asp:Label ID="titulo" runat="server"></asp:Label></p>
-                        <h1 class="title" style="margin-top:20px; width:100%;">Hermosas aves por el mundo</h1>
+                        <p class="country"><asp:Label ID="pais" runat="server"></asp:Label></p>
+                        <asp:Label ID="title" runat="server" class="title" style="margin-top:20px; width:100%;"></asp:Label>
                         <div class="subtitle">
-                            <p>
-                                Podemos ver a las preciosas aves en pleno explendor, la naturaleza es admirable y siempre te sorprende
-                            </p>
+                            <asp:Label ID="Descripcion" runat="server"></asp:Label>
                         </div>
                     </div>
                     <div class="gallery-page-body">
                         <div class="image-list lightgallery">
-                            <a href="https://www.junglepark.es/wp-content/uploads/2017/05/casuarioblog2-1024x978.jpg" class="image-item">
-                                <img src="https://www.junglepark.es/wp-content/uploads/2017/05/casuarioblog2-1024x978.jpg" alt="">
-                            </a>
-                            <a href="https://p0.pikist.com/photos/377/731/pelican-bird-sea-birds-water-nature-australia-pelecanus-conspicillatus-australian-pelican-4k-wallpaper.jpg" class="image-item">
-                                <img src="https://p0.pikist.com/photos/377/731/pelican-bird-sea-birds-water-nature-australia-pelecanus-conspicillatus-australian-pelican-4k-wallpaper.jpg" alt="">
-                            </a>
-                            <a href="https://dam.ngenespanol.com/wp-content/uploads/2021/03/GettyImages-976978800.jpg" class="image-item">
-                                <img src="https://dam.ngenespanol.com/wp-content/uploads/2021/03/GettyImages-976978800.jpg" alt="">
-                            </a>
-                            <a href="https://dam.ngenespanol.com/wp-content/uploads/2021/03/aves.jpg" class="image-item">
-                                <img src="https://dam.ngenespanol.com/wp-content/uploads/2021/03/aves.jpg" alt="">
-                            </a>
-                            <a href="https://www.el-carabobeno.com/wp-content/uploads/2017/09/maxresdefault-7.jpg" class="image-item">
-                                <img src="https://www.el-carabobeno.com/wp-content/uploads/2017/09/maxresdefault-7.jpg" alt="">
-                            </a>
+                            <asp:Panel ID="addImg" runat="server">
+                                </asp:Panel>
                         </div>
                         <a href="/experiencias" class="tour">
                             <div class="item">

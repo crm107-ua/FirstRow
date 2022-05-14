@@ -27,7 +27,8 @@ namespace FirstRow.App_Start
             routes.MapPageRoute("wearing", "wearing/{slug}", "~/Pages/Wearing.aspx");
 
             routes.MapPageRoute("galeria", "galeria", "~/Pages/Galeria.aspx");
-            routes.MapPageRoute("seccion_galeria", "galeria/{slug}", "~/Pages/Seccion_Galeria.aspx");
+            routes.MapPageRoute("filtrado_galeria", "galeria/{pais}", "~/Pages/Galeria.aspx");
+            routes.MapPageRoute("seccion_galeria", "galeria/{pais}/{slug}", "~/Pages/Seccion_Galeria.aspx");
             routes.MapPageRoute("agregar_seccion_galeria", "agregar-seccion-galeria", "~/Pages/Forms/FormGaleria.aspx");
 
 
