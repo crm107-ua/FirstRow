@@ -91,20 +91,22 @@ namespace library
             SqlDataReader readerimagenes = null;
             bool conseguido = false;
             string comand = "select Seccion_Galeria.id, titulo, descripcion, slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
-                    "from [dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais) where slug='" +galeria.Slug+"';";
+                    "from [firstrow_].[dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais) where slug='"+ galeria.Slug + "'";
 
             try
             {
                 connection.Open();
                 SqlCommand com = new SqlCommand(comand, connection);
                 reader = com.ExecuteReader();
+                reader.Read();
                 galeria.Id = int.Parse(reader["id"].ToString());
                 galeria.Titulo = reader["titulo"].ToString();
                 galeria.Descripcion = reader["descripcion"].ToString();
                 galeria.Pais = new ENPais(int.Parse(reader["PaisId"].ToString()), reader["NamePais"].ToString());
 
+                reader.Close();
                 string comandImg = "select name from Seccion_Galeria_Imagenes join Imagenes on(Imagenes.id = Seccion_Galeria_Imagenes.id_imagen)" +
-                        " where Seccion_Galeria_Imagenes.id_seccion_galeria ='" + reader["id"].ToString() + "'";
+                        " where Seccion_Galeria_Imagenes.id_seccion_galeria =" + galeria.Id;
 
                 SqlCommand comandoImagenes = new SqlCommand(comandImg, connection);
                 List<ENImagenes> imagenes = new List<ENImagenes>();
@@ -168,8 +170,9 @@ namespace library
                 //Optencion de la DBD Virtual de galeria
                 
                 DataSet dbd = new DataSet();
+                DataSet dbdImgenes = new DataSet();
                 string slectGaleria = "select Seccion_Galeria.id, titulo, descripcion, slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
-                    "from [dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais);";
+                    "from [firstrow_].[dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais);";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(slectGaleria, connection);
                 adapter.Fill(dbd,"Galerias");
@@ -191,13 +194,13 @@ namespace library
                         " where Seccion_Galeria_Imagenes.id_seccion_galeria ="+ rowsGaleria[i]["id"]+";";
 
                     SqlDataAdapter adapterImagenes = new SqlDataAdapter(slectImagenes, connection);
-                    adapterImagenes.Fill(dbd, "Imagenes");
+                    adapterImagenes.Fill(dbdImgenes, "Imagenes");
 
-                    DataTable tableImg = dbd.Tables["Imagenes"];
+                    DataTable tableImg = dbdImgenes.Tables["Imagenes"];
                     DataRow[] rowsImg = tableImg.Select();
 
                     imagenes.Clear();
-                    for (int j = 0; j < rowsGaleria.Length; j++)
+                    for (int j = 0; j < rowsImg.Length; j++)
                     {
                         imagenes.Add(new ENImagenes(rowsImg[j]["name"].ToString()));
                     }
@@ -206,6 +209,8 @@ namespace library
                     ENPais pais = new ENPais(int.Parse(rowsGaleria[i]["PaisId"].ToString()), rowsGaleria[i]["NamePais"].ToString());
                     ENGaleria galeria = new ENGaleria(int.Parse(rowsGaleria[i]["id"].ToString()) ,pais, rowsGaleria[i]["slug"].ToString(), rowsGaleria[i]["titulo"].ToString(), rowsGaleria[i]["descripcion"].ToString(), imagenes);
                     lista.Add(galeria);
+
+                    dbdImgenes.Clear();
                 }
 
             }

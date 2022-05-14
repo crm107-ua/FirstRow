@@ -14,8 +14,6 @@ namespace FirstRow
         protected void Page_Load(object sender, EventArgs e)
         {
             cargarElementosSesion();
-
-
         }
 
         protected void registrarse(object sender, EventArgs e)

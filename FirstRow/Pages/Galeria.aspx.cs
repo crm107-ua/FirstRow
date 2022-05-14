@@ -55,7 +55,14 @@ namespace FirstRow.Pages
 
         protected void Direccion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Page.Response.Redirect(Page.Request.Url.ToString(), true);
+            if (Direccion.SelectedValue != "-1")
+            {
+                Page.Response.Redirect("/galeria/"+Direccion.SelectedItem.Text);
+            }
+            else 
+            {
+                Page.Response.Redirect("/galeria");
+            }
             //Cambio en el filtrado
         }
 
@@ -80,6 +87,13 @@ namespace FirstRow.Pages
                 HtmlGenericControl texto_pais = new HtmlGenericControl("span");
                 texto_pais.InnerText = galeria.Pais.name;
 
+                //<p class="title">Las preciosas aves de Australia</p>
+                HtmlGenericControl title = new HtmlGenericControl("p");
+                title.Attributes.Add("class","title");
+
+                HtmlGenericControl title_text = new HtmlGenericControl("span");
+                title_text.InnerText = galeria.Titulo;
+
                 HtmlGenericControl imagenes = new HtmlGenericControl("div");
                 imagenes.Attributes.Add("class", "images");
 
@@ -92,14 +106,16 @@ namespace FirstRow.Pages
                     imagenes_galeria.Attributes.Add("class", "img");
 
                     HtmlGenericControl imagen = new HtmlGenericControl("img");
-                    imagen.Attributes.Add("src", "../Media/Galery/"+imagenGaleria.Name);
+                    imagen.Attributes.Add("src", "/Media/Galery/"+imagenGaleria.Name);
 
                     imagenes_galeria.Controls.Add(imagen);
                     scrol_imagenes.Controls.Add(imagenes_galeria);
                 }
 
                 country.Controls.Add(texto_pais);
+                title.Controls.Add(title_text);
                 galeria_item_top.Controls.Add(country);
+                galeria_item_top.Controls.Add(title);
                 imagenes.Controls.Add(scrol_imagenes);
 
                 a_tag_general.Controls.Add(galeria_item_top);
