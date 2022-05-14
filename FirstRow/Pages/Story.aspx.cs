@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace FirstRow.Pages
 {
@@ -182,11 +183,31 @@ namespace FirstRow.Pages
             {
                 p.BackImageUrl = default_img;
                 p.Attributes["data-blur-bg"] = default_img;
+                //h.Style.Add("background-image", $"url(../assets/img/default.jpg)");
             }
             else
             {
-                p.BackImageUrl = story.Imagen;
-                p.Attributes["data-blur-bg"] = story.Imagen;
+                try
+                {
+                    if (File.Exists(Server.MapPath($"~/Media/Stories/{story.Imagen}")))
+                    {
+                        //string img = Server.MapPath($"~/Media/Stories/{story.Imagen}");
+                        string img = $"../Media/Stories/{story.Imagen}";
+                        p.BackImageUrl = img;
+                        p.Attributes["data-blur-bg"] = img;
+                    
+                    }
+                    else
+                    {
+                        p.BackImageUrl = default_img;
+                        p.Attributes["data-blur-bg"] = default_img;
+                    }
+
+                }catch(Exception)
+                {
+                    p.BackImageUrl = default_img;
+                    p.Attributes["data-blur-bg"] = default_img;
+                }
             }
             stories_items.Controls.Add(p);
         }

@@ -20,14 +20,21 @@
                         <asp:ScriptManager ID="SCPTMGR" runat="server"></asp:ScriptManager>  
                         <asp:UpdatePanel ID="UpdimageUpload" runat="server">  
                             <ContentTemplate>  
-                                <asp:FileUpload ID="crear_story_imagenes" multiple="multiple" accept=".jpg , .png, .jpeg" runat="server" />  
+                                <asp:FileUpload ID="crear_story_imagen" accept=".jpg , .png, .jpeg" runat="server" />  
                             </ContentTemplate> 
                         </asp:UpdatePanel>
                         
                     </div>
-                    <asp:RequiredFieldValidator ID="imagenes_story_requerido" ControlToValidate="crear_story_imagenes" validationgroup="GrupoCrearStory" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px;" runat="server" ErrorMessage="*Imagen requerida"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="imagenes_story_formato" ControlToValidate="crear_story_imagenes" validationgroup="GrupoCrearStory" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px;" ValidationExpression="(.*?)\.(jpg|png|JPG|PNG|jpeg|JPEG)$" runat="server" ErrorMessage="*Formato imagenes incorrecto"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="imagen_story_requerido" ControlToValidate="crear_story_imagen" validationgroup="GrupoCrearStory" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px;" runat="server" ErrorMessage="*Imagen requerida"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="imagen_story_formato" ControlToValidate="crear_story_imagen" validationgroup="GrupoCrearStory" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px;" ValidationExpression="(.*?)\.(jpg|png|JPG|PNG|jpeg|JPEG)$" runat="server" ErrorMessage="*Formato imagenes incorrecto"></asp:RegularExpressionValidator>
                 </div> 
+                <div class="destination-col" style="margin-top: 5px; width:100%">
+                    <div class="select_wrap">
+                        <asp:DropDownList ID="listaPaises_form_story" class="input" style="width:100%; height:50px; margin-bottom: 20px;" runat="server">
+                        </asp:DropDownList>
+                    </div>
+                </div>
+                
             </div>
             <div class="bottom">
                 <asp:Button ID="btnCrea" class="submit button" runat="server" Text="Crear" OnClick="btnCrea_Click" ValidationGroup="GrupoCrearStory"/>
