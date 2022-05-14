@@ -144,7 +144,7 @@ namespace library
                 
                 while (busqueda.Read())
                 {
-                    int id = int.Parse(busqueda["id"].ToString());
+                    //int id = int.Parse(busqueda["id"].ToString());
                     ENUsuario user = new ENUsuario();
                     user.nickname = busqueda["usuario"].ToString();
                     _ = user.readUsuario();
@@ -155,7 +155,6 @@ namespace library
                     string img = busqueda["imagen"].ToString();
 
                     listStories.Add(new ENStories(
-                        id, 
                         user,
                         fecha,
                         titulo,
@@ -218,7 +217,7 @@ namespace library
 
                 while (busqueda.Read())
                 {
-                    int id = int.Parse(busqueda["id"].ToString());
+                    //int id = int.Parse(busqueda["id"].ToString());
                     ENUsuario user = new ENUsuario();
                     user.nickname = busqueda["usuario"].ToString();
                     _ = user.readUsuario();
@@ -228,7 +227,6 @@ namespace library
                     string img = busqueda["imagen"].ToString();
 
                     listStories.Add(new ENStories(
-                        id,
                         user,
                         fecha,
                         titulo,

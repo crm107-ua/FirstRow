@@ -60,13 +60,22 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.RequiredFieldValidator descripcion_story_requerido;
 
         /// <summary>
-        /// Control descripcion_story_formato.
+        /// Control RegularExpressionValidator1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator descripcion_story_formato;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+
+        /// <summary>
+        /// Control ErrorDesc.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErrorDesc;
 
         /// <summary>
         /// Control SCPTMGR.

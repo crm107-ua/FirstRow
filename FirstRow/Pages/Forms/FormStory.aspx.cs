@@ -13,6 +13,8 @@ namespace FirstRow.Pages.Forms
 {
     public partial class FormStory : System.Web.UI.Page
     {
+        const int description_maxlength = 100;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             Error.Text = "";
@@ -25,6 +27,19 @@ namespace FirstRow.Pages.Forms
                 {
                     Response.Redirect("/");
                 }
+            }
+        }
+        
+        private void ServerValidation_description_maxlength(object source, ServerValidateEventArgs args)
+        {
+            int description_length = create_story_descripcion.Text.Length;
+            if (description_length <= description_maxlength)
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = false;
             }
         }
 
@@ -59,88 +74,95 @@ namespace FirstRow.Pages.Forms
                 Error.Text = "*Seleccione un país";
                 Error.Visible = true;
             }
-            else
+
+            if (create_story_descripcion.Text.Length > 100)
             {
-                Error.Visible = false;
+                ErrorDesc.Text = "*Longitud máxima de descripción superada";
+                ErrorDesc.Visible = true;
+                return;
+            }
 
-                //guarda una imagen
-                if (crear_story_imagen.HasFile)
+            
+            Error.Visible = false;
+
+            //guarda una imagen
+            if (crear_story_imagen.HasFile)
+            {
+                string imagen = rand.Next(1, 999999).ToString() + "-story-" + crear_story_imagen.FileName;
+                string ruta = "~/Media/Stories/" + imagen;
+                crear_story_imagen.SaveAs(Server.MapPath(ruta));
+
+                ENStories nuevaStory = new ENStories(
+                    (ENUsuario)Session["usuario"], //usuario
+                    DateTime.Now, //fecha
+                    create_story_title.Text, //titulo
+                    int.Parse(listaPaises_form_story.SelectedValue), //país
+                    create_story_descripcion.Text, //descripción
+                    imagen); //imagen
+
+                try
                 {
-                    string imagen = rand.Next(1, 999999).ToString() + "-story-" + crear_story_imagen.FileName;
-                    string ruta = "~/Media/Stories/" + imagen;
-                    crear_story_imagen.SaveAs(Server.MapPath(ruta));
-
-                    ENStories nuevaStory = new ENStories(
-                        (ENUsuario)Session["usuario"], //usuario
-                        DateTime.Now, //fecha
-                        create_story_title.Text, //titulo
-                        int.Parse(listaPaises_form_story.SelectedValue), //país
-                        create_story_descripcion.Text, //descripción
-                        imagen); //imagen
-
-                    try
+                    if (!nuevaStory.ReadStory())
                     {
-                        if (!nuevaStory.ReadStory())
+                        if (nuevaStory.CreateStory())
                         {
-                            if (nuevaStory.CreateStory())
+                            Error.Text = "Creación exitosa";
+                            Error.Visible = true;
+                            ENPais p = new ENPais();
+                            p.id = nuevaStory.Pais;
+                            try
                             {
-                                Error.Text = "Creación exitosa";
-                                Error.Visible = true;
-                                ENPais p = new ENPais();
-                                p.id = nuevaStory.Pais;
-                                try
+                                if (p.ReadPais())
                                 {
-                                    if (p.ReadPais())
-                                    {
-                                        Response.Redirect("/story/" + p.name);
-                                    }
-                                    else
-                                    {
-                                        Response.Redirect("/stories");
-                                    }
-
+                                    Response.Redirect("/story/" + p.name);
                                 }
-                                catch (System.Threading.ThreadAbortException) { }
+                                else
+                                {
+                                    Response.Redirect("/stories");
+                                }
 
                             }
-                            else
-                            {
-                                Error.Text = "*ERROR: story no creada";
-                                Error.Visible = true;
+                            catch (System.Threading.ThreadAbortException) { }
 
-                                string filePath = Server.MapPath("~/Media/Stories/" + imagen);
-                                File.Delete(filePath);
-                            }
                         }
                         else
                         {
-                            Error.Text = "*ERROR: story ya existente";
+                            Error.Text = "*ERROR: story no creada";
                             Error.Visible = true;
+
+                            string filePath = Server.MapPath("~/Media/Stories/" + imagen);
+                            File.Delete(filePath);
                         }
-
-                    }catch(Exception ex)
-                    {
-                        Console.WriteLine("Story operation has failed.Error: {0}", ex.Message);
                     }
-                }
-                else
-                {
-                    Error.Text = "*ERROR: imagen no subida";
-                    Error.Visible = true;
-                }
+                    else
+                    {
+                        Error.Text = "*ERROR: story ya existente";
+                        Error.Visible = true;
+                    }
 
-                //se guardan los campor del form en la nueva story
-                /*
-                ENStories nuevaStory = new ENStories();
-                nuevaStory.Titulo = create_story_title.Text;
-                nuevaStory.Descripcion = create_story_descripcion.Text;
-                nuevaStory.Fecha = DateTime.Now;
-                nuevaStory.Pais = int.Parse(listaPaises_form_story.SelectedValue);
-                nuevaStory.Usuario = (ENUsuario) Session["usuario"];
-                nuevaStory.Imagen = imagen;
-                nuevaStory.Id = ENStories.GenerateId(nuevaStory.Fecha, nuevaStory.Usuario);
-                */
+                }catch(Exception ex)
+                {
+                    Console.WriteLine("Story operation has failed.Error: {0}", ex.Message);
+                }
             }
+            else
+            {
+                Error.Text = "*ERROR: imagen no subida";
+                Error.Visible = true;
+            }
+
+            //se guardan los campor del form en la nueva story
+            /*
+            ENStories nuevaStory = new ENStories();
+            nuevaStory.Titulo = create_story_title.Text;
+            nuevaStory.Descripcion = create_story_descripcion.Text;
+            nuevaStory.Fecha = DateTime.Now;
+            nuevaStory.Pais = int.Parse(listaPaises_form_story.SelectedValue);
+            nuevaStory.Usuario = (ENUsuario) Session["usuario"];
+            nuevaStory.Imagen = imagen;
+            nuevaStory.Id = ENStories.GenerateId(nuevaStory.Fecha, nuevaStory.Usuario);
+            */
+            
         }
     }
 }

@@ -12,7 +12,8 @@
 
                 <asp:TextBox ID="create_story_descripcion" runat="server" type="text" textMode="MultiLine" style=" width:100%;" Height="180px" class="input" placeholder="Descripcion"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="descripcion_story_requerido" ControlToValidate="create_story_descripcion" validationgroup="GrupoCrearStory" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 5px;" runat="server" ErrorMessage="*Descripcion requerida"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="descripcion_story_formato" ControlToValidate="create_story_descripcion" validationgroup="GrupoCrearStory" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 5px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[-.:,0-9A-Za-zÀ-ÿ\s]+$" ErrorMessage="*Formato de descripcion incorrecto"> </asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="create_story_descripcion" validationgroup="GrupoCrearStory" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 5px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[-.:,0-9A-Za-zÀ-ÿ\s]+$" ErrorMessage="*Formato de descripción incorrecto"> </asp:RegularExpressionValidator>
+                <asp:Label ID="ErrorDesc" runat="server" Text="" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px;" Visible="false"></asp:Label>
 
                 <div>  
                     <h5 class="title" style="margin-left: 10px;" >Imagen</h5>

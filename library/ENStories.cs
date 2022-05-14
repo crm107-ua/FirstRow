@@ -8,7 +8,7 @@ namespace library
 {
     public class ENStories
     {
-        private int _id;
+        //private int _id;
         private string _titulo;
         private string _descripcion;
         private DateTime _fecha;
@@ -16,7 +16,7 @@ namespace library
         private ENUsuario _usuario;
         private string _imagen;
 
-        public int Id { get => _id; set => _id = value; }
+        //public int Id { get => _id; set => _id = value; }
         public string Titulo { get => _titulo; set => _titulo = value; }
         public DateTime Fecha { get => _fecha; set => _fecha = value; }
         public int Pais { get => _pais; set => _pais = value; }
@@ -29,7 +29,7 @@ namespace library
         /// </summary>
         public ENStories()
         {
-            Id = 0;
+            //Id = 0;
             Titulo = "";
             Fecha = new DateTime(); //fecha: 01-01-0001 00:00:00
             Pais = 0; //supongo que el país por defecto es 0, posibles cambios
@@ -44,7 +44,7 @@ namespace library
         /// <param name="id">El id de la story</param>
         public ENStories(int id)
         {
-            this.Id = id; // Carga de storie en experiencias
+            //this.Id = id; // Carga de storie en experiencias
             Titulo = "";
             Fecha = new DateTime(); //fecha: 01-01-0001 00:00:00
             Pais = 0; //supongo que el país por defecto es 0, posibles cambios
@@ -53,6 +53,7 @@ namespace library
             Imagen = "";
         }
 
+        /*
         /// <summary>
         /// Constructor con todos los atributos
         /// </summary>
@@ -73,9 +74,10 @@ namespace library
             this.Imagen = img;
             this.Descripcion = desc;
         }
+        */
 
         /// <summary>
-        /// Constructor con todos los atributos excepto el id
+        /// Constructor con todos los atributos
         /// </summary>
         /// <param name="usuario"></param>
         /// <param name="fecha"></param>
@@ -85,7 +87,7 @@ namespace library
         /// <param name="img">nombre de la imagen</param>
         public ENStories(ENUsuario usuario, DateTime fecha, string nombre, int pais, string desc, string img)
         {
-            this.Id = ENStories.GenerateId(fecha, usuario);
+            //this.Id = ENStories.GenerateId(fecha, usuario);
             this.Titulo = nombre;
             this.Fecha = fecha;
             this.Pais = pais;
@@ -100,7 +102,7 @@ namespace library
         /// <param name="story">Story origen</param>
         public ENStories(ENStories story)
         {
-            this.Id = story.Id;
+            //this.Id = story.Id;
             this.Titulo = story.Titulo;
             this.Fecha = story.Fecha;
             this.Pais = story.Pais;
@@ -109,14 +111,20 @@ namespace library
             this.Descripcion = story.Descripcion;
         }
 
-        /**
-         * genera la Id correspondiente en base a la fecha de publicación
-         * y al usuario que publicó la story
-         */
+        /*
+        /// <summary>
+        /// genera la Id correspondiente en base a la fecha de publicación
+        /// y al usuario que publicó la story
+        /// </summary>
+        /// <param name="fecha"></param>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
         public static int GenerateId(DateTime fecha, ENUsuario usuario)
         {
             return usuario.nickname.GetHashCode() + (int) fecha.Ticks;
         }
+        */
+        
 
         /// <summary>
         /// crea una story
