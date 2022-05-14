@@ -19,15 +19,16 @@ namespace FirstRow.Pages
             {
                 mostrarTarjetasPaises();
                 llenarDropDownList();
-                if ((string)Session["usuario"] == "admin")
+                ENUsuario user = (ENUsuario)Session["usuario"];
+                if (user != null && user.nickname == "admin")
                 {
                     btn_modificar_pagina.Visible = true;
                 }
                 else { btn_modificar_pagina.Visible = false; }
 
-                
-                stories_title.InnerText = "Stories interesantes";
-                stories_subtitle.InnerText = "Muestra tus experiencias al mundo " +
+
+                Application["stories_title"] = "Stories interesantes";
+                Application["stories_subtitle"] = "Muestra tus experiencias al mundo " +
                     "y explora las de otras personas.";
                 
                 
@@ -141,10 +142,10 @@ namespace FirstRow.Pages
             string slug;
             if (pais.ReadPais())
             {
-                slug = pais.name;
+                slug = pais.name.Replace(" ", "-"); //toLower()
 
                 HyperLink h = new HyperLink();
-                h.NavigateUrl = $"/story/{slug.ToLower()}";
+                h.NavigateUrl = $"/story/{slug}";
                 h.CssClass = "story_item";
                 //h.Style.Add("background-image", $"url(../Media/Paises/{slug}.jpg)");
                 if (File.Exists(Server.MapPath($"~/Media/Paises/{slug}.jpg")))

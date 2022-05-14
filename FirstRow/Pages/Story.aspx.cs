@@ -26,8 +26,10 @@ namespace FirstRow.Pages
                 {
                     string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
                     pais_name = cadena.Replace("-", " ");
-                    ENPais pais = new ENPais();
-                    pais.name = pais_name;
+                    ENPais pais = new ENPais
+                    {
+                        name = pais_name
+                    };
                     if (pais.ReadPais())
                     {
                         pais_id = pais.id;
@@ -65,11 +67,12 @@ namespace FirstRow.Pages
             //Response.Redirect("/agregar-story");
         }
         */
-
+        /*
         protected void modificarStory(object sender, EventArgs e)
         {
             //COMPLETAR -- redirigir a formulario??
         }
+        */
 
         protected void eliminarStory(object sender, EventArgs e)
         {
