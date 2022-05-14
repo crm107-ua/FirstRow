@@ -38,11 +38,11 @@ namespace library
                 connection.Open();
                 
                 string query = "INSERT INTO [firstrow_].[dbo].[Stories] " +
-                    "(id, titulo, descripcion, fecha, pais, usuario, imagen) VALUES " +
-                    "(@Id, @Titulo, @Descripcion, @Fecha, @Pais, @Usuario, @Imagen)";
+                    "(titulo, descripcion, fecha, pais, usuario, imagen) VALUES " +
+                    "(@Titulo, @Descripcion, @Fecha, @Pais, @Usuario, @Imagen)";
                 
                 SqlCommand com = new SqlCommand(query, connection);
-                com.Parameters.AddWithValue("@Id", story.Id);
+                //com.Parameters.AddWithValue("@Id", story.Id);
                 com.Parameters.AddWithValue("@Titulo", story.Titulo);
                 com.Parameters.AddWithValue("@Descripcion", story.Descripcion);
                 com.Parameters.AddWithValue("@Fecha", story.Fecha);

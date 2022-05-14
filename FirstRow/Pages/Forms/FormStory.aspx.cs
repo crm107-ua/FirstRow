@@ -88,14 +88,20 @@ namespace FirstRow.Pages.Forms
                                 Error.Visible = true;
                                 ENPais p = new ENPais();
                                 p.id = nuevaStory.Pais;
-                                if (p.ReadPais())
+                                try
                                 {
-                                    Response.Redirect("/stories/" + p.name);
+                                    if (p.ReadPais())
+                                    {
+                                        Response.Redirect("/story/" + p.name);
+                                    }
+                                    else
+                                    {
+                                        Response.Redirect("/stories");
+                                    }
+
                                 }
-                                else
-                                {
-                                    Response.Redirect("/stories");
-                                }
+                                catch (System.Threading.ThreadAbortException) { }
+
                             }
                             else
                             {
