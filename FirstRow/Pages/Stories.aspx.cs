@@ -21,7 +21,8 @@ namespace FirstRow.Pages
                 llenarDropDownList();
                 btn_modificar_pagina.Visible = false;
                 stories_title.InnerText = "Stories interesantes";
-                stories_subtitle.InnerText = "Literatura latina del 45 a. C., por lo que tiene más de 2000 años.";
+                stories_subtitle.InnerText = "Muestra tus experiencias al mundo " +
+                    "y explora las de otras personas.";
                 background_image_header.Style.Add("background-image", "url(https://media.cntraveler.com/photos/5cc32b6031a2ae65b96fb4ff/16:9/w_2560%2Cc_limit/MAG19_May_TR050419_Zihuatanejo02.jpg)");
 
                 /* lista de paises
@@ -96,15 +97,6 @@ namespace FirstRow.Pages
                 }
             }
             
-
-            /*
-            HyperLink h = createCountryLink(3); //codigo 3 corresponde a Italia
-            stories_list.Controls.Add(h);
-
-            HyperLink h2 = createCountryLink("España");
-            stories_list.Controls.Add(h2);
-            */
-            //russia_btn.HRef = "/story/ejemplo";
         }
 
         private void llenarDropDownList()

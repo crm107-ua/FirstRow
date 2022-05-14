@@ -87,31 +87,40 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.UpdatePanel UpdimageUpload;
 
         /// <summary>
-        /// Control crear_story_imagenes.
+        /// Control crear_story_imagen.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload crear_story_imagenes;
+        protected global::System.Web.UI.WebControls.FileUpload crear_story_imagen;
 
         /// <summary>
-        /// Control imagenes_story_requerido.
+        /// Control imagen_story_requerido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator imagenes_story_requerido;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator imagen_story_requerido;
 
         /// <summary>
-        /// Control imagenes_story_formato.
+        /// Control imagen_story_formato.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator imagenes_story_formato;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator imagen_story_formato;
+
+        /// <summary>
+        /// Control listaPaises_form_story.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList listaPaises_form_story;
 
         /// <summary>
         /// Control btnCrea.
