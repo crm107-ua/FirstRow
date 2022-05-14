@@ -49,7 +49,8 @@ namespace library
                 com.Parameters.AddWithValue("@Pais", story.Pais);
                 com.Parameters.AddWithValue("@Usuario", story.Usuario.nickname);
                 com.Parameters.AddWithValue("@Imagen", story.Imagen);
-                
+                //story.Id = Convert.ToInt32(com.ExecuteScalar());
+
                 /*
                 string query = "INSERT INTO [firstrow_].[dbo].[Stories] " +
                     "(id, titulo, descripcion, fecha, pais, usuario, imagen) VALUES " +

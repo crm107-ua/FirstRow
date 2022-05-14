@@ -126,7 +126,7 @@ namespace FirstRow.Pages
                 slug = pais.name;
 
                 HyperLink h = new HyperLink();
-                h.NavigateUrl = $"/story/{slug}";
+                h.NavigateUrl = $"/story/{slug.ToLower()}";
                 h.CssClass = "story_item";
                 //h.Style.Add("background-image", $"url(../Media/Paises/{slug}.jpg)");
                 if (File.Exists(Server.MapPath($"~/Media/Paises/{slug}.jpg")))

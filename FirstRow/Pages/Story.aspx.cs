@@ -189,9 +189,10 @@ namespace FirstRow.Pages
             {
                 if (File.Exists(Server.MapPath($"~/Media/Stories/{story.Imagen}")))
                 {
-                    string img = Server.MapPath($"~/Media/Stories/{story.Imagen}");
-                    p.BackImageUrl = img;
-                    p.Attributes["data-blur-bg"] = img;
+                    //string img = Server.MapPath($"~/Media/Stories/{story.Imagen}");
+                    string img2 = $"../Media/Stories/{story.Imagen}";
+                    p.BackImageUrl = img2;
+                    p.Attributes["data-blur-bg"] = img2;
                     
                 }
                 else
