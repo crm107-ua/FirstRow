@@ -15,6 +15,15 @@ namespace FirstRow.Pages
     {
 
         /// <summary>
+        /// Control crear_experiencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor crear_experiencia;
+
+        /// <summary>
         /// Control mostrar_experiencias.
         /// </summary>
         /// <remarks>

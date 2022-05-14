@@ -129,7 +129,6 @@ namespace library
             {
                 connection = new SqlConnection(constring);
                 experiencias = new DataSet();
-                experiencia = new ENViajes();
 
                 string query = "Select * From [firstrow_].[dbo].[Experiencias];";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
@@ -139,6 +138,7 @@ namespace library
 
                 for (int i = 0; i < rowsExperiencias.Length; i++)
                 {
+                    experiencia = new ENViajes();
 
                     experiencia.Id = Int32.Parse(rowsExperiencias[i]["id"].ToString());
                     experiencia.Nombre = rowsExperiencias[i]["nombre"].ToString();
@@ -261,6 +261,8 @@ namespace library
                     }
                     experiencia.Comentarios = comentarios;
                     connectionSecundaria.Close();
+
+                    listaExperiencias.Add(experiencia);
                 }
 
             }
@@ -273,7 +275,6 @@ namespace library
             {
                 connection.Close();
                 connectionSecundaria.Close();
-                listaExperiencias.Add(experiencia);
             }
 
             return leido;

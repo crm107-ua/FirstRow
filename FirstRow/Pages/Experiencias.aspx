@@ -20,6 +20,7 @@
                             </h1>
                             <p class="subtitle" style="color:white;">
                                 Cumpliendo sueños alrededor de todo el mundo
+                                <a href="/agregar-experiencia" id="crear_experiencia" runat="server" style="float:right;"></a>
                             </p>
                         </div>
                     </div>
