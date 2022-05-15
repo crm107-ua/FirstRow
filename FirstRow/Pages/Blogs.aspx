@@ -31,10 +31,6 @@
                                        runat="server">
                                 </asp:DropDownList>
                             </div>
-                            <div style="margin-right:30px;" class="search_wrap">
-                                <input class="input" placeholder="Search" type="text">
-                                <button class="submit"></button>
-                            </div>
                         </div>
                     </div>
                     <div class="page_body">

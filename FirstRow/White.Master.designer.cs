@@ -24,6 +24,15 @@ namespace FirstRow
         protected global::System.Web.UI.HtmlControls.HtmlForm WhiteMaster;
 
         /// <summary>
+        /// Control Menu1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Menu Menu1;
+
+        /// <summary>
         /// Control login_sect.
         /// </summary>
         /// <remarks>

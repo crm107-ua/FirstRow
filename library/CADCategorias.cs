@@ -85,19 +85,66 @@ namespace library
             return creado;
         }
 
-        // Leer Categoria
-        public bool readCategoria(ENCategorias categoria)
-        {
-            bool read = false;
-            if (categoria is ENCategorias)
-            {
 
-                bool correctRead = false;
-                return correctRead;
+        public bool readCategoria(ENCategorias categoria, bool mode)
+        {
+
+            SqlConnection conection = null;
+            SqlDataReader busqueda = null;
+
+            try
+            {
+                conection = new SqlConnection(constring);
+                SqlCommand consulta = new SqlCommand();
+                conection.Open();
+                string query = "";
+
+                if (mode)
+                {
+                    query = "Select * From [firstrow_].[dbo].[Categorias] where id = @id";
+                    consulta = new SqlCommand(query, conection);
+                    consulta.Parameters.AddWithValue("@id", categoria.id);
+                }
+                else
+                {
+                    query = "Select * From [firstrow_].[dbo].[Categorias] where slug = @slug";
+                    consulta = new SqlCommand(query, conection);
+                    consulta.Parameters.AddWithValue("@slug", categoria.slug);
+                }
+                busqueda = consulta.ExecuteReader();
+                busqueda.Read();
+
+                // Lectura de campos de categoria
+
+                categoria.id = Int32.Parse(busqueda["id"].ToString());
+                categoria.nombre = busqueda["nombre"].ToString();
+                categoria.descripcion = busqueda["descripcion"].ToString();
+                categoria.slug = busqueda["slug"].ToString();
 
             }
+            catch (SqlException e)
+            {
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                return false;
+            }
+            finally
+            {
+                if (busqueda != null)
+                {
+                    busqueda.Close();
+                }
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
 
-            return read;
+            return true;
         }
 
         // Actualizar Categoria

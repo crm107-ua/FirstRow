@@ -32,9 +32,11 @@ namespace FirstRow.App_Start
             routes.MapPageRoute("agregar_seccion_galeria", "agregar-seccion-galeria", "~/Pages/Forms/FormGaleria.aspx");
 
 
+
             routes.MapPageRoute("blogs", "blogs", "~/Pages/Blogs.aspx");
             routes.MapPageRoute("blogs_categoria", "blogs/{categoria}", "~/Pages/Blogs.aspx");
             routes.MapPageRoute("blog_categoria", "blog/{categoria}/{slug}", "~/Pages/Blog.aspx");
+            routes.MapPageRoute("agregar_blog", "agregar-blog", "~/Pages/Forms/FormBlog.aspx");
 
             routes.MapPageRoute("propuestas", "propuestas", "~/Pages/Propuestas.aspx");
             routes.MapPageRoute("propuesta", "propuesta/{slug}", "~/Pages/Propuesta.aspx");

@@ -159,6 +159,7 @@ namespace library
                     adapterSecundario.Fill(experienciasSecundario, "Paises");
                     DataTable tablePaises= experienciasSecundario.Tables["Paises"];
                     DataRow[] rowsPaises = tablePaises.Select();
+                    experiencia.Pais.id = Int32.Parse(rowsPaises[0]["id"].ToString());
                     experiencia.Pais.name = rowsPaises[0]["name"].ToString();
                     connectionSecundaria.Close();
 
@@ -309,6 +310,10 @@ namespace library
                 experiencia.Precio = Double.Parse(busqueda["precio"].ToString());
                 experiencia.Background = busqueda["background"].ToString();
                 experiencia.Dias = Int32.Parse(busqueda["dias"].ToString());
+                ENEmpresa empresa = new ENEmpresa();
+                empresa.nickname = busqueda["empresa"].ToString();
+                empresa.readUsuario();
+                experiencia.Empresa = empresa;
 
                 try
                 {
