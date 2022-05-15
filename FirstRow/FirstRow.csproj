@@ -193,6 +193,7 @@
     <Content Include="Pages\Equipo.aspx" />
     <Content Include="Pages\Experiencia.aspx" />
     <Content Include="Pages\Experiencias.aspx" />
+    <Content Include="Pages\Forms\FormBlog.aspx" />
     <Content Include="Pages\Forms\FormStory.aspx" />
     <Content Include="Pages\Forms\FormGaleria.aspx" />
     <Content Include="Pages\Forms\FormExperiencia.aspx" />
@@ -270,6 +271,13 @@
     </Compile>
     <Compile Include="Pages\Experiencias.aspx.designer.cs">
       <DependentUpon>Experiencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Forms\FormBlog.aspx.cs">
+      <DependentUpon>FormBlog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Forms\FormBlog.aspx.designer.cs">
+      <DependentUpon>FormBlog.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Forms\FormStory.aspx.cs">
       <DependentUpon>FormStory.aspx</DependentUpon>
@@ -402,6 +410,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Media\Blogs\" />
     <Folder Include="Media\Etapas\" />
     <Folder Include="Media\Experiencias\" />
     <Folder Include="Media\Galery\" />
