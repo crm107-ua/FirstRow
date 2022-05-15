@@ -407,45 +407,36 @@
             <div class="scroll">
             <div class="scroll_wrap">
                 <div class="popup-head">
-                    <div class="title">Book Now</div>
+                    <div class="title">Reserva Ahora</div>
                 </div>
                 <div class="popup-body">
                     <div class="tour-title">
                         <div class="img">
-                            <img src="Assets/img/demo-bg.jpg" alt="">
+                            <img src="../../assets/img/Logo_Principal.png" alt="">
                         </div>
                         <div class="tour-name">
-                            Tour to the Arctic is an exotic journey on the verge of extreme
+                            Bienvenido a la zona de reservas. ¡No te arrepentiras!
                         </div>
                     </div>
                     <div class="tour-info">
-                        <div class="col">
-                            <div class="label">Check In</div>
-                            <div class="date">
-                                <div class="day">09</div>
-                                <div class="month">May</div>
-                                <div class="year">2019</div>
+                      
+                            <div class="date_div">
+                                
+                                    Introduzca los siguientes datos, y por su seguridad le enviaremos un correo para su confirmacion.
                             </div>
-                            <div class="label">Aduld: <span>3</span></div>
-                        </div>
-                        <div class="col">
-                            <div class="label">Check Out</div>
-                            <div class="date">
-                                <div class="day">09</div>
-                                <div class="month">May</div>
-                                <div class="year">2019</div>
-                            </div>
-                            <div class="label">Children: <span>0</span></div>
-                        </div>
+                            
+
                     </div>
                     <div class="form">
-                        <input type="text" class="input" placeholder="Your First Name">
-                        <input type="text" class="input" placeholder="Your Last Name">
-                        <input type="email" class="input" placeholder="Your Email">
-                        <input type="tel" class="input" placeholder="Your Number Phone">
-                        <textarea class="textarea" placeholder="Where are your address?"></textarea>
-                        <textarea class="textarea" placeholder="Note:"></textarea>
-                        <button class="submit button js-submit">Book Now | <b>$356</b></button>
+
+                        <input type="text" class="input" placeholder="Fecha de inicio del viaje (aa/bb/cccc) ">
+                        <input type="text" class="input" placeholder="Introduce tu nombre">
+                        <input type="text" class="input" placeholder="Introduce tus apellidos">
+                        <input type="email" class="input" placeholder="Introduce tu correro de contacto">
+                        <input type="tel" class="input" placeholder="Teléfono de contacto">
+                        <textarea class="textarea" placeholder="Direccion"></textarea>
+                        <textarea class="textarea" placeholder= "¿Algún extra que debamos de saber?"></textarea>
+                        <button class="submit button js-submit"> Reserva con un click | <b>$356</b></button>
                     </div>
                 </div>
             </div>
@@ -572,7 +563,7 @@
                             <div class="label">Check In</div>
                             <div class="date_div">
                                 <input type="text" class="js_calendar desctop-input">
-                                <input type="date" class="mobile-input">
+                               
                                 <div class="day">21</div>
                                 <div class="date_div_right">
                                     <div class="month">December</div>
@@ -584,7 +575,7 @@
                             <div class="label">Check Out</div>
                             <div class="date_div">
                                 <input type="text" class="js_calendar desctop-input">
-                                <input type="date" class="mobile-input">
+                               
                                 <div class="day">21</div>
                                 <div class="date_div_right">
                                     <div class="month">December</div>
