@@ -89,7 +89,7 @@
                                         <div id="display_dias" runat="server" style="color:white;" class="days">5 dias |</div>
                                         <div id="display_precio" runat="server" style="color:white;" class="cost">desde 356€</div>
                                     </div>
-                                    <button class="btn button js-popup-open" data-href="#book-now"> Reserva Ahora </button>
+                                    <button class="btn button js-popup-open" data-href="#book-now"> Reserva Ahora  </button>
                                     <div class="rating">
                                         <div id="display_comentarios" runat="server" style="color:white;" class="rating-text"></div>
                                     </div>
