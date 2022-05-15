@@ -73,7 +73,7 @@ namespace FirstRow.Pages
         {
             if (country_list.SelectedValue != "-1")
             {
-                Response.Redirect("/story/" + Home.slug(country_list.SelectedItem.Text);
+                Response.Redirect("/story/" + Home.slug(country_list.SelectedItem.Text));
 
             }
         }
