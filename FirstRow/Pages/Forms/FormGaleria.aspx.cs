@@ -92,7 +92,7 @@ namespace FirstRow.Pages.Forms
                         {
                             Error.Text = "Creacion Exitosa";
                             Error.Visible = true;
-                            //Response.Redirect("galeia/"+seccion_galeria.Slug);
+                            Response.Redirect("/galeia/"+seccion_galeria.Slug);
                         }
                         else
                         {
@@ -101,9 +101,9 @@ namespace FirstRow.Pages.Forms
 
                             foreach (ENImagenes galeira in seccion_galeria.Imagenes) 
                             {
-                                var filePath = Server.MapPath("~/Media/Galery/" + galeira.Name);
-                                File.Delete(filePath);
-                                
+                                var filePath = Server.MapPath("..\\");
+                                filePath +=" /Media/Galery/" + galeira.Name;
+                                System.IO.File.Delete(filePath);
                             }
                         }
                     }

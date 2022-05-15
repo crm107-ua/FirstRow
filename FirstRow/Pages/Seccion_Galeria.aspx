@@ -71,54 +71,9 @@
                         <div class="other_gallery">
                             <h2 class="title">También te puede interesar</h2>
                             <div class="gallery-list">
-                                <a href="galeria/madagascar" class="gallery-item">
-                                    <div class="top">
-                                        <p class="country">Madagascar</p>
-                                    <p class="title">El mundo bajo la superficie</p>
-                                </div>
-                                <div class="images">
-                                    <div class="scroll">
-                                        <div class="img">
-                                            <img src="https://img.freepik.com/foto-gratis/ballena-jorobada-salta-fuera-agua-hermoso-salto-madagascar-isla-santa-maria_265142-30.jpg" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="https://img.ev.mu/images/attractions/2127/960x640/412377.jpg" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="https://www.periodistadigital.com/wp-content/uploads/2019/03/madagascar-rayas.jpg?width=1200&enable=upscale" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="http://www.xdeep.eu/img/expeditions/malazamanga/gallery/images/7.jpg" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="https://laguiadelacuario.es/wp-content/uploads/2020/06/bedotia_geayipda.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    </div>
-                                </a>
+                                <asp:Panel ID="masGaleri" runat="server">
 
-                                <a href="/galeria/roma" class="gallery-item">
-                                    <div class="top">
-                                        <p class="country">Roma</p>
-                                    <p class="title">La impresionante arquitectura de Roma</p>
-                                </div>
-                                <div class="images">
-                                    <div class="scroll">
-                                        <div class="img">
-                                            <img src="https://p4.wallpaperbetter.com/wallpaper/919/302/326/urban-area-arch-of-septimius-severus-capitoline-hill-temple-of-saturn-wallpaper-preview.jpg" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="https://p4.wallpaperbetter.com/wallpaper/117/225/212/antigua-arquitectura-coliseum-roma-wallpaper-preview.jpg" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="https://arquitectomanuelnavarro.es/wp-content/uploads/2018/01/rome-2960832_1280.jpg" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="https://p1.piqsels.com/preview/322/856/859/roman-ruins-rome-italy-ancient-history.jpg" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="https://i.pinimg.com/originals/3e/23/c6/3e23c67e72041bca3737074b11e4b576.png" alt="">
-                                        </div>
+                                </asp:Panel>
                                     </div>
                                     </div>
                                 </a>

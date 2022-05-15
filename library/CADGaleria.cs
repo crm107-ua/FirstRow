@@ -137,10 +137,54 @@ namespace library
             bool consegido = false;
             CADGaleria aux = new CADGaleria();
 
-            if (!aux.readGaleria(galeria))
+            if (aux.readGaleria(galeria))
             {
-                //Se Borra en la base de datos
-                consegido = true;
+                try
+                {
+                    using (TransactionScope scope = new TransactionScope())
+                    {
+                        //Primera transacion
+                        using (SqlConnection connection = new SqlConnection(constring))
+                        {
+                            foreach (ENImagenes imgagen in galeria.Imagenes) 
+                            {
+                                if (!imgagen.deleteImg()) 
+                                {
+                                    throw new Exception();
+                                }
+                            }
+
+                            connection.Open();
+                            string comando = "delete from [firstrow_].[dbo].[Seccion_Galeria] where id=@id;";
+
+                            SqlCommand sqlCommand = new SqlCommand(comando, connection);
+                            sqlCommand.Parameters.AddWithValue("@id",galeria.Id);
+                            sqlCommand.ExecuteNonQuery();
+                            consegido = true;
+
+                            connection.Close();
+                        }
+
+                        if (consegido) 
+                        {
+                            foreach (ENImagenes galeira in galeria.Imagenes)
+                            {
+                                string filePath = @"c:\current";
+                                filePath += " /Media/Galery/" + galeira.Name;
+                                System.IO.File.Delete(filePath);
+                            }
+                        }
+
+                        scope.Complete();
+                    }
+                }
+                catch (Exception excepcion)
+                {
+                }
+                finally
+                {
+                }
+
             }
 
             return consegido;
@@ -221,19 +265,72 @@ namespace library
             {
                 connection.Close();
             }
+ 
+            return conseguido;
+        }
+
+        public bool readAllCountyGaleri(List<ENGaleria> lista, ENPais pais)
+        {
+            bool conseguido = false;
+            SqlConnection connection = new SqlConnection(constring);
+
+            try
+            {
+                //Servicio Desconectado
+                //Optencion de la DBD Virtual de galeria
+
+                DataSet dbd = new DataSet();
+                DataSet dbdImgenes = new DataSet();
+                string slectGaleria = "select Seccion_Galeria.id, titulo, descripcion, slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
+                    "from [firstrow_].[dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais)" +
+                    "where Paises.id="+pais.id;
+
+                SqlDataAdapter adapter = new SqlDataAdapter(slectGaleria, connection);
+                adapter.Fill(dbd, "Galerias");
+
+                DataTable tableGaleria = dbd.Tables["Galerias"];
+                DataRow[] rowsGaleria = tableGaleria.Select();
+
+                lista.Clear();
 
 
-            //Si hay alguna galeria
-            if (true) { }
+                // Las imagenes se tienen que tratar con listas de objectos ENImagenes
+                // ENGaleria modificado
+                List<ENImagenes> imagenes = new List<ENImagenes>();
 
-            /*
-              select Seccion_Galeria.id, titulo, descripcion, slug, Paises.id "PaisId", Paises.name "NamePais" from Seccion_Galeria
-                join Paises on (Paises.id=Seccion_Galeria.pais);
+                for (int i = 0; i < rowsGaleria.Length; i++)
+                {
+                    //Rellenado de imagenes
+                    string slectImagenes = "select name from Seccion_Galeria_Imagenes join Imagenes on(Imagenes.id = Seccion_Galeria_Imagenes.id_imagen)" +
+                        " where Seccion_Galeria_Imagenes.id_seccion_galeria =" + rowsGaleria[i]["id"] + ";";
 
-                select * from Seccion_Galeria_Imagenes
-                join Imagenes on (Imagenes.id=Seccion_Galeria_Imagenes.id_imagen)
-                where Seccion_Galeria_Imagenes.id_seccion_galeria=0
-             */
+                    SqlDataAdapter adapterImagenes = new SqlDataAdapter(slectImagenes, connection);
+                    adapterImagenes.Fill(dbdImgenes, "Imagenes");
+
+                    DataTable tableImg = dbdImgenes.Tables["Imagenes"];
+                    DataRow[] rowsImg = tableImg.Select();
+
+                    imagenes.Clear();
+                    for (int j = 0; j < rowsImg.Length; j++)
+                    {
+                        imagenes.Add(new ENImagenes(rowsImg[j]["name"].ToString()));
+                    }
+
+                    // Modificado por Carlos, pendiente de revision
+                    ENGaleria galeria = new ENGaleria(int.Parse(rowsGaleria[i]["id"].ToString()), pais, rowsGaleria[i]["slug"].ToString(), rowsGaleria[i]["titulo"].ToString(), rowsGaleria[i]["descripcion"].ToString(), imagenes);
+                    lista.Add(galeria);
+
+                    dbdImgenes.Clear();
+                }
+
+            }
+            catch (Exception e)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
 
             return conseguido;
         }

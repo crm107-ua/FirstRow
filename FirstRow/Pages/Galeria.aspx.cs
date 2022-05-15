@@ -19,7 +19,6 @@ namespace FirstRow.Pages
             if (!Page.IsPostBack)
             {
                 llenarDropDownList();
-                rellenarGalerias();
 
                 if (Session["usuario"] != null)
                 {
@@ -28,6 +27,21 @@ namespace FirstRow.Pages
                 else
                 {
                     add_galeria.Visible = false;
+                }
+
+                Route myRoute = RouteData.Route as Route;
+                ENPais pais = new ENPais();
+
+                if (myRoute != null && myRoute.Url == "galeria/{pais}") 
+                {
+                    pais.name = char.ToUpper(RouteData.Values["pais"].ToString()[0]) + RouteData.Values["pais"].ToString().Substring(1);
+                }
+
+                if (pais.ReadPais())
+                    rellenarGalerias(pais);
+                else 
+                {
+                    rellenarGalerias(new ENPais());
                 }
             }
         }
@@ -66,11 +80,16 @@ namespace FirstRow.Pages
             //Cambio en el filtrado
         }
 
-        private void rellenarGalerias() 
+        private void rellenarGalerias(ENPais pais) 
         {
             List<ENGaleria> galerias=new List<ENGaleria>();
             CADGaleria cadGaleria=new CADGaleria();
-            cadGaleria.readAllGaleri(galerias);
+
+            if (pais.name == "")
+                cadGaleria.readAllGaleri(galerias);
+            else
+                cadGaleria.readAllCountyGaleri(galerias,pais);
+
 
             foreach (ENGaleria galeria in galerias) 
             {
