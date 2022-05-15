@@ -15,9 +15,9 @@ namespace FirstRow.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             
+            mostrarTarjetasPaises();
             if (!Page.IsPostBack)
             {
-                mostrarTarjetasPaises();
                 llenarDropDownList();
                 ENUsuario user = (ENUsuario)Session["usuario"];
                 if (user != null && user.nickname == "admin")
@@ -56,13 +56,19 @@ namespace FirstRow.Pages
 
         }
 
+        /// <summary>
+        /// Habilita la edición de la página. 
+        /// Solamente puede usarlo el admin
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void modificarPaginaStories(object sender, EventArgs e)
         {
             stories_title_edit.Visible = true;
             stories_subtitle_edit.Visible = true;
             stories_description_title_edit.Visible = true;
             stories_description_edit.Visible = true;
-            background_image_header.Style.Add("background-image", "url(../../assets/img/demo-bg-5.jpg)");
+            //background_image_header.Style.Add("background-image", "url(../../assets/img/demo-bg-5.jpg)");
             //Response.Redirect("/stories");
 
             btn_aceptar_cambios.Visible = true;
@@ -70,52 +76,41 @@ namespace FirstRow.Pages
             btn_modificar_pagina.Visible = false;
         }
 
+        /// <summary>
+        /// Redirige a las páginas de story
+        /// con los valores del dropDownList
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void seleccionarPais(object sender, EventArgs e)
         {
             if (country_list.SelectedValue != "-1")
             {
-                Response.Redirect("/story/" + country_list.SelectedItem.Text);
+                Response.Redirect("/story/" + 
+                    Home.slug(country_list.SelectedItem.Text) + "?id=" +
+                    country_list.SelectedItem.Value);
 
             }
         }
 
+        /// <summary>
+        /// Muestra las trajetas de los paises
+        /// al iniciar la página
+        /// </summary>
         private void mostrarTarjetasPaises()
         {
-            /*
+            ENPais pais = new ENPais();
             List<ENPais> paises = new List<ENPais>();
-            DataSet ds = new DataSet();
-            if (ENPais.ReadPaisesDataSet(ds))
+            if (pais.getListPaisesDesconectado(paises))
             {
-                DataRowCollection rows = ds.Tables["Paises"].Rows;
-                for (int row = 0; row < rows.Count; row++)
-                {
-                    ENPais p = new ENPais(rows[row].Field<int>("id"), rows[row].Field<string>("name"));
-                    paises.Add(p);
-                }
-
                 paises.Sort(ENPais.CompareCountriesByName);
-
                 foreach (ENPais p in paises)
                 {
                     HyperLink h = createCountryLink(p.id);
                     if (h != null) { stories_list.Controls.Add(h); }
                 }
             }
-            */
 
-            
-            ENPais pais = new ENPais();
-            List<ENPais> paises = new List<ENPais>();
-            if (pais.readPaises(paises))
-            {
-                paises.Sort(ENPais.CompareCountriesByName);
-                foreach(ENPais p in paises)
-                {
-                    HyperLink h = createCountryLink(p.id); 
-                    if (h != null) { stories_list.Controls.Add(h); }
-                }
-            }
-            
         }
 
         private void llenarDropDownList()
@@ -142,10 +137,10 @@ namespace FirstRow.Pages
             string slug;
             if (pais.ReadPais())
             {
-                slug = pais.name.Replace(" ", "-"); //toLower()
+                slug = Home.slug(pais.name); 
 
                 HyperLink h = new HyperLink();
-                h.NavigateUrl = $"/story/{slug}";
+                h.NavigateUrl = $"/story/{slug}?id=" + countryId;
                 h.CssClass = "story_item";
                 //h.Style.Add("background-image", $"url(../Media/Paises/{slug}.jpg)");
                 if (File.Exists(Server.MapPath($"~/Media/Paises/{slug}.jpg")))

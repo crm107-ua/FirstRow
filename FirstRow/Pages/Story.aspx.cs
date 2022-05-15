@@ -26,13 +26,22 @@ namespace FirstRow.Pages
                 {
                     string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
                     pais_name = cadena.Replace("-", " ");
-                    ENPais pais = new ENPais
+                    ENPais pais = new ENPais();
+
+                    if (Request.QueryString["id"] != null)
                     {
-                        name = pais_name
-                    };
+                        pais.id = int.Parse(Request.QueryString["id"].ToString());
+                    }
+                    else
+                    {
+                        pais.name = pais_name;
+
+                    }
+
                     if (pais.ReadPais())
                     {
                         pais_id = pais.id;
+                        pais_name = pais.name;
                         if (Session["usuario"] != null)
                         {
                             crear_story.Visible = true;
