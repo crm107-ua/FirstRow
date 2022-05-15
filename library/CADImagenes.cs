@@ -48,18 +48,19 @@ namespace library
         }
         public bool deleteImg(ENImagenes img)
         {
-            bool created = false;
+            bool consegido= false;
             SqlConnection connection = new SqlConnection(constring);
 
             try
             {
                 connection.Open();
-                string comando = "delete from [dbo].[Imagenes] where id=@id;";
+                string comando = "delete from [dbo].[Imagenes] where id=@name;";
 
                 SqlCommand sqlCommand = new SqlCommand(comando, connection);
-                sqlCommand.Parameters.AddWithValue("@id", img.Id);
+                sqlCommand.Parameters.AddWithValue("@name", img.Name);
                 sqlCommand.ExecuteNonQuery();
-                created = true;
+
+                consegido = true;
             }
             catch (Exception excepcion)
             {
@@ -69,7 +70,7 @@ namespace library
                 connection.Close();
             }
 
-            return created;
+            return consegido;
         }
 
         public bool readImg(ENImagenes img)
