@@ -85,15 +85,14 @@ namespace library
 
         }
 
-        /**
-         * Lee un único país de la DB
-         * si el país pasado omo argumento tiene un id válido (> 0),
-         * se busca el país con el id, si no, se busca con el nombre del país
-         * 
-         * Devuelve 'true' si se ha encontrado el país en la DB y
-         * 'false' si no se ha encontrado o ha saltado algún error
-         * 
-         */
+        /// <summary>
+        /// Lee un único país de la DB.
+        /// Si el país pasado omo argumento tiene un id válido(> 0),
+        /// se busca el país con el id, si no, se busca con el nombre del país
+        /// </summary>
+        /// <param name="pais"></param>
+        /// <returns>true: si se ha encontrado el país en la DB,
+        /// false: si no se ha encontrado o ha saltado algún error</returns>
         public bool ReadPais(ENPais pais)
         {
             bool correctRead = false;
@@ -112,16 +111,35 @@ namespace library
                 }
                 else
                 {
+                    /*
                     query = "SELECT * FROM [firstrow_].[dbo].[Paises] " +
                         "WHERE name = @name";
                     com = new SqlCommand(query, connection);
                     com.Parameters.AddWithValue("@name", pais.name);
+                    */
+                    query = "SELECT * FROM [firstrow_].[dbo].[Paises];";
+                    com = new SqlCommand(query, connection);
 
                 }
                 SqlDataReader dr = com.ExecuteReader();
                 try
                 {
-                    dr.Read();
+                    if (pais.id > 0)
+                    {
+                        dr.Read();
+
+                    }
+                    else
+                    {
+                        while (dr.Read())
+                        {
+                            if (dr["name"].ToString().ToLower() == pais.name.ToLower())
+                            {
+                                break;
+                            }
+                            
+                        }
+                    }
 
                     if (pais.id > 0 && pais.id == int.Parse(dr["id"].ToString()))
                     {
@@ -129,7 +147,7 @@ namespace library
                         correctRead = true;
 
                     }
-                    else if (pais.id <= 0 && pais.name == dr["name"].ToString())
+                    else if (pais.id <= 0 && pais.name.ToLower() == dr["name"].ToString().ToLower())
                     {
                         pais.id = int.Parse(dr["id"].ToString());
                         correctRead = true;

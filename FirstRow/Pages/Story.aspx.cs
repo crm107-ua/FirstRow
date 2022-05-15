@@ -28,15 +28,7 @@ namespace FirstRow.Pages
                     pais_name = cadena.Replace("-", " ");
                     ENPais pais = new ENPais();
 
-                    if (Request.QueryString["id"] != null)
-                    {
-                        pais.id = int.Parse(Request.QueryString["id"].ToString());
-                    }
-                    else
-                    {
-                        pais.name = pais_name;
-
-                    }
+                    pais.name = pais_name;
 
                     if (pais.ReadPais())
                     {

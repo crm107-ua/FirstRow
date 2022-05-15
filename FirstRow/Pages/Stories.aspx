@@ -23,6 +23,7 @@
                             <asp:Button runat="server" id="btn_modificar_pagina" class="btn button" Text="Modificar página" OnClick="modificarPaginaStories" Visible="false" />
                             <br />
                             <asp:Button runat="server" id="btn_aceptar_cambios" class="btn button" Text="Aplicar cambios" OnClick="btn_aceptar_cambios_Click" Visible="false" />
+                            <!-- Confirm button -->
                             <asp:Button runat="server" id="btn_cancelar_cambios" class="btn button" Text="Cancelar" OnClick="btn_cancelar_cambios_Click" Visible="false" />
                         </div>
 

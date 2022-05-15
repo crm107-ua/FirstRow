@@ -26,7 +26,7 @@ namespace FirstRow.Pages
                 }
                 else { btn_modificar_pagina.Visible = false; }
 
-
+                //Este texto debería provenir de una tabla en la BD
                 Application["stories_title"] = "Stories interesantes";
                 Application["stories_subtitle"] = "Muestra tus experiencias al mundo " +
                     "y explora las de otras personas.";
@@ -35,19 +35,6 @@ namespace FirstRow.Pages
                 stories_title.InnerText = (string)Application["stories_title"];
                 stories_subtitle.InnerText = (string)Application["stories_subtitle"];
                 background_image_header.Style.Add("background-image", "url(https://media.cntraveler.com/photos/5cc32b6031a2ae65b96fb4ff/16:9/w_2560%2Cc_limit/MAG19_May_TR050419_Zihuatanejo02.jpg)");
-
-                /* lista de paises
-                if (country_list.Items.Count <= 1)
-                {
-                    //country_list.DataSource = MyDataSource; //MyDataSource: DataTable o algo así :)
-                    country_list.DataBind();
-                }*/
-                /*
-                foreach (DataRow dr in dt.Rows) {
-                    DropDownList1.Items.Add(new ListItem(dr["country"], dr["id"]));
-                }
-                quiza con datasource? o datavaluefield
-                */
 
                 stories_description_title.Text = "Descripción de la categoría";
                 stories_description.Text = "Pero debo explicarles cómo nació toda esta idea equivocada de denunciar el placer y ensalzar el dolor y les daré cuenta completa del sistema y expondré las enseñanzas reales del gran explorador de la verdad, el maestro constructor de la felicidad del ser humano. Nadie rechaza, disgusta o evita el placer mismo, porque es placer, sino porque quien no sabe perseguir racionalmente el placer encuentra consecuencias sumamente dolorosas.";
@@ -86,9 +73,7 @@ namespace FirstRow.Pages
         {
             if (country_list.SelectedValue != "-1")
             {
-                Response.Redirect("/story/" + 
-                    Home.slug(country_list.SelectedItem.Text) + "?id=" +
-                    country_list.SelectedItem.Value);
+                Response.Redirect("/story/" + Home.slug(country_list.SelectedItem.Text);
 
             }
         }
@@ -106,13 +91,16 @@ namespace FirstRow.Pages
                 paises.Sort(ENPais.CompareCountriesByName);
                 foreach (ENPais p in paises)
                 {
-                    HyperLink h = createCountryLink(p.id);
+                    HyperLink h = CreateCountryLink(p.id);
                     if (h != null) { stories_list.Controls.Add(h); }
                 }
             }
 
         }
 
+        /// <summary>
+        /// Llena el dropDownList con los países en la BD
+        /// </summary>
         private void llenarDropDownList()
         {
             DataSet ds = new DataSet();
@@ -129,7 +117,13 @@ namespace FirstRow.Pages
             
         }
 
-        private HyperLink createCountryLink(int countryId)
+        /// <summary>
+        /// Crea la tarjeta de un país
+        /// </summary>
+        /// <param name="countryId">Id del país</param>
+        /// <returns>Un objeto HyperLink con la información
+        /// del país necesaria</returns>
+        private HyperLink CreateCountryLink(int countryId)
         {
 
             ENPais pais = new ENPais();
@@ -137,12 +131,15 @@ namespace FirstRow.Pages
             string slug;
             if (pais.ReadPais())
             {
+                //Añadimos el enlace a la página de stories del país
                 slug = Home.slug(pais.name); 
-
                 HyperLink h = new HyperLink();
-                h.NavigateUrl = $"/story/{slug}?id=" + countryId;
+                h.NavigateUrl = $"/story/{slug}";//?id=" + countryId
                 h.CssClass = "story_item";
                 //h.Style.Add("background-image", $"url(../Media/Paises/{slug}.jpg)");
+
+                //Añadimos la imagen almacenada en el servidor;
+                //si no existe, una por defecto
                 if (File.Exists(Server.MapPath($"~/Media/Paises/{slug}.jpg")))
                 {
                     h.Style.Add("background-image", $"url(../Media/Paises/{slug}.jpg)");
@@ -153,10 +150,12 @@ namespace FirstRow.Pages
                     h.Style.Add("background-image", $"url(../assets/img/default.jpg)");
                 }
 
+                //Creamos un panel para el texto de la tarjeta
                 Panel wrap = new Panel();
                 wrap.CssClass = "item_wrap";
                 Panel content = new Panel();
                 content.CssClass = "_content";
+
                 /*
                 Panel flag_wrap = new Panel();
                 flag_wrap.CssClass = "flag_wrap";
@@ -167,17 +166,21 @@ namespace FirstRow.Pages
                 flag_wrap.Controls.Add(flag);
                 content.Controls.Add(flag_wrap);
                 */
+
+                //El país al que hace referencia
                 Label country = new Label();
                 country.CssClass = "country";
                 country.Text = pais.name;
                 Label text = new Label();
                 text.CssClass = "text";
+                //el subtítulo de la tarjeta
                 text.Text = $"Explora las Stories de {pais.name}";
                 content.Controls.Add(country);
                 content.Controls.Add(text);
                 wrap.Controls.Add(content);
                 h.Controls.Add(wrap);
 
+                //Añadimos la sombra a la tarjeta
                 Panel shadow = new Panel();
                 shadow.CssClass = "shadow js-shadow";
                 h.Controls.Add(shadow);
@@ -189,18 +192,29 @@ namespace FirstRow.Pages
 
         }
 
-        private HyperLink createCountryLink(string countryName)
+        /// <summary>
+        /// Equivalente al anterior método
+        /// pero obtiene el país con el nombre
+        /// </summary>
+        /// <param name="countryName">El nombre del país</param>
+        /// <returns></returns>
+        private HyperLink CreateCountryLink(string countryName)
         {
             ENPais pais = new ENPais();
             pais.name = countryName;
             if (pais.ReadPais())
             {
-                HyperLink h = createCountryLink(pais.id);
+                HyperLink h = CreateCountryLink(pais.id);
                 return h;
             }
             else { return null; }
         }
 
+        /// <summary>
+        /// Confirma los cambios en la edición de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_aceptar_cambios_Click(object sender, EventArgs e)
         {
             if (stories_title_edit.Text != "")
@@ -224,6 +238,11 @@ namespace FirstRow.Pages
 
         }
 
+        /// <summary>
+        /// Cancela los cambios en la edición de la página
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btn_cancelar_cambios_Click(object sender, EventArgs e)
         {
             Response.Redirect("/stories");
