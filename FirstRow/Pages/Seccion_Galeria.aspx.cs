@@ -14,24 +14,35 @@ namespace FirstRow.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Route myRoute = RouteData.Route as Route;
-            if (myRoute != null && myRoute.Url == "galeria/{pais}/{slug}")
+            if (!Page.IsPostBack)
             {
-                ENGaleria galeria = new ENGaleria();
-                pais.Text = char.ToUpper(RouteData.Values["pais"].ToString()[0])+ RouteData.Values["pais"].ToString().Substring(1);
-                galeria.Slug = RouteData.Values["pais"].ToString()+"/"+RouteData.Values["slug"].ToString();
+                delete_galeria.Visible = false;
 
-                if (galeria.readGaleria())
+                Route myRoute = RouteData.Route as Route;
+                if (myRoute != null && myRoute.Url == "galeria/{pais}/{slug}")
                 {
-                    title.Text = galeria.Titulo;
-                    Descripcion.Text = galeria.Descripcion;
-                    loadImg(galeria.Imagenes);
-                    loadExtra();
-                }
-                else 
-                {
-                    //No deberia pasar
-                    Response.Redirect("/galeria");
+                    ENGaleria galeria = new ENGaleria();
+                    pais.Text = char.ToUpper(RouteData.Values["pais"].ToString()[0]) + RouteData.Values["pais"].ToString().Substring(1);
+                    galeria.Slug = RouteData.Values["pais"].ToString() + "/" + RouteData.Values["slug"].ToString();
+
+                    if (galeria.readGaleria())
+                    {
+                        if (Session["usuario"] != null)
+                        {
+                            ENUsuario usuario = (ENUsuario)Session["usuario"];
+                            if(usuario.nickname==galeria.Usuario.nickname)
+                                delete_galeria.Visible = true;
+                        }
+                        title.Text = galeria.Titulo;
+                        Descripcion.Text = galeria.Descripcion;
+                        loadImg(galeria.Imagenes);
+                        loadExtra();
+                    }
+                    else
+                    {
+                        //No deberia pasar
+                        Response.Redirect("/galeria");
+                    }
                 }
             }
         }
@@ -114,6 +125,17 @@ namespace FirstRow.Pages
 
                     masGaleri.Controls.Add(a_tag_general);
                 }
+            }
+        }
+
+        protected void borradoGaleria(object sender, EventArgs e)
+        {
+            ENGaleria galeria = new ENGaleria();
+            galeria.Slug = RouteData.Values["pais"].ToString() + "/" + RouteData.Values["slug"].ToString();
+
+            if (galeria.deleteGaleria()) 
+            {
+                Response.Redirect("/galeria");
             }
         }
     }
