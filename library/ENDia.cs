@@ -8,39 +8,38 @@ namespace library
 {
     public class ENDia
     {
-        private const int maxImgDia  = 3;
         private int _id;
         private string _nombre;
         private string _titulo;
         private string _descripcion;
-        private string []_imagenes;
-        private ENViajes _viaje;
+        private string _imagen;
+        private ENViajes _experiencia;
 
-        public int id { get => _id; set => _id = value; }
-        public string nombre { get => _nombre; set => _nombre = value; }
-        public string titulo { get => _titulo; set => _titulo = value; }
-        public string descripcion { get => _descripcion; set => _descripcion = value; }
-        public string[] imagenes { get => _imagenes; set => _imagenes = value; }
-        public ENViajes viaje { get => _viaje; set => _viaje = value; }
+        public int Id { get => _id; set => _id = value; }
+        public string Nombre { get => _nombre; set => _nombre = value; }
+        public string Titulo { get => _titulo; set => _titulo = value; }
+        public string Descripcion { get => _descripcion; set => _descripcion = value; }
+        public string Imagen { get => _imagen; set => _imagen = value; }
+        public ENViajes Experiencia { get => _experiencia; set => _experiencia = value; }
 
         public ENDia()
         {
-            this.id = 0;
-            this.nombre = "";
-            this.titulo = "";
-            this.descripcion = "";
-            this.imagenes = new string[maxImgDia];
-            this.viaje = new ENViajes();
+            _id = 0;
+            _nombre = "";
+            _titulo = "";
+            _descripcion = "";
+            _imagen = "";
+            _experiencia =new ENViajes();
         }
 
-        public ENDia(int id, string nombre, string titulo, string descripcion, string[] imagenes, ENViajes viaje)
+        public ENDia(int id, string nombre, string titulo, string descripcion, string imagen, ENViajes experiencia)
         {
-            this.id = id;
-            this.nombre = nombre;
-            this.titulo = titulo;
-            this.descripcion = descripcion;
-            this.imagenes = imagenes;
-            this.viaje = viaje;
+            _id = id;
+            _nombre = nombre;
+            _titulo = titulo;
+            _descripcion = descripcion;
+            _imagen = imagen;
+            _experiencia = experiencia;
         }
 
         public bool createDia()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,28 +12,46 @@ namespace library
         private int _Id;
         private string _Texto;
         private int _Estrellas;
-        private string _Nickname;
+        private ENUsuario _Usuario;
 
-        public int Id //GET-SET
+        public int Id { get => _Id; set => _Id = value; }
+        public string Texto { get => _Texto; set => _Texto = value; }
+        public int Estrellas { get => _Estrellas; set => _Estrellas = value; }
+        public ENUsuario Usuario { get => _Usuario; set => _Usuario = value; }
+
+        public ENComentarios()
         {
-            get { return _Id; }
-            set { _Id = value; }
+            _Id = 0;
+            _Texto = "";
+            _Estrellas = 0;
+            _Usuario = new ENUsuario();
         }
-        public string Texto //GET-SET
+
+        public ENComentarios(int id, string texto, int estrellas, ENUsuario usuario)
         {
-            get { return _Texto; }
-            set { _Texto = value; }
+            _Id = id;
+            _Texto = texto;
+            _Estrellas = estrellas;
+            _Usuario = usuario;
         }
-        public int Estrellas //GET-SET
+        public void InsertarComentario()
         {
-            get { return _Estrellas; }
-            set { _Estrellas = value; } 
+            CADComentarios insertComennt = new CADComentarios();
+            insertComennt.InsertComennt(this);
         }
-        public string Nickname //GET-SET
+
+        public void BorrarComentario()
         {
-            get { return _Nickname; }
-            set { _Nickname = value; }
+            CADComentarios deleteComennt = new CADComentarios();
+            deleteComennt.DeleteComennt(this);
         }
-        
+
+        public void MostrarComentarios()
+        {
+            List <ENComentarios> a =  new List<ENComentarios>();
+
+            CADComentarios showComennt = new CADComentarios();
+            showComennt.ShowComennts(this);
+        }
     }
 }

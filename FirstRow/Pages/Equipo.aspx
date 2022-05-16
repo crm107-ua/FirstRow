@@ -14,16 +14,15 @@
             <div class="about-us">
                 <div class="wrap">
                     <div class="wrap_float">
-                        <h1 style="color:white;" class="title">Equipo FirstRow</h1>
+                        <h1 style="color:white;" class="title">Equipo FirstRow - Making Dreams</h1>
                         <p style="color:white;" class="description">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
+                         FirstRow, Agencia de Viajes Online. Ponemos a su disposición una gran variedad de viajes hacia multitud de paises, en los cuales brindamos experiencias únicas con servicios garantizados y profesionales en los diferentes viajes alrededor del mundo. 
                         </p>
                         <p style="color:white;" class="text">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
+                           
                         </p>
                         <div style="color:white;" class="image-block">
                             <img alt="" src="img/demo-bg-2.jpg" style="width: 100%;">
-                            <span style="color:white;">Signature under photo</span>
                         </div>
                     </div>
                 </div>
@@ -33,24 +32,24 @@
                     <div class="wrap_float">
                         <div class="statistics_item">
                             <div class="_value">
-                                23
+                                7
                             </div>
-                            <h3 class="_title">Staff member</h3>
-                            <p class="_text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+                            <h3 class="_title">Miembros</h3>
+                            <p class="_text">Personal altamente capacitado para proporcionar experiencias inolvidables</p>
                         </div>
                         <div class="statistics_item">
                             <div class="_value">
-                                2003
+                                2022
                             </div>
-                            <h3 class="_title">Year of Foundation of our companyr</h3>
-                            <p class="_text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem</p>
+                            <h3 class="_title">Año de Fundación de la compañia</h3>
+                            <p class="_text">Fundada para ustedes, desde los adentros de Alicante</p>
                         </div>
                         <div class="statistics_item">
                             <div class="_value">
-                                55
+                                +2mil
                             </div>
-                            <h3 class="_title">Operators on communication</h3>
-                            <p class="_text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+                            <h3 class="_title">Viajes realizados</h3>
+                            <p class="_text">Infinidad de travesias y aventuras realizadas para todos nuestros usuarios</p>
                         </div>
                     </div>
                 </div>
@@ -59,7 +58,7 @@
                 <div class="wrap">
                     <div class="wrap_float">
                         <div class="team-head">
-                            <h2 class="title">Team</h2>
+                            <h2 class="title">Equipo</h2>
                             <div class="arrows" id="team_arrows">
                                 <div class="arrow prev"></div>
                                 <div class="arrow next"></div>
@@ -71,87 +70,65 @@
                                     <div class="team_item">
                                         <div class="image">
                                             <div class="img_wrap">
-                                                <img alt="" src="img/demo-bg.jpg">
-                                            </div>
-                                            <div class="socials">
-                                                <div class="links">
-                                                    <a class="facebook" href="#"></a>
-                                                    <a class="instagram" href="#"></a>
-                                                    <a class="pinterest" href="#"></a>
-                                                    <a class="twitter" href="#"></a>
-                                                </div>
+                                                <img alt="" src="https://i.pinimg.com/564x/c8/68/5b/c8685b886a3b76e3024f53cf61e71d05.jpg">
                                             </div>
                                         </div>
-                                        <p class="name">Maya Delia</p>
-                                        <p class="position">Creative Director</p>
+                                        <p class="name">Carlos Robles</p>
+                                        <p class="position">Jefe de proyecto</p>
                                     </div>
                                     <div class="team_item">
                                         <div class="image">
                                             <div class="img_wrap">
-                                                <img alt="" src="img/demo-bg.jpg">
-                                            </div>
-                                            <div class="socials">
-                                                <div class="links">
-                                                    <a class="facebook" href="#"></a>
-                                                    <a class="instagram" href="#"></a>
-                                                    <a class="pinterest" href="#"></a>
-                                                    <a class="twitter" href="#"></a>
-                                                </div>
+                                                <img alt="" src="https://i.pinimg.com/564x/62/3d/28/623d28d9c33340cb79732844cfbc6ffb.jpg">
                                             </div>
                                         </div>
-                                        <p class="name">Victor Shibut</p>
-                                        <p class="position">Technical Director</p>
+                                        <p class="name">Julio Bastidas</p>
+                                        <p class="position">Programador de interfaces</p>
                                     </div>
                                     <div class="team_item">
                                         <div class="image">
                                             <div class="img_wrap">
-                                                <img alt="" src="img/demo-bg.jpg">
-                                            </div>
-                                            <div class="socials">
-                                                <div class="links">
-                                                    <a class="facebook" href="#"></a>
-                                                    <a class="instagram" href="#"></a>
-                                                    <a class="pinterest" href="#"></a>
-                                                    <a class="twitter" href="#"></a>
-                                                </div>
+                                                <img alt="" src="https://i.pinimg.com/564x/6e/10/bb/6e10bbc849f76a69e8c3f12e35ec0cd2.jpg">
                                             </div>
                                         </div>
-                                        <p class="name">Diana Black</p>
-                                        <p class="position">Manager</p>
+                                        <p class="name">Jose Cortona</p>
+                                        <p class="position">Diseñador gráfico y programador</p>
                                     </div>
                                     <div class="team_item">
                                         <div class="image">
                                             <div class="img_wrap">
-                                                <img alt="" src="img/demo-bg.jpg">
-                                            </div>
-                                            <div class="socials">
-                                                <div class="links">
-                                                    <a class="facebook" href="#"></a>
-                                                    <a class="instagram" href="#"></a>
-                                                    <a class="pinterest" href="#"></a>
-                                                    <a class="twitter" href="#"></a>
-                                                </div>
+                                                <img alt="" src="https://i.pinimg.com/564x/8a/54/02/8a5402293819c2a6755153a500471da5.jpg">
                                             </div>
                                         </div>
-                                        <p class="name">John Digistrict</p>
-                                        <p class="position">General Director</p>
+                                        <p class="name">Demian Calvo</p>
+                                        <p class="position">Programador frontend</p>
                                     </div>
                                     <div class="team_item">
                                         <div class="image">
                                             <div class="img_wrap">
-                                                <img alt="" src="img/demo-bg.jpg">
-                                            </div>
-                                            <div class="socials">
-                                                <div class="links">
-                                                    <a class="facebook" href="#"></a>
-                                                    <a class="instagram" href="#"></a>
-                                                    <a class="pinterest" href="#"></a>
-                                                    <a class="twitter" href="#"></a>
-                                                </div>
+                                                <img alt="" src="https://i.pinimg.com/564x/62/c2/3f/62c23fd3063fe5c191e3a232609876db.jpg">
                                             </div>
                                         </div>
-                                        <p class="name">Mike Jhonson</p>
-                                        <p class="position">Finance Director</p>
+                                        <p class="name">Akira Llorens</p>
+                                        <p class="position">Desarrollador de software en jefe</p>
+                                    </div>
+                                    <div class="team_item">
+                                        <div class="image">
+                                            <div class="img_wrap">
+                                                <img alt="" src="https://i.ibb.co/8BH0Qc7/jordi.jpg">
+                                            </div>
+                                        </div>
+                                        <p class="name">Jordi Cardona</p>
+                                        <p class="position">Analista de software</p>
+                                    </div>
+                                    <div class="team_item">
+                                        <div class="image">
+                                            <div class="img_wrap">
+                                                <img alt="" src="https://avatars.githubusercontent.com/u/91018191?v=4">
+                                            </div>
+                                        </div>
+                                        <p class="name">Franco Ezequiel</p>
+                                        <p class="position">Programador en servidor</p>
                                     </div>
                                 </div>
                             </div>
@@ -162,15 +139,15 @@
             <div class="office">
                 <div class="wrap">
                     <div class="wrap_float">
-                        <h2 class="title">Our office</h2>
+                        <h2 class="title">Nuestras instalaciones</h2>
                         <div class="slider_wrap">
                             <div class="arrows" id="office_arrows">
                                 <div class="arrow prev"></div>
                                 <div class="arrow next"></div>
                             </div>
                             <div class="office_slider" id="office_slider">
-                                <div class="slide"><img alt="" src="img/demo-bg.jpg"></div>
-                                <div class="slide"><img alt="" src="img/demo-bg.jpg"></div>
+                                <div class="slide"><img alt="" src="https://pbs.twimg.com/media/DwYg2f7X0AAV4hH.jpg"></div>
+                                <div class="slide"><img alt="" src="https://biblioteca.ua.es/es/imagenes/derecho/interior-biblioteca-derecho.png"></div>
                             </div>
                         </div>
                     </div>

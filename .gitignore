@@ -265,6 +265,7 @@ ServiceFabricBackup/
 *.mdf
 *.ldf
 *.ndf
+*.zip
 
 # Business Intelligence projects
 *.rdl.data

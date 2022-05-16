@@ -8,52 +8,41 @@
     <title>FirstRow - Making Dreams</title>
     <link rel="stylesheet" type="text/css" href="~/assets/css/style.css" >
     <link rel="icon" type="image/x-icon" href="~/assets/img/favicons/favicon.png">
+    <meta name="msapplication-TileColor" content="#151515">
+    <meta name="theme-color" content="#151515">
 </head>  
 
 <body>
-    <form id="WhiteMaster" runat="server">
+    <form id="WhiteMaster" runat="server" enctype="multipart/form-data" method="post">
         <div class="container">
             <div class="top_panel">
                 <div class="wrap">
                     <div class="wrap_float">
                         <div class="left">
                             <a href="/" class="logo">
-                                <img src="Assets/img/Logo_Principal.png" alt="">
+                                <img src="../../assets/img/Logo_Principal.png" alt="">
                             </a>
                         </div>
                         <div class="menu_wrap" id="menu_wrap">
                             <div class="scroll">
                                 <div class="center">
-                                    <div class="menu">
-                                        <ul>
-                                            <li><a href="/"><span>Home</span></a></li>
-                                            <li><a href="/experiencias"><span>Experiencias</span></a></li>
-                                            <li><a href="/galeria"><span>Galería</span></a></li>
-                                            <li><a href="/stories"><span>Stories</span></a></li>
-                                            <li><a href="/blogs"><span>Blogs</span></a></li>
-                                            <li><a href="/sorteos"><span>Sorteos</span></a></li>
-                                            <li class="dropdown_li">
-                                                <a><span>FirstRow</span></a>
-                                                <ul class="dropdown_ul">
-                                                    <li><a href="/propuestas"><span>Propuestas</span></a></li>
-                                                    <li><a href="/equipo"><span>Nuestro equipo</span></a></li>
-                                                    <li><a href="/contacto"><span>Contacto</span></a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <div class="mobile_content">
-                                            <div class="tel">
-                                                <a href="tel:+0034411345777">+ 00 344 113 457 77</a>
-                                                <p>Round the clock support</p>
-                                            </div>
-                                            <div class="social">
-                                                <a href="#" class="link facebook"><span></span></a>
-                                                <a href="#" class="link instagram"><span></span></a>
-                                                <a href="#" class="link pinterest"><span></span></a>
-                                                <a href="#" class="link twitter"><span></span></a>
-                                                <a href="#" class="link youtube"><span></span></a>
-                                            </div>
-                                        </div>
+                                    <div class="menu">                                     
+                                           <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
+                                                <Items>
+                                                    <asp:MenuItem Text="Home" NavigateUrl="/" />
+                                                    <asp:MenuItem Text="Experiencias" NavigateUrl="/experiencias" />
+                                                    <asp:MenuItem Text="Galería" NavigateUrl="/galeria" />
+                                                    <asp:MenuItem Text="Stories" NavigateUrl="/stories" />
+                                                    <asp:MenuItem Text="Blogs" NavigateUrl="/blogs" />
+                                                    <asp:MenuItem Text="Sorteos" NavigateUrl="/sorteos" />
+                                                    <asp:MenuItem Text="FirstRow" NavigateUrl="/">
+                                                        <asp:MenuItem Text="Propuestas" NavigateUrl="/propuestas" />
+                                                        <asp:MenuItem Text="Nuestro equipo" NavigateUrl="/equipo" />
+                                                        <asp:MenuItem Text="Contacto" NavigateUrl="/contacto" />
+                                                    </asp:MenuItem>
+                                                </Items>
+                                            </asp:Menu>                                     
+                                        <div class="mobile_content"> </div>
                                     </div>
                                     <div class="close" id="menu-close">
                                         <span></span>
@@ -65,12 +54,15 @@
                                     <div class="userlink" id="userlink"></div>
                                     <div class="usermenu" id="usermenu">
                                         <ul>
-                                            <li id="login_sect" runat="server"><a class="js-popup-open" data-href="#login">Iniciar sesion</a></li>
-                                            <li id="register_sect" runat="server"><a class="js-popup-open" data-href="#registration">Registrarse</a></li>
-                                            <li id="settings_sect" runat="server"><a class="js-popup-open" data-href="#profile-setting">Ajustes</a></li>
-                                            <li id="settings_emp_sect" runat="server"><a class="js-popup-open" data-href="#empresa-setting">Ajustes de empresa</a></li> 
+                                            <li id="login_sect" runat="server"><a id="login_user_pop_up" class="js-popup-open" data-href="#login">Iniciar sesion</a></li>
+                                            <li id="register_sect" runat="server"><a id="register_user_pop_up" class="js-popup-open" data-href="#registration">Registrarse</a></li>
+                                            <li id="settings_sect" runat="server"><a id="settings_user_pop_up" class="js-popup-open" data-href="#profile-setting">Ajustes</a></li>
+                                            <li id="settings_emp_sect" runat="server"><a id="settings_emp_pop_up"  class="js-popup-open" data-href="#empresa-setting">Ajustes de empresa</a></li> 
                                             <li id="logout_sect" runat="server"><a class="js-popup-open" data-href="#logout">Cerrar sesion</a></li>
                                         </ul>
+                                            <%-- Elementos ocultos --%>
+                                            <a hidden id="login_emp_pop_up" class="js-popup-open" data-href="#login_empresa">Iniciar sesion</a>
+                                            <a hidden id="register_emp_pop_up" class="js-popup-open" data-href="#registro_empresa">Iniciar sesion</a>
                                     </div>
                                 </div>
                             </div>
@@ -83,24 +75,24 @@
                     </div>
                 </div>
             </div>
-            <asp:ContentPlaceHolder ID="Main" runat="server"></asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="Main" runat="server">/script></asp:ContentPlaceHolder>
             <div runat="server" class="popup login" id="login">
                 <div class="scroll">
                     <div class="scroll_wrap">
                         <div class="popup-head">
-                            <div class="title">Iniciar Sesión</div>
-                            <a class="link js-popup-open" data-href="#registration">Registrarse</a>
+                            <div class="title">Iniciar Sesión</div><br /><br />
                         </div>
                         <div class="popup-body">
                             <div class="subtitle">
-                                Introduce tu nickname y contraseña para acceder a miles de experiencias.<br /><br />
-                                <a class="link js-popup-open" data-href="#login_empresa">Iniciar sesión como empresa</a>
+                                Introduce tu nickname y contraseña para acceder a miles de experiencias.<br />
+                                <a class="link js-popup-open" data-href="#registration">Regístrate o </a>
+                                <a class="link js-popup-open" data-href="#login_empresa">inicia sesión como empresa</a>
                             </div>
                             <div class="form">
-                                <asp:TextBox id="nickname" type="text" runat="server" class="input" placeholder="Usuario o Email"></asp:TextBox>
+                                <asp:TextBox id="nickname" type="text" runat="server" class="input" placeholder="Nombre de usuario"></asp:TextBox>
                                 <asp:TextBox id="password" type="password" runat="server" class="input" placeholder="Password"></asp:TextBox>
                                 <asp:Label id="salida" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server"></asp:Label>
-                                <asp:Button id="inicio" validationgroup="GrupoDeInicioSesion" class="submit button" onClick="iniciarSesion" runat="server" Text="Iniciar Sesión" />
+                                <asp:Button id="inicio" type="button" validationgroup="GrupoDeInicioSesion" class="submit button" onClick="iniciarSesion" runat="server" Text="Iniciar Sesión" />
                                 <asp:RequiredFieldValidator ID="NicknameReq" validationgroup="GrupoDeInicioSesion" ForeColor="Red" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server" ControlToValidate="nickname" ErrorMessage="Nickname requerido"></asp:RequiredFieldValidator>
                                 <asp:RequiredFieldValidator ID="PasswordReq" validationgroup="GrupoDeInicioSesion" ForeColor="Red" style="float: left; margin-bottom: 30px; margin-right: 50px; margin-top: 5px;" runat="server" ControlToValidate="password" ErrorMessage="Contraseña requerida"></asp:RequiredFieldValidator>
                                 <asp:RegularExpressionValidator ID="NicknameReg" validationgroup="GrupoDeInicioSesion" ForeColor="Red" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server" Display="Dynamic" ValidationExpression="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"  ControlToValidate="nickname" 
@@ -175,6 +167,8 @@
                                 <asp:TextBox id="password_r_2" type="password" runat="server" class="input" placeholder="Introduzca de nuevo la contraseña"></asp:TextBox>
                                 <asp:TextBox id="registro_facebook" type="text" runat="server" class="input" MaxLength="100" placeholder="Facebook"></asp:TextBox>
                                 <asp:TextBox id="registro_twitter" type="text" runat="server" class="input" MaxLength="100" placeholder="Twitter"></asp:TextBox>
+                                <asp:FileUpload id="foto_perfil" type="file" runat="server" class="input" placeholder="Foto de perfil"></asp:FileUpload>
+
                                 <asp:Label id="registro_salida" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server"></asp:Label>
                                 <asp:Button id="registro_button" class="submit button" onClick="registrarse" runat="server" Text="Registrarse" validationgroup="GrupoDeRegirstro"/>
 
@@ -237,6 +231,9 @@
                                     </div>
                                 </div>
 
+                                <asp:FileUpload id="foto_perfil_empresa" type="file" runat="server" class="input" placeholder="Foto de perfil"></asp:FileUpload>
+
+
                                 <asp:Label id="registro_emp_salida" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server"></asp:Label>
                                 <asp:Button id="registro_emp_boton" class="submit button" onClick="registrarEmpresa" runat="server" Text="Registrar Empresa" validationgroup="GrupoDeRegistroEmpresa"/>
 
@@ -283,7 +280,7 @@
                                 Nos volveremos a ver pronto!
                             </div>
                             <div class="form">
-                                  <asp:Button ID="cierre" class="submit button" runat="server" OnClick="cerrarSesion" Text="Cerrar Sesión" CausesValidation="False"/>
+                                    <asp:Button ID="cierre" class="submit button" runat="server" OnClick="cerrarSesion" Text="Cerrar Sesión" CausesValidation="False"/>
                             </div>                           
                         </div>
                     </div>
@@ -294,32 +291,40 @@
                     <div class="scroll">
                         <div class="scroll_wrap">
                             <div class="select-userpic">
-                                <div class="userpic">V</div>
-                                <div class="select">
-                                    <input type="file" id="profile-pic">
-                                    <label for="profile-pic">Select photo</label>
+                                <div class="userpic">
+                                     <asp:Image ID="user_setting_foto" runat="server" />
                                 </div>
                             </div>
                             <div class="popup-head">
-                                <div class="title">Setting</div>
+                                <div class="title">Ajustes de usuario</div>
                             </div>
                             <div class="popup-body">
                                 <div class="form">
-                                    <asp:TextBox id="nickname_settings" type="text" runat="server" class="input" placeholder="Nickname"></asp:TextBox>
                                     <asp:TextBox id="email_setting" type="text" runat="server" class="input" placeholder="Email"></asp:TextBox>
-                                    <asp:TextBox id="name_setting" type="text" runat="server" class="input" placeholder="Name"></asp:TextBox>
-                                    <asp:TextBox id="firstname_setting" type="text" runat="server" class="input" placeholder="First Name"></asp:TextBox>
-                                    <asp:TextBox id="secondname_setting" type="text" runat="server" class="input" placeholder="Second Name"></asp:TextBox>
-                                    <div class="label">Change password</div>
-                                    <input type="password" class="input" placeholder="Current password">
-                                    <input type="password" class="input" placeholder="Enter new password">
-                                    <input type="password" class="input" placeholder="New password repeat">
-                                    <div class="label">Authorization through social networks</div>
-                                    <div class="social-links">
-                                        <a href="#" class="link facebook active"><span></span></a>
-                                        <a href="#" class="link twitter"><span></span></a>
-                                    </div>
-                                    <button class="submit button js-submit">Save Setting</button>
+                                    <asp:TextBox id="name_setting" MaxLength="100" type="text" runat="server" class="input" placeholder="Nombre"></asp:TextBox>
+                                    <asp:TextBox id="firstname_setting" MaxLength="100" type="text" runat="server" class="input" placeholder="Primer apellido"></asp:TextBox>
+                                    <asp:TextBox id="secondname_setting" MaxLength="100" type="text" runat="server" class="input" placeholder="Segundo apellido"></asp:TextBox>
+                                    <asp:TextBox id="password_1_setting" type="password" runat="server" class="input" placeholder="Introduzca contraseña"></asp:TextBox>
+                                    <asp:TextBox id="password_2_setting" type="password" runat="server" class="input" placeholder="Introduzca de nuevo la contraseña"></asp:TextBox>
+                                    <asp:TextBox id="facebook_setting" type="text" runat="server" class="input" MaxLength="100" placeholder="Facebook"></asp:TextBox>
+                                    <asp:TextBox id="twitter_setting" type="text" runat="server" class="input" MaxLength="100" placeholder="Twitter"></asp:TextBox>
+                                    <asp:FileUpload id="user_setting_foto_mode" type="file" runat="server" class="input" placeholder="Foto de perfil"></asp:FileUpload>
+
+                                    <asp:Label id="salida_ajustes_usuario" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server"></asp:Label>
+                                    <asp:Button id="ajustes_usuario_submit" class="submit button" onClick="modificarUsuario" runat="server" Text="Modificar Usuario" validationgroup="GrupoModificacionUsuario"/>
+
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator15"  ControlToValidate="password_1_setting" validationgroup="GrupoModificacionUsuario" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" ErrorMessage="La contraseña debe tener entre 4 y 100 caracteres entre letras y numeros."> </asp:RegularExpressionValidator>
+                                    <asp:CompareValidator ID="CompareValidator3" runat="server" ControlToValidate="password_2_setting" ControlToCompare="password_1_setting" validationgroup="GrupoModificacionUsuario" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" ErrorMessage="Las contraseñas no coinciden" Display="Dynamic" ForeColor="red" />
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator17" ControlToValidate="email_setting" validationgroup="GrupoModificacionUsuario" runat="server" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" Display = "Dynamic" ErrorMessage = "Direccion de email incorrecta"/>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" ControlToValidate="email_setting" validationgroup="GrupoModificacionUsuario" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" runat="server" ErrorMessage="Email requerido"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator19" ControlToValidate="name_setting" validationgroup="GrupoModificacionUsuario" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ErrorMessage="Nombre requerido"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator18" ControlToValidate="name_setting" validationgroup="GrupoModificacionUsuario" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$" ErrorMessage="Formato de nombre incorrecto."> </asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator20" ControlToValidate="firstname_setting" validationgroup="GrupoModificacionUsuario" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ErrorMessage="Primer apellido requerido"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator19" ControlToValidate="firstname_setting" validationgroup="GrupoModificacionUsuario" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$" ErrorMessage="Formato de primer apellido incorrecto."> </asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator21" ControlToValidate="secondname_setting" validationgroup="GrupoModificacionUsuario" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ErrorMessage="Segundo apellido requerido"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator20" ControlToValidate="secondname_setting" validationgroup="GrupoModificacionUsuario" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$" ErrorMessage="Formato de segundo apellido incorrecto."> </asp:RegularExpressionValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator22" ControlToValidate="password_1_setting" validationgroup="GrupoModificacionUsuario" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ErrorMessage="Contraseña requerida"></asp:RequiredFieldValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator23" ControlToValidate="password_2_setting" validationgroup="GrupoModificacionUsuario" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ErrorMessage="Repetición de contraseña requerida"></asp:RequiredFieldValidator>
                                 </div>
                             </div>
                         </div>
@@ -330,10 +335,11 @@
                     <div class="scroll">
                         <div class="scroll_wrap">
                             <div class="select-userpic">
-                                <div class="userpic">V</div>
+                                <div class="userpic">
+                                     <asp:Image ID="ajustes_imagen_empresa" runat="server" />
+                                </div>
                                 <div class="select">
-                                    <input type="file" id="empresa-pic">
-                                    <label for="profile-pic">Select photo</label>
+                                    <label for="profile-pic">Foto de perfil</label>
                                 </div>
                             </div>
                             <div class="popup-head">
@@ -341,8 +347,6 @@
                             </div>
                             <div class="popup-body">
                                 <div class="form">
-                                    <asp:TextBox id="ajustes_nickname_empresa" type="text" runat="server" class="input" placeholder="Nickname"></asp:TextBox>
-                                    <asp:TextBox id="ajustes_email_empresa" type="text" runat="server" class="input" placeholder="Email"></asp:TextBox>
                                     <asp:TextBox id="ajustes_nombre_empresa" MaxLength="100" type="text" runat="server" class="input" placeholder="Nombre"></asp:TextBox>
                                     <asp:TextBox id="ajustes_apellido_1_empresa" MaxLength="100" type="text" runat="server" class="input" placeholder="Primer apellido"></asp:TextBox>
                                     <asp:TextBox id="ajustes_apellido_2_empresa" MaxLength="100" type="text" runat="server" class="input" placeholder="Segundo apellido"></asp:TextBox>
@@ -352,6 +356,7 @@
                                     <asp:TextBox id="ajustes_direccion_empresa" type="text" runat="server" class="input" MaxLength="45" placeholder="Direccion"></asp:TextBox>
                                     <asp:TextBox id="ajustes_facebook_empresa" type="text" runat="server" class="input" MaxLength="100" placeholder="Facebook"></asp:TextBox>
                                     <asp:TextBox id="ajustes_twitter_empresa" type="text" runat="server" class="input" MaxLength="100" placeholder="Twitter"></asp:TextBox>
+                                    <asp:FileUpload id="ajustes_imagen_empresa_mode" type="file" runat="server" class="input" placeholder="Foto de perfil"></asp:FileUpload>
 
                                     <div class="destination-col">
                                         <div class="label">Pais</div>
@@ -362,7 +367,7 @@
                                     </div>
 
                                     <asp:Label id="salida_ajustes_empresa" style="float:left; margin-bottom: 30px; margin-top: 30px" runat="server"></asp:Label>
-                                    <asp:Button id="modificacion_ajustes_empresa" class="submit button" onClick="registrarse" runat="server" Text="Registrar Empresa" validationgroup="GrupoDeAjustesEmpresa"/>
+                                    <asp:Button id="modificacion_ajustes_empresa" class="submit button" onClick="modificarEmpresa" runat="server" Text="Modificar empresa" validationgroup="GrupoDeAjustesEmpresa"/>
 
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" validationgroup="GrupoDeAjustesEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" runat="server" ControlToValidate="ajustes_cif_empresa" ErrorMessage="CIF requerido"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" validationgroup="GrupoDeAjustesEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="([a-z]|[A-Z]|[0-9])[0-9]{7}([a-z]|[A-Z]|[0-9])"  ControlToValidate="ajustes_cif_empresa" ErrorMessage="Formato de CIF incorrecto."> </asp:RegularExpressionValidator>
@@ -371,10 +376,6 @@
 
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" validationgroup="GrupoDeAjustesEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"  ControlToValidate="ajustes_password_1_empresa" ErrorMessage="La contraseña debe tener entre 4 y 100 caracteres entre letras y numeros."> </asp:RegularExpressionValidator>
                                     <asp:CompareValidator ID="CompareValidator2" runat="server" validationgroup="GrupoDeAjustesEmpresa" ControlToCompare="ajustes_password_1_empresa" ControlToValidate="ajustes_password_2_empresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" ErrorMessage="Las contraseñas no coinciden" Display="Dynamic" ForeColor="red" />
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" validationgroup="GrupoDeAjustesEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"  ControlToValidate="ajustes_nickname_empresa" ErrorMessage="El nombre de usuario debe tener entre 4 y 20 caracteres entre letras y numeros."> </asp:RegularExpressionValidator>
-                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator11" validationgroup="GrupoDeAjustesEmpresa" runat="server"  ControlToValidate="ajustes_email_empresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" Display = "Dynamic" ErrorMessage = "Direccion de email incorrecta"/>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" validationgroup="GrupoDeAjustesEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" runat="server" ControlToValidate="ajustes_nickname_empresa" ErrorMessage="Nickname requerido"></asp:RequiredFieldValidator>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" validationgroup="GrupoDeAjustesEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px" runat="server" ControlToValidate="ajustes_email_empresa" ErrorMessage="Email requerido"></asp:RequiredFieldValidator>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" validationgroup="GrupoDeAjustesEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="ajustes_nombre_empresa" ErrorMessage="Nombre requerido"></asp:RequiredFieldValidator>
                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator12" validationgroup="GrupoDeAjustesEmpresa" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 20px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^([A-z][A-Za-z]*\s+[A-Za-z]*)|([A-z][A-Za-z]*)$"  ControlToValidate="ajustes_nombre_empresa" ErrorMessage="Formato de nombre incorrecto."> </asp:RegularExpressionValidator>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator13" validationgroup="GrupoDeAjustesEmpresa" ForeColor="Red" style="float:left; margin-left: 10px; margin-bottom: 10px; margin-top: 10px" runat="server" ControlToValidate="ajustes_apellido_1_empresa" ErrorMessage="Primer apellido requerido"></asp:RequiredFieldValidator>
@@ -389,6 +390,46 @@
                     </div>
                     <div class="close"></div>
                 </div>
+            <div class="popup book-now-popup" id="book-now">
+            <div class="scroll">
+            <div class="scroll_wrap">
+                <div class="popup-head">
+                    <div class="title">Reserva Ahora</div>
+                </div>
+                <div class="popup-body">
+                    <div class="tour-title">
+                        <div class="img">
+                            <img src="../../assets/img/Logo_Principal.png" alt="">
+                        </div>
+                        <div class="tour-name">
+                            Bienvenido a la zona de reservas. ¡No te arrepentiras!
+                        </div>
+                    </div>
+                    <div class="tour-info">
+                      
+                            <div class="date_div">
+                                
+                                    Introduzca los siguientes datos, y por su seguridad le enviaremos un correo para su confirmacion.
+                            </div>
+                            
+
+                    </div>
+                    <div class="form">
+
+                        <input type="text" class="input" placeholder="Fecha de inicio del viaje (aa/bb/cccc) ">
+                        <input type="text" class="input" placeholder="Introduce tu nombre">
+                        <input type="text" class="input" placeholder="Introduce tus apellidos">
+                        <input type="email" class="input" placeholder="Introduce tu correro de contacto">
+                        <input type="tel" class="input" placeholder="Teléfono de contacto">
+                        <textarea class="textarea" placeholder="Direccion"></textarea>
+                        <textarea class="textarea" placeholder= "¿Algún extra que debamos de saber?"></textarea>
+                        <button class="submit button js-submit"> Reserva con un click | <b>$356</b></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="close"></div>
+    </div>
             <div class="footer">
                 <div class="wrap">
                     <div class="wrap_float">
@@ -427,7 +468,7 @@
                                         <p>Soporte 24 horas</p>
                                     </div>
                                     <div class="email">
-                                        <a href="mailto:team@firstrow.es">team@firstrow.es</a>
+                                        <a href="mailto:info@firstrow.es">info@firstrow.es</a>
                                         <p>Para lo que necesites</p>
                                     </div>
                                     <div class="address">
@@ -509,7 +550,7 @@
                             <div class="label">Check In</div>
                             <div class="date_div">
                                 <input type="text" class="js_calendar desctop-input">
-                                <input type="date" class="mobile-input">
+                               
                                 <div class="day">21</div>
                                 <div class="date_div_right">
                                     <div class="month">December</div>
@@ -521,7 +562,7 @@
                             <div class="label">Check Out</div>
                             <div class="date_div">
                                 <input type="text" class="js_calendar desctop-input">
-                                <input type="date" class="mobile-input">
+                               
                                 <div class="day">21</div>
                                 <div class="date_div_right">
                                     <div class="month">December</div>
@@ -533,8 +574,8 @@
                             <div class="label">Aduld</div>
                             <div class="num_wrap">
                                 <div class="buttons">
-                                    <button class="plus"></button>
-                                    <button class="minus"></button>
+                                    <button class="plus" type="button" ></button>
+                                    <button class="minus" type="button"></button>
                                 </div>
                                 <input type="number" class="val js_num" value="3" min="0" max="99">
                             </div>
@@ -543,127 +584,22 @@
                             <div class="label">Children</div>
                             <div class="num_wrap">
                                 <div class="buttons">
-                                    <button class="plus"></button>
-                                    <button class="minus"></button>
+                                    <button type="button" class="plus"></button>
+                                    <button type="button" class="minus"></button>
                                 </div>
                                 <input type="number" class="val js_num" value="3" min="0" max="99">
                             </div>
                         </div>
                         <button class="btn button">
-                            <span>Search</span>
+                            <span>Search</span><a href="White.Master.cs">White.Master.cs</a>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="popup forgot-pass" id="recovery-pass">
-        <div class="scroll">
-            <div class="scroll_wrap">
-                <div class="popup-head">
-                    <div class="title">Forgot password?</div>
-                </div>
-                <div class="popup-body">
-                    <div class="subtitle">
-                        Use the e-mail and password that you specified when registering on the site
-                    </div>
-                    <div class="form">
-                        <input type="email" class="input" placeholder="Email">
-                        <button class="submit button js-submit">Reset password</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="close"></div>
-    </div>
-    <div class="popup contact-us" id="contact-us">
-        <div class="scroll">
-            <div class="scroll_wrap">
-                <div class="popup-head">
-                    <div class="title">Contact Us</div>
-                </div>
-                <div class="popup-body">
-                    <div class="subtitle">
-                        But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain
-                    </div>
-                    <div class="form">
-                        <input type="text" class="input" placeholder="Name">
-                        <input type="email" class="input" placeholder="Email">
-                        <input type="text" class="input" placeholder="Phone">
-                        <textarea class="textarea" placeholder="Your Massage"></textarea>
-                        <button class="submit button js-submit">Send Massage</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="close"></div>
-    </div>
-    <div class="popup book-now-popup" id="book-now">
-        <div class="scroll">
-            <div class="scroll_wrap">
-                <div class="popup-head">
-                    <div class="title">Book Now</div>
-                </div>
-                <div class="popup-body">
-                    <div class="tour-title">
-                        <div class="img">
-                            <img src="Assets/img/demo-bg.jpg" alt="">
-                        </div>
-                        <div class="tour-name">
-                            Tour to the Arctic is an exotic journey on the verge of extreme
-                        </div>
-                    </div>
-                    <div class="tour-info">
-                        <div class="col">
-                            <div class="label">Check In</div>
-                            <div class="date">
-                                <div class="day">09</div>
-                                <div class="month">May</div>
-                                <div class="year">2019</div>
-                            </div>
-                            <div class="label">Aduld: <span>3</span></div>
-                        </div>
-                        <div class="col">
-                            <div class="label">Check Out</div>
-                            <div class="date">
-                                <div class="day">09</div>
-                                <div class="month">May</div>
-                                <div class="year">2019</div>
-                            </div>
-                            <div class="label">Children: <span>0</span></div>
-                        </div>
-                    </div>
-                    <div class="form">
-                        <input type="text" class="input" placeholder="Your First Name">
-                        <input type="text" class="input" placeholder="Your Last Name">
-                        <input type="email" class="input" placeholder="Your Email">
-                        <input type="tel" class="input" placeholder="Your Number Phone">
-                        <textarea class="textarea" placeholder="Where are your address?"></textarea>
-                        <textarea class="textarea" placeholder="Note:"></textarea>
-                        <button class="submit button js-submit">Book Now | <b>$356</b></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="close"></div>
-    </div>
-    <div class="popup success-popup" id="contact-us-success">
-        <div class="scroll">
-            <div class="scroll_wrap">
-                <div class="popup-head">
-                    <div class="title">Success</div>
-                </div>
-                <div class="popup-body">
-                    <div class="subtitle">
-                        Your message was successfully sent. We will contact you shortly
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="close"></div>
-    </div>
 </body>
-
+    
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/jquery-ui.min.js"></script>
     <script src="/assets/js/lightgallery.js"></script>
@@ -671,5 +607,4 @@
     <script src="/assets/js/slick.min.js"></script>
     <script src="/assets/js/hammer.js"></script>
     <script src="/assets/js/scripts.js"></script>
-
 </html>

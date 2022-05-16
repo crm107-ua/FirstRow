@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,11 +35,35 @@ namespace library
             this.name = name;
         }
 
-        public List<ENPais> readPaises(List<ENPais> listaPaises)
+        public bool readPaises(List<ENPais> listaPaises)
         {
             CADPaises paises = new CADPaises();
             return paises.readPaises(listaPaises);
         }
+
+        public bool ReadPais()
+        {
+            CADPaises paises = new CADPaises();
+            return paises.ReadPais(this);
+        }
+
+        public static int CompareCountriesByName(ENPais x, ENPais y)
+        {
+            return String.Compare(x.name, y.name);
+        }
+
+        public static bool ReadPaisesDataSet(DataSet ds)
+        {
+            CADPaises paises = new CADPaises();
+            return paises.ReadPaisesDataSet(ds);
+        }
+
+        public bool getListPaisesDesconectado(List<ENPais> listaPaises)
+        {
+            CADPaises paises = new CADPaises();
+            return paises.getListPaisesDesconectado(listaPaises);
+        }
+
 
     }
 }

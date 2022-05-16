@@ -9,84 +9,39 @@ namespace library
     public class ENGaleria
     {
         private int _id;
-        private string _ciudad;
-        private int _pais;
+        private ENPais _pais;
         private string _slug;
         private string _titulo;
         private string _descripcion;
-        private List<string> _imagenes;
-        private ENViajes _viaje;
+        private List<ENImagenes> _imagenes;
+        private ENUsuario _usuario;
+        public int Id { get => _id; set => _id = value; }
+        public ENPais Pais { get => _pais; set => _pais = value; }
+        public string Slug { get => _slug; set => _slug = value; }
+        public string Titulo { get => _titulo; set => _titulo = value; }
+        public string Descripcion { get => _descripcion; set => _descripcion = value; }
+        public List<ENImagenes> Imagenes { get => _imagenes; set => _imagenes = value; }
+        public ENUsuario Usuario { get => _usuario; set => _usuario = value; }
 
-        public int id 
+        public ENGaleria()
         {
-            set => _id = value;
-            get => _id;
-        }
-        public string ciudad 
-        { 
-            set => _ciudad = value;
-            get => _ciudad;
-        }
-
-        public int pais 
-        {
-            set => _pais = value;
-            get => _pais;
-        }
-
-        public string slug
-        {
-            set => _slug = value;
-            get => _slug;
+            Id = 0;
+            Pais = new ENPais();
+            Slug = "";
+            Titulo = "";
+            Descripcion = "";
+            Imagenes = new List<ENImagenes>();
+            Usuario = new ENUsuario();
         }
 
-        public string titulo
+        public ENGaleria(int id, ENPais pais, string slug, string titulo, string descripcion, List<ENImagenes> imagenes)
         {
-            set => titulo = value;
-            get => _titulo;
-        }
-
-        public string descripcion
-        {
-            set => _descripcion = value;
-            get => _descripcion;
-        }
-
-        public List<string> imagenes
-        {
-            set => _imagenes = value;
-            get => _imagenes;
-        }
-
-        public ENViajes viaje
-        {
-            set => _viaje = value;
-            get => _viaje;
-        }
-
-        //Consrtuctor por defecto
-        public ENGaleria() 
-        {
-            id=0;
-            ciudad="";
-            pais = 0; ;
-            slug="";
-            titulo= "";
-            descripcion="";
-            List<string> imagenes= new List<string>();
-            viaje= new ENViajes();
-        }
-
-        public ENGaleria(int id, string ciudad, int pais, string slug, string titulo, string descripcion, List<string> imagenes, ENViajes vaije) 
-        {
-            this.id = id;
-            this.ciudad = ciudad;
-            this.pais = pais; ;
-            this.slug = slug;
-            this.titulo = titulo;
-            this.descripcion = descripcion;
-            this.imagenes = imagenes;
-            this.viaje = viaje;
+            Id = id;
+            Pais = pais;
+            Slug = slug;
+            Titulo = titulo;
+            Descripcion = descripcion;
+            Imagenes = imagenes;
         }
 
         public bool createGaleria() 
@@ -113,16 +68,25 @@ namespace library
             return galeria.updateGaleria(this);
         }
 
-        public bool addImage(string img) 
+        public bool readAllGaleri(List<ENGaleria> lista) {
+            CADGaleria galeria = new CADGaleria();
+            return galeria.readAllGaleri(lista);
+        }
+
+        public bool addImage(ENImagenes img) 
         {
-            imagenes.Add(img);
+            Imagenes.Add(img);
             return true;
         }
 
-        public bool deleteImage(string img) 
+        public bool deleteImage(ENImagenes img) 
         {
-            imagenes.Remove(img);
+            Imagenes.Remove(img);
             return true;
+        }
+        public int GenerateId() 
+        {
+            return 1;
         }
     }
 }

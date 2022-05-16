@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,66 +9,63 @@ namespace library
 {
     public class ENCategorias
     {
-        internal int idViaje;
-        internal int nombreUsuario;
-        internal int TourViaje;
-        internal string _Categorianame;
-        internal string _desempeño;
-        internal string imagenes;
+        private int _id;
+        private string _nombre;
+        private string _descripcion;
+        private string _slug;
 
-        // ----- Funciones Set-Get ----
         public int id
         {
-            get { return idViaje; }
-            private set { idViaje = value; }
+            get { return _id; }
+            set { _id = value; }
         }
 
-        public int Ciudad_pais
+        public string nombre
         {
-            get { return Ciudad_pais; }
-            private set { idViaje = value; }
+            get { return _nombre; }
+            set { _nombre = value; }
         }
 
-        public int Tour_Viaje
+        public string descripcion
         {
-            get { return Tour_Viaje; }
-            private set { idViaje = value; }
+            get { return _descripcion; }
+            set { _descripcion = value; }
+        }
+
+        public string slug
+        {
+            get { return _slug; }
+            set { _slug = value; }
         }
 
         public ENCategorias()
         {
-            Categorianame = "";
-            desempeño = "";
-            
+            id = 0;
+            nombre = "";
+            descripcion = "";
+
         }
 
-        public ENCategorias(string Categorianame, string desempeño)
+        public ENCategorias(int id, string nombre, string descripcion, string slug)
         {
-            this.Categorianame = Categorianame;
-            this.desempeño = desempeño;
+            this.id = id;
+            this.nombre = nombre;
+            this.descripcion = descripcion;
+            this.slug = slug;
         }
 
-        public string Categorianame
+        public DataSet readCategorias()
         {
-            get { return _Categorianame; }
-            set { _Categorianame = value; }
+            CADCategorias categorias = new CADCategorias();
+            return categorias.readCategorias();
         }
-
-         public string desempeño
-        {
-            get { return _desempeño; }
-            set { _desempeño = value; }
-        }
-
-
-        // CRUD CATEGORIA
 
         // CREAR CATEGORIA
-         public bool registerCategoria()
+        public bool registerCategoria()
         {
             CADCategorias categoria = new CADCategorias();
             bool creado = false;
-            if (!categoria.readCategoria(this))
+            if (!categoria.readCategoria(this,true))
             {
                 creado = categoria.registerCategoria(this);
             }
@@ -75,44 +73,42 @@ namespace library
         }
 
         // LEER CATEGORIA
-         public bool readCategoria()
+        public bool readCategoria(bool mode)
         {
             CADCategorias categoria = new CADCategorias();
-            bool creado = false;
-            if (!categoria.readCategoria(this))
-            {
-                creado = categoria.readCategoria(this);
-            }
-            return creado;
+            return categoria.readCategoria(this, mode);
         }
 
-       // ACTUALIZAR CATEGORIA
+        // ACTUALIZAR CATEGORIA
         public bool updateCategoria()
         {
             bool actualizado = false;
             CADCategorias categoria = new CADCategorias();
             ENCategorias aux = new ENCategorias();
 
-            aux.Categorianame= this.Categorianame;
-        
+            aux.id = this.id;
+            aux.nombre = this.nombre;
+            aux.descripcion = this.descripcion;
 
-            if (categoria.readCategoria(this))
+
+            if (categoria.readCategoria(this,true))
             {
                 actualizado = categoria.updateCategoria(aux);
-                this.Categorianame= aux.Categorianame;
-              
+                this.id = aux.id;
+                this.nombre = aux.nombre;
+                this.descripcion = aux.descripcion;
             }
 
             return actualizado;
         }
 
-       // ELIMIAR CATEGORIA
-       public bool deleteCategoria()
+        // ELIMIAR CATEGORIA
+        public bool deleteCategoria()
         {
             bool eliminado = false;
             CADCategorias categoria = new CADCategorias();
 
-            if (categoria.readCategoria(this))
+            if (categoria.readCategoria(this,true))
             {
                 eliminado = categoria.deleteCategoria(this);
             }

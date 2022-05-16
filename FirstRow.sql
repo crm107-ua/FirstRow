@@ -1,3402 +1,509 @@
- IF NOT EXISTS(SELECT * FROM sys.schemas WHERE [name] = N'FirstRow')      
-     EXEC (N'CREATE SCHEMA FirstRow')                                   
- GO                                                               
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Blog_Comentarios'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
+create database firstrow_;
+go
+use firstrow_;
+go
 
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Blog_Comentarios'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Blog_Comentarios]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Blog_Comentarios]
+create table [firstrow_].[dbo].[Categorias]
 (
-   [id_Blog] int  NOT NULL,
-   [id_Comentario] int  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Blog_Comentarios',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Blog_Comentarios'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Blog_Imagenes'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
+    id          int identity
+        constraint PK_Categorias_id
+            primary key clustered,
+    nombre      varchar(45)  not null,
+    descripcion varchar(max) not null,
+    slug        varchar(100)
+);
 
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Blog_Imagenes'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Blog_Imagenes]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Blog_Imagenes]
+create table [firstrow_].[dbo].[Imagenes]
 (
-   [id_Blog] int  NOT NULL,
-   [id_Imagen] int  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Blog_Imagenes',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Blog_Imagenes'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Blog_Stories'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
+    id   int identity
+        constraint PK_Imagenes_id
+            primary key clustered,
+    name varchar(100) not null,
+    mode int
+        constraint DF__Imagenes__mode__25869641 default NULL
+);
 
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Blog_Stories'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Blog_Stories]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Blog_Stories]
+create table [firstrow_].[dbo].[Incluidos]
 (
-   [id_Blog] int  NOT NULL,
-   [id_Storie] int  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Blog_Stories',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Blog_Stories'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Blogs'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
+    id     int         not null
+        constraint PK_Incluidos_id
+            primary key clustered,
+    titulo varchar(50) not null
+);
 
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Blogs'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Blogs]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Blogs]
+create table [firstrow_].[dbo].[Paises]
 (
-   [id] int  NOT NULL,
+    id   int not null
+        constraint PK_Paises_id
+            primary key clustered,
+    name varchar(100)
+        constraint DF__Paises__name__2A4B4B5E default NULL
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [imagen_principal] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [titulo] varchar(50)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [descripcion] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR(MAX) according to character set mapping for latin1 character set
-   */
-
-   [text_1] varchar(max)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR(MAX) according to character set mapping for latin1 character set
-   */
-
-   [text_2] varchar(max)  NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR(MAX) according to character set mapping for latin1 character set
-   */
-
-   [text_3] varchar(max)  NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [citacion] varchar(100)  NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [slug] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [usuario] varchar(20)  NOT NULL,
-   [categoria] int  NOT NULL,
-   [pais] int  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Blogs',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Blogs'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Categorias'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
-
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Categorias'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Categorias]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Categorias]
+create table [firstrow_].[dbo].[Ciudades]
 (
-   [id] int IDENTITY(1, 1)  NOT NULL,
+    id          int          not null,
+    id_pais     int          not null
+        constraint [Ciudades$ciudad-pais]
+            references [firstrow_].[dbo].[Paises] (id)
+            on update cascade on delete cascade,
+    nombre      varchar(45)  not null,
+    descripcion varchar(100) not null,
+    image       varchar(100)
+        constraint DF__Ciudades__image__2E1BDC42 default NULL,
+    constraint PK_Ciudades_id
+        primary key clustered (id asc, id_pais asc)
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
+create index [ciudad-pais_idx]
+    on [firstrow_].[dbo].[Ciudades] (id_pais);
 
-   [nombre] varchar(45)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR(MAX) according to character set mapping for latin1 character set
-   */
-
-   [descripcion] varchar(max)  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Categorias',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Categorias'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Ciudades'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
-
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Ciudades'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Ciudades]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Ciudades]
+create table [firstrow_].[dbo].[Usuarios]
 (
-   [id] int  NOT NULL,
-   [id_pais] int  NOT NULL,
+    nickname         varchar(20)  not null
+        constraint PK_Usuarios_nickname
+            primary key clustered,
+    email            varchar(50)  not null
+        constraint Usuarios$email_UNIQUE
+            unique nonclustered,
+    password         varchar(100) not null,
+    image            varchar(100)
+        constraint DF__Usuarios__image__31EC6D26 default NULL,
+    background_image varchar(100)
+        constraint DF__Usuarios__backgr__32E0915F default NULL,
+    name             varchar(100) not null,
+    firstname        varchar(100) not null,
+    secondname       varchar(100) not null,
+    facebook         varchar(100)
+        constraint DF__Usuarios__facebo__33D4B598 default NULL,
+    twitter          varchar(100)
+        constraint DF__Usuarios__twitte__34C8D9D1 default NULL
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [nombre] varchar(45)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [descripcion] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [image] varchar(100)  NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Ciudades',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Ciudades'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Comentarios'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
-
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Comentarios'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Comentarios]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Comentarios]
+create table [firstrow_].[dbo].[Blogs]
 (
-   [id] int IDENTITY(1, 1)  NOT NULL,
+    id               int          not null
+        constraint PK_Blogs_id
+            primary key clustered,
+    imagen_principal varchar(100) not null,
+    titulo           varchar(50)  not null,
+    descripcion      varchar(100) not null,
+    text_1           varchar(max) not null,
+    text_2           varchar(max),
+    text_3           varchar(max),
+    citacion         varchar(100)
+        constraint DF__Blogs__citacion__37A5467C default NULL,
+    slug             varchar(100) not null,
+    usuario          varchar(20)  not null
+        constraint [Blogs$usuario-blog]
+            references [firstrow_].[dbo].[Usuarios] (nickname)
+            on update cascade on delete cascade,
+    categoria        int          not null
+        constraint [Blogs$categoria-blog]
+            references [firstrow_].[dbo].[Categorias] (id)
+            on update cascade on delete cascade,
+    pais             int          not null
+        constraint [Blogs$pais-blog]
+            references [firstrow_].[dbo].[Paises] (id)
+            on update cascade on delete cascade
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [texto] varchar(45)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [estrellas] varchar(45)  NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [nickname] varchar(20)  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Comentarios',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Comentarios'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Dias'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
-
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Dias'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Dias]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Dias]
+create table [firstrow_].[dbo].[Blog_Imagenes]
 (
-   [id] int  NOT NULL,
-   [id_experiencia] int  NOT NULL,
+    id_Blog   int not null
+        constraint [Blog_Imagenes$imagen-blog]
+            references [firstrow_].[dbo].[Blogs] (id)
+            on update cascade on delete cascade,
+    id_Imagen int not null
+        constraint [Blog_Imagenes$blog-imagen]
+            references [firstrow_].[dbo].[Imagenes] (id),
+    constraint PK_Blog_Imagenes_id_Blog
+        primary key clustered (id_Blog asc, id_Imagen asc)
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
+create index [blog-imagen_idx]
+    on [firstrow_].[dbo].[Blog_Imagenes] (id_Imagen);
 
-   [nombre_dia] varchar(45)  NOT NULL,
+create index [categoria-blog_idx]
+    on [firstrow_].[dbo].[Blogs] (categoria);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
+create index [pais-blog_idx]
+    on [firstrow_].[dbo].[Blogs] (pais);
 
-   [titulo] varchar(45)  NOT NULL,
+create index [usuario-blog_idx]
+    on [firstrow_].[dbo].[Blogs] (usuario);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR(MAX) according to character set mapping for latin1 character set
-   */
-
-   [descipcion] varchar(max)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [imagen] varchar(50)  NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Dias',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Dias'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Empresas'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
-
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Empresas'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Empresas]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Empresas]
+create table [firstrow_].[dbo].[Comentarios]
 (
+    id        int identity
+        constraint PK_Comentarios_id
+            primary key clustered,
+    texto     varchar(45) not null,
+    estrellas varchar(45)
+        constraint DF__Comentari__estre__412EB0B6 default NULL,
+    nickname  varchar(20) not null
+        constraint Comentarios$nickname_comentarios
+            references [firstrow_].[dbo].[Usuarios] (nickname)
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [nickname] varchar(20)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [email] varchar(50)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [password] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [image] varchar(100)  NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [background_image] varchar(100)  NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [name] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [firstname] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [secondname] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [facebook] varchar(100)  NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [twitter] varchar(100)  NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [cif] varchar(20)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [direccion] varchar(45)  NOT NULL,
-   [fechaCreacion] datetime2(0)  NOT NULL,
-   [pais] int IDENTITY(1, 1)  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Empresas',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Empresas'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencia_Comentarios'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
-
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Experiencia_Comentarios'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Experiencia_Comentarios]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Experiencia_Comentarios]
+create table [firstrow_].[dbo].[Blog_Comentarios]
 (
-   [id_Experiencia] int  NOT NULL,
-   [id_Comentario] int  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Experiencia_Comentarios',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Experiencia_Comentarios'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencia_Imagenes'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
+    id_Blog       int not null
+        constraint [Blog_Comentarios$blog-comentario]
+            references Blogs (id),
+    id_Comentario int not null
+        constraint [Blog_Comentarios$comentario-blog]
+            references [firstrow_].[dbo].[Comentarios] (id)
+            on update cascade on delete cascade,
+    constraint PK_Blog_Comentarios_id_Blog
+        primary key clustered (id_Blog asc, id_Comentario asc)
+);
 
-  DECLARE @drop_statement nvarchar(500)
+create index [comentario-blog_idx]
+    on [firstrow_].[dbo].[Blog_Comentarios] (id_Comentario);
 
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Experiencia_Imagenes'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
+create index nickname_idx
+    on [firstrow_].[dbo].[Comentarios] (nickname);
 
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Experiencia_Imagenes]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Experiencia_Imagenes]
+create table [firstrow_].[dbo].[Empresas]
 (
-   [id_Experiencia] int  NOT NULL,
-   [id_Imagen] int  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Experiencia_Imagenes',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Experiencia_Imagenes'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencia_Incluido'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
+    nickname      varchar(20)  not null
+        constraint PK_Empresas_nickname
+            primary key clustered
+        constraint Empresas$nickname
+            references [firstrow_].[dbo].[Usuarios] (nickname)
+            on update cascade on delete cascade,
+    cif           varchar(20)  not null,
+    direccion     varchar(45)  not null,
+    fechaCreacion datetime2(0) not null,
+    pais          int          not null
+        constraint Empresas$pais
+            references [firstrow_].[dbo].[Paises] (id)
+);
 
-  DECLARE @drop_statement nvarchar(500)
+create index pais_idx
+    on [firstrow_].[dbo].[Empresas] (pais);
 
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Experiencia_Incluido'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Experiencia_Incluido]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Experiencia_Incluido]
+create table [firstrow_].[dbo].[Experiencias]
 (
-   [id_experiencia] int  NOT NULL,
-   [id_incluido] int  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Experiencia_Incluido',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Experiencia_Incluido'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencia_Stories'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
+    id          int identity
+        constraint PK_Experiencias_id
+            primary key clustered,
+    nombre      varchar(45)  not null,
+    titulo      varchar(45)  not null,
+    descripcion varchar(45)  not null,
+    slug        varchar(100) not null,
+    pais        int          not null
+        constraint Experiencias$experiencia_pais
+            references [firstrow_].[dbo].[Paises] (id),
+    empresa     varchar(20)  not null
+        constraint Experiencias$experiencia_empresa
+            references [firstrow_].[dbo].[Empresas] (nickname),
+    precio      float
+);
 
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Experiencia_Stories'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Experiencia_Stories]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Experiencia_Stories]
+create table [firstrow_].[dbo].[Dias]
 (
-   [id_experiencia] int  NOT NULL,
-   [id_storie] int  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Experiencia_Stories',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Experiencia_Stories'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencias'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
+    id             int          not null,
+    id_experiencia int          not null
+        constraint [Dias$dia-experiencia]
+            references [firstrow_].[dbo].[Experiencias] (id)
+            on update cascade on delete cascade,
+    nombre_dia     varchar(45)  not null,
+    titulo         varchar(45)  not null,
+    descipcion     varchar(max) not null,
+    imagen         varchar(50)
+        constraint DF__Dias__imagen__5165187F default NULL,
+    constraint PK_Dias_id
+        primary key clustered (id asc, id_experiencia asc)
+);
 
-  DECLARE @drop_statement nvarchar(500)
+create index [dia-experiencia_idx]
+    on [firstrow_].[dbo].[Dias] (id_experiencia);
 
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Experiencias'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Experiencias]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Experiencias]
+create table [firstrow_].[dbo].[Experiencia_Comentarios]
 (
-   [id] int IDENTITY(1, 1)  NOT NULL,
+    id_Experiencia int not null
+        constraint [Experiencia_Comentarios$experiencia-comentario]
+            references [firstrow_].[dbo].[Experiencias] (id),
+    id_Comentario  int not null
+        constraint [Experiencia_Comentarios$comentario-experiencia]
+            references [firstrow_].[dbo].[Comentarios] (id),
+    constraint PK_Experiencia_Comentarios_id_Experiencia
+        primary key clustered (id_Experiencia asc, id_Comentario asc)
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
+create index [comentario-experiencia_idx]
+    on [firstrow_].[dbo].[Experiencia_Comentarios] (id_Comentario);
 
-   [nombre] varchar(45)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [titulo] varchar(45)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [descripcion] varchar(45)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [slug] varchar(100)  NOT NULL,
-   [pais] int  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [empresa] varchar(20)  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Experiencias',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Experiencias'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Imagenes'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
-
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Imagenes'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Imagenes]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Imagenes]
+create table [firstrow_].[dbo].[Experiencia_Imagenes]
 (
-   [id] int IDENTITY(1, 1)  NOT NULL,
+    id_Experiencia int not null
+        constraint Experiencia_Imagenes$id_experiencia
+            references [firstrow_].[dbo].[Experiencias] (id)
+            on update cascade on delete cascade,
+    id_Imagen      int not null
+        constraint Experiencia_Imagenes$id_imagen
+            references [firstrow_].[dbo].[Imagenes] (id)
+            on update cascade on delete cascade,
+    constraint PK_Experiencia_Imagenes_id_Experiencia
+        primary key clustered (id_Experiencia asc, id_Imagen asc)
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
+create index id_imagen_idx
+    on [firstrow_].[dbo].[Experiencia_Imagenes] (id_Imagen);
 
-   [name] varchar(100)  NOT NULL,
-   [mode] int  NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Imagenes',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Imagenes'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Incluidos'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
-
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Incluidos'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Incluidos]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Incluidos]
+create table [firstrow_].[dbo].[Experiencia_Incluido]
 (
-   [id] int  NOT NULL,
+    id_experiencia int not null
+        constraint [Experiencia_Incluido$id-experiencia]
+            references [firstrow_].[dbo].[Experiencias] (id),
+    id_incluido    int not null
+        constraint [Experiencia_Incluido$id-incluido]
+            references [firstrow_].[dbo].[Incluidos] (id),
+    constraint PK_Experiencia_Incluido_id_experiencia
+        primary key clustered (id_experiencia asc, id_incluido asc)
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
+create index [id-incluido_idx]
+    on [firstrow_].[dbo].[Experiencia_Incluido] (id_incluido);
 
-   [titulo] varchar(50)  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Incluidos',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Incluidos'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Paises'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
+create index experiencia_empresa_idx
+    on [firstrow_].[dbo].[Experiencias] (empresa);
 
-  DECLARE @drop_statement nvarchar(500)
+create index experiencia_pais_idx
+    on [firstrow_].[dbo].[Experiencias] (pais);
 
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Paises'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Paises]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Paises]
+create table [firstrow_].[dbo].[Propuestas]
 (
-   [id] int IDENTITY(1, 1)  NOT NULL,
+    id      int identity
+        constraint PK_Propuestas_id
+            primary key clustered,
+    titulo  varchar(100) not null,
+    texto   varchar(45)  not null,
+    imagen  varchar(100)
+        constraint DF__Propuesta__image__5FB337D6 default NULL,
+    usuario varchar(20)  not null
+        constraint Propuestas$propuesta_usuario
+            references [firstrow_].[dbo].[Usuarios] (nickname),
+    empresa varchar(20)  not null
+        constraint Propuestas$propuesta_empresa
+            references [firstrow_].[dbo].[Empresas] (nickname),
+    slug    varchar(100)
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
+create index propuesta_empresa_idx
+    on [firstrow_].[dbo].[Propuestas] (empresa);
 
-   [name] varchar(100)  NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Paises',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Paises'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Propuestas'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
+create index propuesta_usuario_idx
+    on [firstrow_].[dbo].[Propuestas] (usuario);
 
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Propuestas'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Propuestas]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Propuestas]
+create table [firstrow_].[dbo].[Reservas]
 (
-   [id] int IDENTITY(1, 1)  NOT NULL,
+    id              int          not null
+        constraint PK_Reservas_id
+            primary key clustered,
+    nombre          varchar(45)  not null,
+    descripcion     varchar(100)
+        constraint DF__Reservas__descri__6477ECF3 default NULL,
+    experiencia     int          not null
+        constraint [Reservas$reserva-experiencia]
+            references [firstrow_].[dbo].[Experiencias] (id)
+            on update cascade on delete cascade,
+    fechaEntrada    datetime2(0) not null,
+    fechaSalida     datetime2(0) not null,
+    usuario         varchar(20)  not null
+        constraint [Reservas$reserva-usuario]
+            references [firstrow_].[dbo].[Usuarios] (nickname)
+            on update cascade on delete cascade,
+    precio_asignado float,
+    personas        int
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
+create index [reserva-experiencia_idx]
+    on [firstrow_].[dbo].[Reservas] (experiencia);
 
-   [titulo] varchar(100)  NOT NULL,
+create index [reserva-usuario_idx]
+    on [firstrow_].[dbo].[Reservas] (usuario);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
 
-   [texto] varchar(45)  NOT NULL,
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
 
-   [imagen] varchar(100)  NULL,
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
 
-   [usuario] varchar(20)  NOT NULL,
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
 
-   [empresa] varchar(20)  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Propuestas',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Propuestas'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Reservas'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
 
-  DECLARE @drop_statement nvarchar(500)
 
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Reservas'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
 
-  OPEN drop_cursor
 
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
 
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Reservas]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Reservas]
+create table [firstrow_].[dbo].[Sorteos]
 (
-   [id] int  NOT NULL,
+    id          int          not null
+        constraint PK_Sorteos_id
+            primary key clustered,
+    titulo      varchar(45)  not null,
+    descripcion varchar(100) not null,
+    slug        varchar(100) not null,
+    imagen      varchar(100) not null,
+    experiencia int          not null
+        constraint [Sorteos$experiencia-sorteo]
+            references [firstrow_].[dbo].[Experiencias] (id),
+    fechaInicio datetime2(0) not null,
+    fechafINAL  datetime2(0) not null,
+    empresa     varchar(20)  not null
+        constraint [Sorteos&empresa]
+            references [firstrow_].[dbo].[Empresas] (nickname)
+            on update cascade on delete cascade
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [nombre] varchar(45)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [descripcion] varchar(100)  NULL,
-   [experiencia] int  NOT NULL,
-   [fechaEntrada] datetime2(0)  NOT NULL,
-   [fechaSalida] datetime2(0)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [usuario] varchar(20)  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Reservas',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Reservas'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Sorteo_Usuarios'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
-
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Sorteo_Usuarios'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Sorteo_Usuarios]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Sorteo_Usuarios]
+create table [firstrow_].[dbo].[Sorteo_Usuarios]
 (
-   [id_Sorteo] int  NOT NULL,
+    id_Sorteo  int         not null
+        constraint [Sorteo_Usuarios$id-sorteo]
+            references Sorteos (id),
+    id_Usuario varchar(20) not null
+        constraint [Sorteo_Usuarios$id-sorteo-usuario]
+            references Usuarios (nickname),
+    constraint PK_Sorteo_Usuarios_id_Sorteo
+        primary key clustered (id_Sorteo asc, id_Usuario asc)
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
+create index [id-sorteo-usuario_idx]
+    on [firstrow_].[dbo].[Sorteo_Usuarios] (id_Usuario);
 
-   [id_Usuario] varchar(20)  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Sorteo_Usuarios',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Sorteo_Usuarios'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Sorteos'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
+create index [experiencia-sorteos_idx]
+    on [firstrow_].[dbo].[Sorteos] (experiencia);
 
-  DECLARE @drop_statement nvarchar(500)
+create unique index Sorteos_empresa_uindex
+    on [firstrow_].[dbo].[Sorteos] (empresa);
 
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Sorteos'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Sorteos]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Sorteos]
+create table [firstrow_].[dbo].[Stories]
 (
-   [id] int  NOT NULL,
+    id          int                                                           not null
+        constraint PK_Stories_id
+            primary key clustered,
+    titulo      varchar(50)                                                   not null,
+    descripcion varchar(100)                                                  not null,
+    fecha       datetime2(0)                                                  not null,
+    pais        int                                                           not null
+        constraint Stories$storie_pais
+            references [firstrow_].[dbo].[Paises] (id),
+    usuario     varchar(20)                                                   not null
+        constraint Stories$storie_usuario
+            references [firstrow_].[dbo].[Usuarios] (nickname),
+    imagen      varchar(100)
+        constraint DF__Stories__imagen__71D1E811 default 'default_storie.png' not null
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [titulo] varchar(45)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [descripcion] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [slug] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [imagen] varchar(100)  NOT NULL,
-   [experiencia] int  NOT NULL,
-   [fechaInicio] datetime2(0)  NOT NULL,
-   [fechafINAL] datetime2(0)  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Sorteos',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Sorteos'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Stories'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
-
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Stories'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Stories]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Stories]
+create table [firstrow_].[dbo].[Blog_Stories]
 (
-   [id] int  NOT NULL,
+    id_Blog   int not null
+        constraint [Blog_Stories$blog-storie]
+            references [firstrow_].[dbo].[Blogs] (id),
+    id_Storie int not null
+        constraint [Blog_Stories$storie-blog]
+            references [firstrow_].[dbo].[Stories] (id)
+            on update cascade on delete cascade,
+    constraint PK_Blog_Stories_id_Blog
+        primary key clustered (id_Blog asc, id_Storie asc)
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
+create index [storie-blog_idx]
+    on [firstrow_].[dbo].[Blog_Stories] (id_Storie);
 
-   [titulo] varchar(50)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [descripcion] varchar(100)  NOT NULL,
-   [fecha] datetime2(0)  NOT NULL,
-   [pais] int  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [usuario] varchar(20)  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Stories',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Stories'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Usuarios'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
-
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Usuarios'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Usuarios]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Usuarios]
+create table [firstrow_].[dbo].[Experiencia_Stories]
 (
+    id_experiencia int not null
+        constraint Experiencia_Stories$id_experiencia_storie
+            references [firstrow_].[dbo].[Experiencias] (id)
+            on update cascade on delete cascade,
+    id_storie      int not null
+        constraint Experiencia_Stories$id_storie_experiencia
+            references [firstrow_].[dbo].[Stories] (id)
+            on update cascade on delete cascade,
+    constraint PK_Experiencia_Stories_id_experiencia
+        primary key clustered (id_experiencia asc, id_storie asc)
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
+create index id_storie_experiencia_idx
+    on [firstrow_].[dbo].[Experiencia_Stories] (id_storie);
 
-   [nickname] varchar(20)  NOT NULL,
+create index storie_pais_idx
+    on [firstrow_].[dbo].[Stories] (pais);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
+create index storie_usuario_idx
+    on [firstrow_].[dbo].[Stories] (usuario);
 
-   [email] varchar(50)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [password] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [image] varchar(100)  NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [background_image] varchar(100)  NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [name] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [firstname] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [secondname] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [facebook] varchar(100)  NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [twitter] varchar(100)  NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Usuarios',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Usuarios'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Wearing'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
-
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Wearing'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Wearing]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Wearing]
+create table [firstrow_].[dbo].[Wearing]
 (
-   [id] int  NOT NULL,
+    id          int          not null
+        constraint PK_Wearing_id
+            primary key clustered,
+    titulo      varchar(50)  not null,
+    descripcion varchar(100) not null,
+    texto       varchar(255) not null,
+    experiencia int          not null
+        constraint [Wearing$wearing-experiencia]
+            references [firstrow_].[dbo].[Experiencias] (id),
+    slug        varchar(100) not null
+);
 
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
+create index [wearing-experiencia_idx]
+    on [firstrow_].[dbo].[Wearing] (experiencia);
 
-   [titulo] varchar(50)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [descripcion] varchar(100)  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [texto] varchar(255)  NOT NULL,
-   [experiencia] int  NOT NULL,
-
-   /*
-   *   SSMA informational messages:
-   *   M2SS0055: Data type was converted to VARCHAR according to character set mapping for latin1 character set
-   */
-
-   [slug] varchar(100)  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Wearing',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Wearing'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Wearing_Imagenes'  AND sc.name = N'FirstRow'  AND type in (N'U'))
-BEGIN
-
-  DECLARE @drop_statement nvarchar(500)
-
-  DECLARE drop_cursor CURSOR FOR
-      SELECT 'alter table '+quotename(schema_name(ob.schema_id))+
-      '.'+quotename(object_name(ob.object_id))+ ' drop constraint ' + quotename(fk.name) 
-      FROM sys.objects ob INNER JOIN sys.foreign_keys fk ON fk.parent_object_id = ob.object_id
-      WHERE fk.referenced_object_id = 
-          (
-             SELECT so.object_id 
-             FROM sys.objects so JOIN sys.schemas sc
-             ON so.schema_id = sc.schema_id
-             WHERE so.name = N'Wearing_Imagenes'  AND sc.name = N'FirstRow'  AND type in (N'U')
-           )
-
-  OPEN drop_cursor
-
-  FETCH NEXT FROM drop_cursor
-  INTO @drop_statement
-
-  WHILE @@FETCH_STATUS = 0
-  BEGIN
-     EXEC (@drop_statement)
-
-     FETCH NEXT FROM drop_cursor
-     INTO @drop_statement
-  END
-
-  CLOSE drop_cursor
-  DEALLOCATE drop_cursor
-
-  DROP TABLE [FirstRow].[Wearing_Imagenes]
-END 
-GO
-
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE 
-[FirstRow].[Wearing_Imagenes]
+create table [firstrow_].[dbo].[Wearing_Imagenes]
 (
-   [id_Wearing] int  NOT NULL,
-   [id_Imagen] int  NOT NULL
-)
-WITH (DATA_COMPRESSION = NONE)
-GO
-BEGIN TRY
-    EXEC sp_addextendedproperty
-        N'MS_SSMA_SOURCE', N'FirstRow.Wearing_Imagenes',
-        N'SCHEMA', N'FirstRow',
-        N'TABLE', N'Wearing_Imagenes'
-END TRY
-BEGIN CATCH
-    IF (@@TRANCOUNT > 0) ROLLBACK
-    PRINT ERROR_MESSAGE()
-END CATCH
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Blog_Comentarios_id_Blog'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Blog_Comentarios] DROP CONSTRAINT [PK_Blog_Comentarios_id_Blog]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Blog_Comentarios]
- ADD CONSTRAINT [PK_Blog_Comentarios_id_Blog]
-   PRIMARY KEY
-   CLUSTERED ([id_Blog] ASC, [id_Comentario] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Blog_Imagenes_id_Blog'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Blog_Imagenes] DROP CONSTRAINT [PK_Blog_Imagenes_id_Blog]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Blog_Imagenes]
- ADD CONSTRAINT [PK_Blog_Imagenes_id_Blog]
-   PRIMARY KEY
-   CLUSTERED ([id_Blog] ASC, [id_Imagen] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Blog_Stories_id_Blog'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Blog_Stories] DROP CONSTRAINT [PK_Blog_Stories_id_Blog]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Blog_Stories]
- ADD CONSTRAINT [PK_Blog_Stories_id_Blog]
-   PRIMARY KEY
-   CLUSTERED ([id_Blog] ASC, [id_Storie] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Blogs_id'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Blogs] DROP CONSTRAINT [PK_Blogs_id]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Blogs]
- ADD CONSTRAINT [PK_Blogs_id]
-   PRIMARY KEY
-   CLUSTERED ([id] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Categorias_id'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Categorias] DROP CONSTRAINT [PK_Categorias_id]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Categorias]
- ADD CONSTRAINT [PK_Categorias_id]
-   PRIMARY KEY
-   CLUSTERED ([id] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Ciudades_id'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Ciudades] DROP CONSTRAINT [PK_Ciudades_id]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Ciudades]
- ADD CONSTRAINT [PK_Ciudades_id]
-   PRIMARY KEY
-   CLUSTERED ([id] ASC, [id_pais] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Comentarios_id'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Comentarios] DROP CONSTRAINT [PK_Comentarios_id]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Comentarios]
- ADD CONSTRAINT [PK_Comentarios_id]
-   PRIMARY KEY
-   CLUSTERED ([id] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Dias_id'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Dias] DROP CONSTRAINT [PK_Dias_id]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Dias]
- ADD CONSTRAINT [PK_Dias_id]
-   PRIMARY KEY
-   CLUSTERED ([id] ASC, [id_experiencia] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Empresas_nickname'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Empresas] DROP CONSTRAINT [PK_Empresas_nickname]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Empresas]
- ADD CONSTRAINT [PK_Empresas_nickname]
-   PRIMARY KEY
-   CLUSTERED ([nickname] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Experiencia_Comentarios_id_Experiencia'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Experiencia_Comentarios] DROP CONSTRAINT [PK_Experiencia_Comentarios_id_Experiencia]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencia_Comentarios]
- ADD CONSTRAINT [PK_Experiencia_Comentarios_id_Experiencia]
-   PRIMARY KEY
-   CLUSTERED ([id_Experiencia] ASC, [id_Comentario] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Experiencia_Imagenes_id_Experiencia'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Experiencia_Imagenes] DROP CONSTRAINT [PK_Experiencia_Imagenes_id_Experiencia]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencia_Imagenes]
- ADD CONSTRAINT [PK_Experiencia_Imagenes_id_Experiencia]
-   PRIMARY KEY
-   CLUSTERED ([id_Experiencia] ASC, [id_Imagen] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Experiencia_Incluido_id_experiencia'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Experiencia_Incluido] DROP CONSTRAINT [PK_Experiencia_Incluido_id_experiencia]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencia_Incluido]
- ADD CONSTRAINT [PK_Experiencia_Incluido_id_experiencia]
-   PRIMARY KEY
-   CLUSTERED ([id_experiencia] ASC, [id_incluido] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Experiencia_Stories_id_experiencia'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Experiencia_Stories] DROP CONSTRAINT [PK_Experiencia_Stories_id_experiencia]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencia_Stories]
- ADD CONSTRAINT [PK_Experiencia_Stories_id_experiencia]
-   PRIMARY KEY
-   CLUSTERED ([id_experiencia] ASC, [id_storie] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Experiencias_id'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Experiencias] DROP CONSTRAINT [PK_Experiencias_id]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencias]
- ADD CONSTRAINT [PK_Experiencias_id]
-   PRIMARY KEY
-   CLUSTERED ([id] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Imagenes_id'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Imagenes] DROP CONSTRAINT [PK_Imagenes_id]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Imagenes]
- ADD CONSTRAINT [PK_Imagenes_id]
-   PRIMARY KEY
-   CLUSTERED ([id] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Incluidos_id'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Incluidos] DROP CONSTRAINT [PK_Incluidos_id]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Incluidos]
- ADD CONSTRAINT [PK_Incluidos_id]
-   PRIMARY KEY
-   CLUSTERED ([id] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Paises_id'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Paises] DROP CONSTRAINT [PK_Paises_id]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Paises]
- ADD CONSTRAINT [PK_Paises_id]
-   PRIMARY KEY
-   CLUSTERED ([id] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Propuestas_id'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Propuestas] DROP CONSTRAINT [PK_Propuestas_id]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Propuestas]
- ADD CONSTRAINT [PK_Propuestas_id]
-   PRIMARY KEY
-   CLUSTERED ([id] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Reservas_id'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Reservas] DROP CONSTRAINT [PK_Reservas_id]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Reservas]
- ADD CONSTRAINT [PK_Reservas_id]
-   PRIMARY KEY
-   CLUSTERED ([id] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Sorteo_Usuarios_id_Sorteo'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Sorteo_Usuarios] DROP CONSTRAINT [PK_Sorteo_Usuarios_id_Sorteo]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Sorteo_Usuarios]
- ADD CONSTRAINT [PK_Sorteo_Usuarios_id_Sorteo]
-   PRIMARY KEY
-   CLUSTERED ([id_Sorteo] ASC, [id_Usuario] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Sorteos_id'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Sorteos] DROP CONSTRAINT [PK_Sorteos_id]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Sorteos]
- ADD CONSTRAINT [PK_Sorteos_id]
-   PRIMARY KEY
-   CLUSTERED ([id] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Stories_id'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Stories] DROP CONSTRAINT [PK_Stories_id]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Stories]
- ADD CONSTRAINT [PK_Stories_id]
-   PRIMARY KEY
-   CLUSTERED ([id] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Usuarios_nickname'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Usuarios] DROP CONSTRAINT [PK_Usuarios_nickname]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Usuarios]
- ADD CONSTRAINT [PK_Usuarios_nickname]
-   PRIMARY KEY
-   CLUSTERED ([nickname] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Wearing_id'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Wearing] DROP CONSTRAINT [PK_Wearing_id]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Wearing]
- ADD CONSTRAINT [PK_Wearing_id]
-   PRIMARY KEY
-   CLUSTERED ([id] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'PK_Wearing_Imagenes_id_Wearing'  AND sc.name = N'FirstRow'  AND type in (N'PK'))
-ALTER TABLE [FirstRow].[Wearing_Imagenes] DROP CONSTRAINT [PK_Wearing_Imagenes_id_Wearing]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Wearing_Imagenes]
- ADD CONSTRAINT [PK_Wearing_Imagenes_id_Wearing]
-   PRIMARY KEY
-   CLUSTERED ([id_Wearing] ASC, [id_Imagen] ASC)
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Usuarios$email_UNIQUE'  AND sc.name = N'FirstRow'  AND type in (N'UQ'))
-ALTER TABLE [FirstRow].[Usuarios] DROP CONSTRAINT [Usuarios$email_UNIQUE]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Usuarios]
- ADD CONSTRAINT [Usuarios$email_UNIQUE]
- UNIQUE 
-   NONCLUSTERED ([email] ASC)
-
-GO
-
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Blog_Imagenes'  AND sc.name = N'FirstRow'  AND si.name = N'blog-imagen_idx' AND so.type in (N'U'))
-   DROP INDEX [blog-imagen_idx] ON [FirstRow].[Blog_Imagenes] 
-GO
-CREATE NONCLUSTERED INDEX [blog-imagen_idx] ON [FirstRow].[Blog_Imagenes]
-(
-   [id_Imagen] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Blogs'  AND sc.name = N'FirstRow'  AND si.name = N'categoria-blog_idx' AND so.type in (N'U'))
-   DROP INDEX [categoria-blog_idx] ON [FirstRow].[Blogs] 
-GO
-CREATE NONCLUSTERED INDEX [categoria-blog_idx] ON [FirstRow].[Blogs]
-(
-   [categoria] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Ciudades'  AND sc.name = N'FirstRow'  AND si.name = N'ciudad-pais_idx' AND so.type in (N'U'))
-   DROP INDEX [ciudad-pais_idx] ON [FirstRow].[Ciudades] 
-GO
-CREATE NONCLUSTERED INDEX [ciudad-pais_idx] ON [FirstRow].[Ciudades]
-(
-   [id_pais] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Blog_Comentarios'  AND sc.name = N'FirstRow'  AND si.name = N'comentario-blog_idx' AND so.type in (N'U'))
-   DROP INDEX [comentario-blog_idx] ON [FirstRow].[Blog_Comentarios] 
-GO
-CREATE NONCLUSTERED INDEX [comentario-blog_idx] ON [FirstRow].[Blog_Comentarios]
-(
-   [id_Comentario] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Experiencia_Comentarios'  AND sc.name = N'FirstRow'  AND si.name = N'comentario-experiencia_idx' AND so.type in (N'U'))
-   DROP INDEX [comentario-experiencia_idx] ON [FirstRow].[Experiencia_Comentarios] 
-GO
-CREATE NONCLUSTERED INDEX [comentario-experiencia_idx] ON [FirstRow].[Experiencia_Comentarios]
-(
-   [id_Comentario] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Dias'  AND sc.name = N'FirstRow'  AND si.name = N'dia-experiencia_idx' AND so.type in (N'U'))
-   DROP INDEX [dia-experiencia_idx] ON [FirstRow].[Dias] 
-GO
-CREATE NONCLUSTERED INDEX [dia-experiencia_idx] ON [FirstRow].[Dias]
-(
-   [id_experiencia] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Experiencias'  AND sc.name = N'FirstRow'  AND si.name = N'experiencia_empresa_idx' AND so.type in (N'U'))
-   DROP INDEX [experiencia_empresa_idx] ON [FirstRow].[Experiencias] 
-GO
-CREATE NONCLUSTERED INDEX [experiencia_empresa_idx] ON [FirstRow].[Experiencias]
-(
-   [empresa] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Experiencias'  AND sc.name = N'FirstRow'  AND si.name = N'experiencia_pais_idx' AND so.type in (N'U'))
-   DROP INDEX [experiencia_pais_idx] ON [FirstRow].[Experiencias] 
-GO
-CREATE NONCLUSTERED INDEX [experiencia_pais_idx] ON [FirstRow].[Experiencias]
-(
-   [pais] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Sorteos'  AND sc.name = N'FirstRow'  AND si.name = N'experiencia-sorteos_idx' AND so.type in (N'U'))
-   DROP INDEX [experiencia-sorteos_idx] ON [FirstRow].[Sorteos] 
-GO
-CREATE NONCLUSTERED INDEX [experiencia-sorteos_idx] ON [FirstRow].[Sorteos]
-(
-   [experiencia] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Experiencia_Imagenes'  AND sc.name = N'FirstRow'  AND si.name = N'id_imagen_idx' AND so.type in (N'U'))
-   DROP INDEX [id_imagen_idx] ON [FirstRow].[Experiencia_Imagenes] 
-GO
-CREATE NONCLUSTERED INDEX [id_imagen_idx] ON [FirstRow].[Experiencia_Imagenes]
-(
-   [id_Imagen] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Experiencia_Stories'  AND sc.name = N'FirstRow'  AND si.name = N'id_storie_experiencia_idx' AND so.type in (N'U'))
-   DROP INDEX [id_storie_experiencia_idx] ON [FirstRow].[Experiencia_Stories] 
-GO
-CREATE NONCLUSTERED INDEX [id_storie_experiencia_idx] ON [FirstRow].[Experiencia_Stories]
-(
-   [id_storie] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Experiencia_Incluido'  AND sc.name = N'FirstRow'  AND si.name = N'id-incluido_idx' AND so.type in (N'U'))
-   DROP INDEX [id-incluido_idx] ON [FirstRow].[Experiencia_Incluido] 
-GO
-CREATE NONCLUSTERED INDEX [id-incluido_idx] ON [FirstRow].[Experiencia_Incluido]
-(
-   [id_incluido] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Sorteo_Usuarios'  AND sc.name = N'FirstRow'  AND si.name = N'id-sorteo-usuario_idx' AND so.type in (N'U'))
-   DROP INDEX [id-sorteo-usuario_idx] ON [FirstRow].[Sorteo_Usuarios] 
-GO
-CREATE NONCLUSTERED INDEX [id-sorteo-usuario_idx] ON [FirstRow].[Sorteo_Usuarios]
-(
-   [id_Usuario] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Wearing_Imagenes'  AND sc.name = N'FirstRow'  AND si.name = N'imagen-wearing_idx' AND so.type in (N'U'))
-   DROP INDEX [imagen-wearing_idx] ON [FirstRow].[Wearing_Imagenes] 
-GO
-CREATE NONCLUSTERED INDEX [imagen-wearing_idx] ON [FirstRow].[Wearing_Imagenes]
-(
-   [id_Imagen] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Comentarios'  AND sc.name = N'FirstRow'  AND si.name = N'nickname_idx' AND so.type in (N'U'))
-   DROP INDEX [nickname_idx] ON [FirstRow].[Comentarios] 
-GO
-CREATE NONCLUSTERED INDEX [nickname_idx] ON [FirstRow].[Comentarios]
-(
-   [nickname] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Empresas'  AND sc.name = N'FirstRow'  AND si.name = N'pais_idx' AND so.type in (N'U'))
-   DROP INDEX [pais_idx] ON [FirstRow].[Empresas] 
-GO
-CREATE NONCLUSTERED INDEX [pais_idx] ON [FirstRow].[Empresas]
-(
-   [pais] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Blogs'  AND sc.name = N'FirstRow'  AND si.name = N'pais-blog_idx' AND so.type in (N'U'))
-   DROP INDEX [pais-blog_idx] ON [FirstRow].[Blogs] 
-GO
-CREATE NONCLUSTERED INDEX [pais-blog_idx] ON [FirstRow].[Blogs]
-(
-   [pais] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Propuestas'  AND sc.name = N'FirstRow'  AND si.name = N'propuesta_empresa_idx' AND so.type in (N'U'))
-   DROP INDEX [propuesta_empresa_idx] ON [FirstRow].[Propuestas] 
-GO
-CREATE NONCLUSTERED INDEX [propuesta_empresa_idx] ON [FirstRow].[Propuestas]
-(
-   [empresa] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Propuestas'  AND sc.name = N'FirstRow'  AND si.name = N'propuesta_usuario_idx' AND so.type in (N'U'))
-   DROP INDEX [propuesta_usuario_idx] ON [FirstRow].[Propuestas] 
-GO
-CREATE NONCLUSTERED INDEX [propuesta_usuario_idx] ON [FirstRow].[Propuestas]
-(
-   [usuario] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Reservas'  AND sc.name = N'FirstRow'  AND si.name = N'reserva-experiencia_idx' AND so.type in (N'U'))
-   DROP INDEX [reserva-experiencia_idx] ON [FirstRow].[Reservas] 
-GO
-CREATE NONCLUSTERED INDEX [reserva-experiencia_idx] ON [FirstRow].[Reservas]
-(
-   [experiencia] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Reservas'  AND sc.name = N'FirstRow'  AND si.name = N'reserva-usuario_idx' AND so.type in (N'U'))
-   DROP INDEX [reserva-usuario_idx] ON [FirstRow].[Reservas] 
-GO
-CREATE NONCLUSTERED INDEX [reserva-usuario_idx] ON [FirstRow].[Reservas]
-(
-   [usuario] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Stories'  AND sc.name = N'FirstRow'  AND si.name = N'storie_pais_idx' AND so.type in (N'U'))
-   DROP INDEX [storie_pais_idx] ON [FirstRow].[Stories] 
-GO
-CREATE NONCLUSTERED INDEX [storie_pais_idx] ON [FirstRow].[Stories]
-(
-   [pais] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Stories'  AND sc.name = N'FirstRow'  AND si.name = N'storie_usuario_idx' AND so.type in (N'U'))
-   DROP INDEX [storie_usuario_idx] ON [FirstRow].[Stories] 
-GO
-CREATE NONCLUSTERED INDEX [storie_usuario_idx] ON [FirstRow].[Stories]
-(
-   [usuario] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Blog_Stories'  AND sc.name = N'FirstRow'  AND si.name = N'storie-blog_idx' AND so.type in (N'U'))
-   DROP INDEX [storie-blog_idx] ON [FirstRow].[Blog_Stories] 
-GO
-CREATE NONCLUSTERED INDEX [storie-blog_idx] ON [FirstRow].[Blog_Stories]
-(
-   [id_Storie] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Blogs'  AND sc.name = N'FirstRow'  AND si.name = N'usuario-blog_idx' AND so.type in (N'U'))
-   DROP INDEX [usuario-blog_idx] ON [FirstRow].[Blogs] 
-GO
-CREATE NONCLUSTERED INDEX [usuario-blog_idx] ON [FirstRow].[Blogs]
-(
-   [usuario] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (
-       SELECT * FROM sys.objects  so JOIN sys.indexes si
-       ON so.object_id = si.object_id
-       JOIN sys.schemas sc
-       ON so.schema_id = sc.schema_id
-       WHERE so.name = N'Wearing'  AND sc.name = N'FirstRow'  AND si.name = N'wearing-experiencia_idx' AND so.type in (N'U'))
-   DROP INDEX [wearing-experiencia_idx] ON [FirstRow].[Wearing] 
-GO
-CREATE NONCLUSTERED INDEX [wearing-experiencia_idx] ON [FirstRow].[Wearing]
-(
-   [experiencia] ASC
-)
-WITH (DROP_EXISTING = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF)
-GO
-GO
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Blog_Comentarios$blog-comentario'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Blog_Comentarios] DROP CONSTRAINT [Blog_Comentarios$blog-comentario]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Blog_Comentarios]
- ADD CONSTRAINT [Blog_Comentarios$blog-comentario]
- FOREIGN KEY 
-   ([id_Blog])
- REFERENCES 
-   [FirstRow].[Blogs]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Blog_Comentarios$comentario-blog'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Blog_Comentarios] DROP CONSTRAINT [Blog_Comentarios$comentario-blog]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Blog_Comentarios]
- ADD CONSTRAINT [Blog_Comentarios$comentario-blog]
- FOREIGN KEY 
-   ([id_Comentario])
- REFERENCES 
-   [FirstRow].[Comentarios]     ([id])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Blog_Imagenes$blog-imagen'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Blog_Imagenes] DROP CONSTRAINT [Blog_Imagenes$blog-imagen]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Blog_Imagenes]
- ADD CONSTRAINT [Blog_Imagenes$blog-imagen]
- FOREIGN KEY 
-   ([id_Imagen])
- REFERENCES 
-   [FirstRow].[Imagenes]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Blog_Imagenes$imagen-blog'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Blog_Imagenes] DROP CONSTRAINT [Blog_Imagenes$imagen-blog]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Blog_Imagenes]
- ADD CONSTRAINT [Blog_Imagenes$imagen-blog]
- FOREIGN KEY 
-   ([id_Blog])
- REFERENCES 
-   [FirstRow].[Blogs]     ([id])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Blog_Stories$blog-storie'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Blog_Stories] DROP CONSTRAINT [Blog_Stories$blog-storie]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Blog_Stories]
- ADD CONSTRAINT [Blog_Stories$blog-storie]
- FOREIGN KEY 
-   ([id_Blog])
- REFERENCES 
-   [FirstRow].[Blogs]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Blog_Stories$storie-blog'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Blog_Stories] DROP CONSTRAINT [Blog_Stories$storie-blog]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Blog_Stories]
- ADD CONSTRAINT [Blog_Stories$storie-blog]
- FOREIGN KEY 
-   ([id_Storie])
- REFERENCES 
-   [FirstRow].[Stories]     ([id])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Blogs$categoria-blog'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Blogs] DROP CONSTRAINT [Blogs$categoria-blog]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Blogs]
- ADD CONSTRAINT [Blogs$categoria-blog]
- FOREIGN KEY 
-   ([categoria])
- REFERENCES 
-   [FirstRow].[Categorias]     ([id])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Blogs$pais-blog'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Blogs] DROP CONSTRAINT [Blogs$pais-blog]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Blogs]
- ADD CONSTRAINT [Blogs$pais-blog]
- FOREIGN KEY 
-   ([pais])
- REFERENCES 
-   [FirstRow].[Paises]     ([id])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Blogs$usuario-blog'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Blogs] DROP CONSTRAINT [Blogs$usuario-blog]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Blogs]
- ADD CONSTRAINT [Blogs$usuario-blog]
- FOREIGN KEY 
-   ([usuario])
- REFERENCES 
-   [FirstRow].[Usuarios]     ([nickname])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Ciudades$ciudad-pais'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Ciudades] DROP CONSTRAINT [Ciudades$ciudad-pais]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Ciudades]
- ADD CONSTRAINT [Ciudades$ciudad-pais]
- FOREIGN KEY 
-   ([id_pais])
- REFERENCES 
-   [FirstRow].[Paises]     ([id])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Comentarios$nickname_comentarios'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Comentarios] DROP CONSTRAINT [Comentarios$nickname_comentarios]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Comentarios]
- ADD CONSTRAINT [Comentarios$nickname_comentarios]
- FOREIGN KEY 
-   ([nickname])
- REFERENCES 
-   [FirstRow].[Usuarios]     ([nickname])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Dias$dia-experiencia'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Dias] DROP CONSTRAINT [Dias$dia-experiencia]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Dias]
- ADD CONSTRAINT [Dias$dia-experiencia]
- FOREIGN KEY 
-   ([id_experiencia])
- REFERENCES 
-   [FirstRow].[Experiencias]     ([id])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Empresas$nickname'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Empresas] DROP CONSTRAINT [Empresas$nickname]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Empresas]
- ADD CONSTRAINT [Empresas$nickname]
- FOREIGN KEY 
-   ([nickname])
- REFERENCES 
-   [FirstRow].[Usuarios]     ([nickname])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Empresas$pais'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Empresas] DROP CONSTRAINT [Empresas$pais]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Empresas]
- ADD CONSTRAINT [Empresas$pais]
- FOREIGN KEY 
-   ([pais])
- REFERENCES 
-   [FirstRow].[Paises]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencia_Comentarios$comentario-experiencia'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Experiencia_Comentarios] DROP CONSTRAINT [Experiencia_Comentarios$comentario-experiencia]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencia_Comentarios]
- ADD CONSTRAINT [Experiencia_Comentarios$comentario-experiencia]
- FOREIGN KEY 
-   ([id_Comentario])
- REFERENCES 
-   [FirstRow].[Comentarios]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencia_Comentarios$experiencia-comentario'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Experiencia_Comentarios] DROP CONSTRAINT [Experiencia_Comentarios$experiencia-comentario]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencia_Comentarios]
- ADD CONSTRAINT [Experiencia_Comentarios$experiencia-comentario]
- FOREIGN KEY 
-   ([id_Experiencia])
- REFERENCES 
-   [FirstRow].[Experiencias]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencia_Imagenes$id_experiencia'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Experiencia_Imagenes] DROP CONSTRAINT [Experiencia_Imagenes$id_experiencia]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencia_Imagenes]
- ADD CONSTRAINT [Experiencia_Imagenes$id_experiencia]
- FOREIGN KEY 
-   ([id_Experiencia])
- REFERENCES 
-   [FirstRow].[Experiencias]     ([id])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencia_Imagenes$id_imagen'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Experiencia_Imagenes] DROP CONSTRAINT [Experiencia_Imagenes$id_imagen]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencia_Imagenes]
- ADD CONSTRAINT [Experiencia_Imagenes$id_imagen]
- FOREIGN KEY 
-   ([id_Imagen])
- REFERENCES 
-   [FirstRow].[Imagenes]     ([id])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencia_Incluido$id-experiencia'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Experiencia_Incluido] DROP CONSTRAINT [Experiencia_Incluido$id-experiencia]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencia_Incluido]
- ADD CONSTRAINT [Experiencia_Incluido$id-experiencia]
- FOREIGN KEY 
-   ([id_experiencia])
- REFERENCES 
-   [FirstRow].[Experiencias]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencia_Incluido$id-incluido'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Experiencia_Incluido] DROP CONSTRAINT [Experiencia_Incluido$id-incluido]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencia_Incluido]
- ADD CONSTRAINT [Experiencia_Incluido$id-incluido]
- FOREIGN KEY 
-   ([id_incluido])
- REFERENCES 
-   [FirstRow].[Incluidos]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencia_Stories$id_experiencia_storie'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Experiencia_Stories] DROP CONSTRAINT [Experiencia_Stories$id_experiencia_storie]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencia_Stories]
- ADD CONSTRAINT [Experiencia_Stories$id_experiencia_storie]
- FOREIGN KEY 
-   ([id_experiencia])
- REFERENCES 
-   [FirstRow].[Experiencias]     ([id])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencia_Stories$id_storie_experiencia'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Experiencia_Stories] DROP CONSTRAINT [Experiencia_Stories$id_storie_experiencia]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencia_Stories]
- ADD CONSTRAINT [Experiencia_Stories$id_storie_experiencia]
- FOREIGN KEY 
-   ([id_storie])
- REFERENCES 
-   [FirstRow].[Stories]     ([id])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencias$experiencia_empresa'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Experiencias] DROP CONSTRAINT [Experiencias$experiencia_empresa]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencias]
- ADD CONSTRAINT [Experiencias$experiencia_empresa]
- FOREIGN KEY 
-   ([empresa])
- REFERENCES 
-   [FirstRow].[Empresas]     ([nickname])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Experiencias$experiencia_pais'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Experiencias] DROP CONSTRAINT [Experiencias$experiencia_pais]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Experiencias]
- ADD CONSTRAINT [Experiencias$experiencia_pais]
- FOREIGN KEY 
-   ([pais])
- REFERENCES 
-   [FirstRow].[Paises]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Propuestas$propuesta_empresa'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Propuestas] DROP CONSTRAINT [Propuestas$propuesta_empresa]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Propuestas]
- ADD CONSTRAINT [Propuestas$propuesta_empresa]
- FOREIGN KEY 
-   ([empresa])
- REFERENCES 
-   [FirstRow].[Empresas]     ([nickname])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Propuestas$propuesta_usuario'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Propuestas] DROP CONSTRAINT [Propuestas$propuesta_usuario]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Propuestas]
- ADD CONSTRAINT [Propuestas$propuesta_usuario]
- FOREIGN KEY 
-   ([usuario])
- REFERENCES 
-   [FirstRow].[Usuarios]     ([nickname])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Reservas$reserva-experiencia'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Reservas] DROP CONSTRAINT [Reservas$reserva-experiencia]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Reservas]
- ADD CONSTRAINT [Reservas$reserva-experiencia]
- FOREIGN KEY 
-   ([experiencia])
- REFERENCES 
-   [FirstRow].[Experiencias]     ([id])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Reservas$reserva-usuario'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Reservas] DROP CONSTRAINT [Reservas$reserva-usuario]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Reservas]
- ADD CONSTRAINT [Reservas$reserva-usuario]
- FOREIGN KEY 
-   ([usuario])
- REFERENCES 
-   [FirstRow].[Usuarios]     ([nickname])
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Sorteo_Usuarios$id-sorteo'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Sorteo_Usuarios] DROP CONSTRAINT [Sorteo_Usuarios$id-sorteo]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Sorteo_Usuarios]
- ADD CONSTRAINT [Sorteo_Usuarios$id-sorteo]
- FOREIGN KEY 
-   ([id_Sorteo])
- REFERENCES 
-   [FirstRow].[Sorteos]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Sorteo_Usuarios$id-sorteo-usuario'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Sorteo_Usuarios] DROP CONSTRAINT [Sorteo_Usuarios$id-sorteo-usuario]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Sorteo_Usuarios]
- ADD CONSTRAINT [Sorteo_Usuarios$id-sorteo-usuario]
- FOREIGN KEY 
-   ([id_Usuario])
- REFERENCES 
-   [FirstRow].[Usuarios]     ([nickname])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Sorteos$experiencia-sorteo'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Sorteos] DROP CONSTRAINT [Sorteos$experiencia-sorteo]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Sorteos]
- ADD CONSTRAINT [Sorteos$experiencia-sorteo]
- FOREIGN KEY 
-   ([experiencia])
- REFERENCES 
-   [FirstRow].[Experiencias]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Stories$storie_pais'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Stories] DROP CONSTRAINT [Stories$storie_pais]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Stories]
- ADD CONSTRAINT [Stories$storie_pais]
- FOREIGN KEY 
-   ([pais])
- REFERENCES 
-   [FirstRow].[Paises]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Stories$storie_usuario'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Stories] DROP CONSTRAINT [Stories$storie_usuario]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Stories]
- ADD CONSTRAINT [Stories$storie_usuario]
- FOREIGN KEY 
-   ([usuario])
- REFERENCES 
-   [FirstRow].[Usuarios]     ([nickname])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Wearing$wearing-experiencia'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Wearing] DROP CONSTRAINT [Wearing$wearing-experiencia]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Wearing]
- ADD CONSTRAINT [Wearing$wearing-experiencia]
- FOREIGN KEY 
-   ([experiencia])
- REFERENCES 
-   [FirstRow].[Experiencias]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Wearing_Imagenes$imagen-wearing'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Wearing_Imagenes] DROP CONSTRAINT [Wearing_Imagenes$imagen-wearing]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Wearing_Imagenes]
- ADD CONSTRAINT [Wearing_Imagenes$imagen-wearing]
- FOREIGN KEY 
-   ([id_Imagen])
- REFERENCES 
-   [FirstRow].[Imagenes]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-IF EXISTS (SELECT * FROM sys.objects so JOIN sys.schemas sc ON so.schema_id = sc.schema_id WHERE so.name = N'Wearing_Imagenes$wearing-imagen'  AND sc.name = N'FirstRow'  AND type in (N'F'))
-ALTER TABLE [FirstRow].[Wearing_Imagenes] DROP CONSTRAINT [Wearing_Imagenes$wearing-imagen]
- GO
-
-
-
-ALTER TABLE [FirstRow].[Wearing_Imagenes]
- ADD CONSTRAINT [Wearing_Imagenes$wearing-imagen]
- FOREIGN KEY 
-   ([id_Wearing])
- REFERENCES 
-   [FirstRow].[Wearing]     ([id])
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
-
-GO
-
-ALTER TABLE  [FirstRow].[Blogs]
- ADD DEFAULT NULL FOR [citacion]
-GO
-
-ALTER TABLE  [FirstRow].[Ciudades]
- ADD DEFAULT NULL FOR [image]
-GO
-
-ALTER TABLE  [FirstRow].[Comentarios]
- ADD DEFAULT NULL FOR [estrellas]
-GO
-
-ALTER TABLE  [FirstRow].[Dias]
- ADD DEFAULT NULL FOR [imagen]
-GO
-
-ALTER TABLE  [FirstRow].[Empresas]
- ADD DEFAULT NULL FOR [image]
-GO
-
-ALTER TABLE  [FirstRow].[Empresas]
- ADD DEFAULT NULL FOR [background_image]
-GO
-
-ALTER TABLE  [FirstRow].[Empresas]
- ADD DEFAULT NULL FOR [facebook]
-GO
-
-ALTER TABLE  [FirstRow].[Empresas]
- ADD DEFAULT NULL FOR [twitter]
-GO
-
-ALTER TABLE  [FirstRow].[Imagenes]
- ADD DEFAULT NULL FOR [mode]
-GO
-
-ALTER TABLE  [FirstRow].[Paises]
- ADD DEFAULT NULL FOR [name]
-GO
-
-ALTER TABLE  [FirstRow].[Propuestas]
- ADD DEFAULT NULL FOR [imagen]
-GO
-
-ALTER TABLE  [FirstRow].[Reservas]
- ADD DEFAULT NULL FOR [descripcion]
-GO
-
-ALTER TABLE  [FirstRow].[Usuarios]
- ADD DEFAULT NULL FOR [image]
-GO
-
-ALTER TABLE  [FirstRow].[Usuarios]
- ADD DEFAULT NULL FOR [background_image]
-GO
-
-ALTER TABLE  [FirstRow].[Usuarios]
- ADD DEFAULT NULL FOR [facebook]
-GO
-
-ALTER TABLE  [FirstRow].[Usuarios]
- ADD DEFAULT NULL FOR [twitter]
-GO
+    id_Wearing int not null
+        constraint [Wearing_Imagenes$wearing-imagen]
+            references [firstrow_].[dbo].[Wearing] (id),
+    id_Imagen  int not null
+        constraint [Wearing_Imagenes$imagen-wearing]
+            references [firstrow_].[dbo].[Imagenes] (id),
+    constraint PK_Wearing_Imagenes_id_Wearing
+        primary key clustered (id_Wearing asc, id_Imagen asc)
+);
+
+create index [imagen-wearing_idx]
+    on [firstrow_].[dbo].[Wearing_Imagenes] (id_Imagen);
+
+
+SET IDENTITY_INSERT firstrow_.dbo.Categorias ON;
+INSERT INTO firstrow_.dbo.Categorias (id, nombre, descripcion, slug) VALUES (1, N'Sierra', N'Experiencias por montaña', N'sierra');
+INSERT INTO firstrow_.dbo.Categorias (id, nombre, descripcion, slug) VALUES (2, N'Playa', N'Experiencias en las mejores playas', N'playa');
+INSERT INTO firstrow_.dbo.Categorias (id, nombre, descripcion, slug) VALUES (3, N'Costa', N'Experiencias en las mejores costas', N'costa');
+INSERT INTO firstrow_.dbo.Categorias (id, nombre, descripcion, slug) VALUES (4, N'Interior', N'Experiencias por climas de interior', N'interior');
+INSERT INTO firstrow_.dbo.Categorias (id, nombre, descripcion, slug) VALUES (5, N'Invierno', N'Experiencias en climas extremos', N'invierno');
+INSERT INTO firstrow_.dbo.Categorias (id, nombre, descripcion, slug) VALUES (6, N'Verano', N'Experiencias por climas tropicales', N'verano');
+
+INSERT INTO firstrow_.dbo.Paises (id, name) VALUES (1, N'España');
+INSERT INTO firstrow_.dbo.Paises (id, name) VALUES (2, N'Francia');
+INSERT INTO firstrow_.dbo.Paises (id, name) VALUES (3, N'Italia');
+INSERT INTO firstrow_.dbo.Paises (id, name) VALUES (4, N'Japon');
+INSERT INTO firstrow_.dbo.Paises (id, name) VALUES (5, N'Indonesia');
+INSERT INTO firstrow_.dbo.Paises (id, name) VALUES (6, N'EEUU');
+INSERT INTO firstrow_.dbo.Paises (id, name) VALUES (7, N'Noruega');
+INSERT INTO firstrow_.dbo.Paises (id, name) VALUES (8, N'Islandia');
+INSERT INTO firstrow_.dbo.Paises (id, name) VALUES (9, N'Suecia');
+INSERT INTO firstrow_.dbo.Paises (id, name) VALUES (10, N'Andorra');
+
+INSERT INTO firstrow_.dbo.Usuarios (nickname, email, password, image, background_image, name, firstname, secondname, facebook, twitter) VALUES (N'admino', N'carloss2@carlos.es', N'1234', N'~/Media/Users/pepe.png', N'bg_default.png', N'asd', N'asdasd', N'adsasd', N'', N'');
+INSERT INTO firstrow_.dbo.Usuarios (nickname, email, password, image, background_image, name, firstname, secondname, facebook, twitter) VALUES (N'carlos233', N'dsa5ads@dsa.es', N'1234', N'default.png', N'bg_default.png', N'empresa', N'empresa', N'qweqwe', N'', N'');
+INSERT INTO firstrow_.dbo.Usuarios (nickname, email, password, image, background_image, name, firstname, secondname, facebook, twitter) VALUES (N'carlos3', N'carlos10@carlos.es', N'1234', N'~/Media/Users/carlos3_ejemplo3.png', N'bg_default.png', N'Carlos', N'Robles', N'Robles', N'Facebook', N'Twitter');
+INSERT INTO firstrow_.dbo.Usuarios (nickname, email, password, image, background_image, name, firstname, secondname, facebook, twitter) VALUES (N'carlos9', N'carlos9@carlos.es', N'1234', N'~/Media/Users/carlos9_perfil.jfif', N'bg_default.png', N'ewqewqe', N'qwewqe', N'qweqwe', N'', N'');
+INSERT INTO firstrow_.dbo.Usuarios (nickname, email, password, image, background_image, name, firstname, secondname, facebook, twitter) VALUES (N'carlosr', N'carlosq@carlos.es', N'1234', N'~/Media/Users/perfil.jfif', N'bg_default.png', N'feds', N'dfdsf', N'dsf', N'', N'');
+INSERT INTO firstrow_.dbo.Usuarios (nickname, email, password, image, background_image, name, firstname, secondname, facebook, twitter) VALUES (N'empresa', N'emp@emp2.com', N'1234', N'~/Media/Users/empresa_google.jpg', N'bg_default.png', N'Enterprise', N'empresa', N'empresa', N'9', N'uiuiiu');
+INSERT INTO firstrow_.dbo.Usuarios (nickname, email, password, image, background_image, name, firstname, secondname, facebook, twitter) VALUES (N'empresaw33', N'dsaads@dsa.es', N'1234', N'default.png', N'bg_default.png', N'empresa', N'empresa', N'rwe', N'', N'');
+INSERT INTO firstrow_.dbo.Usuarios (nickname, email, password, image, background_image, name, firstname, secondname, facebook, twitter) VALUES (N'pepe', N'carlos@carlos.es', N'1234', N'~/Media/Users/pepe.png', N'bg_default.png', N'eee', N'eeee', N'hhhh', N'face', N'twitt');
+INSERT INTO firstrow_.dbo.Usuarios (nickname, email, password, image, background_image, name, firstname, secondname, facebook, twitter) VALUES (N'qweqweqwe', N'carlo2s@carlos.es', N'1234', N'pepe.png', N'bg_default.png', N'ewqeqwe', N'qweqwe', N'qweqe', N'', N'');
+
+INSERT INTO firstrow_.dbo.Empresas (nickname, cif, direccion, fechaCreacion, pais) VALUES (N'carlos233', N'20097870X', N'444', N'2022-05-03 09:03:46', 4);
+INSERT INTO firstrow_.dbo.Empresas (nickname, cif, direccion, fechaCreacion, pais) VALUES (N'empresa', N'20097870A', N'Calle 13', N'2022-04-25 11:04:01', 3);
+INSERT INTO firstrow_.dbo.Empresas (nickname, cif, direccion, fechaCreacion, pais) VALUES (N'empresaw33', N'20097870X', N'Calle 104', N'2022-05-03 09:01:28', 3);
+
+
+INSERT INTO firstrow_.dbo.Stories (id, titulo, descripcion, fecha, pais, usuario, imagen) VALUES (1, N'tit', N'desc', N'2020-04-01 00:00:00', 3, N'carlos3', N'https://noticiasbancarias.com/wp-content/uploads/2015/05/Italia-2.jpg');
+INSERT INTO firstrow_.dbo.Stories (id, titulo, descripcion, fecha, pais, usuario, imagen) VALUES (2, N'viaje canarias', N'decripcion viaje', N'2021-12-04 00:00:00', 1, N'carlosr', N'https://viajes.nationalgeographic.com.es/medio/2020/02/13/fuerteventura_f9cff96a_1280x720.jpg');
+INSERT INTO firstrow_.dbo.Stories (id, titulo, descripcion, fecha, pais, usuario, imagen) VALUES (3, N'viaje tokio', N'descripcion tokio', N'2019-02-25 00:00:00', 4, N'pepe', N'https://japonismo.com/wp-content/uploads/2021/06/guia-turistica-tokio-japonismo.jpg');
 

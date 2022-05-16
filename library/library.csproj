@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,8 +47,10 @@
     <Compile Include="CADBlog.cs" />
     <Compile Include="CADCategorias.cs" />
     <Compile Include="CADComentarios.cs" />
+    <Compile Include="CADDia.cs" />
     <Compile Include="CADEmpresa.cs" />
     <Compile Include="CADGaleria.cs" />
+    <Compile Include="CADIncluido.cs" />
     <Compile Include="CADPaises.cs" />
     <Compile Include="CADPropuestas.cs" />
     <Compile Include="CADSorteos.cs" />
@@ -55,12 +58,16 @@
     <Compile Include="CADUsuario.cs" />
     <Compile Include="CADViajes.cs" />
     <Compile Include="CADWearing.cs" />
+    <Compile Include="CADImagenes.cs" />
     <Compile Include="ENAdmin.cs" />
     <Compile Include="ENBlog.cs" />
     <Compile Include="ENCategorias.cs" />
     <Compile Include="ENComentarios.cs" />
+    <Compile Include="ENDia.cs" />
     <Compile Include="ENEmpresa.cs" />
     <Compile Include="ENGaleria.cs" />
+    <Compile Include="ENImagenes.cs" />
+    <Compile Include="ENIncluido.cs" />
     <Compile Include="ENPais.cs" />
     <Compile Include="ENPropuestas.cs" />
     <Compile Include="ENSorteos.cs" />

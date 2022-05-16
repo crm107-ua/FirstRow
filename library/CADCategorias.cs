@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace library
@@ -8,82 +10,165 @@ namespace library
     {
         private String constring;
 
-        internal int idViaje;
-        internal int nombreUsuario;
-        internal int TourViaje;
-
         public CADCategorias()
         {
-                constring = ConfigurationManager.ConnectionStrings["DataBase"].ToString();
+            constring = ConfigurationManager.ConnectionStrings["DataBase"].ToString();
         }
 
-        // Set/get - Identificativo con un entero
-        public int id
+        public DataSet readCategorias()
         {
-            get { return idViaje; }
-            private set { idViaje = value; }
-        }
+            SqlConnection c = null;
 
-        // Set/get - Identificativo con un entero
-        public int Ciudad_pais
-        {
-            get { return Ciudad_pais; }
-            private set { idViaje = value; }
-        }
-
-        // Set/get - Identificativo con un entero
-        public int Tour_Viaje
-        {
-            get { return Tour_Viaje; }
-            private set { idViaje = value; }
+            try
+            {
+                c = new SqlConnection(constring);
+                DataSet bd = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter("select * from [firstrow_].[dbo].[Categorias]", c);
+                da.Fill(bd, "Categorias");
+                return bd;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                if (c != null)
+                {
+                    c.Close();
+                }
+            }
         }
 
         // Crear Categoria
-        public bool registerCategoria(ENCategorias en)
+        public bool registerCategoria(ENCategorias categoria)
         {
             bool creado = false;
-            if(en is ENCategorias)
+            if (categoria is ENCategorias)
             {
-              
+
+                bool created = false;
+                SqlConnection connection = new SqlConnection(constring);
+                try
+                {
+                    connection.Open();
+                    string query = "INSERT INTO [firstrow_].[dbo].[Categorias] " +
+                        "(id, titulo, descripcion, fecha, pais, usuario, imagen) VALUES " +
+                        $"({categoria.id}, {categoria.nombre}, {categoria.descripcion}, {categoria.slug})";
+
+                    SqlCommand com = new SqlCommand(query, connection);
+                    com.ExecuteNonQuery();
+                    created = true;
+                }
+                catch (SqlException e)
+                {
+                    created = false;
+                    Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                }
+                catch (Exception e)
+                {
+                    created = false;
+                    Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                }
+                finally
+                {
+                    if (connection != null)
+                    {
+                        connection.Close();
+                    }
+                }
+
+                return created;
+
             }
-            
+
             return creado;
         }
 
-        // Leer Categoria
-        public bool readCategoria(ENCategorias en)
+
+        public bool readCategoria(ENCategorias categoria, bool mode)
         {
-            bool read = false;
-            if (en is ENCategorias)
+
+            SqlConnection conection = null;
+            SqlDataReader busqueda = null;
+
+            try
             {
-                
+                conection = new SqlConnection(constring);
+                SqlCommand consulta = new SqlCommand();
+                conection.Open();
+                string query = "";
+
+                if (mode)
+                {
+                    query = "Select * From [firstrow_].[dbo].[Categorias] where id = @id";
+                    consulta = new SqlCommand(query, conection);
+                    consulta.Parameters.AddWithValue("@id", categoria.id);
+                }
+                else
+                {
+                    query = "Select * From [firstrow_].[dbo].[Categorias] where slug = @slug";
+                    consulta = new SqlCommand(query, conection);
+                    consulta.Parameters.AddWithValue("@slug", categoria.slug);
+                }
+                busqueda = consulta.ExecuteReader();
+                busqueda.Read();
+
+                // Lectura de campos de categoria
+
+                categoria.id = Int32.Parse(busqueda["id"].ToString());
+                categoria.nombre = busqueda["nombre"].ToString();
+                categoria.descripcion = busqueda["descripcion"].ToString();
+                categoria.slug = busqueda["slug"].ToString();
+
             }
-            
-            return read;
+            catch (SqlException e)
+            {
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                return false;
+            }
+            finally
+            {
+                if (busqueda != null)
+                {
+                    busqueda.Close();
+                }
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return true;
         }
 
         // Actualizar Categoria
-        public bool updateCategoria(ENCategorias en)
+        public bool updateCategoria(ENCategorias categoria)
         {
             bool update = false;
-            if (en is ENCategorias)
+            if (categoria is ENCategorias)
             {
-               
+
+                bool updated = false;
+                return updated;
+
             }
-           
+
             return update;
         }
 
         // Eliminar Categoria
-        public bool deleteCategoria(ENCategorias en)
+        public bool deleteCategoria(ENCategorias categoria)
         {
-            bool delete = false;
-            return delete;
+            bool deleted = false;
+            return deleted;
         }
-
-        public static string imagenes; //Add-Delete
 
     }
 
 }
-

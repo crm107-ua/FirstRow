@@ -3,22 +3,21 @@
     <div class="main_slider js_height">
             <div class="slider_wrap" id="main_slider_wrap">
                 <div class="slide">
-                    <div class="bg-img" style="background-image: url(https://images6.alphacoders.com/353/thumb-1920-353980.jpg)"></div>
+                    <div class="bg-img" style="background-image: url(https://i.natgeofe.com/n/32f7dda9-f96d-478a-bd1a-28328253ab49/2103_BURKARD_08056%20copy.jpg)"></div>
                     <div class="wrap">
                         <div class="wrap_float js_height">
                             <div class="slide_content">
                                 <div class="title_wrap">
-                                    <p class="country">United States of America</p>
-                                    <h2 class="slide_title">Arizona</h2>
+                                    <p class="country">España</p>
+                                    <h2 class="slide_title">La Palma</h2>
                                 </div>
-                                <p class="text">
-                                    The 48th state, which became part of the United States. Located in the South-West of the country
+                                <p class="text" style="color:white;">
+                                    Vive una de las experiencias más extremas de tu vida
                                 </p>
                                 <div class="buttons">
-                                    <a href="tour-page-right-sidebar.html" class="btn button">Book now</a>
-                                    <a href="travel-list-full-width.html" class="link"><span>Choose tour</span></a>
+                                    <a href="/experiencias" class="btn button">Reserva ahora</a>
                                 </div>
-                                <div class="next_title">Asia</div>
+                                <div class="next_title">Japón</div>
                             </div>
                         </div>
                     </div>
@@ -30,44 +29,36 @@
                         <div class="wrap_float js_height">
                             <div class="slide_content">
                                 <div class="title_wrap">
-                                    <h2 class="slide_title">Asia</h2>
+                                    <p class="country">Japón</p>
+                                    <h2 class="slide_title">Monte Fuji</h2>
                                 </div>
-                                <p class="text">
-                                    The largest part of the world, both in territory and in population
+                                <p class="text" style="color:white;">
+                                    Vive una experiencia increíble en la excursión más impactante de tu vida
                                 </p>
                                 <div class="buttons">
-                                    <a href="tour-page-right-sidebar.html" class="btn button">Book now</a>
-                                    <a href="travel-list-full-width.html" class="link"><span>Choose tour</span></a>
+                                    <a href="/experiencias" class="btn button">Reserva ahora</a>
                                 </div>
-                                <div class="next_title">Reykjavik</div>
+                                <div class="next_title">Chile</div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
                 <div class="slide">
-                    <div class="bg-img" style="background-image: url(https://img5.goodfon.com/wallpaper/nbig/8/65/reikiavik-islandiia-noch-ogni-doma-bashnia.jpg)"></div>
+                    <div class="bg-img" style="background-image: url(https://s.abcnews.com/images/Travel/HT_national_geographic2_cf_151223_22x15_1600.jpg)"></div>
                     <div class="wrap">
                         <div class="wrap_float js_height">
                             <div class="slide_content">
                                 <div class="title_wrap">
-                                    <p class="country">Iceland</p>
-                                    <h2 class="slide_title">Reykjavik</h2>
+                                    <p class="country">Chile</p>
+                                    <h2 class="slide_title">Torres del Paine National Park</h2>
                                 </div>
-                                <p class="text">
-                                    The capital and largest city as well as the community of Iceland
+                                <p class="text" style="color:white;">
+                                    Los paisajes más impresionantes del mundo
                                 </p>
                                 <div class="buttons">
-                                    <a href="tour-page-right-sidebar.html" class="btn button">Book now</a>
-                                    <a href="travel-list-full-width.html" class="link"><span>Choose tour</span></a>
+                                    <a href="/experiencias" class="btn button">Reserva ahora</a>
                                 </div>
-                                <div class="next_title">Arizona</div>
+                                <div class="next_title">España</div>
                             </div>
                         </div>
                     </div>
@@ -78,7 +69,7 @@
                 <div class="arrow next"></div>
             </div>
         </div>
-    <div class="most_popular">
+<%--    <div class="most_popular">
             <div class="wrap">
                 <div class="wrap_float">
                     <div class="title_wrap">
@@ -437,8 +428,8 @@
                             <div class="label">Aduld</div>
                             <div class="num_wrap">
                                 <div class="buttons">
-                                    <button class="plus"></button>
-                                    <button class="minus"></button>
+                                    <button type="button" class="plus"></button>
+                                    <button type="button" class="minus"></button>
                                 </div>
                                 <input type="number" class="val js_num" value="3" min="0" max="99">
                             </div>
@@ -447,8 +438,8 @@
                             <div class="label">Children</div>
                             <div class="num_wrap">
                                 <div class="buttons">
-                                    <button class="plus"></button>
-                                    <button class="minus"></button>
+                                    <button type="button" class="plus"></button>
+                                    <button type="button" class="minus"></button>
                                 </div>
                                 <input type="number" class="val js_num" value="3" min="0" max="99">
                             </div>
@@ -598,169 +589,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    <div class="blog">
-            <div class="wrap">
-                <div class="wrap_float">
-                    <div class="title_wrap">
-                        <h2 class="title">Recent Blog Posts</h2>
-                        <p class="subtitle">
-                            Watch and be inspired
-                        </p>
-                        <div class="controls">
-                            <a href="blog-right-sidebar.html" class="link">All Blog Posts</a>
-                        </div>
-                    </div>
-                    <div class="section_content">
-                        <a href="blog-single-right-sidebar.html" class="blog_item">
-                            <div class="blog_item_top" style="background-image: url(Assets/img/demo-bg.jpg);">
-                                <div class="sq_parent">
-                                    <div class="sq_wrap">
-                                        <div class="sq_content">
-                                            <div class="tags">
-                                                <div class="tag red">Stream</div>
-                                                <div class="tag green">Countries</div>
-                                            </div>
-                                            <h3 class="_title">
-                                                Most popular destinations destinations
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="shadow js-shadow"></div>
-                            </div>
-                            <div class="blog_item_bottom">
-                                <div class="author">
-                                    <div class="userpic">
-                                        <img src="Assets/img/demo-bg.jpg" alt="">
-                                    </div>
-                                    <div class="date">21.09.2019 by Maya Delia</div>
-                                </div>
-                                <p class="text">
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                </p>
-                            </div>
-                        </a>
-
-                        <a href="blog-single-right-sidebar.html" class="blog_item">
-                            <div class="blog_item_top" style="background-image: url(Assets/img/demo-bg.jpg);">
-                                <div class="sq_parent">
-                                    <div class="sq_wrap">
-                                        <div class="sq_content">
-                                            <div class="tags">
-                                                <div class="tag blue">Video</div>
-                                            </div>
-                                            <h3 class="_title">
-                                                Most popular destinations destinations
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="shadow js-shadow"></div>
-                            </div>
-                            <div class="blog_item_bottom">
-                                <div class="author">
-                                    <div class="userpic">
-                                        <img src="Assets/img/demo-bg.jpg" alt="">
-                                    </div>
-                                    <div class="date">20.09.2019 by Victor Shibut</div>
-                                </div>
-                                <p class="text">
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                </p>
-                            </div>
-                        </a>
-
-                        <a href="blog-single-right-sidebar.html" class="blog_item">
-                            <div class="blog_item_top" style="background-image: url(Assets/img/demo-bg.jpg);">
-                                <div class="sq_parent">
-                                    <div class="sq_wrap">
-                                        <div class="sq_content">
-                                            <div class="tags">
-                                                <div class="tag black">Trips</div>
-                                            </div>
-                                            <h3 class="_title">
-                                                Most popular destinations destinations
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="shadow js-shadow"></div>
-                            </div>
-                            <div class="blog_item_bottom">
-                                <div class="author">
-                                    <div class="userpic">
-                                        <img src="Assets/img/demo-bg.jpg" alt="">
-                                    </div>
-                                    <div class="date">21.09.2019 by Maya Delia</div>
-                                </div>
-                                <p class="text">
-                                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <div class="subscribe_section">
-            <div class="wrap">
-                <div class="wrap_float">
-                    <div class="subscribe_block" style="background-image: url(Assets/img/demo-bg.jpg)">
-                        <div class="left">
-                            <h2 class="_title">Newslatters</h2>
-                            <p class="_subtitle">Sign up to receive the best offers</p>
-                        </div>
-                        <div class="right">
-                            <div class="input_wrap select_wrap">
-                                <select>
-                                    <option value="Destination" disabled selected>Destination</option>
-                                    <option value="United States">United States</option>
-                                    <option value="United Kingdom">United Kingdom</option>
-                                    <option value="Afghanistan">Afghanistan</option>
-                                    <option value="Albania">Albania</option>
-                                    <option value="Algeria">Algeria</option>
-                                    <option value="American Samoa">American Samoa</option>
-                                    <option value="Andorra">Andorra</option>
-                                    <option value="Angola">Angola</option>
-                                    <option value="Anguilla">Anguilla</option>
-                                    <option value="Antarctica">Antarctica</option>
-                                    <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                                    <option value="Argentina">Argentina</option>
-                                    <option value="Armenia">Armenia</option>
-                                    <option value="Aruba">Aruba</option>
-                                    <option value="Australia">Australia</option>
-                                    <option value="Austria">Austria</option>
-                                    <option value="Azerbaijan">Azerbaijan</option>
-                                    <option value="Bahamas">Bahamas</option>
-                                    <option value="Bahrain">Bahrain</option>
-                                    <option value="Bangladesh">Bangladesh</option>
-                                    <option value="Barbados">Barbados</option>
-                                    <option value="Belarus">Belarus</option>
-                                    <option value="Belgium">Belgium</option>
-                                    <option value="Belize">Belize</option>
-                                    <option value="Benin">Benin</option>
-                                    <option value="Bermuda">Bermuda</option>
-                                    <option value="Bhutan">Bhutan</option>
-                                    <option value="Bolivia">Bolivia</option>
-                                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                                    <option value="Botswana">Botswana</option>
-                                    <option value="Bouvet Island">Bouvet Island</option>
-                                    <option value="Brazil">Brazil</option>
-                                    <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
-                                    <option value="Brunei Darussalam">Brunei Darussalam</option>
-                                    <option value="Bulgaria">Bulgaria</option>
-                                </select>
-                            </div>
-                            <div class="input_wrap">
-                                <input type="email" class="input" placeholder="Email">
-                            </div>
-                            <button class="submit button"><span>Subscribe</span></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>--%>
 </asp:Content>
 
 

@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=1.0.20229.24049, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit-1.0.20229.24049.1.0.20229.24049\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
@@ -110,8 +113,11 @@
     <Content Include="assets\img\check-mark.svg" />
     <Content Include="assets\img\close-red.svg" />
     <Content Include="assets\img\close.svg" />
+    <Content Include="assets\img\default.jpg" />
     <Content Include="assets\img\demo-bg-2.jpg" />
     <Content Include="assets\img\demo-bg-3.jpg" />
+    <Content Include="assets\img\demo-bg-4.jpg" />
+    <Content Include="assets\img\demo-bg-5.jpg" />
     <Content Include="assets\img\demo-bg.jpg" />
     <Content Include="assets\img\facebook-logo-black.svg" />
     <Content Include="assets\img\facebook-logo.svg" />
@@ -164,6 +170,22 @@
     <Content Include="assets\js\scripts.min.js.map" />
     <Content Include="assets\js\slick.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="Media\Paises\Andorra.jpg" />
+    <Content Include="Media\Paises\EEUU.jpg" />
+    <Content Include="Media\Paises\Spain.jpg" />
+    <Content Include="Media\Paises\Francia.jpg" />
+    <Content Include="Media\Paises\Indonesia.jpg" />
+    <Content Include="Media\Paises\Islandia.jpg" />
+    <Content Include="Media\Paises\Italia.jpg" />
+    <Content Include="Media\Paises\Japon.jpg" />
+    <Content Include="Media\Paises\Noruega.jpg" />
+    <Content Include="Media\Stories\fuerteventura_f9cff96a_1280x720.jpg" />
+    <Content Include="Media\Stories\guia-turistica-tokio-japonismo.jpg" />
+    <Content Include="Media\Stories\Italia-2.jpg" />
+    <Content Include="Media\Stories\lofoten.jpg" />
+    <Content Include="Media\Stories\coliseo.jpg" />
+    <Content Include="Media\Stories\fuente.jpg" />
+    <Content Include="Pages\403.aspx" />
     <Content Include="Pages\404.aspx" />
     <Content Include="Pages\Blog.aspx" />
     <Content Include="Pages\Blogs.aspx" />
@@ -171,29 +193,35 @@
     <Content Include="Pages\Equipo.aspx" />
     <Content Include="Pages\Experiencia.aspx" />
     <Content Include="Pages\Experiencias.aspx" />
+    <Content Include="Pages\Forms\FormBlog.aspx" />
+    <Content Include="Pages\Forms\FormStory.aspx" />
+    <Content Include="Pages\Forms\FormGaleria.aspx" />
+    <Content Include="Pages\Forms\FormExperiencia.aspx" />
     <Content Include="Pages\Galeria.aspx" />
     <Content Include="Pages\Inicio.aspx" />
+    <Content Include="Pages\Perfil.aspx" />
     <Content Include="Pages\Propuesta.aspx" />
     <Content Include="Pages\Propuestas.aspx" />
+    <Content Include="Pages\Reservas.aspx" />
     <Content Include="Pages\Seccion_Galeria.aspx" />
     <Content Include="Pages\Sorteo.aspx" />
     <Content Include="Pages\Sorteos.aspx" />
-    <Content Include="Pages\Storie.aspx" />
+    <Content Include="Pages\Story.aspx" />
     <Content Include="Pages\Stories.aspx" />
     <Content Include="Pages\Wearing.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Dark.Master.cs">
-      <DependentUpon>Dark.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Dark.Master.designer.cs">
-      <DependentUpon>Dark.Master</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\403.aspx.cs">
+      <DependentUpon>403.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\403.aspx.designer.cs">
+      <DependentUpon>403.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\404.aspx.cs">
       <DependentUpon>404.aspx</DependentUpon>
@@ -244,12 +272,47 @@
     <Compile Include="Pages\Experiencias.aspx.designer.cs">
       <DependentUpon>Experiencias.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Forms\FormBlog.aspx.cs">
+      <DependentUpon>FormBlog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Forms\FormBlog.aspx.designer.cs">
+      <DependentUpon>FormBlog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Forms\FormStory.aspx.cs">
+      <DependentUpon>FormStory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Forms\FormStory.aspx.designer.cs">
+      <DependentUpon>FormStory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Forms\FormGaleria.aspx.cs">
+      <DependentUpon>FormGaleria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Forms\FormGaleria.aspx.designer.cs">
+      <DependentUpon>FormGaleria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Forms\FormExperiencia.aspx.cs">
+      <DependentUpon>FormExperiencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Forms\FormExperiencia.aspx.designer.cs">
+      <DependentUpon>FormExperiencia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Galeria.aspx.cs">
       <DependentUpon>Galeria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Galeria.aspx.designer.cs">
       <DependentUpon>Galeria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Perfil.aspx.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Perfil.aspx.designer.cs">
+      <DependentUpon>Perfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Propuesta.aspx.cs">
       <DependentUpon>Propuesta.aspx</DependentUpon>
@@ -264,6 +327,13 @@
     </Compile>
     <Compile Include="Pages\Propuestas.aspx.designer.cs">
       <DependentUpon>Propuestas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Reservas.aspx.cs">
+      <DependentUpon>Reservas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Reservas.aspx.designer.cs">
+      <DependentUpon>Reservas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Seccion_Galeria.aspx.cs">
       <DependentUpon>Seccion_Galeria.aspx</DependentUpon>
@@ -286,12 +356,12 @@
     <Compile Include="Pages\Sorteos.aspx.designer.cs">
       <DependentUpon>Sorteos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Storie.aspx.cs">
-      <DependentUpon>Storie.aspx</DependentUpon>
+    <Compile Include="Pages\Story.aspx.cs">
+      <DependentUpon>Story.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Storie.aspx.designer.cs">
-      <DependentUpon>Storie.aspx</DependentUpon>
+    <Compile Include="Pages\Story.aspx.designer.cs">
+      <DependentUpon>Story.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Stories.aspx.cs">
       <DependentUpon>Stories.aspx</DependentUpon>
@@ -325,7 +395,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="White.Master" />
-    <Content Include="Dark.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -339,6 +408,16 @@
       <Project>{d831ea68-ca9c-4f45-9ff7-7183062210ae}</Project>
       <Name>library</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Media\Blogs\" />
+    <Folder Include="Media\Etapas\" />
+    <Folder Include="Media\Experiencias\" />
+    <Folder Include="Media\Galery\" />
+    <Folder Include="Media\Users\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

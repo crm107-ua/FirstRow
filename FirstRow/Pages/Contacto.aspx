@@ -16,13 +16,13 @@
                     <div class="page_head">
                       
                         <p class="title" style="color:white;">
-                            La ropa y los zapatos pasaran de moda en poco tiempo pero los recuerdos de un viaje quedaran en tu mente para siempre, asi que si de viajar se trata confia en nosotros para tener las mejores experiencias inolvidbles.
+                            La ropa y los zapatos pasarán de moda en poco tiempo pero los recuerdos de un viaje quedarán en tu mente para siempre, asi que si de viajar se trata confia en nosotros para tener las mejores experiencias inolvidables.
                         </p>
                         
                         <div class="page_body full-width">
                             <div class="contacts-left" style="width:200%;">
                                  <a class="title" style="color:grey;">                                   
-                                    Nuestra corporación esta distribuida tanto por España como por Amsterdam, cualquier asunto puede contactar con nosotos vía teléfono, correo o visitar nuestras sedes de atención al cliente en las siguientes direcciones.
+                                    Nuestra corporación esta distribuida tanto por España como por Amsterdam. Cualquier asunto puede contactar con nosotros vía teléfono, correo o visitar nuestras sedes de atención al cliente en las siguientes direcciones.
                                  </a> 
 
                             <div class="contacts-left" style="width:100%;">

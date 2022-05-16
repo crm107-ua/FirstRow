@@ -5592,19 +5592,19 @@ body.os-windows .popup::-webkit-scrollbar-thumb {
   box-shadow: 0px 3px 15px 0px rgba(255, 59, 0, 0.78);
 }
 .stories_page .right_btn {
-  background: rgba(255, 255, 255, 0.28);
-  width: auto;
-  height: 50px;
-  line-height: 50px;
-  padding: 0 14px;
-  font-size: 21px;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 2;
-  bottom: 50px;
-  right: 50px;
+    background: #D03000;
+    width: auto;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 14px;
+    font-size: 21px;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 2;
+    bottom: 50px;
+    right: 50px;
 }
 .stories_page .right_btn:hover {
   background: #fff;
@@ -5627,6 +5627,7 @@ body.os-windows .popup::-webkit-scrollbar-thumb {
   overflow: hidden;
 }
 .stories_page .stories_bg img {
+  filter: blur(10px);
   min-height: 100%;
   min-width: 100%;
   display: none;
@@ -7923,7 +7924,6 @@ body.os-windows .popup::-webkit-scrollbar-thumb {
   float: left;
   border: 1px solid #fff;
   width: 49%;
-  margin-left: 2%;
   font-size: 21px;
   font-family: 'Nunito', sans-serif;
   padding: 0 20px;

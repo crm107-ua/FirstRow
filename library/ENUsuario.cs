@@ -162,12 +162,7 @@ namespace library
         public bool readUsuario()
         {
             CADUsuario usuario = new CADUsuario();
-            bool creado = false;
-            if (!usuario.readUsuario(this))
-            {
-                creado = usuario.readUsuario(this);
-            }
-            return creado;
+            return usuario.readUsuario(this);
         }
 
         public bool deleteUsuario()
