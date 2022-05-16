@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace FirstRow.Pages
 {
@@ -26,13 +27,34 @@ namespace FirstRow.Pages
                     string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
                     pais_name = cadena.Replace("-", " ");
                     ENPais pais = new ENPais();
-                    pais.name = pais_name;
+
+                    if (Request.QueryString["id"] != null)
+                    {
+                        pais.id = int.Parse(Request.QueryString["id"].ToString());
+                    }
+                    else
+                    {
+                        pais.name = pais_name;
+
+                    }
+
                     if (pais.ReadPais())
                     {
-                        pais_id = pais.id; //¿?
+                        pais_id = pais.id;
+                        pais_name = pais.name;
+                        if (Session["usuario"] != null)
+                        {
+                            crear_story.Visible = true;
+                        }
+                        else
+                        {
+                            crear_story.Visible = false;
+
+                        }
                     }
                     country_span.InnerText = pais_name;
                     left_bottom_title.InnerText = pais_name;
+
                 }
 
                 loadStories();
@@ -48,22 +70,20 @@ namespace FirstRow.Pages
             }
         }
 
+        /*
         protected void crearStory(object sender, EventArgs e)
         {
-            //COMPLETAR -- redirigir a formulario??
+            //Response.Redirect("/agregar-story");
         }
-
+        */
+        /*
         protected void modificarStory(object sender, EventArgs e)
         {
             //COMPLETAR -- redirigir a formulario??
         }
+        */
 
         protected void eliminarStory(object sender, EventArgs e)
-        {
-            //COMPLETAR
-        }
-
-        protected void verUsuario(object sender, EventArgs e)
         {
             //COMPLETAR
         }
@@ -175,13 +195,34 @@ namespace FirstRow.Pages
             {
                 p.BackImageUrl = default_img;
                 p.Attributes["data-blur-bg"] = default_img;
+                //h.Style.Add("background-image", $"url(../assets/img/default.jpg)");
             }
             else
             {
-                p.BackImageUrl = story.Imagen;
-                p.Attributes["data-blur-bg"] = story.Imagen;
+                try
+                {
+                    if (File.Exists(Server.MapPath($"~/Media/Stories/{story.Imagen}")))
+                    {
+                        //string img = Server.MapPath($"~/Media/Stories/{story.Imagen}");
+                        string img = $"../Media/Stories/{story.Imagen}";
+                        p.BackImageUrl = img;
+                        p.Attributes["data-blur-bg"] = img;
+                    
+                    }
+                    else
+                    {
+                        p.BackImageUrl = default_img;
+                        p.Attributes["data-blur-bg"] = default_img;
+                    }
+
+                }catch(Exception)
+                {
+                    p.BackImageUrl = default_img;
+                    p.Attributes["data-blur-bg"] = default_img;
+                }
             }
             stories_items.Controls.Add(p);
         }
+
     }
 }

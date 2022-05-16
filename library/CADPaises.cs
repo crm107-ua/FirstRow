@@ -71,7 +71,7 @@ namespace library
             try
             {
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                sda.Fill(ds);
+                sda.Fill(ds, "Paises");
                 correctRead = true;
 
             }
@@ -103,15 +103,21 @@ namespace library
             {
                 connection.Open();
                 string query = "";
+                SqlCommand com;
                 if (pais.id > 0)
                 {
-                    query = $"SELECT * FROM [firstrow_].[dbo].[Paises] WHERE id = '{pais.id}'";
+                    query = "SELECT * FROM [firstrow_].[dbo].[Paises] WHERE id = @id";
+                    com = new SqlCommand(query, connection);
+                    com.Parameters.AddWithValue("@id", pais.id);
                 }
                 else
                 {
-                    query = $"SELECT * FROM [firstrow_].[dbo].[Paises] WHERE name = '{pais.name}'";
+                    query = "SELECT * FROM [firstrow_].[dbo].[Paises] " +
+                        "WHERE name = @name";
+                    com = new SqlCommand(query, connection);
+                    com.Parameters.AddWithValue("@name", pais.name);
+
                 }
-                SqlCommand com = new SqlCommand(query, connection);
                 SqlDataReader dr = com.ExecuteReader();
                 try
                 {
@@ -123,7 +129,7 @@ namespace library
                         correctRead = true;
 
                     }
-                    else if (pais.id >= 0 && pais.name == dr["name"].ToString())
+                    else if (pais.id <= 0 && pais.name == dr["name"].ToString())
                     {
                         pais.id = int.Parse(dr["id"].ToString());
                         correctRead = true;
@@ -154,6 +160,56 @@ namespace library
                 Console.WriteLine("User operation has failed.Error: {0}", ex.Message);
             }
             finally { connection.Close(); }
+
+            return correctRead;
+        }
+
+        public bool getListPaisesDesconectado(List<ENPais> paises)
+        {
+            bool correctRead = false;
+
+            DataSet ds = new DataSet();
+            try
+            {
+                if (ReadPaisesDataSet(ds))
+                {
+                    DataTable dtPaises = ds.Tables["Paises"];
+                    /*
+                    //Preparamos columna con clave primaria
+                    DataColumn dc = new DataColumn("id");
+                    dc.AutoIncrement = true;
+                    dc.AutoIncrementSeed = 1;
+                    dc.AutoIncrementStep = 1;
+                    dc.DataType = typeof(Int32);
+
+                    //Añadimos la columna a al datable
+                    dtPaises.Columns.Add(dc);
+
+                    //Establecemos la clave primaria
+                    DataColumn[] pk = new DataColumn[] { dc };
+                    dtPaises.PrimaryKey = pk;
+                    */
+
+                    using (DataTableReader dtRdr = dtPaises.CreateDataReader())
+                    {
+                        while (dtRdr.Read())
+                        {
+                            ENPais p = new ENPais();
+                            p.id = Convert.ToInt32(dtRdr[0]);
+                            p.name = Convert.ToString(dtRdr[1]);
+                            paises.Add(p);
+                        }
+                    }
+
+                    correctRead = true;
+                }
+
+            }
+            catch (Exception ex) 
+            {
+                correctRead = false;
+                Console.WriteLine("User operation has failed.Error: {0}", ex.Message);
+            }
 
             return correctRead;
         }

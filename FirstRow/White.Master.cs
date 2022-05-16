@@ -14,8 +14,6 @@ namespace FirstRow
         protected void Page_Load(object sender, EventArgs e)
         {
             cargarElementosSesion();
-
-
         }
 
         protected void registrarse(object sender, EventArgs e)
@@ -90,7 +88,7 @@ namespace FirstRow
             if (usuario.loginUsuario())
             {
                 Session["usuario"] = usuario;
-                Response.Redirect("/");
+                Response.Redirect(Request.Url.ToString());
             }
             else
             {
@@ -111,7 +109,7 @@ namespace FirstRow
             if (empresa.loginEmpresa())
             {
                 Session["empresa"] = empresa;
-                Response.Redirect("/");
+                Response.Redirect(Request.Url.ToString());
             }
             else
             {
@@ -190,7 +188,7 @@ namespace FirstRow
         protected void cerrarSesion(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("/");
+            Response.Redirect(Request.Url.ToString());
         }
 
         private void vaciadoCampos()

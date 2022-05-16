@@ -15,31 +15,16 @@
             <div class="wrap">
                 <div class="wrap_float">
                     <div class="gallery-page-head">
-                        <p class="country"><asp:Label ID="titulo" runat="server"></asp:Label></p>
-                        <h1 class="title" style="margin-top:20px; width:100%;">Hermosas aves por el mundo</h1>
+                        <p class="country"><asp:Label ID="pais" runat="server"></asp:Label></p>
+                        <asp:Label ID="title" runat="server" class="title" style="margin-top:20px; width:100%;"></asp:Label>
                         <div class="subtitle">
-                            <p>
-                                Podemos ver a las preciosas aves en pleno explendor, la naturaleza es admirable y siempre te sorprende
-                            </p>
+                            <asp:Label ID="Descripcion" runat="server"></asp:Label>
                         </div>
                     </div>
                     <div class="gallery-page-body">
                         <div class="image-list lightgallery">
-                            <a href="https://www.junglepark.es/wp-content/uploads/2017/05/casuarioblog2-1024x978.jpg" class="image-item">
-                                <img src="https://www.junglepark.es/wp-content/uploads/2017/05/casuarioblog2-1024x978.jpg" alt="">
-                            </a>
-                            <a href="https://p0.pikist.com/photos/377/731/pelican-bird-sea-birds-water-nature-australia-pelecanus-conspicillatus-australian-pelican-4k-wallpaper.jpg" class="image-item">
-                                <img src="https://p0.pikist.com/photos/377/731/pelican-bird-sea-birds-water-nature-australia-pelecanus-conspicillatus-australian-pelican-4k-wallpaper.jpg" alt="">
-                            </a>
-                            <a href="https://dam.ngenespanol.com/wp-content/uploads/2021/03/GettyImages-976978800.jpg" class="image-item">
-                                <img src="https://dam.ngenespanol.com/wp-content/uploads/2021/03/GettyImages-976978800.jpg" alt="">
-                            </a>
-                            <a href="https://dam.ngenespanol.com/wp-content/uploads/2021/03/aves.jpg" class="image-item">
-                                <img src="https://dam.ngenespanol.com/wp-content/uploads/2021/03/aves.jpg" alt="">
-                            </a>
-                            <a href="https://www.el-carabobeno.com/wp-content/uploads/2017/09/maxresdefault-7.jpg" class="image-item">
-                                <img src="https://www.el-carabobeno.com/wp-content/uploads/2017/09/maxresdefault-7.jpg" alt="">
-                            </a>
+                            <asp:Panel ID="addImg" runat="server">
+                                </asp:Panel>
                         </div>
                         <a href="/experiencias" class="tour">
                             <div class="item">
@@ -86,54 +71,9 @@
                         <div class="other_gallery">
                             <h2 class="title">También te puede interesar</h2>
                             <div class="gallery-list">
-                                <a href="galeria/madagascar" class="gallery-item">
-                                    <div class="top">
-                                        <p class="country">Madagascar</p>
-                                    <p class="title">El mundo bajo la superficie</p>
-                                </div>
-                                <div class="images">
-                                    <div class="scroll">
-                                        <div class="img">
-                                            <img src="https://img.freepik.com/foto-gratis/ballena-jorobada-salta-fuera-agua-hermoso-salto-madagascar-isla-santa-maria_265142-30.jpg" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="https://img.ev.mu/images/attractions/2127/960x640/412377.jpg" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="https://www.periodistadigital.com/wp-content/uploads/2019/03/madagascar-rayas.jpg?width=1200&enable=upscale" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="http://www.xdeep.eu/img/expeditions/malazamanga/gallery/images/7.jpg" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="https://laguiadelacuario.es/wp-content/uploads/2020/06/bedotia_geayipda.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    </div>
-                                </a>
+                                <asp:Panel ID="masGaleri" runat="server">
 
-                                <a href="/galeria/roma" class="gallery-item">
-                                    <div class="top">
-                                        <p class="country">Roma</p>
-                                    <p class="title">La impresionante arquitectura de Roma</p>
-                                </div>
-                                <div class="images">
-                                    <div class="scroll">
-                                        <div class="img">
-                                            <img src="https://p4.wallpaperbetter.com/wallpaper/919/302/326/urban-area-arch-of-septimius-severus-capitoline-hill-temple-of-saturn-wallpaper-preview.jpg" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="https://p4.wallpaperbetter.com/wallpaper/117/225/212/antigua-arquitectura-coliseum-roma-wallpaper-preview.jpg" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="https://arquitectomanuelnavarro.es/wp-content/uploads/2018/01/rome-2960832_1280.jpg" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="https://p1.piqsels.com/preview/322/856/859/roman-ruins-rome-italy-ancient-history.jpg" alt="">
-                                        </div>
-                                        <div class="img">
-                                            <img src="https://i.pinimg.com/originals/3e/23/c6/3e23c67e72041bca3737074b11e4b576.png" alt="">
-                                        </div>
+                                </asp:Panel>
                                     </div>
                                     </div>
                                 </a>

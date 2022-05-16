@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Transactions;
 
 namespace library
 {
@@ -19,74 +20,65 @@ namespace library
         {
             bool consegido=false;
             CADGaleria aux = new CADGaleria();
-            SqlConnection connection = new SqlConnection(constring);
-            DataSet dbd = new DataSet();
-            string slectGaleria = "select * from [dbo].[Seccion_Galeria];";
-            string selectImagenes = "select * from [dbo].[Imagenes];";
-            string selectRealcion = "select * from [dbo].[Seccion_Galeria_Imagenes];";
 
             try
             {
-                if (!aux.readGaleria(galeria))
+
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter(slectGaleria, connection);
-                    adapter.Fill(dbd, "Galerias");
-                    SqlDataAdapter adapterImagenes = new SqlDataAdapter(selectImagenes, connection);
-                    adapterImagenes.Fill(dbd, "Imagenes");
-                    SqlDataAdapter adapterRelacion = new SqlDataAdapter(selectRealcion, connection);
-                    adapterRelacion.Fill(dbd, "Relacion");
-
-                    //Añadimos la tabla galeria
-                    DataTable galeriaTabla = new DataTable();
-                    galeriaTabla = dbd.Tables["Galeria"];
-                    DataRow nuevaGaleria = galeriaTabla.NewRow();
-
-                    nuevaGaleria["titulo"] = galeria.Titulo;
-                    nuevaGaleria["descripcion"] = galeria.Descripcion;
-                    nuevaGaleria["pais"] = galeria.Pais.id;
-                    nuevaGaleria["slug"] = galeria.Slug;
-                    nuevaGaleria["usuario"] = galeria.Usuario.nickname;
-                    galeriaTabla.Rows.Add(nuevaGaleria);
-
-                    //Añadimos tablas galerias
-                    DataTable ImagenesTabla = new DataTable();
-                    galeriaTabla = dbd.Tables["Galeria"]; 
-                    
-                    foreach (ENImagenes imagen in galeria.Imagenes)
-                    { 
-                        DataRow nuevaImagen = ImagenesTabla.NewRow();
-
-                        nuevaGaleria["name"] = imagen.Name;
-                        ImagenesTabla.Rows.Add(nuevaGaleria);
-                    }
-
-                    if (aux.readGaleria(galeria)) 
+                    //Primera transacion
+                    using (SqlConnection connection= new SqlConnection(constring))
                     {
-                        foreach (ENImagenes imagen in galeria.Imagenes)
+                        List<int> idImagnes = new List<int>();
+                        if (!aux.readGaleria(galeria))
                         {
-                            /*
-                             * Falta lectura de imagenes y juntar ids
-                            if()
-                            */
+                            foreach (ENImagenes imagen in galeria.Imagenes)
+                            {
+                                if (imagen.addImg())
+                                {
+                                    idImagnes.Add(int.Parse(imagen.Id.ToString()));
+                                }
+                            }
+                            connection.Open();
+
+                            if (idImagnes.Count != galeria.Imagenes.Count)
+                            {
+                                throw new Exception();
+                            }
+
+                            String sentencia = "insert into [dbo].[Seccion_Galeria] (titulo,descripcion,pais,slug,usuario) " +
+                                "values (@titulo, @descripcion, @pais, @slug, @usuario); " +
+                                "select scope_identity();";
+                            SqlCommand comando = new SqlCommand(sentencia, connection);
+                            comando.Parameters.AddWithValue("@titulo",galeria.Titulo);
+                            comando.Parameters.AddWithValue("@descripcion", galeria.Descripcion);
+                            comando.Parameters.AddWithValue("@pais", galeria.Pais.id);
+                            comando.Parameters.AddWithValue("@slug", galeria.Slug);
+                            comando.Parameters.AddWithValue("@usuario", galeria.Usuario.nickname);
+                            galeria.Id = Convert.ToInt32(comando.ExecuteScalar());
+
+                            foreach (int idImagen in idImagnes) 
+                            {
+                                String sentenciaRelacion = "insert into[dbo].[Seccion_Galeria_Imagenes] (id_seccion_galeria, id_imagen) values(@idGaleria, @idImagen)";
+                                SqlCommand comandoRelacio = new SqlCommand(sentenciaRelacion, connection);
+                                comandoRelacio.Parameters.AddWithValue("@idGaleria", galeria.Id);
+                                comandoRelacio.Parameters.AddWithValue("@idImagen", idImagen);
+                                comandoRelacio.ExecuteNonQuery();
+                            }
+
+                            consegido = true;
                         }
+
+                        connection.Close();
                     }
 
-                    SqlCommandBuilder commandBuilder = new SqlCommandBuilder(adapter); 
-                    SqlCommandBuilder commandBuilderImg = new SqlCommandBuilder(adapterImagenes);
-                    SqlCommandBuilder commandBuilderRelacion = new SqlCommandBuilder(adapterRelacion);
-                    adapter.Update(dbd, "[dbo].[Seccion_Galeria]");
-                    adapterImagenes.Update(dbd, "[dbo].[Imagenes]");
-                    adapterRelacion.Update(dbd, "[dbo].[Seccion_Galeria_Imagenes]");
-
-                    consegido = true;
+                    //Si no se lanzan excepciones y llega no hace rolback
+                    scope.Complete();
                 }
             }
             catch (Exception excepcion)
-            { 
-            }
-            finally 
             {
-                connection.Close();
+                Console.WriteLine("La excepcion es"+excepcion.Data);
             }
 
             return consegido;
@@ -99,22 +91,22 @@ namespace library
             SqlDataReader readerimagenes = null;
             bool conseguido = false;
             string comand = "select Seccion_Galeria.id, titulo, descripcion, slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
-                    "from [dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais) where slug='" +galeria.Slug+"';";
-
-
+                    "from [firstrow_].[dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais) where slug='"+ galeria.Slug + "'";
 
             try
             {
                 connection.Open();
                 SqlCommand com = new SqlCommand(comand, connection);
                 reader = com.ExecuteReader();
+                reader.Read();
                 galeria.Id = int.Parse(reader["id"].ToString());
                 galeria.Titulo = reader["titulo"].ToString();
                 galeria.Descripcion = reader["descripcion"].ToString();
                 galeria.Pais = new ENPais(int.Parse(reader["PaisId"].ToString()), reader["NamePais"].ToString());
 
+                reader.Close();
                 string comandImg = "select name from Seccion_Galeria_Imagenes join Imagenes on(Imagenes.id = Seccion_Galeria_Imagenes.id_imagen)" +
-                        " where Seccion_Galeria_Imagenes.id_seccion_galeria ='" + reader["id"].ToString() + "'";
+                        " where Seccion_Galeria_Imagenes.id_seccion_galeria =" + galeria.Id;
 
                 SqlCommand comandoImagenes = new SqlCommand(comandImg, connection);
                 List<ENImagenes> imagenes = new List<ENImagenes>();
@@ -145,10 +137,54 @@ namespace library
             bool consegido = false;
             CADGaleria aux = new CADGaleria();
 
-            if (!aux.readGaleria(galeria))
+            if (aux.readGaleria(galeria))
             {
-                //Se Borra en la base de datos
-                consegido = true;
+                try
+                {
+                    using (TransactionScope scope = new TransactionScope())
+                    {
+                        //Primera transacion
+                        using (SqlConnection connection = new SqlConnection(constring))
+                        {
+                            foreach (ENImagenes imgagen in galeria.Imagenes) 
+                            {
+                                if (!imgagen.deleteImg()) 
+                                {
+                                    throw new Exception();
+                                }
+                            }
+
+                            connection.Open();
+                            string comando = "delete from [firstrow_].[dbo].[Seccion_Galeria] where id=@id;";
+
+                            SqlCommand sqlCommand = new SqlCommand(comando, connection);
+                            sqlCommand.Parameters.AddWithValue("@id",galeria.Id);
+                            sqlCommand.ExecuteNonQuery();
+                            consegido = true;
+
+                            connection.Close();
+                        }
+
+                        if (consegido) 
+                        {
+                            foreach (ENImagenes galeira in galeria.Imagenes)
+                            {
+                                string filePath = @"c:\current";
+                                filePath += " /Media/Galery/" + galeira.Name;
+                                System.IO.File.Delete(filePath);
+                            }
+                        }
+
+                        scope.Complete();
+                    }
+                }
+                catch (Exception excepcion)
+                {
+                }
+                finally
+                {
+                }
+
             }
 
             return consegido;
@@ -177,15 +213,15 @@ namespace library
                 //Servicio Desconectado
                 //Optencion de la DBD Virtual de galeria
                 
-                DataSet dbdGalerias = new DataSet();
-                DataSet dbdImagenes = new DataSet();
+                DataSet dbd = new DataSet();
+                DataSet dbdImgenes = new DataSet();
                 string slectGaleria = "select Seccion_Galeria.id, titulo, descripcion, slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
-                    "from [dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais);";
+                    "from [firstrow_].[dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais);";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(slectGaleria, connection);
-                adapter.Fill(dbdGalerias,"Galerias");
+                adapter.Fill(dbd,"Galerias");
 
-                DataTable tableGaleria = dbdGalerias.Tables["Galerias"];
+                DataTable tableGaleria = dbd.Tables["Galerias"];
                 DataRow[] rowsGaleria = tableGaleria.Select();
 
                 lista.Clear();
@@ -199,16 +235,16 @@ namespace library
                 {
                     //Rellenado de imagenes
                     string slectImagenes = "select name from Seccion_Galeria_Imagenes join Imagenes on(Imagenes.id = Seccion_Galeria_Imagenes.id_imagen)" +
-                        " where Seccion_Galeria_Imagenes.id_seccion_galeria ='"+ rowsGaleria[i]["id"]+"'";
+                        " where Seccion_Galeria_Imagenes.id_seccion_galeria ="+ rowsGaleria[i]["id"]+";";
 
                     SqlDataAdapter adapterImagenes = new SqlDataAdapter(slectImagenes, connection);
-                    adapter.Fill(dbdImagenes, "Imagenes");
+                    adapterImagenes.Fill(dbdImgenes, "Imagenes");
 
-                    DataTable tableImg = dbdGalerias.Tables["Imagenes"];
+                    DataTable tableImg = dbdImgenes.Tables["Imagenes"];
                     DataRow[] rowsImg = tableImg.Select();
 
                     imagenes.Clear();
-                    for (int j = 0; j < rowsGaleria.Length; j++)
+                    for (int j = 0; j < rowsImg.Length; j++)
                     {
                         imagenes.Add(new ENImagenes(rowsImg[j]["name"].ToString()));
                     }
@@ -217,6 +253,8 @@ namespace library
                     ENPais pais = new ENPais(int.Parse(rowsGaleria[i]["PaisId"].ToString()), rowsGaleria[i]["NamePais"].ToString());
                     ENGaleria galeria = new ENGaleria(int.Parse(rowsGaleria[i]["id"].ToString()) ,pais, rowsGaleria[i]["slug"].ToString(), rowsGaleria[i]["titulo"].ToString(), rowsGaleria[i]["descripcion"].ToString(), imagenes);
                     lista.Add(galeria);
+
+                    dbdImgenes.Clear();
                 }
 
             }
@@ -227,19 +265,72 @@ namespace library
             {
                 connection.Close();
             }
+ 
+            return conseguido;
+        }
+
+        public bool readAllCountyGaleri(List<ENGaleria> lista, ENPais pais)
+        {
+            bool conseguido = false;
+            SqlConnection connection = new SqlConnection(constring);
+
+            try
+            {
+                //Servicio Desconectado
+                //Optencion de la DBD Virtual de galeria
+
+                DataSet dbd = new DataSet();
+                DataSet dbdImgenes = new DataSet();
+                string slectGaleria = "select Seccion_Galeria.id, titulo, descripcion, slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
+                    "from [firstrow_].[dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais)" +
+                    "where Paises.id="+pais.id;
+
+                SqlDataAdapter adapter = new SqlDataAdapter(slectGaleria, connection);
+                adapter.Fill(dbd, "Galerias");
+
+                DataTable tableGaleria = dbd.Tables["Galerias"];
+                DataRow[] rowsGaleria = tableGaleria.Select();
+
+                lista.Clear();
 
 
-            //Si hay alguna galeria
-            if (true) { }
+                // Las imagenes se tienen que tratar con listas de objectos ENImagenes
+                // ENGaleria modificado
+                List<ENImagenes> imagenes = new List<ENImagenes>();
 
-            /*
-              select Seccion_Galeria.id, titulo, descripcion, slug, Paises.id "PaisId", Paises.name "NamePais" from Seccion_Galeria
-                join Paises on (Paises.id=Seccion_Galeria.pais);
+                for (int i = 0; i < rowsGaleria.Length; i++)
+                {
+                    //Rellenado de imagenes
+                    string slectImagenes = "select name from Seccion_Galeria_Imagenes join Imagenes on(Imagenes.id = Seccion_Galeria_Imagenes.id_imagen)" +
+                        " where Seccion_Galeria_Imagenes.id_seccion_galeria =" + rowsGaleria[i]["id"] + ";";
 
-                select * from Seccion_Galeria_Imagenes
-                join Imagenes on (Imagenes.id=Seccion_Galeria_Imagenes.id_imagen)
-                where Seccion_Galeria_Imagenes.id_seccion_galeria=0
-             */
+                    SqlDataAdapter adapterImagenes = new SqlDataAdapter(slectImagenes, connection);
+                    adapterImagenes.Fill(dbdImgenes, "Imagenes");
+
+                    DataTable tableImg = dbdImgenes.Tables["Imagenes"];
+                    DataRow[] rowsImg = tableImg.Select();
+
+                    imagenes.Clear();
+                    for (int j = 0; j < rowsImg.Length; j++)
+                    {
+                        imagenes.Add(new ENImagenes(rowsImg[j]["name"].ToString()));
+                    }
+
+                    // Modificado por Carlos, pendiente de revision
+                    ENGaleria galeria = new ENGaleria(int.Parse(rowsGaleria[i]["id"].ToString()), pais, rowsGaleria[i]["slug"].ToString(), rowsGaleria[i]["titulo"].ToString(), rowsGaleria[i]["descripcion"].ToString(), imagenes);
+                    lista.Add(galeria);
+
+                    dbdImgenes.Clear();
+                }
+
+            }
+            catch (Exception e)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
 
             return conseguido;
         }

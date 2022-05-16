@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Stories.aspx.cs" Inherits="FirstRow.Pages.Stories" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
-        <div class="image_header" runat="server" id="background_image_header"></div>
+        <div class="image_header" runat="server" id="background_image_header" style="z-index: -3;"></div>
         <div class="breadcrumbs">
             <div class="wrap">
                 <div class="wrap_float">
@@ -15,9 +15,15 @@
                 <div class="wrap_float">
                     <div class="page_head">
                         <h1 class="title" runat="server" style="color:white;" id="stories_title"></h1>
+                        <asp:TextBox runat="server" ID="stories_title_edit" Text="" Visible="false" />
+                        <br />
                         <p class="subtitle" runat="server" style="color:white;" id="stories_subtitle"></p>
+                        <asp:TextBox runat="server" ID="stories_subtitle_edit" Text="" Visible="false" />
                         <div class="buttons">
-                            <asp:Button runat="server" id="btn_modificar_pagina" class="btn button" Text="Modificar página" OnClick="modificarPaginaStories" />
+                            <asp:Button runat="server" id="btn_modificar_pagina" class="btn button" Text="Modificar página" OnClick="modificarPaginaStories" Visible="false" />
+                            <br />
+                            <asp:Button runat="server" id="btn_aceptar_cambios" class="btn button" Text="Aplicar cambios" OnClick="btn_aceptar_cambios_Click" Visible="false" />
+                            <asp:Button runat="server" id="btn_cancelar_cambios" class="btn button" Text="Cancelar" OnClick="btn_cancelar_cambios_Click" Visible="false" />
                         </div>
 
                         <div class="select_wrap">
@@ -163,7 +169,10 @@
                 <div class="wrap_float">
                     <asp:Label runat="server" class="title" id="stories_description_title" />
                     <br />
-                    <asp:Label runat="server" class="text" id="stories_description" />
+                    <asp:TextBox runat="server" ID="stories_description_title_edit" Text="" Visible="false" />
+                    <br />
+                    <asp:Label runat="server" class="text" id="stories_description" /><br />
+                    <asp:TextBox runat="server" ID="stories_description_edit" Text="" Visible="false" />
                 </div>
             </div>
         </div>

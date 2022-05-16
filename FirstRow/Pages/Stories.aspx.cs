@@ -15,13 +15,25 @@ namespace FirstRow.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             
+            mostrarTarjetasPaises();
             if (!Page.IsPostBack)
             {
-                mostrarTarjetasPaises();
                 llenarDropDownList();
-                btn_modificar_pagina.Visible = false;
-                stories_title.InnerText = "Stories interesantes";
-                stories_subtitle.InnerText = "Literatura latina del 45 a. C., por lo que tiene más de 2000 años.";
+                ENUsuario user = (ENUsuario)Session["usuario"];
+                if (user != null && user.nickname == "admin")
+                {
+                    btn_modificar_pagina.Visible = true;
+                }
+                else { btn_modificar_pagina.Visible = false; }
+
+
+                Application["stories_title"] = "Stories interesantes";
+                Application["stories_subtitle"] = "Muestra tus experiencias al mundo " +
+                    "y explora las de otras personas.";
+                
+                
+                stories_title.InnerText = (string)Application["stories_title"];
+                stories_subtitle.InnerText = (string)Application["stories_subtitle"];
                 background_image_header.Style.Add("background-image", "url(https://media.cntraveler.com/photos/5cc32b6031a2ae65b96fb4ff/16:9/w_2560%2Cc_limit/MAG19_May_TR050419_Zihuatanejo02.jpg)");
 
                 /* lista de paises
@@ -44,43 +56,61 @@ namespace FirstRow.Pages
 
         }
 
+        /// <summary>
+        /// Habilita la edición de la página. 
+        /// Solamente puede usarlo el admin
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void modificarPaginaStories(object sender, EventArgs e)
         {
-            
-            //COMPLETAR -- redirigir a formulario ¿?
+            stories_title_edit.Visible = true;
+            stories_subtitle_edit.Visible = true;
+            stories_description_title_edit.Visible = true;
+            stories_description_edit.Visible = true;
+            //background_image_header.Style.Add("background-image", "url(../../assets/img/demo-bg-5.jpg)");
+            //Response.Redirect("/stories");
+
+            btn_aceptar_cambios.Visible = true;
+            btn_cancelar_cambios.Visible = true;
+            btn_modificar_pagina.Visible = false;
         }
 
+        /// <summary>
+        /// Redirige a las páginas de story
+        /// con los valores del dropDownList
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void seleccionarPais(object sender, EventArgs e)
         {
             if (country_list.SelectedValue != "-1")
             {
-                Response.Redirect("/story/" + country_list.SelectedItem.Text);
+                Response.Redirect("/story/" + 
+                    Home.slug(country_list.SelectedItem.Text) + "?id=" +
+                    country_list.SelectedItem.Value);
 
             }
         }
 
+        /// <summary>
+        /// Muestra las trajetas de los paises
+        /// al iniciar la página
+        /// </summary>
         private void mostrarTarjetasPaises()
         {
             ENPais pais = new ENPais();
             List<ENPais> paises = new List<ENPais>();
-            if (pais.readPaises(paises))
+            if (pais.getListPaisesDesconectado(paises))
             {
                 paises.Sort(ENPais.CompareCountriesByName);
-                foreach(ENPais p in paises)
+                foreach (ENPais p in paises)
                 {
-                    HyperLink h = createCountryLink(p.id); 
+                    HyperLink h = createCountryLink(p.id);
                     if (h != null) { stories_list.Controls.Add(h); }
                 }
             }
 
-            /*
-            HyperLink h = createCountryLink(3); //codigo 3 corresponde a Italia
-            stories_list.Controls.Add(h);
-
-            HyperLink h2 = createCountryLink("España");
-            stories_list.Controls.Add(h2);
-            */
-            //russia_btn.HRef = "/story/ejemplo";
         }
 
         private void llenarDropDownList()
@@ -107,10 +137,10 @@ namespace FirstRow.Pages
             string slug;
             if (pais.ReadPais())
             {
-                slug = pais.name;
+                slug = Home.slug(pais.name); 
 
                 HyperLink h = new HyperLink();
-                h.NavigateUrl = $"/story/{slug}";
+                h.NavigateUrl = $"/story/{slug}?id=" + countryId;
                 h.CssClass = "story_item";
                 //h.Style.Add("background-image", $"url(../Media/Paises/{slug}.jpg)");
                 if (File.Exists(Server.MapPath($"~/Media/Paises/{slug}.jpg")))
@@ -169,6 +199,34 @@ namespace FirstRow.Pages
                 return h;
             }
             else { return null; }
+        }
+
+        protected void btn_aceptar_cambios_Click(object sender, EventArgs e)
+        {
+            if (stories_title_edit.Text != "")
+            {
+                Application["stories_title"] = stories_title_edit.Text;
+            }
+            if (stories_subtitle_edit.Text != "")
+            {
+                Application["stories_subtitle"] = stories_subtitle_edit.Text;
+            }
+            if (stories_description_title_edit.Text != "")
+            {
+                stories_description_title.Text = stories_description_title_edit.Text;
+            }
+            if (stories_description_edit.Text != "")
+            {
+                stories_description.Text = stories_description_edit.Text;
+            }
+
+            Response.Redirect("/stories");
+
+        }
+
+        protected void btn_cancelar_cambios_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/stories");
         }
     }
 }

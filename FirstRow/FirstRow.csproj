@@ -117,6 +117,7 @@
     <Content Include="assets\img\demo-bg-2.jpg" />
     <Content Include="assets\img\demo-bg-3.jpg" />
     <Content Include="assets\img\demo-bg-4.jpg" />
+    <Content Include="assets\img\demo-bg-5.jpg" />
     <Content Include="assets\img\demo-bg.jpg" />
     <Content Include="assets\img\facebook-logo-black.svg" />
     <Content Include="assets\img\facebook-logo.svg" />
@@ -178,6 +179,12 @@
     <Content Include="Media\Paises\Italia.jpg" />
     <Content Include="Media\Paises\Japon.jpg" />
     <Content Include="Media\Paises\Noruega.jpg" />
+    <Content Include="Media\Stories\fuerteventura_f9cff96a_1280x720.jpg" />
+    <Content Include="Media\Stories\guia-turistica-tokio-japonismo.jpg" />
+    <Content Include="Media\Stories\Italia-2.jpg" />
+    <Content Include="Media\Stories\lofoten.jpg" />
+    <Content Include="Media\Stories\coliseo.jpg" />
+    <Content Include="Media\Stories\fuente.jpg" />
     <Content Include="Pages\403.aspx" />
     <Content Include="Pages\404.aspx" />
     <Content Include="Pages\Blog.aspx" />
@@ -186,6 +193,8 @@
     <Content Include="Pages\Equipo.aspx" />
     <Content Include="Pages\Experiencia.aspx" />
     <Content Include="Pages\Experiencias.aspx" />
+    <Content Include="Pages\Forms\FormBlog.aspx" />
+    <Content Include="Pages\Forms\FormStory.aspx" />
     <Content Include="Pages\Forms\FormGaleria.aspx" />
     <Content Include="Pages\Forms\FormExperiencia.aspx" />
     <Content Include="Pages\Galeria.aspx" />
@@ -262,6 +271,20 @@
     </Compile>
     <Compile Include="Pages\Experiencias.aspx.designer.cs">
       <DependentUpon>Experiencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Forms\FormBlog.aspx.cs">
+      <DependentUpon>FormBlog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Forms\FormBlog.aspx.designer.cs">
+      <DependentUpon>FormBlog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Forms\FormStory.aspx.cs">
+      <DependentUpon>FormStory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Forms\FormStory.aspx.designer.cs">
+      <DependentUpon>FormStory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Forms\FormGaleria.aspx.cs">
       <DependentUpon>FormGaleria.aspx</DependentUpon>
@@ -387,10 +410,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Media\Blogs\" />
     <Folder Include="Media\Etapas\" />
     <Folder Include="Media\Experiencias\" />
     <Folder Include="Media\Galery\" />
     <Folder Include="Media\Users\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

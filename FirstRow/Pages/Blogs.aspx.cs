@@ -17,6 +17,8 @@ namespace FirstRow.Pages
             Route myRoute = RouteData.Route as Route;
             ENCategorias categoria = new ENCategorias();
             DataSet categorias = categoria.readCategorias();
+            ENBlog blog = new ENBlog();
+            List<ENBlog> blogs = new List<ENBlog>();
 
             if (!IsPostBack)
             {
@@ -39,13 +41,18 @@ namespace FirstRow.Pages
                                                         slug);
                     lista_categorias_blogs.Items.Insert(0, itemGeneral);
                     pais_blog.Text = pais_blog_titulo.Text = " de " + slug;
+
+                    categoria.slug = slug;
+                    categoria.readCategoria(false);
+                    blog.blogsPorCategoria(blogs, categoria.id);
                 }
                 else
                 {
                     ListItem itemGeneral = new ListItem(" - Selección de categoría");
                     lista_categorias_blogs.Items.Insert(0, itemGeneral);
-                }
 
+                    blog.blogsPorCategoria(blogs, 0);
+                }
             }
         }
 

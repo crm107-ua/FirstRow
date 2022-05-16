@@ -58,6 +58,12 @@ namespace library
             return paises.ReadPaisesDataSet(ds);
         }
 
+        public bool getListPaisesDesconectado(List<ENPais> listaPaises)
+        {
+            CADPaises paises = new CADPaises();
+            return paises.getListPaisesDesconectado(listaPaises);
+        }
+
 
     }
 }

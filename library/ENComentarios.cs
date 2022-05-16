@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,25 @@ namespace library
             _Texto = texto;
             _Estrellas = estrellas;
             _Usuario = usuario;
+        }
+        public void InsertarComentario()
+        {
+            CADComentarios insertComennt = new CADComentarios();
+            insertComennt.InsertComennt(this);
+        }
+
+        public void BorrarComentario()
+        {
+            CADComentarios deleteComennt = new CADComentarios();
+            deleteComennt.DeleteComennt(this);
+        }
+
+        public void MostrarComentarios()
+        {
+            List <ENComentarios> a =  new List<ENComentarios>();
+
+            CADComentarios showComennt = new CADComentarios();
+            showComennt.ShowComennts(this);
         }
     }
 }

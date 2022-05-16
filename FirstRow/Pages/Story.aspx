@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>FirstRow - Making Dreams</title>
-    <!--<link rel="stylesheet" type="text/css" href="~/assets/css/style.css" > -->
     <link rel="stylesheet" type="text/css" href="~/assets/css/style.css?v=<%DateTime.Now%>" >
     <link rel="icon" type="image/x-icon" href="~/assets/img/favicons/favicon.png">
     <meta name="msapplication-TileColor" content="#151515">
@@ -66,7 +65,7 @@
             </div>
         </div>
         <div class="stories_page" id="stories_page">
-            <a href="/experiencias" class="right_btn">Añadir story</a>
+            <a href="/agregar-story" class="right_btn" runat="server" id="crear_story">Crear Story</a>
             <div class="left_bottom_title" id="left_bottom_title" runat="server"
                  style="position: absolute;
                         z-index: 2;
@@ -81,6 +80,10 @@
                         bottom: 25px;
                         left: 60px;"
                 ></div>
+            <!-- Quiería crear una clase con estilo en el css, pero por alguna razón que no pude 
+                resolver no se actualiza el css. Esto ya me pasó antes y lo solucioné
+                poniendo en el link al css ?v=<DateTime.Now %>, que se supone que lo actualizaría
+                siempre porque siempre es un número diferente, pero no funciona-->
             
             <!--<a href="stories-right-sidebar.html" class="right_btn">More stories</a>-->
             <div class="stories_bg" id="stories_bg"></div>
@@ -105,7 +108,7 @@
                                 No hay más Stories
                             </h3>
                             <p class="_text">
-                                Has llegado a la última Story, pulsa arriba en "Stories" para ver más
+                                Has llegado a la última Story, pulsa en esta tarjeta para ver más
                             </p>
                         </a>
                         
