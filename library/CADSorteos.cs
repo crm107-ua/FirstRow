@@ -45,7 +45,7 @@ namespace library
             return anadido;
 
         }
-       
+       2
         internal bool deleteParticipante(ENSorteos eNSorteos)
         {
             throw new NotImplementedException();
