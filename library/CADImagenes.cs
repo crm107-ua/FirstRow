@@ -54,7 +54,7 @@ namespace library
             try
             {
                 connection.Open();
-                string comando = "delete from [dbo].[Imagenes] where id=@name;";
+                string comando = "delete from [dbo].[Imagenes] where name=@name;";
 
                 SqlCommand sqlCommand = new SqlCommand(comando, connection);
                 sqlCommand.Parameters.AddWithValue("@name", img.Name);

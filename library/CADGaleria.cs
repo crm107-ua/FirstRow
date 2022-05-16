@@ -90,7 +90,7 @@ namespace library
             SqlDataReader reader = null;
             SqlDataReader readerimagenes = null;
             bool conseguido = false;
-            string comand = "select Seccion_Galeria.id, titulo, descripcion, slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
+            string comand = "select Seccion_Galeria.id, titulo, descripcion, usuario , slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
                     "from [firstrow_].[dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais) where slug='"+ galeria.Slug + "'";
 
             try
@@ -102,6 +102,7 @@ namespace library
                 galeria.Id = int.Parse(reader["id"].ToString());
                 galeria.Titulo = reader["titulo"].ToString();
                 galeria.Descripcion = reader["descripcion"].ToString();
+                galeria.Usuario.nickname = reader["usuario"].ToString();
                 galeria.Pais = new ENPais(int.Parse(reader["PaisId"].ToString()), reader["NamePais"].ToString());
 
                 reader.Close();
@@ -155,27 +156,29 @@ namespace library
                             }
 
                             connection.Open();
-                            string comando = "delete from [firstrow_].[dbo].[Seccion_Galeria] where id=@id;";
+                            string comando = "delete from [firstrow_].[dbo].[Seccion_Galeria] where slug=@slug;";
 
                             SqlCommand sqlCommand = new SqlCommand(comando, connection);
-                            sqlCommand.Parameters.AddWithValue("@id",galeria.Id);
+                            sqlCommand.Parameters.AddWithValue("@slug",galeria.Slug);
                             sqlCommand.ExecuteNonQuery();
                             consegido = true;
 
                             connection.Close();
                         }
 
+                        scope.Complete();
+                        //Borrado del archivo fisico falla
                         if (consegido) 
                         {
                             foreach (ENImagenes galeira in galeria.Imagenes)
                             {
-                                string filePath = @"c:\current";
-                                filePath += " /Media/Galery/" + galeira.Name;
+                                string filePath="";
+                                filePath += " /Media/Galery/" + galeira.Name.Trim('.');
                                 System.IO.File.Delete(filePath);
                             }
                         }
 
-                        scope.Complete();
+                        
                     }
                 }
                 catch (Exception excepcion)

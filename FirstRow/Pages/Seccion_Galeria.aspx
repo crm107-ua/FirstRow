@@ -16,7 +16,12 @@
                 <div class="wrap_float">
                     <div class="gallery-page-head">
                         <p class="country"><asp:Label ID="pais" runat="server"></asp:Label></p>
-                        <asp:Label ID="title" runat="server" class="title" style="margin-top:20px; width:100%;"></asp:Label>
+                        <asp:Panel id="delete_galeria" runat="server" CssClass="buttons">
+                            <asp:Button ID="Button1" CssClass="buttons" BorderStyle="None" Font-Size="Larger" runat="server" OnClick="borradoGaleria" Text="Borrar"/>
+                        </asp:Panel>
+                            <div class="gallery-page-head">
+                                <asp:Label ID="title" runat="server" class="title" style="margin-top:20px; width:100%;"></asp:Label>
+                                </div>
                         <div class="subtitle">
                             <asp:Label ID="Descripcion" runat="server"></asp:Label>
                         </div>
