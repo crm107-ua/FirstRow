@@ -99,12 +99,9 @@ namespace FirstRow.Pages.Forms
                             Error.Text = "*Algo salio mal";
                             Error.Visible = true;
 
-                            foreach (ENImagenes galeira in seccion_galeria.Imagenes) 
-                            {
-                                var filePath = Server.MapPath("..\\");
-                                filePath +=" /Media/Galery/" + galeira.Name;
-                                System.IO.File.Delete(filePath);
-                            }
+                            foreach (ENImagenes imagen in seccion_galeria.Imagenes) 
+                                File.Delete(Server.MapPath("~/Media/Galery/" + Path.GetFileName(imagen.Name)));
+                            
                         }
                     }
                     else

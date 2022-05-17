@@ -167,18 +167,6 @@ namespace library
                         }
 
                         scope.Complete();
-                        //Borrado del archivo fisico falla
-                        if (consegido) 
-                        {
-                            foreach (ENImagenes galeira in galeria.Imagenes)
-                            {
-                                string filePath="";
-                                filePath += " /Media/Galery/" + galeira.Name.Trim('.');
-                                System.IO.File.Delete(filePath);
-                            }
-                        }
-
-                        
                     }
                 }
                 catch (Exception excepcion)
@@ -232,7 +220,6 @@ namespace library
 
                 // Las imagenes se tienen que tratar con listas de objectos ENImagenes
                 // ENGaleria modificado
-                List<ENImagenes> imagenes = new List<ENImagenes>();
 
                 for (int i = 0; i < rowsGaleria.Length; i++)
                 {
@@ -246,7 +233,7 @@ namespace library
                     DataTable tableImg = dbdImgenes.Tables["Imagenes"];
                     DataRow[] rowsImg = tableImg.Select();
 
-                    imagenes.Clear();
+                    List<ENImagenes> imagenes = new List<ENImagenes>();
                     for (int j = 0; j < rowsImg.Length; j++)
                     {
                         imagenes.Add(new ENImagenes(rowsImg[j]["name"].ToString()));

@@ -16,14 +16,24 @@ namespace FirstRow.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             Route myRoute = RouteData.Route as Route;
-            if (myRoute != null && myRoute.Url == "blog/{categoria}/{slug}")
+            ENBlog blog = new ENBlog();
+            ENCategorias categoria = new ENCategorias();
+
+            categoria.slug = RouteData.Values["categoria"].ToString();
+            blog.Slug = RouteData.Values["slug"].ToString();
+
+            if (!categoria.readCategoria(false) || !blog.mostrarBlog())
             {
-                string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
-                titulo.Text = slug.Text = cadena.Replace("-", " ");
+                Response.Redirect("/404");
+                return;
             }
 
+        
+            blog.Slug = RouteData.Values["slug"].ToString();
+            blog.Categoria = categoria;
+            titulo.Text = blog.Titulo;
 
-            ENCategorias categoria = new ENCategorias();
+
             DataSet categorias = categoria.readCategorias();
             foreach (DataRow row in categorias.Tables["Categorias"].Rows)
             {

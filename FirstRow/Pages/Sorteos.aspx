@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Sorteos.aspx.cs" Inherits="FirstRow.Pages.Sorteos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
-        <div class="image_header" style="background-image: url(https://static.onecms.io/wp-content/uploads/sites/28/2021/09/24/travel-gifts-lead-TRVLGG0921.jpg)"></div>
-        <div class="breadcrumbs">
+     <div class="image_header" runat="server" id="background_image_header" style="z-index: -3;"></div> 
+    <div class="breadcrumbs">
             <div class="wrap">
                 <div class="wrap_float">
                     <a href="/" style="color:white;">FirstRow</a>
@@ -14,19 +14,16 @@
             <div class="wrap">
                 <div class="wrap_float">
                     <div class="page_head">
-                        <h1 class="title" style="color:white;">
-                            Sorteos
-                        </h1>
-                        <p class="subtitle" style="color:white;">
-                            Para nuestros clientes, la posibilidad de ganar ese viaje que tanto deseas.
-                                               </p>
-                      <p class="subtitle" style="color:white;">
-                            Que la suerte te acompañe
-   
-                      </p>
+                 <h1 class="title" runat="server" style="color:white;" id="sorteos_title"></h1>
+                       
+                        <br />
+                        <p class="subtitle" runat="server" style="color:white;" id="sorteos_subtitle"></p>
+                       
                     </div>
                     <div class="page_body">
-                        <div class="blog-list">
+                        <div class="blog-list" runat="server" id="sorteos_list">
+                            <!--
+                            aqui
                             <a class="blog_item" href="sorteo/sorteo-de-experiencia-por-el-atlantico">
                                 <div class="blog_item_top" style="background-image: url(https://p4.wallpaperbetter.com/wallpaper/34/750/436/sunset-brittany-le-conquet-finistere-wallpaper-preview.jpg);">
                                     <div class="sq_parent">
@@ -113,73 +110,13 @@
                                         </p>
                                     </div>
                                 </div>
-                            </a>                         
+                            </a>  
+                            aqui
+                            -->
                         </div>
-                        <div class="btn_wrap load_btn_wrap">
-                            <a class="load_more button"><span>Más sorteos</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="subscribe_section">
-            <div class="wrap">
-                <div class="wrap_float">
-                    <div class="subscribe_block" style="background-image: url(img/demo-bg.jpg)">
-                        <div class="left">
-                            <h2 class="_title">
-                                Nuevas noticias
-                            </h2>
-                            <p class="_subtitle">
-                                Inicia sesión para obtener las mejores ofertas por email
-                            </p>
-                        </div>
-                        <div class="right">
-                            <div class="input_wrap select_wrap">
-                                <select>
-                                    <option value="Destination" disabled selected>Destination</option>
-                                    <option value="United States">United States</option>
-                                    <option value="United Kingdom">United Kingdom</option>
-                                    <option value="Afghanistan">Afghanistan</option>
-                                    <option value="Albania">Albania</option>
-                                    <option value="Algeria">Algeria</option>
-                                    <option value="American Samoa">American Samoa</option>
-                                    <option value="Andorra">Andorra</option>
-                                    <option value="Angola">Angola</option>
-                                    <option value="Anguilla">Anguilla</option>
-                                    <option value="Antarctica">Antarctica</option>
-                                    <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                                    <option value="Argentina">Argentina</option>
-                                    <option value="Armenia">Armenia</option>
-                                    <option value="Aruba">Aruba</option>
-                                    <option value="Australia">Australia</option>
-                                    <option value="Austria">Austria</option>
-                                    <option value="Azerbaijan">Azerbaijan</option>
-                                    <option value="Bahamas">Bahamas</option>
-                                    <option value="Bahrain">Bahrain</option>
-                                    <option value="Bangladesh">Bangladesh</option>
-                                    <option value="Barbados">Barbados</option>
-                                    <option value="Belarus">Belarus</option>
-                                    <option value="Belgium">Belgium</option>
-                                    <option value="Belize">Belize</option>
-                                    <option value="Benin">Benin</option>
-                                    <option value="Bermuda">Bermuda</option>
-                                    <option value="Bhutan">Bhutan</option>
-                                    <option value="Bolivia">Bolivia</option>
-                                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-                                    <option value="Botswana">Botswana</option>
-                                    <option value="Bouvet Island">Bouvet Island</option>
-                                    <option value="Brazil">Brazil</option>
-                                    <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
-                                    <option value="Brunei Darussalam">Brunei Darussalam</option>
-                                    <option value="Bulgaria">Bulgaria</option>
-                                </select>
-                            </div>
-                            <div class="input_wrap">
-                                <input class="input" placeholder="Email" type="email">
-                            </div>
-                            <button class="submit button"><span>Subscribe</span></button>
-                        </div>
+                        
+                        
+                        
                     </div>
                 </div>
             </div>
