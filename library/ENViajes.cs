@@ -95,6 +95,12 @@ namespace library
             return experiencias.readExperiencias(listaExperiencias);
         }
 
+        public bool mostrarExperienciasPais(List<ENViajes> listaExperiencias, int pais)
+        {
+            CADViajes experiencias = new CADViajes();
+            return experiencias.readExperienciasPais(listaExperiencias, pais);
+        }
+
         public bool updateImagen() {
             CADViajes img = new CADViajes();
             bool ok = img.updateImagen(this);

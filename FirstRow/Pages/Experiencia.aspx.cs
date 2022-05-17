@@ -73,7 +73,7 @@ namespace FirstRow.Pages
                     }
 
 
-
+                    int total = 0;
                     List<ENStories> storiesPais = new List<ENStories>();
                     ENStories.ReadAllStories(storiesPais, experiencia.Pais.id);
 
@@ -91,7 +91,11 @@ namespace FirstRow.Pages
                                         "</div>" +
                                         "<div class='shadow js-shadow'></div>" +
                                     "</a>";
-                        generadorStories.Controls.Add(new LiteralControl(cadena));
+                        if (total < 4)
+                        {
+                            generadorStories.Controls.Add(new LiteralControl(cadena));
+                        }
+                        total++;
                     }
 
                     contadorComentarios.InnerText = experiencia.Comentarios.Count.ToString();

@@ -178,6 +178,7 @@ namespace library
                     consultaSecundaria.Parameters.AddWithValue("@id_Blog", blog.Id);
                     busquedaSecundaria = consultaSecundaria.ExecuteReader();
 
+
                     while (busquedaSecundaria.Read())
                     {
                         ENComentarios comentario = new ENComentarios();
@@ -190,7 +191,7 @@ namespace library
                         ENUsuario usuarioComentario = new ENUsuario();
                         usuarioComentario.nickname = busquedaSecundaria["nickname"].ToString();
                         usuarioComentario.readUsuario();
-                        comentario.Usuario = usuario;
+                        comentario.Usuario = usuarioComentario;
                         comentarios.Add(comentario);
                     }
 
