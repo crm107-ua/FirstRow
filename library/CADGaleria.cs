@@ -90,7 +90,7 @@ namespace library
             SqlDataReader reader = null;
             SqlDataReader readerimagenes = null;
             bool conseguido = false;
-            string comand = "select Seccion_Galeria.id, titulo, descripcion, slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
+            string comand = "select Seccion_Galeria.id, titulo, descripcion, usuario , slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
                     "from [firstrow_].[dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais) where slug='"+ galeria.Slug + "'";
 
             try
@@ -102,6 +102,7 @@ namespace library
                 galeria.Id = int.Parse(reader["id"].ToString());
                 galeria.Titulo = reader["titulo"].ToString();
                 galeria.Descripcion = reader["descripcion"].ToString();
+                galeria.Usuario.nickname = reader["usuario"].ToString();
                 galeria.Pais = new ENPais(int.Parse(reader["PaisId"].ToString()), reader["NamePais"].ToString());
 
                 reader.Close();
@@ -155,24 +156,14 @@ namespace library
                             }
 
                             connection.Open();
-                            string comando = "delete from [firstrow_].[dbo].[Seccion_Galeria] where id=@id;";
+                            string comando = "delete from [firstrow_].[dbo].[Seccion_Galeria] where slug=@slug;";
 
                             SqlCommand sqlCommand = new SqlCommand(comando, connection);
-                            sqlCommand.Parameters.AddWithValue("@id",galeria.Id);
+                            sqlCommand.Parameters.AddWithValue("@slug",galeria.Slug);
                             sqlCommand.ExecuteNonQuery();
                             consegido = true;
 
                             connection.Close();
-                        }
-
-                        if (consegido) 
-                        {
-                            foreach (ENImagenes galeira in galeria.Imagenes)
-                            {
-                                string filePath = @"c:\current";
-                                filePath += " /Media/Galery/" + galeira.Name;
-                                System.IO.File.Delete(filePath);
-                            }
                         }
 
                         scope.Complete();
@@ -229,7 +220,6 @@ namespace library
 
                 // Las imagenes se tienen que tratar con listas de objectos ENImagenes
                 // ENGaleria modificado
-                List<ENImagenes> imagenes = new List<ENImagenes>();
 
                 for (int i = 0; i < rowsGaleria.Length; i++)
                 {
@@ -243,7 +233,7 @@ namespace library
                     DataTable tableImg = dbdImgenes.Tables["Imagenes"];
                     DataRow[] rowsImg = tableImg.Select();
 
-                    imagenes.Clear();
+                    List<ENImagenes> imagenes = new List<ENImagenes>();
                     for (int j = 0; j < rowsImg.Length; j++)
                     {
                         imagenes.Add(new ENImagenes(rowsImg[j]["name"].ToString()));

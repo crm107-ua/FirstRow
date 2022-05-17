@@ -38,8 +38,11 @@ namespace FirstRow.Pages
                 }
 
                 if (pais.ReadPais())
+                {
+                    Direccion.SelectedIndex = pais.id;
                     rellenarGalerias(pais);
-                else 
+                }
+                else
                 {
                     rellenarGalerias(new ENPais());
                 }
