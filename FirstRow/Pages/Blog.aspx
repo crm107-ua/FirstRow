@@ -37,7 +37,7 @@
                                 <p id="text_1" runat="server"></p>
 
                                 <div class="stories">
-                                    <h2>Stories</h2>
+                                    <h2 id="text_stories" runat="server">Stories</h2>
                                     <div class="scroll">
                                         <div id="cargaStories" runat="server" class="scroll_wrap">
                                         </div>
@@ -57,7 +57,7 @@
                                 <div class="gallery-block">
                                     <div id="cargaImagenes" runat="server" class="scroll"></div>
                                 </div>
-                                <h2>
+                                <h2 id="recomendadaAviso" runat="server">
                                     Experiencia recomendada
                                 </h2>
                                 <div id="recomendada" runat="server" class="tour-block">
@@ -66,7 +66,7 @@
                             </div>
                             <div class="comments-block js-section" id="reviews">
                                 <div class="title_wrap">
-                                    <h2 class="title">Comentarios</h2>
+                                    <h2 id="text_comentarios" runat="server" class="title">Comentarios</h2>
                                     <div id="contadorComentarios" runat="server" class="counter"></div>
                                 </div>
                                  <div id="generadorComentarios" runat="server" class="comments"></div>

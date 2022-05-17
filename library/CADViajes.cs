@@ -398,10 +398,6 @@ namespace library
 
 
 
-
-
-
-
                     connectionSecundaria = new SqlConnection(constring);
                     experienciasSecundario = new DataSet();
                     query = "Select * From [firstrow_].[dbo].[Experiencia_Comentarios] e " +
@@ -440,7 +436,12 @@ namespace library
             finally
             {
                 connection.Close();
-                connectionSecundaria.Close();
+
+                if(connectionSecundaria != null)
+                {
+                    connectionSecundaria.Close();
+                }
+
             }
 
             return leido;

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Blogs.aspx.cs" Inherits="FirstRow.Pages.Blogs" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
-        <div class="image_header" style="background-image: url(https://www.articlering.com/wp-content/uploads/2022/02/1356543-download-wallpaper-with-writing-1920x1080-for-samsung.jpg)"></div>
+        <div class="image_header" style="background-image: url(https://wallpapershome.com/images/pages/pic_h/23357.jpg)"></div>
         <div class="breadcrumbs">
             <div class="wrap">
                 <div class="wrap_float">

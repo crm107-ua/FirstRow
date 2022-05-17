@@ -122,6 +122,7 @@ namespace library
                 blog.Texto_3 = busqueda["text_3"].ToString();
                 blog.Fecha = (DateTime)busqueda["fecha"];
                 blog.Citacion = busqueda["citacion"].ToString();
+                blog.Categoria.id = Int32.Parse(busqueda["categoria"].ToString());
                 ENUsuario usuario = new ENUsuario();
                 usuario.nickname = busqueda["usuario"].ToString();
                 usuario.readUsuario();
@@ -143,6 +144,25 @@ namespace library
                     pais.name = busquedaSecundaria["name"].ToString();
                     blog.Pais = pais;
                     busquedaSecundaria.Close();
+
+
+                    // Lectura de categoria de blog
+
+                    conectionSecundario = new SqlConnection(constring);
+                    conectionSecundario.Open();
+                    querySecundaria = "Select * From [firstrow_].[dbo].[Categorias] where ID = @id";
+                    consultaSecundaria = new SqlCommand(querySecundaria, conectionSecundario);
+                    consultaSecundaria.Parameters.AddWithValue("@id", blog.Categoria.id);
+                    busquedaSecundaria = consultaSecundaria.ExecuteReader();
+                    busquedaSecundaria.Read();
+                    ENCategorias categoria = new ENCategorias();
+                    categoria.id = Int32.Parse(busquedaSecundaria["id"].ToString());
+                    categoria.nombre = busquedaSecundaria["nombre"].ToString();
+                    categoria.descripcion = busquedaSecundaria["descripcion"].ToString();
+                    categoria.slug = busquedaSecundaria["slug"].ToString();
+                    blog.Categoria = categoria;
+                    busquedaSecundaria.Close();
+
 
                     // Lectura de imagenes de blog
 
