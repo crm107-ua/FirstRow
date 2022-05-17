@@ -20,6 +20,7 @@ namespace library
         private string _texto_3;
         private string _citacion;
         private string _slug;
+        private DateTime _fecha;
         private ENPais _pais;
         private ENUsuario _usuario;
         private ENCategorias _categoria;
@@ -34,6 +35,7 @@ namespace library
         public string Texto_3 { get => _texto_3; set => _texto_3 = value; }
         public string Citacion { get => _citacion; set => _citacion = value; }
         public string Slug { get => _slug; set => _slug = value; }
+        public DateTime Fecha { get => _fecha; set => _fecha = value; }
         public ENPais Pais { get => _pais; set => _pais = value; }
         public ENUsuario Usuario { get => _usuario; set => _usuario = value; }
         public ENCategorias Categoria { get => _categoria; set => _categoria = value; }
@@ -51,6 +53,7 @@ namespace library
             _texto_3 = "";
             _citacion = "";
             _slug = "";
+            _fecha = new DateTime();
             _pais = new ENPais();
             _usuario = new ENUsuario();
             _categoria = new ENCategorias();
@@ -58,7 +61,7 @@ namespace library
             _imagenes = new List<ENImagenes>();
         }
 
-        public ENBlog(int id, string imagen_principal, string titulo, string descripcion, string texto_1, string texto_2, string texto_3, string citacion, string slug, ENPais pais, ENUsuario usuario, ENCategorias categoria, List<ENComentarios> comentarios, List<ENImagenes> imagenes)
+        public ENBlog(int id, string imagen_principal, string titulo, string descripcion, string texto_1, string texto_2, string texto_3, string citacion, string slug, DateTime fecha, ENPais pais, ENUsuario usuario, ENCategorias categoria, List<ENComentarios> comentarios, List<ENImagenes> imagenes)
         {
             _id = id;
             _imagen_principal = imagen_principal;
@@ -69,6 +72,7 @@ namespace library
             _texto_3 = texto_3;
             _citacion = citacion;
             _slug = slug;
+            _fecha = fecha;
             _pais = pais;
             _usuario = usuario;
             _categoria = categoria;
@@ -80,6 +84,12 @@ namespace library
         {
             CADBlog blog = new CADBlog();
             return blog.addBlog(this);
+        }
+
+        public bool mostrarBlog()
+        {
+            CADBlog blog = new CADBlog();
+            return blog.readBlog(this);
         }
 
         public bool blogsPorCategoria(List<ENBlog> listaBlogs, int categoria)

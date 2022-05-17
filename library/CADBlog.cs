@@ -27,10 +27,10 @@ namespace library
 
                 string query = "Insert INTO [firstrow_].[dbo].[Blogs] " +
                     "(imagen_principal,titulo, descripcion, text_1, text_2," +
-                    "text_3, citacion, slug, usuario, categoria, pais) " +
+                    "text_3, citacion, slug, fecha, usuario, categoria, pais) " +
                     "VALUES " +
                     "(@imagen_principal,@titulo,@descripcion,@text_1,@text_2," +
-                    "@text_3,@citacion,@slug,@usuario,@categoria,@pais) " +
+                    "@text_3,@citacion,@slug,@fecha,@usuario,@categoria,@pais) " +
                     "select scope_identity()";
                 SqlCommand consulta = new SqlCommand(query, conection);
                 consulta.Parameters.AddWithValue("@imagen_principal", blog.Imagen_principal);
@@ -41,6 +41,7 @@ namespace library
                 consulta.Parameters.AddWithValue("@text_3", blog.Texto_3);
                 consulta.Parameters.AddWithValue("@citacion", blog.Citacion);
                 consulta.Parameters.AddWithValue("@slug", blog.Slug);
+                consulta.Parameters.AddWithValue("@fecha", DateTime.Now);
                 consulta.Parameters.AddWithValue("@usuario", blog.Usuario.nickname);
                 consulta.Parameters.AddWithValue("@categoria", blog.Categoria.id);
                 consulta.Parameters.AddWithValue("@pais", blog.Pais.id);
@@ -119,6 +120,7 @@ namespace library
                 blog.Texto_1 = busqueda["text_1"].ToString();
                 blog.Texto_2 = busqueda["text_2"].ToString();
                 blog.Texto_3 = busqueda["text_3"].ToString();
+                blog.Fecha = (DateTime)busqueda["fecha"];
                 blog.Citacion = busqueda["citacion"].ToString();
                 ENUsuario usuario = new ENUsuario();
                 usuario.nickname = busqueda["usuario"].ToString();
@@ -285,6 +287,7 @@ namespace library
                     blog.Texto_3 = rowsBlogs[i]["text_3"].ToString();
                     blog.Citacion = rowsBlogs[i]["citacion"].ToString();
                     blog.Slug = rowsBlogs[i]["slug"].ToString();
+                    blog.Fecha = (DateTime)rowsBlogs[i]["fecha"];
                     blog.Pais.id = Int32.Parse(rowsBlogs[i]["pais"].ToString());
                     blog.Categoria.id = Int32.Parse(rowsBlogs[i]["categoria"].ToString());
                     ENUsuario usuario = new ENUsuario();
@@ -366,7 +369,6 @@ namespace library
                     }
                     blog.Comentarios = comentarios;
                     connectionSecundaria.Close();
-
                     listaBlogs.Add(blog);
                 }
 
