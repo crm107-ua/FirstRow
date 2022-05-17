@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Text;
+using System.Data;
 
 namespace FirstRow.Pages.Forms
 {
@@ -48,15 +49,16 @@ namespace FirstRow.Pages.Forms
         /// </summary>
         private void fillDestinos()
         {
-            ENPais pais = new ENPais();
-            List<ENPais> paises = new List<ENPais>();
-            pais.readPaises(paises);
-
-            foreach (ENPais p in paises)
+            DataSet ds = new DataSet();
+            if (ENPais.ReadPaisesDataSet(ds))
             {
-                listaPaises_form_story.Items.Insert(0, new ListItem(p.name, p.id.ToString()));
+                //country_list.Attributes.Add("style", "font-size: 18px");
+                listaPaises_form_story.DataSource = ds;
+                listaPaises_form_story.DataTextField = "name";
+                listaPaises_form_story.DataValueField = "id";
+                listaPaises_form_story.DataBind();
+
             }
-            //elemento por defecto
             listaPaises_form_story.Items.Insert(0, new ListItem("-- Destination --", "-1"));
         }
 
