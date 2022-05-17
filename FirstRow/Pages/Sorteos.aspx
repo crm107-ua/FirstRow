@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Sorteos.aspx.cs" Inherits="FirstRow.Pages.Sorteos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
-        <div class="image_header" style="background-image: url(https://static.onecms.io/wp-content/uploads/sites/28/2021/09/24/travel-gifts-lead-TRVLGG0921.jpg)"></div>
-        <div class="breadcrumbs">
+     <div class="image_header" runat="server" id="background_image_header" style="z-index: -3;"></div> 
+    <div class="breadcrumbs">
             <div class="wrap">
                 <div class="wrap_float">
                     <a href="/" style="color:white;">FirstRow</a>
@@ -14,19 +14,16 @@
             <div class="wrap">
                 <div class="wrap_float">
                     <div class="page_head">
-                        <h1 class="title" style="color:white;">
-                            Sorteos
-                        </h1>
-                        <p class="subtitle" style="color:white;">
-                            Para nuestros clientes, la posibilidad de ganar ese viaje que tanto deseas.
-                                               </p>
-                      <p class="subtitle" style="color:white;">
-                            Que la suerte te acompañe
-   
-                      </p>
+                 <h1 class="title" runat="server" style="color:white;" id="sorteos_title"></h1>
+                       
+                        <br />
+                        <p class="subtitle" runat="server" style="color:white;" id="sorteos_subtitle"></p>
+                       
                     </div>
                     <div class="page_body">
-                        <div class="blog-list">
+                        <div class="blog-list" runat="server" id="sorteos_list">
+                            <!--
+                            aqui
                             <a class="blog_item" href="sorteo/sorteo-de-experiencia-por-el-atlantico">
                                 <div class="blog_item_top" style="background-image: url(https://p4.wallpaperbetter.com/wallpaper/34/750/436/sunset-brittany-le-conquet-finistere-wallpaper-preview.jpg);">
                                     <div class="sq_parent">
@@ -113,7 +110,9 @@
                                         </p>
                                     </div>
                                 </div>
-                            </a>                         
+                            </a>  
+                            aqui
+                            -->
                         </div>
                         
                         

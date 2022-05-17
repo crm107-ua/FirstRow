@@ -112,6 +112,15 @@ namespace library
             bool ok = par.raffle(this);
             return ok;
         }
-
+        public bool getlistadesconectado(List<ENSorteos> lista)
+        {
+            CADSorteos sorteos = new CADSorteos();
+            return sorteos.getlistadesconectado(lista);
+        }
+        public bool readsorteo()
+        {
+            CADSorteos sorteos = new CADSorteos();
+            return sorteos.readsorteo(this);
+        }
     }
 }
