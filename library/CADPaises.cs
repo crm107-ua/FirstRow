@@ -66,7 +66,8 @@ namespace library
         {
             bool correctRead;
             SqlConnection connection = new SqlConnection(constring);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM [firstrow_].[dbo].[Paises]", connection);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [firstrow_].[dbo].[Paises]" +
+                "ORDER BY name", connection);
 
             try
             {
@@ -150,6 +151,7 @@ namespace library
                     else if (pais.id <= 0 && pais.name.ToLower() == dr["name"].ToString().ToLower())
                     {
                         pais.id = int.Parse(dr["id"].ToString());
+                        pais.name = dr["name"].ToString();
                         correctRead = true;
                     }
                     else correctRead = false;

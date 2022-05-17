@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Stories.aspx.cs" Inherits="FirstRow.Pages.Stories" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
+        <ajaxToolkit:ToolkitScriptManager runat="server"></ajaxToolkit:ToolkitScriptManager>
         <div class="image_header" runat="server" id="background_image_header" style="z-index: -3;"></div>
         <div class="breadcrumbs">
             <div class="wrap">
@@ -23,7 +24,7 @@
                             <asp:Button runat="server" id="btn_modificar_pagina" class="btn button" Text="Modificar página" OnClick="modificarPaginaStories" Visible="false" />
                             <br />
                             <asp:Button runat="server" id="btn_aceptar_cambios" class="btn button" Text="Aplicar cambios" OnClick="btn_aceptar_cambios_Click" Visible="false" />
-                            <!-- ConfirmButton ? -->
+                            <ajaxToolkit:ConfirmButtonExtender runat="server" ID="confirmar_cambios" ConfirmText="¿Desea confirmar los cambios?" TargetControlID="btn_aceptar_cambios"></ajaxToolkit:ConfirmButtonExtender>
                             <asp:Button runat="server" id="btn_cancelar_cambios" class="btn button" Text="Cancelar" OnClick="btn_cancelar_cambios_Click" Visible="false" />
                         </div>
 
