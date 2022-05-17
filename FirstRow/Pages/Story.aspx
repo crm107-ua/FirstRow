@@ -43,7 +43,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </div><!--
+                                </div>
                                 <div class="user" id="userblock">
                                     <div class="userlink" id="userlink"></div>
                                     <div class="usermenu" id="usermenu">
@@ -58,7 +58,7 @@
                                             <a hidden id="login_emp_pop_up" class="js-popup-open" data-href="#login_empresa">Iniciar sesion</a>
                                             <a hidden id="register_emp_pop_up" class="js-popup-open" data-href="#registro_empresa">Iniciar sesion</a>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                 </div>

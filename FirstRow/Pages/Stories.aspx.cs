@@ -88,7 +88,7 @@ namespace FirstRow.Pages
             List<ENPais> paises = new List<ENPais>();
             if (pais.getListPaisesDesconectado(paises))
             {
-                paises.Sort(ENPais.CompareCountriesByName);
+                //paises.Sort(ENPais.CompareCountriesByName);
                 foreach (ENPais p in paises)
                 {
                     HyperLink h = CreateCountryLink(p.id);

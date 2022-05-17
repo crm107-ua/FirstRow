@@ -30,20 +30,24 @@ namespace FirstRow.Pages
 
                     pais.name = pais_name;
 
-                    if (pais.ReadPais())
+                    if (!pais.ReadPais())
                     {
-                        pais_id = pais.id;
-                        pais_name = pais.name;
-                        if (Session["usuario"] != null)
-                        {
-                            crear_story.Visible = true;
-                        }
-                        else
-                        {
-                            crear_story.Visible = false;
+                        Response.Redirect("/404");
 
-                        }
                     }
+
+                    pais_id = pais.id;
+                    pais_name = pais.name;
+                    if (Session["usuario"] != null)
+                    {
+                        crear_story.Visible = true;
+                    }
+                    else
+                    {
+                        crear_story.Visible = false;
+
+                    }
+
                     country_span.InnerText = pais_name;
                     left_bottom_title.InnerText = pais_name;
 
