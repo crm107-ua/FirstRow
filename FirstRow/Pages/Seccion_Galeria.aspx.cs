@@ -56,6 +56,7 @@ namespace FirstRow.Pages
                 HyperLink imagen_refence = new HyperLink();
                 imagen_refence.NavigateUrl ="/Media/Galery/" + imagen.Name;
                 imagen_refence.Attributes.Add("class", "image-item");
+                imagen_refence.Attributes.Add("style", "pointer-events: none;");
 
                 HtmlGenericControl imagen_muestra = new HtmlGenericControl("img");
                 imagen_muestra.Attributes.Add("src", "/Media/Galery/" + imagen.Name);

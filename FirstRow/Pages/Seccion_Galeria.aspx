@@ -27,9 +27,9 @@
                         </div>
                     </div>
                     <div class="gallery-page-body">
-                        <div class="image-list lightgallery">
+                        <div class="image-list">
                             <asp:Panel ID="addImg" runat="server">
-                                </asp:Panel>
+                            </asp:Panel>
                         </div>
                         <div class="other_gallery">
                             <h2 class="title">Experiencia que te puede interesar</h2>
