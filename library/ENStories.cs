@@ -224,5 +224,22 @@ namespace library
             return false;
         }
 
+        /// <summary>
+        /// Obtiene una lista con todas las stories de un usuario
+        /// </summary>
+        /// <param name="listStories">lista que se obtiene</param>
+        /// <returns>true: si se ha leído con éxito;
+        /// false: si no se ha leído</returns>
+        public static bool ReadAllStories(List<ENStories> listStories, string user)
+        {
+            CADStories story = new CADStories();
+            if (story.ReadAllStories(listStories, user))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }

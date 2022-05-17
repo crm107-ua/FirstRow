@@ -10,33 +10,32 @@ using System.IO;
 
 namespace FirstRow.Pages
 {
-    public partial class Story : System.Web.UI.Page
+    public partial class StoryUsuario : System.Web.UI.Page
     {
         const string default_img = "https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg";
 
-        string pais_name = "";
-        int pais_id = 0;
+        string user_nickname = "";
+        //int user_id = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                if (RouteData.Route is Route myRoute && myRoute.Url == "story/{slug}")
+                if (RouteData.Route is Route myRoute && myRoute.Url == "user-stories/{nickname}")
                 {
-                    string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
-                    pais_name = cadena.Replace("-", " ");
-                    ENPais pais = new ENPais();
+                    user_nickname = RouteData.Values["nickname"].ToString();
+                    ENUsuario usuario = new ENUsuario();
 
-                    pais.name = pais_name;
+                    usuario.nickname = user_nickname;
 
-                    if (!pais.ReadPais())
+                    if (!usuario.readUsuario())
                     {
                         Response.Redirect("/404");
 
                     }
 
-                    pais_id = pais.id;
-                    pais_name = pais.name;
+                    //user_id = usuario.id;
+                    //user_nickname = usuario.nickname;
                     if (Session["usuario"] != null)
                     {
                         crear_story.Visible = true;
@@ -47,8 +46,8 @@ namespace FirstRow.Pages
 
                     }
 
-                    //country_span.InnerText = pais_name;
-                    left_bottom_title.InnerText = pais_name;
+                    user_span.InnerText = user_nickname;
+                    left_bottom_title.InnerText = user_nickname;
 
                 }
 
@@ -83,7 +82,7 @@ namespace FirstRow.Pages
             //COMPLETAR
         }
 
-        private Panel createStoryPanel(string title, string text, string user, string date)
+        private Panel createStoryPanel(string title, string text, string user, string date, string pais)
         {
             Panel p = new Panel();
             p.CssClass = "item";
@@ -93,9 +92,9 @@ namespace FirstRow.Pages
             info.CssClass = "_info";
             Panel country = new Panel();
             country.CssClass = "country";
-            Label country_span = new Label();
-            country_span.Text = pais_name;
-            country.Controls.Add(country_span);
+            Label user_span = new Label();
+            user_span.Text = pais;
+            country.Controls.Add(user_span);
             info.Controls.Add(country);            
             p.Controls.Add(info);
 
@@ -150,7 +149,7 @@ namespace FirstRow.Pages
         {
 
             List<ENStories> listStories = new List<ENStories>();
-            if (ENStories.ReadAllStories(listStories, pais_id)) //, pais_id
+            if (ENStories.ReadAllStories(listStories, user_nickname)) //, pais_id
             {
                 if (listStories.Count == 0)
                 {
@@ -185,7 +184,15 @@ namespace FirstRow.Pages
 
         private void addStory(ENStories story)
         {
-            Panel p = createStoryPanel(story.Titulo, story.Descripcion, story.Usuario.nickname, story.Fecha.ToString("dd.MM.yyyy"));
+            ENPais pais = new ENPais();
+            pais.id = story.Pais;
+            string story_pais = "";
+
+            if (pais.ReadPais())
+            {
+                story_pais = pais.name;
+            }
+            Panel p = createStoryPanel(story.Titulo, story.Descripcion, story.Usuario.nickname, story.Fecha.ToString("dd.MM.yyyy"), story_pais);
             if (story.Imagen == "")
             {
                 p.BackImageUrl = default_img;

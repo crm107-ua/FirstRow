@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>FirstRow - Making Dreams</title>
-    <link rel="stylesheet" type="text/css" href="~/assets/css/style.css?v=<%DateTime.Now%>" >
+    <link rel="stylesheet" type="text/css" href="~/assets/css/style.css?v=1" >
     <link rel="icon" type="image/x-icon" href="~/assets/img/favicons/favicon.png">
     <meta name="msapplication-TileColor" content="#151515">
     <meta name="theme-color" content="#151515">
@@ -44,6 +44,7 @@
                                         </ul>
                                     </div>
                                 </div>
+                                <!--
                                 <div class="user" id="userblock">
                                     <div class="userlink" id="userlink"></div>
                                     <div class="usermenu" id="usermenu">
@@ -59,6 +60,7 @@
                                             <a hidden id="register_emp_pop_up" class="js-popup-open" data-href="#registro_empresa">Iniciar sesion</a>
                                     </div>
                                 </div>
+                                -->
                             </div>
                         </div>
                 </div>
@@ -149,7 +151,7 @@
 
     </div>
 
-
+</body>
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/jquery-ui.min.js"></script>
     <script src="/assets/js/lightgallery.js"></script>
@@ -158,6 +160,5 @@
     <script src="/assets/js/hammer.js"></script>
     <script src="/assets/js/scripts.js"></script>
 
-    </body>
 
 </html>
