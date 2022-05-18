@@ -421,6 +421,7 @@
 
                         <asp:TextBox ID="form_reserva_email" runat="server" class="input" placeholder="Introduce tu correro de contacto"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="form_reserva_email_requerido" ControlToValidate="form_reserva_email" validationgroup="GrupoCrearReserva" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 2px;" runat="server" ErrorMessage="*Email requerido"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="form_email_validacion" ControlToValidate="form_reserva_email" ValidationGroup="GrupoCrearReserva" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 10px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ErrorMessage="*Formato email incorrecto"> </asp:RegularExpressionValidator>
 
                         <asp:TextBox ID="form_reserva_contacto" runat="server" class="input" placeholder="Introduce tu numero de contacto"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="form_reserva_numero_requerido" ControlToValidate="form_reserva_contacto" validationgroup="GrupoCrearReserva" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 2px;" runat="server" ErrorMessage="*Numero requerido"></asp:RequiredFieldValidator>
@@ -432,6 +433,7 @@
                      
                         <asp:Button ID="reserva_button" class="submit button" runat="server" Text="Reserva con un click" ValidationGroup="GrupoCrearReserva" OnClick="reserva_button_Click"/>
                         <asp:Label ID="msg_error_reserva" runat="server" Text="" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px;" Visible="false"></asp:Label>
+                        <asp:Label ID="slug_reserva_experiencia_Oculto" runat="server" Text="" Visible="false"></asp:Label>
                     </div>
                 </div>
             </div>
