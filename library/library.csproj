@@ -53,6 +53,7 @@
     <Compile Include="CADIncluido.cs" />
     <Compile Include="CADPaises.cs" />
     <Compile Include="CADPropuestas.cs" />
+    <Compile Include="CADReserva.cs" />
     <Compile Include="CADSorteos.cs" />
     <Compile Include="CADStories.cs" />
     <Compile Include="CADUsuario.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="ENIncluido.cs" />
     <Compile Include="ENPais.cs" />
     <Compile Include="ENPropuestas.cs" />
+    <Compile Include="ENReserva.cs" />
     <Compile Include="ENSorteos.cs" />
     <Compile Include="ENStories.cs" />
     <Compile Include="ENUsuario.cs" />
