@@ -31,40 +31,30 @@ namespace FirstRow.Pages
             {
                 foreach (ENSorteos s in sort)
                 {
-                    HyperLink h = createCountryLink(s.Id);
+                    HyperLink h = CreateLink(s.Id);
                     if (h != null) { sorteos_list.Controls.Add(h); }
                 }
             }
-            /*
-            ENPais pais = new ENPais();
-            List<ENPais> paises = new List<ENPais>();
-            if (pais.getListPaisesDesconectado(paises))
-            {
-                paises.Sort(ENPais.CompareCountriesByName);
-                foreach (ENPais p in paises)
-                {
-                    HyperLink h = createCountryLink(p.id);
-                    if (h != null) { sorteos_list.Controls.Add(h); }
-                }
-            }*/
+    
 
         }
-        private HyperLink createCountryLink(int countryId)
+        private HyperLink CreateLink(int sorteoid)
         {
 
-            ENPais pais = new ENPais();
-            ENSorteos sorteo = new ENSorteos();
-
-            sorteo.Id= countryId;
+            ENSorteos sorteo= new ENSorteos();
+            sorteo.Id = sorteoid;
             string slug;
             if (sorteo.readsorteo())
             {
+                //Añadimos el enlace a la página de stories del país
                 slug = Home.slug(sorteo.Nombre);
-
                 HyperLink h = new HyperLink();
-                h.NavigateUrl = $"/sorteo/{slug}?id=" + countryId;
+                h.NavigateUrl = $"/sorteo/{slug}";//?id=" + countryId
                 h.CssClass = "story_item";
                 //h.Style.Add("background-image", $"url(../Media/Paises/{slug}.jpg)");
+
+                //Añadimos la imagen almacenada en el servidor;
+                //si no existe, una por defecto
                 if (File.Exists(Server.MapPath($"~/Media/Paises/{slug}.jpg")))
                 {
                     h.Style.Add("background-image", $"url(../Media/Paises/{slug}.jpg)");
@@ -75,31 +65,28 @@ namespace FirstRow.Pages
                     h.Style.Add("background-image", $"url(../assets/img/default.jpg)");
                 }
 
+                //Creamos un panel para el texto de la tarjeta
                 Panel wrap = new Panel();
                 wrap.CssClass = "item_wrap";
                 Panel content = new Panel();
                 content.CssClass = "_content";
-                /*
-                Panel flag_wrap = new Panel();
-                flag_wrap.CssClass = "flag_wrap";
-                Panel flag = new Panel();
-                flag.CssClass = "flag";
-                Image imagen = new Image();
-                imagen.ImageUrl = "";
-                flag_wrap.Controls.Add(flag);
-                content.Controls.Add(flag_wrap);
-                */
-                Label country = new Label();
-                country.CssClass = "country";
-                country.Text = pais.name;
+
+       
+
+                //El país al que hace referencia
+                Label sort = new Label();
+                sort.CssClass = "country";
+                sort.Text = sorteo.Nombre;
                 Label text = new Label();
                 text.CssClass = "text";
-                text.Text = $"Explora las Stories de {pais.name}";
-                content.Controls.Add(country);
+                //el subtítulo de la tarjeta
+                text.Text = $"Explora las Stories de {sorteo.Nombre}";
+                content.Controls.Add(sort);
                 content.Controls.Add(text);
                 wrap.Controls.Add(content);
                 h.Controls.Add(wrap);
 
+                //Añadimos la sombra a la tarjeta
                 Panel shadow = new Panel();
                 shadow.CssClass = "shadow js-shadow";
                 h.Controls.Add(shadow);

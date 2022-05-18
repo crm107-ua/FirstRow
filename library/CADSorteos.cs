@@ -124,40 +124,31 @@ namespace library
 
             try
             {
+                
                 connection.Open();
-                string query = "";
-                SqlCommand com;
-                if (sorteo.Id > 0)
-                {
-                    query = "SELECT * FROM [firstrow_].[dbo].[Sorteos] WHERE id = @id";
-                    com = new SqlCommand(query, connection);
-                    com.Parameters.AddWithValue("@id", sorteo.Id);
-                }
-                else
-                {
-                    query = "SELECT * FROM [firstrow_].[dbo].[sorteos] " +
-                        "WHERE nombre = @name";
-                    com = new SqlCommand(query, connection);
-                    com.Parameters.AddWithValue("@name", sorteo.Nombre);
-
-                }
+                string query = "SELECT * FROM [firstrow_].[dbo].[Sorteos] WHERE"+"id = @id";
+                SqlCommand com = new SqlCommand(query,connection);
+                com.Parameters.AddWithValue("@id", sorteo.Id);
+         
                 SqlDataReader dr = com.ExecuteReader();
                 try
                 {
+                    
                     dr.Read();
 
                     if (sorteo.Id > 0 && sorteo.Id == int.Parse(dr["id"].ToString()))
                     {
                         sorteo.Nombre= dr["nombre"].ToString();
+                        sorteo.Descripcion= dr["descripcion"].ToString();
+                        sorteo.FechaFinal= (DateTime)dr["fechaFinal"];
+                        sorteo.Imagen= dr["imagen"].ToString();
+                        sorteo.FechaInicio =(DateTime) dr["fechaInicio"];
+                        
+
                         correctRead = true;
 
                     }
-                    else if (sorteo.Id <= 0 && sorteo.Nombre== dr["name"].ToString())
-                    {
-                        sorteo.Id = int.Parse(dr["id"].ToString());
-                        correctRead = true;
-                    }
-                    else correctRead = false;
+                    else  correctRead = false;
 
                 }
                 catch (SqlException ex)
@@ -188,5 +179,6 @@ namespace library
 
            
         }
+       
     }
 }
