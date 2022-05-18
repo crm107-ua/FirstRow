@@ -219,5 +219,41 @@ namespace FirstRow.Pages
             stories_items.Controls.Add(p);
         }
 
+
+        protected void registrarse(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void registrarEmpresa(object sender, EventArgs e)
+        {
+ 
+        }
+
+        protected void iniciarSesion(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void iniciarSesionEmpresa(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void modificarUsuario(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void modificarEmpresa(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cerrarSesion(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

@@ -25,7 +25,7 @@ namespace FirstRow.App_Start
             routes.MapPageRoute("agregar_story", "agregar-story", "~/Pages/Forms/FormStory.aspx");
             routes.MapPageRoute("user-stories", "user-stories/{nickname}", "~/Pages/StoryUsuario.aspx");
 
-            routes.MapPageRoute("wearing", "wearing/{slug}", "~/Pages/Wearing.aspx");
+            routes.MapPageRoute("firstrow", "firstrow", "~/Pages/FirstRow.aspx");
 
             routes.MapPageRoute("galeria", "galeria", "~/Pages/Galeria.aspx");
             routes.MapPageRoute("filtrado_galeria", "galeria/{pais}", "~/Pages/Galeria.aspx");
