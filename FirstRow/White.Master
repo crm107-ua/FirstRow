@@ -412,13 +412,15 @@
                     </div>
                     <div class="form">
 
+                        
                         <input type="text" class="input" placeholder="Fecha de inicio del viaje (aa/bb/cccc) ">
-                        <input type="text" class="input" placeholder="Introduce tu nombre">
-                        <input type="text" class="input" placeholder="Introduce tus apellidos">
                         <input type="email" class="input" placeholder="Introduce tu correro de contacto">
                         <input type="tel" class="input" placeholder="Teléfono de contacto">
-                        <textarea class="textarea" placeholder="Direccion"></textarea>
+                        <input type="number" class="input" min="0" max="7" placeholder="Personas" />
                         <textarea class="textarea" placeholder= "¿Algún extra que debamos de saber?"></textarea>
+                
+
+                     
                         <button class="submit button js-submit"> Reserva con un click | <b>$356</b></button>
                     </div>
                 </div>
