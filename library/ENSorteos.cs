@@ -36,6 +36,9 @@ namespace library
         /// Inicio del sorteo
         /// </summary>
         private DateTime _FechaInicio;
+
+      
+
         /// <summary>
         /// Finalizacion del sorteo
         /// </summary>
@@ -44,6 +47,8 @@ namespace library
         /// Array de participantes del sorteo
         /// </summary>
         private ENUsuario[] _Participantes;
+
+        private string _Titular;
 
         public int Id { get => _Id; set => _Id = value; }
         public ENViajes Premio { get => _Premio; set => _Premio = value; }
@@ -54,6 +59,8 @@ namespace library
         public DateTime FechaInicio { get => _FechaInicio; set => _FechaInicio = value; }
         public DateTime FechaFinal { get => _FechaFinal; set => _FechaFinal = value; }
         public ENUsuario[] Participantes { get => _Participantes; set => _Participantes = value; }
+        public string Titular { get => _Titular; set => _Titular = value; }
+
         /// <summary>
         /// Constructor por defecto
         /// </summary>
@@ -68,6 +75,7 @@ namespace library
             _FechaInicio = new DateTime();
             _FechaFinal = new DateTime();
             _Participantes = null;
+            _Titular = "";
         }
         /// <summary>
         /// Constructor por parametros
@@ -81,7 +89,7 @@ namespace library
         /// <param name="fechaInicio"></param>
         /// <param name="fechaFinal"></param>
         /// <param name="participantes"></param>
-        public ENSorteos(int id, ENViajes premio, string nombre, int slug, string descripcion, string imagen, DateTime fechaInicio, DateTime fechaFinal, ENUsuario[] participantes)
+        public ENSorteos(int id, ENViajes premio, string nombre, int slug, string descripcion, string imagen, DateTime fechaInicio, DateTime fechaFinal, ENUsuario[] participantes,string titular)
         {
             _Id = id;
             _Premio = premio;
@@ -92,6 +100,8 @@ namespace library
             _FechaInicio = fechaInicio;
             _FechaFinal = fechaFinal;
             _Participantes = participantes;
+            _Titular= titular;
+
         }
        
         public bool addParticipante()
@@ -112,15 +122,16 @@ namespace library
             bool ok = par.raffle(this);
             return ok;
         }
-        public bool getlistadesconectado(List<ENSorteos> lista)
+   
+        public bool readsorteos(List<ENSorteos> lista)
         {
             CADSorteos sorteos = new CADSorteos();
-            return sorteos.getlistadesconectado(lista);
+            return sorteos.readsorteo(lista);
         }
-        public bool readsorteo()
+        public bool readsorteosconectado(List<ENSorteos> lista)
         {
             CADSorteos sorteos = new CADSorteos();
-            return sorteos.readsorteo(this);
+            return sorteos.readsorteosconectado(lista);
         }
     }
 }
