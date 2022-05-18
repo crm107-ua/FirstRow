@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace FirstRow
@@ -148,7 +149,6 @@ namespace FirstRow
 
             Page.ClientScript.RegisterClientScriptBlock(GetType(), "mod_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('settings_user_pop_up').click(); }", true);
         }
-
 
         protected void modificarEmpresa(object sender, EventArgs e)
         {
@@ -351,6 +351,5 @@ namespace FirstRow
 
             return value;
         }
-
     }
 }
