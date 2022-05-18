@@ -144,17 +144,36 @@ namespace FirstRow.Pages
 
         protected void reserva(object sender, EventArgs e)
         {
+            //TODO cambiar
+            if (Session["usuario"] != null)
+            {
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_emp", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('login_emp_pop_up').click(); }", true);
+            }
+            else
+            {
+                DateTime fechaInsertada = DateTime.Parse(Request.Form["reservaEntrada"]);
+                int nPersonas = int.Parse(Request.Form["PersonNumber"]);
 
-            HtmlGenericControl fechaInicial = new HtmlGenericControl("input");
-            fechaInicial.Attributes.Add("type", "date");
-            fechaInicial.Attributes.Add("class","input");
-            fechaInicial.Attributes.Add("name", "variable");
-            fechaInicial.Attributes.Add("value", "2022-05-19");
-            fechaInicial.Attributes.Add("min", DateTime.Now.ToString("yyyy-MM-dd"));
+                if (nPersonas < 0)
+                {
+                    nPersonas = 0;
+                }
 
-            ((Panel) this.Master.FindControl("form_reserva_fechas")).Controls.Add(fechaInicial);
+                if (fechaInsertada < DateTime.Now) fechaInsertada = DateTime.Now;
 
-            Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
+
+                HtmlGenericControl fechaInicial = new HtmlGenericControl("input");
+                fechaInicial.Attributes.Add("type", "date");
+                fechaInicial.Attributes.Add("class", "input");
+                fechaInicial.Attributes.Add("name", "fechaEntrada");
+                fechaInicial.Attributes.Add("value", fechaInsertada.ToString("yyyy-MM-dd"));
+                fechaInicial.Attributes.Add("min", DateTime.Now.ToString("yyyy-MM-dd"));
+
+                ((Panel)this.Master.FindControl("form_reserva_fechas")).Controls.Add(fechaInicial);
+                ((TextBox)this.Master.FindControl("form_reserva_nPersonas")).Text = nPersonas.ToString();
+
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
+            }
         }
 
         protected void modificarExperiencia(object sender, EventArgs e)
@@ -165,14 +184,11 @@ namespace FirstRow.Pages
 
         protected void eliminarComentario(object sender, EventArgs e)
         {
-
-
+            
         }
 
         protected void eliminarExperiencia(object sender, EventArgs e)
         {
-
-
         }
     }
 }

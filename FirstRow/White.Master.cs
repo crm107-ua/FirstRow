@@ -351,5 +351,15 @@ namespace FirstRow
 
             return value;
         }
+
+        protected void reserva_button_Click(object sender, EventArgs e)
+        {
+            ENReserva reserva = new ENReserva();
+            ENUsuario usuario = (ENUsuario)Session["usuario"];
+            reserva.nombre = usuario.name;
+            reserva.usuario = usuario;
+            
+            Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
+        }
     }
 }
