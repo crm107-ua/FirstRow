@@ -351,17 +351,5 @@ namespace FirstRow
 
             return value;
         }
-
-        public void loadFormulario()
-        {
-            HtmlGenericControl fecha1 = new HtmlGenericControl("input");
-            fecha1.Attributes.Add("type", "date");
-            fecha1.Attributes.Add("name", "variable");
-            fecha1.Attributes.Add("value", "2022-05");
-            fecha1.Attributes.Add("min", DateTime.Now.ToString("yyyy-MM-dd"));
-
-            form_reserva_fechas.Controls.Add(fecha1);
-        }
-
     }
 }

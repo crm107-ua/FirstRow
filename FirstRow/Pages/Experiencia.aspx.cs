@@ -144,8 +144,17 @@ namespace FirstRow.Pages
 
         protected void reserva(object sender, EventArgs e)
         {
-            Home home = new Home();
-            home.loadFormulario();
+
+            HtmlGenericControl fechaInicial = new HtmlGenericControl("input");
+            fechaInicial.Attributes.Add("type", "date");
+            fechaInicial.Attributes.Add("class","input");
+            fechaInicial.Attributes.Add("name", "variable");
+            fechaInicial.Attributes.Add("value", "2022-05-19");
+            fechaInicial.Attributes.Add("min", DateTime.Now.ToString("yyyy-MM-dd"));
+
+            ((Panel) this.Master.FindControl("form_reserva_fechas")).Controls.Add(fechaInicial);
+
+            Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
         }
 
         protected void modificarExperiencia(object sender, EventArgs e)

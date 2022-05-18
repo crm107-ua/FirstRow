@@ -89,7 +89,7 @@
                                         <div id="display_dias" runat="server" style="color:white;" class="days">5 dias |</div>
                                         <div id="display_precio" runat="server" style="color:white;" class="cost">desde 356€</div>
                                     </div>
-                                    <asp:Button ID="reserva_button" runat="server" Text="Reserva Ahora" class="btn button js-popup-open" data-href="#book-now" OnClick="reserva" />
+                                    <asp:Button ID="reserva_button" runat="server" Text="Reserva Ahora" class="btn button" OnClick="reserva" />
                                     <div class="rating">
                                         <div id="display_comentarios" runat="server" style="color:white;" class="rating-text"></div>
                                     </div>
