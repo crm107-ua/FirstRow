@@ -21,9 +21,10 @@
                        
                     </div>
                     <div class="page_body">
-                        <div class="blog-list" runat="server" id="sorteos_list">
+                        <div class="blog_list" runat="server" id="sorteos_list">
+                            
                             <!--
-                            aqui
+                           
                             <a class="blog_item" href="sorteo/sorteo-de-experiencia-por-el-atlantico">
                                 <div class="blog_item_top" style="background-image: url(https://p4.wallpaperbetter.com/wallpaper/34/750/436/sunset-brittany-le-conquet-finistere-wallpaper-preview.jpg);">
                                     <div class="sq_parent">
