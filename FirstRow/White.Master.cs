@@ -30,7 +30,7 @@ namespace FirstRow
             usuario.secondname = registro_apellido_2.Text;
             usuario.twitter = registro_twitter.Text;
             usuario.facebook = registro_facebook.Text;
- 
+
 
             if (usuario.registerUsuario())
             {
@@ -354,12 +354,30 @@ namespace FirstRow
 
         protected void reserva_button_Click(object sender, EventArgs e)
         {
+            /*
             ENReserva reserva = new ENReserva();
-            ENUsuario usuario = (ENUsuario)Session["usuario"];
-            reserva.nombre = usuario.name;
-            reserva.usuario = usuario;
             
+            reserva.nombre = usuario.name;
+           reserva.usuario = usuario;
+            *
+            */
+            ENUsuario usuario = (ENUsuario)Session["usuario"];
+            DateTime fechaInicio = DateTime.Parse(Request.Form["fechaEntrada"]);
+            string decripcion = form_reserva_descripcion.Text.Trim();
+            string texto = form_reserva_email.Text.Trim();
+            Regex regex = new Regex("/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}.){1,125}[A-Z]{2,63}$/i");
+
+            /*if (!regex.Match(texto))
+            {
+
+            }
+            else
+            {
+
+            }
+            */
             Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
         }
+
     }
 }
