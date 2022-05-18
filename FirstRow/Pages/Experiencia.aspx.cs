@@ -142,11 +142,10 @@ namespace FirstRow.Pages
 
         }
 
-
         protected void reserva(object sender, EventArgs e)
         {
-
-
+            Home home = new Home();
+            home.loadFormulario();
         }
 
         protected void modificarExperiencia(object sender, EventArgs e)
