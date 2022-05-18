@@ -26,23 +26,24 @@
                     <div class="menu_wrap" id="menu_wrap">
                             <div class="scroll">
                                 <div class="center">
-                                    <div class="menu">
-                                        <ul>
-                                            <li><a href="/"><span>Home</span></a></li>
-                                            <li><a href="/experiencias"><span>Experiencias</span></a></li>
-                                            <li><a href="/galeria"><span>Galería</span></a></li>
-                                            <li><a href="/stories"><span>Stories</span></a></li>
-                                            <li><a href="/blogs"><span>Blogs</span></a></li>
-                                            <li><a href="/sorteos"><span>Sorteos</span></a></li>
-                                            <li class="dropdown_li">
-                                                <a><span>FirstRow</span></a>
-                                                <ul class="dropdown_ul">
-                                                    <li><a href="/propuestas"><span>Propuestas</span></a></li>
-                                                    <li><a href="/equipo"><span>Nuestro equipo</span></a></li>
-                                                    <li><a href="/contacto"><span>Contacto</span></a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                    <div class="menu">                                     
+                                           <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
+                                                <Items>
+                                                    <asp:MenuItem Text="Home" NavigateUrl="/" />
+                                                    <asp:MenuItem Text="Experiencias" NavigateUrl="/experiencias" />
+                                                    <asp:MenuItem Text="Galería" NavigateUrl="/galeria" />
+                                                    <asp:MenuItem Text="Stories" NavigateUrl="/stories" />
+                                                    <asp:MenuItem Text="Blogs" NavigateUrl="/blogs" />
+                                                    <asp:MenuItem Text="Sorteos" NavigateUrl="/sorteos" />
+                                                    <asp:MenuItem Text="FirstRow" NavigateUrl="/firstrow" />
+                                                </Items>
+                                            </asp:Menu>                                     
+                                        <div class="mobile_content"> </div>
+                                    </div>
+                                    <div class="close" id="menu-close">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
                                     </div>
                                 </div>
                                
@@ -83,12 +84,6 @@
                         bottom: 25px;
                         left: 60px;"
                 ></div>
-            <!-- Quiería crear una clase con estilo en el css, pero por alguna razón que no pude 
-                resolver no se actualiza el css. Esto ya me pasó antes y lo solucioné
-                poniendo en el link al css ?v=<DateTime.Now %>, que se supone que lo actualizaría
-                siempre porque siempre es un número diferente, pero no funciona-->
-            
-            <!--<a href="stories-right-sidebar.html" class="right_btn">More stories</a>-->
             <div class="stories_bg" id="stories_bg"></div>
             <div class="stories_page_wrap">
                 <div class="stories_box" id="stories_box">
@@ -115,30 +110,11 @@
                             </p>
                         </a>
                         
-                        <!--
-                        <asp:Panel runat="server" class="item" id="default_story_panel" >
-                            <div class="_info">
-                                <div class="country"><span runat="server" id="country_span">Pais de ejemplo</span></div>
-                            </div>
-                            <h3 class="_title">
-                                The amazing world of the animals of Madagascar
-                            </h3>
-                            <p class="_text">
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-                            </p>
-                        </asp:Panel> -->
                     </div>
                     <div class="dots">
                         <ul></ul>
                     </div>
                     <div class="story_info">
-                        <!--
-                        <div class="author">
-                            <div class="userpic">
-                                <img src="../../assets/img/demo-bg.jpg" alt="">
-                            </div>
-                            <p class="name">21.09.2019 by Maya Delia</p>
-                        </div> -->
                         <div class="counter" id="stories-counter">
                             <span class="this">1</span> / <span class="all"></span>
                         </div>
