@@ -73,9 +73,8 @@ namespace library
                 busqueda.Read();
 
                 // Lectura de campos de reserva
-
-                reserva.id = Int32.Parse(busqueda["id"].ToString());
                 reserva.nombre = busqueda["nombre"].ToString();
+                reserva.id = Int32.Parse(busqueda["id"].ToString());
                 reserva.descripcion = busqueda["descripcion"].ToString();
                 reserva.fechaEntrada = DateTime.Parse(busqueda["fechaEntrada"].ToString());
                 reserva.fechaSalida = DateTime.Parse(busqueda["fechaSalida"].ToString());
@@ -123,7 +122,7 @@ namespace library
                     connection.Open();
                     string query = "INSERT INTO [firstrow_].[dbo].[Reservas] " +
                         "(id, nombre, descripcion, experiencia, fechaEntrada, fechaSalida, usuario, precio_asignado, personas, numero) VALUES " +
-                        $"({reserva.id}, {reserva.nombre}, {reserva.descripcion},{reserva.experiencia},{reserva.fechaEntrada},{reserva.fechaSalida},{reserva.usuario},{reserva.precio},{reserva.personas},{reserva.telefono})";
+                        $"({reserva.id}, {reserva.usuario.name}, {reserva.descripcion},{reserva.experiencia.Id},{reserva.fechaEntrada.ToString()},{reserva.fechaSalida.ToString()},{reserva.usuario.nickname},{reserva.precio},{reserva.personas},{reserva.telefono})";
 
                     SqlCommand com = new SqlCommand(query, connection);
                     com.ExecuteNonQuery();

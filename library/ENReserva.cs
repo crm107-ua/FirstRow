@@ -10,9 +10,13 @@ namespace library
     public class ENReserva
     {
         private int _id;
-        private string _nombre;
+        private string _nombre; //nombre del usuario
         private string _descripcion;
+<<<<<<< HEAD
         private ENUsuario _usuario;
+=======
+        private ENUsuario _usuario; 
+>>>>>>> 54207285B CADReserva y ENReserva listos para implementarse en la bd
         private int _telefono;
         private int _personas;
 
@@ -78,25 +82,46 @@ namespace library
             set { _experiencia = value; }
         }
 
+<<<<<<< HEAD
         public ENReserva() 
+=======
+        public ENReserva()
+>>>>>>> 54207285B CADReserva y ENReserva listos para implementarse en la bd
         {
             this.id = 0;
             this.telefono = 0;
             this.personas = 0;
             this.precio = 0;
+<<<<<<< HEAD
             this.descripcion = descripcion;
+=======
+            this.nombre = "";
+            this.descripcion =  "";
+>>>>>>> 54207285B CADReserva y ENReserva listos para implementarse en la bd
             this.usuario = new ENUsuario();
             this.experiencia = new ENViajes();
             this.fechaEntrada = new DateTime();
             this.fechaSalida = new DateTime();
+<<<<<<< HEAD
         }
 
         public ENReserva(int id, int telefono, int personas, double precio, string descripcion, ENUsuario usuario, ENViajes experiencia, DateTime fechaEntrada, DateTime fechaSalida)
+=======
+
+
+        }
+
+        public ENReserva(int id, int telefono, int personas, int precio,  string descripcion, ENUsuario usuario, ENViajes experiencia, DateTime fechaEntrada, DateTime fechaSalida)
+>>>>>>> 54207285B CADReserva y ENReserva listos para implementarse en la bd
         {
             this.id = id;
             this.telefono = telefono;
             this.personas = personas;
             this.precio = precio;
+<<<<<<< HEAD
+=======
+            this.nombre = usuario.name;
+>>>>>>> 54207285B CADReserva y ENReserva listos para implementarse en la bd
             this.descripcion = descripcion;
             this.usuario = usuario;
             this.experiencia = experiencia;
