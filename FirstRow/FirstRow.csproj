@@ -193,6 +193,7 @@
     <Content Include="Pages\Equipo.aspx" />
     <Content Include="Pages\Experiencia.aspx" />
     <Content Include="Pages\Experiencias.aspx" />
+    <Content Include="Pages\FirstRow.aspx" />
     <Content Include="Pages\Forms\FormBlog.aspx" />
     <Content Include="Pages\Forms\FormStory.aspx" />
     <Content Include="Pages\Forms\FormGaleria.aspx" />
@@ -206,6 +207,7 @@
     <Content Include="Pages\Seccion_Galeria.aspx" />
     <Content Include="Pages\Sorteo.aspx" />
     <Content Include="Pages\Sorteos.aspx" />
+    <Content Include="Pages\StoryUsuario.aspx" />
     <Content Include="Pages\Story.aspx" />
     <Content Include="Pages\Stories.aspx" />
     <Content Include="Pages\Wearing.aspx" />
@@ -271,6 +273,13 @@
     </Compile>
     <Compile Include="Pages\Experiencias.aspx.designer.cs">
       <DependentUpon>Experiencias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FirstRow.aspx.cs">
+      <DependentUpon>FirstRow.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\FirstRow.aspx.designer.cs">
+      <DependentUpon>FirstRow.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Forms\FormBlog.aspx.cs">
       <DependentUpon>FormBlog.aspx</DependentUpon>
@@ -355,6 +364,13 @@
     </Compile>
     <Compile Include="Pages\Sorteos.aspx.designer.cs">
       <DependentUpon>Sorteos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StoryUsuario.aspx.cs">
+      <DependentUpon>StoryUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\StoryUsuario.aspx.designer.cs">
+      <DependentUpon>StoryUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Story.aspx.cs">
       <DependentUpon>Story.aspx</DependentUpon>

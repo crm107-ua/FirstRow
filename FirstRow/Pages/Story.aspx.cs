@@ -21,38 +21,33 @@ namespace FirstRow.Pages
         {
             if (!Page.IsPostBack)
             {
-                Route myRoute = RouteData.Route as Route;
-                if (myRoute != null && myRoute.Url == "story/{slug}")
+                if (RouteData.Route is Route myRoute && myRoute.Url == "story/{slug}")
                 {
                     string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
                     pais_name = cadena.Replace("-", " ");
                     ENPais pais = new ENPais();
 
-                    if (Request.QueryString["id"] != null)
+                    pais.name = pais_name;
+
+                    if (!pais.ReadPais())
                     {
-                        pais.id = int.Parse(Request.QueryString["id"].ToString());
+                        Response.Redirect("/404");
+
+                    }
+
+                    pais_id = pais.id;
+                    pais_name = pais.name;
+                    if (Session["usuario"] != null)
+                    {
+                        crear_story.Visible = true;
                     }
                     else
                     {
-                        pais.name = pais_name;
+                        crear_story.Visible = false;
 
                     }
 
-                    if (pais.ReadPais())
-                    {
-                        pais_id = pais.id;
-                        pais_name = pais.name;
-                        if (Session["usuario"] != null)
-                        {
-                            crear_story.Visible = true;
-                        }
-                        else
-                        {
-                            crear_story.Visible = false;
-
-                        }
-                    }
-                    country_span.InnerText = pais_name;
+                    //country_span.InnerText = pais_name;
                     left_bottom_title.InnerText = pais_name;
 
                 }
@@ -222,6 +217,42 @@ namespace FirstRow.Pages
                 }
             }
             stories_items.Controls.Add(p);
+        }
+
+
+        protected void registrarse(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void registrarEmpresa(object sender, EventArgs e)
+        {
+ 
+        }
+
+        protected void iniciarSesion(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void iniciarSesionEmpresa(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void modificarUsuario(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void modificarEmpresa(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cerrarSesion(object sender, EventArgs e)
+        {
+
         }
 
     }

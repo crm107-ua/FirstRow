@@ -7,7 +7,7 @@
                         <div class="wrap_float">
                             <a href="/" style="color:white;">FirstRow</a>
                             <span class="separator" style="color:white;">/</span>
-                            <a href="/experiencias" style="color:white;">Experiencias</a>
+                            <a href="/sorteo" style="color:white;">Sorteos</a>
                             <span class="separator" style="color:white;">/</span>
                             <a href="/" style="color:white;"><asp:Label ID="slug" runat="server"></asp:Label></a>
                         </div>

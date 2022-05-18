@@ -15,11 +15,11 @@
                     <div class="gallery-page-head">
                         <h1 class="title">Galería</h1>
                         <div class="select_wrap">
-                            <asp:DropDownList ID="Direccion" runat="server" OnSelectedIndexChanged="Direccion_SelectedIndexChanged"></asp:DropDownList>
+                            <asp:DropDownList ID="Direccion" runat="server" OnSelectedIndexChanged="Direccion_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                         </div>
                         <asp:Panel id="add_galeria" runat="server">
                             <div class="buttons">
-                                <a href="/agregar-seccion-galeria" class="btn button" style="color:white; font-size: large;" tabindex="-1">Añadir</a>
+                                <a href="/agregar-seccion-galeria" class="btn button" style="color:white; font-size:larger;" tabindex="-1">Añadir</a>
                              </div>
                         </asp:Panel>
                     </div>

@@ -23,15 +23,14 @@ namespace FirstRow.App_Start
             routes.MapPageRoute("stories", "stories", "~/Pages/Stories.aspx");
             routes.MapPageRoute("story", "story/{slug}", "~/Pages/Story.aspx");
             routes.MapPageRoute("agregar_story", "agregar-story", "~/Pages/Forms/FormStory.aspx");
+            routes.MapPageRoute("user-stories", "user-stories/{nickname}", "~/Pages/StoryUsuario.aspx");
 
-            routes.MapPageRoute("wearing", "wearing/{slug}", "~/Pages/Wearing.aspx");
+            routes.MapPageRoute("firstrow", "firstrow", "~/Pages/FirstRow.aspx");
 
             routes.MapPageRoute("galeria", "galeria", "~/Pages/Galeria.aspx");
             routes.MapPageRoute("filtrado_galeria", "galeria/{pais}", "~/Pages/Galeria.aspx");
             routes.MapPageRoute("seccion_galeria", "galeria/{pais}/{slug}", "~/Pages/Seccion_Galeria.aspx");
             routes.MapPageRoute("agregar_seccion_galeria", "agregar-seccion-galeria", "~/Pages/Forms/FormGaleria.aspx");
-
-
 
             routes.MapPageRoute("blogs", "blogs", "~/Pages/Blogs.aspx");
             routes.MapPageRoute("blogs_categoria", "blogs/{categoria}", "~/Pages/Blogs.aspx");

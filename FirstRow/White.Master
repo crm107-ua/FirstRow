@@ -35,11 +35,7 @@
                                                     <asp:MenuItem Text="Stories" NavigateUrl="/stories" />
                                                     <asp:MenuItem Text="Blogs" NavigateUrl="/blogs" />
                                                     <asp:MenuItem Text="Sorteos" NavigateUrl="/sorteos" />
-                                                    <asp:MenuItem Text="FirstRow" NavigateUrl="/">
-                                                        <asp:MenuItem Text="Propuestas" NavigateUrl="/propuestas" />
-                                                        <asp:MenuItem Text="Nuestro equipo" NavigateUrl="/equipo" />
-                                                        <asp:MenuItem Text="Contacto" NavigateUrl="/contacto" />
-                                                    </asp:MenuItem>
+                                                    <asp:MenuItem Text="FirstRow" NavigateUrl="/firstrow" />
                                                 </Items>
                                             </asp:Menu>                                     
                                         <div class="mobile_content"> </div>

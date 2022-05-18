@@ -27,10 +27,10 @@ namespace library
 
                 string query = "Insert INTO [firstrow_].[dbo].[Blogs] " +
                     "(imagen_principal,titulo, descripcion, text_1, text_2," +
-                    "text_3, citacion, slug, usuario, categoria, pais) " +
+                    "text_3, citacion, slug, fecha, usuario, categoria, pais) " +
                     "VALUES " +
                     "(@imagen_principal,@titulo,@descripcion,@text_1,@text_2," +
-                    "@text_3,@citacion,@slug,@usuario,@categoria,@pais) " +
+                    "@text_3,@citacion,@slug,@fecha,@usuario,@categoria,@pais) " +
                     "select scope_identity()";
                 SqlCommand consulta = new SqlCommand(query, conection);
                 consulta.Parameters.AddWithValue("@imagen_principal", blog.Imagen_principal);
@@ -41,6 +41,7 @@ namespace library
                 consulta.Parameters.AddWithValue("@text_3", blog.Texto_3);
                 consulta.Parameters.AddWithValue("@citacion", blog.Citacion);
                 consulta.Parameters.AddWithValue("@slug", blog.Slug);
+                consulta.Parameters.AddWithValue("@fecha", DateTime.Now);
                 consulta.Parameters.AddWithValue("@usuario", blog.Usuario.nickname);
                 consulta.Parameters.AddWithValue("@categoria", blog.Categoria.id);
                 consulta.Parameters.AddWithValue("@pais", blog.Pais.id);
@@ -119,7 +120,9 @@ namespace library
                 blog.Texto_1 = busqueda["text_1"].ToString();
                 blog.Texto_2 = busqueda["text_2"].ToString();
                 blog.Texto_3 = busqueda["text_3"].ToString();
+                blog.Fecha = (DateTime)busqueda["fecha"];
                 blog.Citacion = busqueda["citacion"].ToString();
+                blog.Categoria.id = Int32.Parse(busqueda["categoria"].ToString());
                 ENUsuario usuario = new ENUsuario();
                 usuario.nickname = busqueda["usuario"].ToString();
                 usuario.readUsuario();
@@ -141,6 +144,25 @@ namespace library
                     pais.name = busquedaSecundaria["name"].ToString();
                     blog.Pais = pais;
                     busquedaSecundaria.Close();
+
+
+                    // Lectura de categoria de blog
+
+                    conectionSecundario = new SqlConnection(constring);
+                    conectionSecundario.Open();
+                    querySecundaria = "Select * From [firstrow_].[dbo].[Categorias] where ID = @id";
+                    consultaSecundaria = new SqlCommand(querySecundaria, conectionSecundario);
+                    consultaSecundaria.Parameters.AddWithValue("@id", blog.Categoria.id);
+                    busquedaSecundaria = consultaSecundaria.ExecuteReader();
+                    busquedaSecundaria.Read();
+                    ENCategorias categoria = new ENCategorias();
+                    categoria.id = Int32.Parse(busquedaSecundaria["id"].ToString());
+                    categoria.nombre = busquedaSecundaria["nombre"].ToString();
+                    categoria.descripcion = busquedaSecundaria["descripcion"].ToString();
+                    categoria.slug = busquedaSecundaria["slug"].ToString();
+                    blog.Categoria = categoria;
+                    busquedaSecundaria.Close();
+
 
                     // Lectura de imagenes de blog
 
@@ -176,6 +198,7 @@ namespace library
                     consultaSecundaria.Parameters.AddWithValue("@id_Blog", blog.Id);
                     busquedaSecundaria = consultaSecundaria.ExecuteReader();
 
+
                     while (busquedaSecundaria.Read())
                     {
                         ENComentarios comentario = new ENComentarios();
@@ -188,7 +211,7 @@ namespace library
                         ENUsuario usuarioComentario = new ENUsuario();
                         usuarioComentario.nickname = busquedaSecundaria["nickname"].ToString();
                         usuarioComentario.readUsuario();
-                        comentario.Usuario = usuario;
+                        comentario.Usuario = usuarioComentario;
                         comentarios.Add(comentario);
                     }
 
@@ -285,6 +308,7 @@ namespace library
                     blog.Texto_3 = rowsBlogs[i]["text_3"].ToString();
                     blog.Citacion = rowsBlogs[i]["citacion"].ToString();
                     blog.Slug = rowsBlogs[i]["slug"].ToString();
+                    blog.Fecha = (DateTime)rowsBlogs[i]["fecha"];
                     blog.Pais.id = Int32.Parse(rowsBlogs[i]["pais"].ToString());
                     blog.Categoria.id = Int32.Parse(rowsBlogs[i]["categoria"].ToString());
                     ENUsuario usuario = new ENUsuario();
@@ -366,7 +390,6 @@ namespace library
                     }
                     blog.Comentarios = comentarios;
                     connectionSecundaria.Close();
-
                     listaBlogs.Add(blog);
                 }
 

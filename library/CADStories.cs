@@ -283,9 +283,9 @@ namespace library
         /// Lee todas las stories de un país
         /// </summary>
         /// <param name="listStories"></param>
-        /// <param name="pais">true: si se ha completado con éxito;
-        /// false: si no se ha completado</param>
-        /// <returns></returns>
+        /// <param name="pais">id del país</param>
+        /// <returns>true: si se ha completado con éxito;
+        /// false: si no se ha completado</returns>
         public bool ReadAllStories(List<ENStories> listStories, int pais)
         {
             bool correctRead;
@@ -314,6 +314,80 @@ namespace library
                     string titulo = busqueda["titulo"].ToString();
                     string desc = busqueda["descripcion"].ToString();
                     string img = busqueda["imagen"].ToString();
+
+                    listStories.Add(new ENStories(
+                        user,
+                        fecha,
+                        titulo,
+                        pais,
+                        desc,
+                        img));
+                }
+
+                correctRead = true;
+
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("Story operation has failed.Error: {0}", e.Message);
+                correctRead = false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Story operation has failed.Error: {0}", e.Message);
+                correctRead = false;
+            }
+            finally
+            {
+                if (busqueda != null)
+                {
+                    busqueda.Close();
+                }
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+
+            return correctRead;
+        }
+
+        /// <summary>
+        /// Lee todas las stories de un usuario
+        /// </summary>
+        /// <param name="listStories"></param>
+        /// <param name="nickname">nickname del usuario</param>
+        /// <returns>true: si se ha completado con éxito;
+        /// false: si no se ha completado</returns>
+        public bool ReadAllStories(List<ENStories> listStories, string nickname)
+        {
+            bool correctRead;
+            SqlConnection connection = null;
+            SqlDataReader busqueda = null;
+
+            try
+            {
+                connection = new SqlConnection(constring);
+                connection.Open();
+
+                string query = "SELECT * FROM [firstrow_].[dbo].[Stories] WHERE usuario = @user ";
+                SqlCommand consulta = new SqlCommand(query, connection);
+                consulta.Parameters.AddWithValue("@user", nickname);
+                busqueda = consulta.ExecuteReader();
+
+                //listStories.Add(new ENStories(1, new ENUsuario(), new DateTime(), "titulo", 2, "desc", "https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg"));
+
+                while (busqueda.Read())
+                {
+                    //int id = int.Parse(busqueda["id"].ToString());
+                    ENUsuario user = new ENUsuario();
+                    user.nickname = busqueda["usuario"].ToString();
+                    _ = user.readUsuario();
+                    DateTime fecha = DateTime.Parse(busqueda["fecha"].ToString());
+                    string titulo = busqueda["titulo"].ToString();
+                    string desc = busqueda["descripcion"].ToString();
+                    string img = busqueda["imagen"].ToString();
+                    int pais = int.Parse(busqueda["pais"].ToString());
 
                     listStories.Add(new ENStories(
                         user,

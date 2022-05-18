@@ -35,29 +35,55 @@ namespace library
             this.name = name;
         }
 
+        /// <summary>
+        /// Obtiene una lista de los países en la BD
+        /// </summary>
+        /// <param name="listaPaises"></param>
+        /// <returns>true: si se ha leido correctamente;
+        /// false: si no</returns>
         public bool readPaises(List<ENPais> listaPaises)
         {
             CADPaises paises = new CADPaises();
             return paises.readPaises(listaPaises);
         }
 
+        /// <summary>
+        /// Lee un país de la BD
+        /// </summary>
+        /// <returns>true: si se ha leido correctamente;
+        /// false: si no</returns>
         public bool ReadPais()
         {
             CADPaises paises = new CADPaises();
             return paises.ReadPais(this);
         }
 
+        /*
         public static int CompareCountriesByName(ENPais x, ENPais y)
         {
             return String.Compare(x.name, y.name);
         }
+        */
 
+        /// <summary>
+        /// Lee los países de la BD y los devuelve como DataSet
+        /// </summary>
+        /// <param name="ds"></param>
+        /// <returns>true: si se ha leido correctamente;
+        /// false: si no</returns>
         public static bool ReadPaisesDataSet(DataSet ds)
         {
             CADPaises paises = new CADPaises();
             return paises.ReadPaisesDataSet(ds);
         }
 
+        /// <summary>
+        /// Obtiene una lista de los países con una 
+        /// lectura desconectada a la BD
+        /// </summary>
+        /// <param name="listaPaises"></param>
+        /// <returns>true: si se ha leido correctamente;
+        /// false: si no</returns>
         public bool getListPaisesDesconectado(List<ENPais> listaPaises)
         {
             CADPaises paises = new CADPaises();
