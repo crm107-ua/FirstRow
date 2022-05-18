@@ -4,7 +4,7 @@
         <div class="breadcrumbs">
             <div class="wrap">
                 <div class="wrap_float">
-                    <a href="/firstrow" style="color:white;">FirstRow - Atención al Cliente</a>
+                    <a href="/firstrow" style="color:white;">FirstRow - Servicios</a>
                 </div>
             </div>
         </div>
@@ -13,7 +13,7 @@
                 <div class="wrap_float">
                     <div class="page_head">
                         <h1 class="title" style="color:white;">
-                            FirstRow - Travel Agency
+                            FirstRow - Atención al cliente
                         </h1>
                     </div>
                     <div class="page_body">

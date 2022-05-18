@@ -149,7 +149,6 @@ namespace FirstRow
             Page.ClientScript.RegisterClientScriptBlock(GetType(), "mod_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('settings_user_pop_up').click(); }", true);
         }
 
-
         protected void modificarEmpresa(object sender, EventArgs e)
         {
             ENEmpresa empresa = new ENEmpresa();
