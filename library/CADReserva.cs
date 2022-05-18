@@ -17,7 +17,7 @@ namespace library
             constring = ConfigurationManager.ConnectionStrings["DataBase"].ToString();
         }
 
-        public DataSet readReserva(ENReserva eNReserva, bool v)
+        public DataSet readReservas()
         {
 
             SqlConnection c = null;
@@ -26,7 +26,7 @@ namespace library
             {
                 c = new SqlConnection(constring);
                 DataSet bd = new DataSet();
-                SqlDataAdapter da = new SqlDataAdapter("select * from [firstrow_].[dbo].[Reserva]", c);
+                SqlDataAdapter da = new SqlDataAdapter("select * from [firstrow_].[dbo].[Reservas]", c);
                 da.Fill(bd, "Reserva");
                 return bd;
             }
@@ -43,6 +43,125 @@ namespace library
             }
 
         }
+
+        internal bool readReserva(ENReserva reserva, bool mode)
+        {
+
+            SqlConnection conection = null;
+            SqlDataReader busqueda = null;
+
+            try
+            {
+                conection = new SqlConnection(constring);
+                SqlCommand consulta = new SqlCommand();
+                conection.Open();
+                string query = "";
+
+                if (mode)
+                {
+                    query = "Select * From [firstrow_].[dbo].[Reservas] where id = @id";
+                    consulta = new SqlCommand(query, conection);
+                    consulta.Parameters.AddWithValue("@id", reserva.id);
+                }
+                else
+                {
+                    query = "Select * From [firstrow_].[dbo].[Reservas] where slug = @slug";
+                    consulta = new SqlCommand(query, conection);
+                    consulta.Parameters.AddWithValue("@id", reserva.id);
+                }
+                busqueda = consulta.ExecuteReader();
+                busqueda.Read();
+
+                // Lectura de campos de categoria
+
+                reserva.id = Int32.Parse(busqueda["id"].ToString());
+                reserva.nombre = busqueda["nombre"].ToString();
+                reserva.descripcion = busqueda["descripcion"].ToString();
+            
+
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                return false;
+            }
+            finally
+            {
+                if (busqueda != null)
+                {
+                    busqueda.Close();
+                }
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return true;
+
+
+        }
+
+        internal bool registerReserva(ENReserva reserva)
+        {
+            bool creado = false;
+            if (reserva is ENReserva)
+            {
+
+                bool created = false;
+                SqlConnection connection = new SqlConnection(constring);
+                try
+                {
+                    connection.Open();
+                    string query = "INSERT INTO [firstrow_].[dbo].[Reservas] " +
+                        "(id, nombre, descripcion, experiencia, fechaEntrada, fechaSalida, usuario, precio_asignado, personas, numero) VALUES " +
+                        $"({reserva.id}, {reserva.nombre}, {reserva.descripcion},{reserva.experiencia},{reserva.fechaEntrada},{reserva.fechaSalida},{reserva.usuario},{reserva.precio},{reserva.personas},{reserva.telefono})";
+
+                    SqlCommand com = new SqlCommand(query, connection);
+                    com.ExecuteNonQuery();
+                    created = true;
+                }
+                catch (SqlException e)
+                {
+                    created = false;
+                    Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                }
+                catch (Exception e)
+                {
+                    created = false;
+                    Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                }
+                finally
+                {
+                    if (connection != null)
+                    {
+                        connection.Close();
+                    }
+                }
+
+                return created;
+
+            }
+
+            return creado;
+        }
+
+        internal bool deleteReserva(ENReserva reserva)
+        {
+
+            bool deleted = false;
+            return deleted;
+
+
+        }
     }
-       
+
+
+  
+
 }

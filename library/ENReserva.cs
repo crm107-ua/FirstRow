@@ -99,25 +99,36 @@ namespace library
             CADReserva reservas = new CADReserva();
             return reservas.readReservas();
         }
-        
-       
 
+        public bool readReserva(bool mode)
+        {
+            CADReserva categoria = new CADReserva();
+            return categoria.readReserva(this, mode);
+        }
 
+        public bool registerReserva()
+        {
+            CADReserva categoria = new CADReserva();
+            bool creado = false;
+            if (!categoria.readReserva(this, true))
+            {
+                creado = categoria.registerReserva(this);
+            }
+            return creado;
+        }
 
+        public bool deleteReserva()
+        {
+            bool eliminado = false;
+            CADReserva categoria = new CADReserva();
 
+            if (!categoria.readReserva(this, true))
+            {
+                eliminado = categoria.deleteReserva(this);
+            }
 
-
-
-
-
-
-
-
-
-
-
-
-
+            return eliminado;
+        }
 
 
     }
