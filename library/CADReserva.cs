@@ -65,19 +65,24 @@ namespace library
                 }
                 else
                 {
-                    query = "Select * From [firstrow_].[dbo].[Reservas] where slug = @slug";
+                    query = "Select * From [firstrow_].[dbo].[Reservas] where id = @id";
                     consulta = new SqlCommand(query, conection);
                     consulta.Parameters.AddWithValue("@id", reserva.id);
                 }
                 busqueda = consulta.ExecuteReader();
                 busqueda.Read();
 
-                // Lectura de campos de categoria
-
-                reserva.id = Int32.Parse(busqueda["id"].ToString());
+                // Lectura de campos de reserva
                 reserva.nombre = busqueda["nombre"].ToString();
+                reserva.id = Int32.Parse(busqueda["id"].ToString());
                 reserva.descripcion = busqueda["descripcion"].ToString();
-            
+                reserva.fechaEntrada = DateTime.Parse(busqueda["fechaEntrada"].ToString());
+                reserva.fechaSalida = DateTime.Parse(busqueda["fechaSalida"].ToString());
+                reserva.id = Int32.Parse(busqueda["telefono"].ToString());
+                reserva.personas = Int16.Parse(busqueda["personas"].ToString());
+                reserva.precio = int.Parse(busqueda["precio"].ToString());
+ 
+
 
             }
             catch (SqlException e)
@@ -101,10 +106,7 @@ namespace library
                     conection.Close();
                 }
             }
-
             return true;
-
-
         }
 
         internal bool registerReserva(ENReserva reserva)
@@ -120,7 +122,7 @@ namespace library
                     connection.Open();
                     string query = "INSERT INTO [firstrow_].[dbo].[Reservas] " +
                         "(id, nombre, descripcion, experiencia, fechaEntrada, fechaSalida, usuario, precio_asignado, personas, numero) VALUES " +
-                        $"({reserva.id}, {reserva.nombre}, {reserva.descripcion},{reserva.experiencia},{reserva.fechaEntrada},{reserva.fechaSalida},{reserva.usuario},{reserva.precio},{reserva.personas},{reserva.telefono})";
+                        $"({reserva.id}, {reserva.usuario.name}, {reserva.descripcion},{reserva.experiencia.Id},{reserva.fechaEntrada.ToString()},{reserva.fechaSalida.ToString()},{reserva.usuario.nickname},{reserva.precio},{reserva.personas},{reserva.telefono})";
 
                     SqlCommand com = new SqlCommand(query, connection);
                     com.ExecuteNonQuery();
