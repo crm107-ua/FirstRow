@@ -1293,6 +1293,15 @@ namespace FirstRow
         protected global::System.Web.UI.WebControls.RequiredFieldValidator form_reserva_email_requerido;
 
         /// <summary>
+        /// Control form_email_validacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator form_email_validacion;
+
+        /// <summary>
         /// Control form_reserva_contacto.
         /// </summary>
         /// <remarks>
@@ -1363,5 +1372,14 @@ namespace FirstRow
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label msg_error_reserva;
+
+        /// <summary>
+        /// Control slug_reserva_experiencia_Oculto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label slug_reserva_experiencia_Oculto;
     }
 }

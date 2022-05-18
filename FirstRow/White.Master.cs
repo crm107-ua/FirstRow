@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web.Routing;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -15,6 +16,7 @@ namespace FirstRow
         protected void Page_Load(object sender, EventArgs e)
         {
             cargarElementosSesion();
+            msg_error_reserva.Visible = false;
         }
 
         protected void registrarse(object sender, EventArgs e)
@@ -354,29 +356,48 @@ namespace FirstRow
 
         protected void reserva_button_Click(object sender, EventArgs e)
         {
-            /*
-            ENReserva reserva = new ENReserva();
-            
-            reserva.nombre = usuario.name;
-           reserva.usuario = usuario;
-            *
-            */
-            ENUsuario usuario = (ENUsuario)Session["usuario"];
-            DateTime fechaInicio = DateTime.Parse(Request.Form["fechaEntrada"]);
-            string decripcion = form_reserva_descripcion.Text.Trim();
-            string texto = form_reserva_email.Text.Trim();
-            Regex regex = new Regex("/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}.){1,125}[A-Z]{2,63}$/i");
-
-            /*if (!regex.Match(texto))
+            try
             {
+                ENReserva reserva = new ENReserva();
+                ENUsuario usuario = (ENUsuario)Session["usuario"];
+                ENViajes eNViajes = new ENViajes();
+
+                reserva.nombre = usuario.name;
+                reserva.usuario = usuario;
+                DateTime fechaIn= DateTime.Parse(Request.Form["fechaEntrada"]);
+
+                reserva.fechaEntrada = fechaIn;
+                reserva.descripcion = form_reserva_descripcion.Text.Trim();
+                //reserva = form_reserva_email.Text.Trim();
+                eNViajes.Slug = slug_reserva_experiencia_Oculto.Text;
+                eNViajes.mostrarExperiencia();
+                reserva.experiencia = eNViajes;
+                reserva.fechaSalida = fechaIn.AddDays(eNViajes.Dias);
+                reserva.telefono = int.Parse(form_reserva_contacto.Text.Trim());
+                reserva.personas = int.Parse(form_reserva_nPersonas.Text.Trim());
+                //TODO Cambiar par no ir con enteros
+                reserva.precio = reserva.personas * (int)eNViajes.Precio;
+
+                if (reserva.registerReserva())
+                {
+                    msg_error_reserva.Visible = true;
+                    msg_error_reserva.Text = "Enorabuena reseva realizada";
+                }
+                else 
+                {
+                    new Exception();
+                }
 
             }
-            else
+            catch (Exception exception)
             {
-
+                msg_error_reserva.Visible = true;
+                msg_error_reserva.Text = "Vaya algo salio mal vuelva a intentar más tarde";
             }
-            */
-            Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
+            finally 
+            {
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
+            }
         }
 
     }

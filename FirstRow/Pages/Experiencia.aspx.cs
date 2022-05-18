@@ -145,13 +145,19 @@ namespace FirstRow.Pages
         protected void reserva(object sender, EventArgs e)
         {
             //TODO cambiar
-            if (Session["usuario"] != null)
+            if (Session["usuario"] == null)
             {
-                Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_emp", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('login_emp_pop_up').click(); }", true);
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_user", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('login_user_pop_up').click(); }", true);
             }
             else
             {
-                DateTime fechaInsertada = DateTime.Parse(Request.Form["reservaEntrada"]);
+                string slug = "";
+                Route myRoute = RouteData.Route as Route;
+                if (myRoute != null && myRoute.Url == "experiencia/{slug}")
+                {
+                    slug = RouteData.Values["slug"].ToString();
+                }
+                    DateTime fechaInsertada = DateTime.Parse(Request.Form["reservaEntrada"]);
                 int nPersonas = int.Parse(Request.Form["PersonNumber"]);
 
                 if (nPersonas < 0)
@@ -171,6 +177,7 @@ namespace FirstRow.Pages
 
                 ((Panel)this.Master.FindControl("form_reserva_fechas")).Controls.Add(fechaInicial);
                 ((TextBox)this.Master.FindControl("form_reserva_nPersonas")).Text = nPersonas.ToString();
+                ((Label)this.Master.FindControl("slug_reserva_experiencia_Oculto")).Text =slug;
 
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
             }
