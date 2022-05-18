@@ -12,14 +12,14 @@ namespace library
         private int _id;
         private string _nombre;
         private string _descripcion;
-        private string _usuario;
+        private ENUsuario _usuario;
         private int _telefono;
         private int _personas;
 
-        private string _experiencia;
+        private ENViajes _experiencia;
         private DateTime _fechaEntrada;
         private DateTime _fechaSalida;
-        private int _precio;
+        private double _precio;
 
 
         public DateTime fechaEntrada{
@@ -48,7 +48,7 @@ namespace library
             get { return _personas; }
             set { _personas = value; }
         }
-        public int precio
+        public double precio
         {
             get { return _precio; }
             set { _precio = value; }
@@ -66,32 +66,42 @@ namespace library
             set { _descripcion = value; }
         }
 
-        public string usuario
+        public ENUsuario usuario
         {
             get { return _usuario; }
             set { _usuario = value; }
         }
 
-        public string experiencia
+        public ENViajes experiencia
         {
             get { return _experiencia; }
             set { _experiencia = value; }
         }
 
-        public ENReserva(int id, int telefono, int personas, int precio, string nombre, string descripcion, string usuario, string experiencia, DateTime fechaEntrada, DateTime fechaSalida)
+        public ENReserva() 
+        {
+            this.id = 0;
+            this.telefono = 0;
+            this.personas = 0;
+            this.precio = 0;
+            this.descripcion = descripcion;
+            this.usuario = new ENUsuario();
+            this.experiencia = new ENViajes();
+            this.fechaEntrada = new DateTime();
+            this.fechaSalida = new DateTime();
+        }
+
+        public ENReserva(int id, int telefono, int personas, double precio, string descripcion, ENUsuario usuario, ENViajes experiencia, DateTime fechaEntrada, DateTime fechaSalida)
         {
             this.id = id;
             this.telefono = telefono;
             this.personas = personas;
             this.precio = precio;
-            this.nombre = nombre;
             this.descripcion = descripcion;
             this.usuario = usuario;
             this.experiencia = experiencia;
             this.fechaEntrada = fechaEntrada;
             this.fechaSalida = fechaSalida;
-            
-
         }
 
         public DataSet readReservas()
