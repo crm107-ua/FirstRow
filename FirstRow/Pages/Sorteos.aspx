@@ -21,7 +21,7 @@
                        
                     </div>
                     <div class="page_body">
-                        <div class="blog_list" runat="server" id="sorteos_list">
+                        <div class="blog-list" runat="server" id="sorteos_list">
                             
                             <!--
                            

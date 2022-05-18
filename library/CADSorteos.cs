@@ -17,6 +17,7 @@ namespace library
 
         internal bool addParticipante(ENSorteos en)
         {
+            //TODO: addParticipante
             bool anadido = false;
             SqlConnection c = new SqlConnection(constring);
             try
@@ -58,124 +59,118 @@ namespace library
         {
             throw new NotImplementedException();
         }
-        public bool getlistadesconectado(List<ENSorteos> sorteos)
-        {
-            bool correctRead = false;
-
-            DataSet ds = new DataSet();
-            try
-            {
-                if (ReadSorteosDataSet(ds))
-                {
-                    DataTable dtsorteos = ds.Tables["Sorteos"];
-          
-                    using (DataTableReader dtRdr = dtsorteos.CreateDataReader())
-                    {
-                        while (dtRdr.Read())
-                        {
-                            ENSorteos p = new ENSorteos();
-                            p.Id = Convert.ToInt32(dtRdr[0]);
-                            p.Nombre = Convert.ToString(dtRdr[1]);
-                            sorteos.Add(p);
-                        }
-                    }
-
-                    correctRead = true;
-                }
-
-            }
-            catch (Exception ex)
-            {
-                correctRead = false;
-                Console.WriteLine("User operation has failed.Error: {0}", ex.Message);
-            }
-
-            return correctRead;
-
-        }
-        public bool ReadSorteosDataSet(DataSet ds)
+        public bool readsorteosconectado(List<ENSorteos> lista)
         {
             bool correctRead;
-            SqlConnection connection = new SqlConnection(constring);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM [firstrow_].[dbo].[sorteos]", connection);
+            SqlConnection connection = null;
+            SqlDataReader busqueda = null;
 
             try
             {
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                sda.Fill(ds, "Sorteos");
+                connection = new SqlConnection(constring);
+                connection.Open();
+
+                string query = "SELECT * FROM [firstrow_].[dbo].[Sorteos]";
+                SqlCommand consulta = new SqlCommand(query, connection);
+                busqueda = consulta.ExecuteReader();
+
+                //listStories.Add(new ENStories(1, new ENUsuario(), new DateTime(), "titulo", 2, "desc", "https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg"));
+               
+                while (busqueda.Read())
+                {
+                    //int id = int.Parse(busqueda["id"].ToString());
+                    ENSorteos sorteo;
+                    sorteo = new ENSorteos
+                    {
+                        Id = Int32.Parse(busqueda["id"].ToString()),
+                        Imagen = busqueda["imagen"].ToString(),
+                        Nombre = busqueda["titulo"].ToString(),
+                        Descripcion = busqueda["descripcion"].ToString(),
+                        FechaFinal = DateTime.Parse(busqueda["fechafINAL"].ToString()),
+                        FechaInicio = DateTime.Parse(busqueda["fechaInicio"].ToString()),
+                        Titular = busqueda["titular"].ToString()
+                    };
+
+                    lista.Add(sorteo);
+                }
+
                 correctRead = true;
 
             }
+            catch (SqlException e)
+            {
+                Console.WriteLine("Sorteo operation has failed.Error: {0}", e.Message);
+                correctRead = false;
+            }
             catch (Exception e)
             {
-                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                Console.WriteLine("Sorteo operation has failed.Error: {0}", e.Message);
                 correctRead = false;
+            }
+            finally
+            {
+                if (busqueda != null)
+                {
+                    busqueda.Close();
+                }
+                if (connection != null)
+                {
+                    connection.Close();
+                }
             }
 
             return correctRead;
+        
 
-        }
-        public bool readsorteo(ENSorteos sorteo)
+
+    }
+        public bool readsorteo(List<ENSorteos> lista)
         {
+            
+                /**/
+                bool leido = false;
+                SqlConnection connection = null;
+            DataSet sorteos;
 
-            //TODO: readsorteo
-            bool correctRead = false;
-            SqlConnection connection = new SqlConnection(constring);
-
+            ENSorteos sorteo;
             try
             {
-                
-                connection.Open();
-                string query = "SELECT * FROM [firstrow_].[dbo].[Sorteos] WHERE"+"id = @id";
-                SqlCommand com = new SqlCommand(query,connection);
-                com.Parameters.AddWithValue("@id", sorteo.Id);
-         
-                SqlDataReader dr = com.ExecuteReader();
-                try
-                {
-                    
-                    dr.Read();
+                connection = new SqlConnection(constring);
+                sorteos = new DataSet();
+                string query = "Select * From [firstrow_].[dbo].[Sorteos];";
 
-                    if (sorteo.Id > 0 && sorteo.Id == int.Parse(dr["id"].ToString()))
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.Fill(sorteos, "Sorteos");
+                DataTable tablesorteos = sorteos.Tables["Sorteos"];
+                DataRow[] rowsSorteos = tablesorteos.Select();
+                for (int i = 0; i < rowsSorteos.Length; i++)
+                {
+                    sorteo = new ENSorteos
                     {
-                        sorteo.Nombre= dr["nombre"].ToString();
-                        sorteo.Descripcion= dr["descripcion"].ToString();
-                        sorteo.FechaFinal= (DateTime)dr["fechaFinal"];
-                        sorteo.Imagen= dr["imagen"].ToString();
-                        sorteo.FechaInicio =(DateTime) dr["fechaInicio"];
-                        
-
-                        correctRead = true;
-
-                    }
-                    else  correctRead = false;
-
+                        Id = Int32.Parse(rowsSorteos[i]["id"].ToString()),
+                        Imagen = rowsSorteos[i]["imagen"].ToString(),
+                        Nombre = rowsSorteos[i]["nombre"].ToString(),
+                        Descripcion = rowsSorteos[i]["descripcion"].ToString(),
+                        FechaFinal = (DateTime)rowsSorteos[i]["fechafinal"],
+                        FechaInicio = (DateTime)rowsSorteos[i]["fechainicio"],
+                        Titular = rowsSorteos[i]["titular"].ToString()
+                    };
+                    lista.Add(sorteo);
                 }
-                catch (SqlException ex)
-                {
-                    Console.WriteLine("User operation has failed.Error: {0}", ex.Message);
-                    return false;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("User operation has failed.Error: {0}", ex.Message);
-                    return false;
-                }
-                finally { dr.Close(); }
-            }
-            catch (SqlException ex)
+                leido = true;
+            }catch (SqlException ex)
             {
-                correctRead = false;
+                leido = false;
                 Console.WriteLine("User operation has failed.Error: {0}", ex.Message);
             }
             catch (Exception ex)
             {
-                correctRead = false;
+                leido = false;
                 Console.WriteLine("User operation has failed.Error: {0}", ex.Message);
             }
             finally { connection.Close(); }
 
-            return correctRead;
+            return leido;
 
            
         }
