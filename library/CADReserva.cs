@@ -109,7 +109,7 @@ namespace library
             return true;
         }
 
-        internal bool readReservas(List<ENViajes> reservasEmpresa, string empresa)
+        internal bool readReservasEmpresa(List<ENReserva> reservasEmpresa, string empresa)
         {
 
             bool leido = false;
@@ -135,7 +135,22 @@ namespace library
                 for (int i = 0; i < rowsReservas.Length; i++)
                 {
                     reserva = new ENReserva();
+
+                    reserva.id = Int32.Parse(rowsReservas[i]["id"].ToString());
+                    reserva.nombre = rowsReservas[i]["nombre"].ToString();
+                    reserva.descripcion = rowsReservas[i]["descripcion"].ToString();
+                    reserva.experiencia.Id = Int32.Parse(rowsReservas[i]["experiencia"].ToString());
+                    reserva.experiencia.mostrarExperiencia();
+                    reserva.fechaEntrada = (DateTime)rowsReservas[i]["fechaEntrada"];
+                    reserva.fechaSalida = (DateTime)rowsReservas[i]["fechaSalida"];
+                    reserva.usuario.nickname = rowsReservas[i]["nickname"].ToString();
+                    reserva.usuario.readUsuario();
+                    reserva.precio = Int32.Parse(rowsReservas[i]["precio"].ToString());
+                    reserva.personas = Int32.Parse(rowsReservas[i]["personas"].ToString());
+                    reservasEmpresa.Add(reserva);
                 }
+
+                leido = true;
             }
             catch (DataException e)
             {
