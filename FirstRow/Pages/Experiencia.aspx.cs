@@ -196,6 +196,8 @@ namespace FirstRow.Pages
                 ((TextBox)this.Master.FindControl("form_reserva_nPersonas")).Text = nPersonas.ToString();
                 ((Label)this.Master.FindControl("slug_reserva_experiencia_Oculto")).Text = slug;
                 ((Label)this.Master.FindControl("form_reserva_price")).Text =eNViajes.Precio.ToString();
+                ((Label)this.Master.FindControl("form_reserva_precio")).Text = (eNViajes.Precio * nPersonas).ToString()+"€";
+
             }
             catch (Exception exception) 
             { }
