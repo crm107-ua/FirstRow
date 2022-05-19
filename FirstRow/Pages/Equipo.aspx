@@ -115,7 +115,7 @@
                                     <div class="team_item">
                                         <div class="image">
                                             <div class="img_wrap">
-                                                <img alt="" src="https://i.ibb.co/8BH0Qc7/jordi.jpg">
+                                                <img alt="" src="https://i.pinimg.com/564x/46/f1/e9/46f1e90d7c95359b39e6d4a259796161.jpg">
                                             </div>
                                         </div>
                                         <p class="name">Jordi Cardona</p>
@@ -124,7 +124,7 @@
                                     <div class="team_item">
                                         <div class="image">
                                             <div class="img_wrap">
-                                                <img alt="" src="https://avatars.githubusercontent.com/u/91018191?v=4">
+                                                <img alt="" src="">
                                             </div>
                                         </div>
                                         <p class="name">Franco Ezequiel</p>
