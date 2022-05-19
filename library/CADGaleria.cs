@@ -102,8 +102,12 @@ namespace library
                 galeria.Id = int.Parse(reader["id"].ToString());
                 galeria.Titulo = reader["titulo"].ToString();
                 galeria.Descripcion = reader["descripcion"].ToString();
-                galeria.Usuario.nickname = reader["usuario"].ToString();
                 galeria.Pais = new ENPais(int.Parse(reader["PaisId"].ToString()), reader["NamePais"].ToString());
+                ENUsuario usuarioAux = new ENUsuario();
+                usuarioAux.nickname = reader["usuario"].ToString();
+                usuarioAux.readUsuario();
+                galeria.Usuario = usuarioAux;
+
 
                 reader.Close();
                 string comandImg = "select name from Seccion_Galeria_Imagenes join Imagenes on(Imagenes.id = Seccion_Galeria_Imagenes.id_imagen)" +

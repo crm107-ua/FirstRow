@@ -8,6 +8,7 @@
                     <a href="/" style="color:white;">FirstRow</a>
                     <span class="separator" style="color:white;">/</span>
                     <a href="/stories" style="color:white;">Stories</a>
+                    <a id="add_form" runat="server" style="float: right; color:white;" href="/agregar-story"></a>
                 </div>
             </div> 
         </div>
@@ -18,7 +19,8 @@
                         <h1 class="title" runat="server" style="color:white;" id="stories_title"></h1>
                         <asp:TextBox runat="server" ID="stories_title_edit" Text="" Visible="false" />
                         <br />
-                        <p class="subtitle" runat="server" style="color:white;" id="stories_subtitle"></p>
+                        <p class="subtitle" runat="server" style="color:white;" id="stories_subtitle">
+                        </p>
                         <asp:TextBox runat="server" ID="stories_subtitle_edit" Text="" Visible="false" />
                         <div class="buttons">
                             <asp:Button runat="server" id="btn_modificar_pagina" class="btn button" Text="Modificar página" OnClick="modificarPaginaStories" Visible="false" />

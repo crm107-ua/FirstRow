@@ -453,7 +453,8 @@ $(document).ready(function () {
         dayNamesMin: ["S", "M", "T", "W", "T", "F", "S"],
         monthNames: ["January", "February", "March", "April", "May", "June", "Jule", "August", "September", "Oktober", "November", "December"],
         setDate: "today",
-        firstDay: 0
+        firstDay: 0,
+        min: "today"
     });
 
     $(".js_calendar").datepicker().datepicker("setDate", new Date());

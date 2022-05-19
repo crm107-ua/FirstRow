@@ -24,6 +24,15 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlForm WhiteMaster;
 
         /// <summary>
+        /// Control Menu1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Menu Menu1;
+
+        /// <summary>
         /// Control login_sect.
         /// </summary>
         /// <remarks>
@@ -94,24 +103,6 @@ namespace FirstRow.Pages
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl stories_items;
-
-        /// <summary>
-        /// Control default_story_panel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel default_story_panel;
-
-        /// <summary>
-        /// Control country_span.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl country_span;
 
         /// <summary>
         /// Control login.

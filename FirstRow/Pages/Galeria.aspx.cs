@@ -22,11 +22,11 @@ namespace FirstRow.Pages
 
                 if (Session["usuario"] != null)
                 {
-                    add_galeria.Visible = true;
+                    add.Visible = true;
                 }
                 else
                 {
-                    add_galeria.Visible = false;
+                    add.Visible = false;
                 }
 
                 Route myRoute = RouteData.Route as Route;

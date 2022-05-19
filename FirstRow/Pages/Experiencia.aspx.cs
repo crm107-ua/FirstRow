@@ -22,6 +22,8 @@ namespace FirstRow.Pages
                 if (experiencia.mostrarExperiencia())
                 {
                     slug.Text = experiencia.Titulo;
+                    empresa_enlace.InnerText = experiencia.Empresa.name;
+                    empresa_enlace.HRef = "/user/" + experiencia.Empresa.nickname;
                     bg_experiencia.Attributes.Add("style", "background-image: url(/Media/Experiencias/" + experiencia.Background + ")");
                     texto_pais.InnerText = experiencia.Pais.name;
                     texto_titulo.InnerText = experiencia.Titulo;
@@ -126,6 +128,10 @@ namespace FirstRow.Pages
                     {
                         seccion_escribir_comentario.Visible = false;
                     }
+                    else 
+                    {
+                        //loadReserva();
+                    }
                 }
 
                 else
@@ -144,17 +150,56 @@ namespace FirstRow.Pages
 
         protected void reserva(object sender, EventArgs e)
         {
+            //TODO cambiar
+            if (Session["usuario"] == null)
+            {
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_user", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('login_user_pop_up').click(); }", true);
+            }
+            else
+            {
+                loadReserva();
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
+            }
+        }
 
-            HtmlGenericControl fechaInicial = new HtmlGenericControl("input");
-            fechaInicial.Attributes.Add("type", "date");
-            fechaInicial.Attributes.Add("class","input");
-            fechaInicial.Attributes.Add("name", "variable");
-            fechaInicial.Attributes.Add("value", "2022-05-19");
-            fechaInicial.Attributes.Add("min", DateTime.Now.ToString("yyyy-MM-dd"));
+        private void loadReserva() 
+        {
+            try
+            {
+                string slug = "";
+                ENViajes eNViajes = new ENViajes();
+                Route myRoute = RouteData.Route as Route;
+                if (myRoute != null && myRoute.Url == "experiencia/{slug}")
+                {
+                    slug = RouteData.Values["slug"].ToString();
+                    eNViajes.Slug = slug;
+                }
+                eNViajes.mostrarExperiencia();
+                DateTime fechaInsertada = DateTime.Parse(Request.Form["reservaEntrada"]);
+                int nPersonas = int.Parse(Request.Form["PersonNumber"]);
 
-            ((Panel) this.Master.FindControl("form_reserva_fechas")).Controls.Add(fechaInicial);
+                if (nPersonas < 0)
+                {
+                    nPersonas = 0;
+                }
 
-            Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
+                if (fechaInsertada < DateTime.Now) fechaInsertada = DateTime.Now;
+
+
+                HtmlGenericControl fechaInicial = new HtmlGenericControl("input");
+                fechaInicial.Attributes.Add("type", "date");
+                fechaInicial.Attributes.Add("class", "input");
+                fechaInicial.Attributes.Add("name", "fechaEntrada");
+                fechaInicial.Attributes.Add("value", fechaInsertada.ToString("yyyy-MM-dd"));
+                fechaInicial.Attributes.Add("min", DateTime.Now.ToString("yyyy-MM-dd"));
+
+                ((Panel)this.Master.FindControl("form_reserva_fechas")).Controls.Add(fechaInicial);
+                ((TextBox)this.Master.FindControl("form_reserva_nPersonas")).Text = nPersonas.ToString();
+                ((Label)this.Master.FindControl("slug_reserva_experiencia_Oculto")).Text = slug;
+                ((Label)this.Master.FindControl("form_reserva_price")).Text =eNViajes.Precio.ToString();
+            }
+            catch (Exception exception) 
+            { }
         }
 
         protected void modificarExperiencia(object sender, EventArgs e)
@@ -165,14 +210,11 @@ namespace FirstRow.Pages
 
         protected void eliminarComentario(object sender, EventArgs e)
         {
-
-
+            
         }
 
         protected void eliminarExperiencia(object sender, EventArgs e)
         {
-
-
         }
     }
 }

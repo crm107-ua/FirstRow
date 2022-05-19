@@ -10,13 +10,13 @@ namespace library
     public class ENReserva
     {
         private int _id;
-        private string _nombre;
+        private string _nombre; //nombre del usuario
         private string _descripcion;
-        private string _usuario;
+        private ENUsuario _usuario; 
         private int _telefono;
         private int _personas;
 
-        private string _experiencia;
+        private ENViajes _experiencia;
         private DateTime _fechaEntrada;
         private DateTime _fechaSalida;
         private int _precio;
@@ -66,25 +66,41 @@ namespace library
             set { _descripcion = value; }
         }
 
-        public string usuario
+        public ENUsuario usuario
         {
             get { return _usuario; }
             set { _usuario = value; }
         }
 
-        public string experiencia
+        public ENViajes experiencia
         {
             get { return _experiencia; }
             set { _experiencia = value; }
         }
 
-        public ENReserva(int id, int telefono, int personas, int precio, string nombre, string descripcion, string usuario, string experiencia, DateTime fechaEntrada, DateTime fechaSalida)
+        public ENReserva()
+        {
+            this.id = 0;
+            this.telefono = 0;
+            this.personas = 0;
+            this.precio = 0;
+            this.nombre = "";
+            this.descripcion =  "";
+            this.usuario = new ENUsuario();
+            this.experiencia = new ENViajes();
+            this.fechaEntrada = new DateTime();
+            this.fechaSalida = new DateTime();
+
+
+        }
+
+        public ENReserva(int id, int telefono, int personas, int precio,  string descripcion, ENUsuario usuario, ENViajes experiencia, DateTime fechaEntrada, DateTime fechaSalida)
         {
             this.id = id;
             this.telefono = telefono;
             this.personas = personas;
             this.precio = precio;
-            this.nombre = nombre;
+            this.nombre = usuario.name;
             this.descripcion = descripcion;
             this.usuario = usuario;
             this.experiencia = experiencia;

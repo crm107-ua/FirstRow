@@ -10,9 +10,11 @@
                             <a href="/experiencias" style="color:white;">Experiencias</a>
                             <span class="separator" style="color:white;">/</span>
                             <a href="/" style="color:white;"><asp:Label ID="slug" runat="server" style="color:white;"></asp:Label></a>
+                            <a id="empresa_enlace" runat="server"  style="color:white; float:right;"></a>
                         </div>
                     </div>
                 </div>
+
                 <div class="header_content" id="head">
                     <div class="wrap">
                         <div class="wrap_float">
@@ -52,33 +54,23 @@
                                             <div class="date-col">
                                                 <div style="color:white" class="label">Entrada</div>
                                                 <div class="date_div">
-                                                    <input type="text" class="js_calendar desctop-input">
+                                                    <input name="reservaEntrada" type="text" class="js_calendar desctop-input">
                                                     <input type="date" class="mobile-input">
                                                     <div class="day">21</div>
                                                     <div class="date_div_right">
-                                                        <div class="month">December</div>
-                                                        <div class="year">2019</div>
+                                                        <div class="month">May</div>
+                                                        <div class="year">2022</div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="num-col">
-                                                <div style="color:white" class="label">Adultos</div>
+                                                <div style="color:white" class="label">Personas</div>
                                                 <div class="num_wrap">
                                                     <div class="buttons">
                                                         <button type='button' class="plus"></button>
                                                         <button type='button' class="minus"></button>
                                                     </div>
-                                                    <input type="number" class="val js_num" value="3" min="0" max="99">
-                                                </div>
-                                            </div>
-                                            <div class="num-col last">
-                                                <div style="color:white" class="label">Niños</div>
-                                                <div class="num_wrap">
-                                                    <div class="buttons">
-                                                        <button type='button' class="plus"></button>
-                                                        <button type='button' class="minus"></button>
-                                                    </div>
-                                                    <input type="number" class="val js_num" value="3" min="0" max="99">
+                                                    <input name="PersonNumber" type="number" class="val js_num" value="3" min="0" max="9">
                                                 </div>
                                             </div>
                                         </div>

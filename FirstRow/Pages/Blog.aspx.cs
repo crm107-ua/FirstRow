@@ -29,6 +29,7 @@ namespace FirstRow.Pages
 
             blog.Slug = RouteData.Values["slug"].ToString();
             blog.Categoria = categoria;
+            user_enlace.HRef = "/user/" + blog.Usuario.nickname;
 
             DataSet categorias = categoria.readCategorias();
             controlDeSesion();
@@ -249,18 +250,6 @@ namespace FirstRow.Pages
 
                 listaCategorias.Controls.Add(li);
             }
-        }
-
-        protected void crearBlog(object sender, EventArgs e)
-        {
-
-
-        }
-
-        protected void modificarPaginaBlogs(object sender, EventArgs e)
-        {
-
-
         }
     }
 }
