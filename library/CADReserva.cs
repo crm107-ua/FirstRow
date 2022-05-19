@@ -109,25 +109,32 @@ namespace library
             return true;
         }
 
-        internal bool readReserva(List<ENViajes> viajesEmpresa, string empresa)
+        internal bool readReservas(List<ENViajes> reservasEmpresa, string empresa)
         {
 
             bool leido = false;
             SqlConnection connection = null;
-            DataSet blogs = null;
+            DataSet reservas = null;
+            ENReserva reserva;
 
             try
             {
                 connection = new SqlConnection(constring);
-                blogs = new DataSet();
-                string query = "Select * From [firstrow_].[dbo].[Blogs] where categoria=" + empresa + ";";
+                reservas = new DataSet();
+                string query = "Select * From [firstrow_].[dbo].[Reservas] r " +
+                               "inner join Experiencias ex " +
+                               "on ex.id = r.experiencia " +
+                               "inner join Empresas emp " +
+                               "on emp.nickname = ex.empresa " +
+                               "where emp.nickname = " + empresa + ";";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                adapter.Fill(blogs, "Blogs");
-                DataTable tableBlogs = blogs.Tables["Blogs"];
-                DataRow[] rowsBlogs = tableBlogs.Select();
+                adapter.Fill(reservas, "Reservas");
+                DataTable tableReservas = reservas.Tables["Reservas"];
+                DataRow[] rowsReservas = tableReservas.Select();
 
-                for (int i = 0; i < rowsBlogs.Length; i++)
+                for (int i = 0; i < rowsReservas.Length; i++)
                 {
+                    reserva = new ENReserva();
                 }
             }
             catch (DataException e)
@@ -138,11 +145,6 @@ namespace library
             finally
             {
                 connection.Close();
-
-                if (connectionSecundaria != null)
-                {
-                    connectionSecundaria.Close();
-                }
             }
 
             return leido;
