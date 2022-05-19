@@ -547,6 +547,7 @@ namespace FirstRow.Pages
                     settings_sect.Visible = true;
                     settings_emp_sect.Visible = false;
                     logout_sect.Visible = true;
+                    perfil_li.Visible = true;
 
                 }
                 else if (Session["empresa"] != null)
@@ -575,6 +576,7 @@ namespace FirstRow.Pages
                     settings_sect.Visible = false;
                     settings_emp_sect.Visible = true;
                     logout_sect.Visible = true;
+                    perfil_li.Visible = true;
                 }
                 else
                 {
@@ -588,6 +590,7 @@ namespace FirstRow.Pages
                     settings_sect.Visible = false;
                     settings_emp_sect.Visible = false;
                     logout_sect.Visible = false;
+                    perfil_li.Visible = false;
                 }
             }
         }
