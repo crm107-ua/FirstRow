@@ -121,18 +121,19 @@ namespace FirstRow.Pages
                     else { eliminadoOK = false; }
 
                 }
+                else { eliminadoOK = false; }
             }
             else { eliminadoOK = false; }
 
-            if (eliminadoOK)
+            if (!eliminadoOK)
             {
-                Response.Write("<script>alert('Story eliminada correctamente')</script>");
+                Response.Write($"<script>alert('Story no borrada');window.location = '/user-stories/{nickname}';</script>");
             }
             else
             {
-                Response.Write("<script>alert('Story no eliminada')</script>");
+                Response.Redirect($"/user-stories/{nickname}");
+
             }
-            Response.Redirect($"/user-stories/{nickname}");
         }
 
         private Panel createStoryPanel(string title, string text, string user, string date, string pais)
