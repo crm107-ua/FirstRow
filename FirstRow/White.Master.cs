@@ -24,7 +24,7 @@ namespace FirstRow
             ENUsuario usuario = new ENUsuario();
             usuario.nickname = registro_nickname.Text;
             usuario.email = registro_email.Text;
-            usuario.password = password_r_1.Text;
+            usuario.password =  EncodePasswordToBase64(password_r_1.Text);
             usuario.image = guardadoFotoPerfil(true, usuario.nickname);
             usuario.background_image = "bg_default.png";
             usuario.name = registro_nombre.Text;
@@ -51,7 +51,7 @@ namespace FirstRow
             ENEmpresa empresa = new ENEmpresa();
             empresa.nickname = registro_emp_nickname.Text;
             empresa.email = registro_emp_email.Text;
-            empresa.password = password_emp_r_1.Text;
+            empresa.password =EncodePasswordToBase64( password_emp_r_1.Text);
             empresa.image = guardadoFotoPerfil(false, empresa.nickname);
             empresa.background_image = "bg_default.png";
             empresa.name = registro_emp_nombre.Text;
@@ -84,7 +84,7 @@ namespace FirstRow
         {
             ENUsuario usuario = new ENUsuario();
             usuario.nickname = nickname.Text;
-            usuario.password = password.Text;
+            usuario.password =EncodePasswordToBase64(password.Text);
 
             vaciadoCampos();
 
@@ -400,6 +400,20 @@ namespace FirstRow
             finally 
             {
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
+            }
+        }
+        public static string EncodePasswordToBase64(string password)
+        {
+            try
+            {
+                byte[] encData_byte = new byte[password.Length];
+                encData_byte = System.Text.Encoding.UTF8.GetBytes(password);
+                string encodedData = Convert.ToBase64String(encData_byte);
+                return encodedData;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in base64Encode" + ex.Message);
             }
         }
     }
