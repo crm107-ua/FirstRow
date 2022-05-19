@@ -122,10 +122,16 @@ namespace library
             return categoria.readReserva(this, mode);
         }
 
-        public bool mostrarReservasEmpresa(bool mode)
+        public DataTable mostrarReservasEmpresa(string empresa)
         {
             CADReserva categoria = new CADReserva();
-            return categoria.readReserva(this, mode);
+            return categoria.readReservasEmpresa(empresa);
+        }
+
+        public DataTable mostrarReservasUsuario(ENUsuario usuario)
+        {
+            CADReserva categoria = new CADReserva();
+            return categoria.readReservasUsuario(usuario);
         }
 
         public bool registerReserva()
