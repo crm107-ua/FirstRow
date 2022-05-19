@@ -6386,6 +6386,16 @@ body.os-windows .popup::-webkit-scrollbar-thumb {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.image_header_sorteos {
+   /* height: 1080px;
+   /* position: absolute;
+    top: 0;
+    left: 0;*/
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .image_header:before {
   background: #000;
   opacity: .45;

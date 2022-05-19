@@ -126,7 +126,7 @@ namespace library
 
 
     }
-        public bool readsorteo( string s)
+        public bool readsorteo( ENSorteos sorteo)
         {
 
             bool correctRead;
@@ -138,7 +138,7 @@ namespace library
                 connection = new SqlConnection(constring);
                 connection.Open();
 
-                string query = "SELECT * FROM [firstrow_].[dbo].[Sorteos] where slug=" +"'"+ s.ToString()+"'";
+                string query = "SELECT * FROM [firstrow_].[dbo].[Sorteos] where slug=" +"'"+ sorteo.Slug.ToString()+"'";
                 SqlCommand consulta = new SqlCommand(query, connection);
                 busqueda = consulta.ExecuteReader();
 
@@ -146,7 +146,7 @@ namespace library
                 
                     //int id = int.Parse(busqueda["id"].ToString());
                     
-             
+             /*
                     sorteo = new ENSorteos
                     {
                         Id = Int32.Parse(busqueda["id"].ToString()),
@@ -158,9 +158,18 @@ namespace library
                         Titular = busqueda["titular"].ToString(),
                         Slug = busqueda["slug"].ToString()
                     };
+                */
+                sorteo.Id = Int32.Parse(busqueda["id"].ToString());
+                sorteo.Imagen = busqueda["imagen"].ToString();
+                sorteo.Titulo = busqueda["titulo"].ToString();
+                sorteo.Descripcion = busqueda["descripcion"].ToString();
+                sorteo.FechaInicio = DateTime.Parse( busqueda["fechaInicio"].ToString());
+                sorteo.FechaFinal = DateTime.Parse(busqueda["fechafINAL"].ToString());
+                sorteo.Titular = busqueda["titular"].ToString();
+                sorteo.Slug = busqueda["slug"].ToString();
 
-                  
-                
+
+
 
                 correctRead = true;
             }
@@ -180,6 +189,43 @@ namespace library
 
            
         }
-       
+
+        internal int readcantidad(ENSorteos sorteo)
+        {
+          
+            int cantidad = 0;
+            SqlConnection connection = null;
+            SqlDataReader busqueda = null;
+
+            try
+            {
+                connection = new SqlConnection(constring);
+                connection.Open();
+
+                string query = "SELECT count(*)cant FROM [firstrow_].[dbo].[Sorteo_Usuarios] where id=" + "'" + sorteo.Id + "'";
+                SqlCommand consulta = new SqlCommand(query, connection);
+                busqueda = consulta.ExecuteReader();
+
+                busqueda.Read();
+                cantidad = int.Parse( busqueda["cant"].ToString());
+                
+                
+            }
+            catch (SqlException ex)
+            {
+                
+                Console.WriteLine("User operation has failed.Error: {0}", ex.Message);
+            }
+            catch (Exception ex)
+            {
+               
+                Console.WriteLine("User operation has failed.Error: {0}", ex.Message);
+            }
+            finally { connection.Close(); }
+
+            return cantidad;
+
+
+        }
     }
 }

@@ -14,8 +14,8 @@
             <div class="wrap">
                 <div class="wrap_float">
                     <div class="page_head">
-                 <h1 class="title" runat="server" style="color:white;" id="sorteos_title"></h1>
-                       
+                <!-- <h1 class="title" runat="server" style="color:white;" id="sorteos_title"></h1>-->
+                       <h1 class="title"><a style="color:white" href="/"><asp:Label ID="sorteos_title2" runat="server"></asp:Label></a></h1>
                         <br />
                         <p class="subtitle" runat="server" style="color:white;" id="sorteos_subtitle"></p>
                        

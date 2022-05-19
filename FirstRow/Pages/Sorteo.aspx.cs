@@ -19,20 +19,27 @@ namespace FirstRow.Pages
             Route myRoute = RouteData.Route as Route;
             if (myRoute != null && myRoute.Url == "sorteo/{slug}")
             {
-              cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
+                cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
                 titulo.Text = slug.Text = cadena.Replace("-", " ");
-               
+
             }
-            /*
-                        ENSorteos sorteo = new ENSorteos();
-
-                       //no se como conseguir aqui los datos del sorteo
-                        //el metodo readsorteo me deberia de devolver los datos pero no se como hacerlo        
-
-                        titulo.Text = p.Titulo.ToString();
-            */
             ENSorteos so = new ENSorteos();
-            so.readsorteo(cadena);
+            so.Slug = slug.Text.ToString();
+            so.readsorteo();
+            Home.slug(so.Titulo.ToString());
+        
+            describe.Text = so.Descripcion.ToString();
+            empresa.Text=so.Titular.ToString();
+            diaI.Text = so.FechaInicio.ToString("dd");
+            mesI.Text = so.FechaInicio.ToString("MMMM");
+            anioI.Text = so.FechaInicio.ToString("yyyy");
+
+            diaF.Text = so.FechaFinal.ToString("dd");
+            mesF.Text = so.FechaFinal.ToString("MMMM");
+            anioF.Text = so.FechaFinal.ToString("yyyy");
+            /*                                  
+            participantes.Text =  so.readcantidad().ToString();
+            */
 
         }
         protected void modificarSorteo(object sender, EventArgs e)

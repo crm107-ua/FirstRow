@@ -123,10 +123,16 @@ namespace library
             return ok;
         }
    
-        public bool readsorteo(string s)
+        public bool readsorteo()
         {
             CADSorteos sorteos = new CADSorteos();
-            return sorteos.readsorteo(s);
+            return sorteos.readsorteo(this);
+
+        }
+        public int readcantidad()
+        {
+            CADSorteos sorteos = new CADSorteos();
+            return sorteos.readcantidad(this);
         }
         public bool readsorteosconectado(List<ENSorteos> lista)
         {
