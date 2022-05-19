@@ -128,7 +128,7 @@ namespace FirstRow.Pages
                     }
                     else 
                     {
-                        loadReserva();
+                        //loadReserva();
                     }
                 }
 
