@@ -105,7 +105,7 @@ namespace FirstRow
         {
             ENEmpresa empresa = new ENEmpresa();
             empresa.email = login_email_empresa.Text;
-            empresa.password = login_password_empresa.Text;
+            empresa.password =EncodePasswordToBase64( login_password_empresa.Text);
 
             vaciadoCampos();
 
@@ -129,7 +129,7 @@ namespace FirstRow
 
             usuario.nickname = usuarioSesion.nickname;
             usuario.email = email_setting.Text;
-            usuario.password = password_1_setting.Text;
+            usuario.password =EncodePasswordToBase64(password_1_setting.Text);
             usuario.image = modificarFotoPerfil(true, usuarioSesion.nickname, usuarioSesion.image);
             usuario.background_image = "bg_default.png";
             usuario.name = name_setting.Text;
@@ -162,7 +162,7 @@ namespace FirstRow
 
             empresa.nickname = empresaSesion.nickname;
             empresa.email = empresaSesion.email;
-            empresa.password = ajustes_password_1_empresa.Text;
+            empresa.password =EncodePasswordToBase64(ajustes_password_1_empresa.Text);
             empresa.image = modificarFotoPerfil(false, empresaSesion.nickname, empresaSesion.image);
             empresa.background_image = "bg_default.png";
             empresa.name = ajustes_nombre_empresa.Text;
@@ -271,8 +271,8 @@ namespace FirstRow
 
                     email_setting.Text = usuario.email;
                     name_setting.Text = usuario.name;
-                    password_1_setting.Text = usuario.password;
-                    password_2_setting.Text = usuario.password;
+                    password_1_setting.Text =DecodeFrom64( usuario.password);
+                    password_2_setting.Text =DecodeFrom64( usuario.password);
                     firstname_setting.Text = usuario.firstname;
                     secondname_setting.Text = usuario.secondname;
                     facebook_setting.Text = usuario.facebook;
@@ -297,8 +297,8 @@ namespace FirstRow
                     }
 
                     listaPaises_ajustes_empresa.SelectedIndex = paises.Count - empresa.pais.id;
-                    ajustes_password_1_empresa.Text = empresa.password;
-                    ajustes_password_2_empresa.Text = empresa.password;
+                    ajustes_password_1_empresa.Text =DecodeFrom64( empresa.password);
+                    ajustes_password_2_empresa.Text =DecodeFrom64( empresa.password);
                     ajustes_nombre_empresa.Text = empresa.name;
                     ajustes_apellido_1_empresa.Text = empresa.firstname;
                     ajustes_apellido_2_empresa.Text = empresa.secondname;
@@ -415,6 +415,18 @@ namespace FirstRow
             {
                 throw new Exception("Error in base64Encode" + ex.Message);
             }
+        }
+
+        public string DecodeFrom64(string encodedData)
+        {
+            System.Text.UTF8Encoding encoder = new System.Text.UTF8Encoding();
+            System.Text.Decoder utf8Decode = encoder.GetDecoder();
+            byte[] todecode_byte = Convert.FromBase64String(encodedData);
+            int charCount = utf8Decode.GetCharCount(todecode_byte, 0, todecode_byte.Length);
+            char[] decoded_char = new char[charCount];
+            utf8Decode.GetChars(todecode_byte, 0, todecode_byte.Length, decoded_char, 0);
+            string result = new String(decoded_char);
+            return result;
         }
     }
 }
