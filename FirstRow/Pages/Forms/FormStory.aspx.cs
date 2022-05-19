@@ -77,9 +77,9 @@ namespace FirstRow.Pages.Forms
                 Error.Visible = true;
             }
 
-            if (create_story_descripcion.Text.Length > 100)
+            if (create_story_descripcion.Text.Length > description_maxlength)
             {
-                ErrorDesc.Text = "*Longitud máxima de descripción superada";
+                ErrorDesc.Text = $"*Longitud máxima de descripción({description_maxlength}) superada";
                 ErrorDesc.Visible = true;
                 return;
             }
