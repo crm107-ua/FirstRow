@@ -37,7 +37,7 @@ namespace library
             {
                 connection.Open();
                 
-                string query = "INSERT INTO [firstrow_].[dbo].[Stories] " +
+                string query = "INSERT INTO [Stories] " +
                     "(titulo, descripcion, fecha, pais, usuario, imagen) VALUES " +
                     "(@Titulo, @Descripcion, @Fecha, @Pais, @Usuario, @Imagen)";
                 
@@ -52,7 +52,7 @@ namespace library
                 //story.Id = Convert.ToInt32(com.ExecuteScalar());
 
                 /*
-                string query = "INSERT INTO [firstrow_].[dbo].[Stories] " +
+                string query = "INSERT INTO [Stories] " +
                     "(id, titulo, descripcion, fecha, pais, usuario, imagen) VALUES " +
                     $"({story.Id}, {story.Titulo}, {story.Descripcion}, {story.Fecha}, " +
                     $"{story.Pais}, {story.Usuario}, {story.Imagen})";
@@ -97,7 +97,7 @@ namespace library
             try
             {
                 connection.Open();
-                string query = "SELECT * FROM [firstrow_].[dbo].[Stories] WHERE " +
+                string query = "SELECT * FROM [Stories] WHERE " +
                     "fecha = @fecha AND " +
                     "usuario = @usuario;";
                 SqlCommand com = new SqlCommand(query, connection);
@@ -185,7 +185,7 @@ namespace library
             {
                 connection.Open();
 
-                string query = "DELETE FROM [firstrow_].[dbo].[Stories] WHERE " +
+                string query = "DELETE FROM [Stories] WHERE " +
                     "fecha = @fecha AND " +
                     "usuario = @usuario;";
                 SqlCommand consulta = new SqlCommand(query, connection);
@@ -225,7 +225,7 @@ namespace library
                 connection = new SqlConnection(constring);
                 connection.Open();
 
-                string query = "SELECT * FROM [firstrow_].[dbo].[Stories]";
+                string query = "SELECT * FROM [Stories]";
                 SqlCommand consulta = new SqlCommand(query, connection);
                 busqueda = consulta.ExecuteReader();
 
@@ -297,7 +297,7 @@ namespace library
                 connection = new SqlConnection(constring);
                 connection.Open();
 
-                string query = "SELECT * FROM [firstrow_].[dbo].[Stories] WHERE pais = @pais ";
+                string query = "SELECT * FROM [Stories] WHERE pais = @pais ";
                 SqlCommand consulta = new SqlCommand(query, connection);
                 consulta.Parameters.AddWithValue("@pais", pais);
                 busqueda = consulta.ExecuteReader();
@@ -370,7 +370,7 @@ namespace library
                 connection = new SqlConnection(constring);
                 connection.Open();
 
-                string query = "SELECT * FROM [firstrow_].[dbo].[Stories] WHERE usuario = @user ";
+                string query = "SELECT * FROM [Stories] WHERE usuario = @user ";
                 SqlCommand consulta = new SqlCommand(query, connection);
                 consulta.Parameters.AddWithValue("@user", nickname);
                 busqueda = consulta.ExecuteReader();

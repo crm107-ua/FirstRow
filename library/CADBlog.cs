@@ -25,7 +25,7 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "Insert INTO [firstrow_].[dbo].[Blogs] " +
+                string query = "Insert INTO [Blogs] " +
                     "(imagen_principal,titulo, descripcion, text_1, text_2," +
                     "text_3, citacion, slug, fecha, usuario, categoria, pais) " +
                     "VALUES " +
@@ -49,7 +49,7 @@ namespace library
 
                 foreach (ENImagenes imagen in blog.Imagenes)
                 {
-                    query = "Insert INTO [firstrow_].[dbo].[Imagenes] " +
+                    query = "Insert INTO [Imagenes] " +
                             "(name) " +
                             "VALUES " +
                             "(@name) " +
@@ -59,7 +59,7 @@ namespace library
                     int ultimoID_Imagen = Convert.ToInt32(consulta.ExecuteScalar());
 
 
-                    query = "Insert INTO [firstrow_].[dbo].[Blog_Imagenes] " +
+                    query = "Insert INTO [Blog_Imagenes] " +
                             "(id_Blog,id_Imagen) " +
                             "VALUES " +
                             "(@id_Blog,@id_Imagen)";
@@ -105,7 +105,7 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "Select * From [firstrow_].[dbo].[Blogs] where slug = @slug";
+                string query = "Select * From [Blogs] where slug = @slug";
                 SqlCommand consulta = new SqlCommand(query, conection);
                 consulta.Parameters.AddWithValue("@slug", blog.Slug);
                 busqueda = consulta.ExecuteReader();
@@ -134,7 +134,7 @@ namespace library
 
                     conectionSecundario = new SqlConnection(constring);
                     conectionSecundario.Open();
-                    string querySecundaria = "Select * From [firstrow_].[dbo].[Paises] where ID = @id";
+                    string querySecundaria = "Select * From [Paises] where ID = @id";
                     SqlCommand consultaSecundaria = new SqlCommand(querySecundaria, conectionSecundario);
                     consultaSecundaria.Parameters.AddWithValue("@id", Int32.Parse(busqueda["pais"].ToString()));
                     busquedaSecundaria = consultaSecundaria.ExecuteReader();
@@ -150,7 +150,7 @@ namespace library
 
                     conectionSecundario = new SqlConnection(constring);
                     conectionSecundario.Open();
-                    querySecundaria = "Select * From [firstrow_].[dbo].[Categorias] where ID = @id";
+                    querySecundaria = "Select * From [Categorias] where ID = @id";
                     consultaSecundaria = new SqlCommand(querySecundaria, conectionSecundario);
                     consultaSecundaria.Parameters.AddWithValue("@id", blog.Categoria.id);
                     busquedaSecundaria = consultaSecundaria.ExecuteReader();
@@ -167,8 +167,8 @@ namespace library
                     // Lectura de imagenes de blog
 
                     List<ENImagenes> imagenes = new List<ENImagenes>();
-                    querySecundaria = "Select * From [firstrow_].[dbo].[Blog_Imagenes] b " +
-                    "inner join [firstrow_].[dbo].[Imagenes] i " +
+                    querySecundaria = "Select * From [Blog_Imagenes] b " +
+                    "inner join [Imagenes] i " +
                     "on i.id = b.id_Imagen " +
                     "where id_Blog = @id_Blog";
                     consultaSecundaria = new SqlCommand(querySecundaria, conectionSecundario);
@@ -190,8 +190,8 @@ namespace library
                     // Lectura de comentarios de blog
 
                     List<ENComentarios> comentarios = new List<ENComentarios>();
-                    querySecundaria = "Select * From [firstrow_].[dbo].[Blog_Comentarios] b " +
-                    "inner join [firstrow_].[dbo].[Comentarios] i " +
+                    querySecundaria = "Select * From [Blog_Comentarios] b " +
+                    "inner join [Comentarios] i " +
                     "on i.id = b.id_Comentario " +
                     "where id_Blog = @id_Blog";
                     consultaSecundaria = new SqlCommand(querySecundaria, conectionSecundario);
@@ -283,11 +283,11 @@ namespace library
 
                 if (categoria == 0)
                 {
-                    query = "Select * From [firstrow_].[dbo].[Blogs];";
+                    query = "Select * From [Blogs];";
                 }
                 else
                 {
-                    query = "Select * From [firstrow_].[dbo].[Blogs] where categoria=" + categoria + ";";
+                    query = "Select * From [Blogs] where categoria=" + categoria + ";";
                 }
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
@@ -319,7 +319,7 @@ namespace library
 
                     connectionSecundaria = new SqlConnection(constring);
                     blogSecundario = new DataSet();
-                    query = "Select * From [firstrow_].[dbo].[Paises] where id='" + blog.Pais.id + "'";
+                    query = "Select * From [Paises] where id='" + blog.Pais.id + "'";
                     SqlDataAdapter adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
                     adapterSecundario.Fill(blogSecundario, "Paises");
                     DataTable tablePaises = blogSecundario.Tables["Paises"];
@@ -331,7 +331,7 @@ namespace library
 
                     connectionSecundaria = new SqlConnection(constring);
                     blogSecundario = new DataSet();
-                    query = "Select * From [firstrow_].[dbo].[Categorias] where id='" + blog.Categoria.id + "'";
+                    query = "Select * From [Categorias] where id='" + blog.Categoria.id + "'";
                     adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
                     adapterSecundario.Fill(blogSecundario, "Categorias");
                     DataTable tableCategorias = blogSecundario.Tables["Categorias"];
@@ -345,8 +345,8 @@ namespace library
 
                     connectionSecundaria = new SqlConnection(constring);
                     blogSecundario = new DataSet();
-                    query = "Select * From [firstrow_].[dbo].[Blog_Imagenes] b " +
-                        "inner join [firstrow_].[dbo].[Imagenes] i " +
+                    query = "Select * From [Blog_Imagenes] b " +
+                        "inner join [Imagenes] i " +
                         "on i.id = b.id_Imagen " +
                         "where id_Blog = '" + blog.Id + "'";
                     adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
@@ -367,8 +367,8 @@ namespace library
 
                     connectionSecundaria = new SqlConnection(constring);
                     blogSecundario = new DataSet();
-                    query = "Select * From [firstrow_].[dbo].[Blog_Comentarios] b " +
-                        "inner join [firstrow_].[dbo].[Comentarios] i " +
+                    query = "Select * From [Blog_Comentarios] b " +
+                        "inner join [Comentarios] i " +
                         "on i.id = b.id_Comentario " +
                         "where id_Blog = '" + blog.Id + "'";
                     adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);

@@ -70,7 +70,7 @@ namespace library
                 connection = new SqlConnection(constring);
                 connection.Open();
 
-                string query = "SELECT * FROM [firstrow_].[dbo].[Sorteos]";
+                string query = "SELECT * FROM [Sorteos]";
                 SqlCommand consulta = new SqlCommand(query, connection);
                 busqueda = consulta.ExecuteReader();
 
@@ -137,7 +137,7 @@ namespace library
             {
                 connection = new SqlConnection(constring);
                 sorteos = new DataSet();
-                string query = "Select * From [firstrow_].[dbo].[Sorteos];";
+                string query = "Select * From [Sorteos];";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.Fill(sorteos, "Sorteos");
