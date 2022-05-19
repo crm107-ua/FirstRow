@@ -109,6 +109,45 @@ namespace library
             return true;
         }
 
+        internal bool readReserva(List<ENViajes> viajesEmpresa, string empresa)
+        {
+
+            bool leido = false;
+            SqlConnection connection = null;
+            DataSet blogs = null;
+
+            try
+            {
+                connection = new SqlConnection(constring);
+                blogs = new DataSet();
+                string query = "Select * From [firstrow_].[dbo].[Blogs] where categoria=" + empresa + ";";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.Fill(blogs, "Blogs");
+                DataTable tableBlogs = blogs.Tables["Blogs"];
+                DataRow[] rowsBlogs = tableBlogs.Select();
+
+                for (int i = 0; i < rowsBlogs.Length; i++)
+                {
+                }
+            }
+            catch (DataException e)
+            {
+                Console.WriteLine(e.Message);
+                leido = false;
+            }
+            finally
+            {
+                connection.Close();
+
+                if (connectionSecundaria != null)
+                {
+                    connectionSecundaria.Close();
+                }
+            }
+
+            return leido;
+        }
+
         internal bool registerReserva(ENReserva reserva)
         {
             bool creado = false;

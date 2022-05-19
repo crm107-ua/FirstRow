@@ -10,9 +10,11 @@
                             <a href="/experiencias" style="color:white;">Experiencias</a>
                             <span class="separator" style="color:white;">/</span>
                             <a href="/" style="color:white;"><asp:Label ID="slug" runat="server" style="color:white;"></asp:Label></a>
+                            <a id="empresa_enlace" runat="server"  style="color:white; float:right;"></a>
                         </div>
                     </div>
                 </div>
+
                 <div class="header_content" id="head">
                     <div class="wrap">
                         <div class="wrap_float">

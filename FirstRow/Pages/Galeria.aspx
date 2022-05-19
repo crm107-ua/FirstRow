@@ -6,6 +6,7 @@
                 <a href="/">FirstRow</a>
                 <span class="separator">/</span>
                 <a href="/galeria">Galeria</a>
+                <a id="add" runat="server" style="float: right;" href="/agregar-seccion-galeria">Agregar sección</a>
             </div>
         </div>
     </div>
@@ -13,23 +14,23 @@
             <div class="wrap">
                 <div class="wrap_float">
                     <div class="gallery-page-head">
-                        <h1 class="title">Galería</h1>
+                        <h1 class="title">
+                                Galería
+                        </h1>
+                        <p class="subtitle" style="color:white;">
+                            Imágenes que definen nuestro mundo
+                        </p>
                         <div class="select_wrap">
                             <asp:DropDownList ID="Direccion" runat="server" OnSelectedIndexChanged="Direccion_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                         </div>
-                        <asp:Panel id="add_galeria" runat="server">
-                            <div class="buttons">
-                                <a href="/agregar-seccion-galeria" class="btn button" style="color:white; font-size:larger;" tabindex="-1">Añadir</a>
-                             </div>
-                        </asp:Panel>
                     </div>
                 <div class="gallery-page-body">
                     <div class="gallery-list">
-                        <asp:Panel ID="mostrar_galerias" runat="server">
-                            </asp:Panel>
+                        <asp:Panel ID="mostrar_galerias" runat="server"></asp:Panel>
                      </div>
                 </div>
             </div>
         </div>
+       </div>
 </asp:Content>
 

@@ -7,6 +7,7 @@
                     <a href="/" style="color:white;">FirstRow</a>
                     <span class="separator" style="color:white;">/</span>
                     <a style="color:white;">Blogs <asp:Label ID="pais_blog" runat="server"></asp:Label></a>
+                    <a id="add_form" runat="server" style="float: right; color:white;" href="/agregar-blog"></a>
                 </div>
             </div>
         </div>
