@@ -130,7 +130,7 @@ namespace FirstRow.Pages
                     }
                     else 
                     {
-                        loadReserva();
+                        //loadReserva();
                     }
                 }
 
@@ -164,34 +164,42 @@ namespace FirstRow.Pages
 
         private void loadReserva() 
         {
-            string slug = "";
-            Route myRoute = RouteData.Route as Route;
-            if (myRoute != null && myRoute.Url == "experiencia/{slug}")
+            try
             {
-                slug = RouteData.Values["slug"].ToString();
+                string slug = "";
+                ENViajes eNViajes = new ENViajes();
+                Route myRoute = RouteData.Route as Route;
+                if (myRoute != null && myRoute.Url == "experiencia/{slug}")
+                {
+                    slug = RouteData.Values["slug"].ToString();
+                    eNViajes.Slug = slug;
+                }
+                eNViajes.mostrarExperiencia();
+                DateTime fechaInsertada = DateTime.Parse(Request.Form["reservaEntrada"]);
+                int nPersonas = int.Parse(Request.Form["PersonNumber"]);
+
+                if (nPersonas < 0)
+                {
+                    nPersonas = 0;
+                }
+
+                if (fechaInsertada < DateTime.Now) fechaInsertada = DateTime.Now;
+
+
+                HtmlGenericControl fechaInicial = new HtmlGenericControl("input");
+                fechaInicial.Attributes.Add("type", "date");
+                fechaInicial.Attributes.Add("class", "input");
+                fechaInicial.Attributes.Add("name", "fechaEntrada");
+                fechaInicial.Attributes.Add("value", fechaInsertada.ToString("yyyy-MM-dd"));
+                fechaInicial.Attributes.Add("min", DateTime.Now.ToString("yyyy-MM-dd"));
+
+                ((Panel)this.Master.FindControl("form_reserva_fechas")).Controls.Add(fechaInicial);
+                ((TextBox)this.Master.FindControl("form_reserva_nPersonas")).Text = nPersonas.ToString();
+                ((Label)this.Master.FindControl("slug_reserva_experiencia_Oculto")).Text = slug;
+                ((Label)this.Master.FindControl("form_reserva_price")).Text =eNViajes.Precio.ToString();
             }
-            DateTime fechaInsertada = DateTime.Parse(Request.Form["reservaEntrada"]);
-            int nPersonas = int.Parse(Request.Form["PersonNumber"]);
-
-            if (nPersonas < 0)
-            {
-                nPersonas = 0;
-            }
-
-            if (fechaInsertada < DateTime.Now) fechaInsertada = DateTime.Now;
-
-
-            HtmlGenericControl fechaInicial = new HtmlGenericControl("input");
-            fechaInicial.Attributes.Add("type", "date");
-            fechaInicial.Attributes.Add("class", "input");
-            fechaInicial.Attributes.Add("name", "fechaEntrada");
-            fechaInicial.Attributes.Add("value", fechaInsertada.ToString("yyyy-MM-dd"));
-            fechaInicial.Attributes.Add("min", DateTime.Now.ToString("yyyy-MM-dd"));
-
-            ((Panel)this.Master.FindControl("form_reserva_fechas")).Controls.Add(fechaInicial);
-            ((TextBox)this.Master.FindControl("form_reserva_nPersonas")).Text = nPersonas.ToString();
-            ((Label)this.Master.FindControl("slug_reserva_experiencia_Oculto")).Text = slug;
-
+            catch (Exception exception) 
+            { }
         }
 
         protected void modificarExperiencia(object sender, EventArgs e)
