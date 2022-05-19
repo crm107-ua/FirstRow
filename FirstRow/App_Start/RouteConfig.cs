@@ -13,6 +13,7 @@ namespace FirstRow.App_Start
             routes.MapPageRoute("user", "user/{nickname}", "~/Pages/User.aspx");
 
             routes.MapPageRoute("reservas", "reservas/{nickname}", "~/Pages/Reservas.aspx");
+            routes.MapPageRoute("crear_propuesta", "crear_propuesta", "~/Pages/Forms/FormPropuesta.aspx");
 
             routes.MapPageRoute("experiencias", "experiencias", "~/Pages/Experiencias.aspx");
             routes.MapPageRoute("experiencia", "experiencia/{slug}", "~/Pages/Experiencia.aspx");

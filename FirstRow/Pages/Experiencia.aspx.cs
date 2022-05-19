@@ -150,7 +150,6 @@ namespace FirstRow.Pages
 
         protected void reserva(object sender, EventArgs e)
         {
-            //TODO cambiar
             if (Session["usuario"] == null)
             {
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_user", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('login_user_pop_up').click(); }", true);
@@ -197,6 +196,8 @@ namespace FirstRow.Pages
                 ((TextBox)this.Master.FindControl("form_reserva_nPersonas")).Text = nPersonas.ToString();
                 ((Label)this.Master.FindControl("slug_reserva_experiencia_Oculto")).Text = slug;
                 ((Label)this.Master.FindControl("form_reserva_price")).Text =eNViajes.Precio.ToString();
+                ((Label)this.Master.FindControl("form_reserva_precio")).Text = (eNViajes.Precio * nPersonas).ToString()+"€";
+
             }
             catch (Exception exception) 
             { }

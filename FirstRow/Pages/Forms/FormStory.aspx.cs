@@ -14,7 +14,7 @@ namespace FirstRow.Pages.Forms
 {
     public partial class FormStory : System.Web.UI.Page
     {
-        const int description_maxlength = 100;
+        const int description_maxlength = 200;//cambiar en función del límite de la BD
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,6 +31,7 @@ namespace FirstRow.Pages.Forms
             }
         }
         
+        /*
         private void ServerValidation_description_maxlength(object source, ServerValidateEventArgs args)
         {
             int description_length = create_story_descripcion.Text.Length;
@@ -43,6 +44,7 @@ namespace FirstRow.Pages.Forms
                 args.IsValid = false;
             }
         }
+        */
 
         /// <summary>
         /// llena el dropDownList con los paises
@@ -75,11 +77,12 @@ namespace FirstRow.Pages.Forms
             {
                 Error.Text = "*Seleccione un país";
                 Error.Visible = true;
+                return;
             }
 
-            if (create_story_descripcion.Text.Length > 100)
+            if (create_story_descripcion.Text.Length > description_maxlength)
             {
-                ErrorDesc.Text = "*Longitud máxima de descripción superada";
+                ErrorDesc.Text = $"*Longitud máxima de descripción({description_maxlength}) superada";
                 ErrorDesc.Visible = true;
                 return;
             }
@@ -152,18 +155,6 @@ namespace FirstRow.Pages.Forms
                 Error.Text = "*ERROR: imagen no subida";
                 Error.Visible = true;
             }
-
-            //se guardan los campor del form en la nueva story
-            /*
-            ENStories nuevaStory = new ENStories();
-            nuevaStory.Titulo = create_story_title.Text;
-            nuevaStory.Descripcion = create_story_descripcion.Text;
-            nuevaStory.Fecha = DateTime.Now;
-            nuevaStory.Pais = int.Parse(listaPaises_form_story.SelectedValue);
-            nuevaStory.Usuario = (ENUsuario) Session["usuario"];
-            nuevaStory.Imagen = imagen;
-            nuevaStory.Id = ENStories.GenerateId(nuevaStory.Fecha, nuevaStory.Usuario);
-            */
             
         }
     }
