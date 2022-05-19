@@ -179,12 +179,6 @@
     <Content Include="Media\Paises\Italia.jpg" />
     <Content Include="Media\Paises\Japon.jpg" />
     <Content Include="Media\Paises\Noruega.jpg" />
-    <Content Include="Media\Stories\fuerteventura_f9cff96a_1280x720.jpg" />
-    <Content Include="Media\Stories\guia-turistica-tokio-japonismo.jpg" />
-    <Content Include="Media\Stories\Italia-2.jpg" />
-    <Content Include="Media\Stories\lofoten.jpg" />
-    <Content Include="Media\Stories\coliseo.jpg" />
-    <Content Include="Media\Stories\fuente.jpg" />
     <Content Include="Pages\403.aspx" />
     <Content Include="Pages\404.aspx" />
     <Content Include="Pages\Blog.aspx" />
@@ -430,6 +424,7 @@
     <Folder Include="Media\Etapas\" />
     <Folder Include="Media\Experiencias\" />
     <Folder Include="Media\Galery\" />
+    <Folder Include="Media\Stories\" />
     <Folder Include="Media\Users\" />
   </ItemGroup>
   <ItemGroup>

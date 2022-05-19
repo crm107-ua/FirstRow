@@ -13,7 +13,7 @@
 </head>  
 
 <body>
-    <form id="WhiteMaster" runat="server" enctype="multipart/form-data" method="post">
+    <form id="user_stories_form" runat="server" enctype="multipart/form-data" method="post">
     <div class="container">
         <div class="top_panel">
             <div class="wrap">
@@ -72,9 +72,9 @@
         </asp:ScriptManager>
         <div class="stories_page" id="stories_page">
             <a href="/agregar-story" class="right_btn" runat="server" id="crear_story"
-                style="margin-bottom: 60px; width: 150px " >Crear Story</a>
+                style=" width: 150px; " >Crear Story</a>
             <asp:Button ID="borrar_story" CssClass="right_btn" runat="server" Text="Borrar Story" OnClick="eliminarStory"
-                style=" width: 150px " />
+                style=" width: 150px; margin-bottom: 60px; " />
             <ajaxToolkit:ConfirmButtonExtender ID="confirm_delete" ConfirmText="¿Desea eliminar la story?" TargetControlID="borrar_story" runat="server"></ajaxToolkit:ConfirmButtonExtender>
             <div class="left_bottom_title" id="left_bottom_title" runat="server"
                  style="position: absolute;
@@ -90,18 +90,34 @@
                         bottom: 25px;
                         left: 60px;"
                 ></div>
-            <!-- Quiería crear una clase con estilo en el css, pero por alguna razón que no pude 
-                resolver no se actualiza el css. Esto ya me pasó antes y lo solucioné
-                poniendo en el link al css ?v=<DateTime.Now %>, que se supone que lo actualizaría
-                siempre porque siempre es un número diferente, pero no funciona-->
-            
-            <!--<a href="stories-right-sidebar.html" class="right_btn">More stories</a>-->
             <div class="stories_bg" id="stories_bg"></div>
             <div class="stories_page_wrap">
                 <div class="stories_box" id="stories_box">
                     <div class="arrows">
-                        <div class="arrow prev disabled"></div>
-                        <div class="arrow next"></div>
+                        <div class="arrow prev disabled" onclick="prev_id()"></div>
+                        <div class="arrow next" onclick="next_id()"></div>
+                        <asp:HiddenField runat="server" id="story_id_hidden" Value="1" />
+                    
+                        <script type="text/javascript">
+                            function next_id() {
+                                let oldId = user_stories_form.story_id_hidden.value;
+                                if (!isNaN(oldId)) {
+                                    var newId = !isNaN(oldId) ? parseInt(oldId, 10) : 0;
+                                    newId = newId + 1;
+                                    user_stories_form.story_id_hidden.value = newId;
+                                }
+                            }
+
+                            function prev_id() {
+                                let oldId = user_stories_form.story_id_hidden.value;
+                                if (!isNaN(oldId)) {
+                                    var newId = !isNaN(oldId) ? parseInt(oldId, 10) : 0;
+                                    newId = newId - 1;
+                                    user_stories_form.story_id_hidden.value = newId;
+                                }
+                            }
+                        </script>
+
                     </div>
                     <div class="items stories_items" id="stories_items" runat="server">
                         
@@ -139,20 +155,9 @@
                         <ul></ul>
                     </div>
                     <div class="story_info">
-                        <!--
-                        <div class="author">
-                            <div class="userpic">
-                                <img src="../../assets/img/demo-bg.jpg" alt="">
-                            </div>
-                            <p class="name">21.09.2019 by Maya Delia</p>
-                        </div> -->
-                        <asp:UpdatePanel ID="UpnlHidden" runat="server">
-                            <ContentTemplate>
-                                <div class="counter" id="stories-counter">
-                                    <span class="this" id="story_id_span" runat="server">1</span> / <span class="all"></span>
-                                </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
+                        <div class="counter" id="stories-counter">
+                            <span class="this" id="story_id_span" name="loquetuquieras" runat="server">1</span> / <span class="all"></span>
+                        </div>
                     </div>
                 </div>
             </div>
