@@ -126,6 +126,10 @@ namespace FirstRow.Pages
                     {
                         seccion_escribir_comentario.Visible = false;
                     }
+                    else 
+                    {
+                        loadReserva();
+                    }
                 }
 
                 else
@@ -151,36 +155,41 @@ namespace FirstRow.Pages
             }
             else
             {
-                string slug = "";
-                Route myRoute = RouteData.Route as Route;
-                if (myRoute != null && myRoute.Url == "experiencia/{slug}")
-                {
-                    slug = RouteData.Values["slug"].ToString();
-                }
-                    DateTime fechaInsertada = DateTime.Parse(Request.Form["reservaEntrada"]);
-                int nPersonas = int.Parse(Request.Form["PersonNumber"]);
-
-                if (nPersonas < 0)
-                {
-                    nPersonas = 0;
-                }
-
-                if (fechaInsertada < DateTime.Now) fechaInsertada = DateTime.Now;
-
-
-                HtmlGenericControl fechaInicial = new HtmlGenericControl("input");
-                fechaInicial.Attributes.Add("type", "date");
-                fechaInicial.Attributes.Add("class", "input");
-                fechaInicial.Attributes.Add("name", "fechaEntrada");
-                fechaInicial.Attributes.Add("value", fechaInsertada.ToString("yyyy-MM-dd"));
-                fechaInicial.Attributes.Add("min", DateTime.Now.ToString("yyyy-MM-dd"));
-
-                ((Panel)this.Master.FindControl("form_reserva_fechas")).Controls.Add(fechaInicial);
-                ((TextBox)this.Master.FindControl("form_reserva_nPersonas")).Text = nPersonas.ToString();
-                ((Label)this.Master.FindControl("slug_reserva_experiencia_Oculto")).Text =slug;
-
+                loadReserva();
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
             }
+        }
+
+        private void loadReserva() 
+        {
+            string slug = "";
+            Route myRoute = RouteData.Route as Route;
+            if (myRoute != null && myRoute.Url == "experiencia/{slug}")
+            {
+                slug = RouteData.Values["slug"].ToString();
+            }
+            DateTime fechaInsertada = DateTime.Parse(Request.Form["reservaEntrada"]);
+            int nPersonas = int.Parse(Request.Form["PersonNumber"]);
+
+            if (nPersonas < 0)
+            {
+                nPersonas = 0;
+            }
+
+            if (fechaInsertada < DateTime.Now) fechaInsertada = DateTime.Now;
+
+
+            HtmlGenericControl fechaInicial = new HtmlGenericControl("input");
+            fechaInicial.Attributes.Add("type", "date");
+            fechaInicial.Attributes.Add("class", "input");
+            fechaInicial.Attributes.Add("name", "fechaEntrada");
+            fechaInicial.Attributes.Add("value", fechaInsertada.ToString("yyyy-MM-dd"));
+            fechaInicial.Attributes.Add("min", DateTime.Now.ToString("yyyy-MM-dd"));
+
+            ((Panel)this.Master.FindControl("form_reserva_fechas")).Controls.Add(fechaInicial);
+            ((TextBox)this.Master.FindControl("form_reserva_nPersonas")).Text = nPersonas.ToString();
+            ((Label)this.Master.FindControl("slug_reserva_experiencia_Oculto")).Text = slug;
+
         }
 
         protected void modificarExperiencia(object sender, EventArgs e)
