@@ -15,6 +15,8 @@ namespace FirstRow.Pages
         {
             ENUsuario usuario = new ENUsuario();
             ENEmpresa empresa = new ENEmpresa();
+            if (RouteData.Values["nickname"] == null)
+                Response.Redirect("/");
             usuario.nickname = RouteData.Values["nickname"].ToString();
             empresa.nickname = RouteData.Values["nickname"].ToString();
 
