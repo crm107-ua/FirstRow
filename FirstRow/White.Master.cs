@@ -402,21 +402,5 @@ namespace FirstRow
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
             }
         }
-
-        protected void form_reserva_nPersonas_DataBinding(object sender, EventArgs e)
-        {
-            try
-            {
-                ENViajes eNViajes = new ENViajes();
-                eNViajes.Slug = slug_reserva_experiencia_Oculto.Text;
-                eNViajes.mostrarExperiencia();
-
-                form_reserva_precio.Text = (int.Parse(form_reserva_nPersonas.Text.Trim()) * eNViajes.Precio).ToString();
-            }
-            catch (Exception exception) 
-            {
-                form_reserva_precio.Text = "0";
-            }
-        }
     }
 }

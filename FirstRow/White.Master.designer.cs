@@ -1365,6 +1365,15 @@ namespace FirstRow
         protected global::System.Web.UI.WebControls.RegularExpressionValidator form_reserva_nPersonas_validacion;
 
         /// <summary>
+        /// Control form_reserva_price.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label form_reserva_price;
+
+        /// <summary>
         /// Control form_reserva_precio.
         /// </summary>
         /// <remarks>
