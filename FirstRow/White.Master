@@ -53,7 +53,8 @@
                                             <li id="login_sect" runat="server"><a id="login_user_pop_up" class="js-popup-open" data-href="#login">Iniciar sesion</a></li>
                                             <li id="register_sect" runat="server"><a id="register_user_pop_up" class="js-popup-open" data-href="#registration">Registrarse</a></li>
                                             <li id="settings_sect" runat="server"><a id="settings_user_pop_up" class="js-popup-open" data-href="#profile-setting">Ajustes</a></li>
-                                            <li id="settings_emp_sect" runat="server"><a id="settings_emp_pop_up"  class="js-popup-open" data-href="#empresa-setting">Ajustes de empresa</a></li> 
+                                            <li id="settings_emp_sect" runat="server"><a id="settings_emp_pop_up"  class="js-popup-open" data-href="#empresa-setting">Ajustes de empresa</a></li>
+                                            <li id="perfil_li" runat="server"><a id="perfil_a" href="/perfil">Tu cuenta</a></li> 
                                             <li id="logout_sect" runat="server"><a class="js-popup-open" data-href="#logout">Cerrar sesion</a></li>
                                         </ul>
                                             <%-- Elementos ocultos --%>
@@ -416,6 +417,27 @@
                         <asp:Panel ID="form_reserva_fechas" runat="server">
                             </asp:Panel>
 
+                         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+                            <script type="text/javascript">
+                                $(function () {
+                                    //$("[id*=nPer]").val("0");
+                                });
+                                $("body").on("change keyup", "[id*=form_reserva_nPersonas]", function () {
+                                    var qty = parseFloat($.trim($(this).val()));
+                                    if (isNaN(qty)) {
+                                        qty = 0;
+                                    }
+
+                                    $(this).val(qty);
+
+                                    //Check row wise total
+                                    var price = qty * parseFloat(document.getElementById('form_reserva_price').textContent);
+                                    //$("[id*=]").val(price);
+                                    document.getElementById('form_reserva_precio').innerHTML = price + '€'
+
+                                });
+                            </script>    
+
                         <asp:TextBox ID="form_reserva_descripcion" runat="server" type="text" textMode="MultiLine" style="resize:vertical;" Width="100%" Height="180px" class="input" placeholder="¿Algún extra que debamos de saber?"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="form_reserva_descripcion_validacion" ControlToValidate="form_reserva_descripcion" validationgroup="GrupoCrearReserva" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 10px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[-.:,0-9A-Za-zÀ-ÿ\s]+$" ErrorMessage="*Formato de descripcion incorrecto"> </asp:RegularExpressionValidator>
 
@@ -427,13 +449,20 @@
                         <asp:RequiredFieldValidator ID="form_reserva_numero_requerido" ControlToValidate="form_reserva_contacto" validationgroup="GrupoCrearReserva" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 2px;" runat="server" ErrorMessage="*Numero requerido"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="form_reserva_numero_validacion" ControlToValidate="form_reserva_contacto" ValidationGroup="GrupoCrearReserva" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 10px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="\d{9}" ErrorMessage="*Solo 9 digitos"> </asp:RegularExpressionValidator>
 
-                        <asp:TextBox ID="form_reserva_nPersonas" runat="server" class="input" placeholder="Numero de personas"></asp:TextBox>
+                        <h3> Numero personas: </h3>
+                        <asp:TextBox ID="form_reserva_nPersonas" runat="server" class="input" placeholder="Numero de personas" AutoPostBack="false" onblur=" totalise(this)"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="form_reserva_nPersonas_requerido" ControlToValidate="form_reserva_nPersonas" validationgroup="GrupoCrearReserva" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 5px; margin-bottom: 2px;" runat="server" ErrorMessage="*Numero requerido"></asp:RequiredFieldValidator>
                         <asp:RegularExpressionValidator ID="form_reserva_nPersonas_validacion" ControlToValidate="form_reserva_nPersonas" ValidationGroup="GrupoCrearReserva" style="float:left; margin-left: 10px; margin-top: 2px; margin-bottom: 10px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="\d" ErrorMessage="*Solo 1 digito"> </asp:RegularExpressionValidator>
-                     
+
+                        <a> Precio/per en €: </a>
+                         <asp:Label ID="form_reserva_price" runat="server" Text="" class="imput" Visible="true"></asp:Label>
+                        <h3> Precio final</h3>
+                         <asp:Label ID="form_reserva_precio" runat="server" Text="0" class="input" style="margin-top: 10px" compound = "CENTER"></asp:Label>
+
                         <asp:Button ID="reserva_button" class="submit button" runat="server" Text="Reserva con un click" ValidationGroup="GrupoCrearReserva" OnClick="reserva_button_Click"/>
                         <asp:Label ID="msg_error_reserva" runat="server" Text="" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px;" Visible="false"></asp:Label>
                         <asp:Label ID="slug_reserva_experiencia_Oculto" runat="server" Text="" Visible="false"></asp:Label>
+                            
                     </div>
                 </div>
             </div>

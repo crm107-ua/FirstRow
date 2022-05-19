@@ -284,6 +284,7 @@ namespace FirstRow
                     settings_sect.Visible = true;
                     settings_emp_sect.Visible = false;
                     logout_sect.Visible = true;
+                    perfil_li.Visible = true;
 
                 }
                 else if (Session["empresa"] != null)
@@ -312,6 +313,7 @@ namespace FirstRow
                     settings_sect.Visible = false;
                     settings_emp_sect.Visible = true;
                     logout_sect.Visible = true;
+                    perfil_li.Visible = true;
                 }
                 else
                 {
@@ -325,6 +327,7 @@ namespace FirstRow
                     settings_sect.Visible = false;
                     settings_emp_sect.Visible = false;
                     logout_sect.Visible = false;
+                    perfil_li.Visible = false;
                 }
             }
         }
@@ -399,6 +402,5 @@ namespace FirstRow
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
             }
         }
-
     }
 }

@@ -22,6 +22,8 @@ namespace FirstRow.Pages
                 if (experiencia.mostrarExperiencia())
                 {
                     slug.Text = experiencia.Titulo;
+                    empresa_enlace.InnerText = experiencia.Empresa.name;
+                    empresa_enlace.HRef = "/user/" + experiencia.Empresa.nickname;
                     bg_experiencia.Attributes.Add("style", "background-image: url(/Media/Experiencias/" + experiencia.Background + ")");
                     texto_pais.InnerText = experiencia.Pais.name;
                     texto_titulo.InnerText = experiencia.Titulo;
@@ -126,6 +128,10 @@ namespace FirstRow.Pages
                     {
                         seccion_escribir_comentario.Visible = false;
                     }
+                    else 
+                    {
+                        //loadReserva();
+                    }
                 }
 
                 else
@@ -151,13 +157,25 @@ namespace FirstRow.Pages
             }
             else
             {
+                loadReserva();
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
+            }
+        }
+
+        private void loadReserva() 
+        {
+            try
+            {
                 string slug = "";
+                ENViajes eNViajes = new ENViajes();
                 Route myRoute = RouteData.Route as Route;
                 if (myRoute != null && myRoute.Url == "experiencia/{slug}")
                 {
                     slug = RouteData.Values["slug"].ToString();
+                    eNViajes.Slug = slug;
                 }
-                    DateTime fechaInsertada = DateTime.Parse(Request.Form["reservaEntrada"]);
+                eNViajes.mostrarExperiencia();
+                DateTime fechaInsertada = DateTime.Parse(Request.Form["reservaEntrada"]);
                 int nPersonas = int.Parse(Request.Form["PersonNumber"]);
 
                 if (nPersonas < 0)
@@ -177,10 +195,11 @@ namespace FirstRow.Pages
 
                 ((Panel)this.Master.FindControl("form_reserva_fechas")).Controls.Add(fechaInicial);
                 ((TextBox)this.Master.FindControl("form_reserva_nPersonas")).Text = nPersonas.ToString();
-                ((Label)this.Master.FindControl("slug_reserva_experiencia_Oculto")).Text =slug;
-
-                Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
+                ((Label)this.Master.FindControl("slug_reserva_experiencia_Oculto")).Text = slug;
+                ((Label)this.Master.FindControl("form_reserva_price")).Text =eNViajes.Precio.ToString();
             }
+            catch (Exception exception) 
+            { }
         }
 
         protected void modificarExperiencia(object sender, EventArgs e)

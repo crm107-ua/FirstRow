@@ -8,6 +8,7 @@
                     <a href="/galeria">Galería</a>
                     <span class="separator">/</span>
                     <a href="/"><asp:Label ID="slug" runat="server"></asp:Label></a>
+                    <a id="user_enlace" runat="server"  style="color:white; float:right;"></a>
                 </div>
             </div>
         </div>
@@ -21,7 +22,7 @@
                         </asp:Panel>
                             <div class="gallery-page-head">
                                 <asp:Label ID="title" runat="server" class="title" style="margin-top:20px; width:100%;"></asp:Label>
-                                </div>
+                            </div>
                         <div class="subtitle">
                             <asp:Label ID="Descripcion" runat="server"></asp:Label>
                         </div>

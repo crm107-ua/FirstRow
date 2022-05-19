@@ -60,6 +60,15 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.WebControls.Label titulo;
 
         /// <summary>
+        /// Control user_enlace.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor user_enlace;
+
+        /// <summary>
         /// Control foto_perfil.
         /// </summary>
         /// <remarks>

@@ -109,6 +109,47 @@ namespace library
             return true;
         }
 
+        internal bool readReservas(List<ENViajes> reservasEmpresa, string empresa)
+        {
+
+            bool leido = false;
+            SqlConnection connection = null;
+            DataSet reservas = null;
+            ENReserva reserva;
+
+            try
+            {
+                connection = new SqlConnection(constring);
+                reservas = new DataSet();
+                string query = "Select * From [firstrow_].[dbo].[Reservas] r " +
+                               "inner join Experiencias ex " +
+                               "on ex.id = r.experiencia " +
+                               "inner join Empresas emp " +
+                               "on emp.nickname = ex.empresa " +
+                               "where emp.nickname = " + empresa + ";";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.Fill(reservas, "Reservas");
+                DataTable tableReservas = reservas.Tables["Reservas"];
+                DataRow[] rowsReservas = tableReservas.Select();
+
+                for (int i = 0; i < rowsReservas.Length; i++)
+                {
+                    reserva = new ENReserva();
+                }
+            }
+            catch (DataException e)
+            {
+                Console.WriteLine(e.Message);
+                leido = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return leido;
+        }
+
         internal bool registerReserva(ENReserva reserva)
         {
             bool creado = false;

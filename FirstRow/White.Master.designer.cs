@@ -69,6 +69,15 @@ namespace FirstRow
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl settings_emp_sect;
 
         /// <summary>
+        /// Control perfil_li.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl perfil_li;
+
+        /// <summary>
         /// Control logout_sect.
         /// </summary>
         /// <remarks>
@@ -1354,6 +1363,24 @@ namespace FirstRow
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator form_reserva_nPersonas_validacion;
+
+        /// <summary>
+        /// Control form_reserva_price.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label form_reserva_price;
+
+        /// <summary>
+        /// Control form_reserva_precio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label form_reserva_precio;
 
         /// <summary>
         /// Control reserva_button.

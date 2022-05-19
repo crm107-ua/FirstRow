@@ -449,7 +449,7 @@ $(document).ready(function () {
 
     //Calendar========================/
     $(".js_calendar").datepicker({
-        dateFormat: "dd-MM-yyyy",
+        dateFormat: "d MM yy",
         dayNamesMin: ["S", "M", "T", "W", "T", "F", "S"],
         monthNames: ["January", "February", "March", "April", "May", "June", "Jule", "August", "September", "Oktober", "November", "December"],
         setDate: "today",
