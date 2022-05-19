@@ -91,23 +91,49 @@ namespace FirstRow.Pages
 
         protected void eliminarStory(object sender, EventArgs e)
         {
-            int story_id = int.Parse(story_id_span.InnerText);
+            int story_id = int.Parse(story_id_hidden.Value);
+            string nickname = ((ENUsuario)Session["usuario"]).nickname;
+            bool eliminadoOK = false;
 
             List<ENStories> stories = new List<ENStories>();
-            ENStories.ReadAllStories(stories, user_nickname);
-            Response.Redirect("/stories");
-            if (story_id >= 0 && story_id < stories.Count)
+            if(ENStories.ReadAllStories(stories, nickname))
             {
-                ENStories toDelete = stories[story_id]; //wtf
+                if (story_id > 0 && story_id <= stories.Count)
+                {
+                    ENStories toDelete = stories[stories.Count - story_id]; //wtf
+                    string imageURL = toDelete.Imagen;
+                    string path = Server.MapPath($"~/Media/Stories/{imageURL}");
 
-                if (toDelete.DeleteStory()){
-                    Response.Redirect(Request.RawUrl);
-                    //Response.Redirect($"/user-stories/{user_nickname}");
+                    if (toDelete.DeleteStory())
+                    {
+                        if (File.Exists(path))
+                        {
+                            try
+                            {
+                                File.Delete(path);
+                            }catch(Exception) { }
+                        }
+                        
+                        //Response.Redirect(Request.RawUrl);
+                        //Response.Redirect($"/user-stories/{user_nickname}");
+                        eliminadoOK = true;
+                    }
+                    else { eliminadoOK = false; }
+
                 }
+                else { eliminadoOK = false; }
+            }
+            else { eliminadoOK = false; }
+
+            if (!eliminadoOK)
+            {
+                Response.Write($"<script>alert('Story no borrada');window.location = '/user-stories/{nickname}';</script>");
+            }
+            else
+            {
+                Response.Redirect($"/user-stories/{nickname}");
 
             }
-
-            Response.Redirect("/stories");
         }
 
         private Panel createStoryPanel(string title, string text, string user, string date, string pais)
@@ -522,6 +548,7 @@ namespace FirstRow.Pages
                     settings_sect.Visible = true;
                     settings_emp_sect.Visible = false;
                     logout_sect.Visible = true;
+                    perfil_li.Visible = true;
 
                 }
                 else if (Session["empresa"] != null)
@@ -550,6 +577,7 @@ namespace FirstRow.Pages
                     settings_sect.Visible = false;
                     settings_emp_sect.Visible = true;
                     logout_sect.Visible = true;
+                    perfil_li.Visible = true;
                 }
                 else
                 {
@@ -563,9 +591,25 @@ namespace FirstRow.Pages
                     settings_sect.Visible = false;
                     settings_emp_sect.Visible = false;
                     logout_sect.Visible = false;
+                    perfil_li.Visible = false;
                 }
             }
         }
 
+
+        /*
+        protected void prev_arrow_Click(object sender, EventArgs e)
+        {
+            if (actual_story_id > 0 )
+                actual_story_id--;
+            //left_bottom_title.InnerText = actual_story_id.ToString();
+        }
+
+        protected void next_arrow_Click(object sender, EventArgs e)
+        {
+            actual_story_id++;
+            //left_bottom_title.InnerText = actual_story_id.ToString();
+        }
+        */
     }
 }

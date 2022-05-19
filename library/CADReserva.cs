@@ -109,7 +109,7 @@ namespace library
             return true;
         }
 
-        internal bool readReservas(List<ENViajes> reservasEmpresa, string empresa)
+        internal bool readReservasEmpresa(List<ENReserva> reservasEmpresa, string empresa)
         {
 
             bool leido = false;
@@ -135,7 +135,22 @@ namespace library
                 for (int i = 0; i < rowsReservas.Length; i++)
                 {
                     reserva = new ENReserva();
+
+                    reserva.id = Int32.Parse(rowsReservas[i]["id"].ToString());
+                    reserva.nombre = rowsReservas[i]["nombre"].ToString();
+                    reserva.descripcion = rowsReservas[i]["descripcion"].ToString();
+                    reserva.experiencia.Id = Int32.Parse(rowsReservas[i]["experiencia"].ToString());
+                    reserva.experiencia.mostrarExperiencia();
+                    reserva.fechaEntrada = (DateTime)rowsReservas[i]["fechaEntrada"];
+                    reserva.fechaSalida = (DateTime)rowsReservas[i]["fechaSalida"];
+                    reserva.usuario.nickname = rowsReservas[i]["nickname"].ToString();
+                    reserva.usuario.readUsuario();
+                    reserva.precio = Int32.Parse(rowsReservas[i]["precio"].ToString());
+                    reserva.personas = Int32.Parse(rowsReservas[i]["personas"].ToString());
+                    reservasEmpresa.Add(reserva);
                 }
+
+                leido = true;
             }
             catch (DataException e)
             {
@@ -162,10 +177,21 @@ namespace library
                 {
                     connection.Open();
                     string query = "INSERT INTO [firstrow_].[dbo].[Reservas] " +
-                        "(id, nombre, descripcion, experiencia, fechaEntrada, fechaSalida, usuario, precio_asignado, personas, numero) VALUES " +
-                        $"({reserva.id}, {reserva.usuario.name}, {reserva.descripcion},{reserva.experiencia.Id},{reserva.fechaEntrada.ToString()},{reserva.fechaSalida.ToString()},{reserva.usuario.nickname},{reserva.precio},{reserva.personas},{reserva.telefono})";
+                        "(nombre, descripcion, experiencia, fechaEntrada, fechaSalida, usuario, precio_asignado, personas, numero) VALUES " +
+                        "(@name, @descripcion,@experiencia,@fechaEntrada, @fechaSalida,@usuario,@precio,@nPersonas,@telefono)";
 
                     SqlCommand com = new SqlCommand(query, connection);
+                    com.Parameters.AddWithValue("@name", reserva.usuario.name);
+                    com.Parameters.AddWithValue("@descripcion", reserva.descripcion);
+                    com.Parameters.AddWithValue("@experiencia", reserva.experiencia.Id);
+                    com.Parameters.AddWithValue("@fechaEntrada", reserva.fechaEntrada.ToString("yyyy-MM-dd HH:mm:ss.ffffff"));
+                    com.Parameters.AddWithValue("@fechaSalida", reserva.fechaSalida.ToString("yyyy-MM-dd HH:mm:ss.ffffff"));
+                    com.Parameters.AddWithValue("@usuario", reserva.usuario.nickname);
+                    com.Parameters.AddWithValue("@precio", reserva.precio);
+                    com.Parameters.AddWithValue("@nPersonas", reserva.personas);
+                    com.Parameters.AddWithValue("@telefono", reserva.telefono);
+
+
                     com.ExecuteNonQuery();
                     created = true;
                 }

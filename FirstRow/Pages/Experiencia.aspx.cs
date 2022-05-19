@@ -150,7 +150,6 @@ namespace FirstRow.Pages
 
         protected void reserva(object sender, EventArgs e)
         {
-            //TODO cambiar
             if (Session["usuario"] == null)
             {
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_user", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('login_user_pop_up').click(); }", true);

@@ -55,6 +55,7 @@
                                             <li id="register_sect" runat="server"><a id="register_user_pop_up" class="js-popup-open" data-href="#registration">Registrarse</a></li>
                                             <li id="settings_sect" runat="server"><a id="settings_user_pop_up" class="js-popup-open" data-href="#profile-setting">Ajustes</a></li>
                                             <li id="settings_emp_sect" runat="server"><a id="settings_emp_pop_up"  class="js-popup-open" data-href="#empresa-setting">Ajustes de empresa</a></li> 
+                                            <li id="perfil_li" runat="server"><a id="perfil_a" href="/perfil">Tu cuenta</a></li> 
                                             <li id="logout_sect" runat="server"><a class="js-popup-open" data-href="#logout">Cerrar sesion</a></li>
                                         </ul>
                                             <%-- Elementos ocultos --%>
