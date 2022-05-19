@@ -121,18 +121,19 @@ namespace FirstRow.Pages
                     else { eliminadoOK = false; }
 
                 }
+                else { eliminadoOK = false; }
             }
             else { eliminadoOK = false; }
 
-            if (eliminadoOK)
+            if (!eliminadoOK)
             {
-                Response.Write("<script>alert('Story eliminada correctamente')</script>");
+                Response.Write($"<script>alert('Story no borrada');window.location = '/user-stories/{nickname}';</script>");
             }
             else
             {
-                Response.Write("<script>alert('Story no eliminada')</script>");
+                Response.Redirect($"/user-stories/{nickname}");
+
             }
-            Response.Redirect($"/user-stories/{nickname}");
         }
 
         private Panel createStoryPanel(string title, string text, string user, string date, string pais)
@@ -547,6 +548,7 @@ namespace FirstRow.Pages
                     settings_sect.Visible = true;
                     settings_emp_sect.Visible = false;
                     logout_sect.Visible = true;
+                    perfil_li.Visible = true;
 
                 }
                 else if (Session["empresa"] != null)
@@ -575,6 +577,7 @@ namespace FirstRow.Pages
                     settings_sect.Visible = false;
                     settings_emp_sect.Visible = true;
                     logout_sect.Visible = true;
+                    perfil_li.Visible = true;
                 }
                 else
                 {
@@ -588,6 +591,7 @@ namespace FirstRow.Pages
                     settings_sect.Visible = false;
                     settings_emp_sect.Visible = false;
                     logout_sect.Visible = false;
+                    perfil_li.Visible = false;
                 }
             }
         }
