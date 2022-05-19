@@ -11,7 +11,7 @@ namespace FirstRow.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["usuario"] != null) { add_form.Visible = true; } else { add_form.Visible = false; }
         }
     }
 }

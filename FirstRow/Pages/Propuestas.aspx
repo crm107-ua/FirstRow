@@ -8,7 +8,7 @@
                     <span class="separator" style="color:white;">/</span>
                     <a href="/propuestas" style="color:white;">Propuestas</a>
                 </div>
-            </div>
+            <a id="add_form" runat="server" style="float: right; color:white;" href="/crear_propuesta">Agregar propuesta</a>
         </div>
         <div class="page blog-list-page full-width">
             <div class="wrap">
@@ -111,5 +111,6 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
 </asp:Content>
