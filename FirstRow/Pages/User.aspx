@@ -19,7 +19,7 @@
                             </h1>
                             <p id="tipo_text" runat="server" class="subtitle">
                             </p>
-                            <h1 id="mode_text" runat="server" class="title" style="margin-top: 50px;">
+                            <h1 id="mode_text" runat="server" class="title" style="margin-top: 10%;">
                             </h1>
                         </div>
                     </div>
@@ -32,6 +32,15 @@
                             <div class="posts">
                                 <asp:Panel ID="mostrar_experiencias" runat="server" class="posts">
                                 </asp:Panel>
+                                <h1 id="mode_text2" runat="server" class="title" 
+                                    style="margin-top: 50px; position: relative; margin-top: 2%">
+                                    <a href="#" id="user_stories_link" runat="server"></a>
+                                 </h1>
+                                <div class="stories_slider">
+                                    <div id="generadorStories" runat="server" class="scroll">
+                                        <div class="shadow js-shadow"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
