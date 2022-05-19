@@ -92,7 +92,7 @@ namespace FirstRow.Pages.Forms
                         {
                             Error.Text = "Creacion Exitosa";
                             Error.Visible = true;
-                            Response.Redirect("/galeia/"+seccion_galeria.Slug);
+                            Response.Redirect("/galeria/"+seccion_galeria.Slug);
                         }
                         else
                         {
