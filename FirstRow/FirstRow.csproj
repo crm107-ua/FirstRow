@@ -204,6 +204,7 @@
     <Content Include="Pages\StoryUsuario.aspx" />
     <Content Include="Pages\Story.aspx" />
     <Content Include="Pages\Stories.aspx" />
+    <Content Include="Pages\User.aspx" />
     <Content Include="Pages\Wearing.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -379,6 +380,13 @@
     </Compile>
     <Compile Include="Pages\Stories.aspx.designer.cs">
       <DependentUpon>Stories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Wearing.aspx.cs">
       <DependentUpon>Wearing.aspx</DependentUpon>

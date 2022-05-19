@@ -1,6 +1,7 @@
 ﻿using library;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,6 +14,28 @@ namespace FirstRow.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             cargaElementos();
+            getionDeReservas();
+        }
+
+        private void getionDeReservas()
+        {
+            ENReserva reserva = new ENReserva();
+            if (Session["usuario"] != null)
+            {
+                ENUsuario usuario = (ENUsuario)Session["usuario"];
+                DataTable tabla = reserva.mostrarReservasUsuario(usuario);
+                reservasTabla.DataSource = tabla;
+                reservasTabla.DataBind();
+
+            }
+            else
+            {
+                ENEmpresa empresa = (ENEmpresa)Session["empresa"];
+                DataTable tabla = reserva.mostrarReservasEmpresa(empresa.nickname);
+                reservasTabla.DataSource = tabla;
+                reservasTabla.DataBind();
+
+            }
         }
 
         private void cargaElementos()
@@ -20,6 +43,7 @@ namespace FirstRow.Pages
             if (Session["usuario"] != null)
             {
                 ENUsuario usuario = (ENUsuario)Session["usuario"];
+                titulo_tabla.InnerText = "Tus reservas";
                 tipo.InnerHtml = "Tu cuenta de usuario";
                 name_titulo_text.InnerText = "¡Hola " + usuario.name + "!";
                 nickname_text.InnerText = "Nickname: " + usuario.nickname;
@@ -36,6 +60,7 @@ namespace FirstRow.Pages
             else if (Session["empresa"] != null)
             {
                 ENEmpresa empresa = (ENEmpresa)Session["empresa"];
+                titulo_tabla.InnerText = "Todas las reservas de tus experiencias";
                 tipo.InnerHtml = "Tu cuenta de empresa";
                 name_titulo_text.InnerText = "¡Hola " + empresa.name + "!";
                 nickname_text.InnerText = "Nickname: " + empresa.nickname;
