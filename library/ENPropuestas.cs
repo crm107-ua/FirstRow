@@ -14,6 +14,8 @@ namespace library
         private string _Imagen;
         internal object id;
         internal object descripcion;
+        internal object titulo;
+        internal object texto;
 
         public int Id //GET-SET
         {
@@ -62,6 +64,8 @@ namespace library
 
             if (!propuesta.readPropuestas(this, true))
             {
+
+
                 eliminado = propuesta.deletePropuesta(this);
             }
 

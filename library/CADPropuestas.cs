@@ -124,7 +124,7 @@ namespace library
                     connection.Open();
                     string query = "INSERT INTO [firstrow_].[dbo].[Propuestas] " +
                         "(id, titulo, texto, imagen, usario, empresa, slug) VALUES " +
-                        $"({propuesta.id}, ,{propuesta.descripcion})";
+                        $"({propuesta.id},{propuesta.titulo} ,{propuesta.texto},{propuesta.Imagen})";
 
                     SqlCommand com = new SqlCommand(query, connection);
                     com.ExecuteNonQuery();
