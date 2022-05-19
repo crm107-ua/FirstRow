@@ -15,6 +15,8 @@ namespace FirstRow.Pages
         {
             ENUsuario usuario = new ENUsuario();
             ENEmpresa empresa = new ENEmpresa();
+            if (RouteData.Values["nickname"] == null)
+                Response.Redirect("/");
             usuario.nickname = RouteData.Values["nickname"].ToString();
             empresa.nickname = RouteData.Values["nickname"].ToString();
 
@@ -34,6 +36,9 @@ namespace FirstRow.Pages
                     tipo_text.InnerText = "Perfil de Usuario";
                     mode_text.InnerText = "Experiencias vividas";
                     mostrarExperiencias(true, usuario.nickname);
+                    user_stories_link.InnerText = "Stories del usuario";
+                    mostrarStories(usuario.nickname);
+                    user_stories_link.HRef = $"/user-stories/{usuario.nickname}";
                 }
             }
             else
@@ -137,6 +142,42 @@ namespace FirstRow.Pages
                 a_tag_general.Controls.Add(tour_item_bottom);
 
                 mostrar_experiencias.Controls.Add(a_tag_general);
+            }
+        }
+
+        private void mostrarStories(string nickname)
+        {
+            List<ENStories> stories = new List<ENStories>();
+
+            ENStories.ReadAllStories(stories, nickname);
+            if (stories.Count == 0)
+            {
+                user_stories_link.InnerText = "Esta usuario no ha compartido ninguna story";
+                user_stories_link.HRef = "#";
+            }
+
+            int total = 0;
+            foreach (ENStories story in stories)
+            {
+                ENPais p = new ENPais();
+                p.id = story.Pais;
+                p.ReadPais();
+                string cadena =
+                            "<a href = '/story/" + p.name.ToLower() + "' class='story_item' style='background-image: url(/Media/Stories/" + story.Imagen + ")'>" +
+                                "<div class='item_wrap'>" +
+                                    "<div class='_content'>" +
+                                        "<p class='text'>" +
+                                            story.Titulo +
+                                        "</p>" +
+                                    "</div>" +
+                                "</div>" +
+                                "<div class='shadow js-shadow'></div>" +
+                            "</a>";
+                if (total < 4)
+                {
+                    generadorStories.Controls.Add(new LiteralControl(cadena));
+                }
+                total++;
             }
         }
     }

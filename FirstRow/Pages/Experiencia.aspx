@@ -114,7 +114,7 @@
                                         <a href="/stories">Todas las stories</a>
                                     </div>
                                 </div>
-                                <div class="stries_slider">
+                                <div class="stories_slider">
                                     <div id="generadorStories" runat="server" class="scroll">
                                         <div class="shadow js-shadow"></div>
                                     </div>
