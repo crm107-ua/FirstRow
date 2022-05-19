@@ -177,10 +177,21 @@ namespace library
                 {
                     connection.Open();
                     string query = "INSERT INTO [firstrow_].[dbo].[Reservas] " +
-                        "(id, nombre, descripcion, experiencia, fechaEntrada, fechaSalida, usuario, precio_asignado, personas, numero) VALUES " +
-                        $"({reserva.id}, {reserva.usuario.name}, {reserva.descripcion},{reserva.experiencia.Id},{reserva.fechaEntrada.ToString()},{reserva.fechaSalida.ToString()},{reserva.usuario.nickname},{reserva.precio},{reserva.personas},{reserva.telefono})";
+                        "(nombre, descripcion, experiencia, fechaEntrada, fechaSalida, usuario, precio_asignado, personas, numero) VALUES " +
+                        "(@name, @descripcion,@experiencia,@fechaEntrada, @fechaSalida,@usuario,@precio,@nPersonas,@telefono)";
 
                     SqlCommand com = new SqlCommand(query, connection);
+                    com.Parameters.AddWithValue("@name", reserva.usuario.name);
+                    com.Parameters.AddWithValue("@descripcion", reserva.descripcion);
+                    com.Parameters.AddWithValue("@experiencia", reserva.experiencia.Id);
+                    com.Parameters.AddWithValue("@fechaEntrada", reserva.fechaEntrada.ToString("yyyy-MM-dd HH:mm:ss.ffffff"));
+                    com.Parameters.AddWithValue("@fechaSalida", reserva.fechaSalida.ToString("yyyy-MM-dd HH:mm:ss.ffffff"));
+                    com.Parameters.AddWithValue("@usuario", reserva.usuario.nickname);
+                    com.Parameters.AddWithValue("@precio", reserva.precio);
+                    com.Parameters.AddWithValue("@nPersonas", reserva.personas);
+                    com.Parameters.AddWithValue("@telefono", reserva.telefono);
+
+
                     com.ExecuteNonQuery();
                     created = true;
                 }
