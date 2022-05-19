@@ -15,7 +15,6 @@ namespace library
         private ENUsuario _usuario; 
         private int _telefono;
         private int _personas;
-
         private ENViajes _experiencia;
         private DateTime _fechaEntrada;
         private DateTime _fechaSalida;
@@ -116,7 +115,14 @@ namespace library
             return reservas.readReservas();
         }
 
+
         public bool readReserva(bool mode)
+        {
+            CADReserva categoria = new CADReserva();
+            return categoria.readReserva(this, mode);
+        }
+
+        public bool mostrarReservasEmpresa(bool mode)
         {
             CADReserva categoria = new CADReserva();
             return categoria.readReserva(this, mode);

@@ -7,6 +7,7 @@
                     <a href="/">FirstRow</a>
                     <span class="separator">/</span>
                     <a href="/experiencias">Experiencias</a>
+                    <a href="/agregar-experiencia" id="crear_experiencia" runat="server" style="float:right;"></a>
                 </div>
             </div>
         </div>
@@ -20,7 +21,6 @@
                             </h1>
                             <p class="subtitle" style="color:white;">
                                 Cumpliendo sueños alrededor de todo el mundo
-                                <a href="/agregar-experiencia" id="crear_experiencia" runat="server" style="float:right;"></a>
                             </p>
                         </div>
                     </div>
