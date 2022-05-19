@@ -19,6 +19,7 @@ namespace FirstRow.Pages
             DataSet categorias = categoria.readCategorias();
             ENBlog blog = new ENBlog();
             List<ENBlog> blogs = new List<ENBlog>();
+            loadSesionTags();
 
             if (!IsPostBack)
             {
@@ -71,6 +72,17 @@ namespace FirstRow.Pages
         protected void seleccionDeCategoria(object sender, EventArgs e)
         {
             Response.Redirect("/blogs/"+ lista_categorias_blogs.SelectedValue);
+        }
+
+        private void loadSesionTags()
+        {
+            ENUsuario user = (ENUsuario)Session["usuario"];
+            if (user != null)
+            {
+                add_form.Visible = true;
+                add_form.InnerHtml = "Agregar blog";
+            }
+            else { add_form.Visible = false; }
         }
 
         private void generadorTextos(List<ENBlog> blogs)

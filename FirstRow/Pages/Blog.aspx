@@ -26,10 +26,12 @@
                                     <h1 class="title"><a style="color:white" href="/"><asp:Label ID="titulo" runat="server"></asp:Label></a></h1>
                                 </div>
                                 <div class="blog_single-head_bottom">
+                                  <a id="user_enlace" runat="server"  style="float:left;">
                                     <div class="author">
                                         <div id="foto_perfil" runat="server" class="userpic"></div>
                                         <p id="text_fecha" runat="server" class="name"></p>
                                     </div>
+                                  </a>
                                 </div>
                             </div>
                             <div class="blog_single-body">

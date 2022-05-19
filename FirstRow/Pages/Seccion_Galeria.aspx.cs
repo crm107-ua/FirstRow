@@ -34,8 +34,11 @@ namespace FirstRow.Pages
                             if(usuario.nickname==galeria.Usuario.nickname)
                                 delete_galeria.Visible = true;
                         }
+                        slug.Text = galeria.Titulo;
                         title.Text = galeria.Titulo;
                         Descripcion.Text = galeria.Descripcion;
+                        user_enlace.InnerText = galeria.Usuario.name;
+                        user_enlace.HRef = "/user/" + galeria.Usuario.nickname;
                         loadImg(galeria.Imagenes);
                         loadExtra();
                     }

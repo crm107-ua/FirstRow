@@ -22,6 +22,8 @@ namespace FirstRow.Pages
                 if (experiencia.mostrarExperiencia())
                 {
                     slug.Text = experiencia.Titulo;
+                    empresa_enlace.InnerText = experiencia.Empresa.name;
+                    empresa_enlace.HRef = "/user/" + experiencia.Empresa.nickname;
                     bg_experiencia.Attributes.Add("style", "background-image: url(/Media/Experiencias/" + experiencia.Background + ")");
                     texto_pais.InnerText = experiencia.Pais.name;
                     texto_titulo.InnerText = experiencia.Titulo;

@@ -26,6 +26,13 @@ namespace FirstRow.Pages
                 }
                 else { btn_modificar_pagina.Visible = false; }
 
+                if (user != null)
+                {
+                    add_form.Visible = true;
+                    add_form.InnerHtml = "Agregar story";
+                }
+                else{ add_form.Visible = false;}
+
                 //Este texto debería provenir de una tabla en la BD
                 Application["stories_title"] = "Stories interesantes";
                 Application["stories_subtitle"] = "Muestra tus experiencias al mundo " +
