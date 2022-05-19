@@ -33,38 +33,10 @@ namespace FirstRow.Pages
             foreach (ENSorteos s in sorteos)
             {
 
-                string c = "< a class=\"blog_item\" href=\"/sorteo/" + s.Slug + ">" +
-                                "<div class=\"blog_item_top\" style=\"background-image: url(/Media/Stories" + s.Imagen + ")\">" +
-                                "<div class=\"sq_parent\">" +
-                                "<div class=\"sq_wrap\">" +
-                                "<div class=\"sq_content\">" +
-                                "<div class=\"tags\">" +
-                                "<div class=\"tag red\">" +
-                                s.Id +
-                                "</div>" +
-                                "</div>" +
-                                "< h3 class=\"_title\">" +
-                                s.Descripcion +
-                                "</h3>" +
-                                "</div>" +
-                                "</div>" +
-                                "</div>" +
-                                "< div class=\"shadow js-shadow\"></div>" +
-                                "</div>" +
-                                "<div class=\"blog_item_bottom\">" +
-                                "<div class=\"author\">" +
-                                "<div class=\"userpic\">" +
-                                    "< img src = " + s.Imagen + " alt = " + s.Nombre + " /> " +
-                                    "</div>" +
-                                    "< p class=\"date\">" +
-                                    s.FechaInicio + "x participantes" +
-                                    "</p>" +
-                                    "</div>" +
-                                "</div>" +
-                            "</a>";
+   
                 string cadena =
-                        "<a class='blog_item' href='/sorteo/" + s.Slug + "/" + s.Slug + "'>" +
-                            "<div class='blog_item_top' style ='background-image: url(/Media/Stories/" + s.Imagen+ ")'> " +
+                        "<a class='blog_item' href='/sorteo/" + s.Slug.ToString() + "'>" +
+                            "<div class='blog_item_top' style ='background-image: url(/Media/Sorteos/" + s.Imagen+ ")'> " +
                                " <div class='sq_parent'> " +
                                     "<div class='sq_wrap'> " +
                                         "<div class='sq_content'> " +
@@ -74,7 +46,7 @@ namespace FirstRow.Pages
                                                 "</div>" +
                                             "</div>" +
                                                 "<h3 class='_title'>"
-                                                    + s.Nombre +
+                                                    + s.Titulo +
                                                 "</h3>" +
                                         "</div>" +
                                     "</div>" +
@@ -90,14 +62,43 @@ namespace FirstRow.Pages
                                     "</div>" +
                                     */
                                     "<p class='date'>" +
-                                        "Escrito por " + s.Titular + ", el día " + s.FechaInicio.ToString("dd/MM/yyyy") +
+                                        "Iniciado por " + s.Titular + ", el día " + s.FechaInicio.ToString("dd/MM/yyyy") +".</br>"+ "Finaliza el dia "+s.FechaFinal.ToString("dd/MM/yyyy")+
                                     "</p>" +
                                 "</div>" +
                              "</div>" +
                           "</a>";
                 sorteos_list.Controls.Add(new LiteralControl(cadena));
+                /* string c = "< a class=\"blog_item\" href=\"/sorteo/" + s.Slug + ">" +
+                    "<div class=\"blog_item_top\" style=\"background-image: url(/Media/Stories" + s.Imagen + ")\">" +
+                    "<div class=\"sq_parent\">" +
+                    "<div class=\"sq_wrap\">" +
+                    "<div class=\"sq_content\">" +
+                    "<div class=\"tags\">" +
+                    "<div class=\"tag red\">" +
+                    s.Id +
+                    "</div>" +
+                    "</div>" +
+                    "< h3 class=\"_title\">" +
+                    s.Descripcion +
+                    "</h3>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>" +
+                    "< div class=\"shadow js-shadow\"></div>" +
+                    "</div>" +
+                    "<div class=\"blog_item_bottom\">" +
+                    "<div class=\"author\">" +
+                    "<div class=\"userpic\">" +
+                        "< img src = " + s.Imagen + " alt = " + s.Nombre + " /> " +
+                        "</div>" +
+                        "< p class=\"date\">" +
+                        s.FechaInicio + "x participantes" +
+                        "</p>" +
+                        "</div>" +
+                    "</div>" +
+                "</a>";*/
             }
-                
+
         }
 
         protected void crearSorteo(object sender, EventArgs e)

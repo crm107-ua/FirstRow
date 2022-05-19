@@ -7,7 +7,7 @@
                         <div class="wrap_float">
                             <a href="/" style="color:white;">FirstRow</a>
                             <span class="separator" style="color:white;">/</span>
-                            <a href="/sorteo" style="color:white;">Sorteos</a>
+                            <a href="/sorteos" style="color:white;">Sorteos</a>
                             <span class="separator" style="color:white;">/</span>
                             <a href="/" style="color:white;"><asp:Label ID="slug" runat="server"></asp:Label></a>
                         </div>
@@ -28,10 +28,10 @@
                                             <div class="date-col">
                                                 <div style="color:white" class="label">Inicio</div>
                                                 <div class="date_div">
-                                                    <div class="day">21</div>
+                                                    <div class="day" ID="diaI"></div>
                                                     <div class="date_div_right">
-                                                        <div class="month">December</div>
-                                                        <div class="year">2019</div>
+                                                        <div class="month" ID="mesI">December</div>
+                                                        <div class="year" ID="anioI">2019</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -62,8 +62,8 @@
                                 </div>
                                 <div class="bottom-info-right">
                                     <div class="info">
-                                        <div class="days">JetEnterprise |</div>
-                                        <div class="cost">1807 usuarios</div>
+                                        <asp:Label runat=server class="cost" ID="empresa"></asp:Label>
+                                        <div class="cost"ID="participantes">1807 usuarios</div>
                                     </div>
                                     <button type="button" class="btn button">Participar</button>
                                 </div>

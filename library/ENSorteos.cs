@@ -23,7 +23,7 @@ namespace library
         /// <summary>
         /// Slug
         /// </summary>
-        private int _Slug;
+        private string _Slug;
         /// <summary>
         /// Descripcion del sorteo
         /// </summary>
@@ -52,8 +52,8 @@ namespace library
 
         public int Id { get => _Id; set => _Id = value; }
         public ENViajes Premio { get => _Premio; set => _Premio = value; }
-        public string Nombre { get => _Nombre; set => _Nombre = value; }
-        public int Slug { get => _Slug; set => _Slug = value; }
+        public string Titulo { get => _Nombre; set => _Nombre = value; }
+        public string Slug { get => _Slug; set => _Slug = value; }
         public string Descripcion { get => _Descripcion; set => _Descripcion = value; }
         public string Imagen { get => _Imagen; set => _Imagen = value; }
         public DateTime FechaInicio { get => _FechaInicio; set => _FechaInicio = value; }
@@ -69,7 +69,7 @@ namespace library
             _Id = 0;
             _Premio = new ENViajes();
             _Nombre = "";
-            _Slug = 0;
+            _Slug = "";
             _Descripcion = "";
             _Imagen = "";
             _FechaInicio = new DateTime();
@@ -89,7 +89,7 @@ namespace library
         /// <param name="fechaInicio"></param>
         /// <param name="fechaFinal"></param>
         /// <param name="participantes"></param>
-        public ENSorteos(int id, ENViajes premio, string nombre, int slug, string descripcion, string imagen, DateTime fechaInicio, DateTime fechaFinal, ENUsuario[] participantes,string titular)
+        public ENSorteos(int id, ENViajes premio, string nombre, string slug, string descripcion, string imagen, DateTime fechaInicio, DateTime fechaFinal, ENUsuario[] participantes,string titular)
         {
             _Id = id;
             _Premio = premio;
@@ -123,10 +123,10 @@ namespace library
             return ok;
         }
    
-        public bool readsorteos(List<ENSorteos> lista)
+        public bool readsorteo(string s)
         {
             CADSorteos sorteos = new CADSorteos();
-            return sorteos.readsorteo(lista);
+            return sorteos.readsorteo(s);
         }
         public bool readsorteosconectado(List<ENSorteos> lista)
         {
