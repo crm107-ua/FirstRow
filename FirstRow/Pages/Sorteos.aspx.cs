@@ -18,10 +18,13 @@ namespace FirstRow.Pages
             Application["sorteos_title"] = "Sorteos";
             Application["sorteos_subtitle"] = "Para nuestros clientes. " +
                 "Que la suerte este siempre de vuestra parte.";
-            sorteos_title.InnerText = (string)Application["sorteos_title"];
+            sorteos_title2.Text = (string)Application["sorteos_title"];
             sorteos_subtitle.InnerText = (string)Application["sorteos_subtitle"];
+            /*
+             "url(https://static.onecms.io/wp-content/uploads/sites/28/2021/09/24/travel-gifts-lead-TRVLGG0921.jpg)"
+             */
             background_image_header.Style.Add("background-image", "url(https://static.onecms.io/wp-content/uploads/sites/28/2021/09/24/travel-gifts-lead-TRVLGG0921.jpg)");
-
+           
             ENSorteos sorteo = new ENSorteos();
             List<ENSorteos> lista = new List<ENSorteos>();
             sorteo.readsorteosconectado(lista);
@@ -33,38 +36,10 @@ namespace FirstRow.Pages
             foreach (ENSorteos s in sorteos)
             {
 
-                string c = "< a class=\"blog_item\" href=\"/sorteo/" + s.Slug + ">" +
-                                "<div class=\"blog_item_top\" style=\"background-image: url(/Media/Stories" + s.Imagen + ")\">" +
-                                "<div class=\"sq_parent\">" +
-                                "<div class=\"sq_wrap\">" +
-                                "<div class=\"sq_content\">" +
-                                "<div class=\"tags\">" +
-                                "<div class=\"tag red\">" +
-                                s.Id +
-                                "</div>" +
-                                "</div>" +
-                                "< h3 class=\"_title\">" +
-                                s.Descripcion +
-                                "</h3>" +
-                                "</div>" +
-                                "</div>" +
-                                "</div>" +
-                                "< div class=\"shadow js-shadow\"></div>" +
-                                "</div>" +
-                                "<div class=\"blog_item_bottom\">" +
-                                "<div class=\"author\">" +
-                                "<div class=\"userpic\">" +
-                                    "< img src = " + s.Imagen + " alt = " + s.Nombre + " /> " +
-                                    "</div>" +
-                                    "< p class=\"date\">" +
-                                    s.FechaInicio + "x participantes" +
-                                    "</p>" +
-                                    "</div>" +
-                                "</div>" +
-                            "</a>";
+               
                 string cadena =
-                        "<a class='blog_item' href='/sorteo/" + s.Slug + "/" + s.Slug + "'>" +
-                            "<div class='blog_item_top' style ='background-image: url(/Media/Stories/" + s.Imagen+ ")'> " +
+                        "<a class='blog_item' href='/sorteo/" + Home.slug(s.Slug.ToString()) + "'>" +
+                            "<div class='blog_item_top' style ='background-image: url(/Media/Sorteos/" + s.Imagen+ ")'> " +
                                " <div class='sq_parent'> " +
                                     "<div class='sq_wrap'> " +
                                         "<div class='sq_content'> " +
@@ -74,7 +49,7 @@ namespace FirstRow.Pages
                                                 "</div>" +
                                             "</div>" +
                                                 "<h3 class='_title'>"
-                                                    + s.Nombre +
+                                                    + s.Titulo +
                                                 "</h3>" +
                                         "</div>" +
                                     "</div>" +
@@ -90,14 +65,43 @@ namespace FirstRow.Pages
                                     "</div>" +
                                     */
                                     "<p class='date'>" +
-                                        "Escrito por " + s.Titular + ", el día " + s.FechaInicio.ToString("dd/MM/yyyy") +
+                                        "Desde " + s.FechaInicio.ToString("dd/MM/yyyy") +"</br>"+ "Hasta "+s.FechaFinal.ToString("dd/MM/yyyy")+
                                     "</p>" +
                                 "</div>" +
                              "</div>" +
                           "</a>";
                 sorteos_list.Controls.Add(new LiteralControl(cadena));
+                /* string c = "< a class=\"blog_item\" href=\"/sorteo/" + s.Slug + ">" +
+                    "<div class=\"blog_item_top\" style=\"background-image: url(/Media/Stories" + s.Imagen + ")\">" +
+                    "<div class=\"sq_parent\">" +
+                    "<div class=\"sq_wrap\">" +
+                    "<div class=\"sq_content\">" +
+                    "<div class=\"tags\">" +
+                    "<div class=\"tag red\">" +
+                    s.Id +
+                    "</div>" +
+                    "</div>" +
+                    "< h3 class=\"_title\">" +
+                    s.Descripcion +
+                    "</h3>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>" +
+                    "< div class=\"shadow js-shadow\"></div>" +
+                    "</div>" +
+                    "<div class=\"blog_item_bottom\">" +
+                    "<div class=\"author\">" +
+                    "<div class=\"userpic\">" +
+                        "< img src = " + s.Imagen + " alt = " + s.Nombre + " /> " +
+                        "</div>" +
+                        "< p class=\"date\">" +
+                        s.FechaInicio + "x participantes" +
+                        "</p>" +
+                        "</div>" +
+                    "</div>" +
+                "</a>";*/
             }
-                
+
         }
 
         protected void crearSorteo(object sender, EventArgs e)

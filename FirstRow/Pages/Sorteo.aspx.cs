@@ -1,11 +1,13 @@
-﻿using System;
+﻿using library;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Routing;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using library;
 
 namespace FirstRow.Pages
 {
@@ -13,12 +15,31 @@ namespace FirstRow.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string cadena="";
             Route myRoute = RouteData.Route as Route;
             if (myRoute != null && myRoute.Url == "sorteo/{slug}")
             {
-                string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
+                cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
                 titulo.Text = slug.Text = cadena.Replace("-", " ");
+
             }
+            ENSorteos so = new ENSorteos();
+            so.Slug = slug.Text.ToString();
+            so.readsorteo();
+            Home.slug(so.Titulo.ToString());
+        
+            describe.Text = so.Descripcion.ToString();
+            empresa.Text=so.Titular.ToString();
+            diaI.Text = so.FechaInicio.ToString("dd");
+            mesI.Text = so.FechaInicio.ToString("MMMM");
+            anioI.Text = so.FechaInicio.ToString("yyyy");
+
+            diaF.Text = so.FechaFinal.ToString("dd");
+            mesF.Text = so.FechaFinal.ToString("MMMM");
+            anioF.Text = so.FechaFinal.ToString("yyyy");
+            /*                                  
+            participantes.Text =  so.readcantidad().ToString();
+            */
 
         }
         protected void modificarSorteo(object sender, EventArgs e)

@@ -33,6 +33,15 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl sorteos_title;
 
         /// <summary>
+        /// Control sorteos_title2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label sorteos_title2;
+
+        /// <summary>
         /// Control sorteos_subtitle.
         /// </summary>
         /// <remarks>
