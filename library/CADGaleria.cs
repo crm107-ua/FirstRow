@@ -91,7 +91,7 @@ namespace library
             SqlDataReader readerimagenes = null;
             bool conseguido = false;
             string comand = "select Seccion_Galeria.id, titulo, descripcion, usuario , slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
-                    "from [firstrow_].[dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais) where slug='"+ galeria.Slug + "'";
+                    "from [Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais) where slug='"+ galeria.Slug + "'";
 
             try
             {
@@ -160,7 +160,7 @@ namespace library
                             }
 
                             connection.Open();
-                            string comando = "delete from [firstrow_].[dbo].[Seccion_Galeria] where slug=@slug;";
+                            string comando = "delete from [Seccion_Galeria] where slug=@slug;";
 
                             SqlCommand sqlCommand = new SqlCommand(comando, connection);
                             sqlCommand.Parameters.AddWithValue("@slug",galeria.Slug);
@@ -211,7 +211,7 @@ namespace library
                 DataSet dbd = new DataSet();
                 DataSet dbdImgenes = new DataSet();
                 string slectGaleria = "select Seccion_Galeria.id, titulo, descripcion, slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
-                    "from [firstrow_].[dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais);";
+                    "from [Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais);";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(slectGaleria, connection);
                 adapter.Fill(dbd,"Galerias");
@@ -276,7 +276,7 @@ namespace library
                 DataSet dbd = new DataSet();
                 DataSet dbdImgenes = new DataSet();
                 string slectGaleria = "select Seccion_Galeria.id, titulo, descripcion, slug, Paises.id 'PaisId', Paises.name 'NamePais' " +
-                    "from [firstrow_].[dbo].[Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais)" +
+                    "from [Seccion_Galeria] join Paises on(Paises.id = Seccion_Galeria.pais)" +
                     "where Paises.id="+pais.id;
 
                 SqlDataAdapter adapter = new SqlDataAdapter(slectGaleria, connection);

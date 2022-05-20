@@ -22,7 +22,7 @@ namespace library
             {
                 c = new SqlConnection(constring);
                 DataSet bd = new DataSet();
-                SqlDataAdapter da = new SqlDataAdapter("select * from [firstrow_].[dbo].[Propuestas]", c);
+                SqlDataAdapter da = new SqlDataAdapter("select * from [Propuestas]", c);
                 da.Fill(bd, "Propuestas");
                 return bd;
             }
@@ -54,13 +54,13 @@ namespace library
 
                 if (mode)
                 {
-                    query = "Select * From [firstrow_].[dbo].[Propuestas] where id = @id";
+                    query = "Select * From [Propuestas] where id = @id";
                     consulta = new SqlCommand(query, conection);
                     consulta.Parameters.AddWithValue("@id", propuesta.id);
                 }
                 else
                 {
-                    query = "Select * From [firstrow_].[dbo].[Propuestas] where id = @id";
+                    query = "Select * From [Propuestas] where id = @id";
                     consulta = new SqlCommand(query, conection);
                     consulta.Parameters.AddWithValue("@id", propuesta.id);
                 }
@@ -122,7 +122,7 @@ namespace library
                 try
                 {
                     connection.Open();
-                    string query = "INSERT INTO [firstrow_].[dbo].[Propuestas] " +
+                    string query = "INSERT INTO [Propuestas] " +
                         "(id, titulo, texto, imagen, usario, empresa, slug) VALUES " +
                         $"({propuesta.id},{propuesta.titulo} ,{propuesta.texto},{propuesta.Imagen})";
 

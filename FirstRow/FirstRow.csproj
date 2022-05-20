@@ -171,6 +171,7 @@
     <Content Include="assets\js\slick.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Media\Paises\Andorra.jpg" />
+    <Content Include="Media\Paises\Croacia.jpg" />
     <Content Include="Media\Paises\EEUU.jpg" />
     <Content Include="Media\Paises\Spain.jpg" />
     <Content Include="Media\Paises\Francia.jpg" />
@@ -179,6 +180,10 @@
     <Content Include="Media\Paises\Italia.jpg" />
     <Content Include="Media\Paises\Japon.jpg" />
     <Content Include="Media\Paises\Noruega.jpg" />
+    <Content Include="Media\Paises\Suecia.jpg" />
+    <Content Include="Media\Sorteos\atlantico.jpg" />
+    <Content Include="Media\Sorteos\default_sorteos.jpg" />
+    <Content Include="Media\Sorteos\fondo_sorteos.jpg" />
     <Content Include="Pages\403.aspx" />
     <Content Include="Pages\404.aspx" />
     <Content Include="Pages\Blog.aspx" />
@@ -422,6 +427,7 @@
   <ItemGroup>
     <Content Include="White.Master" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

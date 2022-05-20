@@ -26,7 +26,7 @@ namespace library
             {
                 c = new SqlConnection(constring);
                 DataSet bd = new DataSet();
-                SqlDataAdapter da = new SqlDataAdapter("select * from [firstrow_].[dbo].[Reservas]", c);
+                SqlDataAdapter da = new SqlDataAdapter("select * from [Reservas]", c);
                 da.Fill(bd, "Reserva");
                 return bd;
             }
@@ -59,13 +59,13 @@ namespace library
 
                 if (mode)
                 {
-                    query = "Select * From [firstrow_].[dbo].[Reservas] where id = @id";
+                    query = "Select * From [Reservas] where id = @id";
                     consulta = new SqlCommand(query, conection);
                     consulta.Parameters.AddWithValue("@id", reserva.id);
                 }
                 else
                 {
-                    query = "Select * From [firstrow_].[dbo].[Reservas] where id = @id";
+                    query = "Select * From [Reservas] where id = @id";
                     consulta = new SqlCommand(query, conection);
                     consulta.Parameters.AddWithValue("@id", reserva.id);
                 }
@@ -120,7 +120,7 @@ namespace library
                 connection = new SqlConnection(constring);
                 reservas = new DataSet();
                 string query = "Select r.id,r.nombre,r.descripcion,r.experiencia,r.fechaEntrada,r.fechaSalida,r.usuario, r.precio_asignado, r.personas " +
-                               "From [firstrow_].[dbo].[Reservas] r " +
+                               "From [Reservas] r " +
                                "inner join Experiencias ex " +
                                "on ex.id = r.experiencia " +
                                "inner join Empresas emp " +
@@ -153,7 +153,7 @@ namespace library
                 connection = new SqlConnection(constring);
                 reservas = new DataSet();
                 string query = "Select r.id,r.nombre,r.descripcion,r.experiencia,r.fechaEntrada,r.fechaSalida,r.usuario, r.precio_asignado, r.personas " +
-                               "From [firstrow_].[dbo].[Reservas] r " +
+                               "From [Reservas] r " +
                                "where usuario = '" + usuario.nickname + "';";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.Fill(reservas, "ReservasUsuario");
@@ -182,7 +182,7 @@ namespace library
                 try
                 {
                     connection.Open();
-                    string query = "INSERT INTO [firstrow_].[dbo].[Reservas] " +
+                    string query = "INSERT INTO [Reservas] " +
                         "(nombre, descripcion, experiencia, fechaEntrada, fechaSalida, usuario, precio_asignado, personas, numero) VALUES " +
                         "(@name, @descripcion,@experiencia,@fechaEntrada, @fechaSalida,@usuario,@precio,@nPersonas,@telefono)";
 

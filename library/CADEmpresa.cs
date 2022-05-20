@@ -23,7 +23,7 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "Insert INTO [firstrow_].[dbo].[Usuarios] " +
+                string query = "Insert INTO [Usuarios] " +
                     "(nickname,email, password, image, background_image," +
                     "name, firstname, secondname, facebook, twitter) " +
                     "VALUES " +
@@ -41,7 +41,7 @@ namespace library
                 consulta.Parameters.AddWithValue("@facebook", en.facebook);
                 consulta.Parameters.AddWithValue("@twitter", en.twitter);
                 consulta.ExecuteNonQuery();
-                query = "Insert INTO [firstrow_].[dbo].[Empresas] " +
+                query = "Insert INTO [Empresas] " +
                     "(nickname,cif,fechaCreacion,direccion,pais) " +
                     "VALUES " +
                     "(@nickname,@cif,@fechaCreacion,@direccion,@pais)";
@@ -87,7 +87,7 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "SELECT * FROM [firstrow_].[dbo].[Usuarios] u INNER JOIN [firstrow_].[dbo].[Empresas] e on u.nickname = e.nickname where u.email = @email";
+                string query = "SELECT * FROM [Usuarios] u INNER JOIN [Empresas] e on u.nickname = e.nickname where u.email = @email";
                 SqlCommand consulta = new SqlCommand(query, conection);
                 consulta.Parameters.AddWithValue("@email", en.email);
                 busqueda = consulta.ExecuteReader();
@@ -109,7 +109,7 @@ namespace library
                 pais.id = int.Parse(busqueda["pais"].ToString());
 
                 busqueda.Close();
-                query = "SELECT * FROM [firstrow_].[dbo].[Paises] where id = @id";
+                query = "SELECT * FROM [Paises] where id = @id";
                 consulta = new SqlCommand(query, conection);
                 consulta.Parameters.AddWithValue("@id", pais.id);
                 busqueda = consulta.ExecuteReader();
@@ -156,7 +156,7 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "SELECT * FROM [firstrow_].[dbo].[Usuarios] u INNER JOIN [firstrow_].[dbo].[Empresas] e on u.nickname = e.nickname where u.nickname = @nickname";
+                string query = "SELECT * FROM [Usuarios] u INNER JOIN [Empresas] e on u.nickname = e.nickname where u.nickname = @nickname";
                 SqlCommand consulta = new SqlCommand(query, conection);
                 consulta.Parameters.AddWithValue("@nickname", en.nickname);
                 busqueda = consulta.ExecuteReader();
@@ -178,7 +178,7 @@ namespace library
                 pais.id = int.Parse(busqueda["pais"].ToString());
 
                 busqueda.Close();
-                query = "SELECT * FROM [firstrow_].[dbo].[Paises] where id = @id";
+                query = "SELECT * FROM [Paises] where id = @id";
                 consulta = new SqlCommand(query, conection);
                 consulta.Parameters.AddWithValue("@id", pais.id);
                 busqueda = consulta.ExecuteReader();
@@ -224,7 +224,7 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "UPDATE [firstrow_].[dbo].[Usuarios] set " +
+                string query = "UPDATE [Usuarios] set " +
                     "password = @password," +
                     "image = @image," +
                     "background_image = @background_image," +
@@ -245,7 +245,7 @@ namespace library
                 consulta.Parameters.AddWithValue("@twitter", en.twitter);
                 consulta.Parameters.AddWithValue("@nickname", en.nickname);
                 consulta.ExecuteNonQuery();
-                query = "UPDATE [firstrow_].[dbo].[Empresas] set " +
+                query = "UPDATE [Empresas] set " +
                     "cif = @cif," +
                     "direccion = @direccion," +
                     "pais = @pais " +
@@ -256,7 +256,7 @@ namespace library
                 consulta.Parameters.AddWithValue("@direccion", en.direccion);
                 consulta.Parameters.AddWithValue("@pais", en.pais.id);
                 consulta.ExecuteNonQuery();
-                query = "SELECT name FROM [firstrow_].[dbo].[Paises] where id = @id";
+                query = "SELECT name FROM [Paises] where id = @id";
                 consulta = new SqlCommand(query, conection);
                 consulta.Parameters.AddWithValue("@id", en.pais.id);
                 busqueda = consulta.ExecuteReader();
