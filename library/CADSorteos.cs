@@ -27,7 +27,7 @@ namespace library
 
                 c.Open();
 
-                string s = "Insert INTO [dbo].[Sorteo_Usuarios] (titulo,descripcion,slug,imagen,FechaInicio,FechaFinal) VALUES ('" + en.Titulo + "','" + en.Descripcion + "','" + en.Slug + "','" + en.Imagen + "','" + en.FechaInicio + "','" + en.FechaFinal + "')";
+                string s = "Insert INTO [Sorteo_Usuarios] (titulo,descripcion,slug,imagen,FechaInicio,FechaFinal) VALUES ('" + en.Titulo + "','" + en.Descripcion + "','" + en.Slug + "','" + en.Imagen + "','" + en.FechaInicio + "','" + en.FechaFinal + "')";
 
                 SqlCommand com = new SqlCommand(s, c);
                 com.ExecuteNonQuery();
@@ -72,7 +72,7 @@ namespace library
                 connection = new SqlConnection(constring);
                 connection.Open();
 
-                string query = "SELECT * FROM [firstrow_].[dbo].[Sorteos]";
+                string query = "SELECT * FROM [Sorteos]";
                 SqlCommand consulta = new SqlCommand(query, connection);
                 busqueda = consulta.ExecuteReader();
 
@@ -138,7 +138,7 @@ namespace library
                 connection = new SqlConnection(constring);
                 connection.Open();
 
-                string query = "SELECT * FROM [firstrow_].[dbo].[Sorteos] where slug=" +"'"+ sorteo.Slug.ToString()+"'";
+                string query = "SELECT * FROM [Sorteos] where slug=" +"'"+ sorteo.Slug.ToString()+"'";
                 SqlCommand consulta = new SqlCommand(query, connection);
                 busqueda = consulta.ExecuteReader();
 
@@ -202,7 +202,7 @@ namespace library
                 connection = new SqlConnection(constring);
                 connection.Open();
 
-                string query = "SELECT count(*)cant FROM [firstrow_].[dbo].[Sorteo_Usuarios] where id=" + "'" + sorteo.Id + "'";
+                string query = "SELECT count(*)cant FROM [Sorteo_Usuarios] where id=" + "'" + sorteo.Id + "'";
                 SqlCommand consulta = new SqlCommand(query, connection);
                 busqueda = consulta.ExecuteReader();
 
