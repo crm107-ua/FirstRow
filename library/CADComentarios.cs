@@ -39,22 +39,77 @@ namespace library
             get { return _Nickname; }
             set { _Nickname = value; }
         }
-        public void InsertComennt(ENComentarios c)
+        public bool InsertComennt(ENComentarios comentario, int id, bool mode)
         {
-            SqlConnection nueva_conexion = new SqlConnection(constring);
 
+            bool created = false;
+            SqlConnection connection = new SqlConnection(constring);
             try
             {
-                nueva_conexion.Open();
-                string insert = "";
-                insert = "Insert Into CommentsContent(Id,Texto,Nickname,Estrellas) VALUES (" + c.Id + "," + c.Texto + ",'" + c.Usuario.nickname + "," + c.Estrellas + "')";
-                SqlCommand com = new SqlCommand(insert, nueva_conexion);
+                connection = new SqlConnection(constring);
+                connection.Open();
 
-                com.ExecuteNonQuery();
+                string query = "Insert INTO [Comentarios] " +
+                    "(texto,nickname,estrellas) " +
+                    "VALUES " +
+                    "(@texto,@nickname,@estrellas) " +
+                    "select scope_identity()";
+                SqlCommand consulta = new SqlCommand(query, connection);
+                consulta.Parameters.AddWithValue("@texto", comentario.Texto);
+                consulta.Parameters.AddWithValue("@nickname", comentario.Usuario.nickname);
+                consulta.Parameters.AddWithValue("@estrellas", comentario.Estrellas);
+                int ultimoID_Comentario = Convert.ToInt32(consulta.ExecuteScalar());
+
+                if (mode)
+                {
+                    query = "Insert INTO [Blog_Comentarios] " +
+                    "(id_Blog,id_Comentario) " +
+                    "VALUES " +
+                    "(@id_Blog,@id_Comentario);";
+
+                    consulta = new SqlCommand(query, connection);
+                    consulta.Parameters.AddWithValue("@id_Blog", id);
+                    consulta.Parameters.AddWithValue("@id_Comentario", ultimoID_Comentario);
+
+                }
+                else
+                {
+                    query = "Insert INTO [Experiencia_Comentarios] " +
+                    "(id_Experiencia,id_Comentario) " +
+                    "VALUES " +
+                    "(@id_Experiencia,@id_Comentario);";
+
+                    consulta = new SqlCommand(query, connection);
+                    consulta.Parameters.AddWithValue("@id_Experiencia", id);
+                    consulta.Parameters.AddWithValue("@id_Comentario", ultimoID_Comentario);
+                }
+
+                consulta.ExecuteNonQuery();
+
+                created = true;
             }
-            catch (Exception ex) { }
-            finally { nueva_conexion.Close(); }
+            catch (SqlException e)
+            {
+                created = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            catch (Exception e)
+            {
+                created = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+
+            return created;
+        
         }
+
         public void DeleteComennt(ENComentarios c)
         {
             SqlConnection nueva_conexion = new SqlConnection(constring);
@@ -71,22 +126,6 @@ namespace library
             }
             catch (Exception ex) { }
             finally { nueva_conexion.Close(); }
-        }
-        public ArrayList ShowComennts(ENComentarios comentario)
-        {
-            SqlConnection c = new SqlConnection(constring);
-            c.Open();
-            SqlCommand com = new SqlCommand("Select Content from CommentsContent WHERE Id=" + comentario.Id + " AND Texto=" + comentario.Texto + " AND Nickname=" + comentario.Usuario.nickname + " AND Estrellas=" + comentario.Estrellas, c);
-            SqlDataReader dr = com.ExecuteReader();
-
-            while (dr.Read())
-            {
-                lista.Add(dr["Content"].ToString());
-            }
-            dr.Close();
-            c.Close();
-
-            return lista;
         }
     }
 }
