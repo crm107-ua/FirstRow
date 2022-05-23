@@ -40,6 +40,12 @@ namespace library
             comentario.InsertComennt(this,id,mode);
         }
 
+        public bool ReadComentario()
+        {
+            CADComentarios comentario = new CADComentarios();
+            return comentario.readComentario(this);
+        }
+
         public void BorrarComentario()
         {
             CADComentarios comentario = new CADComentarios();

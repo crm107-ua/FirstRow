@@ -41,6 +41,56 @@ namespace library
             set { _Nickname = value; }
         }
 
+        public bool readComentario(ENComentarios comentario)
+        {
+
+            SqlConnection conection = null;
+            SqlDataReader busqueda = null;
+
+            try
+            {
+                conection = new SqlConnection(constring);
+                SqlCommand consulta = new SqlCommand();
+                conection.Open();
+                string query = query = "Select * From [Comentarios] where id = @id";
+                consulta = new SqlCommand(query, conection);
+                consulta.Parameters.AddWithValue("@id", comentario.Id);
+                busqueda = consulta.ExecuteReader();
+                busqueda.Read();
+
+                // Lectura de campos de comentario
+
+                comentario.Texto = busqueda["texto"].ToString();
+                comentario.Usuario.nickname = busqueda["nickname"].ToString();
+                comentario.Usuario.readUsuario();
+                comentario.Estrellas = Int32.Parse(busqueda["estrellas"].ToString());
+
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+                return false;
+            }
+            finally
+            {
+                if (busqueda != null)
+                {
+                    busqueda.Close();
+                }
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return true;
+        }
+
         public bool InsertComennt(ENComentarios comentario, int id, bool mode)
         {
             /**
@@ -120,23 +170,44 @@ namespace library
             return created;
         }
 
-        public void DeleteComennt(ENComentarios c)
+        public bool DeleteComennt(ENComentarios comentario)
         {
-            SqlConnection nueva_conexion = new SqlConnection(constring);
+            bool deleted = false;
+
+            SqlConnection connection = new SqlConnection(constring);
 
             try
             {
-                nueva_conexion.Open();
-                string delete = "";
-                delete = "Delete from Files where CommentsContent.Id = " + c.Id + "AND CommentsContent.Texto" + c.Texto + "AND CommentsContent.Nickname" + c.Usuario.nickname + "AND CommentsContent.Estrellas" + c.Estrellas;
-                SqlCommand com = new SqlCommand(delete, nueva_conexion);
+                connection.Open();
+                // Propagacion automatica de la eliminacion en las tablas relacionales
+                string query = "Delete from [Comentarios] " +
+                    "where id = @id";
+                SqlCommand consulta = new SqlCommand(query, connection);
+                consulta.Parameters.AddWithValue("@id", comentario.Id);
+                consulta.ExecuteNonQuery();
 
-
-                com.ExecuteNonQuery();
+                deleted = true;
             }
-            catch (Exception ex) { }
-            finally { nueva_conexion.Close(); }
+            catch (SqlException e)
+            {
+                deleted = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            catch (Exception e)
+            {
+                deleted = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+            return deleted;
         }
+
     }
 }
 
