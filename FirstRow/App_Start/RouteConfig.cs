@@ -18,6 +18,7 @@ namespace FirstRow.App_Start
             routes.MapPageRoute("experiencias", "experiencias", "~/Pages/Experiencias.aspx");
             routes.MapPageRoute("experiencia", "experiencia/{slug}", "~/Pages/Experiencia.aspx");
             routes.MapPageRoute("agregar_experiencias", "agregar-experiencia", "~/Pages/Forms/FormExperiencia.aspx");
+            routes.MapPageRoute("eliminar-comentario", "eliminar-comentario/{slug}/{id}", "~/Pages/Experiencia.aspx");
 
             routes.MapPageRoute("sorteos", "sorteos", "~/Pages/Sorteos.aspx");
             routes.MapPageRoute("sorteo", "sorteo/{slug}", "~/Pages/Sorteo.aspx");

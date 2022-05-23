@@ -126,7 +126,9 @@
                                     <h2 class="title">Comentarios</h2>
                                     <div id="contadorComentarios" runat="server" class="counter"></div>
                                 </div>
-                                <div id="generadorComentarios" runat="server" class="comments"></div>
+                                <div class="comments">
+                                    <div id="generadorComentarios" runat="server" class="comments"></div>
+                                </div>
                             </div>
                             <div id="seccion_escribir_comentario" runat="server" class="write_comment">
                                 <div class="top">
