@@ -142,10 +142,21 @@ namespace FirstRow.Pages
 
         }
 
+        /**
+         * Genera el comentario  Insertar necesita la id de experiencia/blog y el modo para saber
+         * Si es un blog true o si es una experiencia false
+         */
         protected void comentar(object sender, EventArgs e)
         {
+            ENComentarios eNComentarios = new ENComentarios();
+            eNComentarios.Estrellas = comentario_raing.CurrentRating;
+            eNComentarios.Texto = create_comentario.Text.Trim();
+            eNComentarios.Usuario = (ENUsuario)Session["usuario"];
+            ENViajes experiencia = new ENViajes();
+            experiencia.Slug = RouteData.Values["slug"].ToString();
+            experiencia.mostrarExperiencia();
 
-
+            eNComentarios.InsertarComentario(experiencia.Id,false);
         }
 
         protected void reserva(object sender, EventArgs e)
@@ -216,6 +227,11 @@ namespace FirstRow.Pages
 
         protected void eliminarExperiencia(object sender, EventArgs e)
         {
+        }
+
+        protected void experiencia_raing_Changed(object sender, AjaxControlToolkit.RatingEventArgs e)
+        {
+
         }
     }
 }

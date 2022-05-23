@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Experiencia.aspx.cs" Inherits="FirstRow.Pages.Experiencia" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
       <div class="tour_page right-sidebar">
             <div id="bg_experiencia" runat="server" class="tour_page_head">
@@ -133,19 +134,28 @@
                                     <div class="rating">
                                         <div class="rating-text">Estrellas</div>
                                         <div class="rating-stars stars user-rating">
-                                            <div class="star"></div>
-                                            <div class="star"></div>
-                                            <div class="star"></div>
-                                            <div class="star"></div>
-                                            <div class="star"></div>
+                                    <asp:ScriptManager ID="asm" runat="server" />
+                                            <asp:Rating 
+                                            ID="comentario_raing"
+                                            runat="server"
+                                            StarCssClass="star"
+                                            FilledStarCssClass="rating-stars star filled"
+                                            EmptyStarCssClass="rating-stars star before"
+                                            WaitingStarCssClass="rating-stars star before"
+                                            AutoPostBack="false"
+                                            OnChanged="experiencia_raing_Changed">
+                                        </asp:Rating>
+                                          
                                         </div>
                                     </div>
                                 </div>
                                 <div class="center">
-                                    <textarea class="textarea" placeholder="Comentario"></textarea>
+                                     <asp:TextBox ID="create_comentario" runat="server" type="text" textMode="MultiLine" style="resize:vertical;" Width="100%" Height="180px" class="textarea" placeholder="Comentario"></asp:TextBox>
+                                     <asp:RequiredFieldValidator ID="comentario_requerido" ControlToValidate="create_comentario" validationgroup="GrupoCrearComentario" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 5px;" runat="server" ErrorMessage="*Comentario requerido"></asp:RequiredFieldValidator>
+                                     <asp:RegularExpressionValidator ID="comentario_formato" ControlToValidate="create_comentario" validationgroup="GrupoCrearComentario" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 5px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[-.:,0-9A-Za-zÀ-ÿ\s]+$" ErrorMessage="*Formato de comentario incorrecto"> </asp:RegularExpressionValidator>
                                 </div>
                                 <div class="bottom">
-                                    <button class="submit button">Comentar</button>
+                                    <asp:Button ID="experiencia_comentar" runat="server" Text="Comentar" class="submit button" ValidationGroup="GrupoCrearComentario" OnClick="comentar"/>
                                 </div>
                             </div>
                         </div>
