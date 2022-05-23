@@ -38,6 +38,8 @@
                         <div style="background-color:#FC805A; border-radius: 20px; padding: 100px;">
                             <h1 id="titulo_tabla" runat="server" class="title" style="margin-bottom:30px; color:white; width:60%;"></h1>
                             <asp:GridView ID="reservasTabla" runat="server" AutoGenerateColumns="true" ssClass="mydatagrid table table-responsive table-striped" HeaderStyle-CssClass="header" RowStyle-CssClass="rows"></asp:GridView>  
+                            <h1 id="top" runat="server" class="title" style="margin-bottom:30px; margin-top:30px; color:white; width:60%;"></h1>
+                            <asp:GridView ID="top_clientes" runat="server" AutoGenerateColumns="true" ssClass="mydatagrid table table-responsive table-striped" HeaderStyle-CssClass="header" RowStyle-CssClass="rows"></asp:GridView>
                         </div>
                     </div>
                 </div>

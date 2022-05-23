@@ -254,15 +254,15 @@ namespace FirstRow.Pages
 
             if (myRoute != null && myRoute.Url == "eliminar-comentario/{slug}/{id}")
             {
-                ENComentarios comentarios = new ENComentarios();
-                comentarios.Id = Int32.Parse(RouteData.Values["id"].ToString());
-                if (comentarios.ReadComentario())
+                ENComentarios comentario = new ENComentarios();
+                comentario.Id = Int32.Parse(RouteData.Values["id"].ToString());
+                if (comentario.ReadComentario())
                 {
                     ENUsuario usuario = (ENUsuario)Session["usuario"];
 
-                    if (usuario != null && usuario.nickname.Equals(comentarios.Usuario.nickname))
+                    if (usuario != null && usuario.nickname.Equals(comentario.Usuario.nickname))
                     {
-                        comentarios.BorrarComentario();
+                        comentario.BorrarComentario();
                         Response.Redirect("/experiencia/"+RouteData.Values["slug"].ToString());
                     }
                     else

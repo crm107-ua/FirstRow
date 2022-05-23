@@ -27,6 +27,11 @@ namespace FirstRow.Pages
                 reservasTabla.DataSource = tabla;
                 reservasTabla.DataBind();
 
+                if(tabla != null)
+                {
+                    titulo_tabla.InnerText = "No existen reservas";
+                }
+
             }
             else
             {
@@ -34,6 +39,20 @@ namespace FirstRow.Pages
                 DataTable tabla = reserva.mostrarReservasEmpresa(empresa.nickname);
                 reservasTabla.DataSource = tabla;
                 reservasTabla.DataBind();
+
+                if (tabla == null)
+                {
+                    titulo_tabla.InnerText = "No existen reservas";
+                }
+
+                DataTable top_table = reserva.mostrarTopClientes(empresa);
+                top_clientes.DataSource = top_table;
+                top_clientes.DataBind();
+                
+                if (top_table.Rows.Count == 0)
+                {
+                    top.InnerText = "No existen estadisticas disponibles";
+                }
 
             }
         }
@@ -56,6 +75,9 @@ namespace FirstRow.Pages
                 foto_perfil.Src = usuario.image;
                 settings_user_pop_up.Visible = true;
                 settings_emp_pop_up.Visible = false;
+
+                top.InnerText = "";
+                top_clientes.Visible = false;
             }
             else if (Session["empresa"] != null)
             {
@@ -77,6 +99,9 @@ namespace FirstRow.Pages
                 pais_text.InnerText = "Pais: " + empresa.pais.name;
                 settings_user_pop_up.Visible = false;
                 settings_emp_pop_up.Visible = true;
+
+                top.InnerText = "Tus top 3 clientes";
+                top_clientes.Visible = true;
             }
             else
             {
