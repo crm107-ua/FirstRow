@@ -207,7 +207,7 @@
     <Content Include="Pages\Seccion_Galeria.aspx" />
     <Content Include="Pages\Sorteo.aspx" />
     <Content Include="Pages\Sorteos.aspx" />
-    <Content Include="Pages\StoryUsuario.aspx" />
+    <Content Include="Pages\Story.aspx" />
     <Content Include="Pages\Stories.aspx" />
     <Content Include="Pages\User.aspx" />
     <Content Include="Pages\Wearing.aspx" />
@@ -372,12 +372,12 @@
     <Compile Include="Pages\Sorteos.aspx.designer.cs">
       <DependentUpon>Sorteos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\StoryUsuario.aspx.cs">
-      <DependentUpon>StoryUsuario.aspx</DependentUpon>
+    <Compile Include="Pages\Story.aspx.cs">
+      <DependentUpon>Story.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\StoryUsuario.aspx.designer.cs">
-      <DependentUpon>StoryUsuario.aspx</DependentUpon>
+    <Compile Include="Pages\Story.aspx.designer.cs">
+      <DependentUpon>Story.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Stories.aspx.cs">
       <DependentUpon>Stories.aspx</DependentUpon>
