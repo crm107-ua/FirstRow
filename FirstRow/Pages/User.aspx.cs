@@ -159,11 +159,8 @@ namespace FirstRow.Pages
             int total = 0;
             foreach (ENStories story in stories)
             {
-                ENPais p = new ENPais();
-                p.id = story.Pais;
-                p.ReadPais();
                 string cadena =
-                            "<a href = '/story/" + p.name.ToLower() + "' class='story_item' style='background-image: url(/Media/Stories/" + story.Imagen + ")'>" +
+                            "<a href = '/user-stories/" + nickname + "' class='story_item' style='background-image: url(/Media/Stories/" + story.Imagen + ")'>" +
                                 "<div class='item_wrap'>" +
                                     "<div class='_content'>" +
                                         "<p class='text'>" +
