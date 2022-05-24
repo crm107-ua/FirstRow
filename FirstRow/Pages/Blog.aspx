@@ -89,7 +89,7 @@
                                             EmptyStarCssClass="rating-stars star before"
                                             WaitingStarCssClass="rating-stars star before"
                                             AutoPostBack="false"
-                                            OnChanged="experiencia_raing_Changed">
+                                            OnChanged="blog_raing_Changed">
                                         </asp:Rating>
                                           
                                         </div>

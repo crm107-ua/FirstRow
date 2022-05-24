@@ -266,5 +266,7 @@ namespace FirstRow.Pages
             eNComentarios.InsertarComentario(blog.Id, true);
             
         }
+
+        protected void blog_raing_Changed(object sender, AjaxControlToolkit.RatingEventArgs e) { }
     }
 }
