@@ -15,51 +15,85 @@ namespace FirstRow.Pages
         const string default_img = "https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg";
 
         string user_nickname = "";
-        //int user_id = 0;
+        string pais_name = "";
+        int pais_id = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             cargarElementosSesion();
             if (!Page.IsPostBack)
             {
-                if (RouteData.Route is Route myRoute && myRoute.Url == "user-stories/{nickname}")
+                if (RouteData.Route is Route myRoute)
                 {
-                    user_nickname = RouteData.Values["nickname"].ToString();
-                    ENUsuario usuario = new ENUsuario();
-
-                    usuario.nickname = user_nickname;
-
-                    if (!usuario.readUsuario())
+                    if (myRoute.Url == "user-stories/{nickname}")
                     {
-                        Response.Redirect("/404");
+                        user_nickname = RouteData.Values["nickname"].ToString();
+                        ENUsuario usuario = new ENUsuario();
 
-                    }
+                        usuario.nickname = user_nickname;
 
-                    //user_id = usuario.id;
-                    user_nickname = usuario.nickname;
-                    if (Session["usuario"] != null)
-                    {
-                        crear_story.Visible = true;
-                        if (((ENUsuario)Session["usuario"]).nickname == user_nickname)
+                        if (!usuario.readUsuario())
                         {
-                            borrar_story.Visible = true;
+                            Response.Redirect("/404");
+
+                        }
+
+                        //user_id = usuario.id;
+                        user_nickname = usuario.nickname;
+                        if (Session["usuario"] != null)
+                        {
+                            crear_story.Visible = true;
+                            if (((ENUsuario)Session["usuario"]).nickname == user_nickname)
+                            {
+                                borrar_story.Visible = true;
+                            }
+                            else
+                            {
+                                borrar_story.Visible = false;
+
+                            }
                         }
                         else
                         {
+                            crear_story.Visible = false;
                             borrar_story.Visible = false;
 
                         }
-                    }
-                    else
+
+
+                        //user_span.InnerText = user_nickname;
+                        left_bottom_title.InnerText = "@"+user_nickname;
+
+                    }else if (myRoute.Url == "story/{slug}")
                     {
-                        crear_story.Visible = false;
                         borrar_story.Visible = false;
+                        string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
+                        pais_name = cadena.Replace("-", " ");
+                        ENPais pais = new ENPais();
 
+                        pais.name = pais_name;
+
+                        if (!pais.ReadPais())
+                        {
+                            Response.Redirect("/404");
+
+                        }
+
+                        pais_id = pais.id;
+                        pais_name = pais.name;
+                        if (Session["usuario"] != null)
+                        {
+                            crear_story.Visible = true;
+                        }
+                        else
+                        {
+                            crear_story.Visible = false;
+
+                        }
+
+                        //country_span.InnerText = pais_name;
+                        left_bottom_title.InnerText = pais_name;
                     }
-
-
-                    //user_span.InnerText = user_nickname;
-                    left_bottom_title.InnerText = user_nickname;
 
                 }
 
@@ -203,7 +237,15 @@ namespace FirstRow.Pages
         {
 
             List<ENStories> listStories = new List<ENStories>();
-            if (ENStories.ReadAllStories(listStories, user_nickname)) //, pais_id
+            bool correctRead;
+            if (pais_name != "")
+            {
+                correctRead = ENStories.ReadAllStories(listStories, pais_id);
+            }else
+            {
+                correctRead = ENStories.ReadAllStories(listStories, user_nickname);
+            }
+            if (correctRead) // pais o usuario
             {
                 if (listStories.Count == 0)
                 {
@@ -244,7 +286,14 @@ namespace FirstRow.Pages
 
             if (pais.ReadPais())
             {
-                story_pais = pais.name;
+                if (pais_name != "")
+                {
+                    story_pais = pais_name;
+                }
+                else
+                {
+                    story_pais = pais.name;
+                }
             }
             Panel p = createStoryPanel(story.Titulo, story.Descripcion, story.Usuario.nickname, story.Fecha.ToString("dd.MM.yyyy"), story_pais);
             if (story.Imagen == "")
