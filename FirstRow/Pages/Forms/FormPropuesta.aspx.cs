@@ -17,6 +17,11 @@ namespace FirstRow.Pages.Forms
         {
 
         }
+
+        protected void CrearPropuesta(object sender, EventArgs e)
+        {
+
+        }
     }
 }
   
