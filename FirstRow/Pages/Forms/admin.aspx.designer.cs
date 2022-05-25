@@ -15,13 +15,13 @@ namespace FirstRow.Pages.Forms
     {
 
         /// <summary>
-        /// Control create_admin_title.
+        /// Control create_admin_title_experiencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox create_admin_title;
+        protected global::System.Web.UI.WebControls.TextBox create_admin_title_experiencia;
 
         /// <summary>
         /// Control titulo_exp_admin_requerido.
@@ -42,13 +42,13 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.RegularExpressionValidator titulo_admin_formato;
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control create_admin_tittle_galeria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox create_admin_tittle_galeria;
 
         /// <summary>
         /// Control titulo_galeria_admin_requerido.
@@ -69,13 +69,13 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.RegularExpressionValidator titulo_galeria_admin_formato;
 
         /// <summary>
-        /// Control TextBox2.
+        /// Control create_admin_tittle_storie.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox create_admin_tittle_storie;
 
         /// <summary>
         /// Control titulo_storie_admin_requerido.
@@ -96,13 +96,13 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.RegularExpressionValidator titulo_storie_admin_formato;
 
         /// <summary>
-        /// Control TextBox3.
+        /// Control create_admin_tittle_blog.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox create_admin_tittle_blog;
 
         /// <summary>
         /// Control titulo_blog_admin_requerido.
@@ -123,13 +123,13 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.RegularExpressionValidator titulo_blog_admin_formato;
 
         /// <summary>
-        /// Control TextBox4.
+        /// Control create_admin_tittle_sorteo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox create_admin_tittle_sorteo;
 
         /// <summary>
         /// Control titulo_sorteos_admin_requerido.
@@ -177,13 +177,13 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.RegularExpressionValidator descripcion_admin_formato;
 
         /// <summary>
-        /// Control TextBox5.
+        /// Control create_admin_descripcion_galeria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox create_admin_descripcion_galeria;
 
         /// <summary>
         /// Control descripcion_galeria_admin_requerido.
@@ -204,13 +204,13 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.RegularExpressionValidator descripcion_galeria_admin_formato;
 
         /// <summary>
-        /// Control TextBox6.
+        /// Control create_admin_descripcion_stories.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.TextBox create_admin_descripcion_stories;
 
         /// <summary>
         /// Control descripcion_stories_admin_requerido.
@@ -231,13 +231,13 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.RegularExpressionValidator descripcion_stories_admin_formato;
 
         /// <summary>
-        /// Control TextBox7.
+        /// Control create_admin_descripcion_blogs.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.WebControls.TextBox create_admin_descripcion_blogs;
 
         /// <summary>
         /// Control descripcion_blogs_admin_requerido.
@@ -258,13 +258,13 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.RegularExpressionValidator descripcion_blogs_admin_formato;
 
         /// <summary>
-        /// Control TextBox8.
+        /// Control create_admin_descripcion_sorteos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.WebControls.TextBox create_admin_descripcion_sorteos;
 
         /// <summary>
         /// Control descripcion_sorteos_admin_requerido.
@@ -285,13 +285,13 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.RegularExpressionValidator descripcion_sorteos_admin_formato;
 
         /// <summary>
-        /// Control TextBox9.
+        /// Control create_admin_slogan.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox9;
+        protected global::System.Web.UI.WebControls.TextBox create_admin_slogan;
 
         /// <summary>
         /// Control slogan_requerido.
@@ -312,13 +312,13 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.RegularExpressionValidator slogan_formato;
 
         /// <summary>
-        /// Control TextBox10.
+        /// Control create_admin_info.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox10;
+        protected global::System.Web.UI.WebControls.TextBox create_admin_info;
 
         /// <summary>
         /// Control info_text.

@@ -41,6 +41,27 @@ namespace FirstRow.Pages.Forms
                 {
                     Response.Redirect("/403");
                 }
+
+
+                ENAdmin eNAdmin = new ENAdmin();
+
+                eNAdmin.readAll();
+                create_admin_title_experiencia.Text = eNAdmin.TituloExperiencia;
+                create_admin_tittle_blog.Text = eNAdmin.TituloBlog;
+                create_admin_tittle_galeria.Text = eNAdmin.TituloGaleria;
+                create_admin_tittle_sorteo.Text = eNAdmin.TituloSorteos;
+                create_admin_tittle_storie.Text = eNAdmin.TituloStories;
+                create_admin_descripcion.Text = eNAdmin.DescpExpperiencia;
+                create_admin_descripcion_galeria.Text = eNAdmin.DescpGaleria;
+                create_admin_descripcion_sorteos.Text = eNAdmin.DescpSorteos;
+                create_admin_descripcion_stories.Text = eNAdmin.DescpStories;
+                create_admin_descripcion_blogs.Text = eNAdmin.DecpBlog;
+                create_admin_slogan.Text = eNAdmin.ContactoTexto1;
+                create_admin_info.Text = eNAdmin.ContactoTexto2;
+              
+
+
+
             }
         }
 
