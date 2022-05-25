@@ -107,7 +107,7 @@ namespace library
             try
             {
                 connection.Open();
-                string querty = "select * form [Admin]";
+                string querty = "select * from [Admin]";
                 SqlCommand command = new SqlCommand(querty, connection);
                 SqlDataReader reader = command.ExecuteReader();
 

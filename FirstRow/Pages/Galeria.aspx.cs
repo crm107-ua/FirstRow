@@ -19,6 +19,9 @@ namespace FirstRow.Pages
             if (!Page.IsPostBack)
             {
                 llenarDropDownList();
+                Title_gal.Text= ENAdmin.read("titulo-gal");
+                Description_gal.Text = ENAdmin.read("des-gal"); 
+                
 
                 if (Session["usuario"] != null)
                 {

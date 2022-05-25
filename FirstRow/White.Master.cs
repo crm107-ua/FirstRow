@@ -203,7 +203,7 @@ namespace FirstRow
 
         private string guardadoFotoPerfil(bool mode, string nickname)
         {
-            string direccion = "~/Media/Users/";
+            string direccion = "/Media/Users/";
 
             if (mode)
             {
@@ -231,7 +231,7 @@ namespace FirstRow
 
         private string modificarFotoPerfil(bool mode, string nickname, string deff)
         {
-            string direccion = "~/Media/Users/";
+            string direccion = "/Media/Users/";
 
             if (mode)
             {

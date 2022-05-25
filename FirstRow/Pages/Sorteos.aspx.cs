@@ -15,9 +15,8 @@ namespace FirstRow.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            Application["sorteos_title"] = "Sorteos";
-            Application["sorteos_subtitle"] = "Para nuestros clientes. " +
-                "Que la suerte este siempre de vuestra parte.";
+            Application["sorteos_title"] = ENAdmin.read("titulo-sorteos");
+            Application["sorteos_subtitle"] = ENAdmin.read("des-sorteos");
             sorteos_title2.Text = (string)Application["sorteos_title"];
             sorteos_subtitle.InnerText = (string)Application["sorteos_subtitle"];
             /*
