@@ -3,7 +3,7 @@
     <div class="tour_page_head" style="background-image: url(https://www.xtrafondos.com/descargar.php?id=4621&resolucion=2560x1440)">
       <div class="write_comment" style="margin-top: 15%; margin-bottom: 5%; margin-left: 5%; width: 90%;">
             <div class="top">
-                <h3 class="title">Agrega una admin</h3>
+                <h3 class="title">Modificacion de campos</h3>
             </div>
             <div class="center">
                 <asp:TextBox ID="create_admin_title" runat="server" type="text" style=" width:100%" class="input" placeholder="Titulo"></asp:TextBox>
