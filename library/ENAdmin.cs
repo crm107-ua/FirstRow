@@ -78,7 +78,7 @@ namespace library
         {
             bool conseguido = false;
             CADAdmin aux = new CADAdmin();
-
+            conseguido=aux.readAll(this);
             return conseguido;
         }
 
