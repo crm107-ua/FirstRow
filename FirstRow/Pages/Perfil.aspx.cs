@@ -73,6 +73,8 @@ namespace FirstRow.Pages
                 face_text.InnerText = "Facebook: " +  usuario.facebook;
                 tw_text.InnerText = "Twitter: " +  usuario.twitter;
                 foto_perfil.Src = usuario.image;
+                user_stories_link.HRef = "/user-stories/" + ((ENUsuario)Session["usuario"]).nickname;
+                user_stories_link.Visible = true;
                 settings_user_pop_up.Visible = true;
                 settings_emp_pop_up.Visible = false;
 

@@ -273,10 +273,10 @@ namespace FirstRow.Pages
         private void addDefaultStory()
         {
             ENStories story = new ENStories();
-            story.Titulo = "titulo default";
-            story.Descripcion = "descripcion default";
+            story.Titulo = "No story";
+            story.Descripcion = "Ceci n'est pas une histoire";
             ENUsuario user = new ENUsuario();
-            user.nickname = "usuario default";
+            user.nickname = "FirstRow GOD";
             story.Usuario = user;
             story.Imagen = default_img;
             addStory(story);

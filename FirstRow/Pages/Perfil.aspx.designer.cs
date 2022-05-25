@@ -141,6 +141,15 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl pais_text;
 
         /// <summary>
+        /// Control user_stories_link.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor user_stories_link;
+
+        /// <summary>
         /// Control settings_user_pop_up.
         /// </summary>
         /// <remarks>
