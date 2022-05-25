@@ -26,10 +26,16 @@ namespace FirstRow.Pages
                 DataTable tabla = reserva.mostrarReservasUsuario(usuario);
                 reservasTabla.DataSource = tabla;
                 reservasTabla.DataBind();
+                scroll_top.Visible = false;
 
-                if(tabla != null)
+                if (tabla == null || tabla.Rows.Count == 0)
                 {
                     titulo_tabla.InnerText = "No existen reservas";
+                    scroll_reservas.Visible = false;
+                }
+                else
+                {
+                    scroll_reservas.Visible = true;
                 }
 
             }
@@ -40,18 +46,28 @@ namespace FirstRow.Pages
                 reservasTabla.DataSource = tabla;
                 reservasTabla.DataBind();
 
-                if (tabla == null)
+                if (tabla == null || tabla.Rows.Count == 0)
                 {
                     titulo_tabla.InnerText = "No existen reservas";
+                    scroll_reservas.Visible = false;
+                }
+                else
+                {
+                    scroll_reservas.Visible = true;
                 }
 
                 DataTable top_table = reserva.mostrarTopClientes(empresa);
                 top_clientes.DataSource = top_table;
                 top_clientes.DataBind();
                 
-                if (top_table.Rows.Count == 0)
+                if (tabla == null || top_table.Rows.Count == 0)
                 {
                     top.InnerText = "No existen estadisticas disponibles";
+                    scroll_top.Visible = false;
+                }
+                else
+                {
+                    scroll_top.Visible = true;
                 }
 
             }

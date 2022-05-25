@@ -37,15 +37,19 @@
                     <div class="page_body">
                         <div style="background-color:#FC805A; border-radius: 20px; padding: 100px;">
                             <h1 id="titulo_tabla" runat="server" class="title" style="margin-bottom:30px; color:white; width:60%;"></h1>
-                            <asp:GridView ID="reservasTabla" runat="server" AutoGenerateColumns="true" ssClass="mydatagrid table table-responsive table-striped" HeaderStyle-CssClass="header" RowStyle-CssClass="rows"></asp:GridView>  
+                            <div id="scroll_reservas" runat="server" style="height: 40%; overflow-x: scroll;">
+                                 <asp:GridView ID="reservasTabla" runat="server" style="width:100%" AutoGenerateColumns="true" CssClass="table table-responsive" GridLines="None" HeaderStyle-CssClass="header" RowStyle-CssClass="rows"></asp:GridView>  
+                             </div>
                             <h1 id="top" runat="server" class="title" style="margin-bottom:30px; margin-top:30px; color:white; width:60%;"></h1>
-                            <asp:GridView ID="top_clientes" runat="server" AutoGenerateColumns="true" ssClass="mydatagrid table table-responsive table-striped" HeaderStyle-CssClass="header" RowStyle-CssClass="rows"></asp:GridView>
+                            <div id="scroll_top" runat="server" style="height: 25%; overflow-x: scroll;">
+                                <asp:GridView ID="top_clientes" runat="server" AutoGenerateColumns="true" style="width:100%" CssClass="table table-responsive" GridLines="None" HeaderStyle-CssClass="header" RowStyle-CssClass="rows"></asp:GridView>
+                            </div>
                         </div>
-                    </div>
+                    </div>                  
                 </div>
             </div>
             </div>
-        </div>
+       </div>
     <style>
        .mydatagrid
         {

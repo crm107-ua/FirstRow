@@ -168,6 +168,15 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl titulo_tabla;
 
         /// <summary>
+        /// Control scroll_reservas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl scroll_reservas;
+
+        /// <summary>
         /// Control reservasTabla.
         /// </summary>
         /// <remarks>
@@ -184,6 +193,15 @@ namespace FirstRow.Pages
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl top;
+
+        /// <summary>
+        /// Control scroll_top.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl scroll_top;
 
         /// <summary>
         /// Control top_clientes.
