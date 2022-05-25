@@ -8,113 +8,83 @@ namespace library
 {
     public class ENAdmin
     {
-        private const int maxImgHome = 3;
-        private string[] _imagenes_home;
-        private string _texto_home_1;
-        private string _texto_home_2;
-        private string _texto_home_3;
-        private string _desripcionViajes;
-        private string _desripcionStories;
-        private string _desripcionSorteos;
-        private string _desripcionWearing;
-        private string _tituloContacto;
-        private string _DescripcionContacto;
+        private string _tituloExperiencia;
+        private string _descpExpperiencia;
+        private string _tituloGaleria;
+        private string _descpGaleria;
+        private string _tituloStories;
+        private string _descpStories;
+        private string _tituloBlog;
+        private string _decpBlog;
+        private string _tituloSorteos;
+        private string _descpSorteos;
+        private string _contactoTexto1;
+        private string _contactoTexto2;
 
-        public string[] imagenes_home { get => _imagenes_home; set => _imagenes_home = value; }
-        public string texto_home_1 { get => _texto_home_1; set => _texto_home_1 = value; }
-        public string texto_home_2 { get => _texto_home_2; set => _texto_home_2 = value; }
-        public string texto_home_3 { get => _texto_home_3; set => _texto_home_3 = value; }
-        public string desripcionViajes { get => _desripcionViajes; set => _desripcionViajes = value; }
-        public string desripcionStories { get => _desripcionStories; set => _desripcionStories = value; }
-        public string desripcionSorteos { get => _desripcionSorteos; set => _desripcionSorteos = value; }
-        public string desripcionWearing { get => _desripcionWearing; set => _desripcionWearing = value; }
-        public string tituloContacto { get => _tituloContacto; set => _tituloContacto = value; }
-        public string descripcionContacto { get => _DescripcionContacto; set => _DescripcionContacto = value; }
+        public string TituloExperiencia { get => _tituloExperiencia; set => _tituloExperiencia = value; }
+        public string DescpExpperiencia { get => _descpExpperiencia; set => _descpExpperiencia = value; }
+        public string TituloGaleria { get => _tituloGaleria; set => _tituloGaleria = value; }
+        public string DescpGaleria { get => _descpGaleria; set => _descpGaleria = value; }
+        public string TituloStories { get => _tituloStories; set => _tituloStories = value; }
+        public string DescpStories { get => _descpStories; set => _descpStories = value; }
+        public string TituloBlog { get => _tituloBlog; set => _tituloBlog = value; }
+        public string DecpBlog { get => _decpBlog; set => _decpBlog = value; }
+        public string TituloSorteos { get => _tituloSorteos; set => _tituloSorteos = value; }
+        public string DescpSorteos { get => _descpSorteos; set => _descpSorteos = value; }
+        public string ContactoTexto1 { get => _contactoTexto1; set => _contactoTexto1 = value; }
+        public string ContactoTexto2 { get => _contactoTexto2; set => _contactoTexto2 = value; }
 
         public ENAdmin()
         {
-            this.imagenes_home = new string[3];
-            this.texto_home_1 = "";
-            this.texto_home_2 = "";
-            this.texto_home_3 = "";
-            this.desripcionViajes = "";
-            this.desripcionStories = "";
-            this.desripcionSorteos = "";
-            this.desripcionWearing = "";
-            this.tituloContacto = "";
-            this.descripcionContacto = "";
+            TituloExperiencia = "";
+            DescpExpperiencia = "";
+            TituloGaleria = "";
+            DescpGaleria = "";
+            TituloStories = "";
+            DescpStories = "";
+            TituloBlog = "";
+            DecpBlog = "";
+            TituloSorteos = "";
+            DescpSorteos = "";
+            ContactoTexto1 = "";
+            ContactoTexto2 = "";
         }
 
-        public ENAdmin(string[] imagenes_home, string texto_home_1, string texto_home_2, string texto_home_3, string desripcionViajes, string desripcionStories, string desripcionSorteos, string desripcionWearing, string tituloContacto, string descripcionContacto)
+        public ENAdmin(string tituloExperiencia, string descpExpperiencia, string tituloGaleria, string descpGaleria, string tituloStories , string descpStories, string tituloBlog, string decpBlog , string tituloSorteos, string descpSorteos , string contactoTexto1 , string contactoTexto2)
         {
-            this.imagenes_home = imagenes_home;
-            this.texto_home_1 = texto_home_1;
-            this.texto_home_2 = texto_home_2;
-            this.texto_home_3 = texto_home_3;
-            this.desripcionViajes = desripcionViajes;
-            this.desripcionStories = desripcionStories;
-            this.desripcionSorteos = desripcionSorteos;
-            this.desripcionWearing = desripcionWearing;
-            this.tituloContacto = tituloContacto;
-            this.descripcionContacto = descripcionContacto;
+            TituloExperiencia = tituloExperiencia;
+            DescpExpperiencia = descpExpperiencia;
+            TituloGaleria = tituloGaleria;
+            DescpGaleria = descpGaleria;
+            TituloStories = tituloStories;
+            DescpStories = descpStories;
+            TituloBlog = tituloBlog;
+            DecpBlog = decpBlog;
+            TituloSorteos = tituloSorteos;
+            DescpSorteos = descpSorteos;
+            ContactoTexto1 = contactoTexto1;
+            ContactoTexto2 = contactoTexto2;
         }
 
-        public bool setTemplate()
+        public bool modify() 
         {
-            CADAdmin admin = new CADAdmin();
-            bool creado = false;
-            if (!admin.obtenerPlantilla(this))
-            {
-                creado = admin.crearPlantilla(this);
-            }
-            return creado;
+            bool conseguido = false;
+            CADAdmin aux = new CADAdmin();
+            conseguido = aux.modify(this);
+            return conseguido;
         }
 
-        public bool modifyTemplate()
+        public bool readAll() 
         {
+            bool conseguido = false;
+            CADAdmin aux = new CADAdmin();
 
-            bool actualizado = false;
-            CADAdmin admin = new CADAdmin();
-            ENAdmin aux = new ENAdmin();
-
-            aux.imagenes_home = this.imagenes_home;
-            aux.texto_home_1 = this.texto_home_1;
-            aux.texto_home_2 = this.texto_home_2;
-            aux.texto_home_3 = this.texto_home_3;
-            aux.desripcionViajes = this.desripcionViajes;
-            aux.desripcionStories = this.desripcionStories;
-            aux.desripcionSorteos = this.desripcionSorteos;
-            aux.desripcionWearing = this.desripcionWearing;
-            aux.tituloContacto = this.tituloContacto;
-            aux.descripcionContacto = this.descripcionContacto;
-
-            if (admin.obtenerPlantilla(this))
-            {
-                actualizado = admin.modificarPlantilla(this);
-                this.imagenes_home = aux.imagenes_home;
-                this.texto_home_1 = aux.texto_home_1;
-                this.texto_home_2 = aux.texto_home_2;
-                this.texto_home_3 = aux.texto_home_3;
-                this.desripcionViajes = aux.desripcionViajes;
-                this.desripcionStories = aux.desripcionStories;
-                this.desripcionSorteos = aux.desripcionSorteos;
-                this.desripcionWearing = aux.desripcionWearing;
-                this.tituloContacto = aux.tituloContacto;
-                this.descripcionContacto = aux.descripcionContacto;
-            }
-
-            return actualizado;
+            return conseguido;
         }
 
-        public bool deleteTemplate()
+        public string read(string slug) 
         {
-            CADAdmin admin = new CADAdmin();
-            bool creado = false;
-            if (!admin.obtenerPlantilla(this))
-            {
-                creado = admin.eliminarPlantilla(this);
-            }
-            return creado;
+            return "";
         }
 
     }
