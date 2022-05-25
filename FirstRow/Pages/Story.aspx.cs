@@ -10,7 +10,7 @@ using System.IO;
 
 namespace FirstRow.Pages
 {
-    public partial class StoryUsuario : System.Web.UI.Page
+    public partial class Story : System.Web.UI.Page
     {
         const string default_img = "https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg";
 
@@ -93,6 +93,11 @@ namespace FirstRow.Pages
 
                         //country_span.InnerText = pais_name;
                         left_bottom_title.InnerText = pais_name;
+                    }
+                    else
+                    {
+                        crear_story.Visible = false;
+                        borrar_story.Visible = false;
                     }
 
                 }

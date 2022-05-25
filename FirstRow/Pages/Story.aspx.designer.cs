@@ -11,7 +11,7 @@ namespace FirstRow.Pages
 {
 
 
-    public partial class StoryUsuario
+    public partial class Story
     {
 
         /// <summary>
