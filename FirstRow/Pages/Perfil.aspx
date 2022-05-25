@@ -30,6 +30,7 @@
                                 <p id="fecha_text" runat="server" class="subtitle" style="margin-bottom:20px; color:white; width:100%;"></p>
                                 <p id="pais_text" runat="server" class="subtitle" style="margin-bottom:20px; color:white; width:100%;"></p>
                              </div>
+                                <a id="user_stories_link" visible="false" runat="server" style="color:white; font-size:18px; text-decoration: underline white;">Mis Stories</a><br /> <br />
                                 <a id="settings_user_pop_up" runat="server" class="subtitle js-popup-open" data-href="#profile-setting" style="color:white; text-decoration: underline white;">Ajustes</a>
                                 <a id="settings_emp_pop_up"  runat="server" class="subtitle js-popup-open" data-href="#empresa-setting" style="color:white; text-decoration: underline white;">Ajustes de empresa</a>
                         </div>
