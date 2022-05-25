@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace library
 {
-    class ENAdmin
+    public class ENAdmin
     {
         private const int maxImgHome = 3;
         private string[] _imagenes_home;

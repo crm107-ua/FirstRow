@@ -15,6 +15,8 @@ namespace FirstRow.Pages.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            ENAdmin admin = new ENAdmin();
+            ENUsuario usuario = new ENUsuario();
             
             Error.Text = "";
             Error.Visible = false;
@@ -28,6 +30,11 @@ namespace FirstRow.Pages.Forms
                     }
                     else
                     {
+                        usuario = (ENUsuario)Session["usuario"];
+                        if (usuario.nickname != "admin") 
+                        {
+                            throw new Exception("Usuario no valido");
+                        }
                     }
                 }
                 catch (Exception exception) 
