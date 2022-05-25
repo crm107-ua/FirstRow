@@ -96,8 +96,7 @@ namespace FirstRow.Pages
                     }
                     else
                     {
-                        crear_story.Visible = false;
-                        borrar_story.Visible = false;
+                        Response.Redirect("/");
                     }
 
                 }
@@ -139,7 +138,7 @@ namespace FirstRow.Pages
             {
                 if (story_id > 0 && story_id <= stories.Count)
                 {
-                    ENStories toDelete = stories[stories.Count - story_id]; //wtf
+                    ENStories toDelete = stories[stories.Count - story_id];
                     string imageURL = toDelete.Imagen;
                     string path = Server.MapPath($"~/Media/Stories/{imageURL}");
 
