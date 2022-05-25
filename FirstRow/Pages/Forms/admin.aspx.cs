@@ -58,16 +58,38 @@ namespace FirstRow.Pages.Forms
                 create_admin_descripcion_blogs.Text = eNAdmin.DecpBlog;
                 create_admin_slogan.Text = eNAdmin.ContactoTexto1;
                 create_admin_info.Text = eNAdmin.ContactoTexto2;
-              
-
-
-
             }
         }
 
         protected void btnCrea_Click(object sender, EventArgs e)
         {
-                
+
+            ENAdmin eNAdmin = new ENAdmin();
+
+            eNAdmin.TituloExperiencia= create_admin_title_experiencia.Text;
+            eNAdmin.TituloBlog = create_admin_tittle_blog.Text;
+            eNAdmin.TituloGaleria= create_admin_tittle_galeria.Text;
+            eNAdmin.TituloSorteos = create_admin_tittle_sorteo.Text;
+            eNAdmin.TituloStories = create_admin_tittle_storie.Text;
+            eNAdmin.DescpExpperiencia = create_admin_descripcion.Text;
+            eNAdmin.DescpGaleria= create_admin_descripcion_galeria.Text;
+            eNAdmin.DescpSorteos = create_admin_descripcion_sorteos.Text;
+            eNAdmin.DescpStories = create_admin_descripcion_stories.Text;
+            eNAdmin.DecpBlog = create_admin_descripcion_blogs.Text;
+            eNAdmin.ContactoTexto1 = create_admin_slogan.Text;
+            eNAdmin.ContactoTexto2 = create_admin_info.Text;
+
+            if (eNAdmin.modify())
+            {
+                Error.Visible = true;
+                Error.Text = "Cambios realizados con exito";
+            }
+            else 
+            {
+                Error.Visible = true;
+                Error.Text = "*Algo a salido mal";
+            }
+
         }
     }
 }

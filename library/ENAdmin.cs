@@ -82,9 +82,10 @@ namespace library
             return conseguido;
         }
 
-        public string read(string slug) 
+        public static string read(string slug) 
         {
-            return "";
+            CADAdmin aux = new CADAdmin();
+            return aux.read(slug);
         }
 
     }
