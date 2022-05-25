@@ -79,7 +79,7 @@
                                         <asp:Label runat=server class="cost" ID="empresa"></asp:Label>
                                         <asp:Label class="cost" runat=server ID="participantes"></asp:Label>
                                     </div>
-                                    <asp:Button runat=server type="button" class="btn button" text="Participar"></asp:Button>
+                                    <asp:Button ID="participar_button" runat=server type="button" class="btn button" text="Participar" OnClick="participarSorteo"></asp:Button>
                                 </div>
                             </div>
                         </div>
