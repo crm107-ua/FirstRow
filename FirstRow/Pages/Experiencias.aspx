@@ -16,12 +16,10 @@
                 <div class="wrap_float">
                     <div class="wrap">
                         <div class="wrap_float">
-                            <h1 class="title">
-                                Nuestras experiencias
-                            </h1>
-                            <p class="subtitle" style="color:white;">
-                                Cumpliendo sueños alrededor de todo el mundo
-                            </p>
+                            <asp:Label ID="Title_exp" Class="title" runat="server" Text="Label"></asp:Label>
+                            <div>
+                            <asp:Label ID="Description_exp" class="subtitle" runat="server" Text="Label"></asp:Label>
+                                </div>
                         </div>
                     </div>
                 </div>

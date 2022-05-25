@@ -34,9 +34,8 @@ namespace FirstRow.Pages
                 else{ add_form.Visible = false;}
 
                 //Este texto debería provenir de una tabla en la BD
-                Application["stories_title"] = "Stories interesantes";
-                Application["stories_subtitle"] = "Muestra tus experiencias al mundo " +
-                    "y explora las de otras personas.";
+                Application["stories_title"] = ENAdmin.read("titulo-stories");
+                Application["stories_subtitle"] = ENAdmin.read("des-stories");
                 
                 
                 stories_title.InnerText = (string)Application["stories_title"];

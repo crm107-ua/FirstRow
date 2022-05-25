@@ -20,6 +20,7 @@ namespace FirstRow.Pages
             ENBlog blog = new ENBlog();
             List<ENBlog> blogs = new List<ENBlog>();
             loadSesionTags();
+            blog_title.Text = ENAdmin.read("titulo-blogs");
 
             if (!IsPostBack)
             {
@@ -58,7 +59,7 @@ namespace FirstRow.Pages
 
                 if(blogs.Count() != 0)
                 {
-                    resultado_busqueda.InnerText = "Lo que escriben nuestros soñadores";
+                    resultado_busqueda.InnerText = ENAdmin.read("des-blogs");
                 }
                 else
                 {

@@ -15,6 +15,8 @@ namespace FirstRow.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Title_exp.Text = ENAdmin.read("titulo-exp");
+            Description_exp.Text = ENAdmin.read("des-exp");
             ENViajes ENexperiencia = new ENViajes();
             List<ENViajes> experiencias = new List<ENViajes>();
             ENexperiencia.mostrarExperiencias(experiencias);
@@ -85,8 +87,6 @@ namespace FirstRow.Pages
 
                 mostrar_experiencias.Controls.Add(a_tag_general);
 
-
-
                 if (Session["empresa"] != null)
                 {
                     crear_experiencia.Visible = true;
@@ -96,7 +96,6 @@ namespace FirstRow.Pages
                 {
                     crear_experiencia.Visible = false;
                 }
-
             }
         }
     }
