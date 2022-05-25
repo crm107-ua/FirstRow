@@ -80,7 +80,7 @@ namespace FirstRow.Pages
 
             if (galerias.Count >= 3)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     galeria = galerias[random.Next() % galerias.Count()];
                     HyperLink a_tag_general = new HyperLink();
