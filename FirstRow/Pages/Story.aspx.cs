@@ -14,6 +14,7 @@ namespace FirstRow.Pages
     {
         const string default_img = "https://img5.goodfon.com/wallpaper/nbig/5/d9/italiia-gorod-poberezhe-riomadzhore-doma-zdaniia-vecher-more.jpg";
 
+        string user_nickname = "";
         string pais_name = "";
         int pais_id = 0;
 
@@ -22,34 +23,81 @@ namespace FirstRow.Pages
             cargarElementosSesion();
             if (!Page.IsPostBack)
             {
-                if (RouteData.Route is Route myRoute && myRoute.Url == "story/{slug}")
+                if (RouteData.Route is Route myRoute)
                 {
-                    string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
-                    pais_name = cadena.Replace("-", " ");
-                    ENPais pais = new ENPais();
-
-                    pais.name = pais_name;
-
-                    if (!pais.ReadPais())
+                    if (myRoute.Url == "user-stories/{nickname}")
                     {
-                        Response.Redirect("/404");
+                        user_nickname = RouteData.Values["nickname"].ToString();
+                        ENUsuario usuario = new ENUsuario();
 
-                    }
+                        usuario.nickname = user_nickname;
 
-                    pais_id = pais.id;
-                    pais_name = pais.name;
-                    if (Session["usuario"] != null)
+                        if (!usuario.readUsuario())
+                        {
+                            Response.Redirect("/404");
+
+                        }
+
+                        //user_id = usuario.id;
+                        user_nickname = usuario.nickname;
+                        if (Session["usuario"] != null)
+                        {
+                            crear_story.Visible = true;
+                            if (((ENUsuario)Session["usuario"]).nickname == user_nickname)
+                            {
+                                borrar_story.Visible = true;
+                            }
+                            else
+                            {
+                                borrar_story.Visible = false;
+
+                            }
+                        }
+                        else
+                        {
+                            crear_story.Visible = false;
+                            borrar_story.Visible = false;
+
+                        }
+
+
+                        //user_span.InnerText = user_nickname;
+                        left_bottom_title.InnerText = "@"+user_nickname;
+
+                    }else if (myRoute.Url == "story/{slug}")
                     {
-                        crear_story.Visible = true;
+                        borrar_story.Visible = false;
+                        string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
+                        pais_name = cadena.Replace("-", " ");
+                        ENPais pais = new ENPais();
+
+                        pais.name = pais_name;
+
+                        if (!pais.ReadPais())
+                        {
+                            Response.Redirect("/404");
+
+                        }
+
+                        pais_id = pais.id;
+                        pais_name = pais.name;
+                        if (Session["usuario"] != null)
+                        {
+                            crear_story.Visible = true;
+                        }
+                        else
+                        {
+                            crear_story.Visible = false;
+
+                        }
+
+                        //country_span.InnerText = pais_name;
+                        left_bottom_title.InnerText = pais_name;
                     }
                     else
                     {
-                        crear_story.Visible = false;
-
+                        Response.Redirect("/");
                     }
-
-                    //country_span.InnerText = pais_name;
-                    left_bottom_title.InnerText = pais_name;
 
                 }
 
@@ -81,10 +129,52 @@ namespace FirstRow.Pages
 
         protected void eliminarStory(object sender, EventArgs e)
         {
-            //COMPLETAR
+            int story_id = int.Parse(story_id_hidden.Value);
+            string nickname = ((ENUsuario)Session["usuario"]).nickname;
+            bool eliminadoOK = false;
+
+            List<ENStories> stories = new List<ENStories>();
+            if(ENStories.ReadAllStories(stories, nickname))
+            {
+                if (story_id > 0 && story_id <= stories.Count)
+                {
+                    ENStories toDelete = stories[stories.Count - story_id];
+                    string imageURL = toDelete.Imagen;
+                    string path = Server.MapPath($"~/Media/Stories/{imageURL}");
+
+                    if (toDelete.DeleteStory())
+                    {
+                        if (File.Exists(path))
+                        {
+                            try
+                            {
+                                File.Delete(path);
+                            }catch(Exception) { }
+                        }
+                        
+                        //Response.Redirect(Request.RawUrl);
+                        //Response.Redirect($"/user-stories/{user_nickname}");
+                        eliminadoOK = true;
+                    }
+                    else { eliminadoOK = false; }
+
+                }
+                else { eliminadoOK = false; }
+            }
+            else { eliminadoOK = false; }
+
+            if (!eliminadoOK)
+            {
+                Response.Write($"<script>alert('Story no borrada');window.location = '/user-stories/{nickname}';</script>");
+            }
+            else
+            {
+                Response.Redirect($"/user-stories/{nickname}");
+
+            }
         }
 
-        private Panel createStoryPanel(string title, string text, string user, string date)
+        private Panel createStoryPanel(string title, string text, string user, string date, string pais)
         {
             Panel p = new Panel();
             p.CssClass = "item";
@@ -94,9 +184,9 @@ namespace FirstRow.Pages
             info.CssClass = "_info";
             Panel country = new Panel();
             country.CssClass = "country";
-            Label country_span = new Label();
-            country_span.Text = pais_name;
-            country.Controls.Add(country_span);
+            Label user_span = new Label();
+            user_span.Text = pais;
+            country.Controls.Add(user_span);
             info.Controls.Add(country);            
             p.Controls.Add(info);
 
@@ -151,7 +241,15 @@ namespace FirstRow.Pages
         {
 
             List<ENStories> listStories = new List<ENStories>();
-            if (ENStories.ReadAllStories(listStories, pais_id)) //, pais_id
+            bool correctRead;
+            if (pais_name != "")
+            {
+                correctRead = ENStories.ReadAllStories(listStories, pais_id);
+            }else
+            {
+                correctRead = ENStories.ReadAllStories(listStories, user_nickname);
+            }
+            if (correctRead) // pais o usuario
             {
                 if (listStories.Count == 0)
                 {
@@ -175,8 +273,8 @@ namespace FirstRow.Pages
         private void addDefaultStory()
         {
             ENStories story = new ENStories();
-            story.Titulo = "NO HIT story";
-            story.Descripcion = "ce n'est pas une histoire";
+            story.Titulo = "No story";
+            story.Descripcion = "Ceci n'est pas une histoire";
             ENUsuario user = new ENUsuario();
             user.nickname = "FirstRow GOD";
             story.Usuario = user;
@@ -186,7 +284,22 @@ namespace FirstRow.Pages
 
         private void addStory(ENStories story)
         {
-            Panel p = createStoryPanel(story.Titulo, story.Descripcion, story.Usuario.nickname, story.Fecha.ToString("dd.MM.yyyy"));
+            ENPais pais = new ENPais();
+            pais.id = story.Pais;
+            string story_pais = "";
+
+            if (pais.ReadPais())
+            {
+                if (pais_name != "")
+                {
+                    story_pais = pais_name;
+                }
+                else
+                {
+                    story_pais = pais.name;
+                }
+            }
+            Panel p = createStoryPanel(story.Titulo, story.Descripcion, story.Usuario.nickname, story.Fecha.ToString("dd.MM.yyyy"), story_pais);
             if (story.Imagen == "")
             {
                 p.BackImageUrl = default_img;
@@ -228,7 +341,7 @@ namespace FirstRow.Pages
             ENUsuario usuario = new ENUsuario();
             usuario.nickname = registro_nickname.Text;
             usuario.email = registro_email.Text;
-            usuario.password = password_r_1.Text;
+            usuario.password = Home.EncodePasswordToBase64(password_r_1.Text);
             usuario.image = guardadoFotoPerfil(true, usuario.nickname);
             usuario.background_image = "bg_default.png";
             usuario.name = registro_nombre.Text;
@@ -255,7 +368,7 @@ namespace FirstRow.Pages
             ENEmpresa empresa = new ENEmpresa();
             empresa.nickname = registro_emp_nickname.Text;
             empresa.email = registro_emp_email.Text;
-            empresa.password = password_emp_r_1.Text;
+            empresa.password = Home.EncodePasswordToBase64(password_emp_r_1.Text);
             empresa.image = guardadoFotoPerfil(false, empresa.nickname);
             empresa.background_image = "bg_default.png";
             empresa.name = registro_emp_nombre.Text;
@@ -288,7 +401,7 @@ namespace FirstRow.Pages
         {
             ENUsuario usuario = new ENUsuario();
             usuario.nickname = nickname.Text;
-            usuario.password = password.Text;
+            usuario.password = Home.EncodePasswordToBase64(password.Text);
 
             vaciadoCampos();
 
@@ -309,7 +422,7 @@ namespace FirstRow.Pages
         {
             ENEmpresa empresa = new ENEmpresa();
             empresa.email = login_email_empresa.Text;
-            empresa.password = login_password_empresa.Text;
+            empresa.password = Home.EncodePasswordToBase64(login_password_empresa.Text);
 
             vaciadoCampos();
 
@@ -333,7 +446,7 @@ namespace FirstRow.Pages
 
             usuario.nickname = usuarioSesion.nickname;
             usuario.email = email_setting.Text;
-            usuario.password = password_1_setting.Text;
+            usuario.password = Home.EncodePasswordToBase64(password_1_setting.Text);
             usuario.image = modificarFotoPerfil(true, usuarioSesion.nickname, usuarioSesion.image);
             usuario.background_image = "bg_default.png";
             usuario.name = name_setting.Text;
@@ -366,7 +479,7 @@ namespace FirstRow.Pages
 
             empresa.nickname = empresaSesion.nickname;
             empresa.email = empresaSesion.email;
-            empresa.password = ajustes_password_1_empresa.Text;
+            empresa.password = Home.EncodePasswordToBase64(ajustes_password_1_empresa.Text);
             empresa.image = modificarFotoPerfil(false, empresaSesion.nickname, empresaSesion.image);
             empresa.background_image = "bg_default.png";
             empresa.name = ajustes_nombre_empresa.Text;
@@ -475,8 +588,8 @@ namespace FirstRow.Pages
 
                     email_setting.Text = usuario.email;
                     name_setting.Text = usuario.name;
-                    password_1_setting.Text = usuario.password;
-                    password_2_setting.Text = usuario.password;
+                    password_1_setting.Text = Home.DecodeFrom64(usuario.password);
+                    password_2_setting.Text = Home.DecodeFrom64(usuario.password);
                     firstname_setting.Text = usuario.firstname;
                     secondname_setting.Text = usuario.secondname;
                     facebook_setting.Text = usuario.facebook;
@@ -501,8 +614,8 @@ namespace FirstRow.Pages
                     }
 
                     listaPaises_ajustes_empresa.SelectedIndex = paises.Count - empresa.pais.id;
-                    ajustes_password_1_empresa.Text = empresa.password;
-                    ajustes_password_2_empresa.Text = empresa.password;
+                    ajustes_password_1_empresa.Text = Home.DecodeFrom64(empresa.password);
+                    ajustes_password_2_empresa.Text = Home.DecodeFrom64(empresa.password);
                     ajustes_nombre_empresa.Text = empresa.name;
                     ajustes_apellido_1_empresa.Text = empresa.firstname;
                     ajustes_apellido_2_empresa.Text = empresa.secondname;
@@ -535,6 +648,5 @@ namespace FirstRow.Pages
                 }
             }
         }
-
     }
 }

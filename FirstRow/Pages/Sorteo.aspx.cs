@@ -37,6 +37,14 @@ namespace FirstRow.Pages
             diaF.Text = so.FechaFinal.ToString("dd");
             mesF.Text = so.FechaFinal.ToString("MMMM");
             anioF.Text = so.FechaFinal.ToString("yyyy");
+
+            /*
+             * Oculta el boton cuando el sorteo ha finalizado
+            if (so.FechaFinal < DateTime.Now) 
+            {
+                participar_button.Visible = false;
+            }
+            */
             /*                                  
             participantes.Text =  so.readcantidad().ToString();
             */
@@ -48,6 +56,14 @@ namespace FirstRow.Pages
         }
         protected void participarSorteo(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_user", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('login_user_pop_up').click(); }", true);
+            }
+            else
+            {
+                
+            }
 
         }
         protected void salirSorteo(object sender, EventArgs e)

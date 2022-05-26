@@ -203,7 +203,7 @@ namespace FirstRow
 
         private string guardadoFotoPerfil(bool mode, string nickname)
         {
-            string direccion = "~/Media/Users/";
+            string direccion = "/Media/Users/";
 
             if (mode)
             {
@@ -231,7 +231,7 @@ namespace FirstRow
 
         private string modificarFotoPerfil(bool mode, string nickname, string deff)
         {
-            string direccion = "~/Media/Users/";
+            string direccion = "/Media/Users/";
 
             if (mode)
             {
@@ -417,7 +417,7 @@ namespace FirstRow
             }
         }
 
-        public string DecodeFrom64(string encodedData)
+        public static string DecodeFrom64(string encodedData)
         {
             System.Text.UTF8Encoding encoder = new System.Text.UTF8Encoding();
             System.Text.Decoder utf8Decode = encoder.GetDecoder();

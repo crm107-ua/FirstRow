@@ -134,6 +134,12 @@ namespace library
             return categoria.readReservasUsuario(usuario);
         }
 
+        public DataTable mostrarTopClientes(ENEmpresa empresa)
+        {
+            CADReserva categoria = new CADReserva();
+            return categoria.readTopClientesEmpresa(empresa);
+        }
+
         public bool registerReserva()
         {
             CADReserva categoria = new CADReserva();

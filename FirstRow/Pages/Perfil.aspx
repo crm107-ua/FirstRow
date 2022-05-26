@@ -30,6 +30,7 @@
                                 <p id="fecha_text" runat="server" class="subtitle" style="margin-bottom:20px; color:white; width:100%;"></p>
                                 <p id="pais_text" runat="server" class="subtitle" style="margin-bottom:20px; color:white; width:100%;"></p>
                              </div>
+                                <a id="user_stories_link" visible="false" runat="server" style="color:white; font-size:18px; text-decoration: underline white;">Mis Stories</a><br /> <br />
                                 <a id="settings_user_pop_up" runat="server" class="subtitle js-popup-open" data-href="#profile-setting" style="color:white; text-decoration: underline white;">Ajustes</a>
                                 <a id="settings_emp_pop_up"  runat="server" class="subtitle js-popup-open" data-href="#empresa-setting" style="color:white; text-decoration: underline white;">Ajustes de empresa</a>
                         </div>
@@ -37,13 +38,19 @@
                     <div class="page_body">
                         <div style="background-color:#FC805A; border-radius: 20px; padding: 100px;">
                             <h1 id="titulo_tabla" runat="server" class="title" style="margin-bottom:30px; color:white; width:60%;"></h1>
-                            <asp:GridView ID="reservasTabla" runat="server" AutoGenerateColumns="true" ssClass="mydatagrid table table-responsive table-striped" HeaderStyle-CssClass="header" RowStyle-CssClass="rows"></asp:GridView>  
+                            <div id="scroll_reservas" runat="server" style="height: 40%; overflow-x: scroll;">
+                                 <asp:GridView ID="reservasTabla" runat="server" style="width:100%" AutoGenerateColumns="true" CssClass="table table-responsive" GridLines="None" HeaderStyle-CssClass="header" RowStyle-CssClass="rows"></asp:GridView>  
+                             </div>
+                            <h1 id="top" runat="server" class="title" style="margin-bottom:30px; margin-top:30px; color:white; width:60%;"></h1>
+                            <div id="scroll_top" runat="server" style="height: 25%; overflow-x: scroll;">
+                                <asp:GridView ID="top_clientes" runat="server" AutoGenerateColumns="true" style="width:100%" CssClass="table table-responsive" GridLines="None" HeaderStyle-CssClass="header" RowStyle-CssClass="rows"></asp:GridView>
+                            </div>
                         </div>
-                    </div>
+                    </div>                  
                 </div>
             </div>
             </div>
-        </div>
+       </div>
     <style>
        .mydatagrid
         {

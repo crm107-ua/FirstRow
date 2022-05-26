@@ -7,6 +7,11 @@ using System.Transactions;
 
 namespace library
 {
+    /**
+     * CADGaleria es la encargada de conectar con la base de datos de galerias
+     * Cuenta con lectura de todas las galerias en servicio desconectado
+     * y también de lecturas parciales para el filtrado
+     */
     public class CADGaleria
     {
         private String constring;
@@ -26,7 +31,7 @@ namespace library
 
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    //Primera transacion
+                    //Ejecucion de transacion
                     using (SqlConnection connection= new SqlConnection(constring))
                     {
                         List<int> idImagnes = new List<int>();
@@ -84,6 +89,7 @@ namespace library
             return consegido;
         }
 
+        //Lectura completa de galeria incluyendo el pais
         public bool readGaleria(ENGaleria galeria) 
         {
             SqlConnection connection = new SqlConnection(constring);
@@ -146,9 +152,9 @@ namespace library
             {
                 try
                 {
+                    //Transacion por si el borrado de las relaciones con imagenes fallan
                     using (TransactionScope scope = new TransactionScope())
                     {
-                        //Primera transacion
                         using (SqlConnection connection = new SqlConnection(constring))
                         {
                             foreach (ENImagenes imgagen in galeria.Imagenes) 
@@ -184,7 +190,8 @@ namespace library
 
             return consegido;
         }
-
+        
+        //Para  actualizar la galeria
         public bool updateGaleria(ENGaleria galeria) 
         {
             bool consegido = false;
@@ -198,6 +205,7 @@ namespace library
             return consegido;
         }
 
+        //Lee todas las galerias dentro de la base de datos
         public bool readAllGaleri(List <ENGaleria> lista) 
         {
             bool conseguido = false;
@@ -223,7 +231,6 @@ namespace library
 
 
                 // Las imagenes se tienen que tratar con listas de objectos ENImagenes
-                // ENGaleria modificado
 
                 for (int i = 0; i < rowsGaleria.Length; i++)
                 {
@@ -263,6 +270,7 @@ namespace library
             return conseguido;
         }
 
+        //Lectura de todas las galerias de un pais concreto
         public bool readAllCountyGaleri(List<ENGaleria> lista, ENPais pais)
         {
             bool conseguido = false;

@@ -9,16 +9,27 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
+
+/*
+ * Galeria se encarga de mostrar todas las galerias
+ * Para ello usa el slug para el filtrado /galeia/{slug}
+ */
 namespace FirstRow.Pages
 {
     public partial class Galeria : System.Web.UI.Page
     {
 
+        /**
+         * Llenado de lista paises más carga dinamica de galerias
+         */
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 llenarDropDownList();
+                Title_gal.Text= ENAdmin.read("titulo-gal");
+                Description_gal.Text = ENAdmin.read("des-gal"); 
+                
 
                 if (Session["usuario"] != null)
                 {
@@ -39,7 +50,8 @@ namespace FirstRow.Pages
 
                 if (pais.ReadPais())
                 {
-                    Direccion.SelectedIndex = pais.id;
+                    //Carga la listaen el elemento que seelijo
+                    Direccion.SelectedIndex = Direccion.Items.IndexOf(Direccion.Items.FindByText(pais.name));
                     rellenarGalerias(pais);
                 }
                 else
@@ -48,7 +60,10 @@ namespace FirstRow.Pages
                 }
             }
         }
-
+        
+        /**
+         * Rellena la lista de paises segun la DBD
+         */
         private void llenarDropDownList()
         {
             DataSet ds = new DataSet();
@@ -65,11 +80,7 @@ namespace FirstRow.Pages
             Direccion.Items.Insert(0, new ListItem("-- Destination --", "-1"));
         }
 
-        protected void VerMas_Click(object sender, EventArgs e)
-        {
-            //Cargar mas elementos de la galeria
-        }
-
+        //Lista de filtrado
         protected void Direccion_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Direccion.SelectedValue != "-1")
@@ -83,6 +94,7 @@ namespace FirstRow.Pages
             //Cambio en el filtrado
         }
 
+        //Carga dinamica de las galerias con objetos control
         private void rellenarGalerias(ENPais pais) 
         {
             List<ENGaleria> galerias=new List<ENGaleria>();

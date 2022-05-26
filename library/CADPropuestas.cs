@@ -14,7 +14,35 @@ namespace library
             constring = ConfigurationManager.ConnectionStrings["DataBase"].ToString();
         }
 
-        public DataSet readPropuesta(ENPropuestas eNPropuestas, bool v)
+
+        internal DataSet readPropuestas()
+        {
+
+            SqlConnection c = null;
+
+            try
+            {
+                c = new SqlConnection(constring);
+                DataSet bd = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter("select * from [Propuesta]", c);
+                da.Fill(bd, "Propuesta");
+                return bd;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                if (c != null)
+                {
+                    c.Close();
+                }
+            }
+        }
+
+
+        internal DataSet readPropuestas(ENPropuestas eNPropuestas)
         {
             SqlConnection c = null;
 
@@ -39,7 +67,7 @@ namespace library
             }
         }
 
-        internal bool readPropuesta(ENReserva propuesta, bool mode)
+        internal bool readPropuestas(ENPropuestas propuesta, bool v)
         {
 
             SqlConnection conection = null;
@@ -52,25 +80,22 @@ namespace library
                 conection.Open();
                 string query = "";
 
-                if (mode)
+                if (v)
                 {
                     query = "Select * From [Propuestas] where id = @id";
                     consulta = new SqlCommand(query, conection);
-                    consulta.Parameters.AddWithValue("@id", propuesta.id);
+                    consulta.Parameters.AddWithValue("@id", propuesta.Id);
                 }
                 else
                 {
                     query = "Select * From [Propuestas] where id = @id";
                     consulta = new SqlCommand(query, conection);
-                    consulta.Parameters.AddWithValue("@id", propuesta.id);
+                    consulta.Parameters.AddWithValue("@id", propuesta.Id);
                 }
                 busqueda = consulta.ExecuteReader();
                 busqueda.Read();
 
-                // Lectura de campos de reserva
 
-                propuesta.id = Int32.Parse(busqueda["id"].ToString());
-                propuesta.descripcion = busqueda["descripcion"].ToString();
 
             }
             catch (SqlException e)
@@ -95,22 +120,10 @@ namespace library
                 }
             }
             return true;
+
+
         }
 
-        internal DataSet readPropuestas()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal DataSet readPropuesta()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal bool readPropuestas(ENPropuestas eNPropuestas, bool v)
-        {
-            throw new NotImplementedException();
-        }
 
         internal bool newPropuesta(ENPropuestas propuesta)
         {
@@ -123,8 +136,8 @@ namespace library
                 {
                     connection.Open();
                     string query = "INSERT INTO [Propuestas] " +
-                        "(id, titulo, texto, imagen, usario, empresa, slug) VALUES " +
-                        $"({propuesta.id},{propuesta.titulo} ,{propuesta.texto},{propuesta.Imagen})";
+                        "(titulo, texto, imagen, slug) VALUES " +
+                        $"({propuesta.Titulo},{propuesta.Descripcion},{propuesta.Imagen})";
 
                     SqlCommand com = new SqlCommand(query, connection);
                     com.ExecuteNonQuery();

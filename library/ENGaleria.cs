@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace library
 {
+    /**
+     * Encargado de manejar los contenidos de galeria
+     * Guardamos todos sus campos necesarios
+     */
     public class ENGaleria
     {
         private int _id;

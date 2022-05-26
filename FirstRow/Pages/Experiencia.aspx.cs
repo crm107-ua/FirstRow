@@ -15,6 +15,7 @@ namespace FirstRow.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             Route myRoute = RouteData.Route as Route;
+            checkEliminarComentario();
             if (myRoute != null && myRoute.Url == "experiencia/{slug}")
             {
                 ENViajes experiencia = new ENViajes();
@@ -47,7 +48,7 @@ namespace FirstRow.Pages
                     display_comentarios.InnerHtml = experiencia.Comentarios.Count().ToString() + " Comentarios";
                     display_description.InnerHtml = experiencia.Descripcion;
 
-
+                    generadorEtapas.Controls.Clear();
                     foreach (ENDia etapas in experiencia.Etapas)
                     {
                         string cadena = "<div class='day_item'> " +
@@ -64,7 +65,7 @@ namespace FirstRow.Pages
                         generadorEtapas.Controls.Add(new LiteralControl(cadena));
                     }
 
-
+                    generadorIncluidos.Controls.Clear();
                     foreach (ENIncluido incluido in experiencia.Incluidos)
                     {
                         string cadena = "<li>" +
@@ -79,7 +80,7 @@ namespace FirstRow.Pages
                     List<ENStories> storiesPais = new List<ENStories>();
                     ENStories.ReadAllStories(storiesPais, experiencia.Pais.id);
 
-
+                    generadorStories.Controls.Clear();
                     foreach (ENStories story in storiesPais)
                     {
                         string cadena =
@@ -102,8 +103,34 @@ namespace FirstRow.Pages
 
                     contadorComentarios.InnerText = experiencia.Comentarios.Count.ToString();
 
+                    generadorComentarios.Controls.Clear();
                     foreach (ENComentarios comentario in experiencia.Comentarios)
                     {
+
+                        string cadenaStrellas = "";
+                        string elimiarComentario = "";
+
+
+                        for(int i= 1; i <= 5; i++)
+                        {
+                            if (i <= comentario.Estrellas)
+                            {
+                                cadenaStrellas += "<div class='star filled'></div>";
+                            }
+                            else
+                            {
+                                cadenaStrellas += "<div class='star'></div>";
+                            }
+                        }
+
+                        ENUsuario usuario = (ENUsuario)Session["usuario"];
+                        if (usuario != null && comentario.Usuario.nickname.Equals(usuario.nickname))
+                        {
+                            elimiarComentario += "<a ID='delete_comentario' href='/eliminar-comentario/"+ 
+                                                    "/" + experiencia.Slug + "/" + comentario.Id + "' runat='server' " +
+                                                    "class='reply'>Eliminar</a>";
+                        }
+
                         string cadena =
                             "<div class='comment_item'>" +
                                 "<div class='comment_item_top'>" +
@@ -112,6 +139,12 @@ namespace FirstRow.Pages
                                     "</p>" +
                                 "</div>" +
                                 "<div class='comment_item_bottom'>" +
+                                    "<div class='rating'>"+
+                                        "<div class='rating-stars'>"+
+                                            cadenaStrellas +
+                                        "</div>"+
+                                        elimiarComentario +
+                                    "</div>" +
                                     "<div class='author'>" +
                                         "<div class='userpic'>" +
                                             "<img src = '" + comentario.Usuario.image + "' alt =" + comentario.Usuario.name + " />" +
@@ -139,13 +172,25 @@ namespace FirstRow.Pages
                     Response.Redirect("/404");
                 }
             }
-
         }
 
+        /**
+         * Genera el comentario  Insertar necesita la id de experiencia/blog y el modo para saber
+         * Si es un blog true o si es una experiencia false
+         */
         protected void comentar(object sender, EventArgs e)
         {
-
-
+            ENComentarios eNComentarios = new ENComentarios();
+            eNComentarios.Estrellas = comentario_raing.CurrentRating;
+            eNComentarios.Texto = create_comentario.Text.Trim();
+            eNComentarios.Usuario = (ENUsuario)Session["usuario"];
+            ENViajes experiencia = new ENViajes();
+            experiencia.Slug = RouteData.Values["slug"].ToString();
+            experiencia.mostrarExperiencia();
+            eNComentarios.InsertarComentario(experiencia.Id,false);
+            eNComentarios.Estrellas = 0;
+            create_comentario.Text = "";
+            this.Page_Load(sender, e);
         }
 
         protected void reserva(object sender, EventArgs e)
@@ -203,19 +248,35 @@ namespace FirstRow.Pages
             { }
         }
 
-        protected void modificarExperiencia(object sender, EventArgs e)
+        protected void checkEliminarComentario()
         {
+            Route myRoute = RouteData.Route as Route;
 
+            if (myRoute != null && myRoute.Url == "eliminar-comentario/{slug}/{id}")
+            {
+                ENComentarios comentario = new ENComentarios();
+                comentario.Id = Int32.Parse(RouteData.Values["id"].ToString());
+                if (comentario.ReadComentario())
+                {
+                    ENUsuario usuario = (ENUsuario)Session["usuario"];
 
+                    if (usuario != null && usuario.nickname.Equals(comentario.Usuario.nickname))
+                    {
+                        comentario.BorrarComentario();
+                        Response.Redirect("/experiencia/"+RouteData.Values["slug"].ToString());
+                    }
+                    else
+                    {
+                        Response.Redirect("/403");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("/404");
+                }
+            }
         }
 
-        protected void eliminarComentario(object sender, EventArgs e)
-        {
-            
-        }
-
-        protected void eliminarExperiencia(object sender, EventArgs e)
-        {
-        }
+        protected void experiencia_raing_Changed(object sender, AjaxControlToolkit.RatingEventArgs e){}
     }
 }

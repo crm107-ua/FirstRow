@@ -26,6 +26,17 @@ namespace FirstRow.Pages
                 DataTable tabla = reserva.mostrarReservasUsuario(usuario);
                 reservasTabla.DataSource = tabla;
                 reservasTabla.DataBind();
+                scroll_top.Visible = false;
+
+                if (tabla == null || tabla.Rows.Count == 0)
+                {
+                    titulo_tabla.InnerText = "No existen reservas";
+                    scroll_reservas.Visible = false;
+                }
+                else
+                {
+                    scroll_reservas.Visible = true;
+                }
 
             }
             else
@@ -34,6 +45,30 @@ namespace FirstRow.Pages
                 DataTable tabla = reserva.mostrarReservasEmpresa(empresa.nickname);
                 reservasTabla.DataSource = tabla;
                 reservasTabla.DataBind();
+
+                if (tabla == null || tabla.Rows.Count == 0)
+                {
+                    titulo_tabla.InnerText = "No existen reservas";
+                    scroll_reservas.Visible = false;
+                }
+                else
+                {
+                    scroll_reservas.Visible = true;
+                }
+
+                DataTable top_table = reserva.mostrarTopClientes(empresa);
+                top_clientes.DataSource = top_table;
+                top_clientes.DataBind();
+                
+                if (tabla == null || top_table.Rows.Count == 0)
+                {
+                    top.InnerText = "No existen estadisticas disponibles";
+                    scroll_top.Visible = false;
+                }
+                else
+                {
+                    scroll_top.Visible = true;
+                }
 
             }
         }
@@ -54,8 +89,13 @@ namespace FirstRow.Pages
                 face_text.InnerText = "Facebook: " +  usuario.facebook;
                 tw_text.InnerText = "Twitter: " +  usuario.twitter;
                 foto_perfil.Src = usuario.image;
+                user_stories_link.HRef = "/user-stories/" + ((ENUsuario)Session["usuario"]).nickname;
+                user_stories_link.Visible = true;
                 settings_user_pop_up.Visible = true;
                 settings_emp_pop_up.Visible = false;
+
+                top.InnerText = "";
+                top_clientes.Visible = false;
             }
             else if (Session["empresa"] != null)
             {
@@ -77,6 +117,9 @@ namespace FirstRow.Pages
                 pais_text.InnerText = "Pais: " + empresa.pais.name;
                 settings_user_pop_up.Visible = false;
                 settings_emp_pop_up.Visible = true;
+
+                top.InnerText = "Tus top 3 clientes";
+                top_clientes.Visible = true;
             }
             else
             {

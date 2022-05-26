@@ -130,6 +130,10 @@ namespace library
                 adapter.Fill(reservas, "Reservas");
                 tablaReservas = reservas.Tables["Reservas"];
             }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.Message);
+            }
             catch (DataException e)
             {
                 Console.WriteLine(e.Message);
@@ -158,6 +162,10 @@ namespace library
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.Fill(reservas, "ReservasUsuario");
                 tablaReservas = reservas.Tables["ReservasUsuario"];
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.Message);
             }
             catch (DataException e)
             {
@@ -226,13 +234,52 @@ namespace library
             return creado;
         }
 
+        internal DataTable readTopClientesEmpresa(ENEmpresa empresa)
+        {
+            SqlConnection connection = null;
+            DataSet clientes = null;
+            DataTable tablaReservas = null;
+
+            try
+            {
+                connection = new SqlConnection(constring);
+                clientes = new DataSet();
+                string query = "select top 3 count(u.nickname) as TotalReservas, " +
+                               "u.nickname, u.email, u.name, u.firstname, u.secondname, u.facebook, u.twitter " +
+                               "from Usuarios u " +
+                               "inner join Reservas r " +
+                               "on u.nickname = r.usuario " +
+                               "inner join Experiencias e " +
+                               "on r.experiencia = e.id " +
+                               "where e.empresa='" + empresa.nickname+ "' " +
+                               "group by u.nickname, u.email, u.name, u.firstname, u.secondname, u.facebook, u.twitter " +
+                               "order by TotalReservas desc;";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.Fill(clientes, "Clientes");
+                tablaReservas = clientes.Tables["Clientes"];
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (DataException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return tablaReservas;
+        }
+
         internal bool deleteReserva(ENReserva reserva)
         {
 
             bool deleted = false;
             return deleted;
-
-
         }
     }
 
