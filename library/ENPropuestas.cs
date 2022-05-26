@@ -12,11 +12,11 @@ namespace library
         private int _Id;
         private string _Titulo;
         private string _Descripcion;
-        private ENImagenes _Imagen;
         private ENUsuario _usuario;
         private ENEmpresa _empresa;
         private string _slug;
-        
+        private List<ENImagenes> _imagenes;
+
         public int Id //GET-SET
         {
             get { return _Id; }
@@ -34,35 +34,29 @@ namespace library
             get { return _Descripcion; }
             set { _Descripcion = value; }
         }
-
-        public ENImagenes Imagen //GET-SET
-        {
-            get { return _Imagen; }
-            set { _Imagen = value; }
-        }
-
         public ENUsuario Usuario { get => _usuario; set => _usuario = value; }
         public ENEmpresa Empresa { get => _empresa; set => _empresa = value; }
         public string Slug { get => _slug; set => _slug = value; }
+        public List<ENImagenes> Imagenes { get => _imagenes; set => _imagenes = value; }
 
         public ENPropuestas()
         {
             this.Id = 0;
             this.Titulo = "";
             this.Descripcion = "";
-            this.Imagen = new ENImagenes();
+            this.Imagenes = new List<ENImagenes>();
             this.Usuario = new ENUsuario();
             this.Empresa = new ENEmpresa();
             this.Slug = "";
 
         }
 
-        public ENPropuestas(int Id, string Titulo, string descripcion, ENImagenes imagen, string slug, ENEmpresa empresa, ENUsuario usuario)
+        public ENPropuestas(int Id, string Titulo, string descripcion, List<ENImagenes> imagen, string slug, ENEmpresa empresa, ENUsuario usuario)
         {
             this.Id = Id;
             this.Titulo = Titulo;
             this.Descripcion = descripcion;
-            this.Imagen = imagen;
+            this.Imagenes = imagen;
             this.Slug = slug;
             this.Empresa = empresa;
             this.Usuario = usuario;
@@ -101,6 +95,11 @@ namespace library
             }
 
             return eliminado;
+        }
+        public bool readpropuestasconectado(List<ENPropuestas> lista)
+        {
+            CADPropuestas propuestas = new CADPropuestas();
+            return propuestas.readpropuestasconectado(lista);
         }
     }
 }
