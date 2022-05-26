@@ -427,6 +427,10 @@
                                     if (isNaN(qty)) {
                                         qty = 0;
                                     }
+                                    if (qty > 9)
+                                    {
+                                        qty = 9;
+                                    }
 
                                     $(this).val(qty);
 

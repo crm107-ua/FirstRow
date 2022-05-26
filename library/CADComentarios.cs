@@ -98,20 +98,20 @@ namespace library
              */
             bool created = false;
 
-            using (TransactionScope scope = new TransactionScope())
+            try
             {
-                //Primera transacion
-                using (SqlConnection connection = new SqlConnection(constring))
+                using (TransactionScope scope = new TransactionScope())
                 {
-
-                    try
+                    //Primera transacion
+                    using (SqlConnection connection = new SqlConnection(constring))
                     {
+
                         connection.Open();
 
                         string query = "Insert INTO [Comentarios] " +
                             "(texto,nickname,estrellas) " +
                             "VALUES " +
-                            "(@texto,@nickname,@estrellas) " +
+                            "(@texto,@nickname,@estrellas); " +
                             "select scope_identity()";
                         SqlCommand consulta = new SqlCommand(query, connection);
                         consulta.Parameters.AddWithValue("@texto", comentario.Texto);
@@ -146,26 +146,21 @@ namespace library
                         consulta.ExecuteNonQuery();
 
                         created = true;
+                        connection.Close();
                     }
-                    catch (SqlException e)
-                    {
-                        created = false;
-                        Console.WriteLine("User operation has failed.Error: {0}", e.Message);
-                    }
-                    catch (Exception e)
-                    {
-                        created = false;
-                        Console.WriteLine("User operation has failed.Error: {0}", e.Message);
-                    }
-                    finally
-                    {
-                        if (connection != null)
-                        {
-                            connection.Close();
-                        }
-                    }
+
                     scope.Complete();
                 }
+            }
+            catch (SqlException e)
+            {
+                created = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            catch (Exception e)
+            {
+                created = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
             }
             return created;
         }
