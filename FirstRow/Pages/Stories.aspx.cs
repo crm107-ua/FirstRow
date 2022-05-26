@@ -1,8 +1,6 @@
 ﻿using System;
 using library;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
@@ -20,13 +18,6 @@ namespace FirstRow.Pages
             {
                 llenarDropDownList();
                 ENUsuario user = (ENUsuario)Session["usuario"];
-                if (user != null && user.nickname == "admin")
-                {
-                    //debería ser "true" para que funcione,
-                    //pero no está implementado
-                    btn_modificar_pagina.Visible = false; 
-                }
-                else { btn_modificar_pagina.Visible = false; }
 
                 if (user != null)
                 {
@@ -47,26 +38,6 @@ namespace FirstRow.Pages
         }
 
         /// <summary>
-        /// Habilita la edición de la página. 
-        /// Solamente puede usarlo el admin
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void modificarPaginaStories(object sender, EventArgs e)
-        {
-            stories_title_edit.Visible = true;
-            stories_subtitle_edit.Visible = true;
-            stories_description_title_edit.Visible = true;
-            stories_description_edit.Visible = true;
-            //background_image_header.Style.Add("background-image", "url(../../assets/img/demo-bg-5.jpg)");
-            //Response.Redirect("/stories");
-
-            btn_aceptar_cambios.Visible = true;
-            btn_cancelar_cambios.Visible = true;
-            btn_modificar_pagina.Visible = false;
-        }
-
-        /// <summary>
         /// Redirige a las páginas de story
         /// con los valores del dropDownList
         /// </summary>
@@ -78,6 +49,9 @@ namespace FirstRow.Pages
             {
                 Response.Redirect("/story/" + Home.slug(country_list.SelectedItem.Text));
 
+            }else
+            {
+                Response.Redirect("/stories");
             }
         }
 
@@ -213,42 +187,5 @@ namespace FirstRow.Pages
             else { return null; }
         }
 
-        /// <summary>
-        /// Confirma los cambios en la edición de la página
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void btn_aceptar_cambios_Click(object sender, EventArgs e)
-        {
-            if (stories_title_edit.Text != "")
-            {
-                Application["stories_title"] = stories_title_edit.Text;
-            }
-            if (stories_subtitle_edit.Text != "")
-            {
-                Application["stories_subtitle"] = stories_subtitle_edit.Text;
-            }
-            if (stories_description_title_edit.Text != "")
-            {
-                stories_description_title.Text = stories_description_title_edit.Text;
-            }
-            if (stories_description_edit.Text != "")
-            {
-                stories_description.Text = stories_description_edit.Text;
-            }
-
-            Response.Redirect("/stories");
-
-        }
-
-        /// <summary>
-        /// Cancela los cambios en la edición de la página
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void btn_cancelar_cambios_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/stories");
-        }
     }
 }
