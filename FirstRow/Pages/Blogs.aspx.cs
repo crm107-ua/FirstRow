@@ -20,10 +20,7 @@ namespace FirstRow.Pages
             ENBlog blog = new ENBlog();
             List<ENBlog> blogs = new List<ENBlog>();
             loadSesionTags();
-<<<<<<< HEAD
-=======
             blog_title.Text = ENAdmin.read("titulo-blogs");
->>>>>>> develop
 
             if (!IsPostBack)
             {
@@ -60,7 +57,7 @@ namespace FirstRow.Pages
                     blog.blogsPorCategoria(blogs, 0);
                 }
 
-                if(blogs.Count() != 0)
+                if (blogs.Count() != 0)
                 {
                     resultado_busqueda.InnerText = ENAdmin.read("des-blogs");
                 }
@@ -75,7 +72,7 @@ namespace FirstRow.Pages
 
         protected void seleccionDeCategoria(object sender, EventArgs e)
         {
-            Response.Redirect("/blogs/"+ lista_categorias_blogs.SelectedValue);
+            Response.Redirect("/blogs/" + lista_categorias_blogs.SelectedValue);
         }
 
         private void loadSesionTags()

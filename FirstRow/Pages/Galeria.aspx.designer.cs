@@ -24,8 +24,6 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlAnchor add;
 
         /// <summary>
-<<<<<<< HEAD
-=======
         /// Control Title_gal.
         /// </summary>
         /// <remarks>
@@ -44,7 +42,6 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.WebControls.Label Description_gal;
 
         /// <summary>
->>>>>>> develop
         /// Control Direccion.
         /// </summary>
         /// <remarks>

@@ -3,7 +3,7 @@
 namespace FirstRow.App_Start
 {
     public class RouteConfig
-   {
+    {
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.MapPageRoute("default", "", "~/Pages/Inicio.aspx");
@@ -11,11 +11,7 @@ namespace FirstRow.App_Start
             routes.MapPageRoute("admin", "admin", "~/Pages/Forms/admin.aspx");
 
             routes.MapPageRoute("perfil", "perfil", "~/Pages/Perfil.aspx");
-<<<<<<< HEAD
-            //routes.MapPageRoute("user", "user/{nickname}", "~/Pages/Perfil.aspx");
-=======
             routes.MapPageRoute("user", "user/{nickname}", "~/Pages/User.aspx");
->>>>>>> develop
 
             routes.MapPageRoute("reservas", "reservas/{nickname}", "~/Pages/Reservas.aspx");
             routes.MapPageRoute("crear_propuesta", "crear_propuesta", "~/Pages/Forms/FormPropuesta.aspx");
@@ -27,7 +23,7 @@ namespace FirstRow.App_Start
 
             routes.MapPageRoute("sorteos", "sorteos", "~/Pages/Sorteos.aspx");
             routes.MapPageRoute("sorteo", "sorteo/{slug}", "~/Pages/Sorteo.aspx");
-             
+
             routes.MapPageRoute("stories", "stories", "~/Pages/Stories.aspx");
             routes.MapPageRoute("story", "story/{slug}", "~/Pages/Story.aspx");
             routes.MapPageRoute("agregar_story", "agregar-story", "~/Pages/Forms/FormStory.aspx");
@@ -54,9 +50,3 @@ namespace FirstRow.App_Start
         }
     }
 }
-
-
-
-
-
-

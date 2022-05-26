@@ -62,9 +62,10 @@ namespace FirstRow.Pages
 
 
                         //user_span.InnerText = user_nickname;
-                        left_bottom_title.InnerText = "@"+user_nickname;
+                        left_bottom_title.InnerText = "@" + user_nickname;
 
-                    }else if (myRoute.Url == "story/{slug}")
+                    }
+                    else if (myRoute.Url == "story/{slug}")
                     {
                         borrar_story.Visible = false;
                         string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
@@ -134,7 +135,7 @@ namespace FirstRow.Pages
             bool eliminadoOK = false;
 
             List<ENStories> stories = new List<ENStories>();
-            if(ENStories.ReadAllStories(stories, nickname))
+            if (ENStories.ReadAllStories(stories, nickname))
             {
                 if (story_id > 0 && story_id <= stories.Count)
                 {
@@ -149,9 +150,10 @@ namespace FirstRow.Pages
                             try
                             {
                                 File.Delete(path);
-                            }catch(Exception) { }
+                            }
+                            catch (Exception) { }
                         }
-                        
+
                         //Response.Redirect(Request.RawUrl);
                         //Response.Redirect($"/user-stories/{user_nickname}");
                         eliminadoOK = true;
@@ -179,7 +181,7 @@ namespace FirstRow.Pages
             Panel p = new Panel();
             p.CssClass = "item";
 
-            
+
             Panel info = new Panel();
             info.CssClass = "_info";
             Panel country = new Panel();
@@ -187,7 +189,7 @@ namespace FirstRow.Pages
             Label user_span = new Label();
             user_span.Text = pais;
             country.Controls.Add(user_span);
-            info.Controls.Add(country);            
+            info.Controls.Add(country);
             p.Controls.Add(info);
 
             Label titulo = new Label();
@@ -223,14 +225,12 @@ namespace FirstRow.Pages
             //ENPais pais = new ENPais();
             //pais.name = pais_name;
             story.Pais = pais_id;
-
             if (story.ReadFirstStory())
             {
                 //mostrar la story en la página
                 Panel p = createStoryPanel(story.Titulo, story.Descripcion);
                 stories_items.Controls.Add(p);
                 //showStory(story);
-
             }
             else { addDefaultStory(); }
             
@@ -245,7 +245,8 @@ namespace FirstRow.Pages
             if (pais_name != "")
             {
                 correctRead = ENStories.ReadAllStories(listStories, pais_id);
-            }else
+            }
+            else
             {
                 correctRead = ENStories.ReadAllStories(listStories, user_nickname);
             }
@@ -266,20 +267,15 @@ namespace FirstRow.Pages
 
             }
             else { addDefaultStory(); }
-            
+
 
         }
 
         private void addDefaultStory()
         {
             ENStories story = new ENStories();
-<<<<<<< HEAD
-            story.Titulo = "NO HIT story";
-            story.Descripcion = "ce n'est pas une histoire";
-=======
             story.Titulo = "No story";
             story.Descripcion = "Ceci n'est pas une histoire";
->>>>>>> develop
             ENUsuario user = new ENUsuario();
             user.nickname = "FirstRow GOD";
             story.Usuario = user;
@@ -321,7 +317,7 @@ namespace FirstRow.Pages
                         string img = $"../Media/Stories/{story.Imagen}";
                         p.BackImageUrl = img;
                         p.Attributes["data-blur-bg"] = img;
-                    
+
                     }
                     else
                     {
@@ -329,7 +325,8 @@ namespace FirstRow.Pages
                         p.Attributes["data-blur-bg"] = default_img;
                     }
 
-                }catch(Exception)
+                }
+                catch (Exception)
                 {
                     p.BackImageUrl = default_img;
                     p.Attributes["data-blur-bg"] = default_img;
@@ -346,11 +343,7 @@ namespace FirstRow.Pages
             ENUsuario usuario = new ENUsuario();
             usuario.nickname = registro_nickname.Text;
             usuario.email = registro_email.Text;
-<<<<<<< HEAD
-            usuario.password = password_r_1.Text;
-=======
             usuario.password = Home.EncodePasswordToBase64(password_r_1.Text);
->>>>>>> develop
             usuario.image = guardadoFotoPerfil(true, usuario.nickname);
             usuario.background_image = "bg_default.png";
             usuario.name = registro_nombre.Text;
@@ -377,11 +370,7 @@ namespace FirstRow.Pages
             ENEmpresa empresa = new ENEmpresa();
             empresa.nickname = registro_emp_nickname.Text;
             empresa.email = registro_emp_email.Text;
-<<<<<<< HEAD
-            empresa.password = password_emp_r_1.Text;
-=======
             empresa.password = Home.EncodePasswordToBase64(password_emp_r_1.Text);
->>>>>>> develop
             empresa.image = guardadoFotoPerfil(false, empresa.nickname);
             empresa.background_image = "bg_default.png";
             empresa.name = registro_emp_nombre.Text;
@@ -414,11 +403,7 @@ namespace FirstRow.Pages
         {
             ENUsuario usuario = new ENUsuario();
             usuario.nickname = nickname.Text;
-<<<<<<< HEAD
-            usuario.password = password.Text;
-=======
             usuario.password = Home.EncodePasswordToBase64(password.Text);
->>>>>>> develop
 
             vaciadoCampos();
 
@@ -439,11 +424,7 @@ namespace FirstRow.Pages
         {
             ENEmpresa empresa = new ENEmpresa();
             empresa.email = login_email_empresa.Text;
-<<<<<<< HEAD
-            empresa.password = login_password_empresa.Text;
-=======
             empresa.password = Home.EncodePasswordToBase64(login_password_empresa.Text);
->>>>>>> develop
 
             vaciadoCampos();
 
@@ -467,11 +448,7 @@ namespace FirstRow.Pages
 
             usuario.nickname = usuarioSesion.nickname;
             usuario.email = email_setting.Text;
-<<<<<<< HEAD
-            usuario.password = password_1_setting.Text;
-=======
             usuario.password = Home.EncodePasswordToBase64(password_1_setting.Text);
->>>>>>> develop
             usuario.image = modificarFotoPerfil(true, usuarioSesion.nickname, usuarioSesion.image);
             usuario.background_image = "bg_default.png";
             usuario.name = name_setting.Text;
@@ -504,11 +481,7 @@ namespace FirstRow.Pages
 
             empresa.nickname = empresaSesion.nickname;
             empresa.email = empresaSesion.email;
-<<<<<<< HEAD
-            empresa.password = ajustes_password_1_empresa.Text;
-=======
             empresa.password = Home.EncodePasswordToBase64(ajustes_password_1_empresa.Text);
->>>>>>> develop
             empresa.image = modificarFotoPerfil(false, empresaSesion.nickname, empresaSesion.image);
             empresa.background_image = "bg_default.png";
             empresa.name = ajustes_nombre_empresa.Text;
@@ -537,145 +510,6 @@ namespace FirstRow.Pages
         {
             Session.Abandon();
             Response.Redirect(Request.Url.ToString());
-<<<<<<< HEAD
-        }
-
-        private void vaciadoCampos()
-        {
-            nickname.Text = "";
-            password.Text = "";
-            login_email_empresa.Text = "";
-            login_password_empresa.Text = "";
-        }
-
-        private string guardadoFotoPerfil(bool mode, string nickname)
-        {
-            string direccion = "~/Media/Users/";
-
-            if (mode)
-            {
-                // Guardado de imagen de usuario: foto_perfil
-                if (foto_perfil.HasFile)
-                {
-                    string file_name = nickname + "_" + Path.GetFileName(foto_perfil.PostedFile.FileName);
-                    foto_perfil.SaveAs(Server.MapPath(direccion + file_name));
-                    return direccion + file_name;
-                }
-            }
-            else
-            {
-                // Guardado de imagen de usuario: foto_perfil_empresa
-                if (foto_perfil_empresa.HasFile)
-                {
-                    string file_name = nickname + "_" + Path.GetFileName(foto_perfil_empresa.PostedFile.FileName);
-                    foto_perfil_empresa.SaveAs(Server.MapPath(direccion + file_name));
-                    return direccion + file_name;
-                }
-            }
-
-            return "default.png";
-        }
-
-        private string modificarFotoPerfil(bool mode, string nickname, string deff)
-        {
-            string direccion = "~/Media/Users/";
-
-            if (mode)
-            {
-                // Guardado de imagen de usuario: ajustes_foto_perfil
-                if (user_setting_foto_mode.HasFile)
-                {
-                    string file_name = nickname + "_" + Path.GetFileName(user_setting_foto_mode.PostedFile.FileName);
-                    user_setting_foto_mode.SaveAs(Server.MapPath(direccion + file_name));
-                    return direccion + file_name;
-                }
-            }
-            else
-            {
-                // Guardado de imagen de usuario: ajustes_foto_perfil_empresa
-                if (ajustes_imagen_empresa_mode.HasFile)
-                {
-                    string file_name = nickname + "_" + Path.GetFileName(ajustes_imagen_empresa_mode.PostedFile.FileName);
-                    ajustes_imagen_empresa_mode.SaveAs(Server.MapPath(direccion + file_name));
-                    return direccion + file_name;
-                }
-            }
-
-            return deff;
-        }
-
-        protected void cargarElementosSesion()
-        {
-            if (!IsPostBack)
-            {
-                ENPais pais = new ENPais();
-                List<ENPais> paises = new List<ENPais>();
-                pais.readPaises(paises);
-
-                if (Session["usuario"] != null)
-                {
-                    ENUsuario usuario = (ENUsuario)Session["usuario"];
-
-                    email_setting.Text = usuario.email;
-                    name_setting.Text = usuario.name;
-                    password_1_setting.Text = usuario.password;
-                    password_2_setting.Text = usuario.password;
-                    firstname_setting.Text = usuario.firstname;
-                    secondname_setting.Text = usuario.secondname;
-                    facebook_setting.Text = usuario.facebook;
-                    twitter_setting.Text = usuario.twitter;
-                    user_setting_foto.ImageUrl = usuario.image;
-
-                    login_sect.Visible = false;
-                    register_sect.Visible = false;
-                    settings_sect.Visible = true;
-                    settings_emp_sect.Visible = false;
-                    logout_sect.Visible = true;
-
-                }
-                else if (Session["empresa"] != null)
-                {
-                    ENEmpresa empresa = (ENEmpresa)Session["empresa"];
-
-                    foreach (ENPais p in paises)
-                    {
-                        listaPaises_ajustes_empresa.Items.Insert(0, new ListItem(p.name, p.id.ToString()));
-                    }
-
-                    listaPaises_ajustes_empresa.SelectedIndex = paises.Count - empresa.pais.id;
-                    ajustes_password_1_empresa.Text = empresa.password;
-                    ajustes_password_2_empresa.Text = empresa.password;
-                    ajustes_nombre_empresa.Text = empresa.name;
-                    ajustes_apellido_1_empresa.Text = empresa.firstname;
-                    ajustes_apellido_2_empresa.Text = empresa.secondname;
-                    ajustes_cif_empresa.Text = empresa.cif;
-                    ajustes_direccion_empresa.Text = empresa.direccion;
-                    ajustes_facebook_empresa.Text = empresa.facebook;
-                    ajustes_twitter_empresa.Text = empresa.twitter;
-                    ajustes_imagen_empresa.ImageUrl = empresa.image;
-
-                    login_sect.Visible = false;
-                    register_sect.Visible = false;
-                    settings_sect.Visible = false;
-                    settings_emp_sect.Visible = true;
-                    logout_sect.Visible = true;
-                }
-                else
-                {
-                    foreach (ENPais p in paises)
-                    {
-                        listaPaisesRegEmpresa.Items.Insert(0, new ListItem(p.name, p.id.ToString()));
-                    }
-
-                    login_sect.Visible = true;
-                    register_sect.Visible = true;
-                    settings_sect.Visible = false;
-                    settings_emp_sect.Visible = false;
-                    logout_sect.Visible = false;
-                }
-            }
-=======
->>>>>>> develop
         }
 
         private void vaciadoCampos()

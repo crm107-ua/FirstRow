@@ -14,10 +14,6 @@ namespace FirstRow.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             cargaElementos();
-<<<<<<< HEAD
-        }
-
-=======
             getionDeReservas();
         }
 
@@ -63,7 +59,7 @@ namespace FirstRow.Pages
                 DataTable top_table = reserva.mostrarTopClientes(empresa);
                 top_clientes.DataSource = top_table;
                 top_clientes.DataBind();
-                
+
                 if (tabla == null || top_table.Rows.Count == 0)
                 {
                     top.InnerText = "No existen estadisticas disponibles";
@@ -77,30 +73,22 @@ namespace FirstRow.Pages
             }
         }
 
->>>>>>> develop
         private void cargaElementos()
         {
             if (Session["usuario"] != null)
             {
                 ENUsuario usuario = (ENUsuario)Session["usuario"];
-<<<<<<< HEAD
-=======
                 titulo_tabla.InnerText = "Tus reservas";
->>>>>>> develop
                 tipo.InnerHtml = "Tu cuenta de usuario";
                 name_titulo_text.InnerText = "¡Hola " + usuario.name + "!";
                 nickname_text.InnerText = "Nickname: " + usuario.nickname;
-                email_text.InnerText = "Email: " +  usuario.email;
-                name_text.InnerText = "Name: " +  usuario.name;
-                firstname_text.InnerText = "FirstName: " +  usuario.firstname;
-                secondname_text.InnerText = "SecondName: " +  usuario.secondname;
-                face_text.InnerText = "Facebook: " +  usuario.facebook;
-                tw_text.InnerText = "Twitter: " +  usuario.twitter;
+                email_text.InnerText = "Email: " + usuario.email;
+                name_text.InnerText = "Name: " + usuario.name;
+                firstname_text.InnerText = "FirstName: " + usuario.firstname;
+                secondname_text.InnerText = "SecondName: " + usuario.secondname;
+                face_text.InnerText = "Facebook: " + usuario.facebook;
+                tw_text.InnerText = "Twitter: " + usuario.twitter;
                 foto_perfil.Src = usuario.image;
-<<<<<<< HEAD
-                settings_user_pop_up.Visible = true;
-                settings_emp_pop_up.Visible = false;
-=======
                 user_stories_link.HRef = "/user-stories/" + ((ENUsuario)Session["usuario"]).nickname;
                 user_stories_link.Visible = true;
                 settings_user_pop_up.Visible = true;
@@ -108,15 +96,11 @@ namespace FirstRow.Pages
 
                 top.InnerText = "";
                 top_clientes.Visible = false;
->>>>>>> develop
             }
             else if (Session["empresa"] != null)
             {
                 ENEmpresa empresa = (ENEmpresa)Session["empresa"];
-<<<<<<< HEAD
-=======
                 titulo_tabla.InnerText = "Todas las reservas de tus experiencias";
->>>>>>> develop
                 tipo.InnerHtml = "Tu cuenta de empresa";
                 name_titulo_text.InnerText = "¡Hola " + empresa.name + "!";
                 nickname_text.InnerText = "Nickname: " + empresa.nickname;
@@ -133,12 +117,9 @@ namespace FirstRow.Pages
                 pais_text.InnerText = "Pais: " + empresa.pais.name;
                 settings_user_pop_up.Visible = false;
                 settings_emp_pop_up.Visible = true;
-<<<<<<< HEAD
-=======
 
                 top.InnerText = "Tus top 3 clientes";
                 top_clientes.Visible = true;
->>>>>>> develop
             }
             else
             {

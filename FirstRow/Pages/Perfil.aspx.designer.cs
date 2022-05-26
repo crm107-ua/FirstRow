@@ -141,8 +141,6 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl pais_text;
 
         /// <summary>
-<<<<<<< HEAD
-=======
         /// Control user_stories_link.
         /// </summary>
         /// <remarks>
@@ -152,7 +150,6 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlAnchor user_stories_link;
 
         /// <summary>
->>>>>>> develop
         /// Control settings_user_pop_up.
         /// </summary>
         /// <remarks>
@@ -169,8 +166,6 @@ namespace FirstRow.Pages
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor settings_emp_pop_up;
-<<<<<<< HEAD
-=======
 
         /// <summary>
         /// Control titulo_tabla.
@@ -225,6 +220,5 @@ namespace FirstRow.Pages
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView top_clientes;
->>>>>>> develop
     }
 }

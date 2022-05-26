@@ -33,8 +33,6 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlAnchor add_form;
 
         /// <summary>
-<<<<<<< HEAD
-=======
         /// Control blog_title.
         /// </summary>
         /// <remarks>
@@ -44,7 +42,6 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.WebControls.Label blog_title;
 
         /// <summary>
->>>>>>> develop
         /// Control pais_blog_titulo.
         /// </summary>
         /// <remarks>

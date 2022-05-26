@@ -37,7 +37,7 @@ namespace library
         /// </summary>
         private DateTime _FechaInicio;
 
-      
+
 
         /// <summary>
         /// Finalizacion del sorteo
@@ -89,11 +89,7 @@ namespace library
         /// <param name="fechaInicio"></param>
         /// <param name="fechaFinal"></param>
         /// <param name="participantes"></param>
-<<<<<<< HEAD
-        public ENSorteos(int id, ENViajes premio, string nombre, int slug, string descripcion, string imagen, DateTime fechaInicio, DateTime fechaFinal, ENUsuario[] participantes,string titular)
-=======
-        public ENSorteos(int id, ENViajes premio, string nombre, string slug, string descripcion, string imagen, DateTime fechaInicio, DateTime fechaFinal, ENUsuario[] participantes,string titular)
->>>>>>> develop
+        public ENSorteos(int id, ENViajes premio, string nombre, string slug, string descripcion, string imagen, DateTime fechaInicio, DateTime fechaFinal, ENUsuario[] participantes, string titular)
         {
             _Id = id;
             _Premio = premio;
@@ -104,10 +100,10 @@ namespace library
             _FechaInicio = fechaInicio;
             _FechaFinal = fechaFinal;
             _Participantes = participantes;
-            _Titular= titular;
+            _Titular = titular;
 
         }
-       
+
         public bool addParticipante()
         {
             CADSorteos par = new CADSorteos();
@@ -126,17 +122,7 @@ namespace library
             bool ok = par.raffle(this);
             return ok;
         }
-   
-<<<<<<< HEAD
-        public bool readsorteos(List<ENSorteos> lista)
-        {
-            CADSorteos sorteos = new CADSorteos();
-            return sorteos.readsorteo(lista);
-        }
-        public bool readsorteosconectado(List<ENSorteos> lista)
-        {
-            CADSorteos sorteos = new CADSorteos();
-=======
+
         public bool readsorteo()
         {
             CADSorteos sorteos = new CADSorteos();
@@ -151,7 +137,6 @@ namespace library
         public bool readsorteosconectado(List<ENSorteos> lista)
         {
             CADSorteos sorteos = new CADSorteos();
->>>>>>> develop
             return sorteos.readsorteosconectado(lista);
         }
     }

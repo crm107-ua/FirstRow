@@ -402,8 +402,7 @@ namespace FirstRow
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
             }
         }
-<<<<<<< HEAD
-=======
+
         public static string EncodePasswordToBase64(string password)
         {
             try
@@ -430,6 +429,6 @@ namespace FirstRow
             string result = new String(decoded_char);
             return result;
         }
->>>>>>> develop
+
     }
 }

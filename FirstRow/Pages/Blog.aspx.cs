@@ -57,7 +57,7 @@ namespace FirstRow.Pages
             perfil.AlternateText = blog.Usuario.name;
             perfil.Attributes.Add("style", "height:100%; width: 100%; object-fit: cover;");
             foto_perfil.Controls.Add(perfil);
-            imagen_principal.Attributes.Add("style", "background-image: url(/Media/Blogs/"+blog.Imagen_principal+")");
+            imagen_principal.Attributes.Add("style", "background-image: url(/Media/Blogs/" + blog.Imagen_principal + ")");
             text_description.InnerText = blog.Descripcion;
             text_1.InnerText = blog.Texto_1;
             text_2.InnerText = blog.Texto_2;
@@ -74,7 +74,7 @@ namespace FirstRow.Pages
         private void listarComentarios(ENBlog blog)
         {
 
-            if(blog.Comentarios.Count() == 0)
+            if (blog.Comentarios.Count() == 0)
             {
                 text_comentarios.InnerText = "Este blog no tiene comentarios";
                 contadorComentarios.Visible = false;
@@ -109,7 +109,7 @@ namespace FirstRow.Pages
             List<ENViajes> experiencias = new List<ENViajes>();
             ENexperiencia.mostrarExperienciasPais(experiencias, blog.Pais.id);
 
-            if(experiencias.Count() > 0)
+            if (experiencias.Count() > 0)
             {
                 ENViajes experiencia = experiencias[random.Next() % experiencias.Count];
 
@@ -179,7 +179,7 @@ namespace FirstRow.Pages
             {
                 recomendadaAviso.InnerText = "No existen recomendaciones en " + blog.Pais.name;
             }
-            
+
         }
 
         private void listarImagenes(ENBlog blog)
@@ -217,14 +217,14 @@ namespace FirstRow.Pages
                                 "</div>" +
                                 "<div class='shadow js-shadow'></div>" +
                             "</a>";
-                if(total < 4)
+                if (total < 4)
                 {
                     cargaStories.Controls.Add(new LiteralControl(cadena));
                 }
                 total++;
             }
 
-            if(total == 0)
+            if (total == 0)
             {
                 text_stories.InnerText = "No existen stories en " + blog.Pais.name;
             }
@@ -251,12 +251,10 @@ namespace FirstRow.Pages
                 listaCategorias.Controls.Add(li);
             }
         }
-<<<<<<< HEAD
-=======
 
         protected void experiencia_comentar_Click(object sender, EventArgs e)
         {
-            
+
             ENComentarios eNComentarios = new ENComentarios();
             eNComentarios.Estrellas = comentario_raing.CurrentRating;
             eNComentarios.Texto = create_comentario.Text.Trim();
@@ -266,10 +264,9 @@ namespace FirstRow.Pages
             blog.mostrarBlog();
 
             eNComentarios.InsertarComentario(blog.Id, true);
-            
+
         }
 
         protected void blog_raing_Changed(object sender, AjaxControlToolkit.RatingEventArgs e) { }
->>>>>>> develop
     }
 }

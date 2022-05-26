@@ -1,7 +1,6 @@
 ﻿using library;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Routing;
@@ -11,92 +10,273 @@ using System.Web.UI.WebControls;
 
 namespace FirstRow.Pages
 {
-    public partial class Experiencias : System.Web.UI.Page
+    public partial class Experiencia : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Title_exp.Text = ENAdmin.read("titulo-exp");
-            Description_exp.Text = ENAdmin.read("des-exp");
-            ENViajes ENexperiencia = new ENViajes();
-            List<ENViajes> experiencias = new List<ENViajes>();
-            ENexperiencia.mostrarExperiencias(experiencias);
-
-            foreach (ENViajes experiencia in experiencias)
+            Route myRoute = RouteData.Route as Route;
+            checkEliminarComentario();
+            if (myRoute != null && myRoute.Url == "experiencia/{slug}")
             {
-
-                HyperLink a_tag_general = new HyperLink();
-                a_tag_general.CssClass = "tour_item";
-                a_tag_general.NavigateUrl = "/experiencia/" + experiencia.Slug;
-                a_tag_general.Attributes.Add("style", "background-image: url(/Media/Experiencias/" + experiencia.Background + ")");
-
-                HtmlGenericControl tour_item_top = new HtmlGenericControl("div");
-                tour_item_top.Attributes.Add("class", "tour_item_top");
-
-                HtmlGenericControl country = new HtmlGenericControl("p");
-                country.Attributes.Add("class", "country");
-
-                HtmlGenericControl texto_pais = new HtmlGenericControl("span");
-                texto_pais.InnerText = experiencia.Pais.name;
-
-                HtmlGenericControl tour_item_bottom = new HtmlGenericControl("div");
-                tour_item_bottom.Attributes.Add("class", "tour_item_bottom");
-
-                HtmlGenericControl _title = new HtmlGenericControl("h3");
-                _title.Attributes.Add("class", "_title");
-                _title.InnerText = experiencia.Titulo;
-
-                HtmlGenericControl _info = new HtmlGenericControl("div");
-                _info.Attributes.Add("class", "_info");
-
-                HtmlGenericControl _info_left = new HtmlGenericControl("div");
-                _info_left.Attributes.Add("class", "_info_left");
-
-                HtmlGenericControl days = new HtmlGenericControl("div");
-                days.Attributes.Add("class", "days");
-                days.InnerText = experiencia.Dias + "dias |";
-
-                HtmlGenericControl cost = new HtmlGenericControl("div");
-                cost.Attributes.Add("class", "cost");
-                cost.InnerText = experiencia.Precio + "€";
-
-                HtmlGenericControl _info_right = new HtmlGenericControl("div");
-                _info_right.Attributes.Add("class", "_info_right");
-
-                HtmlGenericControl rating_text = new HtmlGenericControl("p");
-                rating_text.Attributes.Add("class", "rating-text");
-                rating_text.InnerText = experiencia.Comentarios.Count.ToString() + " Comentarios";
-
-                HtmlGenericControl shadow = new HtmlGenericControl("div");
-                shadow.Attributes.Add("class", "shadow js-shadow");
-
-                _info_left.Controls.Add(days);
-                _info_left.Controls.Add(cost);
-                _info.Controls.Add(_info_left);
-                _info_right.Controls.Add(rating_text);
-                _info.Controls.Add(_info_right);
-                _info.Controls.Add(_info_right);
-
-                tour_item_bottom.Controls.Add(_title);
-                tour_item_bottom.Controls.Add(_info);
-
-                country.Controls.Add(texto_pais);
-                tour_item_top.Controls.Add(country);
-
-                a_tag_general.Controls.Add(tour_item_top);
-                a_tag_general.Controls.Add(tour_item_bottom);
-
-                mostrar_experiencias.Controls.Add(a_tag_general);
-
-                if (Session["empresa"] != null)
+                ENViajes experiencia = new ENViajes();
+                experiencia.Slug = RouteData.Values["slug"].ToString();
+                if (experiencia.mostrarExperiencia())
                 {
-                    crear_experiencia.Visible = true;
-                    crear_experiencia.InnerHtml = "Agrega una experiencia";
+                    slug.Text = experiencia.Titulo;
+                    empresa_enlace.InnerText = experiencia.Empresa.name;
+                    empresa_enlace.HRef = "/user/" + experiencia.Empresa.nickname;
+                    bg_experiencia.Attributes.Add("style", "background-image: url(/Media/Experiencias/" + experiencia.Background + ")");
+                    texto_pais.InnerText = experiencia.Pais.name;
+                    texto_titulo.InnerText = experiencia.Titulo;
+
+                    foreach (ENImagenes imagen in experiencia.Imagenes)
+                    {
+                        HyperLink a_tag_general = new HyperLink();
+                        a_tag_general.NavigateUrl = "/Media/Experiencias/" + imagen.Name;
+                        a_tag_general.Attributes.Add("class", "slide");
+
+                        Image foto = new Image();
+                        foto.ImageUrl = "/Media/Experiencias/" + imagen.Name;
+                        foto.AlternateText = " ";
+                        foto.Attributes.Add("data-src", foto.ImageUrl);
+                        a_tag_general.Controls.Add(foto);
+                        carga.Controls.Add(a_tag_general);
+                    }
+
+                    display_dias.InnerHtml = experiencia.Dias.ToString() + " dias |";
+                    display_precio.InnerHtml = experiencia.Precio.ToString() + "€";
+                    display_comentarios.InnerHtml = experiencia.Comentarios.Count().ToString() + " Comentarios";
+                    display_description.InnerHtml = experiencia.Descripcion;
+
+                    generadorEtapas.Controls.Clear();
+                    foreach (ENDia etapas in experiencia.Etapas)
+                    {
+                        string cadena = "<div class='day_item'> " +
+                        "<div class='day_item-head active'>" +
+                        "<div class='preview'>" +
+                        "<div class='image'><img src = '" + "/Media/Etapas/" + etapas.Imagen + "' alt=''>" +
+                        "</div><div class='p'>" + etapas.Titulo + "</div>" +
+                        "</div><div class='_title'>" + etapas.Nombre + "</div>" +
+                        "<div class='element'>" +
+                        "</div>" +
+                        "</div>" +
+                        "<div class='day_item-body' style='display: block;'>" +
+                        "<div class='text'>" + etapas.Descripcion + "</div></div></div>";
+                        generadorEtapas.Controls.Add(new LiteralControl(cadena));
+                    }
+
+                    generadorIncluidos.Controls.Clear();
+                    foreach (ENIncluido incluido in experiencia.Incluidos)
+                    {
+                        string cadena = "<li>" +
+                                            "<span class='li_title'>" + incluido.Titulo + "</span>" +
+                                            "<span class='li_subtitle'>" + incluido.Descripcion + "</span>" +
+                                        "</li>";
+                        generadorIncluidos.Controls.Add(new LiteralControl(cadena));
+                    }
+
+
+                    int total = 0;
+                    List<ENStories> storiesPais = new List<ENStories>();
+                    ENStories.ReadAllStories(storiesPais, experiencia.Pais.id);
+
+                    generadorStories.Controls.Clear();
+                    foreach (ENStories story in storiesPais)
+                    {
+                        string cadena =
+                                    "<a href = '/story/" + experiencia.Pais.name.ToLower() + "' class='story_item' style='background-image: url(/Media/Stories/" + story.Imagen + ")'>" +
+                                        "<div class='item_wrap'>" +
+                                            "<div class='_content'>" +
+                                                "<p class='text'>" +
+                                                    story.Titulo +
+                                                "</p>" +
+                                            "</div>" +
+                                        "</div>" +
+                                        "<div class='shadow js-shadow'></div>" +
+                                    "</a>";
+                        if (total < 4)
+                        {
+                            generadorStories.Controls.Add(new LiteralControl(cadena));
+                        }
+                        total++;
+                    }
+
+                    contadorComentarios.InnerText = experiencia.Comentarios.Count.ToString();
+
+                    generadorComentarios.Controls.Clear();
+                    foreach (ENComentarios comentario in experiencia.Comentarios)
+                    {
+
+                        string cadenaStrellas = "";
+                        string elimiarComentario = "";
+
+
+                        for (int i = 1; i <= 5; i++)
+                        {
+                            if (i <= comentario.Estrellas)
+                            {
+                                cadenaStrellas += "<div class='star filled'></div>";
+                            }
+                            else
+                            {
+                                cadenaStrellas += "<div class='star'></div>";
+                            }
+                        }
+
+                        ENUsuario usuario = (ENUsuario)Session["usuario"];
+                        if (usuario != null && comentario.Usuario.nickname.Equals(usuario.nickname))
+                        {
+                            elimiarComentario += "<a ID='delete_comentario' href='/eliminar-comentario/" +
+                                                    "/" + experiencia.Slug + "/" + comentario.Id + "' runat='server' " +
+                                                    "class='reply'>Eliminar</a>";
+                        }
+
+                        string cadena =
+                            "<div class='comment_item'>" +
+                                "<div class='comment_item_top'>" +
+                                    "<p>" +
+                                    comentario.Texto +
+                                    "</p>" +
+                                "</div>" +
+                                "<div class='comment_item_bottom'>" +
+                                    "<div class='rating'>" +
+                                        "<div class='rating-stars'>" +
+                                            cadenaStrellas +
+                                        "</div>" +
+                                        elimiarComentario +
+                                    "</div>" +
+                                    "<div class='author'>" +
+                                        "<div class='userpic'>" +
+                                            "<img src = '" + comentario.Usuario.image + "' alt =" + comentario.Usuario.name + " />" +
+                                         "</div>" +
+                                    "<a href=/user/" + comentario.Usuario.nickname + "><div class='name'>" + comentario.Usuario.name + "</div></a>" +
+                                "</div>" +
+                                "</div>" +
+                            "</div>";
+
+                        generadorComentarios.Controls.Add(new LiteralControl(cadena));
+                    }
+
+                    if (Session["usuario"] == null)
+                    {
+                        seccion_escribir_comentario.Visible = false;
+                    }
+                    else
+                    {
+                        //loadReserva();
+                    }
                 }
+
                 else
                 {
-                    crear_experiencia.Visible = false;
+                    Response.Redirect("/404");
                 }
             }
         }
+
+        /**
+         * Genera el comentario  Insertar necesita la id de experiencia/blog y el modo para saber
+         * Si es un blog true o si es una experiencia false
+         */
+        protected void comentar(object sender, EventArgs e)
+        {
+            ENComentarios eNComentarios = new ENComentarios();
+            eNComentarios.Estrellas = comentario_raing.CurrentRating;
+            eNComentarios.Texto = create_comentario.Text.Trim();
+            eNComentarios.Usuario = (ENUsuario)Session["usuario"];
+            ENViajes experiencia = new ENViajes();
+            experiencia.Slug = RouteData.Values["slug"].ToString();
+            experiencia.mostrarExperiencia();
+            eNComentarios.InsertarComentario(experiencia.Id, false);
+            eNComentarios.Estrellas = 0;
+            create_comentario.Text = "";
+            this.Page_Load(sender, e);
+        }
+
+        protected void reserva(object sender, EventArgs e)
+        {
+            if (Session["usuario"] == null)
+            {
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_user", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('login_user_pop_up').click(); }", true);
+            }
+            else
+            {
+                loadReserva();
+                Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
+            }
+        }
+
+        private void loadReserva()
+        {
+            try
+            {
+                string slug = "";
+                ENViajes eNViajes = new ENViajes();
+                Route myRoute = RouteData.Route as Route;
+                if (myRoute != null && myRoute.Url == "experiencia/{slug}")
+                {
+                    slug = RouteData.Values["slug"].ToString();
+                    eNViajes.Slug = slug;
+                }
+                eNViajes.mostrarExperiencia();
+                DateTime fechaInsertada = DateTime.Parse(Request.Form["reservaEntrada"]);
+                int nPersonas = int.Parse(Request.Form["PersonNumber"]);
+
+                if (nPersonas < 0)
+                {
+                    nPersonas = 0;
+                }
+
+                if (fechaInsertada < DateTime.Now) fechaInsertada = DateTime.Now;
+
+
+                HtmlGenericControl fechaInicial = new HtmlGenericControl("input");
+                fechaInicial.Attributes.Add("type", "date");
+                fechaInicial.Attributes.Add("class", "input");
+                fechaInicial.Attributes.Add("name", "fechaEntrada");
+                fechaInicial.Attributes.Add("value", fechaInsertada.ToString("yyyy-MM-dd"));
+                fechaInicial.Attributes.Add("min", DateTime.Now.ToString("yyyy-MM-dd"));
+
+                ((Panel)this.Master.FindControl("form_reserva_fechas")).Controls.Add(fechaInicial);
+                ((TextBox)this.Master.FindControl("form_reserva_nPersonas")).Text = nPersonas.ToString();
+                ((Label)this.Master.FindControl("slug_reserva_experiencia_Oculto")).Text = slug;
+                ((Label)this.Master.FindControl("form_reserva_price")).Text = eNViajes.Precio.ToString();
+                ((Label)this.Master.FindControl("form_reserva_precio")).Text = (eNViajes.Precio * nPersonas).ToString() + "€";
+
+            }
+            catch (Exception exception)
+            { }
+        }
+
+        protected void checkEliminarComentario()
+        {
+            Route myRoute = RouteData.Route as Route;
+
+            if (myRoute != null && myRoute.Url == "eliminar-comentario/{slug}/{id}")
+            {
+                ENComentarios comentario = new ENComentarios();
+                comentario.Id = Int32.Parse(RouteData.Values["id"].ToString());
+                if (comentario.ReadComentario())
+                {
+                    ENUsuario usuario = (ENUsuario)Session["usuario"];
+
+                    if (usuario != null && usuario.nickname.Equals(comentario.Usuario.nickname))
+                    {
+                        comentario.BorrarComentario();
+                        Response.Redirect("/experiencia/" + RouteData.Values["slug"].ToString());
+                    }
+                    else
+                    {
+                        Response.Redirect("/403");
+                    }
+                }
+                else
+                {
+                    Response.Redirect("/404");
+                }
+            }
+        }
+
+        protected void experiencia_raing_Changed(object sender, AjaxControlToolkit.RatingEventArgs e) { }
     }
 }

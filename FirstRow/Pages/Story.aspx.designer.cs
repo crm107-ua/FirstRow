@@ -33,15 +33,6 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.WebControls.Menu Menu1;
 
         /// <summary>
-        /// Control Menu1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu Menu1;
-
-        /// <summary>
         /// Control login_sect.
         /// </summary>
         /// <remarks>
@@ -159,8 +150,6 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl stories_items;
 
         /// <summary>
-<<<<<<< HEAD
-=======
         /// Control default_story_panel.
         /// </summary>
         /// <remarks>
@@ -188,7 +177,6 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl story_id_span;
 
         /// <summary>
->>>>>>> develop
         /// Control login.
         /// </summary>
         /// <remarks>

@@ -65,11 +65,7 @@ namespace library
                 }
                 else
                 {
-<<<<<<< HEAD
-                    query = "Select * From [firstrow_].[dbo].[Reservas] where id = @id";
-=======
                     query = "Select * From [Reservas] where id = @id";
->>>>>>> develop
                     consulta = new SqlCommand(query, conection);
                     consulta.Parameters.AddWithValue("@id", reserva.id);
                 }
@@ -85,7 +81,7 @@ namespace library
                 reserva.id = Int32.Parse(busqueda["telefono"].ToString());
                 reserva.personas = Int16.Parse(busqueda["personas"].ToString());
                 reserva.precio = int.Parse(busqueda["precio"].ToString());
- 
+
 
 
             }
@@ -113,33 +109,18 @@ namespace library
             return true;
         }
 
-<<<<<<< HEAD
-        internal bool readReservas(List<ENViajes> reservasEmpresa, string empresa)
-        {
-
-            bool leido = false;
-            SqlConnection connection = null;
-            DataSet reservas = null;
-            ENReserva reserva;
-
-=======
         internal DataTable readReservasEmpresa(string empresa)
         {
             SqlConnection connection = null;
             DataSet reservas = null;
             DataTable tablaReservas = null;
 
->>>>>>> develop
             try
             {
                 connection = new SqlConnection(constring);
                 reservas = new DataSet();
-<<<<<<< HEAD
-                string query = "Select * From [firstrow_].[dbo].[Reservas] r " +
-=======
                 string query = "Select r.id,r.nombre,r.descripcion,r.experiencia,r.fechaEntrada,r.fechaSalida,r.usuario, r.precio_asignado, r.personas " +
                                "From [Reservas] r " +
->>>>>>> develop
                                "inner join Experiencias ex " +
                                "on ex.id = r.experiencia " +
                                "inner join Empresas emp " +
@@ -147,38 +128,21 @@ namespace library
                                "where emp.nickname = " + empresa + ";";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.Fill(reservas, "Reservas");
-<<<<<<< HEAD
-                DataTable tableReservas = reservas.Tables["Reservas"];
-                DataRow[] rowsReservas = tableReservas.Select();
-
-                for (int i = 0; i < rowsReservas.Length; i++)
-                {
-                    reserva = new ENReserva();
-                }
-=======
                 tablaReservas = reservas.Tables["Reservas"];
             }
             catch (SqlException e)
             {
                 Console.WriteLine(e.Message);
->>>>>>> develop
             }
             catch (DataException e)
             {
                 Console.WriteLine(e.Message);
-<<<<<<< HEAD
-                leido = false;
-=======
->>>>>>> develop
             }
             finally
             {
                 connection.Close();
             }
 
-<<<<<<< HEAD
-            return leido;
-=======
             return tablaReservas;
         }
 
@@ -213,7 +177,6 @@ namespace library
             }
 
             return tablaReservas;
->>>>>>> develop
         }
 
         internal bool registerReserva(ENReserva reserva)
@@ -227,15 +190,9 @@ namespace library
                 try
                 {
                     connection.Open();
-<<<<<<< HEAD
-                    string query = "INSERT INTO [firstrow_].[dbo].[Reservas] " +
-                        "(id, nombre, descripcion, experiencia, fechaEntrada, fechaSalida, usuario, precio_asignado, personas, numero) VALUES " +
-                        $"({reserva.id}, {reserva.usuario.name}, {reserva.descripcion},{reserva.experiencia.Id},{reserva.fechaEntrada.ToString()},{reserva.fechaSalida.ToString()},{reserva.usuario.nickname},{reserva.precio},{reserva.personas},{reserva.telefono})";
-=======
                     string query = "INSERT INTO [Reservas] " +
                         "(nombre, descripcion, experiencia, fechaEntrada, fechaSalida, usuario, precio_asignado, personas, numero) VALUES " +
                         "(@name, @descripcion,@experiencia,@fechaEntrada, @fechaSalida,@usuario,@precio,@nPersonas,@telefono)";
->>>>>>> develop
 
                     SqlCommand com = new SqlCommand(query, connection);
                     com.Parameters.AddWithValue("@name", reserva.usuario.name);
@@ -294,7 +251,7 @@ namespace library
                                "on u.nickname = r.usuario " +
                                "inner join Experiencias e " +
                                "on r.experiencia = e.id " +
-                               "where e.empresa='" + empresa.nickname+ "' " +
+                               "where e.empresa='" + empresa.nickname + "' " +
                                "group by u.nickname, u.email, u.name, u.firstname, u.secondname, u.facebook, u.twitter " +
                                "order by TotalReservas desc;";
 
@@ -327,6 +284,6 @@ namespace library
     }
 
 
-  
+
 
 }
