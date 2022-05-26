@@ -4,6 +4,7 @@
       <div class="write_comment" style="margin-top: 15%; margin-bottom: 5%; margin-left: 5%; width: 90%;">
             <div class="top">
                 <h3 class="title">Agrega una propuesta</h3>
+                <asp:Label ID="resultado" runat="server" style="margin:10px; color:red;"></asp:Label>
             </div>
             <div class="center">
                 <asp:TextBox ID="create_propuesta_title" runat="server" type="text" style=" width:100%" class="input" placeholder="Titulo"></asp:TextBox>
@@ -14,6 +15,7 @@
                 <asp:RequiredFieldValidator ID="descripcion_propuesta_requerido" ControlToValidate="create_propuesta_descripcion" validationgroup="GrupoCrearPropuesta" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 5px;" runat="server" ErrorMessage="*Descripcion requerida"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="descripcion_propuesta_formato" ControlToValidate="create_propuesta_descripcion" validationgroup="GrupoCrearPropuesta" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 5px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[-.:,0-9A-Za-zÀ-ÿ\s]+$" ErrorMessage="*Formato de descripcion incorrecto"> </asp:RegularExpressionValidator>
 
+              
                 <div>  
                     <h5 class="title" style="margin-left: 10px;" >Imagenes</h5>
                     <div>
