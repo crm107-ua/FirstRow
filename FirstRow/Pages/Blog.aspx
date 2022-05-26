@@ -10,6 +10,7 @@
                     <a style="color:white" href="/">Blog</a>
                     <span style="color:white" class="separator">/</span>
                     <a style="color:white" href="/"><asp:Label ID="slug" runat="server"></asp:Label></a>
+                    <asp:Button ID="eliminarButton" style="margin-left: 20px;" runat="server" Text="Eliminar blog" class="btn button" OnClick="eliminar" />
                 </div>
             </div>
         </div>

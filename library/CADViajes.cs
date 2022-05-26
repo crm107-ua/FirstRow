@@ -116,6 +116,45 @@ namespace library
             return creada;
         }
 
+        public bool deleteExperiencia(ENViajes experiencia)
+        {
+            bool eliminada = false;
+            SqlConnection conection = null;
+
+            try
+            {
+                conection = new SqlConnection(constring);
+                conection.Open();
+
+                string query = "Delete from [Experiencias] " +
+                    "where id = @id";
+                SqlCommand consulta = new SqlCommand(query, conection);
+                consulta.Parameters.AddWithValue("@id", experiencia.Id);
+                consulta.ExecuteNonQuery();
+
+
+                eliminada = true;
+            }
+            catch (SqlException e)
+            {
+                eliminada = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            catch (Exception e)
+            {
+                eliminada = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return eliminada;
+        }
+
         public bool readExperiencias(List<ENViajes> listaExperiencias)
         {
             bool leido = false;
