@@ -25,7 +25,7 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "Insert INTO [firstrow_].[dbo].[Experiencias] " +
+                string query = "Insert INTO [Experiencias] " +
                     "(nombre,titulo, descripcion, slug, pais," +
                     "empresa, precio, background, dias) " +
                     "VALUES " +
@@ -46,7 +46,7 @@ namespace library
 
                 foreach(ENImagenes imagen in experiencia.Imagenes)
                 {
-                    query = "Insert INTO [firstrow_].[dbo].[Imagenes] " +
+                    query = "Insert INTO [Imagenes] " +
                             "(name) " +
                             "VALUES " +
                             "(@name) " +
@@ -56,7 +56,7 @@ namespace library
                     int ultimoID_Imagen = Convert.ToInt32(consulta.ExecuteScalar());
 
 
-                    query = "Insert INTO [firstrow_].[dbo].[Experiencia_Imagenes] " +
+                    query = "Insert INTO [Experiencia_Imagenes] " +
                             "(id_Experiencia,id_Imagen) " +
                             "VALUES " +
                             "(@id_Experiencia,@id_Imagen)";
@@ -68,7 +68,7 @@ namespace library
 
                 foreach (ENDia etapa in experiencia.Etapas)
                 {
-                    query = "Insert INTO [firstrow_].[dbo].[Etapa] " +
+                    query = "Insert INTO [Etapa] " +
                             "(id_experiencia,titulo,nombre_etapa,descripcion,imagen) " +
                             "VALUES " +
                             "(@id_experiencia,@titulo,@nombre_etapa,@descripcion,@imagen)";
@@ -83,7 +83,7 @@ namespace library
 
                 foreach (ENIncluido incluido in experiencia.Incluidos)
                 {
-                    query = "Insert INTO [firstrow_].[dbo].[Experiencia_Incluido] " +
+                    query = "Insert INTO [Experiencia_Incluido] " +
                             "(id_experiencia,id_incluido) " +
                             "VALUES " +
                             "(@id_experiencia,@id_incluido)";
@@ -130,7 +130,7 @@ namespace library
                 connection = new SqlConnection(constring);
                 experiencias = new DataSet();
 
-                string query = "Select * From [firstrow_].[dbo].[Experiencias];";
+                string query = "Select * From [Experiencias];";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.Fill(experiencias, "Experiencias");
                 DataTable tableExperiencias = experiencias.Tables["Experiencias"];
@@ -154,7 +154,7 @@ namespace library
 
                     connectionSecundaria = new SqlConnection(constring);
                     experienciasSecundario = new DataSet();
-                    query = "Select * From [firstrow_].[dbo].[Paises] where id='" + experiencia.Pais.id + "'";
+                    query = "Select * From [Paises] where id='" + experiencia.Pais.id + "'";
                     SqlDataAdapter adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
                     adapterSecundario.Fill(experienciasSecundario, "Paises");
                     DataTable tablePaises= experienciasSecundario.Tables["Paises"];
@@ -166,7 +166,7 @@ namespace library
 
                     connectionSecundaria = new SqlConnection(constring);
                     experienciasSecundario = new DataSet();
-                    query = "Select * From [firstrow_].[dbo].[Etapa] where id_experiencia='" + experiencia.Id + "'";
+                    query = "Select * From [Etapa] where id_experiencia='" + experiencia.Id + "'";
                     adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
                     adapterSecundario.Fill(experienciasSecundario, "Etapa");
                     DataTable tableEtapa = experienciasSecundario.Tables["Etapa"];
@@ -188,8 +188,8 @@ namespace library
 
                     connectionSecundaria = new SqlConnection(constring);
                     experienciasSecundario = new DataSet();
-                    query = "Select * From [firstrow_].[dbo].[Experiencia_Incluido] e " +
-                    "inner join [firstrow_].[dbo].[Incluidos] i " +
+                    query = "Select * From [Experiencia_Incluido] e " +
+                    "inner join [Incluidos] i " +
                     "on i.id = e.id_incluido " +
                     "where id_experiencia = '" + experiencia.Id + "'";
                     adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
@@ -211,8 +211,8 @@ namespace library
 
                     connectionSecundaria = new SqlConnection(constring);
                     experienciasSecundario = new DataSet();
-                    query = "Select * From [firstrow_].[dbo].[Experiencia_Imagenes] e " +
-                        "inner join [firstrow_].[dbo].[Imagenes] i " +
+                    query = "Select * From [Experiencia_Imagenes] e " +
+                        "inner join [Imagenes] i " +
                         "on i.id = e.id_Imagen " +
                         "where id_experiencia = '" + experiencia.Id + "'";
                     adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
@@ -239,8 +239,8 @@ namespace library
 
                     connectionSecundaria = new SqlConnection(constring);
                     experienciasSecundario = new DataSet();
-                    query = "Select * From [firstrow_].[dbo].[Experiencia_Comentarios] e " +
-                        "inner join [firstrow_].[dbo].[Comentarios] i " +
+                    query = "Select * From [Experiencia_Comentarios] e " +
+                        "inner join [Comentarios] i " +
                         "on i.id = e.id_Comentario " +
                         "where id_experiencia = '" + experiencia.Id + "'";
                     adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
@@ -275,7 +275,10 @@ namespace library
             finally
             {
                 connection.Close();
-                connectionSecundaria.Close();
+                if(connectionSecundaria != null)
+                {
+                    connectionSecundaria.Close();
+                }
             }
 
             return leido;
@@ -295,7 +298,7 @@ namespace library
                 connection = new SqlConnection(constring);
                 experiencias = new DataSet();
 
-                string query = "Select * From [firstrow_].[dbo].[Experiencias] where pais='" + pais + "'";
+                string query = "Select * From [Experiencias] where pais='" + pais + "'";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.Fill(experiencias, "Experiencias");
                 DataTable tableExperiencias = experiencias.Tables["Experiencias"];
@@ -319,7 +322,7 @@ namespace library
 
                     connectionSecundaria = new SqlConnection(constring);
                     experienciasSecundario = new DataSet();
-                    query = "Select * From [firstrow_].[dbo].[Paises] where id='" + experiencia.Pais.id + "'";
+                    query = "Select * From [Paises] where id='" + experiencia.Pais.id + "'";
                     SqlDataAdapter adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
                     adapterSecundario.Fill(experienciasSecundario, "Paises");
                     DataTable tablePaises = experienciasSecundario.Tables["Paises"];
@@ -331,7 +334,7 @@ namespace library
 
                     connectionSecundaria = new SqlConnection(constring);
                     experienciasSecundario = new DataSet();
-                    query = "Select * From [firstrow_].[dbo].[Etapa] where id_experiencia='" + experiencia.Id + "'";
+                    query = "Select * From [Etapa] where id_experiencia='" + experiencia.Id + "'";
                     adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
                     adapterSecundario.Fill(experienciasSecundario, "Etapa");
                     DataTable tableEtapa = experienciasSecundario.Tables["Etapa"];
@@ -353,8 +356,8 @@ namespace library
 
                     connectionSecundaria = new SqlConnection(constring);
                     experienciasSecundario = new DataSet();
-                    query = "Select * From [firstrow_].[dbo].[Experiencia_Incluido] e " +
-                    "inner join [firstrow_].[dbo].[Incluidos] i " +
+                    query = "Select * From [Experiencia_Incluido] e " +
+                    "inner join [Incluidos] i " +
                     "on i.id = e.id_incluido " +
                     "where id_experiencia = '" + experiencia.Id + "'";
                     adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
@@ -376,8 +379,8 @@ namespace library
 
                     connectionSecundaria = new SqlConnection(constring);
                     experienciasSecundario = new DataSet();
-                    query = "Select * From [firstrow_].[dbo].[Experiencia_Imagenes] e " +
-                        "inner join [firstrow_].[dbo].[Imagenes] i " +
+                    query = "Select * From [Experiencia_Imagenes] e " +
+                        "inner join [Imagenes] i " +
                         "on i.id = e.id_Imagen " +
                         "where id_experiencia = '" + experiencia.Id + "'";
                     adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
@@ -400,8 +403,8 @@ namespace library
 
                     connectionSecundaria = new SqlConnection(constring);
                     experienciasSecundario = new DataSet();
-                    query = "Select * From [firstrow_].[dbo].[Experiencia_Comentarios] e " +
-                        "inner join [firstrow_].[dbo].[Comentarios] i " +
+                    query = "Select * From [Experiencia_Comentarios] e " +
+                        "inner join [Comentarios] i " +
                         "on i.id = e.id_Comentario " +
                         "where id_experiencia = '" + experiencia.Id + "'";
                     adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
@@ -447,6 +450,342 @@ namespace library
             return leido;
         }
 
+        public bool readExperienciasUsuario(List<ENViajes> listaExperiencias, string nickname)
+        {
+            bool leido = false;
+            SqlConnection connection = null;
+            DataSet experiencias = null;
+            SqlConnection connectionSecundaria = null;
+            DataSet experienciasSecundario = null;
+            ENViajes experiencia = null;
+
+            try
+            {
+                connection = new SqlConnection(constring);
+                experiencias = new DataSet();
+
+                string query = "Select * From [Experiencias] e "+
+                               "inner join Reservas r " +
+                               "on e.id = r.experiencia " +
+                               "where r.usuario = '"+nickname+"';";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.Fill(experiencias, "Experiencias");
+                DataTable tableExperiencias = experiencias.Tables["Experiencias"];
+                DataRow[] rowsExperiencias = tableExperiencias.Select();
+
+                for (int i = 0; i < rowsExperiencias.Length; i++)
+                {
+                    experiencia = new ENViajes();
+
+                    experiencia.Id = Int32.Parse(rowsExperiencias[i]["id"].ToString());
+                    experiencia.Nombre = rowsExperiencias[i]["nombre"].ToString();
+                    experiencia.Titulo = rowsExperiencias[i]["titulo"].ToString();
+                    experiencia.Descripcion = rowsExperiencias[i]["descripcion"].ToString();
+                    experiencia.Precio = Double.Parse(rowsExperiencias[i]["precio"].ToString());
+                    experiencia.Background = rowsExperiencias[i]["background"].ToString();
+                    experiencia.Dias = Int32.Parse(rowsExperiencias[i]["dias"].ToString());
+                    experiencia.Slug = rowsExperiencias[i]["slug"].ToString();
+                    experiencia.Pais.id = Int32.Parse(rowsExperiencias[i]["pais"].ToString());
+                    experiencia.Empresa.nickname = rowsExperiencias[i]["empresa"].ToString();
+
+
+                    connectionSecundaria = new SqlConnection(constring);
+                    experienciasSecundario = new DataSet();
+                    query = "Select * From [Paises] where id='" + experiencia.Pais.id + "'";
+                    SqlDataAdapter adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
+                    adapterSecundario.Fill(experienciasSecundario, "Paises");
+                    DataTable tablePaises = experienciasSecundario.Tables["Paises"];
+                    DataRow[] rowsPaises = tablePaises.Select();
+                    experiencia.Pais.id = Int32.Parse(rowsPaises[0]["id"].ToString());
+                    experiencia.Pais.name = rowsPaises[0]["name"].ToString();
+                    connectionSecundaria.Close();
+
+
+                    connectionSecundaria = new SqlConnection(constring);
+                    experienciasSecundario = new DataSet();
+                    query = "Select * From [Etapa] where id_experiencia='" + experiencia.Id + "'";
+                    adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
+                    adapterSecundario.Fill(experienciasSecundario, "Etapa");
+                    DataTable tableEtapa = experienciasSecundario.Tables["Etapa"];
+                    DataRow[] rowsEtapa = tableEtapa.Select();
+                    List<ENDia> etapas = new List<ENDia>();
+                    for (int j = 0; j < rowsEtapa.Length; j++)
+                    {
+                        ENDia etapa = new ENDia();
+                        etapa.Id = Int32.Parse(rowsEtapa[j]["id"].ToString());
+                        etapa.Titulo = rowsEtapa[j]["titulo"].ToString();
+                        etapa.Nombre = rowsEtapa[j]["nombre_etapa"].ToString();
+                        etapa.Descripcion = rowsEtapa[j]["descripcion"].ToString();
+                        etapa.Imagen = rowsEtapa[j]["imagen"].ToString();
+                        etapas.Add(etapa);
+                    }
+                    experiencia.Etapas = etapas;
+                    connectionSecundaria.Close();
+
+
+                    connectionSecundaria = new SqlConnection(constring);
+                    experienciasSecundario = new DataSet();
+                    query = "Select * From [Experiencia_Incluido] e " +
+                    "inner join [Incluidos] i " +
+                    "on i.id = e.id_incluido " +
+                    "where id_experiencia = '" + experiencia.Id + "'";
+                    adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
+                    adapterSecundario.Fill(experienciasSecundario, "Experiencia_Incluido");
+                    DataTable tableExperiencia_Incluido = experienciasSecundario.Tables["Experiencia_Incluido"];
+                    DataRow[] rowsExperiencia_Incluido = tableExperiencia_Incluido.Select();
+                    List<ENIncluido> incluidos = new List<ENIncluido>();
+                    for (int j = 0; j < rowsExperiencia_Incluido.Length; j++)
+                    {
+                        ENIncluido incluido = new ENIncluido();
+                        incluido.Id = Int32.Parse(rowsExperiencia_Incluido[j]["id"].ToString());
+                        incluido.Titulo = rowsExperiencia_Incluido[j]["titulo"].ToString();
+                        incluido.Descripcion = rowsExperiencia_Incluido[j]["descripcion"].ToString();
+                        incluidos.Add(incluido);
+                    }
+                    experiencia.Incluidos = incluidos;
+                    connectionSecundaria.Close();
+
+
+                    connectionSecundaria = new SqlConnection(constring);
+                    experienciasSecundario = new DataSet();
+                    query = "Select * From [Experiencia_Imagenes] e " +
+                        "inner join [Imagenes] i " +
+                        "on i.id = e.id_Imagen " +
+                        "where id_experiencia = '" + experiencia.Id + "'";
+                    adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
+                    adapterSecundario.Fill(experienciasSecundario, "Experiencia_Imagenes");
+                    DataTable tableExperiencia_Imagenes = experienciasSecundario.Tables["Experiencia_Imagenes"];
+                    DataRow[] rowsExperiencia_Imagenes = tableExperiencia_Imagenes.Select();
+                    List<ENImagenes> imagenes = new List<ENImagenes>();
+                    for (int j = 0; j < rowsExperiencia_Imagenes.Length; j++)
+                    {
+                        ENImagenes imagen = new ENImagenes();
+                        imagen.Id = Int32.Parse(rowsExperiencia_Imagenes[j]["id"].ToString());
+                        imagen.Name = rowsExperiencia_Imagenes[j]["name"].ToString();
+                        imagen.Mode = Int32.Parse(rowsExperiencia_Imagenes[j]["mode"].ToString());
+                        imagenes.Add(imagen);
+                    }
+                    experiencia.Imagenes = imagenes;
+                    connectionSecundaria.Close();
+
+
+
+                    connectionSecundaria = new SqlConnection(constring);
+                    experienciasSecundario = new DataSet();
+                    query = "Select * From [Experiencia_Comentarios] e " +
+                        "inner join [Comentarios] i " +
+                        "on i.id = e.id_Comentario " +
+                        "where id_experiencia = '" + experiencia.Id + "'";
+                    adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
+                    adapterSecundario.Fill(experienciasSecundario, "Experiencia_Comentarios");
+                    DataTable tableExperiencia_Comentarios = experienciasSecundario.Tables["Experiencia_Comentarios"];
+                    DataRow[] rowsExperiencia_Comentarios = tableExperiencia_Comentarios.Select();
+                    List<ENComentarios> comentarios = new List<ENComentarios>();
+                    for (int j = 0; j < rowsExperiencia_Comentarios.Length; j++)
+                    {
+                        ENComentarios comentario = new ENComentarios();
+                        comentario.Id = Int32.Parse(rowsExperiencia_Comentarios[j]["id"].ToString());
+                        comentario.Texto = rowsExperiencia_Comentarios[j]["texto"].ToString();
+                        comentario.Estrellas = Int32.Parse(rowsExperiencia_Comentarios[j]["estrellas"].ToString());
+                        ENUsuario usuario = new ENUsuario();
+                        usuario.nickname = rowsExperiencia_Comentarios[j]["nickname"].ToString();
+                        usuario.readUsuario();
+                        comentario.Usuario = usuario;
+                        comentarios.Add(comentario);
+                    }
+                    experiencia.Comentarios = comentarios;
+                    connectionSecundaria.Close();
+
+                    listaExperiencias.Add(experiencia);
+                }
+
+            }
+            catch (DataException e)
+            {
+                Console.WriteLine(e.Message);
+                leido = false;
+            }
+            finally
+            {
+                connection.Close();
+
+                if (connectionSecundaria != null)
+                {
+                    connectionSecundaria.Close();
+                }
+
+            }
+
+            return leido;
+        }
+
+        public bool readExperienciasEmpresa(List<ENViajes> listaExperiencias, string nickname)
+        {
+            bool leido = false;
+            SqlConnection connection = null;
+            DataSet experiencias = null;
+            SqlConnection connectionSecundaria = null;
+            DataSet experienciasSecundario = null;
+            ENViajes experiencia = null;
+
+            try
+            {
+                connection = new SqlConnection(constring);
+                experiencias = new DataSet();
+
+                string query = "Select * From [Experiencias] " +
+                               "where empresa = '" + nickname + "';";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.Fill(experiencias, "Experiencias");
+                DataTable tableExperiencias = experiencias.Tables["Experiencias"];
+                DataRow[] rowsExperiencias = tableExperiencias.Select();
+
+                for (int i = 0; i < rowsExperiencias.Length; i++)
+                {
+                    experiencia = new ENViajes();
+
+                    experiencia.Id = Int32.Parse(rowsExperiencias[i]["id"].ToString());
+                    experiencia.Nombre = rowsExperiencias[i]["nombre"].ToString();
+                    experiencia.Titulo = rowsExperiencias[i]["titulo"].ToString();
+                    experiencia.Descripcion = rowsExperiencias[i]["descripcion"].ToString();
+                    experiencia.Precio = Double.Parse(rowsExperiencias[i]["precio"].ToString());
+                    experiencia.Background = rowsExperiencias[i]["background"].ToString();
+                    experiencia.Dias = Int32.Parse(rowsExperiencias[i]["dias"].ToString());
+                    experiencia.Slug = rowsExperiencias[i]["slug"].ToString();
+                    experiencia.Pais.id = Int32.Parse(rowsExperiencias[i]["pais"].ToString());
+                    experiencia.Empresa.nickname = rowsExperiencias[i]["empresa"].ToString();
+
+
+                    connectionSecundaria = new SqlConnection(constring);
+                    experienciasSecundario = new DataSet();
+                    query = "Select * From [Paises] where id='" + experiencia.Pais.id + "'";
+                    SqlDataAdapter adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
+                    adapterSecundario.Fill(experienciasSecundario, "Paises");
+                    DataTable tablePaises = experienciasSecundario.Tables["Paises"];
+                    DataRow[] rowsPaises = tablePaises.Select();
+                    experiencia.Pais.id = Int32.Parse(rowsPaises[0]["id"].ToString());
+                    experiencia.Pais.name = rowsPaises[0]["name"].ToString();
+                    connectionSecundaria.Close();
+
+
+                    connectionSecundaria = new SqlConnection(constring);
+                    experienciasSecundario = new DataSet();
+                    query = "Select * From [Etapa] where id_experiencia='" + experiencia.Id + "'";
+                    adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
+                    adapterSecundario.Fill(experienciasSecundario, "Etapa");
+                    DataTable tableEtapa = experienciasSecundario.Tables["Etapa"];
+                    DataRow[] rowsEtapa = tableEtapa.Select();
+                    List<ENDia> etapas = new List<ENDia>();
+                    for (int j = 0; j < rowsEtapa.Length; j++)
+                    {
+                        ENDia etapa = new ENDia();
+                        etapa.Id = Int32.Parse(rowsEtapa[j]["id"].ToString());
+                        etapa.Titulo = rowsEtapa[j]["titulo"].ToString();
+                        etapa.Nombre = rowsEtapa[j]["nombre_etapa"].ToString();
+                        etapa.Descripcion = rowsEtapa[j]["descripcion"].ToString();
+                        etapa.Imagen = rowsEtapa[j]["imagen"].ToString();
+                        etapas.Add(etapa);
+                    }
+                    experiencia.Etapas = etapas;
+                    connectionSecundaria.Close();
+
+
+                    connectionSecundaria = new SqlConnection(constring);
+                    experienciasSecundario = new DataSet();
+                    query = "Select * From [Experiencia_Incluido] e " +
+                    "inner join [Incluidos] i " +
+                    "on i.id = e.id_incluido " +
+                    "where id_experiencia = '" + experiencia.Id + "'";
+                    adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
+                    adapterSecundario.Fill(experienciasSecundario, "Experiencia_Incluido");
+                    DataTable tableExperiencia_Incluido = experienciasSecundario.Tables["Experiencia_Incluido"];
+                    DataRow[] rowsExperiencia_Incluido = tableExperiencia_Incluido.Select();
+                    List<ENIncluido> incluidos = new List<ENIncluido>();
+                    for (int j = 0; j < rowsExperiencia_Incluido.Length; j++)
+                    {
+                        ENIncluido incluido = new ENIncluido();
+                        incluido.Id = Int32.Parse(rowsExperiencia_Incluido[j]["id"].ToString());
+                        incluido.Titulo = rowsExperiencia_Incluido[j]["titulo"].ToString();
+                        incluido.Descripcion = rowsExperiencia_Incluido[j]["descripcion"].ToString();
+                        incluidos.Add(incluido);
+                    }
+                    experiencia.Incluidos = incluidos;
+                    connectionSecundaria.Close();
+
+
+                    connectionSecundaria = new SqlConnection(constring);
+                    experienciasSecundario = new DataSet();
+                    query = "Select * From [Experiencia_Imagenes] e " +
+                        "inner join [Imagenes] i " +
+                        "on i.id = e.id_Imagen " +
+                        "where id_experiencia = '" + experiencia.Id + "'";
+                    adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
+                    adapterSecundario.Fill(experienciasSecundario, "Experiencia_Imagenes");
+                    DataTable tableExperiencia_Imagenes = experienciasSecundario.Tables["Experiencia_Imagenes"];
+                    DataRow[] rowsExperiencia_Imagenes = tableExperiencia_Imagenes.Select();
+                    List<ENImagenes> imagenes = new List<ENImagenes>();
+                    for (int j = 0; j < rowsExperiencia_Imagenes.Length; j++)
+                    {
+                        ENImagenes imagen = new ENImagenes();
+                        imagen.Id = Int32.Parse(rowsExperiencia_Imagenes[j]["id"].ToString());
+                        imagen.Name = rowsExperiencia_Imagenes[j]["name"].ToString();
+                        imagen.Mode = Int32.Parse(rowsExperiencia_Imagenes[j]["mode"].ToString());
+                        imagenes.Add(imagen);
+                    }
+                    experiencia.Imagenes = imagenes;
+                    connectionSecundaria.Close();
+
+
+
+                    connectionSecundaria = new SqlConnection(constring);
+                    experienciasSecundario = new DataSet();
+                    query = "Select * From [Experiencia_Comentarios] e " +
+                        "inner join [Comentarios] i " +
+                        "on i.id = e.id_Comentario " +
+                        "where id_experiencia = '" + experiencia.Id + "'";
+                    adapterSecundario = new SqlDataAdapter(query, connectionSecundaria);
+                    adapterSecundario.Fill(experienciasSecundario, "Experiencia_Comentarios");
+                    DataTable tableExperiencia_Comentarios = experienciasSecundario.Tables["Experiencia_Comentarios"];
+                    DataRow[] rowsExperiencia_Comentarios = tableExperiencia_Comentarios.Select();
+                    List<ENComentarios> comentarios = new List<ENComentarios>();
+                    for (int j = 0; j < rowsExperiencia_Comentarios.Length; j++)
+                    {
+                        ENComentarios comentario = new ENComentarios();
+                        comentario.Id = Int32.Parse(rowsExperiencia_Comentarios[j]["id"].ToString());
+                        comentario.Texto = rowsExperiencia_Comentarios[j]["texto"].ToString();
+                        comentario.Estrellas = Int32.Parse(rowsExperiencia_Comentarios[j]["estrellas"].ToString());
+                        ENUsuario usuario = new ENUsuario();
+                        usuario.nickname = rowsExperiencia_Comentarios[j]["nickname"].ToString();
+                        usuario.readUsuario();
+                        comentario.Usuario = usuario;
+                        comentarios.Add(comentario);
+                    }
+                    experiencia.Comentarios = comentarios;
+                    connectionSecundaria.Close();
+
+                    listaExperiencias.Add(experiencia);
+                }
+
+            }
+            catch (DataException e)
+            {
+                Console.WriteLine(e.Message);
+                leido = false;
+            }
+            finally
+            {
+                connection.Close();
+
+                if (connectionSecundaria != null)
+                {
+                    connectionSecundaria.Close();
+                }
+
+            }
+
+            return leido;
+        }
+
         public bool readExperiencia(ENViajes experiencia)
         {
 
@@ -460,7 +799,7 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "Select * From [firstrow_].[dbo].[Experiencias] where slug = @slug";
+                string query = "Select * From [Experiencias] where slug = @slug";
                 SqlCommand consulta = new SqlCommand(query, conection);
                 consulta.Parameters.AddWithValue("@slug", experiencia.Slug);
                 busqueda = consulta.ExecuteReader();
@@ -487,7 +826,7 @@ namespace library
 
                     conectionSecundario = new SqlConnection(constring);
                     conectionSecundario.Open();
-                    string querySecundaria = "Select * From [firstrow_].[dbo].[Paises] where ID = @id";
+                    string querySecundaria = "Select * From [Paises] where ID = @id";
                     SqlCommand consultaSecundaria = new SqlCommand(querySecundaria, conectionSecundario);
                     consultaSecundaria.Parameters.AddWithValue("@id", Int32.Parse(busqueda["pais"].ToString()));
                     busquedaSecundaria = consultaSecundaria.ExecuteReader();
@@ -501,7 +840,7 @@ namespace library
                     // Lectura de estapas de experiencia
 
                     List<ENDia> etapas = new List<ENDia>();
-                    querySecundaria = "Select * From [firstrow_].[dbo].[Etapa] where id_experiencia = @id_experiencia";
+                    querySecundaria = "Select * From [Etapa] where id_experiencia = @id_experiencia";
                     consultaSecundaria = new SqlCommand(querySecundaria, conectionSecundario);
                     consultaSecundaria.Parameters.AddWithValue("@id_experiencia", experiencia.Id);
                     busquedaSecundaria = consultaSecundaria.ExecuteReader();
@@ -523,8 +862,8 @@ namespace library
                     // Lectura de incluidos de experiencia
 
                     List<ENIncluido> incluidos = new List<ENIncluido>();
-                    querySecundaria = "Select * From [firstrow_].[dbo].[Experiencia_Incluido] e " +
-                    "inner join [firstrow_].[dbo].[Incluidos] i " +
+                    querySecundaria = "Select * From [Experiencia_Incluido] e " +
+                    "inner join [Incluidos] i " +
                     "on i.id = e.id_incluido " +
                     "where id_experiencia = @id_experiencia";
                     consultaSecundaria = new SqlCommand(querySecundaria, conectionSecundario);
@@ -546,8 +885,8 @@ namespace library
                     // Lectura de imagenes de experiencia
 
                     List<ENImagenes> imagenes = new List<ENImagenes>();
-                    querySecundaria = "Select * From [firstrow_].[dbo].[Experiencia_Imagenes] e " +
-                    "inner join [firstrow_].[dbo].[Imagenes] i " +
+                    querySecundaria = "Select * From [Experiencia_Imagenes] e " +
+                    "inner join [Imagenes] i " +
                     "on i.id = e.id_Imagen " +
                     "where id_experiencia = @id_experiencia";
                     consultaSecundaria = new SqlCommand(querySecundaria, conectionSecundario);
@@ -569,8 +908,8 @@ namespace library
                     // Lectura de comentarios de experiencia
 
                     List<ENComentarios> comentarios = new List<ENComentarios>();
-                    querySecundaria = "Select * From [firstrow_].[dbo].[Experiencia_Comentarios] e " +
-                    "inner join [firstrow_].[dbo].[Comentarios] i " +
+                    querySecundaria = "Select * From [Experiencia_Comentarios] e " +
+                    "inner join [Comentarios] i " +
                     "on i.id = e.id_Comentario " +
                     "where id_experiencia = @id_experiencia";
                     consultaSecundaria = new SqlCommand(querySecundaria, conectionSecundario);

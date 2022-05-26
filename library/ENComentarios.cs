@@ -34,24 +34,22 @@ namespace library
             _Estrellas = estrellas;
             _Usuario = usuario;
         }
-        public void InsertarComentario()
+        public void InsertarComentario(int id, bool mode)
         {
-            CADComentarios insertComennt = new CADComentarios();
-            insertComennt.InsertComennt(this);
+            CADComentarios comentario = new CADComentarios();
+            comentario.InsertComennt(this,id,mode);
+        }
+
+        public bool ReadComentario()
+        {
+            CADComentarios comentario = new CADComentarios();
+            return comentario.readComentario(this);
         }
 
         public void BorrarComentario()
         {
-            CADComentarios deleteComennt = new CADComentarios();
-            deleteComennt.DeleteComennt(this);
-        }
-
-        public void MostrarComentarios()
-        {
-            List <ENComentarios> a =  new List<ENComentarios>();
-
-            CADComentarios showComennt = new CADComentarios();
-            showComennt.ShowComennts(this);
+            CADComentarios comentario = new CADComentarios();
+            comentario.DeleteComennt(this);
         }
     }
 }

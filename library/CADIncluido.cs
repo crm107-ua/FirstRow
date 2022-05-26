@@ -26,7 +26,7 @@ namespace library
             {
                 c = new SqlConnection(constring);
                 DataSet bd = new DataSet();
-                SqlDataAdapter da = new SqlDataAdapter("select * from [firstrow_].[dbo].[Incluidos]", c);
+                SqlDataAdapter da = new SqlDataAdapter("select * from [Incluidos]", c);
                 da.Fill(bd, "Incluidos");
                 return bd;
             }

@@ -14,12 +14,19 @@
             <div class="wrap">
                 <div class="wrap_float">
                     <div class="gallery-page-head">
+<<<<<<< HEAD
                         <h1 class="title">
                                 Galería
                         </h1>
                         <p class="subtitle" style="color:white;">
                             Imágenes que definen nuestro mundo
                         </p>
+=======
+                        <asp:Label ID="Title_gal" runat="server" class="title" Text=""></asp:Label>
+                        <div>
+                        <asp:Label ID="Description_gal" runat="server" class="subtitle" Text=""></asp:Label>
+                            </div>
+>>>>>>> develop
                         <div class="select_wrap">
                             <asp:DropDownList ID="Direccion" runat="server" OnSelectedIndexChanged="Direccion_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                         </div>

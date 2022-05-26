@@ -13,7 +13,7 @@
 </head>  
 
 <body>
-    <form id="WhiteMaster" runat="server" enctype="multipart/form-data" method="post">
+    <form id="user_stories_form" runat="server" enctype="multipart/form-data" method="post">
     <div class="container">
         <div class="top_panel">
             <div class="wrap">
@@ -55,6 +55,7 @@
                                             <li id="register_sect" runat="server"><a id="register_user_pop_up" class="js-popup-open" data-href="#registration">Registrarse</a></li>
                                             <li id="settings_sect" runat="server"><a id="settings_user_pop_up" class="js-popup-open" data-href="#profile-setting">Ajustes</a></li>
                                             <li id="settings_emp_sect" runat="server"><a id="settings_emp_pop_up"  class="js-popup-open" data-href="#empresa-setting">Ajustes de empresa</a></li> 
+                                            <li id="perfil_li" runat="server"><a id="perfil_a" href="/perfil">Tu cuenta</a></li> 
                                             <li id="logout_sect" runat="server"><a class="js-popup-open" data-href="#logout">Cerrar sesion</a></li>
                                         </ul>
                                             <%-- Elementos ocultos --%>
@@ -68,8 +69,14 @@
                 </div>
             </div>
         </div>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" ScriptMode="Release">
+        </asp:ScriptManager>
         <div class="stories_page" id="stories_page">
-            <a href="/agregar-story" class="right_btn" runat="server" id="crear_story">Crear Story</a>
+            <a href="/agregar-story" class="right_btn" runat="server" id="crear_story"
+                style=" width: 150px; " >Crear Story</a>
+            <asp:Button ID="borrar_story" CssClass="right_btn" runat="server" Text="Borrar Story" OnClick="eliminarStory"
+                style=" width: 150px; margin-bottom: 60px; " />
+            <ajaxToolkit:ConfirmButtonExtender ID="confirm_delete" ConfirmText="¿Desea eliminar la story?" TargetControlID="borrar_story" runat="server"></ajaxToolkit:ConfirmButtonExtender>
             <div class="left_bottom_title" id="left_bottom_title" runat="server"
                  style="position: absolute;
                         z-index: 2;
@@ -88,8 +95,30 @@
             <div class="stories_page_wrap">
                 <div class="stories_box" id="stories_box">
                     <div class="arrows">
-                        <div class="arrow prev disabled"></div>
-                        <div class="arrow next"></div>
+                        <div class="arrow prev disabled" onclick="prev_id()"></div>
+                        <div class="arrow next" onclick="next_id()"></div>
+                        <asp:HiddenField runat="server" id="story_id_hidden" Value="1" />
+                    
+                        <script type="text/javascript">
+                            function next_id() {
+                                let oldId = user_stories_form.story_id_hidden.value;
+                                if (!isNaN(oldId)) {
+                                    var newId = !isNaN(oldId) ? parseInt(oldId, 10) : 0;
+                                    newId = newId + 1;
+                                    user_stories_form.story_id_hidden.value = newId;
+                                }
+                            }
+
+                            function prev_id() {
+                                let oldId = user_stories_form.story_id_hidden.value;
+                                if (!isNaN(oldId)) {
+                                    var newId = !isNaN(oldId) ? parseInt(oldId, 10) : 0;
+                                    newId = newId - 1;
+                                    user_stories_form.story_id_hidden.value = newId;
+                                }
+                            }
+                        </script>
+
                     </div>
                     <div class="items stories_items" id="stories_items" runat="server">
                         
@@ -116,7 +145,7 @@
                     </div>
                     <div class="story_info">
                         <div class="counter" id="stories-counter">
-                            <span class="this">1</span> / <span class="all"></span>
+                            <span class="this" id="story_id_span" name="loquetuquieras" runat="server">1</span> / <span class="all"></span>
                         </div>
                     </div>
                 </div>

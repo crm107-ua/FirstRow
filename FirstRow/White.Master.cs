@@ -24,7 +24,7 @@ namespace FirstRow
             ENUsuario usuario = new ENUsuario();
             usuario.nickname = registro_nickname.Text;
             usuario.email = registro_email.Text;
-            usuario.password = password_r_1.Text;
+            usuario.password =  EncodePasswordToBase64(password_r_1.Text);
             usuario.image = guardadoFotoPerfil(true, usuario.nickname);
             usuario.background_image = "bg_default.png";
             usuario.name = registro_nombre.Text;
@@ -51,7 +51,7 @@ namespace FirstRow
             ENEmpresa empresa = new ENEmpresa();
             empresa.nickname = registro_emp_nickname.Text;
             empresa.email = registro_emp_email.Text;
-            empresa.password = password_emp_r_1.Text;
+            empresa.password =EncodePasswordToBase64( password_emp_r_1.Text);
             empresa.image = guardadoFotoPerfil(false, empresa.nickname);
             empresa.background_image = "bg_default.png";
             empresa.name = registro_emp_nombre.Text;
@@ -84,7 +84,7 @@ namespace FirstRow
         {
             ENUsuario usuario = new ENUsuario();
             usuario.nickname = nickname.Text;
-            usuario.password = password.Text;
+            usuario.password =EncodePasswordToBase64(password.Text);
 
             vaciadoCampos();
 
@@ -105,7 +105,7 @@ namespace FirstRow
         {
             ENEmpresa empresa = new ENEmpresa();
             empresa.email = login_email_empresa.Text;
-            empresa.password = login_password_empresa.Text;
+            empresa.password =EncodePasswordToBase64( login_password_empresa.Text);
 
             vaciadoCampos();
 
@@ -129,7 +129,7 @@ namespace FirstRow
 
             usuario.nickname = usuarioSesion.nickname;
             usuario.email = email_setting.Text;
-            usuario.password = password_1_setting.Text;
+            usuario.password =EncodePasswordToBase64(password_1_setting.Text);
             usuario.image = modificarFotoPerfil(true, usuarioSesion.nickname, usuarioSesion.image);
             usuario.background_image = "bg_default.png";
             usuario.name = name_setting.Text;
@@ -162,7 +162,7 @@ namespace FirstRow
 
             empresa.nickname = empresaSesion.nickname;
             empresa.email = empresaSesion.email;
-            empresa.password = ajustes_password_1_empresa.Text;
+            empresa.password =EncodePasswordToBase64(ajustes_password_1_empresa.Text);
             empresa.image = modificarFotoPerfil(false, empresaSesion.nickname, empresaSesion.image);
             empresa.background_image = "bg_default.png";
             empresa.name = ajustes_nombre_empresa.Text;
@@ -203,7 +203,7 @@ namespace FirstRow
 
         private string guardadoFotoPerfil(bool mode, string nickname)
         {
-            string direccion = "~/Media/Users/";
+            string direccion = "/Media/Users/";
 
             if (mode)
             {
@@ -231,7 +231,7 @@ namespace FirstRow
 
         private string modificarFotoPerfil(bool mode, string nickname, string deff)
         {
-            string direccion = "~/Media/Users/";
+            string direccion = "/Media/Users/";
 
             if (mode)
             {
@@ -271,8 +271,8 @@ namespace FirstRow
 
                     email_setting.Text = usuario.email;
                     name_setting.Text = usuario.name;
-                    password_1_setting.Text = usuario.password;
-                    password_2_setting.Text = usuario.password;
+                    password_1_setting.Text =DecodeFrom64( usuario.password);
+                    password_2_setting.Text =DecodeFrom64( usuario.password);
                     firstname_setting.Text = usuario.firstname;
                     secondname_setting.Text = usuario.secondname;
                     facebook_setting.Text = usuario.facebook;
@@ -297,8 +297,8 @@ namespace FirstRow
                     }
 
                     listaPaises_ajustes_empresa.SelectedIndex = paises.Count - empresa.pais.id;
-                    ajustes_password_1_empresa.Text = empresa.password;
-                    ajustes_password_2_empresa.Text = empresa.password;
+                    ajustes_password_1_empresa.Text =DecodeFrom64( empresa.password);
+                    ajustes_password_2_empresa.Text =DecodeFrom64( empresa.password);
                     ajustes_nombre_empresa.Text = empresa.name;
                     ajustes_apellido_1_empresa.Text = empresa.firstname;
                     ajustes_apellido_2_empresa.Text = empresa.secondname;
@@ -402,5 +402,34 @@ namespace FirstRow
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
             }
         }
+<<<<<<< HEAD
+=======
+        public static string EncodePasswordToBase64(string password)
+        {
+            try
+            {
+                byte[] encData_byte = new byte[password.Length];
+                encData_byte = System.Text.Encoding.UTF8.GetBytes(password);
+                string encodedData = Convert.ToBase64String(encData_byte);
+                return encodedData;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error in base64Encode" + ex.Message);
+            }
+        }
+
+        public static string DecodeFrom64(string encodedData)
+        {
+            System.Text.UTF8Encoding encoder = new System.Text.UTF8Encoding();
+            System.Text.Decoder utf8Decode = encoder.GetDecoder();
+            byte[] todecode_byte = Convert.FromBase64String(encodedData);
+            int charCount = utf8Decode.GetCharCount(todecode_byte, 0, todecode_byte.Length);
+            char[] decoded_char = new char[charCount];
+            utf8Decode.GetChars(todecode_byte, 0, todecode_byte.Length, decoded_char, 0);
+            string result = new String(decoded_char);
+            return result;
+        }
+>>>>>>> develop
     }
 }

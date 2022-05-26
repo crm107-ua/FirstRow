@@ -25,7 +25,7 @@ namespace library
             try
             {
                 connection.Open();
-                string comando = "insert into [firstrow_].[dbo].[Imagenes]" +
+                string comando = "insert into [Imagenes]" +
                     " (name, mode) values (@name,@mode); " +
                     "select SCOPE_IDENTITY();";
                 

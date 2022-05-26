@@ -26,7 +26,7 @@ namespace library
             {
                 c = new SqlConnection(constring);
                 DataSet bd = new DataSet();
-                SqlDataAdapter da = new SqlDataAdapter("select * from [firstrow_].[dbo].[Reservas]", c);
+                SqlDataAdapter da = new SqlDataAdapter("select * from [Reservas]", c);
                 da.Fill(bd, "Reserva");
                 return bd;
             }
@@ -59,13 +59,17 @@ namespace library
 
                 if (mode)
                 {
-                    query = "Select * From [firstrow_].[dbo].[Reservas] where id = @id";
+                    query = "Select * From [Reservas] where id = @id";
                     consulta = new SqlCommand(query, conection);
                     consulta.Parameters.AddWithValue("@id", reserva.id);
                 }
                 else
                 {
+<<<<<<< HEAD
                     query = "Select * From [firstrow_].[dbo].[Reservas] where id = @id";
+=======
+                    query = "Select * From [Reservas] where id = @id";
+>>>>>>> develop
                     consulta = new SqlCommand(query, conection);
                     consulta.Parameters.AddWithValue("@id", reserva.id);
                 }
@@ -109,6 +113,7 @@ namespace library
             return true;
         }
 
+<<<<<<< HEAD
         internal bool readReservas(List<ENViajes> reservasEmpresa, string empresa)
         {
 
@@ -117,11 +122,24 @@ namespace library
             DataSet reservas = null;
             ENReserva reserva;
 
+=======
+        internal DataTable readReservasEmpresa(string empresa)
+        {
+            SqlConnection connection = null;
+            DataSet reservas = null;
+            DataTable tablaReservas = null;
+
+>>>>>>> develop
             try
             {
                 connection = new SqlConnection(constring);
                 reservas = new DataSet();
+<<<<<<< HEAD
                 string query = "Select * From [firstrow_].[dbo].[Reservas] r " +
+=======
+                string query = "Select r.id,r.nombre,r.descripcion,r.experiencia,r.fechaEntrada,r.fechaSalida,r.usuario, r.precio_asignado, r.personas " +
+                               "From [Reservas] r " +
+>>>>>>> develop
                                "inner join Experiencias ex " +
                                "on ex.id = r.experiencia " +
                                "inner join Empresas emp " +
@@ -129,6 +147,7 @@ namespace library
                                "where emp.nickname = " + empresa + ";";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 adapter.Fill(reservas, "Reservas");
+<<<<<<< HEAD
                 DataTable tableReservas = reservas.Tables["Reservas"];
                 DataRow[] rowsReservas = tableReservas.Select();
 
@@ -136,18 +155,65 @@ namespace library
                 {
                     reserva = new ENReserva();
                 }
+=======
+                tablaReservas = reservas.Tables["Reservas"];
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.Message);
+>>>>>>> develop
             }
             catch (DataException e)
             {
                 Console.WriteLine(e.Message);
+<<<<<<< HEAD
                 leido = false;
+=======
+>>>>>>> develop
             }
             finally
             {
                 connection.Close();
             }
 
+<<<<<<< HEAD
             return leido;
+=======
+            return tablaReservas;
+        }
+
+        internal DataTable readReservasUsuario(ENUsuario usuario)
+        {
+            SqlConnection connection = null;
+            DataSet reservas = null;
+            DataTable tablaReservas = null;
+
+            try
+            {
+                connection = new SqlConnection(constring);
+                reservas = new DataSet();
+                string query = "Select r.id,r.nombre,r.descripcion,r.experiencia,r.fechaEntrada,r.fechaSalida,r.usuario, r.precio_asignado, r.personas " +
+                               "From [Reservas] r " +
+                               "where usuario = '" + usuario.nickname + "';";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.Fill(reservas, "ReservasUsuario");
+                tablaReservas = reservas.Tables["ReservasUsuario"];
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (DataException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return tablaReservas;
+>>>>>>> develop
         }
 
         internal bool registerReserva(ENReserva reserva)
@@ -161,11 +227,28 @@ namespace library
                 try
                 {
                     connection.Open();
+<<<<<<< HEAD
                     string query = "INSERT INTO [firstrow_].[dbo].[Reservas] " +
                         "(id, nombre, descripcion, experiencia, fechaEntrada, fechaSalida, usuario, precio_asignado, personas, numero) VALUES " +
                         $"({reserva.id}, {reserva.usuario.name}, {reserva.descripcion},{reserva.experiencia.Id},{reserva.fechaEntrada.ToString()},{reserva.fechaSalida.ToString()},{reserva.usuario.nickname},{reserva.precio},{reserva.personas},{reserva.telefono})";
+=======
+                    string query = "INSERT INTO [Reservas] " +
+                        "(nombre, descripcion, experiencia, fechaEntrada, fechaSalida, usuario, precio_asignado, personas, numero) VALUES " +
+                        "(@name, @descripcion,@experiencia,@fechaEntrada, @fechaSalida,@usuario,@precio,@nPersonas,@telefono)";
+>>>>>>> develop
 
                     SqlCommand com = new SqlCommand(query, connection);
+                    com.Parameters.AddWithValue("@name", reserva.usuario.name);
+                    com.Parameters.AddWithValue("@descripcion", reserva.descripcion);
+                    com.Parameters.AddWithValue("@experiencia", reserva.experiencia.Id);
+                    com.Parameters.AddWithValue("@fechaEntrada", reserva.fechaEntrada.ToString("yyyy-MM-dd HH:mm:ss.ffffff"));
+                    com.Parameters.AddWithValue("@fechaSalida", reserva.fechaSalida.ToString("yyyy-MM-dd HH:mm:ss.ffffff"));
+                    com.Parameters.AddWithValue("@usuario", reserva.usuario.nickname);
+                    com.Parameters.AddWithValue("@precio", reserva.precio);
+                    com.Parameters.AddWithValue("@nPersonas", reserva.personas);
+                    com.Parameters.AddWithValue("@telefono", reserva.telefono);
+
+
                     com.ExecuteNonQuery();
                     created = true;
                 }
@@ -194,13 +277,52 @@ namespace library
             return creado;
         }
 
+        internal DataTable readTopClientesEmpresa(ENEmpresa empresa)
+        {
+            SqlConnection connection = null;
+            DataSet clientes = null;
+            DataTable tablaReservas = null;
+
+            try
+            {
+                connection = new SqlConnection(constring);
+                clientes = new DataSet();
+                string query = "select top 3 count(u.nickname) as TotalReservas, " +
+                               "u.nickname, u.email, u.name, u.firstname, u.secondname, u.facebook, u.twitter " +
+                               "from Usuarios u " +
+                               "inner join Reservas r " +
+                               "on u.nickname = r.usuario " +
+                               "inner join Experiencias e " +
+                               "on r.experiencia = e.id " +
+                               "where e.empresa='" + empresa.nickname+ "' " +
+                               "group by u.nickname, u.email, u.name, u.firstname, u.secondname, u.facebook, u.twitter " +
+                               "order by TotalReservas desc;";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.Fill(clientes, "Clientes");
+                tablaReservas = clientes.Tables["Clientes"];
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (DataException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return tablaReservas;
+        }
+
         internal bool deleteReserva(ENReserva reserva)
         {
 
             bool deleted = false;
             return deleted;
-
-
         }
     }
 

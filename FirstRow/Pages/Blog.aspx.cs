@@ -251,5 +251,25 @@ namespace FirstRow.Pages
                 listaCategorias.Controls.Add(li);
             }
         }
+<<<<<<< HEAD
+=======
+
+        protected void experiencia_comentar_Click(object sender, EventArgs e)
+        {
+            
+            ENComentarios eNComentarios = new ENComentarios();
+            eNComentarios.Estrellas = comentario_raing.CurrentRating;
+            eNComentarios.Texto = create_comentario.Text.Trim();
+            eNComentarios.Usuario = (ENUsuario)Session["usuario"];
+            ENBlog blog = new ENBlog();
+            blog.Slug = RouteData.Values["slug"].ToString();
+            blog.mostrarBlog();
+
+            eNComentarios.InsertarComentario(blog.Id, true);
+            
+        }
+
+        protected void blog_raing_Changed(object sender, AjaxControlToolkit.RatingEventArgs e) { }
+>>>>>>> develop
     }
 }

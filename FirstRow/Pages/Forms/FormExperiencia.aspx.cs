@@ -106,10 +106,6 @@ namespace FirstRow.Pages.Forms
                     etapas[i].Imagen = imagen;
                     imagenes_etapas.SaveAs(Server.MapPath("~/Media/Etapas/") + imagen);
                 }
-                else
-                {
-                    etapas[i].Imagen = "default_etapa_img.jpg";
-                }
                 i++;
             }
 

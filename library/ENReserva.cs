@@ -13,6 +13,7 @@ namespace library
         private string _nombre; //nombre del usuario
         private string _descripcion;
 <<<<<<< HEAD
+<<<<<<< HEAD
         private ENUsuario _usuario;
 =======
         private ENUsuario _usuario; 
@@ -20,6 +21,11 @@ namespace library
         private int _telefono;
         private int _personas;
 
+=======
+        private ENUsuario _usuario; 
+        private int _telefono;
+        private int _personas;
+>>>>>>> develop
         private ENViajes _experiencia;
         private DateTime _fechaEntrada;
         private DateTime _fechaSalida;
@@ -83,45 +89,64 @@ namespace library
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         public ENReserva() 
 =======
         public ENReserva()
 >>>>>>> 54207285B CADReserva y ENReserva listos para implementarse en la bd
+=======
+        public ENReserva()
+>>>>>>> develop
         {
             this.id = 0;
             this.telefono = 0;
             this.personas = 0;
             this.precio = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.descripcion = descripcion;
 =======
             this.nombre = "";
             this.descripcion =  "";
 >>>>>>> 54207285B CADReserva y ENReserva listos para implementarse en la bd
+=======
+            this.nombre = "";
+            this.descripcion =  "";
+>>>>>>> develop
             this.usuario = new ENUsuario();
             this.experiencia = new ENViajes();
             this.fechaEntrada = new DateTime();
             this.fechaSalida = new DateTime();
 <<<<<<< HEAD
+<<<<<<< HEAD
         }
 
         public ENReserva(int id, int telefono, int personas, double precio, string descripcion, ENUsuario usuario, ENViajes experiencia, DateTime fechaEntrada, DateTime fechaSalida)
 =======
+=======
+>>>>>>> develop
 
 
         }
 
         public ENReserva(int id, int telefono, int personas, int precio,  string descripcion, ENUsuario usuario, ENViajes experiencia, DateTime fechaEntrada, DateTime fechaSalida)
+<<<<<<< HEAD
 >>>>>>> 54207285B CADReserva y ENReserva listos para implementarse en la bd
+=======
+>>>>>>> develop
         {
             this.id = id;
             this.telefono = telefono;
             this.personas = personas;
             this.precio = precio;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             this.nombre = usuario.name;
 >>>>>>> 54207285B CADReserva y ENReserva listos para implementarse en la bd
+=======
+            this.nombre = usuario.name;
+>>>>>>> develop
             this.descripcion = descripcion;
             this.usuario = usuario;
             this.experiencia = experiencia;
@@ -135,10 +160,29 @@ namespace library
             return reservas.readReservas();
         }
 
+
         public bool readReserva(bool mode)
         {
             CADReserva categoria = new CADReserva();
             return categoria.readReserva(this, mode);
+        }
+
+        public DataTable mostrarReservasEmpresa(string empresa)
+        {
+            CADReserva categoria = new CADReserva();
+            return categoria.readReservasEmpresa(empresa);
+        }
+
+        public DataTable mostrarReservasUsuario(ENUsuario usuario)
+        {
+            CADReserva categoria = new CADReserva();
+            return categoria.readReservasUsuario(usuario);
+        }
+
+        public DataTable mostrarTopClientes(ENEmpresa empresa)
+        {
+            CADReserva categoria = new CADReserva();
+            return categoria.readTopClientesEmpresa(empresa);
         }
 
         public bool registerReserva()

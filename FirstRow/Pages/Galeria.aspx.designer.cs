@@ -24,6 +24,27 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlAnchor add;
 
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// Control Title_gal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Title_gal;
+
+        /// <summary>
+        /// Control Description_gal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Description_gal;
+
+        /// <summary>
+>>>>>>> develop
         /// Control Direccion.
         /// </summary>
         /// <remarks>

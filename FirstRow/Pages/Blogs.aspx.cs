@@ -20,6 +20,10 @@ namespace FirstRow.Pages
             ENBlog blog = new ENBlog();
             List<ENBlog> blogs = new List<ENBlog>();
             loadSesionTags();
+<<<<<<< HEAD
+=======
+            blog_title.Text = ENAdmin.read("titulo-blogs");
+>>>>>>> develop
 
             if (!IsPostBack)
             {
@@ -58,7 +62,7 @@ namespace FirstRow.Pages
 
                 if(blogs.Count() != 0)
                 {
-                    resultado_busqueda.InnerText = "Lo que escriben nuestros soñadores";
+                    resultado_busqueda.InnerText = ENAdmin.read("des-blogs");
                 }
                 else
                 {
@@ -122,17 +126,5 @@ namespace FirstRow.Pages
                 cargaBlogs.Controls.Add(new LiteralControl(cadena));
             }
         }
-
-        protected void modificarBlog(object sender, EventArgs e) { }
-        protected void addStorieBlog(object sender, EventArgs e) { }
-        protected void delStorieBlog(object sender, EventArgs e) { }
-        protected void addExperienciaRecomendadaBlog(object sender, EventArgs e) { }
-        protected void delExperienciaRecomendadaBlog(object sender, EventArgs e) { }
-        protected void addCarruselImageBlog(object sender, EventArgs e) { }
-        protected void delCarruselImageBlog(object sender, EventArgs e) { }
-        protected void addComentarioBlog(object sender, EventArgs e) { }
-        protected void delComentarioBlog(object sender, EventArgs e) { }
-        protected void eliminarBlog(object sender, EventArgs e) { }
-
     }
 }

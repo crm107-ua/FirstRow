@@ -30,14 +30,107 @@
                                 <p id="fecha_text" runat="server" class="subtitle" style="margin-bottom:20px; color:white; width:100%;"></p>
                                 <p id="pais_text" runat="server" class="subtitle" style="margin-bottom:20px; color:white; width:100%;"></p>
                              </div>
+<<<<<<< HEAD
+=======
+                                <a id="user_stories_link" visible="false" runat="server" style="color:white; font-size:18px; text-decoration: underline white;">Mis Stories</a><br /> <br />
+>>>>>>> develop
                                 <a id="settings_user_pop_up" runat="server" class="subtitle js-popup-open" data-href="#profile-setting" style="color:white; text-decoration: underline white;">Ajustes</a>
                                 <a id="settings_emp_pop_up"  runat="server" class="subtitle js-popup-open" data-href="#empresa-setting" style="color:white; text-decoration: underline white;">Ajustes de empresa</a>
                         </div>
                     </div>
                     <div class="page_body">
+<<<<<<< HEAD
                     </div>
                 </div>
             </div>
             </div>
         </div>
+=======
+                        <div style="background-color:#FC805A; border-radius: 20px; padding: 100px;">
+                            <h1 id="titulo_tabla" runat="server" class="title" style="margin-bottom:30px; color:white; width:60%;"></h1>
+                            <div id="scroll_reservas" runat="server" style="height: 40%; overflow-x: scroll;">
+                                 <asp:GridView ID="reservasTabla" runat="server" style="width:100%" AutoGenerateColumns="true" CssClass="table table-responsive" GridLines="None" HeaderStyle-CssClass="header" RowStyle-CssClass="rows"></asp:GridView>  
+                             </div>
+                            <h1 id="top" runat="server" class="title" style="margin-bottom:30px; margin-top:30px; color:white; width:60%;"></h1>
+                            <div id="scroll_top" runat="server" style="height: 25%; overflow-x: scroll;">
+                                <asp:GridView ID="top_clientes" runat="server" AutoGenerateColumns="true" style="width:100%" CssClass="table table-responsive" GridLines="None" HeaderStyle-CssClass="header" RowStyle-CssClass="rows"></asp:GridView>
+                            </div>
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+            </div>
+       </div>
+    <style>
+       .mydatagrid
+        {
+        width: 80%;
+        border: solid 2px black;
+        min-width: 80%;
+        }
+        .header
+        {
+        background-color: #C24125;
+        font-family: Arial;
+        color: White;
+        height: 25px;
+        text-align: center;
+        font-size: 16px;
+        }
+
+        .rows
+        {
+        background-color: #fff;
+        font-family: Arial;
+        font-size: 14px;
+        color: #000;
+        min-height: 25px;
+        text-align: left;
+        }
+        .rows:hover
+        {
+        background-color: #ff4f53;
+        color: #fff;
+        }
+
+        .mydatagrid a /** FOR THE PAGING ICONS **/
+        {
+        background-color: Transparent;
+        padding: 5px 5px 5px 5px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        }
+
+        .mydatagrid a:hover /** FOR THE PAGING ICONS HOVER STYLES**/
+        {
+        background-color: #fff;
+        color: #000;
+        }
+        .mydatagrid span /** FOR THE PAGING ICONS CURRENT PAGE INDICATOR **/
+        {
+
+        padding: 5px 5px 5px 5px;
+        background-color: #000;
+        color: #fff;
+        }
+        .pager
+        {
+        background-color: #ff4f53;
+        font-family: Arial;
+        color: White;
+        height: 30px;
+        text-align: left;
+        }
+
+        .mydatagrid td
+        {
+        padding: 5px;
+        }
+        .mydatagrid th
+        {
+        padding: 5px;
+        }
+    </style>
+>>>>>>> develop
 </asp:Content>

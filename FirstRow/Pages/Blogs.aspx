@@ -15,9 +15,10 @@
             <div class="wrap">
                 <div class="wrap_float">
                     <div class="page_head">
-                        <h1 class="title" style="color:white;">
-                            Blogs <asp:Label ID="pais_blog_titulo" runat="server"></asp:Label>
-                        </h1>
+                        <div class="title" style="color:white;">
+                            <asp:Label ID="blog_title" runat="server"></asp:Label>
+                            <asp:Label ID="pais_blog_titulo" runat="server"></asp:Label>
+                        </div>
                         <p id="resultado_busqueda" runat="server" class="subtitle" style="color:white;"></p>
                         <div class="filters">
                             <div class="select_wrap">

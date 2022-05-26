@@ -171,6 +171,7 @@
     <Content Include="assets\js\slick.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Media\Paises\Andorra.jpg" />
+    <Content Include="Media\Paises\Croacia.jpg" />
     <Content Include="Media\Paises\EEUU.jpg" />
     <Content Include="Media\Paises\Spain.jpg" />
     <Content Include="Media\Paises\Francia.jpg" />
@@ -179,12 +180,10 @@
     <Content Include="Media\Paises\Italia.jpg" />
     <Content Include="Media\Paises\Japon.jpg" />
     <Content Include="Media\Paises\Noruega.jpg" />
-    <Content Include="Media\Stories\fuerteventura_f9cff96a_1280x720.jpg" />
-    <Content Include="Media\Stories\guia-turistica-tokio-japonismo.jpg" />
-    <Content Include="Media\Stories\Italia-2.jpg" />
-    <Content Include="Media\Stories\lofoten.jpg" />
-    <Content Include="Media\Stories\coliseo.jpg" />
-    <Content Include="Media\Stories\fuente.jpg" />
+    <Content Include="Media\Paises\Suecia.jpg" />
+    <Content Include="Media\Sorteos\atlantico.jpg" />
+    <Content Include="Media\Sorteos\default_sorteos.jpg" />
+    <Content Include="Media\Sorteos\fondo_sorteos.jpg" />
     <Content Include="Pages\403.aspx" />
     <Content Include="Pages\404.aspx" />
     <Content Include="Pages\Blog.aspx" />
@@ -195,9 +194,11 @@
     <Content Include="Pages\Experiencias.aspx" />
     <Content Include="Pages\FirstRow.aspx" />
     <Content Include="Pages\Forms\FormBlog.aspx" />
+    <Content Include="Pages\Forms\admin.aspx" />
     <Content Include="Pages\Forms\FormStory.aspx" />
     <Content Include="Pages\Forms\FormGaleria.aspx" />
     <Content Include="Pages\Forms\FormExperiencia.aspx" />
+    <Content Include="Pages\Forms\FormPropuesta.aspx" />
     <Content Include="Pages\Galeria.aspx" />
     <Content Include="Pages\Inicio.aspx" />
     <Content Include="Pages\Perfil.aspx" />
@@ -207,9 +208,9 @@
     <Content Include="Pages\Seccion_Galeria.aspx" />
     <Content Include="Pages\Sorteo.aspx" />
     <Content Include="Pages\Sorteos.aspx" />
-    <Content Include="Pages\StoryUsuario.aspx" />
     <Content Include="Pages\Story.aspx" />
     <Content Include="Pages\Stories.aspx" />
+    <Content Include="Pages\User.aspx" />
     <Content Include="Pages\Wearing.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -288,6 +289,13 @@
     <Compile Include="Pages\Forms\FormBlog.aspx.designer.cs">
       <DependentUpon>FormBlog.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Forms\admin.aspx.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Forms\admin.aspx.designer.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Forms\FormStory.aspx.cs">
       <DependentUpon>FormStory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -308,6 +316,13 @@
     </Compile>
     <Compile Include="Pages\Forms\FormExperiencia.aspx.designer.cs">
       <DependentUpon>FormExperiencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Forms\FormPropuesta.aspx.cs">
+      <DependentUpon>FormPropuesta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Forms\FormPropuesta.aspx.designer.cs">
+      <DependentUpon>FormPropuesta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Galeria.aspx.cs">
       <DependentUpon>Galeria.aspx</DependentUpon>
@@ -365,13 +380,6 @@
     <Compile Include="Pages\Sorteos.aspx.designer.cs">
       <DependentUpon>Sorteos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\StoryUsuario.aspx.cs">
-      <DependentUpon>StoryUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\StoryUsuario.aspx.designer.cs">
-      <DependentUpon>StoryUsuario.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Story.aspx.cs">
       <DependentUpon>Story.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -385,6 +393,13 @@
     </Compile>
     <Compile Include="Pages\Stories.aspx.designer.cs">
       <DependentUpon>Stories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Wearing.aspx.cs">
       <DependentUpon>Wearing.aspx</DependentUpon>
@@ -412,6 +427,7 @@
   <ItemGroup>
     <Content Include="White.Master" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -430,6 +446,7 @@
     <Folder Include="Media\Etapas\" />
     <Folder Include="Media\Experiencias\" />
     <Folder Include="Media\Galery\" />
+    <Folder Include="Media\Stories\" />
     <Folder Include="Media\Users\" />
   </ItemGroup>
   <ItemGroup>
