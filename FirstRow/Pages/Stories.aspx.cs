@@ -22,7 +22,9 @@ namespace FirstRow.Pages
                 ENUsuario user = (ENUsuario)Session["usuario"];
                 if (user != null && user.nickname == "admin")
                 {
-                    btn_modificar_pagina.Visible = true;
+                    //debería ser "true" para que funcione,
+                    //pero no está implementado
+                    btn_modificar_pagina.Visible = false; 
                 }
                 else { btn_modificar_pagina.Visible = false; }
 
@@ -33,13 +35,8 @@ namespace FirstRow.Pages
                 }
                 else{ add_form.Visible = false;}
 
-                //Este texto debería provenir de una tabla en la BD
-                Application["stories_title"] = ENAdmin.read("titulo-stories");
-                Application["stories_subtitle"] = ENAdmin.read("des-stories");
-                
-                
-                stories_title.InnerText = (string)Application["stories_title"];
-                stories_subtitle.InnerText = (string)Application["stories_subtitle"];
+                stories_title.InnerText = ENAdmin.read("titulo-stories");
+                stories_subtitle.InnerText = ENAdmin.read("des-stories");
                 background_image_header.Style.Add("background-image", "url(https://media.cntraveler.com/photos/5cc32b6031a2ae65b96fb4ff/16:9/w_2560%2Cc_limit/MAG19_May_TR050419_Zihuatanejo02.jpg)");
 
                 stories_description_title.Text = "Descripción de la categoría";
