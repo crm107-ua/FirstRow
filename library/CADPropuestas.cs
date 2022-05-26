@@ -43,6 +43,10 @@ namespace library
         }
 
 
+
+
+
+
         internal DataSet readPropuestas(ENPropuestas eNPropuestas)
         {
             SqlConnection c = null;
@@ -124,6 +128,9 @@ namespace library
 
 
         }
+
+
+
 
         public bool readpropuestasconectado(List<ENPropuestas> lista)
         {
