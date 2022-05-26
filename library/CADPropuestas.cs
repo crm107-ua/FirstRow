@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -124,48 +125,104 @@ namespace library
 
         }
 
+        public bool readpropuestasconectado(List<ENPropuestas> lista)
+        {
+            bool correctRead;
+            SqlConnection connection = null;
+            SqlDataReader busqueda = null;
+
+            try
+            {
+                connection = new SqlConnection(constring);
+                connection.Open();
+
+                string query = "SELECT * FROM [Propuestas]";
+                SqlCommand consulta = new SqlCommand(query, connection);
+                busqueda = consulta.ExecuteReader();
+
+                while (busqueda.Read())
+                {
+                    //int id = int.Parse(busqueda["id"].ToString());
+                    ENPropuestas propuesta;
+
+                    propuesta = new ENPropuestas
+                    {
+                        Id = Int32.Parse(busqueda["id"].ToString()),
+                        Titulo = busqueda["titulo"].ToString(),
+                        Descripcion = busqueda["descripcion"].ToString(),
+                        Slug = busqueda["slug"].ToString()
+                    };
+
+                    lista.Add(propuesta);
+                }
+
+                correctRead = true;
+
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("Sorteo operation has failed.Error: {0}", e.Message);
+                correctRead = false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Sorteo operation has failed.Error: {0}", e.Message);
+                correctRead = false;
+            }
+            finally
+            {
+                if (busqueda != null)
+                {
+                    busqueda.Close();
+                }
+                if (connection != null)
+                {
+                    connection.Close();
+                }
+            }
+
+            return correctRead;
+
+        }
 
         internal bool newPropuesta(ENPropuestas propuesta)
         {
-            bool creado = false;
-            if (propuesta is ENPropuestas)
+            bool anadido = false;
+            SqlConnection c = new SqlConnection(constring);
+            try
             {
-                bool created = false;
-                SqlConnection connection = new SqlConnection(constring);
-                try
-                {
-                    connection.Open();
-                    string query = "INSERT INTO [Propuestas] " +
-                        "(titulo, texto, imagen, slug) VALUES " +
-                        $"({propuesta.Titulo},{propuesta.Descripcion},{propuesta.Imagen})";
+                c.Open();
 
-                    SqlCommand com = new SqlCommand(query, connection);
-                    com.ExecuteNonQuery();
-                    created = true;
-                }
-                catch (SqlException e)
-                {
-                    created = false;
-                    Console.WriteLine("User operation has failed.Error: {0}", e.Message);
-                }
-                catch (Exception e)
-                {
-                    created = false;
-                    Console.WriteLine("User operation has failed.Error: {0}", e.Message);
-                }
-                finally
-                {
-                    if (connection != null)
-                    {
-                        connection.Close();
-                    }
-                }
+                string s = "Insert INTO [dbo].[Propuestas] (titulo,descripcion,slug,imagen,usuario,empresa) VALUES ( @titulo , @descripcion , @slug , @imagen, @usuario, @empresa)";
 
-                return created;
+                SqlCommand com = new SqlCommand(s, c);
+                com.Parameters.AddWithValue("@titulo", propuesta.Titulo);
+                com.Parameters.AddWithValue("@descripcion", propuesta.Descripcion);
+                com.Parameters.AddWithValue("@slug", propuesta.Slug);
+                com.Parameters.AddWithValue("@imagen", propuesta.Imagenes);
+                com.Parameters.AddWithValue("@usuario", propuesta.Usuario);
+                com.Parameters.AddWithValue("@empresa", propuesta.Empresa);
 
+                com.ExecuteNonQuery();
+                anadido = true;
             }
+            catch (SqlException e)
+            {
+                anadido = false;
 
-            return creado;
+                Console.WriteLine("Fallo: {0}", e.Message);
+            }
+            catch (Exception e)
+            {
+                anadido = false;
+                Console.WriteLine("Fallo: {0}", e.Message);
+            }
+            finally
+            {
+                c.Close();
+            }
+            return anadido;
+
         }
 
         internal bool deletePropuesta(ENPropuestas propuestas)
