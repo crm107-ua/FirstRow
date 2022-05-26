@@ -11,8 +11,13 @@ using System.Web.UI.WebControls;
 
 namespace FirstRow.Pages
 {
+    /**
+    * Carga la galeria identificada con el pais y el titulo convertido a slug
+    * Puede haber muchas galerias por los usuarios y de un mimo pais
+    */
     public partial class Seccion_Galeria : System.Web.UI.Page
     {
+        //Carga de todos los elementos
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -52,6 +57,9 @@ namespace FirstRow.Pages
                 }
             }
         }
+
+
+        //Las galerias tienene composicion de varias imagenes
         private void loadImg(List<ENImagenes> imagenes) 
         {
             foreach (ENImagenes imagen in imagenes) 
@@ -69,6 +77,7 @@ namespace FirstRow.Pages
             }
         }
 
+        //Extra son 2 galerias escojidas aleatoriamente para recomendar más galerias al usuario
         private void loadExtra() 
         {
             List<ENGaleria> galerias = new List<ENGaleria>();
@@ -149,6 +158,7 @@ namespace FirstRow.Pages
                 }
         }
 
+        //Carga una experiencia aleatoria para interesar al usuario
         private void loadExpeciencia()
         {
             Random random = new Random();
