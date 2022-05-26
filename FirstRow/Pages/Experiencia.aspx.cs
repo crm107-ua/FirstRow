@@ -124,6 +124,20 @@ namespace FirstRow.Pages
                         }
 
                         ENUsuario usuario = (ENUsuario)Session["usuario"];
+                        ENEmpresa empresa = (ENEmpresa)Session["empresa"];
+
+
+
+                        if (empresa != null && empresa.nickname.Equals(experiencia.Empresa.nickname))
+                        {
+                            eliminarButton.Visible = true;
+                        }
+                        else
+                        {
+                            eliminarButton.Visible = false;
+                        }
+
+
                         if (usuario != null && comentario.Usuario.nickname.Equals(usuario.nickname))
                         {
                             elimiarComentario += "<a ID='delete_comentario' href='/eliminar-comentario/"+ 
@@ -275,6 +289,15 @@ namespace FirstRow.Pages
                     Response.Redirect("/404");
                 }
             }
+        }
+
+        protected void eliminar(object sender, EventArgs e)
+        {
+            ENViajes experiencia = new ENViajes();
+            experiencia.Slug = RouteData.Values["slug"].ToString();
+            experiencia.mostrarExperiencia();
+            experiencia.eliminarExperiencias();
+            Response.Redirect("/experiencias");
         }
 
         protected void experiencia_raing_Changed(object sender, AjaxControlToolkit.RatingEventArgs e){}
