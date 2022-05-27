@@ -33,31 +33,22 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlAnchor add_form;
 
         /// <summary>
-        /// Control sorteos_title.
+        /// Control propuestas_titulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sorteos_title;
+        protected global::System.Web.UI.WebControls.Label propuestas_titulo;
 
         /// <summary>
-        /// Control propuestas_title2.
+        /// Control propuestas_texto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label propuestas_title2;
-
-        /// <summary>
-        /// Control propuestas_subtitle.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl propuestas_subtitle;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl propuestas_texto;
 
         /// <summary>
         /// Control sorteos_list.

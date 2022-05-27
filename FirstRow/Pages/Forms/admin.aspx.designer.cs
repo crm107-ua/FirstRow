@@ -150,6 +150,60 @@ namespace FirstRow.Pages.Forms
         protected global::System.Web.UI.WebControls.RegularExpressionValidator titulo_sorteos_admin_formato;
 
         /// <summary>
+        /// Control create_admin_titulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox create_admin_titulo;
+
+        /// <summary>
+        /// Control titulo_propuesta_requerido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator titulo_propuesta_requerido;
+
+        /// <summary>
+        /// Control titulo_propuesta_formato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator titulo_propuesta_formato;
+
+        /// <summary>
+        /// Control create_admin_texto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox create_admin_texto;
+
+        /// <summary>
+        /// Control texto_propuesta_requerido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator texto_propuesta_requerido;
+
+        /// <summary>
+        /// Control texto_propuesta_formato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator texto_propuesta_formato;
+
+        /// <summary>
         /// Control create_admin_descripcion.
         /// </summary>
         /// <remarks>
