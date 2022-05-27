@@ -11,7 +11,7 @@
 ###
 ### 
 
-###### El manual de instalación, las tareas realizas por cada miembro y la presentación se encuentran en la raíz del repositorio. 
+###### El manual de instalación, las tareas realizadas por cada miembro y la presentación se encuentran en la raíz del repositorio. 
 
 ###
 ### 
