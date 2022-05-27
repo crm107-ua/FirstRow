@@ -217,6 +217,7 @@ namespace FirstRow.Pages
             {
                 loadReserva();
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "register_user_rollback", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('reserva_pop_up').click(); }", true);
+                
             }
         }
 
@@ -257,6 +258,8 @@ namespace FirstRow.Pages
                 ((Label)this.Master.FindControl("form_reserva_price")).Text =eNViajes.Precio.ToString();
                 ((Label)this.Master.FindControl("form_reserva_precio")).Text = (eNViajes.Precio * nPersonas).ToString()+"€";
 
+                string user_email = ((ENUsuario)Session["usuario"]).email;
+                Home.SendEmail(user_email, "Reserva en FirstRow", "Has reservado una experiencia maravillosa!!");
             }
             catch (Exception exception) 
             { }
