@@ -72,6 +72,7 @@ namespace library
             }
         }
 
+        //Para busqyesda con slug v=  true si no para id
         internal bool readPropuestas(ENPropuestas propuesta, bool v)
         {
 
@@ -87,20 +88,25 @@ namespace library
 
                 if (v)
                 {
-                    query = "Select * From [Propuestas] where id = @id";
+                    query = "Select * From [Propuestas] where slug = @slug";
                     consulta = new SqlCommand(query, conection);
-                    consulta.Parameters.AddWithValue("@id", propuesta.Id);
+                    consulta.Parameters.AddWithValue("@slug", propuesta.Slug);
                 }
                 else
                 {
                     query = "Select * From [Propuestas] where id = @id";
                     consulta = new SqlCommand(query, conection);
                     consulta.Parameters.AddWithValue("@id", propuesta.Id);
+                    
                 }
                 busqueda = consulta.ExecuteReader();
                 busqueda.Read();
-
-
+                propuesta.Id = int.Parse(busqueda["id"].ToString());
+                propuesta.Titulo = busqueda["titulo"].ToString();
+                propuesta.Descripcion = busqueda["texto"].ToString();
+                propuesta.Imagenes.Name= busqueda["imagen"].ToString();
+                propuesta.Usuario.nickname = busqueda["usuario"].ToString();
+                propuesta.Empresa.nickname = busqueda["empresa"].ToString();
 
             }
             catch (SqlException e)
@@ -113,6 +119,7 @@ namespace library
                 Console.WriteLine("User operation has failed.Error: {0}", e.Message);
                 return false;
             }
+
             finally
             {
                 if (busqueda != null)
@@ -125,8 +132,6 @@ namespace library
                 }
             }
             return true;
-
-
         }
 
 
@@ -200,15 +205,15 @@ namespace library
             {
                 c.Open();
 
-                string s = "Insert INTO [dbo].[Propuestas] (titulo,descripcion,slug,imagen,usuario,empresa) VALUES ( @titulo , @descripcion , @slug , @imagen, @usuario, @empresa)";
+                string s = "Insert INTO [dbo].[Propuestas] (titulo,texto,slug,imagen,usuario,empresa) VALUES ( @titulo , @descripcion , @slug , @imagen, @usuario, @empresa)";
 
                 SqlCommand com = new SqlCommand(s, c);
                 com.Parameters.AddWithValue("@titulo", propuesta.Titulo);
                 com.Parameters.AddWithValue("@descripcion", propuesta.Descripcion);
                 com.Parameters.AddWithValue("@slug", propuesta.Slug);
-                com.Parameters.AddWithValue("@imagen", propuesta.Imagenes);
-                com.Parameters.AddWithValue("@usuario", propuesta.Usuario);
-                com.Parameters.AddWithValue("@empresa", propuesta.Empresa);
+                com.Parameters.AddWithValue("@imagen", propuesta.Imagenes.Name);
+                com.Parameters.AddWithValue("@usuario", propuesta.Usuario.nickname);
+                com.Parameters.AddWithValue("@empresa", propuesta.Empresa.nickname);
 
                 com.ExecuteNonQuery();
                 anadido = true;
@@ -235,9 +240,35 @@ namespace library
         internal bool deletePropuesta(ENPropuestas propuestas)
         {
 
-            bool deleted = false;
-            return deleted;
+            bool anadido = false;
+            SqlConnection c = new SqlConnection(constring);
+            try
+            {
+                c.Open();
 
+                string s = "delete from [Propuestas] where slug=@slug";
+                SqlCommand com = new SqlCommand(s, c);
+                com.Parameters.AddWithValue("@slug", propuestas.Slug);
+                com.Parameters.AddWithValue("@slug", propuestas.Slug);
+                com.ExecuteNonQuery();
+                anadido = true;
+            }
+            catch (SqlException e)
+            {
+                anadido = false;
+
+                Console.WriteLine("Fallo: {0}", e.Message);
+            }
+            catch (Exception e)
+            {
+                anadido = false;
+                Console.WriteLine("Fallo: {0}", e.Message);
+            }
+            finally
+            {
+                c.Close();
+            }
+            return anadido;
 
         }
 

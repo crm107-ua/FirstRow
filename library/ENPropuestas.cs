@@ -15,7 +15,7 @@ namespace library
         private ENUsuario _usuario;
         private ENEmpresa _empresa;
         private string _slug;
-        private List<ENImagenes> _imagenes;
+        private ENImagenes _imagenes;
 
         public int Id //GET-SET
         {
@@ -37,21 +37,21 @@ namespace library
         public ENUsuario Usuario { get => _usuario; set => _usuario = value; }
         public ENEmpresa Empresa { get => _empresa; set => _empresa = value; }
         public string Slug { get => _slug; set => _slug = value; }
-        public List<ENImagenes> Imagenes { get => _imagenes; set => _imagenes = value; }
+        public ENImagenes Imagenes { get => _imagenes; set => _imagenes = value; }
 
         public ENPropuestas()
         {
             this.Id = 0;
             this.Titulo = "";
             this.Descripcion = "";
-            this.Imagenes = new List<ENImagenes>();
+            this.Imagenes = new ENImagenes();
             this.Usuario = new ENUsuario();
             this.Empresa = new ENEmpresa();
             this.Slug = "";
 
         }
 
-        public ENPropuestas(int Id, string Titulo, string descripcion, List<ENImagenes> imagen, string slug, ENEmpresa empresa, ENUsuario usuario)
+        public ENPropuestas(int Id, string Titulo, string descripcion, ENImagenes imagen, string slug, ENEmpresa empresa, ENUsuario usuario)
         {
             this.Id = Id;
             this.Titulo = Titulo;

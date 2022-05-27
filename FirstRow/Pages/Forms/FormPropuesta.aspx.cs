@@ -42,7 +42,7 @@ namespace FirstRow.Pages.Forms
                 if (crear_propuesta_imagenes.HasFiles)
                 {
                     string imagen = propuesta.Slug + "-propuesta-" + Path.GetFileName(imagenes.FileName);
-                    propuesta.Imagenes.Add(new ENImagenes(imagen));
+                    propuesta.Imagenes= new ENImagenes(imagen);
                     imagenes.SaveAs(Server.MapPath("~/Media/Propuestas/") + imagen);
                 }
             }
@@ -52,6 +52,7 @@ namespace FirstRow.Pages.Forms
             }
             else
             {
+                Error.Visible = true;
                 Error.Text = "Ha ocurrido un error";
             }
 
