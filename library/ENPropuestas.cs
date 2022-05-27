@@ -11,7 +11,7 @@ namespace library
     {
         private int _Id;
         private string _Titulo;
-        private string _Descripcion;
+        private string _Texto;
         private ENUsuario _usuario;
         private ENEmpresa _empresa;
         private string _slug;
@@ -29,10 +29,10 @@ namespace library
             set { _Titulo = value; }
         }
 
-        public string Descripcion
+        public string Texto
         {
-            get { return _Descripcion; }
-            set { _Descripcion = value; }
+            get { return _Texto; }
+            set { _Texto = value; }
         }
         public ENUsuario Usuario { get => _usuario; set => _usuario = value; }
         public ENEmpresa Empresa { get => _empresa; set => _empresa = value; }
@@ -43,7 +43,7 @@ namespace library
         {
             this.Id = 0;
             this.Titulo = "";
-            this.Descripcion = "";
+            this.Texto = "";
             this.Imagenes = new ENImagenes();
             this.Usuario = new ENUsuario();
             this.Empresa = new ENEmpresa();
@@ -51,11 +51,11 @@ namespace library
 
         }
 
-        public ENPropuestas(int Id, string Titulo, string descripcion, ENImagenes imagen, string slug, ENEmpresa empresa, ENUsuario usuario)
+        public ENPropuestas(int Id, string Titulo, string texto, ENImagenes imagen, string slug, ENEmpresa empresa, ENUsuario usuario)
         {
             this.Id = Id;
             this.Titulo = Titulo;
-            this.Descripcion = descripcion;
+            this.Texto = texto;
             this.Imagenes = imagen;
             this.Slug = slug;
             this.Empresa = empresa;
@@ -73,12 +73,7 @@ namespace library
         public bool newPropuesta()
         {
             CADPropuestas propuesta = new CADPropuestas();
-            bool creado = false;
-            if (!propuesta.readPropuestas(this, true))
-            {
-                creado = propuesta.newPropuesta(this);
-            }
-            return creado;
+            return propuesta.newPropuesta(this);
         }
 
 

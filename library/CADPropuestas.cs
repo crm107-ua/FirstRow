@@ -97,14 +97,13 @@ namespace library
                     query = "Select * From [Propuestas] where id = @id";
                     consulta = new SqlCommand(query, conection);
                     consulta.Parameters.AddWithValue("@id", propuesta.Id);
-                    
+
                 }
                 busqueda = consulta.ExecuteReader();
                 busqueda.Read();
-                propuesta.Id = int.Parse(busqueda["id"].ToString());
                 propuesta.Titulo = busqueda["titulo"].ToString();
-                propuesta.Descripcion = busqueda["texto"].ToString();
-                propuesta.Imagenes.Name= busqueda["imagen"].ToString();
+                propuesta.Texto = busqueda["texto"].ToString();
+                propuesta.Imagenes.Name = busqueda["imagen"].ToString();
                 propuesta.Usuario.nickname = busqueda["usuario"].ToString();
                 propuesta.Empresa.nickname = busqueda["empresa"].ToString();
 
@@ -161,8 +160,8 @@ namespace library
                     {
                         Id = Int32.Parse(busqueda["id"].ToString()),
                         Titulo = busqueda["titulo"].ToString(),
-                        Descripcion = busqueda["descripcion"].ToString(),
-                        Slug = busqueda["slug"].ToString()
+                        Texto = busqueda["descripcion"].ToString(),
+                        Slug = busqueda["slug"].ToString(),
                     };
 
                     lista.Add(propuesta);
@@ -200,16 +199,17 @@ namespace library
         internal bool newPropuesta(ENPropuestas propuesta)
         {
             bool anadido = false;
-            SqlConnection c = new SqlConnection(constring);
+            SqlConnection conection = null;
             try
             {
-                c.Open();
+                conection = new SqlConnection(constring);
+                conection.Open();
 
-                string s = "Insert INTO [dbo].[Propuestas] (titulo,texto,slug,imagen,usuario,empresa) VALUES ( @titulo , @descripcion , @slug , @imagen, @usuario, @empresa)";
+                string query = "Insert INTO [dbo].[Propuestas] (titulo,texto,slug,imagen,usuario,empresa) VALUES ( @titulo , @texto , @slug , @imagen, @usuario, @empresa)";
 
-                SqlCommand com = new SqlCommand(s, c);
+                SqlCommand com = new SqlCommand(query, conection);
                 com.Parameters.AddWithValue("@titulo", propuesta.Titulo);
-                com.Parameters.AddWithValue("@descripcion", propuesta.Descripcion);
+                com.Parameters.AddWithValue("@texto", propuesta.Texto);
                 com.Parameters.AddWithValue("@slug", propuesta.Slug);
                 com.Parameters.AddWithValue("@imagen", propuesta.Imagenes.Name);
                 com.Parameters.AddWithValue("@usuario", propuesta.Usuario.nickname);
@@ -231,12 +231,14 @@ namespace library
             }
             finally
             {
-                c.Close();
+                if (conection != null)
+                {
+                    conection.Close();
+                }
             }
             return anadido;
 
         }
-
         internal bool deletePropuesta(ENPropuestas propuestas)
         {
 
