@@ -113,6 +113,20 @@ namespace library
             return experiencias.readExperienciasEmpresa(listaExperiencias, nickname);
         }
 
+        public bool eliminarExperiencias()
+        {
+
+            bool eliminada = false;
+            CADViajes experiencia = new CADViajes();
+
+            if (experiencia.readExperiencia(this))
+            {
+                eliminada= experiencia.deleteExperiencia(this);
+            }
+
+            return eliminada;
+        }
+
         public bool updateImagen() {
             CADViajes img = new CADViajes();
             bool ok = img.updateImagen(this);

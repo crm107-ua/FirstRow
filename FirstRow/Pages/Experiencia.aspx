@@ -12,6 +12,7 @@
                             <span class="separator" style="color:white;">/</span>
                             <a href="/" style="color:white;"><asp:Label ID="slug" runat="server" style="color:white;"></asp:Label></a>
                             <a id="empresa_enlace" runat="server"  style="color:white; float:right;"></a>
+                            <asp:Button ID="eliminarButton" style="margin-left: 20px;" runat="server" Text="Eliminar experiencia" class="btn button" OnClick="eliminar" />
                         </div>
                     </div>
                 </div>
