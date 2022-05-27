@@ -27,7 +27,7 @@ namespace FirstRow.Pages
             ENEmpresa emp = (ENEmpresa)Session["empresa"];
             if (emp != null)
             {
-               
+                botonagregarsorteo.Visible = true;
                 add_form.Visible = true;
                 add_form.InnerHtml = "Agregar Sorteo";
             }
@@ -38,6 +38,10 @@ namespace FirstRow.Pages
             sorteo.readsorteosconectado(lista);
             
             listaSorteos(lista);
+        }
+        protected void agregarsorteo(object sender, EventArgs e)
+        {
+            Response.Redirect(url: ("/agregar-sorteo"));
         }
         private void listaSorteos(List<ENSorteos> sorteos)
         {

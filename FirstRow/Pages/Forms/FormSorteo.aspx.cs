@@ -57,6 +57,19 @@ namespace FirstRow.Pages.Forms
                 return;
             }
 
+            if(System.DateTime.Parse(fechainicio.Text) < DateTime.Now)
+            {
+                /*fecha no valida*/
+                fechainicio.Text = DateTime.Now.ToString();
+                fechainicio.ForeColor = System.Drawing.Color.Red;
+                return;
+            }
+            if(System.DateTime.Parse(fechafinal.Text) < System.DateTime.Parse(fechainicio.Text))
+            {
+           fechafinal.Text=fechainicio.Text = DateTime.Now.ToString();
+               fechafinal.ForeColor=fechainicio.ForeColor = System.Drawing.Color.Red;
+                return;
+            }
 
           
             //guarda una imagen
