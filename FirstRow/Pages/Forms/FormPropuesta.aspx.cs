@@ -15,7 +15,15 @@ namespace FirstRow.Pages.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Error.Text = "";
+            Error.Visible = false;
+            if (!IsPostBack)
+            {
+                if (Session["usuario"] == null)
+                {
+                    Response.Redirect("/");
+                }
+            }
         }
 
         protected void CrearPropuesta(object sender, EventArgs e)
@@ -34,7 +42,7 @@ namespace FirstRow.Pages.Forms
                 if (crear_propuesta_imagenes.HasFiles)
                 {
                     string imagen = propuesta.Slug + "-propuesta-" + Path.GetFileName(imagenes.FileName);
-                    propuesta.Imagenes.Add(new ENImagenes(imagen));
+                    propuesta.Imagenes= new ENImagenes(imagen);
                     imagenes.SaveAs(Server.MapPath("~/Media/Propuestas/") + imagen);
                 }
             }
@@ -44,7 +52,8 @@ namespace FirstRow.Pages.Forms
             }
             else
             {
-                resultado.Text = "Ha ocurrido un error";
+                Error.Visible = true;
+                Error.Text = "Ha ocurrido un error";
             }
 
         }
