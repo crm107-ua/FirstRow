@@ -25,7 +25,7 @@ namespace FirstRow.Pages
             background_image_header.Style.Add("background-image", "url(https://static.onecms.io/wp-content/uploads/sites/28/2021/09/24/travel-gifts-lead-TRVLGG0921.jpg)");
             ENUsuario user = (ENUsuario)Session["usuario"];
             ENEmpresa emp = (ENEmpresa)Session["empresa"];
-            if (user != null || emp!=null)
+            if (emp != null)
             {
                 add_form.Visible = true;
                 add_form.InnerHtml = "Agregar Sorteo";

@@ -14,7 +14,7 @@ namespace FirstRow.Pages.Forms
 {
     public partial class FormSorteo:System.Web.UI.Page
     {
-        const int description_maxlength = 500;//cambiar en función del límite de la BD
+        const int description_maxlength = 500;
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,12 +22,9 @@ namespace FirstRow.Pages.Forms
             fechafinal.ForeColor = System.Drawing.Color.LightGray;
             if (!IsPostBack)
             {
-                if (Session["empresa"] != null || true)
+                if (Session["empresa"] != null)
                 {
-                    ENPais pais = new ENPais();
-                    List<ENPais> paises = new List<ENPais>();
-                    pais.readPaises(paises);
-
+                  
                     ENViajes viaje = new ENViajes();
                     List<ENViajes> lista = new List<ENViajes>();
                     ENEmpresa empresa = (ENEmpresa)Session["empresa"];
@@ -36,22 +33,11 @@ namespace FirstRow.Pages.Forms
                     viaje.mostrarExperienciasEmpresa(lista, empresa.nickname);
                     foreach (ENViajes v in lista)
                     {
-                        //  listaPaises_form_experiencia.Items.Insert(0, new ListItem(p.name, p.id.ToString()));
-                        listaexperiencias.Items.Insert(0, new ListItem(v.Nombre, v.Id.ToString()));
+                       listaexperiencias.Items.Insert(0, new ListItem(v.Nombre, v.Id.ToString()));
                     }
                 }
-                else
-                {
-                    ENPais pais = new ENPais();
-                    List<ENPais> paises = new List<ENPais>();
-                    pais.readPaises(paises);
-
-                    foreach (ENPais p in paises)
-                    {
-                     //   listaPaises_form_experiencia.Items.Insert(0, new ListItem(p.name, p.id.ToString()));
-                    }
-                    //Response.Redirect("/");
-                }
+           //Response.Redirect("/");
+                
             }
         }
         protected void crearSorteo(object sender, EventArgs e)
@@ -60,8 +46,7 @@ namespace FirstRow.Pages.Forms
 
             if (listaexperiencias.SelectedValue == "-1")
             {
-              //  Error.Text = "*Seleccione un país";
-               // Error.Visible = true;
+            
                 return;
             }
 
@@ -73,72 +58,48 @@ namespace FirstRow.Pages.Forms
             }
 
 
-           // Error.Visible = false;
-
+          
             //guarda una imagen
             if (crear_sorteo_imagen.HasFile)
             {
-               /* string imagen = rand.Next(1, 999999).ToString() + "-sorteo-" + crear_sorteo_imagen.FileName;
-                string ruta = "~/Media/Stories/" + imagen;
+                string imagen = rand.Next(1, 999999).ToString() + "-sorteo-" + crear_sorteo_imagen.FileName;
+                string ruta = "~/Media/Sorteos/" + imagen;
                 crear_sorteo_imagen.SaveAs(Server.MapPath(ruta));
-               */
+               
 
-                ENStories nuevasorteo = new ENStories(
-                    (ENUsuario)Session["usuario"], //usuario
-                    DateTime.Now, //fecha
-                    create_sorteo_title.Text, //titulo
-                    int.Parse(listaPaises_form_sorteo.SelectedValue), //país
-                    create_sorteo_descripcion.Text, //descripción
-                    imagen); //imagen
+               
                 ENSorteos sorteo = new ENSorteos();
-                sorteo.Descripcion = create_sorteo_descripcion.ToString();
-                sorteo.Titular = Session["empresa"].ToString();
+                ENEmpresa empresa = (ENEmpresa)Session["empresa"];
+                sorteo.Descripcion = create_sorteo_descripcion.Text;
+                sorteo.Titular = empresa.nickname;
+
                 DateTime dateTime;
                     System.DateTime.TryParse(fechafinal.ToString(),out dateTime);
                 sorteo.FechaFinal = dateTime;
                 System.DateTime.TryParse(fechainicio.ToString(), out dateTime);
-                sorteo.FechaFinal = dateTime;
-                sorteo.Titulo = create_sorteo_title.ToString();
-                sorteo.Premio = listaexperiencias.SelectedValue;
+                sorteo.FechaInicio = dateTime.Date;
+
+                sorteo.Slug=sorteo.Titulo = create_sorteo_title.Text;
+                sorteo.Premio = int.Parse(listaexperiencias.SelectedValue);
+                sorteo.Imagen = imagen;
                 try
                 {
-                    if (!nuevasorteo.Readsorteo())
-                    {
-                        if (nuevasorteo.Createsorteo())
+                    
+                        if (!sorteo.createSorteo())
                         {
-                            Error.Text = "Creación exitosa";
-                            Error.Visible = true;
-                            ENPais p = new ENPais();
-                            p.id = nuevasorteo.Pais;
-                            try
-                            {
-                                if (p.ReadPais())
-                                {
-                                    Response.Redirect("/sorteo/" + p.name);
-                                }
-                                else
-                                {
-                                    Response.Redirect("/stories");
-                                }
+                        // Error.Text = "*ERROR: sorteo no creado";
+                        //  Error.Visible = true;
 
-                            }
-                            catch (System.Threading.ThreadAbortException) { }
-
-                        }
+                        string filePath = Server.MapPath("~/Media/Sorteos/" + imagen);
+                        File.Delete(filePath);
+                    }
                         else
                         {
-                            Error.Text = "*ERROR: sorteo no creada";
-                            Error.Visible = true;
+                        //todo bien
+                        Response.Redirect("/Sorteos");
 
-                            string filePath = Server.MapPath("~/Media/Stories/" + imagen);
-                            File.Delete(filePath);
                         }
-                    }
-                    else
-                    {
-                        Error.Text = "*ERROR: sorteo ya existente";
-                        Error.Visible = true;
-                    }
+                    
 
                 }
                 catch (Exception ex)
@@ -148,8 +109,8 @@ namespace FirstRow.Pages.Forms
             }
             else
             {
-                Error.Text = "*ERROR: imagen no subida";
-                Error.Visible = true;
+              //  Error.Text = "*ERROR: imagen no subida";
+             //   Error.Visible = true;
             }
 
         }

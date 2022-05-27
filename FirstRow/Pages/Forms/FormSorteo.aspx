@@ -35,7 +35,7 @@
                         </asp:DropDownList>
                     </div>
                 </div>
-                <!-- 
+                 
              <div>  
                     <h5 class="title" style="margin-left: 10px;" >Imagen</h5>
                     <div>
@@ -50,7 +50,7 @@
                     <asp:RequiredFieldValidator ID="imagen_sorteo_requerido" ControlToValidate="crear_sorteo_imagen" validationgroup="GrupoCrearsorteo" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px;" runat="server" ErrorMessage="*Imagen requerida"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="imagen_sorteo_formato" ControlToValidate="crear_sorteo_imagen" validationgroup="GrupoCrearsorteo" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px;" ValidationExpression="(.*?)\.(jpg|png|JPG|PNG|jpeg|JPEG)$" runat="server" ErrorMessage="*Formato imagenes incorrecto"></asp:RegularExpressionValidator>
                 </div> 
-               
+               <!--
                 <div class="destination-col" style="margin-top: 5px; width:100%">
                     <div class="select_wrap">
                         <asp:DropDownList ID="listaPaises_form_sorteo" class="input" style="width:100%; height:50px; margin-bottom: 20px;" runat="server">

@@ -1,7 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Sorteo.aspx.cs" Inherits="FirstRow.Pages.Sorteo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
-    <div class="tour_page_head" style="background-image: url(https://s1.1zoom.me/b5946/658/Italy_Vernazza_Liguria_Houses_Marinas_Boats_540593_1920x1080.jpg)">
+    <div class="tour_page_head" ID="background_image_header" style="background-image: url(https://s1.1zoom.me/b5946/658/Italy_Vernazza_Liguria_Houses_Marinas_Boats_540593_1920x1080.jpg)" >
+  <!--  -->
         <div class="breadcrumbs">
+            
+
             <div class="wrap">
                 <div class="wrap_float">
                     <a href="/" style="color:white;">FirstRow</a>
