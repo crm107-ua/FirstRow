@@ -23,7 +23,7 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "Insert INTO [firstrow_].[dbo].[Usuarios] " +
+                string query = "Insert INTO [Usuarios] " +
                     "(nickname,email, password, image, background_image," +
                     "name, firstname, secondname, facebook, twitter) " +
                     "VALUES " +
@@ -75,14 +75,14 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "Select count(*) From [firstrow_].[dbo].[Empresas] where nickname = @nickname ";
+                string query = "Select count(*) From [Empresas] where nickname = @nickname ";
                 SqlCommand consulta = new SqlCommand(query, conection);
                 consulta.Parameters.AddWithValue("@nickname", en.nickname);
 
                 if ((int)consulta.ExecuteScalar() == 0)
                 {
 
-                    query = "Select * From [firstrow_].[dbo].[Usuarios] Where nickname = @nickname and password = @password";
+                    query = "Select * From [Usuarios] Where nickname = @nickname and password = @password";
                     consulta = new SqlCommand(query, conection);
                     consulta.Parameters.AddWithValue("@nickname", en.nickname);
                     consulta.Parameters.AddWithValue("@password", en.password);
@@ -139,7 +139,7 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "Select * From [firstrow_].[dbo].[Usuarios] Where nickname = @nickname";
+                string query = "Select * From [Usuarios] Where nickname = @nickname";
                 SqlCommand consulta = new SqlCommand(query, conection);
                 consulta.Parameters.AddWithValue("@nickname", en.nickname);
                 busqueda = consulta.ExecuteReader();
@@ -207,7 +207,7 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "UPDATE [firstrow_].[dbo].[Usuarios] set " +
+                string query = "UPDATE [Usuarios] set " +
                     "email = @email," +
                     "password = @password," +
                     "image = @image," +
@@ -263,7 +263,7 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "DELETE from [firstrow_].[dbo].[Usuarios] " +
+                string query = "DELETE from [Usuarios] " +
                     "WHERE nickname = @nickname";
                 SqlCommand consulta = new SqlCommand(query, conection);
                 consulta.Parameters.AddWithValue("@nickname", en.nickname);

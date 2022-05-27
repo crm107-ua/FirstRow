@@ -65,7 +65,7 @@ namespace library
         {
             CADCategorias categoria = new CADCategorias();
             bool creado = false;
-            if (!categoria.readCategoria(this))
+            if (!categoria.readCategoria(this,true))
             {
                 creado = categoria.registerCategoria(this);
             }
@@ -73,30 +73,25 @@ namespace library
         }
 
         // LEER CATEGORIA
-         public bool readCategoria()
+        public bool readCategoria(bool mode)
         {
             CADCategorias categoria = new CADCategorias();
-            bool creado = false;
-            if (!categoria.readCategoria(this))
-            {
-                creado = categoria.readCategoria(this);
-            }
-            return creado;
+            return categoria.readCategoria(this, mode);
         }
 
-       // ACTUALIZAR CATEGORIA
+        // ACTUALIZAR CATEGORIA
         public bool updateCategoria()
         {
             bool actualizado = false;
             CADCategorias categoria = new CADCategorias();
             ENCategorias aux = new ENCategorias();
 
-            aux.id= this.id;
+            aux.id = this.id;
             aux.nombre = this.nombre;
             aux.descripcion = this.descripcion;
 
 
-            if (categoria.readCategoria(this))
+            if (categoria.readCategoria(this,true))
             {
                 actualizado = categoria.updateCategoria(aux);
                 this.id = aux.id;
@@ -107,13 +102,13 @@ namespace library
             return actualizado;
         }
 
-       // ELIMIAR CATEGORIA
-       public bool deleteCategoria()
+        // ELIMIAR CATEGORIA
+        public bool deleteCategoria()
         {
             bool eliminado = false;
             CADCategorias categoria = new CADCategorias();
 
-            if (categoria.readCategoria(this))
+            if (categoria.readCategoria(this,true))
             {
                 eliminado = categoria.deleteCategoria(this);
             }

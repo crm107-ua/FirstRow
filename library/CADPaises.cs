@@ -27,7 +27,7 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "Select * From [firstrow_].[dbo].[Paises]";
+                string query = "Select * From [Paises]";
                 SqlCommand consulta = new SqlCommand(query, conection);
                 busqueda = consulta.ExecuteReader();
 
@@ -66,12 +66,13 @@ namespace library
         {
             bool correctRead;
             SqlConnection connection = new SqlConnection(constring);
-            SqlCommand cmd = new SqlCommand("SELECT * FROM [firstrow_].[dbo].[Paises]", connection);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [Paises]" +
+                "ORDER BY name", connection);
 
             try
             {
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                sda.Fill(ds);
+                sda.Fill(ds, "Paises");
                 correctRead = true;
 
             }
@@ -85,15 +86,14 @@ namespace library
 
         }
 
-        /**
-         * Lee un único país de la DB
-         * si el país pasado omo argumento tiene un id válido (> 0),
-         * se busca el país con el id, si no, se busca con el nombre del país
-         * 
-         * Devuelve 'true' si se ha encontrado el país en la DB y
-         * 'false' si no se ha encontrado o ha saltado algún error
-         * 
-         */
+        /// <summary>
+        /// Lee un único país de la DB.
+        /// Si el país pasado omo argumento tiene un id válido(> 0),
+        /// se busca el país con el id, si no, se busca con el nombre del país
+        /// </summary>
+        /// <param name="pais"></param>
+        /// <returns>true: si se ha encontrado el país en la DB,
+        /// false: si no se ha encontrado o ha saltado algún error</returns>
         public bool ReadPais(ENPais pais)
         {
             bool correctRead = false;
@@ -103,19 +103,44 @@ namespace library
             {
                 connection.Open();
                 string query = "";
+                SqlCommand com;
                 if (pais.id > 0)
                 {
-                    query = $"SELECT * FROM [firstrow_].[dbo].[Paises] WHERE id = '{pais.id}'";
+                    query = "SELECT * FROM [Paises] WHERE id = @id";
+                    com = new SqlCommand(query, connection);
+                    com.Parameters.AddWithValue("@id", pais.id);
                 }
                 else
                 {
-                    query = $"SELECT * FROM [firstrow_].[dbo].[Paises] WHERE name = '{pais.name}'";
+                    /*
+                    query = "SELECT * FROM [Paises] " +
+                        "WHERE name = @name";
+                    com = new SqlCommand(query, connection);
+                    com.Parameters.AddWithValue("@name", pais.name);
+                    */
+                    query = "SELECT * FROM [Paises];";
+                    com = new SqlCommand(query, connection);
+
                 }
-                SqlCommand com = new SqlCommand(query, connection);
                 SqlDataReader dr = com.ExecuteReader();
                 try
                 {
-                    dr.Read();
+                    if (pais.id > 0)
+                    {
+                        dr.Read();
+
+                    }
+                    else
+                    {
+                        while (dr.Read())
+                        {
+                            if (dr["name"].ToString().ToLower() == pais.name.ToLower())
+                            {
+                                break;
+                            }
+                            
+                        }
+                    }
 
                     if (pais.id > 0 && pais.id == int.Parse(dr["id"].ToString()))
                     {
@@ -123,9 +148,10 @@ namespace library
                         correctRead = true;
 
                     }
-                    else if (pais.id >= 0 && pais.name == dr["name"].ToString())
+                    else if (pais.id <= 0 && pais.name.ToLower() == dr["name"].ToString().ToLower())
                     {
                         pais.id = int.Parse(dr["id"].ToString());
+                        pais.name = dr["name"].ToString();
                         correctRead = true;
                     }
                     else correctRead = false;
@@ -154,6 +180,56 @@ namespace library
                 Console.WriteLine("User operation has failed.Error: {0}", ex.Message);
             }
             finally { connection.Close(); }
+
+            return correctRead;
+        }
+
+        public bool getListPaisesDesconectado(List<ENPais> paises)
+        {
+            bool correctRead = false;
+
+            DataSet ds = new DataSet();
+            try
+            {
+                if (ReadPaisesDataSet(ds))
+                {
+                    DataTable dtPaises = ds.Tables["Paises"];
+                    /*
+                    //Preparamos columna con clave primaria
+                    DataColumn dc = new DataColumn("id");
+                    dc.AutoIncrement = true;
+                    dc.AutoIncrementSeed = 1;
+                    dc.AutoIncrementStep = 1;
+                    dc.DataType = typeof(Int32);
+
+                    //Añadimos la columna a al datable
+                    dtPaises.Columns.Add(dc);
+
+                    //Establecemos la clave primaria
+                    DataColumn[] pk = new DataColumn[] { dc };
+                    dtPaises.PrimaryKey = pk;
+                    */
+
+                    using (DataTableReader dtRdr = dtPaises.CreateDataReader())
+                    {
+                        while (dtRdr.Read())
+                        {
+                            ENPais p = new ENPais();
+                            p.id = Convert.ToInt32(dtRdr[0]);
+                            p.name = Convert.ToString(dtRdr[1]);
+                            paises.Add(p);
+                        }
+                    }
+
+                    correctRead = true;
+                }
+
+            }
+            catch (Exception ex) 
+            {
+                correctRead = false;
+                Console.WriteLine("User operation has failed.Error: {0}", ex.Message);
+            }
 
             return correctRead;
         }

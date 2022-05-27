@@ -15,6 +15,33 @@ namespace FirstRow.Pages
     {
 
         /// <summary>
+        /// Control add.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor add;
+
+        /// <summary>
+        /// Control Title_gal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Title_gal;
+
+        /// <summary>
+        /// Control Description_gal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Description_gal;
+
+        /// <summary>
         /// Control Direccion.
         /// </summary>
         /// <remarks>
@@ -24,30 +51,12 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.WebControls.DropDownList Direccion;
 
         /// <summary>
-        /// Control Scrip1.
+        /// Control mostrar_galerias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager Scrip1;
-
-        /// <summary>
-        /// Control ActualizacionBoton.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel ActualizacionBoton;
-
-        /// <summary>
-        /// Control VerMas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button VerMas;
+        protected global::System.Web.UI.WebControls.Panel mostrar_galerias;
     }
 }

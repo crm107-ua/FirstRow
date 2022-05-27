@@ -3024,6 +3024,20 @@ body.os-windows .popup::-webkit-scrollbar-thumb {
 /*----------------------------------------------------------------------------------
 2.6. Stories section
 -----------------------------------------------------------------------------------*/
+.left_bottom_title {
+    position: absolute;
+    z-index: 2;
+    font-family: 'Prata', serif;
+    font-size: 55px;
+    text-align: center;
+    color: #fff;
+    width: auto;
+    height: 50px;
+    padding: 0 14px;
+    margin-bottom: 12px;
+    bottom: 25px;
+    left: 60px;
+}
 .stories {
   overflow: hidden;
   padding: 50px 0;
@@ -6386,6 +6400,16 @@ body.os-windows .popup::-webkit-scrollbar-thumb {
   background-repeat: no-repeat;
   background-size: cover;
 }
+.image_header_sorteos {
+   /* height: 1080px;
+   /* position: absolute;
+    top: 0;
+    left: 0;*/
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .image_header:before {
   background: #000;
   opacity: .45;
@@ -7901,21 +7925,30 @@ body.os-windows .popup::-webkit-scrollbar-thumb {
 }
 .write_comment .rating-stars .star.filled:before,
 .write_comment .rating-stars .star.selected:before {
-  display: none;
+    width: 28px;
+    height: 28px;
+    background: url(../img/star-dark.svg) center center no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -14px;
+    margin-left: -14px;
+    content: '';
 }
-.write_comment .rating-stars .star.filled:after,
-.write_comment .rating-stars .star.selected:after {
-  width: 28px;
-  height: 28px;
-  background: url(../img/star-active.svg) center center no-repeat;
-  background-size: contain;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -14px;
-  margin-left: -14px;
-  content: '';
-}
+    .write_comment .rating-stars .star.filled:after,
+    .write_comment .rating-stars .star.selected:after {
+        width: 28px;
+        height: 28px;
+        background: url(../img/star-active.svg) center center no-repeat;
+        background-size: contain;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -14px;
+        margin-left: -14px;
+        content: '';
+    }
 .write_comment .input {
   background: #fff;
   height: 58px;

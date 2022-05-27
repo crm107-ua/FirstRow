@@ -10,7 +10,12 @@
 
 ###
 ### 
- 
+
+###### El manual de instalación, las tareas realizas por cada miembro y la presentación se encuentran en la raíz del repositorio. 
+
+###
+### 
+
 ###### El esquema relacional de la base de datos junto con el de sql server y el boceto inicial estan situados en la raíz del repositorio, en un pdf llamado "Esquema_BBDD.pdf". 
 
 ###

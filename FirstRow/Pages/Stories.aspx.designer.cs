@@ -24,6 +24,15 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl background_image_header;
 
         /// <summary>
+        /// Control add_form.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor add_form;
+
+        /// <summary>
         /// Control stories_title.
         /// </summary>
         /// <remarks>
@@ -40,15 +49,6 @@ namespace FirstRow.Pages
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl stories_subtitle;
-
-        /// <summary>
-        /// Control btn_modificar_pagina.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_modificar_pagina;
 
         /// <summary>
         /// Control country_list.
@@ -87,6 +87,15 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.WebControls.Label stories_description_title;
 
         /// <summary>
+        /// Control stories_description_title_edit.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox stories_description_title_edit;
+
+        /// <summary>
         /// Control stories_description.
         /// </summary>
         /// <remarks>
@@ -94,5 +103,14 @@ namespace FirstRow.Pages
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label stories_description;
+
+        /// <summary>
+        /// Control stories_description_edit.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox stories_description_edit;
     }
 }

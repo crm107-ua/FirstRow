@@ -1,12 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/White.Master" AutoEventWireup="true" CodeBehind="Stories.aspx.cs" Inherits="FirstRow.Pages.Stories" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Main" runat="server">
-        <div class="image_header" runat="server" id="background_image_header"></div>
+        <ajaxToolkit:ToolkitScriptManager runat="server"></ajaxToolkit:ToolkitScriptManager>
+        <div class="image_header" runat="server" id="background_image_header" style="z-index: -3;"></div>
         <div class="breadcrumbs">
             <div class="wrap">
                 <div class="wrap_float">
                     <a href="/" style="color:white;">FirstRow</a>
                     <span class="separator" style="color:white;">/</span>
                     <a href="/stories" style="color:white;">Stories</a>
+                    <a id="add_form" runat="server" style="float: right; color:white;" href="/agregar-story"></a>
                 </div>
             </div> 
         </div>
@@ -15,11 +17,8 @@
                 <div class="wrap_float">
                     <div class="page_head">
                         <h1 class="title" runat="server" style="color:white;" id="stories_title"></h1>
-                        <p class="subtitle" runat="server" style="color:white;" id="stories_subtitle"></p>
-                        <div class="buttons">
-                            <asp:Button runat="server" id="btn_modificar_pagina" class="btn button" Text="Modificar página" OnClick="modificarPaginaStories" />
-                        </div>
-
+                        <p class="subtitle" runat="server" style="color:white;" id="stories_subtitle">
+                        </p>
                         <div class="select_wrap">
                             <asp:DropDownList runat="server" ID="country_list" AutoPostBack="true" OnSelectedIndexChanged="seleccionarPais" style="font-size: 18px" />
 
@@ -163,7 +162,10 @@
                 <div class="wrap_float">
                     <asp:Label runat="server" class="title" id="stories_description_title" />
                     <br />
-                    <asp:Label runat="server" class="text" id="stories_description" />
+                    <asp:TextBox runat="server" ID="stories_description_title_edit" Text="" Visible="false" />
+                    <br />
+                    <asp:Label runat="server" class="text" id="stories_description" /><br />
+                    <asp:TextBox runat="server" ID="stories_description_edit" Text="" Visible="false" />
                 </div>
             </div>
         </div>
