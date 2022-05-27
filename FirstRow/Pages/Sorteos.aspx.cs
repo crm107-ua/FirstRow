@@ -27,6 +27,7 @@ namespace FirstRow.Pages
             ENEmpresa emp = (ENEmpresa)Session["empresa"];
             if (emp != null)
             {
+               
                 add_form.Visible = true;
                 add_form.InnerHtml = "Agregar Sorteo";
             }

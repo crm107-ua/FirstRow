@@ -58,9 +58,13 @@ namespace FirstRow.Pages
         }
         protected void participarSorteo(object sender, EventArgs e)
         {
-            
+            if (Session["empresa"] != null)
+            {
+                participar_button.Attributes.Add("onClick", "return false;");
+            }
             if (Session["usuario"] == null)
             {
+
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_user", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('login_user_pop_up').click(); }", true);
             }
             else
@@ -70,8 +74,8 @@ namespace FirstRow.Pages
                 so.addParticipante(user);
                 
                     /*el usuario ya ha participado*/
-                  participar_button.Visible = false;  
-                
+                 // participar_button.Visible = false;  
+                participar_button.Attributes.Add("onClick","return false;");
             }
 
         }

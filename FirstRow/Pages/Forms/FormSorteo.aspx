@@ -60,7 +60,7 @@
                  -->
             </div>
              <div class="bottom">
-                 <!--onClick="crearSorteo"-->
+                
                 <asp:Button id="botonCrearsorteo" onClick="crearSorteo" class="submit button"  runat="server" Text="Crear Sorteo" validationgroup="GrupoCrearsorteo"/>
             </div>
         </div>

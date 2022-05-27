@@ -43,7 +43,7 @@ namespace FirstRow.Pages.Forms
         protected void crearSorteo(object sender, EventArgs e)
         {
             Random rand = new Random();
-
+          
             if (listaexperiencias.SelectedValue == "-1")
             {
             
@@ -73,11 +73,12 @@ namespace FirstRow.Pages.Forms
                 sorteo.Descripcion = create_sorteo_descripcion.Text;
                 sorteo.Titular = empresa.nickname;
 
-                DateTime dateTime;
-                    System.DateTime.TryParse(fechafinal.ToString(),out dateTime);
-                sorteo.FechaFinal = dateTime;
-                System.DateTime.TryParse(fechainicio.ToString(), out dateTime);
-                sorteo.FechaInicio = dateTime.Date;
+       
+                
+                  
+                sorteo.FechaFinal = System.DateTime.Parse(fechafinal.Text);
+
+                sorteo.FechaInicio = System.DateTime.Parse(fechainicio.Text);
 
                 sorteo.Slug=sorteo.Titulo = create_sorteo_title.Text;
                 sorteo.Premio = int.Parse(listaexperiencias.SelectedValue);

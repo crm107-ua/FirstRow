@@ -40,6 +40,9 @@ namespace library
                 com.Parameters.AddWithValue("@fechafinal", en.FechaFinal.ToString("yyyy-MM-dd HH:mm:ss.ffffff"));
                 com.Parameters.AddWithValue("@titular", en.Titular);
                 com.Parameters.AddWithValue("@experiencia", en.Premio);
+
+            
+
                 com.ExecuteNonQuery();
                 anadido = true;
             }
