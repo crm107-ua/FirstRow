@@ -17,19 +17,8 @@
                 <div class="wrap_float">
                     <div class="page_head">
                         <h1 class="title" runat="server" style="color:white;" id="stories_title"></h1>
-                        <asp:TextBox runat="server" ID="stories_title_edit" Text="" Visible="false" />
-                        <br />
                         <p class="subtitle" runat="server" style="color:white;" id="stories_subtitle">
                         </p>
-                        <asp:TextBox runat="server" ID="stories_subtitle_edit" Text="" Visible="false" />
-                        <div class="buttons">
-                            <asp:Button runat="server" id="btn_modificar_pagina" class="btn button" Text="Modificar página" OnClick="modificarPaginaStories" Visible="false" />
-                            <br />
-                            <asp:Button runat="server" id="btn_aceptar_cambios" class="btn button" Text="Aplicar cambios" OnClick="btn_aceptar_cambios_Click" Visible="false" />
-                            <ajaxToolkit:ConfirmButtonExtender runat="server" ID="confirmar_cambios" ConfirmText="¿Desea confirmar los cambios?" TargetControlID="btn_aceptar_cambios"></ajaxToolkit:ConfirmButtonExtender>
-                            <asp:Button runat="server" id="btn_cancelar_cambios" class="btn button" Text="Cancelar" OnClick="btn_cancelar_cambios_Click" Visible="false" />
-                        </div>
-
                         <div class="select_wrap">
                             <asp:DropDownList runat="server" ID="country_list" AutoPostBack="true" OnSelectedIndexChanged="seleccionarPais" style="font-size: 18px" />
 

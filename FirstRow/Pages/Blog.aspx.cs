@@ -32,18 +32,31 @@ namespace FirstRow.Pages
             user_enlace.HRef = "/user/" + blog.Usuario.nickname;
 
             DataSet categorias = categoria.readCategorias();
-            controlDeSesion();
+            controlDeSesion(blog);
             listarCategorias(categorias);
             cargarBlog(blog);
 
         }
 
-        private void controlDeSesion()
+        private void controlDeSesion(ENBlog blog)
         {
-            if (Session["usuario"] == null)
+
+            ENUsuario usuario = (ENUsuario)Session["usuario"];
+
+            if (usuario != null && blog.Usuario.nickname.Equals(usuario.nickname))
+            {
+                eliminarButton.Visible = true;
+            }
+            else
+            {
+                eliminarButton.Visible = false;
+            }
+
+            if (usuario == null)
             {
                 seccion_escribir_comentario.Visible = false;
             }
+
         }
 
         private void cargarBlog(ENBlog blog)
@@ -263,8 +276,16 @@ namespace FirstRow.Pages
             blog.Slug = RouteData.Values["slug"].ToString();
             blog.mostrarBlog();
 
-            eNComentarios.InsertarComentario(blog.Id, true);
-            
+            eNComentarios.InsertarComentario(blog.Id, true);         
+        }
+
+        protected void eliminar(object sender, EventArgs e)
+        {
+            ENBlog blog = new ENBlog();
+            blog.Slug = RouteData.Values["slug"].ToString();
+            blog.mostrarBlog();
+            blog.eliminarBlog();
+            Response.Redirect("/blogs");
         }
 
         protected void blog_raing_Changed(object sender, AjaxControlToolkit.RatingEventArgs e) { }

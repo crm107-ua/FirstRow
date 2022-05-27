@@ -140,7 +140,7 @@ namespace library
         //    return actualizado;
         //}
 
-        public bool deleteBlog()
+        public bool eliminarBlog()
         {
             bool eliminado = false;
             CADBlog blog = new CADBlog();

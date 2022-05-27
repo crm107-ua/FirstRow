@@ -2,8 +2,6 @@
 using library;
 using System.Web.Routing;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
@@ -25,6 +23,7 @@ namespace FirstRow.Pages
             {
                 if (RouteData.Route is Route myRoute)
                 {
+                    //En caso de ser stories de un usuario
                     if (myRoute.Url == "user-stories/{nickname}")
                     {
                         user_nickname = RouteData.Values["nickname"].ToString();
@@ -64,7 +63,8 @@ namespace FirstRow.Pages
                         //user_span.InnerText = user_nickname;
                         left_bottom_title.InnerText = "@"+user_nickname;
 
-                    }else if (myRoute.Url == "story/{slug}")
+                    }//En caso de ser stories de un país
+                    else if (myRoute.Url == "story/{slug}")
                     {
                         borrar_story.Visible = false;
                         string cadena = char.ToUpper(RouteData.Values["slug"].ToString()[0]) + RouteData.Values["slug"].ToString().Substring(1);
@@ -103,30 +103,14 @@ namespace FirstRow.Pages
 
                 loadStories();
 
-                //default_story_panel.BackImageUrl = example_img;
-                //default_story_panel.Attributes["data-blur-bg"] = example_img;
-
-                //addDefaultStory();
-                //firstStory(sender, e); //¿?
-
-                //imagen por defecto (fondo plateado): https://img.freepik.com/vector-gratis/resumen-fondo-plateado-claro_67845-796.jpg
-
             }
         }
 
-        /*
-        protected void crearStory(object sender, EventArgs e)
-        {
-            //Response.Redirect("/agregar-story");
-        }
-        */
-        /*
-        protected void modificarStory(object sender, EventArgs e)
-        {
-            //COMPLETAR -- redirigir a formulario??
-        }
-        */
-
+        /// <summary>
+        /// Elimina una story de la BD
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void eliminarStory(object sender, EventArgs e)
         {
             int story_id = int.Parse(story_id_hidden.Value);
@@ -174,6 +158,15 @@ namespace FirstRow.Pages
             }
         }
 
+        /// <summary>
+        /// Crea el panel de una story con todos los datos necesarios
+        /// </summary>
+        /// <param name="title">El título de la story</param>
+        /// <param name="text">La descripción de la story</param>
+        /// <param name="user">El nickname del usuario que publica la story</param>
+        /// <param name="date">La fecha de publicación</param>
+        /// <param name="pais">El nombre del país de la story</param>
+        /// <returns></returns>
         private Panel createStoryPanel(string title, string text, string user, string date, string pais)
         {
             Panel p = new Panel();
@@ -211,32 +204,9 @@ namespace FirstRow.Pages
             return p;
         }
 
-        /**
-         * probablemente no lo use
-         * se me ocurre otra forma mejor de hacerlo
-         * :)
-         */
-        /*
-        protected void firstStory(object sender, EventArgs e) 
-        {
-            ENStories story = new ENStories();
-            //ENPais pais = new ENPais();
-            //pais.name = pais_name;
-            story.Pais = pais_id;
-
-            if (story.ReadFirstStory())
-            {
-                //mostrar la story en la página
-                Panel p = createStoryPanel(story.Titulo, story.Descripcion);
-                stories_items.Controls.Add(p);
-                //showStory(story);
-
-            }
-            else { addDefaultStory(); }
-            
-            //COMPLETAR
-        }*/
-
+        /// <summary>
+        /// Carga las stories de la BD en la página
+        /// </summary>
         private void loadStories()
         {
 
@@ -270,6 +240,9 @@ namespace FirstRow.Pages
 
         }
 
+        /// <summary>
+        /// Añade una story por defecto
+        /// </summary>
         private void addDefaultStory()
         {
             ENStories story = new ENStories();
@@ -282,6 +255,10 @@ namespace FirstRow.Pages
             addStory(story);
         }
 
+        /// <summary>
+        /// Añade una story a las stories a mostrar
+        /// </summary>
+        /// <param name="story">La story a añadir</param>
         private void addStory(ENStories story)
         {
             ENPais pais = new ENPais();

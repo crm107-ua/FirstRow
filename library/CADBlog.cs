@@ -418,10 +418,42 @@ namespace library
             return update;
         }
 
-        public bool deleteBlog(ENBlog en)
+        public bool deleteBlog(ENBlog blog)
         {
-            bool delete = false;
-            return delete;
+            bool eliminado = false;
+            SqlConnection conection = null;
+
+            try
+            {
+                conection = new SqlConnection(constring);
+                conection.Open();
+
+                string query = "Delete from [Blogs] " +
+                    "where id = @id";
+                SqlCommand consulta = new SqlCommand(query, conection);
+                consulta.Parameters.AddWithValue("@id", blog.Id);
+                consulta.ExecuteNonQuery();
+
+                eliminado = true;
+            }
+            catch (SqlException e)
+            {
+                eliminado = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            catch (Exception e)
+            {
+                eliminado = false;
+                Console.WriteLine("User operation has failed.Error: {0}", e.Message);
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return eliminado;
         }
     }
 }
