@@ -21,6 +21,7 @@ namespace library
         private string _contactoTexto1;
         private string _contactoTexto2;
 
+
         public string TituloExperiencia { get => _tituloExperiencia; set => _tituloExperiencia = value; }
         public string DescpExpperiencia { get => _descpExpperiencia; set => _descpExpperiencia = value; }
         public string TituloGaleria { get => _tituloGaleria; set => _tituloGaleria = value; }
@@ -50,7 +51,7 @@ namespace library
             ContactoTexto2 = "";
         }
 
-        public ENAdmin(string tituloExperiencia, string descpExpperiencia, string tituloGaleria, string descpGaleria, string tituloStories , string descpStories, string tituloBlog, string decpBlog , string tituloSorteos, string descpSorteos , string contactoTexto1 , string contactoTexto2)
+        public ENAdmin(string tituloExperiencia, string descpExpperiencia, string tituloGaleria, string descpGaleria, string tituloStories, string descpStories, string tituloBlog, string decpBlog, string tituloSorteos, string descpSorteos, string contactoTexto1, string contactoTexto2)
         {
             TituloExperiencia = tituloExperiencia;
             DescpExpperiencia = descpExpperiencia;
@@ -66,7 +67,7 @@ namespace library
             ContactoTexto2 = contactoTexto2;
         }
 
-        public bool modify() 
+        public bool modify()
         {
             bool conseguido = false;
             CADAdmin aux = new CADAdmin();
@@ -74,15 +75,15 @@ namespace library
             return conseguido;
         }
 
-        public bool readAll() 
+        public bool readAll()
         {
             bool conseguido = false;
             CADAdmin aux = new CADAdmin();
-            conseguido=aux.readAll(this);
+            conseguido = aux.readAll(this);
             return conseguido;
         }
 
-        public static string read(string slug) 
+        public static string read(string slug)
         {
             CADAdmin aux = new CADAdmin();
             return aux.read(slug);

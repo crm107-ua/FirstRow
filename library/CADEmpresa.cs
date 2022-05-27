@@ -87,9 +87,11 @@ namespace library
                 conection = new SqlConnection(constring);
                 conection.Open();
 
-                string query = "SELECT * FROM [Usuarios] u INNER JOIN [Empresas] e on u.nickname = e.nickname where u.email = @email";
+                string query = "SELECT * FROM [Usuarios] u INNER JOIN [Empresas] e on u.nickname = e.nickname where u.email = @email " +
+                    "and u.password = @password;";
                 SqlCommand consulta = new SqlCommand(query, conection);
                 consulta.Parameters.AddWithValue("@email", en.email);
+                consulta.Parameters.AddWithValue("@password", en.password);
                 busqueda = consulta.ExecuteReader();
                 busqueda.Read();
 

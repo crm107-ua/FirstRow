@@ -17,7 +17,7 @@ namespace library
             constring = ConfigurationManager.ConnectionStrings["DataBase"].ToString();
         }
 
-        public bool modify(ENAdmin en) 
+        public bool modify(ENAdmin en)
         {
             bool conseguido = false;
 
@@ -86,12 +86,11 @@ namespace library
                 command.Parameters.AddWithValue("@text", en.ContactoTexto2);
                 command.ExecuteNonQuery();
 
-                conseguido = true;
             }
             catch (Exception e)
             {
             }
-            finally 
+            finally
             {
                 connection.Close();
             }
@@ -99,7 +98,7 @@ namespace library
             return conseguido;
         }
 
-        public bool readAll(ENAdmin en) 
+        public bool readAll(ENAdmin en)
         {
             bool conseguido = false;
             SqlConnection connection = new SqlConnection(constring);
@@ -111,23 +110,23 @@ namespace library
                 SqlCommand command = new SqlCommand(querty, connection);
                 SqlDataReader reader = command.ExecuteReader();
 
-                while (reader.Read()) 
+                while (reader.Read())
                 {
                     if (reader["slug"].ToString().Split('-')[0] == "titulo")
                     {
-                        escrituraDatos(en, reader,true);
+                        escrituraDatos(en, reader, true);
                     }
                     else if (reader["slug"].ToString().Split('-')[0] == "des")
                     {
                         escrituraDatos(en, reader, false);
                     }
-                    else 
+                    else
                     {
                         if (reader["slug"].ToString().Split('-')[2] == "1")
                         {
                             en.ContactoTexto1 = reader["text"].ToString();
                         }
-                        else 
+                        else
                         {
                             en.ContactoTexto2 = reader["text"].ToString();
                         }
@@ -136,22 +135,22 @@ namespace library
                 conseguido = true;
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
             }
-            finally 
+            finally
             {
                 conseguido.ToString();
             }
-           
+
 
             return conseguido;
         }
 
-        public string read(string slug) 
+        public string read(string slug)
         {
 
-             string text = "";
+            string text = "";
 
             SqlConnection connection = new SqlConnection(constring);
 
@@ -200,9 +199,10 @@ namespace library
                     case "sorteos":
                         en.TituloSorteos = reader["text"].ToString();
                         break;
+
                 }
             }
-            else 
+            else
             {
                 switch (reader["slug"].ToString().Split('-')[1])
                 {

@@ -15,6 +15,15 @@ namespace FirstRow.Pages.Forms
     {
 
         /// <summary>
+        /// Control resultado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label resultado;
+
+        /// <summary>
         /// Control create_propuesta_title.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,33 @@ namespace FirstRow.Pages.Forms
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator titulo_propuesta_formato;
+
+        /// <summary>
+        /// Control create_propuesta_empresa.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox create_propuesta_empresa;
+
+        /// <summary>
+        /// Control empresa_propuesta_requerido.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator empresa_propuesta_requerido;
+
+        /// <summary>
+        /// Control empresa_propuesta_formato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator empresa_propuesta_formato;
 
         /// <summary>
         /// Control create_propuesta_descripcion.
