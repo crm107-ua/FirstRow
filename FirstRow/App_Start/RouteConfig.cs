@@ -23,7 +23,8 @@ namespace FirstRow.App_Start
 
             routes.MapPageRoute("sorteos", "sorteos", "~/Pages/Sorteos.aspx");
             routes.MapPageRoute("sorteo", "sorteo/{slug}", "~/Pages/Sorteo.aspx");
-             
+            routes.MapPageRoute("agregar_sorteo", "agregar-sorteo", "~/Pages/Forms/FormSorteo.aspx");
+
             routes.MapPageRoute("stories", "stories", "~/Pages/Stories.aspx");
             routes.MapPageRoute("story", "story/{slug}", "~/Pages/Story.aspx");
             routes.MapPageRoute("agregar_story", "agregar-story", "~/Pages/Forms/FormStory.aspx");

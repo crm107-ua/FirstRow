@@ -15,7 +15,7 @@ namespace library
         /// <summary>
         /// Cantidad monetaria del premio
         /// </summary>
-        private ENViajes _Premio;
+        private int _Premio;
         /// <summary>
         /// Nombre del sorteo
         /// </summary>
@@ -51,7 +51,7 @@ namespace library
         private string _Titular;
 
         public int Id { get => _Id; set => _Id = value; }
-        public ENViajes Premio { get => _Premio; set => _Premio = value; }
+        public int Premio { get => _Premio; set => _Premio = value; }
         public string Titulo { get => _Nombre; set => _Nombre = value; }
         public string Slug { get => _Slug; set => _Slug = value; }
         public string Descripcion { get => _Descripcion; set => _Descripcion = value; }
@@ -67,7 +67,7 @@ namespace library
         public ENSorteos()
         {
             _Id = 0;
-            _Premio = new ENViajes();
+            _Premio=0;
             _Nombre = "";
             _Slug = "";
             _Descripcion = "";
@@ -89,7 +89,7 @@ namespace library
         /// <param name="fechaInicio"></param>
         /// <param name="fechaFinal"></param>
         /// <param name="participantes"></param>
-        public ENSorteos(int id, ENViajes premio, string nombre, string slug, string descripcion, string imagen, DateTime fechaInicio, DateTime fechaFinal, ENUsuario[] participantes,string titular)
+        public ENSorteos(int id, int premio, string nombre, string slug, string descripcion, string imagen, DateTime fechaInicio, DateTime fechaFinal, ENUsuario[] participantes,string titular)
         {
             _Id = id;
             _Premio = premio;
@@ -103,11 +103,15 @@ namespace library
             _Titular= titular;
 
         }
-       
-        public bool addParticipante()
+       public bool createSorteo()
+        {
+            CADSorteos sorteos = new CADSorteos();
+            return sorteos.addSorteo(this);
+        }
+        public bool addParticipante(ENUsuario usr)
         {
             CADSorteos par = new CADSorteos();
-            bool ok = par.addParticipante(this);
+            bool ok = par.addParticipante(this,usr);
             return ok;
         }
         public bool deleteParticipante()
@@ -138,6 +142,11 @@ namespace library
         {
             CADSorteos sorteos = new CADSorteos();
             return sorteos.readsorteosconectado(lista);
+        }
+        public bool exists(ENSorteos sorteo)
+        {
+            CADSorteos sorteos = new CADSorteos();
+            return sorteos.exists(this);
         }
     }
 }

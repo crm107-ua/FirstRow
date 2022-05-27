@@ -23,12 +23,25 @@ namespace FirstRow.Pages
              "url(https://static.onecms.io/wp-content/uploads/sites/28/2021/09/24/travel-gifts-lead-TRVLGG0921.jpg)"
              */
             background_image_header.Style.Add("background-image", "url(https://static.onecms.io/wp-content/uploads/sites/28/2021/09/24/travel-gifts-lead-TRVLGG0921.jpg)");
-           
+            ENUsuario user = (ENUsuario)Session["usuario"];
+            ENEmpresa emp = (ENEmpresa)Session["empresa"];
+            if (emp != null)
+            {
+                botonagregarsorteo.Visible = true;
+                add_form.Visible = true;
+                add_form.InnerHtml = "Agregar Sorteo";
+            }
+            else { add_form.Visible = false; }
+
             ENSorteos sorteo = new ENSorteos();
             List<ENSorteos> lista = new List<ENSorteos>();
             sorteo.readsorteosconectado(lista);
             
             listaSorteos(lista);
+        }
+        protected void agregarsorteo(object sender, EventArgs e)
+        {
+            Response.Redirect(url: ("/agregar-sorteo"));
         }
         private void listaSorteos(List<ENSorteos> sorteos)
         {

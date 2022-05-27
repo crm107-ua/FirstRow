@@ -195,6 +195,7 @@
     <Content Include="Pages\FirstRow.aspx" />
     <Content Include="Pages\Forms\FormBlog.aspx" />
     <Content Include="Pages\Forms\admin.aspx" />
+    <Content Include="Pages\Forms\FormSorteo.aspx" />
     <Content Include="Pages\Forms\FormStory.aspx" />
     <Content Include="Pages\Forms\FormGaleria.aspx" />
     <Content Include="Pages\Forms\FormExperiencia.aspx" />
@@ -295,6 +296,13 @@
     </Compile>
     <Compile Include="Pages\Forms\admin.aspx.designer.cs">
       <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Forms\FormSorteo.aspx.cs">
+      <DependentUpon>FormSorteo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Forms\FormSorteo.aspx.designer.cs">
+      <DependentUpon>FormSorteo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Forms\FormStory.aspx.cs">
       <DependentUpon>FormStory.aspx</DependentUpon>

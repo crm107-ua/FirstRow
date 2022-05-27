@@ -13,6 +13,7 @@ namespace FirstRow.Pages
 {
     public partial class Sorteo : System.Web.UI.Page
     {
+        private ENSorteos so;
         protected void Page_Load(object sender, EventArgs e)
         {
             string cadena="";
@@ -23,11 +24,12 @@ namespace FirstRow.Pages
                 titulo.Text = slug.Text = cadena.Replace("-", " ");
 
             }
-            ENSorteos so = new ENSorteos();
+           so=new ENSorteos();
             so.Slug = slug.Text.ToString();
             so.readsorteo();
             Home.slug(so.Titulo.ToString());
-        
+            //background_image_header.Style.Add("background-image", "url(/Media/Sorteos/"+so.Imagen+")");
+           
             describe.Text = so.Descripcion.ToString();
             empresa.Text=so.Titular.ToString();
             diaI.Text = so.FechaInicio.ToString("dd");
@@ -56,13 +58,24 @@ namespace FirstRow.Pages
         }
         protected void participarSorteo(object sender, EventArgs e)
         {
+            if (Session["empresa"] != null)
+            {
+                participar_button.Attributes.Add("onClick", "return false;");
+            }
             if (Session["usuario"] == null)
             {
+
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "login_user", "setTimeout(ClickTheLink,500); function ClickTheLink() { document.getElementById('login_user_pop_up').click(); }", true);
             }
             else
-            {
+            { 
+                /*meterlo en la base de datos*/
+                ENUsuario user = (ENUsuario)Session["usuario"];
+                so.addParticipante(user);
                 
+                    /*el usuario ya ha participado*/
+                 // participar_button.Visible = false;  
+                participar_button.Attributes.Add("onClick","return false;");
             }
 
         }

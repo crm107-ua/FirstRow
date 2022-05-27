@@ -26,8 +26,11 @@ namespace library
 
                 c.Open();
 
-                string s = "Insert INTO [dbo].[Sorteo_Usuarios] (titulo,descripcion,slug,imagen,FechaInicio,FechaFinal) VALUES ( @titulo , @descripcion , @slug , @imagen, @fechainicio, @fechafinal)";
-
+                string s = "Insert INTO [Sorteos]"+
+                    " (titulo,descripcion,slug,imagen,FechaInicio,FechaFinal,titular,experiencia)"+
+                    " VALUES (@titulo,@descripcion,@slug,@imagen,@FechaInicio,@FechaFinal,@titular,@experiencia)";
+                
+         
                 SqlCommand com = new SqlCommand(s, c);
                 com.Parameters.AddWithValue("@titulo", en.Titulo);
                 com.Parameters.AddWithValue("@descripcion", en.Descripcion);
@@ -35,6 +38,10 @@ namespace library
                 com.Parameters.AddWithValue("@imagen",en.Imagen);
                 com.Parameters.AddWithValue("@fechainicio", en.FechaInicio.ToString("yyyy-MM-dd HH:mm:ss.ffffff"));
                 com.Parameters.AddWithValue("@fechafinal", en.FechaFinal.ToString("yyyy-MM-dd HH:mm:ss.ffffff"));
+                com.Parameters.AddWithValue("@titular", en.Titular);
+                com.Parameters.AddWithValue("@experiencia", en.Premio);
+
+            
 
                 com.ExecuteNonQuery();
                 anadido = true;
@@ -58,28 +65,36 @@ namespace library
 
         }
 
-        internal bool addParticipante(ENSorteos eNSorteos) 
+        internal bool addParticipante(ENSorteos eNSorteos,ENUsuario usr
+) 
         {
             bool conseguido = false;
             SqlConnection conection = new SqlConnection(constring);
-            foreach (ENUsuario usuario in eNSorteos.Participantes) {
+
                 try
                 {
                     conection.Open();
                     string querty = "insert into [Sorteo_Usuarios] (id_Sorteo, nickname_Usuario) values (@sorteo,@usuario)";
                     SqlCommand com = new SqlCommand(querty, conection);
                     com.Parameters.AddWithValue("@sorteo", eNSorteos.Id);
-                    com.Parameters.AddWithValue("@usuario",usuario.nickname);
-    
+                    com.Parameters.AddWithValue("@usuario",usr.nickname);
+                    com.ExecuteNonQuery();
+                    conseguido = true;
                 }
+            catch (SqlException e)
+            {
+                String algo = e.ToString();
+
+            }
                 catch (Exception e)
                 {
-                }
+                String algo = e.ToString();
+            }
                 finally
                 {
                     conection.Close();
                 }
-            }
+            
 
             return conseguido;
         }
@@ -177,21 +192,8 @@ namespace library
 
                 busqueda.Read();
                 
-                    //int id = int.Parse(busqueda["id"].ToString());
-                    
-             /*
-                    sorteo = new ENSorteos
-                    {
-                        Id = Int32.Parse(busqueda["id"].ToString()),
-                        Imagen = busqueda["imagen"].ToString(),
-                        Titulo = busqueda["titulo"].ToString(),
-                        Descripcion = busqueda["descripcion"].ToString(),
-                        FechaFinal = DateTime.Parse(busqueda["fechafINAL"].ToString()),
-                        FechaInicio = DateTime.Parse(busqueda["fechaInicio"].ToString()),
-                        Titular = busqueda["titular"].ToString(),
-                        Slug = busqueda["slug"].ToString()
-                    };
-                */
+        
+            
                 sorteo.Id = Int32.Parse(busqueda["id"].ToString());
                 sorteo.Imagen = busqueda["imagen"].ToString();
                 sorteo.Titulo = busqueda["titulo"].ToString();
@@ -257,6 +259,55 @@ namespace library
             finally { connection.Close(); }
 
             return cantidad;
+
+
+        }
+        public bool exists(ENSorteos sorteo)
+        {
+
+            bool exist;
+            SqlConnection connection = null;
+            SqlDataReader busqueda = null;
+
+            try
+            {
+                connection = new SqlConnection(constring);
+                connection.Open();
+
+                string query = "SELECT * FROM [Sorteos] where slug=" + "'" + sorteo.Slug.ToString() + "'"+"and"+"'";
+                SqlCommand consulta = new SqlCommand(query, connection);
+                busqueda = consulta.ExecuteReader();
+
+                busqueda.Read();
+
+              
+                sorteo.Id = Int32.Parse(busqueda["id"].ToString());
+                sorteo.Imagen = busqueda["imagen"].ToString();
+                sorteo.Titulo = busqueda["titulo"].ToString();
+                sorteo.Descripcion = busqueda["descripcion"].ToString();
+                sorteo.FechaInicio = DateTime.Parse(busqueda["fechaInicio"].ToString());
+                sorteo.FechaFinal = DateTime.Parse(busqueda["fechafINAL"].ToString());
+                sorteo.Titular = busqueda["titular"].ToString();
+                sorteo.Slug = busqueda["slug"].ToString();
+
+
+
+
+                exist = true;
+            }
+            catch (SqlException ex)
+            {
+                exist = false;
+                Console.WriteLine("User operation has failed.Error: {0}", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                exist = false;
+                Console.WriteLine("User operation has failed.Error: {0}", ex.Message);
+            }
+            finally { connection.Close(); }
+
+            return exist;
 
 
         }

@@ -7,7 +7,11 @@
                     <a href="/" style="color:white;">FirstRow</a>
                     <span class="separator" style="color:white;">/</span>
                     <a href="/sorteos" style="color:white;">Sorteos</a>
-                </div>
+                   <!--  <a id="add_form"  runat="server" style="float: right; color:red;" href="/agregar-sorteo"></a><!-- probando --> 
+             <div class="top">
+                    <asp:Button id="botonagregarsorteo" visible="false" onClick="agregarsorteo" class="submit button" style="float: right;" runat="server" Text="Crear Sorteo"/><
+           </div>
+                    </div>
             </div>
         </div>
         <div class="page blog-list-page full-width">
