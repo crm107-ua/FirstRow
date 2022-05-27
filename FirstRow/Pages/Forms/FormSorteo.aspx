@@ -27,11 +27,8 @@
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator3" ControlToValidate="fechafinal" validationgroup="GrupoCrearsorteo" style="float:left; margin-left: 10px; margin-top: 5px; margin-bottom: 10px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[-.:,0-9A-Za-zÀ-ÿ ]+$" ErrorMessage="*Formato de titulo incorrecto"> </asp:RegularExpressionValidator>
                     
          
-                <h2 class="subtitle" style="margin-left: 10px;" >Premio</h2>
-                <asp:TextBox ID="premio" runat="server" type="text" style=" width:100%" class="input" placeholder="Premio monetario"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="premio" validationgroup="GrupoCrearsorteo" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 5px; margin-bottom: 10px;" runat="server" ErrorMessage="*Titulo requerido"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" ControlToValidate="premio" validationgroup="GrupoCrearsorteo" style="float:left; margin-left: 10px; margin-top: 5px; margin-bottom: 10px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[-.:,0-9A-Za-zÀ-ÿ ]+$" ErrorMessage="*Formato de titulo incorrecto"> </asp:RegularExpressionValidator>
-                
+                <h2 class="subtitle" style="margin-left: 10px;" >Experiencia</h2>
+         
                     <div class="destination-col" style="margin-top: 1%; width:100%">
                     <div class="select_wrap">
                         <asp:DropDownList ID="listaexperiencias" class="input" style="width:100%; height:50px; margin-bottom: 20px;" runat="server">
@@ -62,7 +59,10 @@
                 </div>
                  -->
             </div>
-
+             <div class="bottom">
+                 <!--onClick="crearSorteo"-->
+                <asp:Button id="botonCrearsorteo" onClick="crearSorteo" class="submit button"  runat="server" Text="Crear Sorteo" validationgroup="GrupoCrearsorteo"/>
+            </div>
         </div>
     </div>
 </asp:Content>
