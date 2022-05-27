@@ -59,6 +59,9 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                  
+
+<!--
                                             <div class="num-col">
                                                 <div style="color:white" class="label">Adultos</div>
                                                 <div class="num_wrap">
@@ -71,6 +74,8 @@
                                                     <input type="number" class="val js_num" value="0" min="0" max="99">
                                                 </div>
                                             </div>
+
+-->
                                         </div>
                                     </div>
                                 </div>

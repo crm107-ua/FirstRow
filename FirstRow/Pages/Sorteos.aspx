@@ -7,6 +7,7 @@
                     <a href="/" style="color:white;">FirstRow</a>
                     <span class="separator" style="color:white;">/</span>
                     <a href="/sorteos" style="color:white;">Sorteos</a>
+                     <a id="add_form" runat="server" style="float: right; color:white;" href="/agregar-sorteo"></a><!-- probando -->
                 </div>
             </div>
         </div>
