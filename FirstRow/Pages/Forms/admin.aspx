@@ -32,16 +32,6 @@
                 <asp:RequiredFieldValidator ID="titulo_sorteos_admin_requerido" ControlToValidate="create_admin_tittle_sorteo" validationgroup="GrupoCrearadmin" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 5px; margin-bottom: 10px;" runat="server" ErrorMessage="*Titulo requerido"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="titulo_sorteos_admin_formato" ControlToValidate="create_admin_tittle_sorteo" validationgroup="GrupoCrearadmin" style="float:left; margin-left: 10px; margin-top: 5px; margin-bottom: 10px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[-.:,0-9A-Za-zÀ-ÿ ]+$" ErrorMessage="*Formato de titulo incorrecto"> </asp:RegularExpressionValidator>
 
-                <h5 class="subtitle">Titulo de la propuesta: </h5>
-                <asp:TextBox ID="create_admin_titulo" runat="server" type="text" style=" width:100%" class="input" placeholder="Titulo propuesta"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="titulo_propuesta_requerido" ControlToValidate="create_admin_titulo" validationgroup="GrupoCrearadmin" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 5px; margin-bottom: 10px;" runat="server" ErrorMessage="*Titulo requerido"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="titulo_propuesta_formato" ControlToValidate="create_admin_titulo" validationgroup="GrupoCrearadmin" style="float:left; margin-left: 10px; margin-top: 5px; margin-bottom: 10px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[-.:,0-9A-Za-zÀ-ÿ ]+$" ErrorMessage="*Formato de titulo incorrecto"> </asp:RegularExpressionValidator>
-
-                <h5 class="subtitle">Texto de la propuesta: </h5>
-                <asp:TextBox ID="create_admin_texto" runat="server" type="text" style=" width:100%" class="input" placeholder="Texto propuesta"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="texto_propuesta_requerido" ControlToValidate="create_admin_texto" validationgroup="GrupoCrearadmin" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 5px; margin-bottom: 10px;" runat="server" ErrorMessage="*Titulo requerido"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="texto_propuesta_formato" ControlToValidate="create_admin_texto" validationgroup="GrupoCrearadmin" style="float:left; margin-left: 10px; margin-top: 5px; margin-bottom: 10px;" runat="server" Display="Dynamic" ForeColor="Red" ValidationExpression="^[-.:,0-9A-Za-zÀ-ÿ ]+$" ErrorMessage="*Formato de titulo incorrecto"> </asp:RegularExpressionValidator>
-
                  <h5 class="subtitle">Descripcion experiencia: </h5>
                 <asp:TextBox ID="create_admin_descripcion" runat="server" type="text" textMode="MultiLine" style="resize:vertical;" Width="100%" Height="180px" class="textarea" placeholder="Descripcion experiencia"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="descripcion_exp_admin_requerido" ControlToValidate="create_admin_descripcion" validationgroup="GrupoCrearadmin" ForeColor="Red" style="float:left; margin-left: 10px; margin-top: 10px; margin-bottom: 5px;" runat="server" ErrorMessage="*Descripcion requerida"></asp:RequiredFieldValidator>

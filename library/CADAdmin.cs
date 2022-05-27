@@ -86,16 +86,6 @@ namespace library
                 command.Parameters.AddWithValue("@text", en.ContactoTexto2);
                 command.ExecuteNonQuery();
 
-                querty = "update [Admin] set text=@text where slug='titulo-propuestas'";
-                command = new SqlCommand(querty, connection);
-                command.Parameters.AddWithValue("@text", en.tituloPropuesta);
-                command.ExecuteNonQuery();
-
-                querty = "update [Admin] set text=@text where slug='texto-propuestas'";
-                command = new SqlCommand(querty, connection);
-                command.Parameters.AddWithValue("@text", en.textoPropuesta);
-                command.ExecuteNonQuery();
-
             }
             catch (Exception e)
             {
@@ -209,9 +199,6 @@ namespace library
                     case "sorteos":
                         en.TituloSorteos = reader["text"].ToString();
                         break;
-                    case "propuestas":
-                        en.tituloPropuesta = reader["text"].ToString();
-                        break;
 
                 }
             }
@@ -235,9 +222,6 @@ namespace library
                         break;
                     case "sorteos":
                         en.DescpSorteos = reader["text"].ToString();
-                        break;
-                    case "propuestas":
-                        en.textoPropuesta = reader["text"].ToString();
                         break;
                 }
             }

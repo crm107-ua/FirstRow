@@ -20,8 +20,6 @@ namespace library
         private string _descpSorteos;
         private string _contactoTexto1;
         private string _contactoTexto2;
-        private string _tituloPropuesta;
-        private string _textoPropuesta;
 
 
         public string TituloExperiencia { get => _tituloExperiencia; set => _tituloExperiencia = value; }
@@ -36,10 +34,6 @@ namespace library
         public string DescpSorteos { get => _descpSorteos; set => _descpSorteos = value; }
         public string ContactoTexto1 { get => _contactoTexto1; set => _contactoTexto1 = value; }
         public string ContactoTexto2 { get => _contactoTexto2; set => _contactoTexto2 = value; }
-        public string tituloPropuesta { get => _tituloPropuesta; set => _tituloPropuesta = value; }
-        public string textoPropuesta { get => _textoPropuesta; set => _textoPropuesta = value; }
-
-
 
         public ENAdmin()
         {
@@ -55,11 +49,9 @@ namespace library
             DescpSorteos = "";
             ContactoTexto1 = "";
             ContactoTexto2 = "";
-            tituloPropuesta = "";
-            textoPropuesta = "";
         }
 
-        public ENAdmin(string tituloExperiencia, string descpExpperiencia, string tituloGaleria, string descpGaleria, string tituloStories, string descpStories, string tituloBlog, string decpBlog, string tituloSorteos, string descpSorteos, string contactoTexto1, string contactoTexto2, string tituloPropuesta2, string textoPropuesta2)
+        public ENAdmin(string tituloExperiencia, string descpExpperiencia, string tituloGaleria, string descpGaleria, string tituloStories, string descpStories, string tituloBlog, string decpBlog, string tituloSorteos, string descpSorteos, string contactoTexto1, string contactoTexto2)
         {
             TituloExperiencia = tituloExperiencia;
             DescpExpperiencia = descpExpperiencia;
@@ -73,8 +65,6 @@ namespace library
             DescpSorteos = descpSorteos;
             ContactoTexto1 = contactoTexto1;
             ContactoTexto2 = contactoTexto2;
-            tituloPropuesta = tituloPropuesta2;
-            textoPropuesta = textoPropuesta2;
         }
 
         public bool modify()

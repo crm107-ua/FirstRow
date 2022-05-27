@@ -57,8 +57,7 @@ namespace FirstRow.Pages.Forms
                 create_admin_descripcion_stories.Text = eNAdmin.DescpStories;
                 create_admin_descripcion_blogs.Text = eNAdmin.DecpBlog;
                 create_admin_slogan.Text = eNAdmin.ContactoTexto1;
-                create_admin_titulo.Text = eNAdmin.tituloPropuesta;
-                create_admin_texto.Text = eNAdmin.textoPropuesta;
+                create_admin_info.Text = eNAdmin.ContactoTexto2;
             }
         }
 
@@ -79,8 +78,6 @@ namespace FirstRow.Pages.Forms
             eNAdmin.DecpBlog = create_admin_descripcion_blogs.Text;
             eNAdmin.ContactoTexto1 = create_admin_slogan.Text;
             eNAdmin.ContactoTexto2 = create_admin_info.Text;
-            eNAdmin.tituloPropuesta = create_admin_titulo.Text;
-            eNAdmin.textoPropuesta = create_admin_texto.Text;
 
             if (eNAdmin.modify())
             {

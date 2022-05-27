@@ -153,16 +153,16 @@ namespace library
 
                 while (busqueda.Read())
                 {
-                    //int id = int.Parse(busqueda["id"].ToString());
-                    ENPropuestas propuesta;
+                    ENPropuestas propuesta = new ENPropuestas();
 
-                    propuesta = new ENPropuestas
-                    {
-                        Id = Int32.Parse(busqueda["id"].ToString()),
-                        Titulo = busqueda["titulo"].ToString(),
-                        Texto = busqueda["descripcion"].ToString(),
-                        Slug = busqueda["slug"].ToString(),
-                    };
+                    propuesta.Id = Int32.Parse(busqueda["id"].ToString());
+                    propuesta.Titulo = busqueda["titulo"].ToString();
+                    propuesta.Imagenes = new ENImagenes(busqueda["imagen"].ToString());
+                    propuesta.Texto = busqueda["texto"].ToString();
+                    propuesta.Slug = busqueda["slug"].ToString();
+                    propuesta.Usuario.nickname= busqueda["usuario"].ToString();
+                    propuesta.Empresa.nickname=busqueda["empresa"].ToString();
+
 
                     lista.Add(propuesta);
                 }
