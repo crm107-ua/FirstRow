@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.Routing;
@@ -427,6 +428,34 @@ namespace FirstRow
             utf8Decode.GetChars(todecode_byte, 0, todecode_byte.Length, decoded_char, 0);
             string result = new String(decoded_char);
             return result;
+        }
+
+        public static bool SendEmail(string destinatario, string asunto, string mensaje)
+        {
+            //System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+            MailMessage message = new MailMessage();
+            try
+            {
+                MailAddress fromAddress = new MailAddress("FirstRowTeam@gmail.com", "Equipo FirstRow");
+               
+                MailAddress toAddress = new MailAddress(destinatario, "Sr/a. Cliente");
+               
+                message.From = fromAddress;
+                message.To.Add(toAddress);
+                message.Subject = asunto;
+                message.Body = mensaje;
+                smtpClient.EnableSsl = true;
+                smtpClient.Credentials = new System.Net.NetworkCredential("FirstRowTeam@gmail.com", "firstRowPassword");
+                //smtpClient.UseDefaultCredentials = true;
+
+                smtpClient.Send(message);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
