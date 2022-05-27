@@ -15,7 +15,15 @@ namespace FirstRow.Pages.Forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Error.Text = "";
+            Error.Visible = false;
+            if (!IsPostBack)
+            {
+                if (Session["usuario"] == null)
+                {
+                    Response.Redirect("/");
+                }
+            }
         }
 
         protected void CrearPropuesta(object sender, EventArgs e)
@@ -44,7 +52,7 @@ namespace FirstRow.Pages.Forms
             }
             else
             {
-                resultado.Text = "Ha ocurrido un error";
+                Error.Text = "Ha ocurrido un error";
             }
 
         }
