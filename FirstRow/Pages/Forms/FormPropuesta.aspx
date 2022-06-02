@@ -21,7 +21,7 @@
 
               
                 <div>  
-                    <h5 class="title" style="margin-left: 10px;" >Imagenes</h5>
+                    <h5 class="title" style="margin-left: 10px;" >Imagen</h5>
                     <div>
                         <asp:ScriptManager ID="SCPTMGR" runat="server"></asp:ScriptManager>  
                         <asp:UpdatePanel ID="UpdimageUpload" runat="server">  

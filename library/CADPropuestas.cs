@@ -42,12 +42,12 @@ namespace library
             }
         }
 
+        public bool readPropuestas(List<ENPropuestas> propuestas) 
+        {
+            return true;
+        }
 
-
-
-
-
-        internal DataSet readPropuestas(ENPropuestas eNPropuestas)
+        private DataSet readPropuestasAux()
         {
             SqlConnection c = null;
 
@@ -73,7 +73,7 @@ namespace library
         }
 
         //Para busqyesda con slug v=  true si no para id
-        internal bool readPropuestas(ENPropuestas propuesta, bool v)
+        internal bool readPropuesta(ENPropuestas propuesta, bool v)
         {
 
             SqlConnection conection = null;
@@ -131,69 +131,6 @@ namespace library
                 }
             }
             return true;
-        }
-
-
-
-
-        public bool readpropuestasconectado(List<ENPropuestas> lista)
-        {
-            bool correctRead;
-            SqlConnection connection = null;
-            SqlDataReader busqueda = null;
-
-            try
-            {
-                connection = new SqlConnection(constring);
-                connection.Open();
-
-                string query = "SELECT * FROM [Propuestas]";
-                SqlCommand consulta = new SqlCommand(query, connection);
-                busqueda = consulta.ExecuteReader();
-
-                while (busqueda.Read())
-                {
-                    ENPropuestas propuesta = new ENPropuestas();
-
-                    propuesta.Id = Int32.Parse(busqueda["id"].ToString());
-                    propuesta.Titulo = busqueda["titulo"].ToString();
-                    propuesta.Imagenes = new ENImagenes(busqueda["imagen"].ToString());
-                    propuesta.Texto = busqueda["texto"].ToString();
-                    propuesta.Slug = busqueda["slug"].ToString();
-                    propuesta.Usuario.nickname= busqueda["usuario"].ToString();
-                    propuesta.Empresa.nickname=busqueda["empresa"].ToString();
-
-
-                    lista.Add(propuesta);
-                }
-
-                correctRead = true;
-
-            }
-            catch (SqlException e)
-            {
-                Console.WriteLine("Sorteo operation has failed.Error: {0}", e.Message);
-                correctRead = false;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Sorteo operation has failed.Error: {0}", e.Message);
-                correctRead = false;
-            }
-            finally
-            {
-                if (busqueda != null)
-                {
-                    busqueda.Close();
-                }
-                if (connection != null)
-                {
-                    connection.Close();
-                }
-            }
-
-            return correctRead;
-
         }
 
         internal bool newPropuesta(ENPropuestas propuesta)

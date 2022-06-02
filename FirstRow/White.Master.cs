@@ -386,6 +386,8 @@ namespace FirstRow
                 {
                     msg_error_reserva.Visible = true;
                     msg_error_reserva.Text = "Enorabuena reseva realizada";
+                    string user_email = ((ENUsuario)Session["usuario"]).email;
+                    Home.SendEmail(user_email, "Reserva en FirstRow", "Has reservado una experiencia maravillosa!!");
                 }
                 else 
                 {

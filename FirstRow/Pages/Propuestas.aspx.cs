@@ -27,5 +27,45 @@ namespace FirstRow.Pages
             List<ENPropuestas> lista = new List<ENPropuestas>();
             propuesta.readpropuestasconectado(lista);
         }
+
+        private void loadPropuestas() 
+        {
+
+            foreach (ENBlog blogIterativo in blogs)
+            {
+                string cadena =
+                        "<a class='blog_item' href='/blog/" + blogIterativo.Categoria.slug + "/" + blogIterativo.Slug + "'>" +
+                            "<div class='blog_item_top' style ='background-image: url(/Media/Blogs/" + blogIterativo.Imagen_principal + ")'> " +
+                               " <div class='sq_parent'> " +
+                                    "<div class='sq_wrap'> " +
+                                        "<div class='sq_content'> " +
+                                            "<div class='tags'> " +
+                                                "<div class='tag blue'>"
+                                                    + blogIterativo.Categoria.nombre +
+                                                "</div>" +
+                                            "</div>" +
+                                                "<h3 class='_title'>"
+                                                    + blogIterativo.Titulo +
+                                                "</h3>" +
+                                        "</div>" +
+                                    "</div>" +
+                                "</div>" +
+                                "<div class='shadow js - shadow'></div>" +
+                            "</div>" +
+                            "<div class='blog_item_bottom'>" +
+                                "<div class='author'>" +
+                                    "<div class='userpic'>" +
+                                        "<img src = " + blogIterativo.Usuario.image + " alt =" + blogIterativo.Usuario.name + " />" +
+                                    "</div>" +
+                                    "<p class='date'>" +
+                                        "Escrito por " + blogIterativo.Usuario.name + ", el día " + blogIterativo.Fecha.ToString("dd/MM/yyyy") +
+                                    "</p>" +
+                                "</div>" +
+                             "</div>" +
+                          "</a>";
+                propuestas_list.Controls.Add(new LiteralControl(cadena));
+            }
+        }
+        
     }
 }

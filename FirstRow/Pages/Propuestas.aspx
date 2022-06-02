@@ -21,9 +21,8 @@
                        
                     </div>
                     <div class="page_body">
-                        <div class="blog-list" runat="server" id="sorteos_list">   
+                            <asp:Panel ID="propuestas_list" runat ="server" cass="blog-list"></asp:Panel>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>

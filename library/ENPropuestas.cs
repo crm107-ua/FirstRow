@@ -63,10 +63,11 @@ namespace library
         }
 
 
-        public DataSet readPropuestas()
+        public bool readAllPropuestas(List<ENPropuestas> propuestas) 
         {
-            CADPropuestas propuesta = new CADPropuestas();
-            return propuesta.readPropuestas();
+            CADPropuestas aux = new CADPropuestas();
+            return aux.readPropuestas(propuestas);
+            
         }
 
 

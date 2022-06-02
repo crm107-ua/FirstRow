@@ -257,9 +257,6 @@ namespace FirstRow.Pages
                 ((Label)this.Master.FindControl("slug_reserva_experiencia_Oculto")).Text = slug;
                 ((Label)this.Master.FindControl("form_reserva_price")).Text =eNViajes.Precio.ToString();
                 ((Label)this.Master.FindControl("form_reserva_precio")).Text = (eNViajes.Precio * nPersonas).ToString()+"€";
-
-                string user_email = ((ENUsuario)Session["usuario"]).email;
-                Home.SendEmail(user_email, "Reserva en FirstRow", "Has reservado una experiencia maravillosa!!");
             }
             catch (Exception exception) 
             { }

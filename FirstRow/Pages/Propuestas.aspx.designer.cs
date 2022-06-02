@@ -51,12 +51,12 @@ namespace FirstRow.Pages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl propuestas_texto;
 
         /// <summary>
-        /// Control sorteos_list.
+        /// Control propuestas_list.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sorteos_list;
+        protected global::System.Web.UI.WebControls.Panel propuestas_list;
     }
 }
