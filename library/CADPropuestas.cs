@@ -44,6 +44,30 @@ namespace library
 
         public bool readPropuestas(List<ENPropuestas> propuestas) 
         {
+            try
+            {
+                DataSet dbd = new DataSet();
+                SqlConnection connection = new SqlConnection(constring);
+                SqlDataAdapter adapter = new SqlDataAdapter("select * from [Propuestas]", connection);
+                adapter.Fill(dbd, "Propuestas");
+
+                DataTable tableGaleria = dbd.Tables["Propuestas"];
+                DataRow[] rowsPropuestas = tableGaleria.Select();
+
+                propuestas.Clear();
+
+                for (int i = 0; i < rowsPropuestas.Length; i++)
+                {
+                    ENPropuestas aux = new ENPropuestas();
+
+                    aux.Id =int.Parse( rowsPropuestas[i]["id"].ToString());
+                    aux.Imagenes=
+                }
+            catch (Exception e) 
+            {
+                return false;
+            }
+
             return true;
         }
 

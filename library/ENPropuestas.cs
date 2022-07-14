@@ -83,7 +83,7 @@ namespace library
             bool eliminado = false;
             CADPropuestas propuesta = new CADPropuestas();
 
-            if (!propuesta.readPropuestas(this, true))
+            if (!propuesta.readPropuesta(this, true))
             {
 
 
@@ -95,7 +95,7 @@ namespace library
         public bool readpropuestasconectado(List<ENPropuestas> lista)
         {
             CADPropuestas propuestas = new CADPropuestas();
-            return propuestas.readpropuestasconectado(lista);
+            return propuestas.readPropuestas(lista);
         }
     }
 }

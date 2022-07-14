@@ -22,27 +22,24 @@ namespace FirstRow.Pages
              "url(https://static.onecms.io/wp-content/uploads/sites/28/2021/09/24/travel-gifts-lead-TRVLGG0921.jpg)"
              */
             background_image_header.Style.Add("background-image", "url(https://static.onecms.io/wp-content/uploads/sites/28/2021/09/24/travel-gifts-lead-TRVLGG0921.jpg)");
-
-            ENPropuestas propuesta = new ENPropuestas();
-            List<ENPropuestas> lista = new List<ENPropuestas>();
-            propuesta.readpropuestasconectado(lista);
+            if (!IsPostBack)
+                loadPropuestas();
         }
 
         private void loadPropuestas() 
         {
-
-            foreach (ENBlog blogIterativo in blogs)
+            ENPropuestas propuesta = new ENPropuestas();
+            List<ENPropuestas> lista = new List<ENPropuestas>();
+            propuesta.readpropuestasconectado(lista);
+            foreach (ENPropuestas blogIterativo in lista)
             {
                 string cadena =
-                        "<a class='blog_item' href='/blog/" + blogIterativo.Categoria.slug + "/" + blogIterativo.Slug + "'>" +
-                            "<div class='blog_item_top' style ='background-image: url(/Media/Blogs/" + blogIterativo.Imagen_principal + ")'> " +
+                        "<a class='blog_item' href='/blog/" + blogIterativo.Slug + "'>" +
+                            "<div class='blog_item_top' style ='background-image: url(/Media/Blogs/" + blogIterativo.Imagenes.Name + ")'> " +
                                " <div class='sq_parent'> " +
                                     "<div class='sq_wrap'> " +
                                         "<div class='sq_content'> " +
                                             "<div class='tags'> " +
-                                                "<div class='tag blue'>"
-                                                    + blogIterativo.Categoria.nombre +
-                                                "</div>" +
                                             "</div>" +
                                                 "<h3 class='_title'>"
                                                     + blogIterativo.Titulo +
@@ -58,7 +55,7 @@ namespace FirstRow.Pages
                                         "<img src = " + blogIterativo.Usuario.image + " alt =" + blogIterativo.Usuario.name + " />" +
                                     "</div>" +
                                     "<p class='date'>" +
-                                        "Escrito por " + blogIterativo.Usuario.name + ", el día " + blogIterativo.Fecha.ToString("dd/MM/yyyy") +
+                                        "Escrito por " + blogIterativo.Usuario.name + ", para " + blogIterativo.Empresa.name +
                                     "</p>" +
                                 "</div>" +
                              "</div>" +
